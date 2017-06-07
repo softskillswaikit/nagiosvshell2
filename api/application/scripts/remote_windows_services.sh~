@@ -1,0 +1,2 @@
+/usr/local/nagios/libexec/check_nrpe -H 192.168.123.236 -p 5666 -c start_service -a SNMP
+/usr/local/nagios/libexec/check_nrpe -H $1 -c remote_service -a $2 $3
