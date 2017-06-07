@@ -4,6 +4,11 @@
 
 A modern visual shell for Nagios
 
+## Enhancement by Soft-Skills Sdn Bhd and UTAR
+
+This is a collaboration project between Soft-Skills Sdn Bhd and students of Universiti Tunku Abdul Rahman (UTAR). This project aims to develop the remaining interface of Nagios V-Shell v2 for internal usage. 
+
+The README steps below are obtained from the original Nagios V-Shell v2 project. (https://github.com/NagiosEnterprises/nagiosvshell/tree/2.x)
 
 ## Alpha Release
 
