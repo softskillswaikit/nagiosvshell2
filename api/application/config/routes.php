@@ -42,6 +42,13 @@ $route["default_controller"] = "api";
 $route["404_override"] = "";
 
 $route["status"] = "api";
+/*
+* Create by Soon Wei Liang
+*/
+$route["hostnames"] = "api/hostname";
+$route["servicename"] = "api/servicename";
+$route["hostgroupname"] = "api/hostgroupname";
+$route["servicegroupname"] = "api/servicegroupname";
 
 $route["comments/(:any)"] = "api/comments/$1";
 $route["comments"] = "api/comments";
