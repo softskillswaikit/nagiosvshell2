@@ -242,6 +242,41 @@ class API extends VS_Controller
         $this->output($Servicegroupname);
     }
 
+    /*
+     * Fetch all event log
+     *
+     * @param  string $day
+     * @param  string $month
+     * @param  string $year
+     */
+    public function eventlog($day='', $month='', $year='')
+    {
+        $EventLog = $this->Reports_data->get_events_log();
+
+        $this->output($Eventlog);
+    }
+
+
+    /*
+     * Fetch all notifications
+     *
+     * @param string $day
+     * @oaram string $month
+     * @param string $year
+     */
+    public function notifications($day='', $month='', $year='')
+    {
+
+    }
+
+
+
+
+
+
+
+
+
     /**
      * Fetch host status
      *
