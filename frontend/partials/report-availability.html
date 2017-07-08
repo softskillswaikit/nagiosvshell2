@@ -14,27 +14,127 @@
 			<table cellspacing="0" cell>
 				<form action="" class="input-form" method="post">
                 	<tr>
-					<td style="align-left:true;">Report Type:</td>
-					<td colspan="3">
-						<select id="reportType" class="dropdown" 
-							onchange="displayRadio(document.getElementById('reportType').value);">
-						<option value="Hostgroup(s)">Hostgroup(s)</option>
-						<option value="Host(s)">Host(s)</option>
-						<option value="Servicegroup(s)">Servicegroup(s)</option>
-						<option value="Service(s)">Service(s)</option>
-						</select>
-					</td>
+						<td style="align-left:true;">Report Type:</td>
+						<td>
+							<select id="reportType" class="dropdown" 
+								onchange="displayRadio(document.getElementById('reportType').value);">
+							<option value="Hostgroup(s)">Hostgroup(s)</option>
+							<option value="Host(s)">Host(s)</option>
+							<option value="Servicegroup(s)">Servicegroup(s)</option>
+							<option value="Service(s)">Service(s)</option>
+							</select>
+						</td>
 					</tr>
 					<tr id="serviceType">
-					<td>Service Type:</td>
-					<td><input id="serviceType1" type="radio" name="serviceType" value="normal service">Normal Service</td>
-					<td><input id="serviceType2" type="radio" name="serviceType" value="host resource" >Host Resource</td>
-					<td><input id="serviceType3" type="radio" name="serviceType" value="running state">Running State</td>
+						<td>Service Type:</td>
+						<td><input id="serviceType1" type="radio" name="serviceType" value="normal service">Normal Service</td>
+						<td><input id="serviceType2" type="radio" name="serviceType" value="host resource" >Host Resource</td>
+						<td><input id="serviceType3" type="radio" name="serviceType" value="running state">Running State</td>
 					</tr>
 					<tr>
-					<td><label>Select Comoponent:</label></td>
+						<td>Select Comoponent:</td>
+						<td><select id="reportComponent" class="dropdown">
+							<option value="">...request web service...</option>
+							</select>
+						</td>
 					</tr>
 					<tr>
+						<td>Report Period:</td>
+						<td><select id="reportPeriod" class="dropdown" 
+							onchange="displayCustomReportPeriod(document.getElementById('reportType').value);">
+							<option value="Today">Today</option>
+							<option value="Last 24 Hours">Last 24 Hours</option>
+							<option value="Yesterday">Yesterday</option>
+							<option value="This Week">This Week</option>
+							<option value="Last 7 Days">Last 7 Days</option>
+							<option value="Last Week">Last Week</option>
+							<option value="This Month">This Month</option>
+							<option value="Last 31 Days">Last 31 Days</option>
+							<option value="Last Month">Last Month</option>
+							<option value="This Year">This Year</option>
+							<option value="Last Year">Last Year</option>
+							<option value="*Custom Report Period*">*Custom Report Period*</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Start Date:</td>
+						<td><input id="startDate" type="date" name="startDate" value=""></td>
+					</tr>
+					<tr>
+						<td>End Date:</td>
+						<td><input id="endDate" type="date" name="endDate" value=""></td>
+					</tr>
+					<tr>
+						<td>Report Time Period:</td>
+						<td><select id="reportTimePeriod" class="dropdown">
+							<option value="None">None</option>
+							<option value="24x7">24x7</option>
+							<option value="24x7_sans_holidays">24x7_sans_holidays</option>
+							<option value="US-holidays">US-holidays</option>
+							<option value="Workhours">Workhours</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Assume Initial States:</td>
+						<td><select id="assumeInitialStates" class="dropdown"
+							onchange="displayFirstAssumedState(document.getElementById('assumeInitialStates').value);">
+							<option value="Yes">Yes</option>
+							<option value="No">No</option>
+							</select>
+						</td>	
+					</tr>
+					<tr>
+						<td>Assume State Retention:</td>
+						<td><select id="assumeStateRetention" class="dropdown">
+							<option value="Yes">Yes</option>
+							<option value="No">No</option>
+							</select>
+						</td>	
+					</tr>
+					<tr>
+						<td>Assume States During Program Downtime:</td>
+						<td><select id="assumeDowntimeStates" class="dropdown">
+							<option value="Yes">Yes</option>
+							<option value="No">No</option>
+							</select>
+						</td>	
+					</tr>
+					<tr>
+						<td>Include Soft States:</td>
+						<td><select id="includeSoftStates" class="dropdown">
+							<option value="Yes">Yes</option>
+							<option value="No">No</option>
+							</select>
+						</td>	
+					</tr>
+					<tr class="firstAssumedState">
+						<td>First Assumed Host State:</td>
+						<td><select id="firstAssumedHostState" class="dropdown">
+							<option value="Unspecified">Unspecified</option>
+							<option value="Current State">Current State</option>
+							<option value="Host Up">Host Up</option>
+							<option value="Host Down">Host Down</option>
+							<option value="Host Unreachable">Host Unreachable</option>
+							</select>
+						</td>	
+					</tr>
+					<tr class="firstAssumedState">
+						<td>First Assumed Service State:</td>
+						<td><select id="firstAssumedServiceState" class="dropdown">
+							<option value="Unspecified">Unspecified</option>
+							<option value="Current State">Current State</option>
+							<option value="Host Up">Host Up</option>
+							<option value="Host Down">Host Down</option>
+							<option value="Host Unreachable">Host Unreachable</option>
+							</select>
+						</td>	
+					</tr>
+					<tr>
+						<td>Backtracked Archives (To Scan For Initial States):</td>
+						<td></td>
+					</tr>
 				</form>
 			</table>
 
@@ -48,6 +148,23 @@ function displayRadio(reportType){
 		document.getElementById('serviceType').style.display = "";
 	else
 		document.getElementById('serviceType').style.display = "none";
+}
+
+function displayCustomReportPeriod(reportPeriod){
+	if(reportPeriod == "*Custom*")
+		document.getElementById('customReportPeriod').style.display = "";
+	else
+		document.getElementById('customReportPeriod').style.display = "none";
+}
+
+function displayFirstAssumedState(assumeInitialStates){
+	if(assumeInitialStates == "Yes"){
+		document.getElementByClassName('firstAssumedtState').style.display = "";
+		document.getElementById('includeSoftStates').style.display = "";
+	}
+	else{
+		document.getElementByClassName('firstAssumedtState').style.display = "none";
+	}
 }
 </script>
 <div ng-include="'frontend/partials/_footer.html'"></div>
