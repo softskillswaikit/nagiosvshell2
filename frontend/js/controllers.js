@@ -490,6 +490,33 @@ angular.module('vshell.controllers', [])
     }
 ])
 
+.controller('AvailabilityCtrl', ['$scope', '$routeParams', 'async',
+    function($scope, $routeParams, async) {
+
+        var type = $routeParams.type || '';
+
+        $scope.callback = function(data, status, headers, config) {
+            if (type) {
+                data = data[type] || {};
+            }
+            return data;
+        };
+
+        $scope.init = function() {
+
+            var options = {
+                name: 'configurations',
+                url: 'configurations/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, options);
+
+        };
+
+    }
+])
+
 .controller('OptionsCtrl', ['$scope', '$http', 'paths',
     function($scope, $http, paths) {
 

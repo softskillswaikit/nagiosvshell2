@@ -6,30 +6,33 @@
 
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
-<div id="content" class="clearfix" ng-controller="AvailabilityCtrl" ng-init="init()">
+<div id="content" class="clearfix" ng-controller="ConfigurationsCtrl" ng-init="init()">
 	<h1>Create Availability Report</h1>
-
-	<div class="details table-container full-width">
+	<div class="details table-container partial-width full">
  		<div class="table-options">
-			<table cellspacing="0" cell>
+			<table cellspacing="0" cellpadding="0">
 				<form action="" class="input-form" method="post">
                 	<tr>
-						<td style="align-left:true;">Report Type:</td>
+						<td>Report Type:</td>
 						<td>
-							<select id="reportType" class="dropdown" 
-								onchange="displayRadio(document.getElementById('reportType').value);">
-							<option value="Hostgroup(s)">Hostgroup(s)</option>
-							<option value="Host(s)">Host(s)</option>
-							<option value="Servicegroup(s)">Servicegroup(s)</option>
-							<option value="Service(s)">Service(s)</option>
+							<select ng-model="reportType" id="reportType" class="dropdown" >
+								<option value="Hostgroup(s)">Hostgroup(s)</option>
+								<option value="Host(s)">Host(s)</option>
+								<option value="Servicegroup(s)">Servicegroup(s)</option>
+								<option value="Service(s)">Service(s)</option>
 							</select>
 						</td>
 					</tr>
-					<tr id="serviceType">
+					
+					<tr ng-show="reportType=='Hostgroup(s)' || reportType=='Host(s)'" class="serviceType">
 						<td>Service Type:</td>
-						<td><input id="serviceType1" type="radio" name="serviceType" value="normal service">Normal Service</td>
-						<td><input id="serviceType2" type="radio" name="serviceType" value="host resource" >Host Resource</td>
-						<td><input id="serviceType3" type="radio" name="serviceType" value="running state">Running State</td>
+						<td>
+							<select id="serviceType" class="dropdown">
+								<option value="Normal Service">Normal Service</option>
+								<option value="Host Resource">Host Resource</option>
+								<option value="Running State">Running State</option>
+							</select>
+						</td>
 					</tr>
 					<tr>
 						<td>Select Comoponent:</td>
@@ -40,28 +43,28 @@
 					</tr>
 					<tr>
 						<td>Report Period:</td>
-						<td><select id="reportPeriod" class="dropdown" 
-							onchange="displayCustomReportPeriod(document.getElementById('reportType').value);">
-							<option value="Today">Today</option>
-							<option value="Last 24 Hours">Last 24 Hours</option>
-							<option value="Yesterday">Yesterday</option>
-							<option value="This Week">This Week</option>
-							<option value="Last 7 Days">Last 7 Days</option>
-							<option value="Last Week">Last Week</option>
-							<option value="This Month">This Month</option>
-							<option value="Last 31 Days">Last 31 Days</option>
-							<option value="Last Month">Last Month</option>
-							<option value="This Year">This Year</option>
-							<option value="Last Year">Last Year</option>
-							<option value="*Custom Report Period*">*Custom Report Period*</option>
+						<td>
+							<select ng-model="reportPeriod" id="reportPeriod" class="dropdown">
+								<option value="Today">Today</option>
+								<option value="Last 24 Hours">Last 24 Hours</option>
+								<option value="Yesterday">Yesterday</option>
+								<option value="This Week">This Week</option>
+								<option value="Last 7 Days">Last 7 Days</option>
+								<option value="Last Week">Last Week</option>
+								<option value="This Month">This Month</option>
+								<option value="Last 31 Days">Last 31 Days</option>
+								<option value="Last Month">Last Month</option>
+								<option value="This Year">This Year</option>
+								<option value="Last Year">Last Year</option>
+								<option value="*Custom Report Period*">*Custom Report Period*</option>
 							</select>
 						</td>
 					</tr>
-					<tr>
+					<tr ng-show="reportPeriod=='*Custom Report Period*'" id="startdate" class="date">
 						<td>Start Date:</td>
 						<td><input id="startDate" type="date" name="startDate" value=""></td>
 					</tr>
-					<tr>
+					<tr ng-show="reportPeriod=='*Custom Report Period*'" id="enddate" class="date">
 						<td>End Date:</td>
 						<td><input id="endDate" type="date" name="endDate" value=""></td>
 					</tr>
@@ -78,8 +81,7 @@
 					</tr>
 					<tr>
 						<td>Assume Initial States:</td>
-						<td><select id="assumeInitialStates" class="dropdown"
-							onchange="displayFirstAssumedState(document.getElementById('assumeInitialStates').value);">
+						<td><select ng-model="assumeInitialStates" id="assumeInitialStates" class="dropdown">
 							<option value="Yes">Yes</option>
 							<option value="No">No</option>
 							</select>
@@ -109,7 +111,7 @@
 							</select>
 						</td>	
 					</tr>
-					<tr class="firstAssumedState">
+					<tr ng-show="assumeInitialStates=='Yes'" class="firstAssumedState">
 						<td>First Assumed Host State:</td>
 						<td><select id="firstAssumedHostState" class="dropdown">
 							<option value="Unspecified">Unspecified</option>
@@ -120,7 +122,7 @@
 							</select>
 						</td>	
 					</tr>
-					<tr class="firstAssumedState">
+					<tr ng-show="assumeInitialStates=='Yes'" class="firstAssumedState">
 						<td>First Assumed Service State:</td>
 						<td><select id="firstAssumedServiceState" class="dropdown">
 							<option value="Unspecified">Unspecified</option>
@@ -133,39 +135,14 @@
 					</tr>
 					<tr>
 						<td>Backtracked Archives (To Scan For Initial States):</td>
-						<td></td>
+						<td><input type="number"></td>
 					</tr>
 				</form>
 			</table>
-
-      		</div>
-
+      	</div>
 	</div>
 </div>
 <script type="text/javascript">
-function displayRadio(reportType){
-	if(reportType == "Hostgroup(s)" || reportType == "Host(s)")
-		document.getElementById('serviceType').style.display = "";
-	else
-		document.getElementById('serviceType').style.display = "none";
-}
-
-function displayCustomReportPeriod(reportPeriod){
-	if(reportPeriod == "*Custom*")
-		document.getElementById('customReportPeriod').style.display = "";
-	else
-		document.getElementById('customReportPeriod').style.display = "none";
-}
-
-function displayFirstAssumedState(assumeInitialStates){
-	if(assumeInitialStates == "Yes"){
-		document.getElementByClassName('firstAssumedtState').style.display = "";
-		document.getElementById('includeSoftStates').style.display = "";
-	}
-	else{
-		document.getElementByClassName('firstAssumedtState').style.display = "none";
-	}
-}
 </script>
 <div ng-include="'frontend/partials/_footer.html'"></div>
 
