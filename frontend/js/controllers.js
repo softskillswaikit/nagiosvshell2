@@ -493,20 +493,25 @@ angular.module('vshell.controllers', [])
 .controller('AvailabilityCtrl', ['$scope', '$routeParams', 'async',
     function($scope, $routeParams, async) {
 
-        var type = $routeParams.type || '';
-
-        $scope.callback = function(data, status, headers, config) {
-            if (type) {
-                data = data[type] || {};
-            }
-            return data;
-        };
-
+		$scope.reportType = 'Hostgroup(s)';
+		$scope.serviceType = 'Normal Service';
+		$scope.reportComponent = '';
+		$scope.startDate = '';
+		$scope.endDate = '';
+		$scope.reportPeriod = 'Last 7 Days';
+		$scope.reportTimePeriod = 'None';
+		$scope.assumeInitialStates = 'Yes';
+		$scope.assumeStateRetention = 'Yes';
+		$scope.assumeDowntimeStates = 'Yes';
+		$scope.includeSoftStates = 'No';
+		$scope.firstAssumedHostState = 'Unspecified';
+		$scope.firstAssumedServiceState = 'Unspecified';
+		$scope.backtrackedArchives = 4;
         $scope.init = function() {
 
             var options = {
-                name: 'configurations',
-                url: 'configurations/' + type,
+                name: 'availability',
+                url: 'availability/' + type,
                 queue: 'main'
             };
 
