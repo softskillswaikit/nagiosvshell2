@@ -27,12 +27,14 @@ class API extends VS_Controller
 
         $path = $this->zippath;
         $filelist = $this->session->userdata('files');
-        if ($handle = opendir($path)) {
+        if ($handle = opendir($path)) 
+        {
             while (false !== ($file = readdir($handle)))
             {
                 if ((time()-filectime($path.$file)) > intval($this->zipexpire)) // expire time in seconds
                 {
-                    if (preg_match('/\.zip$/i', $file)) {
+                    if (preg_match('/\.zip$/i', $file)) 
+                    {
                         if(unlink($path.$file))
                             log_message('debug', $file.' expired and deleted successfully.');
                         else
@@ -61,7 +63,8 @@ class API extends VS_Controller
             $this->session->set_userdata('files', $filelist);
             //log_message('debug', print_r($filelist, true));
         }
-        else {
+        else 
+        {
             log_message('error', 'Failed to access download directory.');
         }
     }
@@ -81,7 +84,8 @@ class API extends VS_Controller
     /**
      * Retrieve program status
      */
-    public function programstatus(){
+    public function programstatus()
+    {
         $Program = $this->nagios_data->get_collection('programstatus');
         $this->output($Program);
     }
@@ -91,7 +95,8 @@ class API extends VS_Controller
      * Retrieve info status
      * @return [type] [description]
      */
-    public function info(){
+    public function info()
+    {
         $Info = $this->nagios_data->get_collection('info');
         $this->output($Info);
     }
@@ -109,24 +114,27 @@ class API extends VS_Controller
         $hostgroups = $this->nagios_data->get_collection('hostgroup');
         $servicegroups = $this->nagios_data->get_collection('servicegroup');
 
-        foreach($hosts as $host){
+        foreach($hosts as $host)
+        {
             $Data[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
         }
 
-        foreach($services as $service){
+        foreach($services as $service)
+        {
             $Data[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
         }
 
-        foreach($hostgroups as $hostgroup){
+        foreach($hostgroups as $hostgroup)
+        {
             $Data[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
         }
 
-        foreach($servicegroups as $servicegroup){
+        foreach($servicegroups as $servicegroup)
+        {
             $Data[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
         }
 
         $this->output($Data);
-
     }
 
     private function quicksearch_item($type, $name, $uri)
@@ -142,7 +150,8 @@ class API extends VS_Controller
     /**
      * Retrieve tactical overview data
      */
-    public function tacticaloverview() {
+    public function tacticaloverview() 
+    {
         $Data = $this->tac_data->get_tac_data();
         $this->output($Data);
     }
@@ -151,7 +160,8 @@ class API extends VS_Controller
     /**
      * Fetch /etc/vshell2.conf file values, as parsed by CodeIgniter
      */
-    function vshellconfig() {
+    function vshellconfig() 
+    {
         $config = array(
             'baseurl'        => BASEURL,
             'cgicfg'         => CGICFG,
@@ -167,21 +177,168 @@ class API extends VS_Controller
     }
 
 
+    //Written by Soon Wei Liang
+    /*
+     * Fetch host name
+     */
+    public function hostname()
+    {
+        $Hosts = $this->nagios_data->get_collection('host');
+
+        foreach ($Hosts as $Host) 
+        {
+            $Host->hydrate();
+            $Hostname[] = $Hosts->host_name;
+        }
+
+        $this->output($Hostname);
+    }
+
+    /*
+     * Fetch service name
+     */
+    public function servicename()
+    {
+        $Services = $this->nagios_data->get_collection('service');
+
+        foreach ($Services as $Service)
+        {
+            $Service->hydrate();
+            $Servicename[] = $Service->service_name;
+        }
+
+        $this->output($Servicename);
+    }    
+
+    /*
+     * Fetch host group name 
+     */
+    public function hostgroupname()
+    {
+        $Hostgroups = $this->nagios_data->get_collection('hostgroup');
+
+        foreach($Hostgroups as $Hostgroup)
+        {
+            $Hostgroup->hydrate();
+            $Hostgroupname[] = $Hostgroup->hostgroup_name;
+        }
+
+        $this->output($Hostgroupname);
+    }
+
+    /*
+     * Fetch service group name
+     */
+    public function servicegroupname()
+    {
+        $Servicegroups = $this->nagios_data->get_collection('servicegroup');
+
+        foreach($Servicegroups as $Servicegroup)
+        {
+            $Servicegroup->hydrate();
+            $Servicegroupname[] = $Servicegroup->servicegroup_name;
+        }
+
+        $this->output($Servicegroupname);
+    }
+
+    /*
+     * Fetch availability
+     */
+     public function availability()
+    {
+
+    }
+
+    /*
+     * Fetch trend
+     */
+    public function trend()
+    {
+
+    }
+
+    /*
+     * Fetch alert history
+     */
+    public function alerthistory()
+    {
+
+    }
+
+    /*
+     * Fetch alert summary
+     */
+    public function alertsummary()
+    {
+
+    }
+
+    /*
+     * Fetch alert histogram
+     */
+    public function alerthistogram()
+    {
+        
+    }
+
+
+    /*
+     * Fetch all event log
+     *
+     * @param  string $day
+     * @param  string $month
+     * @param  string $year
+     */
+    public function eventlog($day='', $month='', $year='')
+    {
+        $EventLog = $this->Reports_data->get_events_log();
+
+        $this->output($Eventlog);
+    }
+
+
+    /*
+     * Fetch all notifications
+     *
+     * @param string $day
+     * @oaram string $month
+     * @param string $year
+     */
+    public function notifications($day='', $month='', $year='')
+    {
+
+    }
+
+
+
+
+
+
+
+
+
+
     /**
      * Fetch host status
      *
      * @param  string $host_name
      */
-    public function hoststatus($host_name='') {
+    public function hoststatus($host_name='') 
+    {
 
         $Data = $this->nagios_data->get_collection('hoststatus');
 
         //fetch by host name
-        if(!empty($host_name)){
+        if(!empty($host_name))
+        {
             $Data = $Data->get_index_key('host_name', $host_name);
-            if( empty($Data) ){
+            
+            if( empty($Data) )
+            {
                 return $this->output($Data);
             } 
+
             $Data = $Data->first();
 
             //add comments
@@ -196,7 +353,6 @@ class API extends VS_Controller
         }
 
         $this->output($Data);
-
     }
 
     /**
@@ -206,21 +362,28 @@ class API extends VS_Controller
      * @param  string $service   service description (requires host name)
      * @param  string $operation operation
      */
-    public function serviceremote($host_name='',$service_description='',$operation=''){
+    public function serviceremote($host_name='',$service_description='',$operation='')
+    {
         $service_description = urldecode($service_description);
 
         $Data = $this->nagios_data->get_collection('servicestatus');
         $result = array();
 
         //fetch by host name
-        if(!empty($host_name)){
+        if(!empty($host_name))
+        {
 
-            if(empty($service_description)){
+            if(empty($service_description))
+            {
                 $result['code'] = -1;//Please provide a service name.
                 return $this->output($result);
-            } else {
+            } 
+            else 
+            {
                 $Data = $Data->get_index_key('host_name',$host_name)->get_where('service_description',$service_description)->first();
-                if( empty($Data) ){
+                
+                if( empty($Data) )
+                {
                     $result['code'] = -2;//Unknown service name: '.$service_description
                     return $this->output($result);
                 } 
@@ -234,7 +397,8 @@ class API extends VS_Controller
                 if($operation !== '')
                 {
                     $operation = strtolower($operation);
-                    switch ($operation) {
+                    switch ($operation) 
+                    {
                         case 'start':
                         case 'stop':
                         case 'pause':
@@ -262,21 +426,28 @@ class API extends VS_Controller
      * @param  string $host_name host name filter
      * @param  string $service   service description (requires host name)
      */
-    public function servicestate($host_name='',$service_description=''){
+    public function servicestate($host_name='',$service_description='')
+    {
         $service_description = urldecode($service_description);
 
         $Data = $this->nagios_data->get_collection('servicestatus');
         $result = array();
 
         //fetch by host name
-        if(!empty($host_name)){
+        if(!empty($host_name))
+        {
 
-            if(empty($service_description)){
+            if(empty($service_description))
+            {
                 $result['code'] = -1;//Please provide a service name.
                 return $this->output($result);
-            } else {
+            } 
+            else 
+            {
                 $Data = $Data->get_index_key('host_name',$host_name)->get_where('service_description',$service_description)->first();
-                if( empty($Data) ){
+                
+                if( empty($Data) )
+                {
                     $result['code'] = -2;//Unknown service name: '.$service_description
                     return $this->output($result);
                 } 
@@ -306,21 +477,29 @@ class API extends VS_Controller
      * @param  string $host_name host name filter
      * @param  string $service   service description (requires host name)
      */
-    public function servicestatus($host_name='',$service_description=''){
+    public function servicestatus($host_name='',$service_description='')
+    {
         $service_description = urldecode($service_description);
 
         $Data = $this->nagios_data->get_collection('servicestatus');
 
         //fetch by host name
-        if(!empty($host_name)){
+        if(!empty($host_name))
+        {
 
-            if(empty($service_description)){
+            if(empty($service_description))
+            {
                 $Data = $Data->get_index_key('host_name',$host_name);
-            } else {
+            } 
+            else 
+            {
                 $Data = $Data->get_index_key('host_name',$host_name)->get_where('service_description',$service_description)->first();
-                if( empty($Data) ){
+
+                if( empty($Data) )
+                {
                     return $this->output(array());
                 } 
+
                 //add comments
                 $all_comments = $this->nagios_data->get_collection('servicecomment');
                 $service_comments = $all_comments->get_where('service_description',$service_description);
@@ -338,21 +517,27 @@ class API extends VS_Controller
      * @param  string $host_name host name filter
      * @param  string $service   service description (requires host name)
      */
-    public function servicelogs($host_name='',$service_description=''){
+    public function servicelogs($host_name='',$service_description='')
+    {
         $service_description = urldecode($service_description);
 
         $Data = $this->nagios_data->get_collection('servicestatus');
         $result = array();
 
         //fetch by host name
-        if(!empty($host_name)){
+        if(!empty($host_name))
+        {
 
-            if(empty($service_description)){
+            if(empty($service_description))
+            {
                 $result['code'] = -1;//Please provide a service name.
                 return $this->output($result);
-            } else {
+            } 
+            else 
+            {
                 $Data = $Data->get_index_key('host_name',$host_name)->get_where('service_description',$service_description)->first();
-                if( empty($Data) ){
+                if( empty($Data) )
+                {
                     $result['code'] = -2;//Unknown service name: '.$service_description
                     return $this->output($result);
                 } 
@@ -477,7 +662,6 @@ class API extends VS_Controller
                     return $this->output($result);
                 }
             }
-
         }
         $Data['code'] = 0;
         $this->output($Data);
@@ -490,7 +674,8 @@ class API extends VS_Controller
      * @param  string $service   service description (requires host name)
      * @param  string $filename  file name
      */
-    public function servicelogdownload($host_name='',$service_description='',$filenames=''){
+    public function servicelogdownload($host_name='',$service_description='',$filenames='')
+    {
         $service_description = urldecode($service_description);
         $filenames = urldecode($filenames);
         
@@ -498,14 +683,19 @@ class API extends VS_Controller
         $result = array();
         
         //fetch by host name
-        if(!empty($host_name)){
+        if(!empty($host_name))
+        {
 
-            if(empty($service_description)){
+            if(empty($service_description))
+            {
                 $result['code'] = -1;//Please provide a service name.
                 return $this->output($result);
-            } else {
+            } 
+            else 
+            {
                 $Data = $Data->get_index_key('host_name',$host_name)->get_where('service_description',$service_description)->first();
-                if( empty($Data) ){
+                if( empty($Data) )
+                {
                     $result['code'] = -2;//Unknown service name: '.$service_description
                     return $this->output($result);
                 }
@@ -588,6 +778,7 @@ class API extends VS_Controller
                     $curList[$newKey] = $newFileName;
                     $this->session->set_userdata('files', $curList);
                 }
+
                 $this->zip->archive($this->zippath.$newFileName);
                 $this->sftp_close($connection);
                 $result['code'] = 0;
@@ -605,7 +796,8 @@ class API extends VS_Controller
      * 
      * @param  string $key host name filter
      */
-    public function download($key=''){
+    public function download($key='')
+    {
         $files = $this->session->userdata('files');
         $result = array();
 
@@ -628,39 +820,45 @@ class API extends VS_Controller
         header('Content-Disposition: attachment; filename="'.$filename.'"');
         return;
     }
-
+    
 
     /**
      * Fetch host group status
      *
      * @param  string $hostgroup_name
      */
-    public function hostgroupstatus($hostgroup_name = ''){
+    public function hostgroupstatus($hostgroup_name = '')
+    {
 
         $HostgroupStatus = new HostStatusCollection();
         $Hostgroups = $this->nagios_data->get_collection('hostgroup');
         $found = False; 
 
-        foreach($Hostgroups as $Hostgroup){
-            if( $hostgroup_name != '' ) {
-                if( $Hostgroup->hostgroup_name == $hostgroup_name ){
+        foreach($Hostgroups as $Hostgroup)
+        {
+            if( $hostgroup_name != '' ) 
+            {
+                if( $Hostgroup->hostgroup_name == $hostgroup_name )
+                {
                     $Hostgroup->hydrate();
                     $HostgroupStatus[] = $Hostgroup;
                     $found = True;
                 }
-            }else{
+            }
+            else
+            {
                 $Hostgroup->hydrate();
                 $HostgroupStatus[] = $Hostgroup;
                 $found = True;
             }
         }
 
-        if( empty($found) ){
+        if( empty($found) )
+        {
             return $this->output(array());
         }
 
         $this->output($HostgroupStatus);
-
     }
 
 
@@ -669,32 +867,38 @@ class API extends VS_Controller
      *
      * @param  string $servicegroup_name
      */
-    public function servicegroupstatus($servicegroup_name = ''){
+    public function servicegroupstatus($servicegroup_name = '')
+    {
 
         $ServicegroupStatus = new ServiceStatusCollection();
         $Servicegroups = $this->nagios_data->get_collection('servicegroup');
         $found = False; 
 
-        foreach($Servicegroups as $Servicegroup){
-            if( $servicegroup_name != '' ) {
-                if( $Servicegroup->servicegroup_name == $servicegroup_name ){
+        foreach($Servicegroups as $Servicegroup)
+        {
+            if( $servicegroup_name != '' ) 
+            {
+                if( $Servicegroup->servicegroup_name == $servicegroup_name )
+                {
                     $Servicegroup->hydrate();
                     $ServicegroupStatus[] = $Servicegroup;
                     $found = True;
                 }
-            }else{
+            }
+            else
+            {
                 $Servicegroup->hydrate();
                 $ServicegroupStatus[] = $Servicegroup;
                 $found = True;
             }
         }
 
-        if( empty($found) ){
+        if( empty($found) )
+        {
             return $this->output(array());
         }
 
         $this->output($ServicegroupStatus);
-
     }
 
 
@@ -720,15 +924,20 @@ class API extends VS_Controller
 
         $keys = array();
 
-        if( $type != '' ){
-            if( isset($key_lookup[$type]) ){
+        if( $type != '' )
+        {
+            if( isset($key_lookup[$type]) )
+            {
                 $keys[$type] = $key_lookup[$type];
             }
-        }else{
+        }
+        else
+        {
             $keys = $key_lookup;
         }
 
-        foreach($keys as $name => $objtype){
+        foreach($keys as $name => $objtype)
+        {
 
             $data = object_data($objtype);
 
@@ -748,19 +957,25 @@ class API extends VS_Controller
      *
      * @param  string $type
      */
-    public function comments($type = '') {
+    public function comments($type = '') 
+    {
         $allowed_types = array(
             'hostcomment',
             'servicecomment'
         );
 
-        if( $type != '' ){
-            if( ! in_array($type, $allowed_types) ){
+        if( $type != '' )
+        {
+            if( ! in_array($type, $allowed_types) )
+            {
                 return $this->output(array());
             }
+
             $specific_comments = $this->nagios_data->get_collection($type)->get_index('host_name');
             $comments = $this->comments_flatten($specific_comments);
-        } else {
+        } 
+        else
+        {
             $host_comments = $this->nagios_data->get_collection('hostcomment')->get_index('host_name');
             $service_comments = $this->nagios_data->get_collection('servicecomment')->get_index('host_name');
             $comments = $this->comments_merge($host_comments, $service_comments);
@@ -843,7 +1058,8 @@ class API extends VS_Controller
      * @param  string $passwd
      * @param  object $connection (output)
      */
-    private function sftp_connect($remote, $user, $passwd, &$connection){
+    private function sftp_connect($remote, $user, $passwd, &$connection)
+    {
         $connection = ssh2_connect($remote, 22);
         if (! $connection)
             log_message('error', 'Could not connect to '.$remote.'.');
@@ -864,8 +1080,10 @@ class API extends VS_Controller
      *
      * @param  object $connection
      */
-    private function sftp_close(&$connection){
-        if($connection){
+    private function sftp_close(&$connection)
+    {
+        if($connection)
+        {
             ssh2_exec($connection, 'exit');
             unset($connection);
         }
@@ -885,7 +1103,8 @@ class API extends VS_Controller
      *   Map dot '.' to regex dot '\.'
      *   Map dot '/' to regex dot '\/'
      */
-    private function format_string_for_regex($input, $service_description){
+    private function format_string_for_regex($input, $service_description)
+    {
         $output = str_replace('$SERVICEDESC$', $service_description, $input);
         $output = str_replace('$YYYYMMDD$', '[0-9]{8}', $output);
         $output = str_replace('$HHmmSS$', '[0-9]{6}', $output);
@@ -897,19 +1116,24 @@ class API extends VS_Controller
         return $output;
     }
 
-    private function remove_string_spaces($string){
+    private function remove_string_spaces($string)
+    {
         return trim(preg_replace('/\s\s+/', ' ', $string));
     }
 
-    private function comments_flatten($array){
+    private function comments_flatten($array)
+    {
         $flattened = array();
-        foreach($array as $comments){
+        foreach($array as $comments)
+        {
             $flattened = array_merge($flattened, $comments);
         }
+
         return $flattened;
     }
 
-    private function comments_merge($first, $second){
+    private function comments_merge($first, $second)
+    {
         $first = $this->comments_flatten($first);
         $second = $this->comments_flatten($second);
         return array_merge($first, $second);
