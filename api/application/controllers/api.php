@@ -243,6 +243,47 @@ class API extends VS_Controller
     }
 
     /*
+     * Fetch availability
+     */
+     public function availability()
+    {
+
+    }
+
+    /*
+     * Fetch trend
+     */
+    public function trend()
+    {
+
+    }
+
+    /*
+     * Fetch alert history
+     */
+    public function alerthistory()
+    {
+
+    }
+
+    /*
+     * Fetch alert summary
+     */
+    public function alertsummary()
+    {
+
+    }
+
+    /*
+     * Fetch alert histogram
+     */
+    public function alerthistogram()
+    {
+        
+    }
+
+
+    /*
      * Fetch all event log
      *
      * @param  string $day
@@ -268,6 +309,7 @@ class API extends VS_Controller
     {
 
     }
+
 
 
 
