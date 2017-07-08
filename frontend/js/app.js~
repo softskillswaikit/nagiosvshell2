@@ -75,7 +75,7 @@ angular.module('vshell', [
             templateUrl: 'frontend/partials/comments.html'
         });
 	$routeProvider.when('/reports/alert-history', {
-		templateUrl: 'frontend/partials/reports-alert-history.html'
+		templateUrl: 'frontend/partials/reports-alert-summary.html'
 	});
 	$routeProvider.when('/reports/alert-summary', {
 		templateUrl: 'frontend/partials/reports-alert-summary.html'

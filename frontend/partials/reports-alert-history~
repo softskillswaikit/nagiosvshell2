@@ -1,0 +1,11 @@
+<div ng-include="'frontend/partials/_header.html'"></div>
+
+<div ng-include="'frontend/partials/_status.html'"></div>
+
+<div ng-include="'frontend/partials/_browser.html'"></div>
+
+<div ng-include="'frontend/partials/_messages.html'"></div>
+
+<p>Alert History</p>
+
+<div ng-include="'frontend/partials/_footer.html'"></div>

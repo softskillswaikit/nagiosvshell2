@@ -1,0 +1,155 @@
+<div ng-include="'frontend/partials/_header.html'"></div>
+
+<div ng-include="'frontend/partials/_status.html'"></div>
+
+<div ng-include="'frontend/partials/_browser.html'"></div>
+
+<div ng-include="'frontend/partials/_messages.html'"></div>
+
+<div id="content" class="clearfix" ng-controller="AlertSummaryCtrl" ng-init="init()"></div>
+
+<h1> Alert Summary </h1>
+
+<div class="summaryform">
+
+<form class="summaryform">
+<h1> Create Summary Report </h1>
+
+<input name="report" type="radio"> Standard Report
+<br/>
+<div id="standard">
+
+<select id="type" name="type">
+<option>Report Type</option>
+<option>25 Most Recent Hard Alerts</option>
+<option>25 Most Recent Hard Host Alerts</option>
+<option>25 Most Recent Hard Service Alerts</option>
+<option>Top 25 Hard Host Alert Producers</option>
+<option>Top 25 Hard Service Alert Producers</option>
+</select><br/>
+</div>
+<br/>
+<input name="report" type="radio"> Custom Report
+<br/>
+<div id="custom">
+
+<select id="type" name="type">
+<option>Most Recent Alerts</option>
+<option>Alert Totals</option>
+<option>Alert Totals By Hostgroup</option>
+<option>Alert Totals By Host</option>
+<option>Alert Totals By Service Group</option>
+<option>Alert Totals By Service</option>
+<option>Top Alert Producers</option>
+</select><br/>
+
+<select id="period" name="period">
+<option>Report Period</option>
+<option>Today</option>
+<option>Last 24 Hours</option>
+<option>Yesterday</option>
+<option>This Week</option>
+<option>Last 7 days</option>
+<option>Last Week</option>
+<option>This Month</option>
+<option>Last 31 Days</option>
+<option>Last Month</option>
+<option>This Year</option>
+<option>Last Year</option>
+<option>* CUSTOM REPORT PERIOD *</option>
+</select><br/><br/>
+
+<div id="cperiod">
+<label class="date">
+Start Date (Inclusive)
+</label>
+<select id="date" name="startdate">
+<option>January</option>
+<option>February</option>
+<option>March</option>
+<option>April</option>
+<option>May</option>
+<option>June</option>
+<option>July</option>
+<option>August</option>
+<option>September</option>
+<option>October</option>
+<option>November</option>
+<option>December</option>
+</select>
+<input type="text" name="day">
+<input type="text" name="year">
+</br>
+
+<label class="date">
+End Date (Inclusive)
+</label>
+<select id="date" name="enddate">
+<option>January</option>
+<option>February</option>
+<option>March</option>
+<option>April</option>
+<option>May</option>
+<option>June</option>
+<option>July</option>
+<option>August</option>
+<option>September</option>
+<option>October</option>
+<option>November</option>
+<option>December</option>
+</select>
+<input type="text" name="day">
+<input type="text" name="year">
+</br>
+</div>
+
+</div>
+
+<select id="detail" name="hostgroup">
+<option> ** ALL HOSTGROUPS ** </option>
+</select>
+
+<select id="detail" name="servicegroup">
+<option> ** ALL SERVICEGROUPS ** </option>
+</select>
+
+<select id="detail" name="host">
+<option> ** ALL HOSTS ** </option>
+</select>
+
+<select id="detail" name="alerttype">
+<option>Host and Service Alerts</option>
+<option>Host Alerts</option>
+<option>Service Alerts</option>
+</select>
+
+<select id="detail" name="statetype">
+<option>All States</option>
+<option>Hard States</option>
+<option>Soft States</option>
+</select>
+
+<select id="detail" name="hoststate">
+<option>All Host States</option>
+<option>Host Problem States</option>
+<option>Host Up States</option>
+<option>Host Down States</option>
+<option>Host Unreachable States</option>
+</select>
+
+<select id="detail" name="servicestate">
+<option>All Service States</option>
+<option>Service Problem States</option>
+<option>Service Ok States</option>
+<option>Service Warning States</option>
+<option>Service Unknown States</option>
+<option>Service Critical States</option>
+</select><br/><br/>
+
+
+<input type="submit" value="Create">
+</form>
+
+</div>
+
+<div ng-include="'frontend/partials/_footer.html'"></div>

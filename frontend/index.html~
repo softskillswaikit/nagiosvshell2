@@ -15,11 +15,15 @@
     <meta http-equiv="pragma" content="no-cache" />
 
     <title>Nagios Visual Shell</title>
-
+    <link rel="stylesheet" type="text/css" href="frontend/css/angular-busy.css" />
+    <link rel="stylesheet" type="text/css" href="frontend/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="frontend/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="frontend/css/ngToast.min.css" />
+    <link rel="stylesheet" type="text/css" href="frontend/css/ngToast-animations.min.css" />
 </head>
 <body class="sidebar-open">
-
+    <toast></toast>
+     
     <section id="page" ng-controller="PageCtrl" ng-init="init()">
 
         <section id="sidebar">
@@ -62,11 +66,11 @@
                         <ul>
                             <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/avail.cgi">Availability</a></li>
                             <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/trends.cgi">Trends</a></li>
-                            <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/history.cgi?host=all">Alert History</a></li>
-                            <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/summary.cgi">Alert Summary</a></li>
+                            <li><a href="#/reports/alert-history" active-when="/reports/alert-history">Alert History</a></li>
+                            <li><a href="#/reports/alert-summary" active-when="/reports/alert-summary">Alert Summary</a></li>
                             <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/histogram.cgi">Alert Histogram</a></li>
-                            <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/notifications.cgi?contact=all">Notifications</a></li>
-                            <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/showlog.cgi">Event Log</a></li>
+                            <li><a href='#/reports/notifications' active-when='/reports/notifications'>Notifications</a></li>
+                            <li><a href="#/reports/event-log" active-when='reports/event-log'>Event Log</a></li>
                         </ul>
                     </li>
                     <li>
@@ -92,18 +96,41 @@
 
         </section>
 
+        <div class="statusBox panel" style="z-index: 999;" ng-class="isloading ? 'panel-warning': file.code==0 ? 'panel-success' : 'panel-danger' " ng-if='creatingLog==1'>
+            <div class="panel-heading" > {{isloading ? 'Retriving files' : file.code==0 ? 'Log files are ready.' : 'Log files failed to generate'}}
+                &nbsp<button type="button" class="close" ng-click="closeStatusBox()"> <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+			<a ng-if="file.code==0" href="{{'api/download/'+file.key}}" download="error">
+				<div class="clickable panel-body">
+					Click here to download
+				</div>
+			</a>
+            <div class="panel-body" ng-if="file.code!=0">
+                {{isloading ? 'Loading...' :
+                  file.code == -1 ? 'Service name is missing' :
+                  file.code == -2 ? 'Unknown service name' :
+                  file.code == -3 ? 'Failed to access to SFTP server' :
+                  file.code == -4 ? 'Invalid file request':
+                  file.code == -5 ? 'Failed to prepare files': 
+                  file.code == -6 ? 'Key expired. Please try again' : ''}}
+            </div>
+			
+    </div>
     </section>
 
     <script src="frontend/js/lib/jquery-1.11.0.min.js"></script>
     <script src="frontend/js/lib/angular-1.2.21.min.js"></script>
+    <script src="frontend/js/lib/angular-animate.min.js"></script>
+    <script src="frontend/js/lib/angular-busy.js"></script>
     <script src="frontend/js/lib/angular-route.1.2.21.min.js"></script>
-
+    <script src="frontend/js/lib/angular-sanitize.min.js"></script>
     <script src="frontend/js/lib/jquery.cookie.js"></script>
     <script src="frontend/js/lib/typeahead.bundle.min.js"></script>
     <script src="frontend/js/lib/underscore-min.js"></script>
     <script src="frontend/js/lib/moment.min.js"></script>
+    <script src="frontend/js/lib/ngToast.min.js"></script>
     <script src="frontend/js/lib/footable.all.min.js"></script>
-
+    <script src="frontend/js/lib/bootstrap.min.js"></script>
     <script src="frontend/js/page.js"></script>
 
     <script src="frontend/js/app.js"></script>
@@ -114,3 +141,4 @@
 
 </body>
 </html>
+
