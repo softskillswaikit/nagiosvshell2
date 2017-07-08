@@ -74,6 +74,9 @@ angular.module('vshell', [
         $routeProvider.when('/comments', {
             templateUrl: 'frontend/partials/comments.html'
         });
+        $routeProvider.when('/options', {
+            templateUrl: 'frontend/partials/options.html'
+        });
 	$routeProvider.when('/report/availability', {
             templateUrl: 'frontend/partials/report-availability.html'
         });
@@ -83,9 +86,6 @@ angular.module('vshell', [
 	$routeProvider.when('/report/alerthistogram', {
             templateUrl: 'frontend/partials/report-alert-histogram.html'
         });	
-        $routeProvider.when('/options', {
-            templateUrl: 'frontend/partials/options.html'
-        });
         $routeProvider.otherwise({
             redirectTo: '/overview'
         });

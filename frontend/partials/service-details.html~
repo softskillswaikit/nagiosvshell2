@@ -65,7 +65,8 @@
                         </tr>
                         <tr class="footable-even" ng-if="service.heartbeat_received">
                             <td>Heartbeat Received</td>
-                            <td>{{ service.heartbeat_received * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
+                            <!-- 20170523 WaiKit added a checking for heartbeat receive -->
+                            <td>{{ service.heartbeat_received.includes('-') ? service.heartbeat_received : (service.heartbeat_received * 1000 | date: 'yyyy-MM-dd H:mm:ss') }}</td>
                         </tr>                
                         <tr class="footable-odd">
                             <td>Last State Change</td>
@@ -103,7 +104,7 @@
             <div class="col-md-4">
                 <div cg-busy="{promise:loadRemote,message:'Loading',backdrop:true,delay:300,minDuration:700}" ng-controller="RemoteServiceCtrl" ng-init="init()">
                     <h3>Remote Control</h3>
-                    <h4 ng-if="!remote">Retriving Service State...</h4>
+                    <h4 ng-if="!remote">Retrieving Service State...</h4>
                     <h4 ng-if="remote.code==0">Current State: {{remote.state | remotestate}}</h4>
                     <h4 ng-if="remote && remote.code!=0 && remote.code>-4">Failed to remote to service</h4>
                     <!-- WaiKit 20170425 added new code for disabled remote service -->
@@ -117,7 +118,7 @@
             </div>
         </div>
     </div>
-    <!-- Removed from UI
+    <!-- Removed from UI -->
     <div class="table-container partial-width">
 
         <div class="attributes">
@@ -178,7 +179,7 @@
         </div>
 
     </div>
-    -->
+    <!-- -->
 
     <div cg-busy="{promise:loadTable,message:'Loading',backdrop:true,delay:300,minDuration:700}" class="table-container partial-width full" ng-controller='ServiceLogCtrl' ng-init="init()">
         <h3>Log Files</h3>

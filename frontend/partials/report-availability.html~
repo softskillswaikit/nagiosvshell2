@@ -1,0 +1,55 @@
+<div ng-include="'frontend/partials/_header.html'"></div>
+
+<div ng-include="'frontend/partials/_status.html'"></div>
+
+<div ng-include="'frontend/partials/_browser.html'"></div>
+
+<div ng-include="'frontend/partials/_messages.html'"></div>
+
+<div id="content" class="clearfix" ng-controller="AvailabilityCtrl" ng-init="init()">
+	<h1>Create Availability Report</h1>
+
+	<div class="details table-container full-width">
+ 		<div class="table-options">
+			<table cellspacing="0" cell>
+				<form action="" class="input-form" method="post">
+                	<tr>
+					<td>Report Type:</td>
+					<td colspan="3">
+						<select id="reportType" class="dropdown" 
+							onchange="displayRadio(document.getElementById('reportType').value);">
+						<option value="Hostgroup(s)">Hostgroup(s)</option>
+						<option value="Host(s)">Host(s)</option>
+						<option value="Servicegroup(s)">Servicegroup(s)</option>
+						<option value="Service(s)">Service(s)</option>
+						</select>
+					</td>
+					</tr>
+					<tr id="serviceType">
+					<td>Service Type:</td>
+					<td><input id="serviceType1" type="radio" name="serviceType" value="normal service">Normal Service</td>
+					<td><input id="serviceType2" type="radio" name="serviceType" value="host resource" >Host Resource</td>
+					<td><input id="serviceType3" type="radio" name="serviceType" value="running state">Running State</td>
+					</tr>
+					<tr>
+					<td><label>Select Comoponent:</label></td>
+					</tr>
+					<tr>
+				</form>
+			</table>
+
+      		</div>
+
+	</div>
+</div>
+<script type="text/javascript">
+function displayRadio(reportType){
+	if(reportType == "Hostgroup(s)" || reportType == "Host(s)")
+		document.getElementById('serviceType').style.display = "";
+	else
+		document.getElementById('serviceType').style.display = "none";
+}
+</script>
+<div ng-include="'frontend/partials/_footer.html'"></div>
+
+
