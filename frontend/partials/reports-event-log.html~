@@ -40,7 +40,7 @@
             <tfoot>
                 <tr>
                     <td colspan="5">
-                        <div class="results-count">{{ eventlogs | count }} Result{{ eventlogs | plural }}</div>
+                        <div class="results-count">{{ testing | count }} Result{{ testing | plural }}</div>
                         <div class="footable-pagination pagination" id="footable-pagination"></div>
                     </td>
                 </tr>
@@ -49,12 +49,8 @@
                 <tr ng-if="(eventlogs | count) == 0">
                     <td colspan="5">{{ is_loading ? 'Loading...' : 'No eventlog are defined' }}</td>
                 </tr>
-                <tr ng-repeat="eventlog in eventlogs | orderObjectBy: 'host_name'" class="state-{{ eventlog.current_state | hoststate | lowercase }}" footabledata>
-                    <td host-entry item="host"></td>
-                    <td class="status">{{ eventlog.current_state | hoststate}}</td>
-                    <td>{{ eventlog.last_check * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
-                    <td>{{ eventlog.last_state_change | ago }}</td>
-                    <td>{{ eventlog.plugin_output }}</td>
+                <tr>
+		<td>{{testing | count }}</td>
                 </tr>
             </tbody>
         </table>
@@ -64,4 +60,5 @@
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>
+
 

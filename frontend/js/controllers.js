@@ -172,41 +172,18 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('EventLogCtrl', ['$scope', '$routeParams', '$filter', 'async',
-    function($scope, $routeParams, $filter, async) {
-
-        $scope.callback = function(data, status, headers, config) {
-            var state_filter = $routeParams.state,
-                problem_filter = $routeParams.handled;
-            
-            
-            // set pending state if it has not been checked
-            // for(var i in data){
-            //     if(data[i].current_state == '0' && data[i].has_been_checked == '0')
-            //         data[i].current_state = '3';
-            // }
-
-            if (state_filter) {
-                data = $filter('by_state')(data, 'host', state_filter);
-            } else if (problem_filter) {
-                data = $filter('by_problem')(data, problem_filter);
-            }
-
-            return data;
-        };
+.controller('EventLogCtrl', ['$scope', 'async',
+    function($scope, async) {
         
         $scope.init = function() {
 
             var options = {
-                name: 'Event Log',
+                name: 'testing',
                 url: 'testing',
                 queue: 'main'
             };
 
 	   
-            $scope.statefilter = $routeParams.state || '';
-            $scope.problemsfilter = $routeParams.handled || '';
-
             async.api($scope, options);
 
         };
