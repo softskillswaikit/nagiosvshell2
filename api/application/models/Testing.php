@@ -50,6 +50,14 @@ class Testing extends CI_Model
 		}
 	}
 
+	private function unixtime_convert($unixtime)
+	{
+		//remove any non-numeric character
+		$new_unixtime = preg_replace('/\D/', '', $unixtime);
+
+		return date('M d Y H:i:s', strtotime($new_unixtime));
+	}
+
 	public function testing_1()
 	{
 		return '10';
