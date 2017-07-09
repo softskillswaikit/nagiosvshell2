@@ -4,9 +4,10 @@ class Testing extends CI_Model
 {
 	protected $_nagios_log = array();
 	protected $event_data = array();
+	protected $test_string = '10';
 
 	protected $properties = array(
-		'time' => '',
+		'date_time' => '',
 		'logtype' => '',
 		'hostname' => '',
 		'servicename' => '',
@@ -43,7 +44,7 @@ class Testing extends CI_Model
 			$event_data = explode(' ', $_nagios_log[$j], 2);
 			$unixtime = $event_data[0];
 			$messages = $event_data[1];
-			$properties['time'] = unixtime_convert($unixtime);
+			$properties['date_time'] = unixtime_convert($unixtime);
 			$properties['messages'] = $messages;
 			$properties_array[$k] = json_encode($properties);
 			$k++
@@ -55,12 +56,12 @@ class Testing extends CI_Model
 		//remove any non-numeric character
 		$new_unixtime = preg_replace('/\D/', '', $unixtime);
 
-		return date('M d Y H:i:s', strtotime($new_unixtime));
+		return date('M d Y H:i:s', $new_unixtime);
 	}
 
 	public function testing_1()
 	{
-		return '10';
+		return $test_string;
 	}
 
 	public function testing_2($data_input)
@@ -70,7 +71,7 @@ class Testing extends CI_Model
 
 	public function testing_3()
 	{
-		return $properties['time'];
+		return $properties['date_time'];
 	}
 
 	public function testing_4()
