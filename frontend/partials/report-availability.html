@@ -7,10 +7,15 @@
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
 <div id="content" class="clearfix" ng-controller="AvailabilityCtrl" ng-init="init()">
+	
 	<h1>Create Availability Report</h1>
-	<div class="details table-container partial-width full">
- 		<div class="table-options">
-			<table cellspacing="5" cellpadding="5">
+	
+	<div class="details table-container partial-width">
+	
+		<h3>Report Details</h3>
+ 		
+		<div class="form-options">
+			<table>
 				<form action="" class="input-form" name="inputForm" method="post" novalidate>
                 	<tr>
 						<td>Report Type:</td>
@@ -144,19 +149,65 @@
 						</td>
 					</tr>
 					<tr>
-						<td>{{inputForm.backtrackedArchives.$valid}}</td>
-						<td>
-							<button ng-click="reset()">Reset</button>
-							<button ng-click="">Create Report</button>
+						<td></td>
+						<td>  
+							<button class="logButtons btn btn-primary btn-sm" ng-click="reset()">Reset</button>
+                            <button ng-disabled="inputForm.$invalid" class="logButtons btn btn-primary btn-sm" 
+									ng-href="#/report/availability/report">Create Report</button>
 						</td>
 					</tr>
 				</form>
 			</table>
       	</div>
 	</div>
+	
+	<div class="table-container partial-width">
+		<div class="commands">
+
+            <h3>View</h3>
+
+			<!--show if a single host is selected-->
+            <table ng-if=true cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Trends For This Host</a></td>
+                    </tr>
+                    <tr class="footable-even">
+                        <td><a target="nagios" ng-href="{{}}">View Alert Histogram For This Host</a></td>
+                    </tr>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Status Detail For This Host</a></td>
+                    </tr>
+                    <tr class="footable-even">
+                        <td><a target="nagios" ng-href="{{}}">View Alert History For This Host</a></td>
+                    </tr> 
+					<tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Notifications For This Host</a></td>
+                    </tr>
+                </tbody>
+            </table>
+			
+			<!--show if a single service is selected-->
+			<table ng-if=true cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Availability Report For This Host</a></td>
+                    </tr>
+                    <tr class="footable-even">
+                        <td><a target="nagios" ng-href="{{}}">View Trends For This Service</a></td>
+                    </tr>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Alert Histogram For This Service</a></td>
+                    </tr>
+                    <tr class="footable-even">
+                        <td><a target="nagios" ng-href="{{}}">View Alert History For This Service</a></td>
+                    </tr> 
+					<tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Notifications For This Service</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+	</div>
 </div>
-<script type="text/javascript">
-</script>
 <div ng-include="'frontend/partials/_footer.html'"></div>
-
-

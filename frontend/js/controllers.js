@@ -538,4 +538,3 @@ angular.module('vshell.controllers', [])
     }
 ])
 ;
-
