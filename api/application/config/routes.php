@@ -51,6 +51,7 @@ $route["hostgroupname"] = "api/hostgroupname";
 $route["servicegroupname"] = "api/servicegroupname";
 $route["eventlog/(:any)/(:any)/(:any)"] = "api/eventlog/$1/$2/$3";
 $route["notification/(:any)/(:any)/(:any)"] = "api/notification/$1/$2/$3";
+$route["testing"] = "api/testing";
 
 
 $route["comments/(:any)"] = "api/comments/$1";

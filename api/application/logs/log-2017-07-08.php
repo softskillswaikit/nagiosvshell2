@@ -25045,3 +25045,9198 @@ DEBUG - 2017-07-08 11:06:48 --> SFTP config retrieved successfully
 DEBUG - 2017-07-08 11:06:48 --> Checking downloaded zip files expire date
 DEBUG - 2017-07-08 11:06:48 --> Final output sent to browser
 DEBUG - 2017-07-08 11:06:48 --> Total execution time: 0.0335
+DEBUG - 2017-07-08 15:32:00 --> Config Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Config Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Config Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Config Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:32:00 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:32:00 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:32:00 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:32:00 --> URI Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> URI Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> URI Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> URI Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Router Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Router Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Router Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Router Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Output Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Output Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Output Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Security Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Security Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Output Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Security Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Input Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:32:00 --> Input Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Security Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Input Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:32:00 --> Language Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Language Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:32:00 --> Language Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Input Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:32:00 --> Language Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:32:00 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:32:00 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:32:00 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:32:00 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:32:00 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:32:00 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:32:00 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:32:00 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:32:00 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:32:00 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:32:00 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:32:00 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:32:00 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:32:00 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:32:00 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:32:00 --> Session Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Session Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Session Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Session Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:32:00 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:32:00 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:32:00 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:32:00 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> A session cookie was not found.
+DEBUG - 2017-07-08 15:32:00 --> A session cookie was not found.
+DEBUG - 2017-07-08 15:32:00 --> Session routines successfully run
+DEBUG - 2017-07-08 15:32:00 --> Session routines successfully run
+DEBUG - 2017-07-08 15:32:00 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> A session cookie was not found.
+DEBUG - 2017-07-08 15:32:00 --> A session cookie was not found.
+DEBUG - 2017-07-08 15:32:00 --> Session routines successfully run
+DEBUG - 2017-07-08 15:32:00 --> Session routines successfully run
+DEBUG - 2017-07-08 15:32:00 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:00 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Controller Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Controller Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Controller Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Controller Class Initialized
+ERROR - 2017-07-08 15:32:01 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+ERROR - 2017-07-08 15:32:01 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+ERROR - 2017-07-08 15:32:01 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+ERROR - 2017-07-08 15:32:01 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:32:01 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:32:01 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:32:01 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:32:01 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:32:01 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:32:01 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:32:01 --> Final output sent to browser
+DEBUG - 2017-07-08 15:32:01 --> Total execution time: 0.3307
+DEBUG - 2017-07-08 15:32:01 --> Final output sent to browser
+DEBUG - 2017-07-08 15:32:01 --> Total execution time: 0.3309
+DEBUG - 2017-07-08 15:32:01 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:32:01 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:32:01 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:32:01 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:32:01 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:32:01 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:32:01 --> Final output sent to browser
+DEBUG - 2017-07-08 15:32:01 --> Total execution time: 0.3353
+DEBUG - 2017-07-08 15:32:01 --> Final output sent to browser
+DEBUG - 2017-07-08 15:32:01 --> Total execution time: 0.3410
+DEBUG - 2017-07-08 15:32:01 --> Config Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Config Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:32:01 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:32:01 --> URI Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> URI Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Router Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Router Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Output Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Security Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Output Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Input Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:32:01 --> Language Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Security Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Input Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:32:01 --> Language Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:32:01 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:32:01 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:32:01 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:32:01 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:32:01 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:32:01 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:32:01 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:32:01 --> Session Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:32:01 --> Session Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> A session cookie was not found.
+DEBUG - 2017-07-08 15:32:01 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:32:01 --> Session routines successfully run
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> A session cookie was not found.
+DEBUG - 2017-07-08 15:32:01 --> Session routines successfully run
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Controller Class Initialized
+ERROR - 2017-07-08 15:32:01 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:32:01 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:32:01 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Controller Class Initialized
+ERROR - 2017-07-08 15:32:01 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:32:01 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:32:01 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:32:01 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:32:01 --> Final output sent to browser
+DEBUG - 2017-07-08 15:32:01 --> Total execution time: 0.0719
+DEBUG - 2017-07-08 15:32:01 --> Final output sent to browser
+DEBUG - 2017-07-08 15:32:01 --> Total execution time: 0.0751
+DEBUG - 2017-07-08 15:32:01 --> Config Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:32:01 --> URI Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Router Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Output Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Security Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Input Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:32:01 --> Language Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:32:01 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:32:01 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:32:01 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:32:01 --> Session Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:32:01 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> A session cookie was not found.
+DEBUG - 2017-07-08 15:32:01 --> Session routines successfully run
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:01 --> Controller Class Initialized
+ERROR - 2017-07-08 15:32:01 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:32:01 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:32:01 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:32:01 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:32:01 --> Final output sent to browser
+DEBUG - 2017-07-08 15:32:01 --> Total execution time: 0.0555
+DEBUG - 2017-07-08 15:32:13 --> Config Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:32:13 --> URI Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Router Class Initialized
+ERROR - 2017-07-08 15:32:13 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 15:32:13 --> Config Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:32:13 --> URI Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Router Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Output Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Security Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Input Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:32:13 --> Language Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:32:13 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:32:13 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:32:13 --> Config Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:32:13 --> URI Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Router Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:32:13 --> Session Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:32:13 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Output Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Security Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Input Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:32:13 --> Session routines successfully run
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Language Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Controller Class Initialized
+ERROR - 2017-07-08 15:32:13 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:32:13 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:32:13 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:32:13 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:32:13 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:32:13 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:32:13 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:32:13 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:32:13 --> Final output sent to browser
+DEBUG - 2017-07-08 15:32:13 --> Total execution time: 0.0675
+DEBUG - 2017-07-08 15:32:13 --> Session Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Config Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:32:13 --> URI Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Router Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Output Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Security Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Input Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:32:13 --> Language Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:32:13 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Session routines successfully run
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:32:13 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:32:13 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:32:13 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:32:13 --> Session Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:32:13 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Session routines successfully run
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Controller Class Initialized
+ERROR - 2017-07-08 15:32:13 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:32:13 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:32:13 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:32:13 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:32:13 --> Final output sent to browser
+DEBUG - 2017-07-08 15:32:13 --> Total execution time: 0.1041
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Controller Class Initialized
+ERROR - 2017-07-08 15:32:13 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:32:13 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:32:13 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:32:13 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:32:13 --> Final output sent to browser
+DEBUG - 2017-07-08 15:32:13 --> Total execution time: 0.0610
+DEBUG - 2017-07-08 15:32:13 --> Config Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:32:13 --> URI Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Router Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Output Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Security Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Input Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:32:13 --> Language Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:32:13 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:32:13 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:32:13 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:32:13 --> Session Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:32:13 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Session routines successfully run
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:32:13 --> Controller Class Initialized
+ERROR - 2017-07-08 15:32:13 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:32:13 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:32:13 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:32:13 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:32:13 --> Final output sent to browser
+DEBUG - 2017-07-08 15:32:13 --> Total execution time: 0.0344
+DEBUG - 2017-07-08 15:33:44 --> Config Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:33:44 --> Config Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:33:44 --> URI Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> URI Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Router Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Config Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Hooks Class Initialized
+ERROR - 2017-07-08 15:33:44 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 15:33:44 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:33:44 --> URI Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Router Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Router Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Output Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Output Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Security Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Security Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Input Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:33:44 --> Input Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Language Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:33:44 --> Language Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:33:44 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:33:44 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:33:44 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:33:44 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:33:44 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:33:44 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:33:44 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:33:44 --> Session Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Session Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:33:44 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:33:44 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Session routines successfully run
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Session routines successfully run
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Controller Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Controller Class Initialized
+ERROR - 2017-07-08 15:33:44 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:33:44 --> Config file loaded: application/config/sftp_config.php
+ERROR - 2017-07-08 15:33:44 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:33:44 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:33:44 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:33:44 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:33:44 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:33:44 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:33:44 --> Final output sent to browser
+DEBUG - 2017-07-08 15:33:44 --> Total execution time: 0.0500
+DEBUG - 2017-07-08 15:33:44 --> Final output sent to browser
+DEBUG - 2017-07-08 15:33:44 --> Total execution time: 0.0546
+DEBUG - 2017-07-08 15:33:44 --> Config Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:33:44 --> URI Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Router Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Output Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Security Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Input Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:33:44 --> Language Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:33:44 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:33:44 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:33:44 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:33:44 --> Session Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:33:44 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Session routines successfully run
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Controller Class Initialized
+ERROR - 2017-07-08 15:33:44 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:33:44 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:33:44 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:33:44 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:33:44 --> Final output sent to browser
+DEBUG - 2017-07-08 15:33:44 --> Total execution time: 0.0277
+DEBUG - 2017-07-08 15:33:44 --> Config Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:33:44 --> URI Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Router Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Output Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Security Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Input Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:33:44 --> Language Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:33:44 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:33:44 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:33:44 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:33:44 --> Session Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:33:44 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Session routines successfully run
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:33:44 --> Controller Class Initialized
+ERROR - 2017-07-08 15:33:44 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:33:44 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:33:44 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:33:44 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:33:44 --> Final output sent to browser
+DEBUG - 2017-07-08 15:33:44 --> Total execution time: 0.0282
+DEBUG - 2017-07-08 15:35:14 --> Config Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:35:14 --> URI Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Router Class Initialized
+ERROR - 2017-07-08 15:35:14 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 15:35:14 --> Config Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:35:14 --> URI Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Router Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Output Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Security Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Input Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:35:14 --> Language Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:35:14 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:35:14 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:35:14 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:35:14 --> Session Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:35:14 --> Config Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:35:14 --> URI Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Router Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Output Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Security Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Input Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:35:14 --> Language Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:35:14 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:35:14 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:35:14 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:35:14 --> Session Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:35:14 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Session routines successfully run
+DEBUG - 2017-07-08 15:35:14 --> Session routines successfully run
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Controller Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Controller Class Initialized
+ERROR - 2017-07-08 15:35:14 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:35:14 --> Config file loaded: application/config/sftp_config.php
+ERROR - 2017-07-08 15:35:14 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:35:14 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:35:14 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:35:14 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:35:14 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:35:14 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:35:14 --> Final output sent to browser
+DEBUG - 2017-07-08 15:35:14 --> Final output sent to browser
+DEBUG - 2017-07-08 15:35:14 --> Total execution time: 0.0614
+DEBUG - 2017-07-08 15:35:14 --> Total execution time: 0.0536
+DEBUG - 2017-07-08 15:35:14 --> Config Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:35:14 --> URI Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Router Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Output Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Security Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Input Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:35:14 --> Language Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:35:14 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:35:14 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:35:14 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:35:14 --> Session Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:35:14 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Session routines successfully run
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Controller Class Initialized
+ERROR - 2017-07-08 15:35:14 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:35:14 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:35:14 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:35:14 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:35:14 --> Final output sent to browser
+DEBUG - 2017-07-08 15:35:14 --> Total execution time: 0.0267
+DEBUG - 2017-07-08 15:35:14 --> Config Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:35:14 --> URI Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Router Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Output Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Security Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Input Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:35:14 --> Language Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:35:14 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:35:14 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:35:14 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:35:14 --> Session Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:35:14 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Session routines successfully run
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Model Class Initialized
+DEBUG - 2017-07-08 15:35:14 --> Controller Class Initialized
+ERROR - 2017-07-08 15:35:14 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:35:14 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:35:14 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:35:14 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:35:14 --> Final output sent to browser
+DEBUG - 2017-07-08 15:35:14 --> Total execution time: 0.0237
+DEBUG - 2017-07-08 15:36:44 --> Config Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:36:44 --> URI Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Router Class Initialized
+ERROR - 2017-07-08 15:36:44 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 15:36:44 --> Config Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:36:44 --> Config Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> URI Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:36:44 --> Router Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> URI Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Output Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Router Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Security Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Output Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Input Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:36:44 --> Language Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Security Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Input Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:36:44 --> Language Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:36:44 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:36:44 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:36:44 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:36:44 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:36:44 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:36:44 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:36:44 --> Session Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:36:44 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:36:44 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Session Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:36:44 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Session routines successfully run
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Session routines successfully run
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Controller Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+ERROR - 2017-07-08 15:36:44 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:36:44 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:36:44 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:36:44 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Controller Class Initialized
+ERROR - 2017-07-08 15:36:44 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:36:44 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:36:44 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:36:44 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:36:44 --> Final output sent to browser
+DEBUG - 2017-07-08 15:36:44 --> Total execution time: 0.0484
+DEBUG - 2017-07-08 15:36:44 --> Final output sent to browser
+DEBUG - 2017-07-08 15:36:44 --> Total execution time: 0.0426
+DEBUG - 2017-07-08 15:36:44 --> Config Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:36:44 --> URI Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Router Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Output Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Security Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Input Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:36:44 --> Language Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:36:44 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:36:44 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:36:44 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:36:44 --> Session Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:36:44 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Session routines successfully run
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Controller Class Initialized
+ERROR - 2017-07-08 15:36:44 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:36:44 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:36:44 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:36:44 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:36:44 --> Final output sent to browser
+DEBUG - 2017-07-08 15:36:44 --> Total execution time: 0.0252
+DEBUG - 2017-07-08 15:36:44 --> Config Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:36:44 --> URI Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Router Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Output Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Security Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Input Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:36:44 --> Language Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:36:44 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:36:44 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:36:44 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:36:44 --> Session Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:36:44 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Session routines successfully run
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Model Class Initialized
+DEBUG - 2017-07-08 15:36:44 --> Controller Class Initialized
+ERROR - 2017-07-08 15:36:44 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:36:44 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:36:44 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:36:44 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:36:44 --> Final output sent to browser
+DEBUG - 2017-07-08 15:36:44 --> Total execution time: 0.0240
+DEBUG - 2017-07-08 15:38:13 --> Config Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:38:13 --> URI Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Router Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Config Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Hooks Class Initialized
+ERROR - 2017-07-08 15:38:13 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 15:38:13 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:38:13 --> URI Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Router Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Output Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Security Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Input Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Config Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:38:13 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Language Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:38:13 --> URI Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Router Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Output Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Security Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Input Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:38:13 --> Language Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:38:13 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:38:13 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:38:13 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:38:13 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Session Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:38:13 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Session routines successfully run
+DEBUG - 2017-07-08 15:38:13 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:38:13 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Session Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:38:13 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Session routines successfully run
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Controller Class Initialized
+ERROR - 2017-07-08 15:38:13 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:38:13 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:38:13 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:38:13 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:38:13 --> Final output sent to browser
+DEBUG - 2017-07-08 15:38:13 --> Total execution time: 0.0514
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Controller Class Initialized
+ERROR - 2017-07-08 15:38:13 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:38:13 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:38:13 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:38:13 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:38:13 --> Final output sent to browser
+DEBUG - 2017-07-08 15:38:13 --> Total execution time: 0.0472
+DEBUG - 2017-07-08 15:38:13 --> Config Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:38:13 --> URI Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Router Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Output Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Security Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Input Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:38:13 --> Language Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:38:13 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:38:13 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:38:13 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:38:13 --> Session Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:38:13 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Session routines successfully run
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Controller Class Initialized
+ERROR - 2017-07-08 15:38:13 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:38:13 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:38:13 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:38:13 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:38:13 --> Final output sent to browser
+DEBUG - 2017-07-08 15:38:13 --> Total execution time: 0.0248
+DEBUG - 2017-07-08 15:38:13 --> Config Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:38:13 --> URI Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Router Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Output Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Security Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Input Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:38:13 --> Language Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:38:13 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:38:13 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:38:13 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:38:13 --> Session Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:38:13 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Session routines successfully run
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Model Class Initialized
+DEBUG - 2017-07-08 15:38:13 --> Controller Class Initialized
+ERROR - 2017-07-08 15:38:13 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:38:13 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:38:13 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:38:13 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:38:13 --> Final output sent to browser
+DEBUG - 2017-07-08 15:38:13 --> Total execution time: 0.0247
+DEBUG - 2017-07-08 15:39:42 --> Config Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:39:42 --> URI Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Router Class Initialized
+ERROR - 2017-07-08 15:39:42 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 15:39:42 --> Config Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:39:42 --> Config Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> URI Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:39:42 --> Router Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> URI Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Output Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Router Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Security Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Input Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:39:42 --> Language Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Output Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Security Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Input Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:39:42 --> Language Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:39:42 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:39:42 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:39:42 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:39:42 --> Session Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:39:42 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:39:42 --> Session routines successfully run
+DEBUG - 2017-07-08 15:39:42 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Session Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:39:42 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Session routines successfully run
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Controller Class Initialized
+ERROR - 2017-07-08 15:39:42 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:39:42 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:39:42 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:39:42 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Final output sent to browser
+DEBUG - 2017-07-08 15:39:42 --> Total execution time: 0.0670
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Controller Class Initialized
+ERROR - 2017-07-08 15:39:42 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:39:42 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:39:42 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:39:42 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:39:42 --> Final output sent to browser
+DEBUG - 2017-07-08 15:39:42 --> Total execution time: 0.0708
+DEBUG - 2017-07-08 15:39:42 --> Config Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:39:42 --> URI Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Router Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Output Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Security Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Input Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:39:42 --> Language Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:39:42 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:39:42 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:39:42 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:39:42 --> Session Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:39:42 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Session routines successfully run
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Controller Class Initialized
+ERROR - 2017-07-08 15:39:42 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:39:42 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:39:42 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:39:42 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:39:42 --> Final output sent to browser
+DEBUG - 2017-07-08 15:39:42 --> Total execution time: 0.0314
+DEBUG - 2017-07-08 15:39:42 --> Config Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:39:42 --> URI Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Router Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Output Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Security Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Input Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:39:42 --> Language Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:39:42 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:39:42 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:39:42 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:39:42 --> Session Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:39:42 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Session routines successfully run
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:39:42 --> Controller Class Initialized
+ERROR - 2017-07-08 15:39:42 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:39:42 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:39:42 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:39:42 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:39:42 --> Final output sent to browser
+DEBUG - 2017-07-08 15:39:42 --> Total execution time: 0.0246
+DEBUG - 2017-07-08 15:41:12 --> Config Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:41:12 --> URI Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Router Class Initialized
+ERROR - 2017-07-08 15:41:12 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 15:41:12 --> Config Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Config Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:41:12 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:41:12 --> URI Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> URI Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Router Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Router Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Output Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Output Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Security Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Input Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Security Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:41:12 --> Language Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Input Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:41:12 --> Language Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:41:12 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:41:12 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:41:12 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:41:12 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:41:12 --> Session Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:41:12 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:41:12 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:41:12 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:41:12 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Session Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Session routines successfully run
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Session routines successfully run
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Controller Class Initialized
+ERROR - 2017-07-08 15:41:12 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:41:12 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:41:12 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:41:12 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:41:12 --> Final output sent to browser
+DEBUG - 2017-07-08 15:41:12 --> Total execution time: 0.0465
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Controller Class Initialized
+ERROR - 2017-07-08 15:41:12 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:41:12 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:41:12 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:41:12 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:41:12 --> Final output sent to browser
+DEBUG - 2017-07-08 15:41:12 --> Total execution time: 0.0618
+DEBUG - 2017-07-08 15:41:12 --> Config Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:41:12 --> URI Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Router Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Output Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Security Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Input Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:41:12 --> Language Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:41:12 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:41:12 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:41:12 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:41:12 --> Session Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:41:12 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Session routines successfully run
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Controller Class Initialized
+ERROR - 2017-07-08 15:41:12 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:41:12 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:41:12 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:41:12 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:41:12 --> Final output sent to browser
+DEBUG - 2017-07-08 15:41:12 --> Total execution time: 0.0396
+DEBUG - 2017-07-08 15:41:12 --> Config Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:41:12 --> URI Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Router Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Output Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Security Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Input Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:41:12 --> Language Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:41:12 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:41:12 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:41:12 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:41:12 --> Session Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:41:12 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Session routines successfully run
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Model Class Initialized
+DEBUG - 2017-07-08 15:41:12 --> Controller Class Initialized
+ERROR - 2017-07-08 15:41:12 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:41:12 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:41:12 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:41:12 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:41:12 --> Final output sent to browser
+DEBUG - 2017-07-08 15:41:12 --> Total execution time: 0.0329
+DEBUG - 2017-07-08 15:42:42 --> Config Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:42:42 --> URI Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Router Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Output Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Security Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Input Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:42:42 --> Language Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Config Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:42:42 --> Config Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:42:42 --> URI Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> URI Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Router Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Router Class Initialized
+ERROR - 2017-07-08 15:42:42 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 15:42:42 --> Output Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Security Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Input Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:42:42 --> Language Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:42:42 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:42:42 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:42:42 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:42:42 --> Session Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:42:42 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:42:42 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:42:42 --> Session routines successfully run
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Session Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:42:42 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Session routines successfully run
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Controller Class Initialized
+ERROR - 2017-07-08 15:42:42 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:42:42 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:42:42 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:42:42 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Final output sent to browser
+DEBUG - 2017-07-08 15:42:42 --> Total execution time: 0.0687
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Controller Class Initialized
+ERROR - 2017-07-08 15:42:42 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:42:42 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:42:42 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:42:42 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:42:42 --> Config Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:42:42 --> URI Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Router Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Output Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Security Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Input Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:42:42 --> Language Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Final output sent to browser
+DEBUG - 2017-07-08 15:42:42 --> Total execution time: 0.0773
+DEBUG - 2017-07-08 15:42:42 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:42:42 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:42:42 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:42:42 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:42:42 --> Session Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:42:42 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Session routines successfully run
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Controller Class Initialized
+ERROR - 2017-07-08 15:42:42 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:42:42 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:42:42 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:42:42 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:42:42 --> Final output sent to browser
+DEBUG - 2017-07-08 15:42:42 --> Total execution time: 0.0343
+DEBUG - 2017-07-08 15:42:42 --> Config Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:42:42 --> URI Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Router Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Output Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Security Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Input Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:42:42 --> Language Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:42:42 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:42:42 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:42:42 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:42:42 --> Session Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:42:42 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Session routines successfully run
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Model Class Initialized
+DEBUG - 2017-07-08 15:42:42 --> Controller Class Initialized
+ERROR - 2017-07-08 15:42:42 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:42:42 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:42:42 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:42:42 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:42:42 --> Final output sent to browser
+DEBUG - 2017-07-08 15:42:42 --> Total execution time: 0.0294
+DEBUG - 2017-07-08 15:44:11 --> Config Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:44:11 --> URI Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Router Class Initialized
+ERROR - 2017-07-08 15:44:11 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 15:44:11 --> Config Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Config Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:44:11 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:44:11 --> URI Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> URI Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Router Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Router Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Output Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Output Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Security Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Security Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Input Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:44:11 --> Language Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Input Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:44:11 --> Language Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:44:11 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:44:11 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:44:11 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:44:11 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:44:11 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:44:11 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:44:11 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:44:11 --> Session Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:44:11 --> Session Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:44:11 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Session routines successfully run
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Session routines successfully run
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Controller Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+ERROR - 2017-07-08 15:44:11 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:44:11 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:44:11 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:44:11 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Controller Class Initialized
+ERROR - 2017-07-08 15:44:11 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:44:11 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:44:11 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:44:11 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:44:11 --> Final output sent to browser
+DEBUG - 2017-07-08 15:44:11 --> Total execution time: 0.0447
+DEBUG - 2017-07-08 15:44:11 --> Final output sent to browser
+DEBUG - 2017-07-08 15:44:11 --> Total execution time: 0.0460
+DEBUG - 2017-07-08 15:44:11 --> Config Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:44:11 --> URI Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Router Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Output Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Security Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Input Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:44:11 --> Language Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:44:11 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:44:11 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:44:11 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:44:11 --> Session Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:44:11 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Session routines successfully run
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Controller Class Initialized
+ERROR - 2017-07-08 15:44:11 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:44:11 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:44:11 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:44:11 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:44:11 --> Final output sent to browser
+DEBUG - 2017-07-08 15:44:11 --> Total execution time: 0.0289
+DEBUG - 2017-07-08 15:44:11 --> Config Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:44:11 --> URI Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Router Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Output Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Security Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Input Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:44:11 --> Language Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:44:11 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:44:11 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:44:11 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:44:11 --> Session Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:44:11 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Session routines successfully run
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:44:11 --> Controller Class Initialized
+ERROR - 2017-07-08 15:44:11 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:44:11 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:44:11 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:44:11 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:44:11 --> Final output sent to browser
+DEBUG - 2017-07-08 15:44:11 --> Total execution time: 0.0261
+DEBUG - 2017-07-08 15:45:41 --> Config Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:45:41 --> Config Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:45:41 --> URI Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Router Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Config Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Output Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> URI Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:45:41 --> Router Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> URI Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Router Class Initialized
+ERROR - 2017-07-08 15:45:41 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 15:45:41 --> Security Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Output Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Security Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Input Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:45:41 --> Language Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Input Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:45:41 --> Language Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:45:41 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:45:41 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:45:41 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:45:41 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:45:41 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:45:41 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:45:41 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:45:41 --> Session Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Session Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:45:41 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:45:41 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Session routines successfully run
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Session routines successfully run
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Controller Class Initialized
+ERROR - 2017-07-08 15:45:41 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:45:41 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:45:41 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:45:41 --> Controller Class Initialized
+ERROR - 2017-07-08 15:45:41 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:45:41 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:45:41 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:45:41 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:45:41 --> Final output sent to browser
+DEBUG - 2017-07-08 15:45:41 --> Total execution time: 0.0466
+DEBUG - 2017-07-08 15:45:41 --> Final output sent to browser
+DEBUG - 2017-07-08 15:45:41 --> Total execution time: 0.0514
+DEBUG - 2017-07-08 15:45:41 --> Config Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:45:41 --> URI Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Router Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Output Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Security Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Input Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:45:41 --> Language Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:45:41 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:45:41 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:45:41 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:45:41 --> Session Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:45:41 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Session routines successfully run
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Controller Class Initialized
+ERROR - 2017-07-08 15:45:41 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:45:41 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:45:41 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:45:41 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:45:41 --> Final output sent to browser
+DEBUG - 2017-07-08 15:45:41 --> Total execution time: 0.0285
+DEBUG - 2017-07-08 15:45:41 --> Config Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:45:41 --> URI Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Router Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Output Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Security Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Input Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:45:41 --> Language Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:45:41 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:45:41 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:45:41 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:45:41 --> Session Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:45:41 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Session routines successfully run
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:45:41 --> Controller Class Initialized
+ERROR - 2017-07-08 15:45:41 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:45:41 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:45:41 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:45:41 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:45:41 --> Final output sent to browser
+DEBUG - 2017-07-08 15:45:41 --> Total execution time: 0.0259
+DEBUG - 2017-07-08 15:47:11 --> Config Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:47:11 --> URI Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Config Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:47:11 --> Router Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> URI Class Initialized
+ERROR - 2017-07-08 15:47:11 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 15:47:11 --> Router Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Output Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Config Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Security Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:47:11 --> Input Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:47:11 --> URI Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Language Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Router Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Output Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Security Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Input Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:47:11 --> Language Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:47:11 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:47:11 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:47:11 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:47:11 --> Session Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:47:11 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:47:11 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:47:11 --> Session routines successfully run
+DEBUG - 2017-07-08 15:47:11 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:47:11 --> Session Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:47:11 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Session routines successfully run
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Controller Class Initialized
+ERROR - 2017-07-08 15:47:11 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:47:11 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:47:11 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:47:11 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:47:11 --> Final output sent to browser
+DEBUG - 2017-07-08 15:47:11 --> Total execution time: 0.0613
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Controller Class Initialized
+ERROR - 2017-07-08 15:47:11 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:47:11 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:47:11 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:47:11 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:47:11 --> Final output sent to browser
+DEBUG - 2017-07-08 15:47:11 --> Total execution time: 0.0563
+DEBUG - 2017-07-08 15:47:11 --> Config Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:47:11 --> URI Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Router Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Output Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Security Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Input Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:47:11 --> Language Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:47:11 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:47:11 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:47:11 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:47:11 --> Session Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:47:11 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Session routines successfully run
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Controller Class Initialized
+ERROR - 2017-07-08 15:47:11 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:47:11 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:47:11 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:47:11 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:47:11 --> Final output sent to browser
+DEBUG - 2017-07-08 15:47:11 --> Total execution time: 0.0269
+DEBUG - 2017-07-08 15:47:11 --> Config Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:47:11 --> URI Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Router Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Output Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Security Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Input Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:47:11 --> Language Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:47:11 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:47:11 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:47:11 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:47:11 --> Session Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:47:11 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Session routines successfully run
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Model Class Initialized
+DEBUG - 2017-07-08 15:47:11 --> Controller Class Initialized
+ERROR - 2017-07-08 15:47:11 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:47:11 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:47:11 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:47:11 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:47:11 --> Final output sent to browser
+DEBUG - 2017-07-08 15:47:11 --> Total execution time: 0.0252
+DEBUG - 2017-07-08 15:48:41 --> Config Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:48:41 --> Config Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:48:41 --> Config Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> URI Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:48:41 --> Router Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> URI Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Router Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Output Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> URI Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Output Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Router Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Security Class Initialized
+ERROR - 2017-07-08 15:48:41 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 15:48:41 --> Security Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Input Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:48:41 --> Language Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Input Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:48:41 --> Language Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:48:41 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:48:41 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:48:41 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:48:41 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:48:41 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:48:41 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:48:41 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:48:41 --> Session Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:48:41 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Session Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:48:41 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Session routines successfully run
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Session routines successfully run
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Controller Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+ERROR - 2017-07-08 15:48:41 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:48:41 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:48:41 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:48:41 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Controller Class Initialized
+ERROR - 2017-07-08 15:48:41 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:48:41 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:48:41 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:48:41 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:48:41 --> Final output sent to browser
+DEBUG - 2017-07-08 15:48:41 --> Total execution time: 0.0494
+DEBUG - 2017-07-08 15:48:41 --> Final output sent to browser
+DEBUG - 2017-07-08 15:48:41 --> Total execution time: 0.0496
+DEBUG - 2017-07-08 15:48:41 --> Config Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:48:41 --> URI Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Router Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Output Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Security Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Input Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:48:41 --> Language Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:48:41 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:48:41 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:48:41 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:48:41 --> Session Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:48:41 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Session routines successfully run
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Controller Class Initialized
+ERROR - 2017-07-08 15:48:41 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:48:41 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:48:41 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:48:41 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:48:41 --> Final output sent to browser
+DEBUG - 2017-07-08 15:48:41 --> Total execution time: 0.0287
+DEBUG - 2017-07-08 15:48:41 --> Config Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:48:41 --> URI Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Router Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Output Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Security Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Input Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:48:41 --> Language Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:48:41 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:48:41 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:48:41 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:48:41 --> Session Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:48:41 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Session routines successfully run
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Model Class Initialized
+DEBUG - 2017-07-08 15:48:41 --> Controller Class Initialized
+ERROR - 2017-07-08 15:48:41 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:48:41 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:48:41 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:48:41 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:48:41 --> Final output sent to browser
+DEBUG - 2017-07-08 15:48:41 --> Total execution time: 0.0254
+DEBUG - 2017-07-08 15:50:10 --> Config Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:50:10 --> URI Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Router Class Initialized
+ERROR - 2017-07-08 15:50:10 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 15:50:10 --> Config Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Config Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:50:10 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:50:10 --> URI Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> URI Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Router Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Router Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Output Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Output Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Security Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Security Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Input Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:50:10 --> Language Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Input Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:50:10 --> Language Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:50:10 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:50:10 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:50:10 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:50:10 --> Session Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:50:10 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:50:10 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:50:10 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:50:10 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:50:10 --> Session Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:50:10 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Session routines successfully run
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Session routines successfully run
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Controller Class Initialized
+ERROR - 2017-07-08 15:50:10 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:50:10 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:50:10 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Controller Class Initialized
+ERROR - 2017-07-08 15:50:10 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:50:10 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:50:10 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:50:10 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:50:10 --> Final output sent to browser
+DEBUG - 2017-07-08 15:50:10 --> Total execution time: 0.0583
+DEBUG - 2017-07-08 15:50:10 --> Final output sent to browser
+DEBUG - 2017-07-08 15:50:10 --> Total execution time: 0.0601
+DEBUG - 2017-07-08 15:50:10 --> Config Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:50:10 --> URI Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Router Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Output Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Security Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Input Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:50:10 --> Language Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:50:10 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:50:10 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:50:10 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:50:10 --> Session Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:50:10 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Session routines successfully run
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Controller Class Initialized
+ERROR - 2017-07-08 15:50:10 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:50:10 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:50:10 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:50:10 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:50:10 --> Final output sent to browser
+DEBUG - 2017-07-08 15:50:10 --> Total execution time: 0.0286
+DEBUG - 2017-07-08 15:50:10 --> Config Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:50:10 --> URI Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Router Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Output Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Security Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Input Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:50:10 --> Language Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:50:10 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:50:10 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:50:10 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:50:10 --> Session Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:50:10 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Session routines successfully run
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:50:10 --> Controller Class Initialized
+ERROR - 2017-07-08 15:50:11 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:50:11 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:50:11 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:50:11 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:50:11 --> Final output sent to browser
+DEBUG - 2017-07-08 15:50:11 --> Total execution time: 0.0276
+DEBUG - 2017-07-08 15:51:40 --> Config Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:51:40 --> URI Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Router Class Initialized
+ERROR - 2017-07-08 15:51:40 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 15:51:40 --> Config Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Config Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:51:40 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:51:40 --> URI Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> URI Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Router Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Router Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Output Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Security Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Output Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Input Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:51:40 --> Language Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Security Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Input Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:51:40 --> Language Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:51:40 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:51:40 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:51:40 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:51:40 --> Session Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:51:40 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:51:40 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:51:40 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:51:40 --> Session routines successfully run
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Session Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Session routines successfully run
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Controller Class Initialized
+ERROR - 2017-07-08 15:51:40 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:51:40 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:51:40 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:51:40 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Final output sent to browser
+DEBUG - 2017-07-08 15:51:40 --> Total execution time: 0.0561
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Controller Class Initialized
+ERROR - 2017-07-08 15:51:40 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:51:40 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:51:40 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:51:40 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:51:40 --> Final output sent to browser
+DEBUG - 2017-07-08 15:51:40 --> Total execution time: 0.0644
+DEBUG - 2017-07-08 15:51:40 --> Config Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:51:40 --> URI Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Router Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Output Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Security Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Input Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:51:40 --> Language Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:51:40 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:51:40 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:51:40 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:51:40 --> Session Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:51:40 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Session routines successfully run
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Controller Class Initialized
+ERROR - 2017-07-08 15:51:40 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:51:40 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:51:40 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:51:40 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:51:40 --> Final output sent to browser
+DEBUG - 2017-07-08 15:51:40 --> Total execution time: 0.0296
+DEBUG - 2017-07-08 15:51:40 --> Config Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:51:40 --> URI Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Router Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Output Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Security Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Input Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:51:40 --> Language Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:51:40 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:51:40 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:51:40 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:51:40 --> Session Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:51:40 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Session routines successfully run
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:51:40 --> Controller Class Initialized
+ERROR - 2017-07-08 15:51:40 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:51:40 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:51:40 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:51:40 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:51:40 --> Final output sent to browser
+DEBUG - 2017-07-08 15:51:40 --> Total execution time: 0.0265
+DEBUG - 2017-07-08 15:53:10 --> Config Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:53:10 --> URI Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Router Class Initialized
+ERROR - 2017-07-08 15:53:10 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 15:53:10 --> Config Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Config Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:53:10 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:53:10 --> URI Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> URI Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Router Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Router Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Output Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Output Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Security Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Security Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Input Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:53:10 --> Language Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Input Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:53:10 --> Language Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:53:10 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:53:10 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:53:10 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:53:10 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:53:10 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:53:10 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:53:10 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:53:10 --> Session Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Session Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:53:10 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:53:10 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Session routines successfully run
+DEBUG - 2017-07-08 15:53:10 --> Session routines successfully run
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Controller Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Controller Class Initialized
+ERROR - 2017-07-08 15:53:10 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:53:10 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:53:10 --> SFTP config retrieved successfully
+ERROR - 2017-07-08 15:53:10 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:53:10 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:53:10 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:53:10 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:53:10 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:53:10 --> Final output sent to browser
+DEBUG - 2017-07-08 15:53:10 --> Final output sent to browser
+DEBUG - 2017-07-08 15:53:10 --> Total execution time: 0.0436
+DEBUG - 2017-07-08 15:53:10 --> Total execution time: 0.0430
+DEBUG - 2017-07-08 15:53:10 --> Config Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:53:10 --> URI Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Router Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Output Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Security Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Input Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:53:10 --> Language Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:53:10 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:53:10 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:53:10 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:53:10 --> Session Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:53:10 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Session routines successfully run
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Controller Class Initialized
+ERROR - 2017-07-08 15:53:10 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:53:10 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:53:10 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:53:10 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:53:10 --> Final output sent to browser
+DEBUG - 2017-07-08 15:53:10 --> Total execution time: 0.0270
+DEBUG - 2017-07-08 15:53:10 --> Config Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:53:10 --> URI Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Router Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Output Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Security Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Input Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:53:10 --> Language Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:53:10 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:53:10 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:53:10 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:53:10 --> Session Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:53:10 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Session routines successfully run
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:53:10 --> Controller Class Initialized
+ERROR - 2017-07-08 15:53:10 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:53:10 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:53:10 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:53:10 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:53:10 --> Final output sent to browser
+DEBUG - 2017-07-08 15:53:10 --> Total execution time: 0.0309
+DEBUG - 2017-07-08 15:54:40 --> Config Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:54:40 --> URI Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Router Class Initialized
+ERROR - 2017-07-08 15:54:40 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 15:54:40 --> Config Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:54:40 --> URI Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Router Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Output Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Security Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Input Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Config Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:54:40 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Language Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:54:40 --> URI Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Router Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Output Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Security Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Input Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:54:40 --> Language Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:54:40 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:54:40 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:54:40 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:54:40 --> Session Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:54:40 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Session routines successfully run
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:54:40 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:54:40 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:54:40 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:54:40 --> Session Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:54:40 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Session routines successfully run
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Controller Class Initialized
+ERROR - 2017-07-08 15:54:40 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:54:40 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:54:40 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:54:40 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:54:40 --> Final output sent to browser
+DEBUG - 2017-07-08 15:54:40 --> Total execution time: 0.0453
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Controller Class Initialized
+ERROR - 2017-07-08 15:54:40 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:54:40 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:54:40 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:54:40 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:54:40 --> Final output sent to browser
+DEBUG - 2017-07-08 15:54:40 --> Total execution time: 0.0446
+DEBUG - 2017-07-08 15:54:40 --> Config Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:54:40 --> URI Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Router Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Output Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Security Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Input Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:54:40 --> Language Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:54:40 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:54:40 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:54:40 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:54:40 --> Session Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:54:40 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Session routines successfully run
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Controller Class Initialized
+ERROR - 2017-07-08 15:54:40 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:54:40 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:54:40 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:54:40 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:54:40 --> Final output sent to browser
+DEBUG - 2017-07-08 15:54:40 --> Total execution time: 0.0299
+DEBUG - 2017-07-08 15:54:40 --> Config Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:54:40 --> URI Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Router Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Output Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Security Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Input Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:54:40 --> Language Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:54:40 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:54:40 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:54:40 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:54:40 --> Session Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:54:40 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Session routines successfully run
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Model Class Initialized
+DEBUG - 2017-07-08 15:54:40 --> Controller Class Initialized
+ERROR - 2017-07-08 15:54:40 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:54:40 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:54:40 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:54:40 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:54:40 --> Final output sent to browser
+DEBUG - 2017-07-08 15:54:40 --> Total execution time: 0.0245
+DEBUG - 2017-07-08 15:56:09 --> Config Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:56:09 --> URI Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Router Class Initialized
+ERROR - 2017-07-08 15:56:09 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 15:56:09 --> Config Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Config Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:56:09 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:56:09 --> URI Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> URI Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Router Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Router Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Output Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Output Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Security Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Security Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Input Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Input Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:56:09 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:56:09 --> Language Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Language Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:56:09 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:56:09 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:56:09 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:56:09 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:56:09 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:56:09 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:56:09 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:56:09 --> Session Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Session Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:56:09 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:56:09 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Session routines successfully run
+DEBUG - 2017-07-08 15:56:09 --> Session routines successfully run
+DEBUG - 2017-07-08 15:56:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Controller Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Controller Class Initialized
+ERROR - 2017-07-08 15:56:09 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:56:09 --> Config file loaded: application/config/sftp_config.php
+ERROR - 2017-07-08 15:56:09 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:56:09 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:56:09 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:56:09 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:56:09 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:56:09 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:56:09 --> Final output sent to browser
+DEBUG - 2017-07-08 15:56:09 --> Total execution time: 0.0514
+DEBUG - 2017-07-08 15:56:09 --> Final output sent to browser
+DEBUG - 2017-07-08 15:56:09 --> Total execution time: 0.0566
+DEBUG - 2017-07-08 15:56:09 --> Config Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:56:09 --> URI Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Router Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Output Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Security Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Input Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:56:09 --> Language Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:56:09 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:56:09 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:56:09 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:56:09 --> Session Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:56:09 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Session routines successfully run
+DEBUG - 2017-07-08 15:56:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:09 --> Controller Class Initialized
+ERROR - 2017-07-08 15:56:09 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:56:09 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:56:09 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:56:09 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:56:09 --> Final output sent to browser
+DEBUG - 2017-07-08 15:56:09 --> Total execution time: 0.0280
+DEBUG - 2017-07-08 15:56:10 --> Config Class Initialized
+DEBUG - 2017-07-08 15:56:10 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:56:10 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:56:10 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:56:10 --> URI Class Initialized
+DEBUG - 2017-07-08 15:56:10 --> Router Class Initialized
+DEBUG - 2017-07-08 15:56:10 --> Output Class Initialized
+DEBUG - 2017-07-08 15:56:10 --> Security Class Initialized
+DEBUG - 2017-07-08 15:56:10 --> Input Class Initialized
+DEBUG - 2017-07-08 15:56:10 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:56:10 --> Language Class Initialized
+DEBUG - 2017-07-08 15:56:10 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:56:10 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:56:10 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:56:10 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:56:10 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:56:10 --> Session Class Initialized
+DEBUG - 2017-07-08 15:56:10 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:56:10 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:56:10 --> Session routines successfully run
+DEBUG - 2017-07-08 15:56:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:10 --> Model Class Initialized
+DEBUG - 2017-07-08 15:56:10 --> Controller Class Initialized
+ERROR - 2017-07-08 15:56:10 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:56:10 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:56:10 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:56:10 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:56:10 --> Final output sent to browser
+DEBUG - 2017-07-08 15:56:10 --> Total execution time: 0.0260
+DEBUG - 2017-07-08 15:57:39 --> Config Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Config Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:57:39 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:57:39 --> URI Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> URI Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Router Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Router Class Initialized
+ERROR - 2017-07-08 15:57:39 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 15:57:39 --> Output Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Config Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:57:39 --> Security Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> URI Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Router Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Input Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:57:39 --> Language Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Output Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Security Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Input Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:57:39 --> Language Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:57:39 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:57:39 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:57:39 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:57:39 --> Session Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:57:39 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Session routines successfully run
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:57:39 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:57:39 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Session Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:57:39 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Session routines successfully run
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Controller Class Initialized
+ERROR - 2017-07-08 15:57:39 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:57:39 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:57:39 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:57:39 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:57:39 --> Final output sent to browser
+DEBUG - 2017-07-08 15:57:39 --> Total execution time: 0.0499
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Controller Class Initialized
+ERROR - 2017-07-08 15:57:39 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:57:39 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:57:39 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:57:39 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:57:39 --> Final output sent to browser
+DEBUG - 2017-07-08 15:57:39 --> Total execution time: 0.0569
+DEBUG - 2017-07-08 15:57:39 --> Config Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:57:39 --> URI Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Router Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Output Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Security Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Input Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:57:39 --> Language Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:57:39 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:57:39 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:57:39 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:57:39 --> Session Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:57:39 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Session routines successfully run
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Controller Class Initialized
+ERROR - 2017-07-08 15:57:39 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:57:39 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:57:39 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:57:39 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:57:39 --> Final output sent to browser
+DEBUG - 2017-07-08 15:57:39 --> Total execution time: 0.0296
+DEBUG - 2017-07-08 15:57:39 --> Config Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:57:39 --> URI Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Router Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Output Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Security Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Input Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:57:39 --> Language Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:57:39 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:57:39 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:57:39 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:57:39 --> Session Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:57:39 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Session routines successfully run
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Model Class Initialized
+DEBUG - 2017-07-08 15:57:39 --> Controller Class Initialized
+ERROR - 2017-07-08 15:57:39 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:57:39 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:57:39 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:57:39 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:57:39 --> Final output sent to browser
+DEBUG - 2017-07-08 15:57:39 --> Total execution time: 0.0255
+DEBUG - 2017-07-08 15:59:09 --> Config Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:59:09 --> URI Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Router Class Initialized
+ERROR - 2017-07-08 15:59:09 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 15:59:09 --> Config Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:59:09 --> Config Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> URI Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:59:09 --> URI Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Router Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Router Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Output Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Output Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Security Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Input Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Security Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:59:09 --> Language Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Input Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:59:09 --> Language Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:59:09 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:59:09 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:59:09 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:59:09 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:59:09 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:59:09 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:59:09 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:59:09 --> Session Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:59:09 --> Session Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:59:09 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Session routines successfully run
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Session routines successfully run
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Controller Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+ERROR - 2017-07-08 15:59:09 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:59:09 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:59:09 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:59:09 --> Controller Class Initialized
+ERROR - 2017-07-08 15:59:09 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:59:09 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:59:09 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:59:09 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:59:09 --> Final output sent to browser
+DEBUG - 2017-07-08 15:59:09 --> Total execution time: 0.0417
+DEBUG - 2017-07-08 15:59:09 --> Final output sent to browser
+DEBUG - 2017-07-08 15:59:09 --> Total execution time: 0.0425
+DEBUG - 2017-07-08 15:59:09 --> Config Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:59:09 --> URI Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Router Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Output Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Security Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Input Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:59:09 --> Language Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:59:09 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:59:09 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:59:09 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:59:09 --> Session Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:59:09 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Session routines successfully run
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Controller Class Initialized
+ERROR - 2017-07-08 15:59:09 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:59:09 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:59:09 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:59:09 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:59:09 --> Final output sent to browser
+DEBUG - 2017-07-08 15:59:09 --> Total execution time: 0.0271
+DEBUG - 2017-07-08 15:59:09 --> Config Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Hooks Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 15:59:09 --> URI Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Router Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Output Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Security Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Input Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 15:59:09 --> Language Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Loader Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 15:59:09 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 15:59:09 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 15:59:09 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 15:59:09 --> Session Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 15:59:09 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Session routines successfully run
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Model Class Initialized
+DEBUG - 2017-07-08 15:59:09 --> Controller Class Initialized
+ERROR - 2017-07-08 15:59:09 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 15:59:09 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 15:59:09 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 15:59:09 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 15:59:09 --> Final output sent to browser
+DEBUG - 2017-07-08 15:59:09 --> Total execution time: 0.0248
+DEBUG - 2017-07-08 16:00:39 --> Config Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:00:39 --> URI Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Router Class Initialized
+ERROR - 2017-07-08 16:00:39 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:00:39 --> Config Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:00:39 --> Config Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> URI Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:00:39 --> Router Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> URI Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Router Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Output Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Security Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Output Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Input Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:00:39 --> Language Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Security Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Input Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:00:39 --> Language Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:00:39 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:00:39 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:00:39 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:00:39 --> Session Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:00:39 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:00:39 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:00:39 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:00:39 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:00:39 --> Session routines successfully run
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Session Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:00:39 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Session routines successfully run
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Controller Class Initialized
+ERROR - 2017-07-08 16:00:39 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:00:39 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:00:39 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Controller Class Initialized
+ERROR - 2017-07-08 16:00:39 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:00:39 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:00:39 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:00:39 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:00:39 --> Final output sent to browser
+DEBUG - 2017-07-08 16:00:39 --> Total execution time: 0.0492
+DEBUG - 2017-07-08 16:00:39 --> Final output sent to browser
+DEBUG - 2017-07-08 16:00:39 --> Total execution time: 0.0477
+DEBUG - 2017-07-08 16:00:39 --> Config Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:00:39 --> URI Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Router Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Output Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Security Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Input Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:00:39 --> Language Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:00:39 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:00:39 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:00:39 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:00:39 --> Session Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:00:39 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Session routines successfully run
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Controller Class Initialized
+ERROR - 2017-07-08 16:00:39 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:00:39 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:00:39 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:00:39 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:00:39 --> Final output sent to browser
+DEBUG - 2017-07-08 16:00:39 --> Total execution time: 0.0297
+DEBUG - 2017-07-08 16:00:39 --> Config Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:00:39 --> URI Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Router Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Output Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Security Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Input Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:00:39 --> Language Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:00:39 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:00:39 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:00:39 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:00:39 --> Session Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:00:39 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Session routines successfully run
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:00:39 --> Controller Class Initialized
+ERROR - 2017-07-08 16:00:39 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:00:39 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:00:39 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:00:39 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:00:39 --> Final output sent to browser
+DEBUG - 2017-07-08 16:00:39 --> Total execution time: 0.0271
+DEBUG - 2017-07-08 16:02:08 --> Config Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:02:08 --> URI Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Router Class Initialized
+ERROR - 2017-07-08 16:02:08 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:02:08 --> Config Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:02:08 --> Config Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> URI Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:02:08 --> URI Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Router Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Router Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Output Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Security Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Output Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Security Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Input Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:02:08 --> Input Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Language Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:02:08 --> Language Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:02:08 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:02:08 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:02:08 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:02:08 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:02:08 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:02:08 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:02:08 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:02:08 --> Session Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Session Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:02:08 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:02:08 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Session routines successfully run
+DEBUG - 2017-07-08 16:02:08 --> Session routines successfully run
+DEBUG - 2017-07-08 16:02:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Model Class Initialized
+ERROR - 2017-07-08 16:02:08 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:02:08 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:02:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:02:08 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:02:08 --> Controller Class Initialized
+ERROR - 2017-07-08 16:02:08 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:02:08 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:02:08 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:02:08 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:02:08 --> Final output sent to browser
+DEBUG - 2017-07-08 16:02:08 --> Total execution time: 0.0415
+DEBUG - 2017-07-08 16:02:08 --> Final output sent to browser
+DEBUG - 2017-07-08 16:02:08 --> Total execution time: 0.0442
+DEBUG - 2017-07-08 16:02:08 --> Config Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:02:08 --> URI Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Router Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Output Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Security Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Input Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:02:08 --> Language Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:02:08 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:02:08 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:02:08 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:02:08 --> Session Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:02:08 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Session routines successfully run
+DEBUG - 2017-07-08 16:02:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Controller Class Initialized
+ERROR - 2017-07-08 16:02:08 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:02:08 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:02:08 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:02:08 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:02:08 --> Final output sent to browser
+DEBUG - 2017-07-08 16:02:08 --> Total execution time: 0.0293
+DEBUG - 2017-07-08 16:02:08 --> Config Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:02:08 --> URI Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Router Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Output Class Initialized
+DEBUG - 2017-07-08 16:02:08 --> Security Class Initialized
+DEBUG - 2017-07-08 16:02:09 --> Input Class Initialized
+DEBUG - 2017-07-08 16:02:09 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:02:09 --> Language Class Initialized
+DEBUG - 2017-07-08 16:02:09 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:02:09 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:02:09 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:02:09 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:02:09 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:02:09 --> Session Class Initialized
+DEBUG - 2017-07-08 16:02:09 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:02:09 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:02:09 --> Session routines successfully run
+DEBUG - 2017-07-08 16:02:09 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:09 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:09 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:09 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:09 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:09 --> Model Class Initialized
+DEBUG - 2017-07-08 16:02:09 --> Controller Class Initialized
+ERROR - 2017-07-08 16:02:09 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:02:09 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:02:09 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:02:09 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:02:09 --> Final output sent to browser
+DEBUG - 2017-07-08 16:02:09 --> Total execution time: 0.0267
+DEBUG - 2017-07-08 16:03:38 --> Config Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:03:38 --> URI Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Router Class Initialized
+ERROR - 2017-07-08 16:03:38 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:03:38 --> Config Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:03:38 --> Config Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> URI Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Router Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:03:38 --> Output Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> URI Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Security Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Router Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Input Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:03:38 --> Language Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Output Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Security Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Input Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:03:38 --> Language Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:03:38 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:03:38 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:03:38 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:03:38 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Session Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:03:38 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Session routines successfully run
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:03:38 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:03:38 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:03:38 --> Session Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:03:38 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Session routines successfully run
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Controller Class Initialized
+ERROR - 2017-07-08 16:03:38 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:03:38 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:03:38 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:03:38 --> Controller Class Initialized
+ERROR - 2017-07-08 16:03:38 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:03:38 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:03:38 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:03:38 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:03:38 --> Final output sent to browser
+DEBUG - 2017-07-08 16:03:38 --> Total execution time: 0.0529
+DEBUG - 2017-07-08 16:03:38 --> Final output sent to browser
+DEBUG - 2017-07-08 16:03:38 --> Total execution time: 0.0524
+DEBUG - 2017-07-08 16:03:38 --> Config Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:03:38 --> URI Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Router Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Output Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Security Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Input Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:03:38 --> Language Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:03:38 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:03:38 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:03:38 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:03:38 --> Session Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:03:38 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Session routines successfully run
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Controller Class Initialized
+ERROR - 2017-07-08 16:03:38 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:03:38 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:03:38 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:03:38 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:03:38 --> Final output sent to browser
+DEBUG - 2017-07-08 16:03:38 --> Total execution time: 0.0377
+DEBUG - 2017-07-08 16:03:38 --> Config Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:03:38 --> URI Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Router Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Output Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Security Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Input Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:03:38 --> Language Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:03:38 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:03:38 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:03:38 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:03:38 --> Session Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:03:38 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Session routines successfully run
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:03:38 --> Controller Class Initialized
+ERROR - 2017-07-08 16:03:38 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:03:38 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:03:38 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:03:38 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:03:38 --> Final output sent to browser
+DEBUG - 2017-07-08 16:03:38 --> Total execution time: 0.0272
+DEBUG - 2017-07-08 16:05:08 --> Config Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:05:08 --> URI Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Router Class Initialized
+ERROR - 2017-07-08 16:05:08 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:05:08 --> Config Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:05:08 --> Config Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> URI Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:05:08 --> URI Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Router Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Router Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Output Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Output Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Security Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Input Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Security Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:05:08 --> Language Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Input Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:05:08 --> Language Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:05:08 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:05:08 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:05:08 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:05:08 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:05:08 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:05:08 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:05:08 --> Session Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:05:08 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:05:08 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Session Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:05:08 --> Session routines successfully run
+DEBUG - 2017-07-08 16:05:08 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Session routines successfully run
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Controller Class Initialized
+ERROR - 2017-07-08 16:05:08 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:05:08 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:05:08 --> Checking downloaded zip files expire date
+ERROR - 2017-07-08 16:05:08 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:05:08 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:05:08 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:05:08 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:05:08 --> Final output sent to browser
+DEBUG - 2017-07-08 16:05:08 --> Total execution time: 0.0434
+DEBUG - 2017-07-08 16:05:08 --> Final output sent to browser
+DEBUG - 2017-07-08 16:05:08 --> Total execution time: 0.0486
+DEBUG - 2017-07-08 16:05:08 --> Config Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:05:08 --> URI Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Router Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Output Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Security Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Input Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:05:08 --> Language Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:05:08 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:05:08 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:05:08 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:05:08 --> Session Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:05:08 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Session routines successfully run
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Controller Class Initialized
+ERROR - 2017-07-08 16:05:08 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:05:08 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:05:08 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:05:08 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:05:08 --> Final output sent to browser
+DEBUG - 2017-07-08 16:05:08 --> Total execution time: 0.0287
+DEBUG - 2017-07-08 16:05:08 --> Config Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:05:08 --> URI Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Router Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Output Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Security Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Input Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:05:08 --> Language Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:05:08 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:05:08 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:05:08 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:05:08 --> Session Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:05:08 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Session routines successfully run
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:05:08 --> Controller Class Initialized
+ERROR - 2017-07-08 16:05:08 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:05:08 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:05:08 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:05:08 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:05:08 --> Final output sent to browser
+DEBUG - 2017-07-08 16:05:08 --> Total execution time: 0.0262
+DEBUG - 2017-07-08 16:06:38 --> Config Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Config Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:06:38 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:06:38 --> URI Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Router Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Config Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Output Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:06:38 --> Security Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> URI Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Router Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Input Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Global POST and COOKIE data sanitized
+ERROR - 2017-07-08 16:06:38 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:06:38 --> Language Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> URI Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Router Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Output Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Security Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Input Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:06:38 --> Language Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:06:38 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:06:38 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:06:38 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:06:38 --> Session Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:06:38 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Session routines successfully run
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:06:38 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:06:38 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:06:38 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:06:38 --> Session Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:06:38 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Session routines successfully run
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Controller Class Initialized
+ERROR - 2017-07-08 16:06:38 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:06:38 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:06:38 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:06:38 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:06:38 --> Final output sent to browser
+DEBUG - 2017-07-08 16:06:38 --> Total execution time: 0.0583
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Controller Class Initialized
+ERROR - 2017-07-08 16:06:38 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:06:38 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:06:38 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:06:38 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:06:38 --> Final output sent to browser
+DEBUG - 2017-07-08 16:06:38 --> Total execution time: 0.0640
+DEBUG - 2017-07-08 16:06:38 --> Config Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:06:38 --> URI Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Router Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Output Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Security Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Input Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:06:38 --> Language Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:06:38 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:06:38 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:06:38 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:06:38 --> Session Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:06:38 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Session routines successfully run
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Controller Class Initialized
+ERROR - 2017-07-08 16:06:38 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:06:38 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:06:38 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:06:38 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:06:38 --> Final output sent to browser
+DEBUG - 2017-07-08 16:06:38 --> Total execution time: 0.0254
+DEBUG - 2017-07-08 16:06:38 --> Config Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:06:38 --> URI Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Router Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Output Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Security Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Input Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:06:38 --> Language Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:06:38 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:06:38 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:06:38 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:06:38 --> Session Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:06:38 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Session routines successfully run
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Model Class Initialized
+DEBUG - 2017-07-08 16:06:38 --> Controller Class Initialized
+ERROR - 2017-07-08 16:06:38 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:06:38 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:06:38 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:06:38 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:06:38 --> Final output sent to browser
+DEBUG - 2017-07-08 16:06:38 --> Total execution time: 0.0247
+DEBUG - 2017-07-08 16:08:07 --> Config Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:08:07 --> URI Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Router Class Initialized
+ERROR - 2017-07-08 16:08:07 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:08:07 --> Config Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Config Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:08:07 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:08:07 --> URI Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> URI Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Router Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Router Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Output Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Output Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Security Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Security Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Input Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Input Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:08:07 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:08:07 --> Language Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Language Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:08:07 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:08:07 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:08:07 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:08:07 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:08:07 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:08:07 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:08:07 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:08:07 --> Session Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:08:07 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Session Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:08:07 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Session routines successfully run
+DEBUG - 2017-07-08 16:08:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Session routines successfully run
+DEBUG - 2017-07-08 16:08:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Controller Class Initialized
+ERROR - 2017-07-08 16:08:07 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+ERROR - 2017-07-08 16:08:07 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:08:07 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:08:07 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:08:07 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:08:07 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:08:07 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:08:07 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:08:07 --> Final output sent to browser
+DEBUG - 2017-07-08 16:08:07 --> Total execution time: 0.0546
+DEBUG - 2017-07-08 16:08:07 --> Final output sent to browser
+DEBUG - 2017-07-08 16:08:07 --> Total execution time: 0.0516
+DEBUG - 2017-07-08 16:08:07 --> Config Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:08:07 --> URI Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Router Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Output Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Security Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Input Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:08:07 --> Language Class Initialized
+DEBUG - 2017-07-08 16:08:07 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:08:08 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:08:08 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:08:08 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:08:08 --> Session Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:08:08 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Session routines successfully run
+DEBUG - 2017-07-08 16:08:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Controller Class Initialized
+ERROR - 2017-07-08 16:08:08 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:08:08 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:08:08 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:08:08 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:08:08 --> Final output sent to browser
+DEBUG - 2017-07-08 16:08:08 --> Total execution time: 0.0342
+DEBUG - 2017-07-08 16:08:08 --> Config Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:08:08 --> URI Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Router Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Output Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Security Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Input Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:08:08 --> Language Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:08:08 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:08:08 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:08:08 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:08:08 --> Session Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:08:08 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Session routines successfully run
+DEBUG - 2017-07-08 16:08:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Model Class Initialized
+DEBUG - 2017-07-08 16:08:08 --> Controller Class Initialized
+ERROR - 2017-07-08 16:08:08 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:08:08 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:08:08 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:08:08 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:08:08 --> Final output sent to browser
+DEBUG - 2017-07-08 16:08:08 --> Total execution time: 0.0390
+DEBUG - 2017-07-08 16:09:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:09:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Router Class Initialized
+ERROR - 2017-07-08 16:09:37 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:09:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:09:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:09:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:09:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:09:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:09:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:09:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:09:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:09:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:09:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:09:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:09:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:09:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:09:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:09:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+ERROR - 2017-07-08 16:09:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:09:37 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:09:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:09:37 --> Checking downloaded zip files expire date
+ERROR - 2017-07-08 16:09:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:09:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:09:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:09:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:09:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:09:37 --> Total execution time: 0.0515
+DEBUG - 2017-07-08 16:09:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:09:37 --> Total execution time: 0.0573
+DEBUG - 2017-07-08 16:09:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:09:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:09:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:09:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:09:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:09:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:09:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:09:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Controller Class Initialized
+ERROR - 2017-07-08 16:09:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:09:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:09:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:09:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:09:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:09:37 --> Total execution time: 0.0272
+DEBUG - 2017-07-08 16:09:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:09:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:09:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:09:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:09:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:09:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:09:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:09:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:09:37 --> Controller Class Initialized
+ERROR - 2017-07-08 16:09:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:09:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:09:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:09:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:09:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:09:37 --> Total execution time: 0.0244
+DEBUG - 2017-07-08 16:11:07 --> Config Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Config Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Config Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:11:07 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:11:07 --> URI Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> URI Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Router Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Router Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Output Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Output Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Security Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Security Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Input Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Input Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:11:07 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:11:07 --> Language Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Language Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:11:07 --> URI Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Router Class Initialized
+ERROR - 2017-07-08 16:11:07 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:11:07 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:11:07 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:11:07 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:11:07 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:11:07 --> Session Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:11:07 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Session routines successfully run
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:11:07 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:11:07 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:11:07 --> Session Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:11:07 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Session routines successfully run
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Controller Class Initialized
+ERROR - 2017-07-08 16:11:07 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:11:07 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:11:07 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:11:07 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:11:07 --> Final output sent to browser
+DEBUG - 2017-07-08 16:11:07 --> Total execution time: 0.0439
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Controller Class Initialized
+ERROR - 2017-07-08 16:11:07 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:11:07 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:11:07 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:11:07 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:11:07 --> Final output sent to browser
+DEBUG - 2017-07-08 16:11:07 --> Total execution time: 0.0554
+DEBUG - 2017-07-08 16:11:07 --> Config Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:11:07 --> URI Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Router Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Output Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Security Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Input Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:11:07 --> Language Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:11:07 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:11:07 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:11:07 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:11:07 --> Session Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:11:07 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Session routines successfully run
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Controller Class Initialized
+ERROR - 2017-07-08 16:11:07 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:11:07 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:11:07 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:11:07 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:11:07 --> Final output sent to browser
+DEBUG - 2017-07-08 16:11:07 --> Total execution time: 0.0304
+DEBUG - 2017-07-08 16:11:07 --> Config Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:11:07 --> URI Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Router Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Output Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Security Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Input Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:11:07 --> Language Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:11:07 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:11:07 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:11:07 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:11:07 --> Session Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:11:07 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Session routines successfully run
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:11:07 --> Controller Class Initialized
+ERROR - 2017-07-08 16:11:07 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:11:07 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:11:07 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:11:07 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:11:07 --> Final output sent to browser
+DEBUG - 2017-07-08 16:11:07 --> Total execution time: 0.0248
+DEBUG - 2017-07-08 16:12:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:12:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:12:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Security Class Initialized
+ERROR - 2017-07-08 16:12:37 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:12:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:12:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:12:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:12:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:12:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:12:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:12:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:12:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:12:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:12:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:12:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:12:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:12:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:12:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Controller Class Initialized
+ERROR - 2017-07-08 16:12:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:12:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:12:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:12:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:12:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:12:37 --> Total execution time: 0.0491
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Controller Class Initialized
+ERROR - 2017-07-08 16:12:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:12:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:12:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:12:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:12:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:12:37 --> Total execution time: 0.0601
+DEBUG - 2017-07-08 16:12:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:12:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:12:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:12:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:12:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:12:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:12:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:12:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Controller Class Initialized
+ERROR - 2017-07-08 16:12:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:12:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:12:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:12:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:12:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:12:37 --> Total execution time: 0.0270
+DEBUG - 2017-07-08 16:12:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:12:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:12:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:12:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:12:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:12:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:12:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:12:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:12:37 --> Controller Class Initialized
+ERROR - 2017-07-08 16:12:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:12:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:12:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:12:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:12:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:12:37 --> Total execution time: 0.0273
+DEBUG - 2017-07-08 16:17:17 --> Config Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:17:17 --> URI Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Router Class Initialized
+ERROR - 2017-07-08 16:17:17 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:17:17 --> Config Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Config Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:17:17 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:17:17 --> URI Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> URI Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Router Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Router Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Output Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Output Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Security Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Security Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Input Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:17:17 --> Input Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Language Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:17:17 --> Language Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:17:17 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:17:17 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:17:17 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:17:17 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:17:17 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:17:17 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:17:17 --> Session Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:17:17 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:17:17 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Session Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:17:17 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Session routines successfully run
+DEBUG - 2017-07-08 16:17:17 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Session routines successfully run
+DEBUG - 2017-07-08 16:17:17 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Controller Class Initialized
+ERROR - 2017-07-08 16:17:17 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:17:17 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:17:17 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:17:17 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:17:17 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Controller Class Initialized
+ERROR - 2017-07-08 16:17:17 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:17:17 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:17:17 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:17:17 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:17:17 --> Final output sent to browser
+DEBUG - 2017-07-08 16:17:17 --> Total execution time: 0.0329
+DEBUG - 2017-07-08 16:17:17 --> Final output sent to browser
+DEBUG - 2017-07-08 16:17:17 --> Total execution time: 0.0337
+DEBUG - 2017-07-08 16:17:17 --> Config Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:17:17 --> URI Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Router Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Output Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Security Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Input Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:17:17 --> Language Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:17:17 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:17:17 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:17:17 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:17:17 --> Session Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:17:17 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Session routines successfully run
+DEBUG - 2017-07-08 16:17:17 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Controller Class Initialized
+ERROR - 2017-07-08 16:17:17 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:17:17 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:17:17 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:17:17 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:17:17 --> Final output sent to browser
+DEBUG - 2017-07-08 16:17:17 --> Total execution time: 0.0311
+DEBUG - 2017-07-08 16:17:17 --> Config Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:17:17 --> URI Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Router Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Output Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Security Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Input Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:17:17 --> Language Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:17:17 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:17:17 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:17:17 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:17:17 --> Session Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:17:17 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Session routines successfully run
+DEBUG - 2017-07-08 16:17:17 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:17 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:18 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:18 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:18 --> Model Class Initialized
+DEBUG - 2017-07-08 16:17:18 --> Controller Class Initialized
+ERROR - 2017-07-08 16:17:18 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:17:18 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:17:18 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:17:18 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:17:18 --> Final output sent to browser
+DEBUG - 2017-07-08 16:17:18 --> Total execution time: 0.0270
+DEBUG - 2017-07-08 16:18:47 --> Config Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Config Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:18:47 --> URI Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Config Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Router Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:18:47 --> URI Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Output Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Router Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Security Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Output Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Input Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:18:47 --> Security Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Language Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Input Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:18:47 --> Language Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:18:47 --> URI Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Router Class Initialized
+ERROR - 2017-07-08 16:18:47 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:18:47 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:18:47 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:18:47 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:18:47 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:18:47 --> Session Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:18:47 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:18:47 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:18:47 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:18:47 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:18:47 --> Session Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Session routines successfully run
+DEBUG - 2017-07-08 16:18:47 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Session routines successfully run
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Controller Class Initialized
+ERROR - 2017-07-08 16:18:47 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:18:47 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:18:47 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:18:47 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Final output sent to browser
+DEBUG - 2017-07-08 16:18:47 --> Total execution time: 0.0453
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Controller Class Initialized
+ERROR - 2017-07-08 16:18:47 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:18:47 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:18:47 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:18:47 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:18:47 --> Final output sent to browser
+DEBUG - 2017-07-08 16:18:47 --> Total execution time: 0.0473
+DEBUG - 2017-07-08 16:18:47 --> Config Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:18:47 --> URI Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Router Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Output Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Security Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Input Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:18:47 --> Language Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:18:47 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:18:47 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:18:47 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:18:47 --> Session Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:18:47 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Session routines successfully run
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Controller Class Initialized
+ERROR - 2017-07-08 16:18:47 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:18:47 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:18:47 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:18:47 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:18:47 --> Final output sent to browser
+DEBUG - 2017-07-08 16:18:47 --> Total execution time: 0.0294
+DEBUG - 2017-07-08 16:18:47 --> Config Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:18:47 --> URI Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Router Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Output Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Security Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Input Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:18:47 --> Language Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:18:47 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:18:47 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:18:47 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:18:47 --> Session Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:18:47 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Session routines successfully run
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Model Class Initialized
+DEBUG - 2017-07-08 16:18:47 --> Controller Class Initialized
+ERROR - 2017-07-08 16:18:47 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:18:47 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:18:47 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:18:47 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:18:47 --> Final output sent to browser
+DEBUG - 2017-07-08 16:18:47 --> Total execution time: 0.0260
+DEBUG - 2017-07-08 16:19:15 --> Config Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:19:15 --> URI Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Router Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Output Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Security Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Input Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:19:15 --> Language Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:19:15 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:19:15 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:19:15 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:19:15 --> Session Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:19:15 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Session routines successfully run
+DEBUG - 2017-07-08 16:19:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Controller Class Initialized
+ERROR - 2017-07-08 16:19:15 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:19:15 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:19:15 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:19:15 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:19:15 --> Final output sent to browser
+DEBUG - 2017-07-08 16:19:15 --> Total execution time: 0.0405
+DEBUG - 2017-07-08 16:19:15 --> Config Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:19:15 --> URI Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Router Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Output Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Security Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Input Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:19:15 --> Language Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Config Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:19:15 --> URI Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Router Class Initialized
+ERROR - 2017-07-08 16:19:15 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:19:15 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:19:15 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:19:15 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:19:15 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:19:15 --> Session Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:19:15 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Session routines successfully run
+DEBUG - 2017-07-08 16:19:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:15 --> Controller Class Initialized
+ERROR - 2017-07-08 16:19:15 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:19:15 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:19:15 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:19:15 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:19:15 --> Final output sent to browser
+DEBUG - 2017-07-08 16:19:15 --> Total execution time: 0.0507
+DEBUG - 2017-07-08 16:19:16 --> Config Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Config Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:19:16 --> URI Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Router Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Config Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:19:16 --> Output Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:19:16 --> URI Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Security Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Router Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Input Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Output Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:19:16 --> Language Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Security Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> URI Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Router Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Output Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Security Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Input Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:19:16 --> Input Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:19:16 --> Language Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:19:16 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Session Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:19:16 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Language Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Session routines successfully run
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:19:16 --> Session Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:19:16 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Session routines successfully run
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Session Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:19:16 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Session routines successfully run
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Controller Class Initialized
+ERROR - 2017-07-08 16:19:16 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:19:16 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:19:16 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:19:16 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:19:16 --> Final output sent to browser
+DEBUG - 2017-07-08 16:19:16 --> Total execution time: 0.0524
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Controller Class Initialized
+ERROR - 2017-07-08 16:19:16 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:19:16 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:19:16 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:19:16 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:19:16 --> Final output sent to browser
+DEBUG - 2017-07-08 16:19:16 --> Total execution time: 0.0607
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Controller Class Initialized
+ERROR - 2017-07-08 16:19:16 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:19:16 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:19:16 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:19:16 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:19:16 --> Final output sent to browser
+DEBUG - 2017-07-08 16:19:16 --> Total execution time: 0.0737
+DEBUG - 2017-07-08 16:19:16 --> Config Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:19:16 --> URI Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Router Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Output Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Security Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Input Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:19:16 --> Language Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:19:16 --> Session Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:19:16 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Session routines successfully run
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Controller Class Initialized
+ERROR - 2017-07-08 16:19:16 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:19:16 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:19:16 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:19:16 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:19:16 --> Final output sent to browser
+DEBUG - 2017-07-08 16:19:16 --> Total execution time: 0.0309
+DEBUG - 2017-07-08 16:19:16 --> Config Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:19:16 --> URI Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Router Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Output Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Security Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Input Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:19:16 --> Language Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:19:16 --> Session Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:19:16 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Session routines successfully run
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Model Class Initialized
+DEBUG - 2017-07-08 16:19:16 --> Controller Class Initialized
+ERROR - 2017-07-08 16:19:16 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:19:16 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:19:16 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:19:16 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:19:16 --> Final output sent to browser
+DEBUG - 2017-07-08 16:19:16 --> Total execution time: 0.0298
+DEBUG - 2017-07-08 16:20:45 --> Config Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:20:45 --> Config Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> URI Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:20:45 --> Router Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> URI Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Router Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Output Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Security Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Output Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Input Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Security Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:20:45 --> Language Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Input Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:20:45 --> Language Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:20:45 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:20:45 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:20:45 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:20:45 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:20:45 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:20:45 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:20:45 --> Session Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:20:45 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Config Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:20:45 --> Session routines successfully run
+DEBUG - 2017-07-08 16:20:45 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:20:45 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Session Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:20:45 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Session routines successfully run
+DEBUG - 2017-07-08 16:20:45 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> URI Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Router Class Initialized
+ERROR - 2017-07-08 16:20:45 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:20:45 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Controller Class Initialized
+ERROR - 2017-07-08 16:20:45 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:20:45 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:20:45 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:20:45 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:20:45 --> Final output sent to browser
+DEBUG - 2017-07-08 16:20:45 --> Total execution time: 0.0661
+DEBUG - 2017-07-08 16:20:45 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Controller Class Initialized
+ERROR - 2017-07-08 16:20:45 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:20:45 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:20:45 --> Config Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:20:45 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:20:45 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:20:45 --> URI Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Router Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Final output sent to browser
+DEBUG - 2017-07-08 16:20:45 --> Total execution time: 0.0815
+DEBUG - 2017-07-08 16:20:45 --> Output Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Security Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Input Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:20:45 --> Language Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:20:45 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:20:45 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:20:45 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:20:45 --> Session Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:20:45 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Session routines successfully run
+DEBUG - 2017-07-08 16:20:45 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Controller Class Initialized
+ERROR - 2017-07-08 16:20:45 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:20:45 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:20:45 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:20:45 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:20:45 --> Final output sent to browser
+DEBUG - 2017-07-08 16:20:45 --> Total execution time: 0.0326
+DEBUG - 2017-07-08 16:20:45 --> Config Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:20:45 --> URI Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Router Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Output Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Security Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Input Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:20:45 --> Language Class Initialized
+DEBUG - 2017-07-08 16:20:45 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:20:46 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:20:46 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:20:46 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:20:46 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:20:46 --> Session Class Initialized
+DEBUG - 2017-07-08 16:20:46 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:20:46 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:20:46 --> Session routines successfully run
+DEBUG - 2017-07-08 16:20:46 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:46 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:46 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:46 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:46 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:46 --> Model Class Initialized
+DEBUG - 2017-07-08 16:20:46 --> Controller Class Initialized
+ERROR - 2017-07-08 16:20:46 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:20:46 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:20:46 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:20:46 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:20:46 --> Final output sent to browser
+DEBUG - 2017-07-08 16:20:46 --> Total execution time: 0.0244
+DEBUG - 2017-07-08 16:22:15 --> Config Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:22:15 --> Config Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> URI Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:22:15 --> Router Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> URI Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Router Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Output Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Security Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Output Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Input Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Security Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:22:15 --> Language Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Input Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:22:15 --> Language Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:22:15 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:22:15 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:22:15 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:22:15 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:22:15 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:22:15 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:22:15 --> Session Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:22:15 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:22:15 --> Session Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:22:15 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Session routines successfully run
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Session routines successfully run
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Config Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:22:15 --> URI Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Router Class Initialized
+ERROR - 2017-07-08 16:22:15 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Controller Class Initialized
+ERROR - 2017-07-08 16:22:15 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:22:15 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:22:15 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:22:15 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:22:15 --> Final output sent to browser
+DEBUG - 2017-07-08 16:22:15 --> Total execution time: 0.0488
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Controller Class Initialized
+ERROR - 2017-07-08 16:22:15 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:22:15 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:22:15 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:22:15 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:22:15 --> Config Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:22:15 --> Final output sent to browser
+DEBUG - 2017-07-08 16:22:15 --> Total execution time: 0.0647
+DEBUG - 2017-07-08 16:22:15 --> URI Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Router Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Output Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Security Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Input Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:22:15 --> Language Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:22:15 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:22:15 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:22:15 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:22:15 --> Session Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:22:15 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Session routines successfully run
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Controller Class Initialized
+ERROR - 2017-07-08 16:22:15 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:22:15 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:22:15 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:22:15 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:22:15 --> Final output sent to browser
+DEBUG - 2017-07-08 16:22:15 --> Total execution time: 0.0339
+DEBUG - 2017-07-08 16:22:15 --> Config Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:22:15 --> URI Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Router Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Output Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Security Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Input Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:22:15 --> Language Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:22:15 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:22:15 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:22:15 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:22:15 --> Session Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:22:15 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Session routines successfully run
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:15 --> Controller Class Initialized
+ERROR - 2017-07-08 16:22:15 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:22:15 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:22:15 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:22:15 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:22:15 --> Final output sent to browser
+DEBUG - 2017-07-08 16:22:15 --> Total execution time: 0.0260
+DEBUG - 2017-07-08 16:22:23 --> Config Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:22:23 --> URI Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Router Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Output Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Security Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Input Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:22:23 --> Language Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:22:23 --> Session Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:22:23 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Session routines successfully run
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Controller Class Initialized
+ERROR - 2017-07-08 16:22:23 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:22:23 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:22:23 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:22:23 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:22:23 --> Final output sent to browser
+DEBUG - 2017-07-08 16:22:23 --> Total execution time: 0.0428
+DEBUG - 2017-07-08 16:22:23 --> Config Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:22:23 --> URI Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Router Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Config Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:22:23 --> Output Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Security Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> URI Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Input Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:22:23 --> Language Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Router Class Initialized
+ERROR - 2017-07-08 16:22:23 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:22:23 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:22:23 --> Session Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:22:23 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Session routines successfully run
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Config Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Config Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:22:23 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> URI Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Router Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Output Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Security Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Input Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:22:23 --> Language Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:22:23 --> URI Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Router Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Output Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Security Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Input Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:22:23 --> Language Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:22:23 --> Session Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Controller Class Initialized
+ERROR - 2017-07-08 16:22:23 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:22:23 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:22:23 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:22:23 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:22:23 --> Session routines successfully run
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:22:23 --> Final output sent to browser
+DEBUG - 2017-07-08 16:22:23 --> Total execution time: 0.0608
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:22:23 --> Session Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Config Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:22:23 --> URI Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Router Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Output Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Security Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Input Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:22:23 --> Language Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:22:23 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Session routines successfully run
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Controller Class Initialized
+ERROR - 2017-07-08 16:22:23 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:22:23 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:22:23 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:22:23 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:22:23 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Final output sent to browser
+DEBUG - 2017-07-08 16:22:23 --> Total execution time: 0.0487
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:22:23 --> Session Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:22:23 --> Config Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:22:23 --> URI Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Router Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Session routines successfully run
+DEBUG - 2017-07-08 16:22:23 --> Output Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Security Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Input Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Language Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:22:23 --> Session Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Controller Class Initialized
+ERROR - 2017-07-08 16:22:23 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:22:23 --> Session routines successfully run
+DEBUG - 2017-07-08 16:22:23 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:22:23 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:22:23 --> Final output sent to browser
+DEBUG - 2017-07-08 16:22:23 --> Total execution time: 0.0477
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Controller Class Initialized
+ERROR - 2017-07-08 16:22:23 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:22:23 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:22:23 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:22:23 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:22:23 --> Final output sent to browser
+DEBUG - 2017-07-08 16:22:23 --> Total execution time: 0.0883
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Controller Class Initialized
+ERROR - 2017-07-08 16:22:23 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:22:23 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:22:23 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:22:23 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:22:23 --> Final output sent to browser
+DEBUG - 2017-07-08 16:22:23 --> Total execution time: 0.0414
+DEBUG - 2017-07-08 16:22:23 --> Config Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:22:23 --> URI Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Router Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Output Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Security Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Input Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:22:23 --> Language Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:22:23 --> Session Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:22:23 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Session routines successfully run
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:23 --> Controller Class Initialized
+ERROR - 2017-07-08 16:22:23 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:22:23 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:22:23 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:22:23 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:22:23 --> Final output sent to browser
+DEBUG - 2017-07-08 16:22:23 --> Total execution time: 0.0326
+DEBUG - 2017-07-08 16:22:43 --> Config Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:22:43 --> URI Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Router Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Output Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Security Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Input Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:22:43 --> Language Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:22:43 --> Session Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:22:43 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Session routines successfully run
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Controller Class Initialized
+ERROR - 2017-07-08 16:22:43 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:22:43 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:22:43 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:22:43 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:22:43 --> Final output sent to browser
+DEBUG - 2017-07-08 16:22:43 --> Total execution time: 0.0429
+DEBUG - 2017-07-08 16:22:43 --> Config Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:22:43 --> URI Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Router Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Output Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Security Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Config Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Input Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:22:43 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Language Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:22:43 --> URI Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Router Class Initialized
+ERROR - 2017-07-08 16:22:43 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:22:43 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:22:43 --> Session Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:22:43 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Session routines successfully run
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Config Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Hooks Class Initialized
+ERROR - 2017-07-08 16:22:43 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:22:43 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:22:43 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:22:43 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:22:43 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:22:43 --> Final output sent to browser
+DEBUG - 2017-07-08 16:22:43 --> Total execution time: 0.0487
+DEBUG - 2017-07-08 16:22:43 --> Config Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:22:43 --> URI Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> URI Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Router Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Output Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Security Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Input Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:22:43 --> Config Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Language Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:22:43 --> URI Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Router Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Router Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Output Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Security Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Input Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:22:43 --> Language Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Output Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:22:43 --> Security Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:22:43 --> Session Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:22:43 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Session routines successfully run
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Input Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:22:43 --> Language Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:22:43 --> Session Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:22:43 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Session routines successfully run
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:22:43 --> Session Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:22:43 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Controller Class Initialized
+ERROR - 2017-07-08 16:22:43 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:22:43 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:22:43 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:22:43 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:22:43 --> Final output sent to browser
+DEBUG - 2017-07-08 16:22:43 --> Total execution time: 0.0511
+DEBUG - 2017-07-08 16:22:43 --> Session routines successfully run
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Config Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:22:43 --> URI Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Router Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Output Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Security Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Input Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:22:43 --> Language Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:43 --> Controller Class Initialized
+ERROR - 2017-07-08 16:22:43 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:22:43 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:22:43 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:22:43 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:22:44 --> Final output sent to browser
+DEBUG - 2017-07-08 16:22:44 --> Total execution time: 0.0786
+DEBUG - 2017-07-08 16:22:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Controller Class Initialized
+ERROR - 2017-07-08 16:22:44 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:22:44 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:22:44 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:22:44 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:22:44 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Final output sent to browser
+DEBUG - 2017-07-08 16:22:44 --> Total execution time: 0.0705
+DEBUG - 2017-07-08 16:22:44 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:22:44 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:22:44 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:22:44 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:22:44 --> Session Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:22:44 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Session routines successfully run
+DEBUG - 2017-07-08 16:22:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Controller Class Initialized
+ERROR - 2017-07-08 16:22:44 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:22:44 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:22:44 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:22:44 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:22:44 --> Final output sent to browser
+DEBUG - 2017-07-08 16:22:44 --> Total execution time: 0.0447
+DEBUG - 2017-07-08 16:22:44 --> Config Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:22:44 --> URI Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Router Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Output Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Security Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Input Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:22:44 --> Language Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:22:44 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:22:44 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:22:44 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:22:44 --> Session Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:22:44 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Session routines successfully run
+DEBUG - 2017-07-08 16:22:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:22:44 --> Controller Class Initialized
+ERROR - 2017-07-08 16:22:44 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:22:44 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:22:44 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:22:44 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:22:44 --> Final output sent to browser
+DEBUG - 2017-07-08 16:22:44 --> Total execution time: 0.0276
+DEBUG - 2017-07-08 16:24:14 --> Config Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:24:14 --> URI Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Router Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Output Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Security Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Config Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:24:14 --> Input Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:24:14 --> Language Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> URI Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Router Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Config Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:24:14 --> URI Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Router Class Initialized
+ERROR - 2017-07-08 16:24:14 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:24:14 --> Output Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Security Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Input Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:24:14 --> Language Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:24:14 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:24:14 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:24:14 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:24:14 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Session Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:24:14 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Session routines successfully run
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:24:14 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:24:14 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:24:14 --> Session Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:24:14 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Session routines successfully run
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Controller Class Initialized
+ERROR - 2017-07-08 16:24:14 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:24:14 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:24:14 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:24:14 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:24:14 --> Final output sent to browser
+DEBUG - 2017-07-08 16:24:14 --> Total execution time: 0.0670
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Controller Class Initialized
+ERROR - 2017-07-08 16:24:14 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:24:14 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:24:14 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:24:14 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:24:14 --> Final output sent to browser
+DEBUG - 2017-07-08 16:24:14 --> Total execution time: 0.0957
+DEBUG - 2017-07-08 16:24:14 --> Config Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:24:14 --> URI Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Router Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Output Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Security Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Input Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:24:14 --> Language Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:24:14 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:24:14 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:24:14 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:24:14 --> Session Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:24:14 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Session routines successfully run
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Controller Class Initialized
+ERROR - 2017-07-08 16:24:14 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:24:14 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:24:14 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:24:14 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:24:14 --> Final output sent to browser
+DEBUG - 2017-07-08 16:24:14 --> Total execution time: 0.0237
+DEBUG - 2017-07-08 16:24:14 --> Config Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:24:14 --> URI Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Router Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Output Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Security Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Input Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:24:14 --> Language Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:24:14 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:24:14 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:24:14 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:24:14 --> Session Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:24:14 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Session routines successfully run
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Model Class Initialized
+DEBUG - 2017-07-08 16:24:14 --> Controller Class Initialized
+ERROR - 2017-07-08 16:24:14 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:24:14 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:24:14 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:24:14 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:24:14 --> Final output sent to browser
+DEBUG - 2017-07-08 16:24:14 --> Total execution time: 0.0234
+DEBUG - 2017-07-08 16:25:44 --> Config Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:25:44 --> Config Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:25:44 --> Config Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:25:44 --> URI Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> URI Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Router Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Router Class Initialized
+ERROR - 2017-07-08 16:25:44 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:25:44 --> URI Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Output Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Router Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Security Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Output Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Input Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Security Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:25:44 --> Language Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Input Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:25:44 --> Language Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:25:44 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:25:44 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:25:44 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:25:44 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:25:44 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:25:44 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:25:44 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:25:44 --> Session Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:25:44 --> Session Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:25:44 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Session routines successfully run
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Session routines successfully run
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Controller Class Initialized
+ERROR - 2017-07-08 16:25:44 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:25:44 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:25:44 --> Checking downloaded zip files expire date
+ERROR - 2017-07-08 16:25:44 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:25:44 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:25:44 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:25:44 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:25:44 --> Final output sent to browser
+DEBUG - 2017-07-08 16:25:44 --> Total execution time: 0.0476
+DEBUG - 2017-07-08 16:25:44 --> Final output sent to browser
+DEBUG - 2017-07-08 16:25:44 --> Total execution time: 0.0636
+DEBUG - 2017-07-08 16:25:44 --> Config Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:25:44 --> URI Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Router Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Output Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Security Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Input Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:25:44 --> Language Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:25:44 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:25:44 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:25:44 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:25:44 --> Session Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:25:44 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Session routines successfully run
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Controller Class Initialized
+ERROR - 2017-07-08 16:25:44 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:25:44 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:25:44 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:25:44 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:25:44 --> Final output sent to browser
+DEBUG - 2017-07-08 16:25:44 --> Total execution time: 0.0251
+DEBUG - 2017-07-08 16:25:44 --> Config Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:25:44 --> URI Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Router Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Output Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Security Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Input Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:25:44 --> Language Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:25:44 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:25:44 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:25:44 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:25:44 --> Session Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:25:44 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Session routines successfully run
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Model Class Initialized
+DEBUG - 2017-07-08 16:25:44 --> Controller Class Initialized
+ERROR - 2017-07-08 16:25:44 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:25:44 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:25:44 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:25:44 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:25:44 --> Final output sent to browser
+DEBUG - 2017-07-08 16:25:44 --> Total execution time: 0.0242
+DEBUG - 2017-07-08 16:26:48 --> Config Class Initialized
+DEBUG - 2017-07-08 16:26:48 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:26:48 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:26:48 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:26:48 --> URI Class Initialized
+DEBUG - 2017-07-08 16:26:48 --> Router Class Initialized
+DEBUG - 2017-07-08 16:26:48 --> Output Class Initialized
+DEBUG - 2017-07-08 16:26:48 --> Security Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Input Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:26:49 --> Language Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:26:49 --> Session Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:26:49 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Session routines successfully run
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Controller Class Initialized
+ERROR - 2017-07-08 16:26:49 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:26:49 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:26:49 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:26:49 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:26:49 --> Final output sent to browser
+DEBUG - 2017-07-08 16:26:49 --> Total execution time: 0.0366
+DEBUG - 2017-07-08 16:26:49 --> Config Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:26:49 --> URI Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Router Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Config Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:26:49 --> Output Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> URI Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Router Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Security Class Initialized
+ERROR - 2017-07-08 16:26:49 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:26:49 --> Input Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:26:49 --> Language Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:26:49 --> Session Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:26:49 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Session routines successfully run
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Config Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Config Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> URI Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Router Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:26:49 --> Output Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Security Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> URI Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Router Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Input Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:26:49 --> Output Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Language Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Security Class Initialized
+ERROR - 2017-07-08 16:26:49 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:26:49 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:26:49 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:26:49 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:26:49 --> Final output sent to browser
+DEBUG - 2017-07-08 16:26:49 --> Total execution time: 0.0547
+DEBUG - 2017-07-08 16:26:49 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Input Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:26:49 --> Language Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Config Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:26:49 --> URI Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Router Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Output Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:26:49 --> Security Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:26:49 --> Input Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:26:49 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:26:49 --> Language Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Session Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:26:49 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Session routines successfully run
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:26:49 --> Session Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Session Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:26:49 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Session routines successfully run
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:26:49 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Session routines successfully run
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Controller Class Initialized
+ERROR - 2017-07-08 16:26:49 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:26:49 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:26:49 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:26:49 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:26:49 --> Final output sent to browser
+DEBUG - 2017-07-08 16:26:49 --> Total execution time: 0.0595
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Config Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:26:49 --> URI Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Router Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Output Class Initialized
+ERROR - 2017-07-08 16:26:49 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:26:49 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:26:49 --> Checking downloaded zip files expire date
+ERROR - 2017-07-08 16:26:49 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:26:49 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:26:49 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:26:49 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:26:49 --> Final output sent to browser
+DEBUG - 2017-07-08 16:26:49 --> Total execution time: 0.0777
+DEBUG - 2017-07-08 16:26:49 --> Final output sent to browser
+DEBUG - 2017-07-08 16:26:49 --> Total execution time: 0.0539
+DEBUG - 2017-07-08 16:26:49 --> Security Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Input Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:26:49 --> Language Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:26:49 --> Session Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:26:49 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Session routines successfully run
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Controller Class Initialized
+ERROR - 2017-07-08 16:26:49 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:26:49 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:26:49 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:26:49 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:26:49 --> Final output sent to browser
+DEBUG - 2017-07-08 16:26:49 --> Total execution time: 0.0366
+DEBUG - 2017-07-08 16:26:49 --> Config Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:26:49 --> URI Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Router Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Output Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Security Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Input Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:26:49 --> Language Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:26:49 --> Session Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:26:49 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Session routines successfully run
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Model Class Initialized
+DEBUG - 2017-07-08 16:26:49 --> Controller Class Initialized
+ERROR - 2017-07-08 16:26:49 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:26:49 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:26:49 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:26:49 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:26:49 --> Final output sent to browser
+DEBUG - 2017-07-08 16:26:49 --> Total execution time: 0.0666
+DEBUG - 2017-07-08 16:27:36 --> Config Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:27:36 --> URI Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Router Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Output Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Security Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Input Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:27:36 --> Language Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:27:36 --> Session Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:27:36 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Session routines successfully run
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Controller Class Initialized
+ERROR - 2017-07-08 16:27:36 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:27:36 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:27:36 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:27:36 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:27:36 --> Final output sent to browser
+DEBUG - 2017-07-08 16:27:36 --> Total execution time: 0.0366
+DEBUG - 2017-07-08 16:27:36 --> Config Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:27:36 --> URI Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Router Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Output Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Security Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Config Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:27:36 --> Input Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> URI Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:27:36 --> Language Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Router Class Initialized
+ERROR - 2017-07-08 16:27:36 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:27:36 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:27:36 --> Session Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:27:36 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Session routines successfully run
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Config Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Controller Class Initialized
+ERROR - 2017-07-08 16:27:36 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:27:36 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:27:36 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:27:36 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:27:36 --> Config Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Final output sent to browser
+DEBUG - 2017-07-08 16:27:36 --> Total execution time: 0.0489
+DEBUG - 2017-07-08 16:27:36 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:27:36 --> URI Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Router Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:27:36 --> Output Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> URI Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Router Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Output Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Security Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Config Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:27:36 --> Input Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:27:36 --> URI Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Language Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Router Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Output Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Security Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Input Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:27:36 --> Language Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Security Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Input Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:27:36 --> Language Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:27:36 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Session Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:27:36 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Session routines successfully run
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:27:36 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:27:36 --> Session Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:27:36 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:27:36 --> Session Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:27:36 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Session routines successfully run
+DEBUG - 2017-07-08 16:27:36 --> Session routines successfully run
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Controller Class Initialized
+ERROR - 2017-07-08 16:27:36 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:27:36 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:27:36 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:27:36 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:27:36 --> Final output sent to browser
+DEBUG - 2017-07-08 16:27:36 --> Total execution time: 0.0571
+DEBUG - 2017-07-08 16:27:36 --> Config Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:27:36 --> URI Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Router Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Output Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Security Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Input Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:27:36 --> Language Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Controller Class Initialized
+ERROR - 2017-07-08 16:27:36 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:27:36 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:27:36 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:27:36 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:27:36 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Final output sent to browser
+DEBUG - 2017-07-08 16:27:36 --> Total execution time: 0.0687
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:27:36 --> Controller Class Initialized
+ERROR - 2017-07-08 16:27:36 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:27:36 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:27:36 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:27:36 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:27:36 --> Session Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:27:36 --> Final output sent to browser
+DEBUG - 2017-07-08 16:27:36 --> Total execution time: 0.0888
+DEBUG - 2017-07-08 16:27:36 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Session routines successfully run
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Controller Class Initialized
+ERROR - 2017-07-08 16:27:36 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:27:36 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:27:36 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:27:36 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:27:36 --> Final output sent to browser
+DEBUG - 2017-07-08 16:27:36 --> Total execution time: 0.0370
+DEBUG - 2017-07-08 16:27:36 --> Config Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:27:36 --> URI Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Router Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Output Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Security Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Input Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:27:36 --> Language Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:27:36 --> Session Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:27:36 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Session routines successfully run
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:36 --> Controller Class Initialized
+ERROR - 2017-07-08 16:27:36 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:27:36 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:27:36 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:27:36 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:27:36 --> Final output sent to browser
+DEBUG - 2017-07-08 16:27:36 --> Total execution time: 0.0323
+DEBUG - 2017-07-08 16:27:57 --> Config Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:27:57 --> URI Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Router Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Output Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Security Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Input Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:27:57 --> Language Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:27:57 --> Session Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:27:57 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> A session cookie was not found.
+DEBUG - 2017-07-08 16:27:57 --> Session routines successfully run
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Controller Class Initialized
+ERROR - 2017-07-08 16:27:57 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:27:57 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:27:57 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:27:57 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:27:57 --> Final output sent to browser
+DEBUG - 2017-07-08 16:27:57 --> Total execution time: 0.0468
+DEBUG - 2017-07-08 16:27:57 --> Config Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:27:57 --> URI Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Router Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Output Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Security Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Input Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:27:57 --> Language Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:27:57 --> Session Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:27:57 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> A session cookie was not found.
+DEBUG - 2017-07-08 16:27:57 --> Session routines successfully run
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Config Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:27:57 --> URI Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Router Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Output Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Security Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Input Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:27:57 --> Language Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:27:57 --> Controller Class Initialized
+ERROR - 2017-07-08 16:27:57 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:27:57 --> Session Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:27:57 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:27:57 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:27:57 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Session routines successfully run
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Final output sent to browser
+DEBUG - 2017-07-08 16:27:57 --> Total execution time: 0.0624
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Config Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:27:57 --> Config Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> URI Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:27:57 --> Router Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> URI Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Output Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Config Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:27:57 --> Security Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> URI Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Input Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:27:57 --> Router Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Output Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Router Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Output Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Security Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Input Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:27:57 --> Language Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Language Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Security Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Input Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:27:57 --> Language Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:27:57 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Controller Class Initialized
+ERROR - 2017-07-08 16:27:57 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:27:57 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:27:57 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:27:57 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:27:57 --> Session Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:27:57 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Final output sent to browser
+DEBUG - 2017-07-08 16:27:57 --> Total execution time: 0.0709
+DEBUG - 2017-07-08 16:27:57 --> Session routines successfully run
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:27:57 --> Session Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:27:57 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Session routines successfully run
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:27:57 --> Session Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:27:57 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> A session cookie was not found.
+DEBUG - 2017-07-08 16:27:57 --> Session routines successfully run
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Controller Class Initialized
+ERROR - 2017-07-08 16:27:57 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:27:57 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:27:57 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:27:57 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:27:57 --> Final output sent to browser
+DEBUG - 2017-07-08 16:27:57 --> Total execution time: 0.0561
+DEBUG - 2017-07-08 16:27:57 --> Config Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:27:57 --> URI Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Router Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Output Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Security Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Input Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Global POST and COOKIE data sanitized
+ERROR - 2017-07-08 16:27:57 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:27:57 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:27:57 --> Language Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:27:57 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:27:57 --> Final output sent to browser
+DEBUG - 2017-07-08 16:27:57 --> Total execution time: 0.0772
+DEBUG - 2017-07-08 16:27:57 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: data_functions_helper
+ERROR - 2017-07-08 16:27:57 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:27:57 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:27:57 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:27:57 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:27:57 --> Final output sent to browser
+DEBUG - 2017-07-08 16:27:57 --> Total execution time: 0.0921
+DEBUG - 2017-07-08 16:27:57 --> Session Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:27:57 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Session routines successfully run
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:57 --> Controller Class Initialized
+ERROR - 2017-07-08 16:27:57 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:27:57 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:27:57 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:27:57 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:27:57 --> Final output sent to browser
+DEBUG - 2017-07-08 16:27:57 --> Total execution time: 0.0558
+DEBUG - 2017-07-08 16:27:59 --> Config Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:27:59 --> URI Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Router Class Initialized
+ERROR - 2017-07-08 16:27:59 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:27:59 --> Config Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:27:59 --> URI Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Router Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Output Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Security Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Config Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:27:59 --> URI Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Router Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Output Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Security Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Input Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:27:59 --> Language Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Input Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:27:59 --> Language Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:27:59 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:27:59 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:27:59 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:27:59 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:27:59 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:27:59 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:27:59 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:27:59 --> Session Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:27:59 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Session Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:27:59 --> Session routines successfully run
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Session routines successfully run
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Controller Class Initialized
+ERROR - 2017-07-08 16:27:59 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:27:59 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:27:59 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Controller Class Initialized
+ERROR - 2017-07-08 16:27:59 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:27:59 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:27:59 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:27:59 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:27:59 --> Final output sent to browser
+DEBUG - 2017-07-08 16:27:59 --> Total execution time: 0.0569
+DEBUG - 2017-07-08 16:27:59 --> Final output sent to browser
+DEBUG - 2017-07-08 16:27:59 --> Total execution time: 0.0538
+DEBUG - 2017-07-08 16:27:59 --> Config Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:27:59 --> URI Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Router Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Output Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Security Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Input Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:27:59 --> Language Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:27:59 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:27:59 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:27:59 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:27:59 --> Session Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:27:59 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Session routines successfully run
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Controller Class Initialized
+ERROR - 2017-07-08 16:27:59 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:27:59 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:27:59 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:27:59 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:27:59 --> Final output sent to browser
+DEBUG - 2017-07-08 16:27:59 --> Total execution time: 0.0369
+DEBUG - 2017-07-08 16:27:59 --> Config Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:27:59 --> URI Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Router Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Output Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Security Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Input Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:27:59 --> Language Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:27:59 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:27:59 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:27:59 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:27:59 --> Session Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:27:59 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Session routines successfully run
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Model Class Initialized
+DEBUG - 2017-07-08 16:27:59 --> Controller Class Initialized
+ERROR - 2017-07-08 16:27:59 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:27:59 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:27:59 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:27:59 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:27:59 --> Final output sent to browser
+DEBUG - 2017-07-08 16:27:59 --> Total execution time: 0.0329
+DEBUG - 2017-07-08 16:29:29 --> Config Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:29:29 --> URI Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Router Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Config Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Hooks Class Initialized
+ERROR - 2017-07-08 16:29:29 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:29:29 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:29:29 --> URI Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Router Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Config Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:29:29 --> Output Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> URI Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Security Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Router Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Input Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:29:29 --> Language Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Output Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Security Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Input Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:29:29 --> Language Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:29:29 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:29:29 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:29:29 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:29:29 --> Session Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:29:29 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:29:29 --> Session routines successfully run
+DEBUG - 2017-07-08 16:29:29 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Session Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:29:29 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Session routines successfully run
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Controller Class Initialized
+ERROR - 2017-07-08 16:29:29 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:29:29 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:29:29 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:29:29 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:29:29 --> Final output sent to browser
+DEBUG - 2017-07-08 16:29:29 --> Total execution time: 0.0421
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Controller Class Initialized
+ERROR - 2017-07-08 16:29:29 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:29:29 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:29:29 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:29:29 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:29:29 --> Final output sent to browser
+DEBUG - 2017-07-08 16:29:29 --> Total execution time: 0.0485
+DEBUG - 2017-07-08 16:29:29 --> Config Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:29:29 --> URI Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Router Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Output Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Security Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Input Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:29:29 --> Language Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:29:29 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:29:29 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:29:29 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:29:29 --> Session Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:29:29 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Session routines successfully run
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Controller Class Initialized
+ERROR - 2017-07-08 16:29:29 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:29:29 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:29:29 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:29:29 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:29:29 --> Final output sent to browser
+DEBUG - 2017-07-08 16:29:29 --> Total execution time: 0.0290
+DEBUG - 2017-07-08 16:29:29 --> Config Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:29:29 --> URI Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Router Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Output Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Security Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Input Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:29:29 --> Language Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:29:29 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:29:29 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:29:29 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:29:29 --> Session Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:29:29 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Session routines successfully run
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:29 --> Controller Class Initialized
+ERROR - 2017-07-08 16:29:29 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:29:29 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:29:29 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:29:29 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:29:29 --> Final output sent to browser
+DEBUG - 2017-07-08 16:29:29 --> Total execution time: 0.0281
+DEBUG - 2017-07-08 16:29:52 --> Config Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:29:52 --> URI Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Router Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Output Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Security Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Input Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:29:52 --> Language Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Session Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:29:52 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Session routines successfully run
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Controller Class Initialized
+ERROR - 2017-07-08 16:29:52 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:29:52 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:29:52 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:29:52 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:29:52 --> Final output sent to browser
+DEBUG - 2017-07-08 16:29:52 --> Total execution time: 0.0398
+DEBUG - 2017-07-08 16:29:52 --> Config Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:29:52 --> Config Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:29:52 --> URI Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Router Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Output Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Security Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Input Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:29:52 --> Language Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> URI Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Router Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Output Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Security Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Input Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:29:52 --> Language Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Session Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Session routines successfully run
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Session Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:29:52 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Config Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Config Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:29:52 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:29:52 --> URI Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Router Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> URI Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Router Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Output Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Security Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Input Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Session routines successfully run
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Output Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Security Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Language Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Input Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:29:52 --> Language Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Session Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Session routines successfully run
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Session Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:29:52 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Controller Class Initialized
+ERROR - 2017-07-08 16:29:52 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:29:52 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:29:52 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:29:52 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Final output sent to browser
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Total execution time: 0.0861
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Session routines successfully run
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+ERROR - 2017-07-08 16:29:52 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:29:52 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:29:52 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:29:52 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:29:52 --> Final output sent to browser
+DEBUG - 2017-07-08 16:29:52 --> Total execution time: 0.1031
+DEBUG - 2017-07-08 16:29:52 --> Config Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> URI Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Router Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Controller Class Initialized
+ERROR - 2017-07-08 16:29:52 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:29:52 --> Output Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:29:52 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:29:52 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:29:52 --> Security Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Final output sent to browser
+DEBUG - 2017-07-08 16:29:52 --> Total execution time: 0.0765
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Input Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:29:52 --> Language Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Config Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:29:52 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> URI Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Router Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Output Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Security Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Input Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: status_functions_helper
+ERROR - 2017-07-08 16:29:52 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:29:52 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:29:52 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:29:52 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:29:52 --> Session Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:29:52 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Final output sent to browser
+DEBUG - 2017-07-08 16:29:52 --> Total execution time: 0.0924
+DEBUG - 2017-07-08 16:29:52 --> Session routines successfully run
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Language Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Session Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:29:52 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Session routines successfully run
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Controller Class Initialized
+ERROR - 2017-07-08 16:29:52 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:29:52 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:29:52 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:29:52 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:29:52 --> Final output sent to browser
+DEBUG - 2017-07-08 16:29:52 --> Total execution time: 0.0471
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Controller Class Initialized
+ERROR - 2017-07-08 16:29:52 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:29:52 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:29:52 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:29:52 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:29:52 --> Final output sent to browser
+DEBUG - 2017-07-08 16:29:52 --> Total execution time: 0.0465
+DEBUG - 2017-07-08 16:29:52 --> Config Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:29:52 --> URI Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Router Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Output Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Security Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Input Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:29:52 --> Language Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:29:52 --> Session Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:29:52 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Session routines successfully run
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Model Class Initialized
+DEBUG - 2017-07-08 16:29:52 --> Controller Class Initialized
+ERROR - 2017-07-08 16:29:52 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:29:52 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:29:52 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:29:52 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:29:52 --> Final output sent to browser
+DEBUG - 2017-07-08 16:29:52 --> Total execution time: 0.0274
+DEBUG - 2017-07-08 16:31:22 --> Config Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:31:22 --> URI Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Router Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Output Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Security Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Input Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:31:22 --> Language Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Config Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Config Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:31:22 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:31:22 --> URI Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> URI Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Router Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:31:22 --> Output Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:31:22 --> Security Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Router Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Input Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:31:22 --> Language Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Output Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Security Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Input Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:31:22 --> Language Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Session Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:31:22 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Session routines successfully run
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:31:22 --> Session Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:31:22 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Session routines successfully run
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:31:22 --> Session Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:31:22 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Session routines successfully run
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Controller Class Initialized
+ERROR - 2017-07-08 16:31:22 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:31:22 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:31:22 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:31:22 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:31:22 --> Final output sent to browser
+DEBUG - 2017-07-08 16:31:22 --> Total execution time: 0.0325
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Config Class Initialized
+ERROR - 2017-07-08 16:31:22 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:31:22 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:31:22 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:31:22 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:31:22 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:31:22 --> URI Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Router Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Final output sent to browser
+DEBUG - 2017-07-08 16:31:22 --> Total execution time: 0.0405
+DEBUG - 2017-07-08 16:31:22 --> Output Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Security Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Input Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:31:22 --> Language Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:31:22 --> Session Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:31:22 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Session routines successfully run
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Controller Class Initialized
+ERROR - 2017-07-08 16:31:22 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:31:22 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:31:22 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:31:22 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:31:22 --> Final output sent to browser
+DEBUG - 2017-07-08 16:31:22 --> Total execution time: 0.0886
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Controller Class Initialized
+ERROR - 2017-07-08 16:31:22 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:31:22 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:31:22 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:31:22 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:31:22 --> Final output sent to browser
+DEBUG - 2017-07-08 16:31:22 --> Total execution time: 0.0355
+DEBUG - 2017-07-08 16:31:22 --> Config Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:31:22 --> URI Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Router Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Output Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Security Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Input Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:31:22 --> Language Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:31:22 --> Session Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:31:22 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Session routines successfully run
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:22 --> Controller Class Initialized
+ERROR - 2017-07-08 16:31:22 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:31:22 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:31:22 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:31:22 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:31:22 --> Final output sent to browser
+DEBUG - 2017-07-08 16:31:22 --> Total execution time: 0.0249
+DEBUG - 2017-07-08 16:31:27 --> Config Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:31:27 --> URI Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Router Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Output Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Security Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Input Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:31:27 --> Language Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:31:27 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:31:27 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:31:27 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:31:27 --> Session Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:31:27 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Session routines successfully run
+DEBUG - 2017-07-08 16:31:27 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Controller Class Initialized
+ERROR - 2017-07-08 16:31:27 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:31:27 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:31:27 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:31:27 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:31:27 --> Final output sent to browser
+DEBUG - 2017-07-08 16:31:27 --> Total execution time: 0.0323
+DEBUG - 2017-07-08 16:31:27 --> Config Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:31:27 --> URI Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Router Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Config Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Output Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:31:27 --> Security Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> URI Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Router Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Input Class Initialized
+ERROR - 2017-07-08 16:31:27 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:31:27 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:31:27 --> Language Class Initialized
+DEBUG - 2017-07-08 16:31:27 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:31:28 --> Session Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:31:28 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Session routines successfully run
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Config Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:31:28 --> URI Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Router Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Config Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:31:28 --> URI Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Router Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Output Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Security Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Input Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Language Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Controller Class Initialized
+ERROR - 2017-07-08 16:31:28 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:31:28 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:31:28 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:31:28 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:31:28 --> Output Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Security Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Final output sent to browser
+DEBUG - 2017-07-08 16:31:28 --> Total execution time: 0.0563
+DEBUG - 2017-07-08 16:31:28 --> Input Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:31:28 --> Language Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Config Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:31:28 --> URI Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Router Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Output Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Security Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:31:28 --> Input Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:31:28 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Session Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:31:28 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Session routines successfully run
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:31:28 --> Language Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:31:28 --> Session Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:31:28 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Session routines successfully run
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:31:28 --> Session Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:31:28 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Controller Class Initialized
+ERROR - 2017-07-08 16:31:28 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:31:28 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:31:28 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:31:28 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:31:28 --> Final output sent to browser
+DEBUG - 2017-07-08 16:31:28 --> Total execution time: 0.0513
+DEBUG - 2017-07-08 16:31:28 --> Session routines successfully run
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Config Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:31:28 --> URI Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Router Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Output Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Security Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Input Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:31:28 --> Language Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Controller Class Initialized
+ERROR - 2017-07-08 16:31:28 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:31:28 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:31:28 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:31:28 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:31:28 --> Final output sent to browser
+DEBUG - 2017-07-08 16:31:28 --> Total execution time: 0.0629
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: data_functions_helper
+ERROR - 2017-07-08 16:31:28 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:31:28 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:31:28 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:31:28 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:31:28 --> Session Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Final output sent to browser
+DEBUG - 2017-07-08 16:31:28 --> Total execution time: 0.0926
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:31:28 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Session routines successfully run
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Controller Class Initialized
+ERROR - 2017-07-08 16:31:28 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:31:28 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:31:28 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:31:28 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:31:28 --> Final output sent to browser
+DEBUG - 2017-07-08 16:31:28 --> Total execution time: 0.0549
+DEBUG - 2017-07-08 16:31:28 --> Config Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:31:28 --> URI Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Router Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Output Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Security Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Input Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:31:28 --> Language Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:31:28 --> Session Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:31:28 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Session routines successfully run
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:31:28 --> Controller Class Initialized
+ERROR - 2017-07-08 16:31:28 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:31:28 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:31:28 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:31:28 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:31:28 --> Final output sent to browser
+DEBUG - 2017-07-08 16:31:28 --> Total execution time: 0.0337
+DEBUG - 2017-07-08 16:32:58 --> Config Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:32:58 --> URI Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Router Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Output Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Config Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:32:58 --> URI Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Router Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Output Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Config Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:32:58 --> Security Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> URI Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Input Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Router Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:32:58 --> Language Class Initialized
+ERROR - 2017-07-08 16:32:58 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:32:58 --> Security Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Input Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:32:58 --> Language Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:32:58 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:32:58 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:32:58 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:32:58 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:32:58 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:32:58 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:32:58 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:32:58 --> Session Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:32:58 --> Session Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:32:58 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Session routines successfully run
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Session routines successfully run
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+ERROR - 2017-07-08 16:32:58 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:32:58 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:32:58 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:32:58 --> Controller Class Initialized
+ERROR - 2017-07-08 16:32:58 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:32:58 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:32:58 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:32:58 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:32:58 --> Final output sent to browser
+DEBUG - 2017-07-08 16:32:58 --> Total execution time: 0.0651
+DEBUG - 2017-07-08 16:32:58 --> Final output sent to browser
+DEBUG - 2017-07-08 16:32:58 --> Total execution time: 0.0566
+DEBUG - 2017-07-08 16:32:58 --> Config Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:32:58 --> URI Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Router Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Output Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Security Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Input Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:32:58 --> Language Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:32:58 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:32:58 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:32:58 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:32:58 --> Session Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:32:58 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Session routines successfully run
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Controller Class Initialized
+ERROR - 2017-07-08 16:32:58 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:32:58 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:32:58 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:32:58 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:32:58 --> Final output sent to browser
+DEBUG - 2017-07-08 16:32:58 --> Total execution time: 0.0268
+DEBUG - 2017-07-08 16:32:58 --> Config Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:32:58 --> URI Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Router Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Output Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Security Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Input Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:32:58 --> Language Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:32:58 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:32:58 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:32:58 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:32:58 --> Session Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:32:58 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Session routines successfully run
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Model Class Initialized
+DEBUG - 2017-07-08 16:32:58 --> Controller Class Initialized
+ERROR - 2017-07-08 16:32:58 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:32:58 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:32:58 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:32:58 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:32:58 --> Final output sent to browser
+DEBUG - 2017-07-08 16:32:58 --> Total execution time: 0.0248
+DEBUG - 2017-07-08 16:34:28 --> Config Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Config Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:34:28 --> URI Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Router Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Output Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Security Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Config Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Input Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:34:28 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:34:28 --> Language Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> URI Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:34:28 --> URI Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Router Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Output Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Security Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Router Class Initialized
+ERROR - 2017-07-08 16:34:28 --> 404 Page Not Found --> eventlog
+DEBUG - 2017-07-08 16:34:28 --> Input Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:34:28 --> Language Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:34:28 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:34:28 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:34:28 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:34:28 --> Session Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:34:28 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Session routines successfully run
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:34:28 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:34:28 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:34:28 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:34:28 --> Session Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:34:28 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Session routines successfully run
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Controller Class Initialized
+ERROR - 2017-07-08 16:34:28 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:34:28 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:34:28 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:34:28 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:34:28 --> Final output sent to browser
+DEBUG - 2017-07-08 16:34:28 --> Total execution time: 0.0520
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Controller Class Initialized
+ERROR - 2017-07-08 16:34:28 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:34:28 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:34:28 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:34:28 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:34:28 --> Final output sent to browser
+DEBUG - 2017-07-08 16:34:28 --> Total execution time: 0.0605
+DEBUG - 2017-07-08 16:34:28 --> Config Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:34:28 --> URI Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Router Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Output Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Security Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Input Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:34:28 --> Language Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:34:28 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:34:28 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:34:28 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:34:28 --> Session Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:34:28 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Session routines successfully run
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Controller Class Initialized
+ERROR - 2017-07-08 16:34:28 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:34:28 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:34:28 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:34:28 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:34:28 --> Final output sent to browser
+DEBUG - 2017-07-08 16:34:28 --> Total execution time: 0.0255
+DEBUG - 2017-07-08 16:34:28 --> Config Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:34:28 --> URI Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Router Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Output Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Security Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Input Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:34:28 --> Language Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:34:28 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:34:28 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:34:28 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:34:28 --> Session Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:34:28 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Session routines successfully run
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Model Class Initialized
+DEBUG - 2017-07-08 16:34:28 --> Controller Class Initialized
+ERROR - 2017-07-08 16:34:28 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:34:28 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:34:28 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:34:28 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:34:28 --> Final output sent to browser
+DEBUG - 2017-07-08 16:34:28 --> Total execution time: 0.0246
+DEBUG - 2017-07-08 16:35:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:35:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:35:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:35:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:35:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Controller Class Initialized
+ERROR - 2017-07-08 16:35:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:35:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:35:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:35:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:35:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:35:37 --> Total execution time: 0.0375
+DEBUG - 2017-07-08 16:35:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:35:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:35:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:35:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:35:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:35:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:35:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:35:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:35:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:35:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:35:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Controller Class Initialized
+ERROR - 2017-07-08 16:35:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:35:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:35:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:35:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:35:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:35:37 --> Total execution time: 0.0570
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:35:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:35:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:35:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:35:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Controller Class Initialized
+ERROR - 2017-07-08 16:35:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:35:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:35:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:35:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:35:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Controller Class Initialized
+ERROR - 2017-07-08 16:35:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:35:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:35:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:35:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:35:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:35:37 --> Total execution time: 0.0538
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:35:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:35:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:35:37 --> Total execution time: 0.0581
+DEBUG - 2017-07-08 16:35:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:35:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:35:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Encrypt Class Initialized
+ERROR - 2017-07-08 16:35:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:35:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:35:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:35:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:35:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:35:37 --> Total execution time: 0.0491
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:35:37 --> Controller Class Initialized
+ERROR - 2017-07-08 16:35:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:35:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:35:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:35:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:35:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:35:37 --> Total execution time: 0.0403
+DEBUG - 2017-07-08 16:36:39 --> Config Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:36:39 --> URI Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Router Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Output Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Security Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Input Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:36:39 --> Language Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:36:39 --> Session Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:36:39 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Session routines successfully run
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Controller Class Initialized
+ERROR - 2017-07-08 16:36:39 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:36:39 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:36:39 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:36:39 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:36:39 --> Final output sent to browser
+DEBUG - 2017-07-08 16:36:39 --> Total execution time: 0.0420
+DEBUG - 2017-07-08 16:36:39 --> Config Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:36:39 --> URI Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Router Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Output Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Security Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Input Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:36:39 --> Language Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:36:39 --> Session Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:36:39 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Session routines successfully run
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Config Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:36:39 --> URI Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Router Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Config Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:36:39 --> URI Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Router Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Output Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Security Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Output Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Security Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Input Class Initialized
+ERROR - 2017-07-08 16:36:39 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:36:39 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:36:39 --> Input Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Language Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:36:39 --> Language Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:36:39 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:36:39 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:36:39 --> Final output sent to browser
+DEBUG - 2017-07-08 16:36:39 --> Total execution time: 0.0467
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:36:39 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Config Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:36:39 --> URI Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:36:39 --> Router Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Session Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Output Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:36:39 --> Security Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Input Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:36:39 --> Session routines successfully run
+DEBUG - 2017-07-08 16:36:39 --> Language Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Session Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:36:39 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Session routines successfully run
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Controller Class Initialized
+ERROR - 2017-07-08 16:36:39 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:36:39 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:36:39 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:36:39 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:36:39 --> Final output sent to browser
+DEBUG - 2017-07-08 16:36:39 --> Total execution time: 0.0507
+DEBUG - 2017-07-08 16:36:39 --> Session Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:36:39 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Config Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:36:39 --> URI Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Router Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Output Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Session routines successfully run
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+ERROR - 2017-07-08 16:36:39 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:36:39 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:36:39 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:36:39 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Final output sent to browser
+DEBUG - 2017-07-08 16:36:39 --> Total execution time: 0.0701
+DEBUG - 2017-07-08 16:36:39 --> Security Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Input Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:36:39 --> Language Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:36:39 --> Session Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Controller Class Initialized
+ERROR - 2017-07-08 16:36:39 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:36:39 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:36:39 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:36:39 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:36:39 --> Session routines successfully run
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Final output sent to browser
+DEBUG - 2017-07-08 16:36:39 --> Total execution time: 0.0672
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Model Class Initialized
+DEBUG - 2017-07-08 16:36:39 --> Controller Class Initialized
+ERROR - 2017-07-08 16:36:39 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:36:39 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:36:39 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:36:39 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:36:39 --> Final output sent to browser
+DEBUG - 2017-07-08 16:36:39 --> Total execution time: 0.0498
+DEBUG - 2017-07-08 16:37:06 --> Config Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:37:06 --> URI Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Router Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Output Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Security Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Input Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:37:06 --> Language Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:37:06 --> Session Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:37:06 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Session routines successfully run
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Controller Class Initialized
+ERROR - 2017-07-08 16:37:06 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:37:06 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:37:06 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:37:06 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:37:06 --> Final output sent to browser
+DEBUG - 2017-07-08 16:37:06 --> Total execution time: 0.0441
+DEBUG - 2017-07-08 16:37:06 --> Config Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:37:06 --> URI Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Router Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Output Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Security Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Input Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:37:06 --> Language Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:37:06 --> Session Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:37:06 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Session routines successfully run
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Config Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Config Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:37:06 --> URI Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Router Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Output Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Security Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:37:06 --> URI Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Input Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:37:06 --> Router Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Language Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Output Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Security Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Input Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:37:06 --> Language Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Controller Class Initialized
+ERROR - 2017-07-08 16:37:06 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:37:06 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:37:06 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:37:06 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:37:06 --> Final output sent to browser
+DEBUG - 2017-07-08 16:37:06 --> Total execution time: 0.0718
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:37:06 --> Session Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:37:06 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Session routines successfully run
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:37:06 --> Config Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:37:06 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Session Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:37:06 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:37:06 --> URI Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Session routines successfully run
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Router Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Output Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Security Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Input Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:37:06 --> Language Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: data_utils_helper
+ERROR - 2017-07-08 16:37:06 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:37:06 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:37:06 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:37:06 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:37:06 --> Session Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:37:06 --> Final output sent to browser
+DEBUG - 2017-07-08 16:37:06 --> Total execution time: 0.0640
+DEBUG - 2017-07-08 16:37:06 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Session routines successfully run
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Controller Class Initialized
+ERROR - 2017-07-08 16:37:06 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:37:06 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:37:06 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:37:06 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:37:06 --> Config Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Final output sent to browser
+DEBUG - 2017-07-08 16:37:06 --> Total execution time: 0.0720
+DEBUG - 2017-07-08 16:37:06 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:37:06 --> URI Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Router Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Output Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Security Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Input Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:37:06 --> Language Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:37:06 --> Session Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:37:06 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Session routines successfully run
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Controller Class Initialized
+ERROR - 2017-07-08 16:37:06 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:37:06 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:37:06 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:37:06 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:37:06 --> Final output sent to browser
+DEBUG - 2017-07-08 16:37:06 --> Total execution time: 0.0727
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:37:06 --> Controller Class Initialized
+ERROR - 2017-07-08 16:37:06 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:37:06 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:37:06 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:37:06 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:37:06 --> Final output sent to browser
+DEBUG - 2017-07-08 16:37:06 --> Total execution time: 0.0485
+DEBUG - 2017-07-08 16:38:36 --> Config Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:38:36 --> URI Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Router Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Output Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Security Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Input Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:38:36 --> Language Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Config Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:38:36 --> URI Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Router Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Output Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Security Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Input Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:38:36 --> Language Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:38:36 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:38:36 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:38:36 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:38:36 --> Session Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:38:36 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:38:36 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:38:36 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:38:36 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:38:36 --> Session routines successfully run
+DEBUG - 2017-07-08 16:38:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Session Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:38:36 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Session routines successfully run
+DEBUG - 2017-07-08 16:38:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Controller Class Initialized
+ERROR - 2017-07-08 16:38:36 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:38:36 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:38:36 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:38:36 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:38:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Final output sent to browser
+DEBUG - 2017-07-08 16:38:36 --> Total execution time: 0.0704
+DEBUG - 2017-07-08 16:38:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Controller Class Initialized
+ERROR - 2017-07-08 16:38:36 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:38:36 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:38:36 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:38:36 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:38:36 --> Final output sent to browser
+DEBUG - 2017-07-08 16:38:36 --> Total execution time: 0.0508
+DEBUG - 2017-07-08 16:38:36 --> Config Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:38:36 --> URI Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Router Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Output Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Security Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Input Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:38:36 --> Language Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:38:36 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:38:36 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:38:36 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:38:36 --> Session Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:38:36 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Session routines successfully run
+DEBUG - 2017-07-08 16:38:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Model Class Initialized
+DEBUG - 2017-07-08 16:38:36 --> Controller Class Initialized
+ERROR - 2017-07-08 16:38:36 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:38:36 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:38:36 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:38:36 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:38:36 --> Final output sent to browser
+DEBUG - 2017-07-08 16:38:36 --> Total execution time: 0.0300
+DEBUG - 2017-07-08 16:40:06 --> Config Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Config Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:40:06 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:40:06 --> URI Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> URI Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Router Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Router Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Output Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Output Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Security Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Security Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Input Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Input Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:40:06 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:40:06 --> Language Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Language Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:40:06 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:40:06 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:40:06 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:40:06 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:40:06 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:40:06 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:40:06 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:40:06 --> Session Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Session Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:40:06 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:40:06 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Session routines successfully run
+DEBUG - 2017-07-08 16:40:06 --> Session routines successfully run
+DEBUG - 2017-07-08 16:40:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Controller Class Initialized
+ERROR - 2017-07-08 16:40:06 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:40:06 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:40:06 --> SFTP config retrieved successfully
+ERROR - 2017-07-08 16:40:06 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:40:06 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:40:06 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:40:06 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:40:06 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:40:06 --> Final output sent to browser
+DEBUG - 2017-07-08 16:40:06 --> Total execution time: 0.0506
+DEBUG - 2017-07-08 16:40:06 --> Final output sent to browser
+DEBUG - 2017-07-08 16:40:06 --> Total execution time: 0.0514
+DEBUG - 2017-07-08 16:40:06 --> Config Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:40:06 --> URI Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Router Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Output Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Security Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Input Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:40:06 --> Language Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:40:06 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:40:06 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:40:06 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:40:06 --> Session Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:40:06 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Session routines successfully run
+DEBUG - 2017-07-08 16:40:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:40:06 --> Controller Class Initialized
+ERROR - 2017-07-08 16:40:06 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:40:06 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:40:06 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:40:06 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:40:06 --> Final output sent to browser
+DEBUG - 2017-07-08 16:40:06 --> Total execution time: 0.0243
+DEBUG - 2017-07-08 16:41:35 --> Config Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:41:35 --> URI Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Config Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:41:35 --> URI Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Router Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Router Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Output Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Security Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Input Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:41:35 --> Language Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Output Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Security Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Input Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:41:35 --> Language Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:41:35 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:41:35 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:41:35 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:41:35 --> Session Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:41:35 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Session routines successfully run
+DEBUG - 2017-07-08 16:41:35 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:41:35 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:41:35 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:41:35 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:41:35 --> Session Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:41:35 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Session routines successfully run
+DEBUG - 2017-07-08 16:41:35 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Controller Class Initialized
+ERROR - 2017-07-08 16:41:35 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:41:35 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:41:35 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:41:35 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:41:35 --> Final output sent to browser
+DEBUG - 2017-07-08 16:41:35 --> Total execution time: 0.0577
+DEBUG - 2017-07-08 16:41:35 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Controller Class Initialized
+ERROR - 2017-07-08 16:41:35 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:41:35 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:41:35 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:41:35 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:41:35 --> Final output sent to browser
+DEBUG - 2017-07-08 16:41:35 --> Total execution time: 0.0700
+DEBUG - 2017-07-08 16:41:35 --> Config Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:41:35 --> URI Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Router Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Output Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Security Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Input Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:41:35 --> Language Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:41:35 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:41:35 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:41:35 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:41:35 --> Session Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:41:35 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Session routines successfully run
+DEBUG - 2017-07-08 16:41:35 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:35 --> Controller Class Initialized
+ERROR - 2017-07-08 16:41:35 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:41:35 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:41:35 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:41:35 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:41:35 --> Final output sent to browser
+DEBUG - 2017-07-08 16:41:35 --> Total execution time: 0.0274
+DEBUG - 2017-07-08 16:41:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:41:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:41:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:41:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:41:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Controller Class Initialized
+ERROR - 2017-07-08 16:41:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:41:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:41:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:41:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:41:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:41:37 --> Total execution time: 0.0350
+DEBUG - 2017-07-08 16:41:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:41:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:41:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:41:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:41:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Controller Class Initialized
+ERROR - 2017-07-08 16:41:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:41:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:41:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:41:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:41:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:41:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:41:37 --> Total execution time: 0.0421
+DEBUG - 2017-07-08 16:41:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:41:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:41:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:41:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:41:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:41:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:41:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:41:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:41:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:41:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:41:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:41:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:41:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Controller Class Initialized
+ERROR - 2017-07-08 16:41:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:41:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:41:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:41:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:41:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:41:37 --> Total execution time: 0.0584
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:41:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:41:37 --> Language Class Initialized
+ERROR - 2017-07-08 16:41:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:41:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:41:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:41:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:41:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:41:37 --> Total execution time: 0.0802
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Controller Class Initialized
+ERROR - 2017-07-08 16:41:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:41:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:41:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:41:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:41:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:41:37 --> Total execution time: 0.0697
+DEBUG - 2017-07-08 16:41:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:41:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:41:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:41:37 --> Controller Class Initialized
+ERROR - 2017-07-08 16:41:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:41:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:41:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:41:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:41:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:41:37 --> Total execution time: 0.0432
+DEBUG - 2017-07-08 16:43:07 --> Config Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:43:07 --> URI Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Router Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Output Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Security Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Input Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:43:07 --> Language Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Config Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:43:07 --> URI Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Router Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Output Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Security Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Input Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:43:07 --> Language Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:43:07 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:43:07 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:43:07 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:43:07 --> Session Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:43:07 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Session routines successfully run
+DEBUG - 2017-07-08 16:43:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:43:07 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:43:07 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:43:07 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:43:07 --> Session Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:43:07 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Session routines successfully run
+DEBUG - 2017-07-08 16:43:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Controller Class Initialized
+ERROR - 2017-07-08 16:43:07 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:43:07 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:43:07 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:43:07 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:43:07 --> Final output sent to browser
+DEBUG - 2017-07-08 16:43:07 --> Total execution time: 0.0477
+DEBUG - 2017-07-08 16:43:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Controller Class Initialized
+ERROR - 2017-07-08 16:43:07 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:43:07 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:43:07 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:43:07 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:43:07 --> Final output sent to browser
+DEBUG - 2017-07-08 16:43:07 --> Total execution time: 0.0808
+DEBUG - 2017-07-08 16:43:07 --> Config Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:43:07 --> URI Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Router Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Output Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Security Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Input Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:43:07 --> Language Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:43:07 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:43:07 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:43:07 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:43:07 --> Session Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:43:07 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Session routines successfully run
+DEBUG - 2017-07-08 16:43:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Model Class Initialized
+DEBUG - 2017-07-08 16:43:07 --> Controller Class Initialized
+ERROR - 2017-07-08 16:43:07 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:43:07 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:43:07 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:43:07 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:43:07 --> Final output sent to browser
+DEBUG - 2017-07-08 16:43:07 --> Total execution time: 0.0245
+DEBUG - 2017-07-08 16:44:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:44:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:44:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:44:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:44:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:44:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:44:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:44:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:44:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:44:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:44:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:44:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:44:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:44:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:44:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:44:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:44:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Controller Class Initialized
+ERROR - 2017-07-08 16:44:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:44:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:44:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:44:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:44:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:44:37 --> Total execution time: 0.0574
+DEBUG - 2017-07-08 16:44:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Controller Class Initialized
+ERROR - 2017-07-08 16:44:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:44:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:44:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:44:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:44:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:44:37 --> Total execution time: 0.0454
+DEBUG - 2017-07-08 16:44:37 --> Config Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:44:37 --> URI Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Router Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Output Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Security Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Input Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:44:37 --> Language Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:44:37 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:44:37 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:44:37 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:44:37 --> Session Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:44:37 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Session routines successfully run
+DEBUG - 2017-07-08 16:44:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Model Class Initialized
+DEBUG - 2017-07-08 16:44:37 --> Controller Class Initialized
+ERROR - 2017-07-08 16:44:37 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:44:37 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:44:37 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:44:37 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:44:37 --> Final output sent to browser
+DEBUG - 2017-07-08 16:44:37 --> Total execution time: 0.0266
+DEBUG - 2017-07-08 16:46:06 --> Config Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:46:06 --> URI Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Router Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Config Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:46:06 --> Output Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> URI Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Router Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Security Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Input Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Output Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:46:06 --> Language Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Security Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Input Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:46:06 --> Language Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:46:06 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:46:06 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:46:06 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:46:06 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:46:06 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:46:06 --> Session Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:46:06 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:46:06 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:46:06 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Session Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:46:06 --> Session routines successfully run
+DEBUG - 2017-07-08 16:46:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Session routines successfully run
+DEBUG - 2017-07-08 16:46:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Model Class Initialized
+ERROR - 2017-07-08 16:46:06 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:46:06 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:46:06 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:46:06 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:46:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Controller Class Initialized
+ERROR - 2017-07-08 16:46:06 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:46:06 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:46:06 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:46:06 --> Final output sent to browser
+DEBUG - 2017-07-08 16:46:06 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:46:06 --> Total execution time: 0.0577
+DEBUG - 2017-07-08 16:46:06 --> Final output sent to browser
+DEBUG - 2017-07-08 16:46:06 --> Total execution time: 0.0559
+DEBUG - 2017-07-08 16:46:06 --> Config Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:46:06 --> URI Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Router Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Output Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Security Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Input Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:46:06 --> Language Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:46:06 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:46:06 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:46:06 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:46:06 --> Session Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:46:06 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Session routines successfully run
+DEBUG - 2017-07-08 16:46:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Model Class Initialized
+DEBUG - 2017-07-08 16:46:06 --> Controller Class Initialized
+ERROR - 2017-07-08 16:46:06 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:46:06 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:46:06 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:46:06 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:46:06 --> Final output sent to browser
+DEBUG - 2017-07-08 16:46:06 --> Total execution time: 0.0326
+DEBUG - 2017-07-08 16:47:05 --> Config Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:47:05 --> URI Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Router Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Output Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Security Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Input Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:47:05 --> Language Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:47:05 --> Session Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:47:05 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Session routines successfully run
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Controller Class Initialized
+ERROR - 2017-07-08 16:47:05 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:47:05 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:47:05 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:47:05 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:47:05 --> Final output sent to browser
+DEBUG - 2017-07-08 16:47:05 --> Total execution time: 0.0392
+DEBUG - 2017-07-08 16:47:05 --> Config Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:47:05 --> URI Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Router Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Output Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Security Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Input Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:47:05 --> Language Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:47:05 --> Session Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:47:05 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Session routines successfully run
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Config Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Config Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:47:05 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:47:05 --> URI Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> URI Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Router Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Output Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Security Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Input Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:47:05 --> Language Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Router Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Output Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Security Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Input Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:47:05 --> Language Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:47:05 --> Session Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Session routines successfully run
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Controller Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Loader Class Initialized
+ERROR - 2017-07-08 16:47:05 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:47:05 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:47:05 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:47:05 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:47:05 --> Final output sent to browser
+DEBUG - 2017-07-08 16:47:05 --> Total execution time: 0.0645
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:47:05 --> Session Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Config Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:47:05 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:47:05 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> URI Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Router Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Session routines successfully run
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Output Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Security Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Input Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:47:05 --> Language Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Controller Class Initialized
+ERROR - 2017-07-08 16:47:05 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:47:05 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:47:05 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:47:05 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Controller Class Initialized
+ERROR - 2017-07-08 16:47:05 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:47:05 --> Final output sent to browser
+DEBUG - 2017-07-08 16:47:05 --> Total execution time: 0.0616
+DEBUG - 2017-07-08 16:47:05 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:47:05 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:47:05 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:47:05 --> Final output sent to browser
+DEBUG - 2017-07-08 16:47:05 --> Total execution time: 0.0644
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:47:05 --> Session Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:47:05 --> Config Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Hooks Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Utf8 Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> UTF-8 Support Enabled
+DEBUG - 2017-07-08 16:47:05 --> URI Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Router Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Session routines successfully run
+DEBUG - 2017-07-08 16:47:05 --> Output Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Security Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Input Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Global POST and COOKIE data sanitized
+DEBUG - 2017-07-08 16:47:05 --> Language Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Loader Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: data_functions_helper
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: data_utils_helper
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: filtering_functions_helper
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: status_functions_helper
+DEBUG - 2017-07-08 16:47:05 --> Session Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Helper loaded: string_helper
+DEBUG - 2017-07-08 16:47:05 --> Encrypt Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Session routines successfully run
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Controller Class Initialized
+ERROR - 2017-07-08 16:47:05 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:47:05 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:47:05 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:47:05 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:47:05 --> Final output sent to browser
+DEBUG - 2017-07-08 16:47:05 --> Total execution time: 0.0635
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Model Class Initialized
+DEBUG - 2017-07-08 16:47:05 --> Controller Class Initialized
+ERROR - 2017-07-08 16:47:05 --> Severity: Notice  --> Undefined variable: limit /usr/local/vshell2/api/application/core/VS_Controller.php 60
+DEBUG - 2017-07-08 16:47:05 --> Config file loaded: application/config/sftp_config.php
+DEBUG - 2017-07-08 16:47:05 --> SFTP config retrieved successfully
+DEBUG - 2017-07-08 16:47:05 --> Checking downloaded zip files expire date
+DEBUG - 2017-07-08 16:47:05 --> Final output sent to browser
+DEBUG - 2017-07-08 16:47:05 --> Total execution time: 0.0347

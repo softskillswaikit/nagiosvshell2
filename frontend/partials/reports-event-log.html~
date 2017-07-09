@@ -51,7 +51,7 @@
                 </tr>
                 <tr ng-repeat="eventlog in eventlogs | orderObjectBy: 'host_name'" class="state-{{ eventlog.current_state | hoststate | lowercase }}" footabledata>
                     <td host-entry item="host"></td>
-                    <td class="status">{{ eventlog.current_state | count}}</td>
+                    <td class="status">{{ eventlog.current_state | hoststate}}</td>
                     <td>{{ eventlog.last_check * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
                     <td>{{ eventlog.last_state_change | ago }}</td>
                     <td>{{ eventlog.plugin_output }}</td>

@@ -179,6 +179,7 @@ angular.module('vshell.controllers', [])
             var state_filter = $routeParams.state,
                 problem_filter = $routeParams.handled;
             
+            
             // set pending state if it has not been checked
             // for(var i in data){
             //     if(data[i].current_state == '0' && data[i].has_been_checked == '0')
@@ -197,11 +198,12 @@ angular.module('vshell.controllers', [])
         $scope.init = function() {
 
             var options = {
-                name: 'eventlog',
-                url: 'eventlog',
+                name: 'Event Log',
+                url: 'testing',
                 queue: 'main'
             };
 
+	   
             $scope.statefilter = $routeParams.state || '';
             $scope.problemsfilter = $routeParams.handled || '';
 
