@@ -313,7 +313,7 @@ class API extends VS_Controller
     public function testing()
     {
         $Test = $this->Testing->testing_1();
-
+        return $this->output($Test);
         $this->output($Test);
     }
 
