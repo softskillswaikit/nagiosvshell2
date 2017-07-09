@@ -493,20 +493,27 @@ angular.module('vshell.controllers', [])
 .controller('AvailabilityCtrl', ['$scope', '$routeParams', 'async',
     function($scope, $routeParams, async) {
 
-		$scope.reportType = 'Hostgroup(s)';
-		$scope.serviceType = 'Normal Service';
-		$scope.reportComponent = '';
-		$scope.startDate = '';
-		$scope.endDate = '';
-		$scope.reportPeriod = 'Last 7 Days';
-		$scope.reportTimePeriod = 'None';
-		$scope.assumeInitialStates = 'Yes';
-		$scope.assumeStateRetention = 'Yes';
-		$scope.assumeDowntimeStates = 'Yes';
-		$scope.includeSoftStates = 'No';
-		$scope.firstAssumedHostState = 'Unspecified';
-		$scope.firstAssumedServiceState = 'Unspecified';
-		$scope.backtrackedArchives = 4;
+		$scope.reset = function(){
+			$scope.reportType = 'Hostgroup(s)';
+			$scope.serviceType = 'Normal Service';
+			$scope.reportComponent = '';
+			$scope.startDate = '';
+			$scope.endDate = '';
+			$scope.reportPeriod = 'Last 7 Days';
+			$scope.reportTimePeriod = 'None';
+			$scope.assumeInitialStates = 'Yes';
+			$scope.assumeStateRetention = 'Yes';
+			$scope.assumeDowntimeStates = 'Yes';
+			$scope.includeSoftStates = 'No';
+			$scope.firstAssumedHostState = 'Unspecified';
+			$scope.firstAssumedServiceState = 'Unspecified';
+			$scope.backtrackedArchives = 4;
+		};
+		
+		$scope.go = function ( path ) {
+			$location.path( path );
+		};
+		
         $scope.init = function() {
 
             var options = {
@@ -518,6 +525,7 @@ angular.module('vshell.controllers', [])
             async.api($scope, options);
 
         };
+		$scope.reset();
 
     }
 ])

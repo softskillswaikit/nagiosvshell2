@@ -152,8 +152,9 @@
 						<td></td>
 						<td>  
 							<button class="logButtons btn btn-primary btn-sm" ng-click="reset()">Reset</button>
-                            <button ng-disabled="inputForm.$invalid" class="logButtons btn btn-primary btn-sm" 
-									ng-href="#/report/availability/report">Create Report</button>
+                            <a ng-href="#/report/availability/report">
+								<button ng-disabled="inputForm.$invalid" class="logButtons btn btn-primary btn-sm">Create Report</button>
+							</a>
 						</td>
 					</tr>
 				</form>
@@ -209,5 +210,5 @@
             </table>
         </div>
 	</div>
-</div>
+	
 <div ng-include="'frontend/partials/_footer.html'"></div>
