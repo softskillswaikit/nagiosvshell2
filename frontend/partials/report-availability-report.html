@@ -8,10 +8,12 @@
 
 <div id="content" class="clearfix" ng-controller="AvailabilityReportCtrl" ng-init="init()">
 
+	<h1>Availability Report</h1>
+	
 	<!--(hostgroup-one/all, host-all)-->
     <div class="table-container full-width">
 
-        <h1>Host State Breakdowns(hostgroup-one/all, host-all)</h1>
+        <h3>Host State Breakdowns(hostgroup-one/all, host-all)</h3>
 
         <div class="table-options">
             <form action="" class="filter-form" method="post">
@@ -34,6 +36,7 @@
                     <th>Time Undetermined (%)</th>
                 </tr>
             </thead>
+            <!--
             <tfoot>
                 <tr>
                     <td colspan="5">
@@ -42,7 +45,7 @@
                     </td>
                 </tr>
             </tfoot>
-            <tbody>
+			<tbody>
                 <tr ng-if="(hostgroup.HostStatusCollection | count) == 0">
                     <td colspan="5">{{ is_loading ? 'Loading...' : 'No hostgroup members are defined' }}</td>
                 </tr>
@@ -52,6 +55,7 @@
                     <td><a ng-repeat="service in host.ServiceStatusCollection | orderObjectBy: 'service_description'" class="status-item active services-{{ service.current_state | servicestate | lowercase }}" href="#/services/{{ host.host_name }}/{{ service.service_description }}">{{ service.service_description }}</a></td>
                 </tr>
             </tbody>
+			-->
         </table>
 
     </div>
@@ -59,7 +63,7 @@
 	<!--(host-one, service-one)-->
 	<div class="table-container full-width">
 	
-        <h1>Host State Breakdowns(host-one)</h1>
+        <h3>Host State Breakdowns(host-one)</h3>
 
         <div class="table-options">
             <form action="" class="filter-form" method="post">
@@ -82,6 +86,7 @@
                     <th>Known Time (%)</th>
                 </tr>
             </thead>
+            <!--
             <tfoot>
                 <tr>
                     <td colspan="5">
@@ -100,6 +105,7 @@
                     <td><a ng-repeat="service in host.ServiceStatusCollection | orderObjectBy: 'service_description'" class="status-item active services-{{ service.current_state | servicestate | lowercase }}" href="#/services/{{ host.host_name }}/{{ service.service_description }}">{{ service.service_description }}</a></td>
                 </tr>
             </tbody>
+			-->
         </table>
 
     </div>
@@ -107,7 +113,7 @@
 	<!--(host-one, service-all)-->
 	<div class="table-container full-width">
 	
-        <h1>State Breakdowns For Host Service(host-one)</h1>
+        <h3>State Breakdowns For Host Service(host-one)</h3>
 
         <div class="table-options">
             <form action="" class="filter-form" method="post">
@@ -132,6 +138,7 @@
 					<th>Time Undetermined (%)</th>
                 </tr>
             </thead>
+            <!--
             <tfoot>
                 <tr>
                     <td colspan="5">
@@ -150,6 +157,7 @@
                     <td><a ng-repeat="service in host.ServiceStatusCollection | orderObjectBy: 'service_description'" class="status-item active services-{{ service.current_state | servicestate | lowercase }}" href="#/services/{{ host.host_name }}/{{ service.service_description }}">{{ service.service_description }}</a></td>
                 </tr>
             </tbody>
+			-->
         </table>
 
     </div>
@@ -157,7 +165,7 @@
 	<!--(host-one, service-one)-->
 	<div class="table-container full-width">
 
-        <h1>Host Log Entries</h1>
+        <h3>Host Log Entries(host-one, service-one)</h3>
 
         <div class="table-options">
             <form action="" class="filter-form" method="post">
@@ -180,6 +188,7 @@
                     <th>Event/State Information</th>
                 </tr>
             </thead>
+            <!--
             <tfoot>
                 <tr>
                     <td colspan="5">
@@ -198,14 +207,15 @@
                     <td><a ng-repeat="service in host.ServiceStatusCollection | orderObjectBy: 'service_description'" class="status-item active services-{{ service.current_state | servicestate | lowercase }}" href="#/services/{{ host.host_name }}/{{ service.service_description }}">{{ service.service_description }}</a></td>
                 </tr>
             </tbody>
+			-->
         </table>
 
     </div>
 	
-	<!--(service)-->
+	<!--(service-all)-->
 	<div class="table-container full-width">
 
-        <h1>Service State Breakdowns</h1>
+        <h3>Service State Breakdowns(service-all)</h3>
 
         <div class="table-options">
             <form action="" class="filter-form" method="post">
@@ -230,6 +240,7 @@
                     <th>Time Undetermined (%)</th>
                 </tr>
             </thead>
+            <!--
             <tfoot>
                 <tr>
                     <td colspan="5">
@@ -238,7 +249,7 @@
                     </td>
                 </tr>
             </tfoot>
-            <tbody>
+			<tbody>
                 <tr ng-if="(hostgroup.HostStatusCollection | count) == 0">
                     <td colspan="5">{{ is_loading ? 'Loading...' : 'No hostgroup members are defined' }}</td>
                 </tr>
@@ -248,18 +259,19 @@
                     <td><a ng-repeat="service in host.ServiceStatusCollection | orderObjectBy: 'service_description'" class="status-item active services-{{ service.current_state | servicestate | lowercase }}" href="#/services/{{ host.host_name }}/{{ service.service_description }}">{{ service.service_description }}</a></td>
                 </tr>
             </tbody>
+			-->
         </table>
 
     </div>
 
 	<!--view: service-one, host-one-->
-	<div class="table-container full-width">
+	<div class="table-container partial-width">
 		<div class="commands">
 
-            <h3>View</h3>
+            <h3>View(service-one, host-one)</h3>
 
 			<!--show if a single host is selected-->
-            <table ng-if=true cellspacing="0" cellpadding="0">
+            <table cellspacing="0" cellpadding="0">
                 <tbody>
                     <tr class="footable-odd">
                         <td><a target="nagios" ng-href="{{}}">View Trends For This Host</a></td>
@@ -280,7 +292,7 @@
             </table>
 			
 			<!--show if a single service is selected-->
-			<table ng-if=true cellspacing="0" cellpadding="0">
+			<table cellspacing="0" cellpadding="0">
                 <tbody>
                     <tr class="footable-odd">
                         <td><a target="nagios" ng-href="{{}}">View Availability Report For This Host</a></td>

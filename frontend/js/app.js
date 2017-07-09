@@ -77,6 +77,9 @@ angular.module('vshell', [
 		$routeProvider.when('/report/availability', {
             templateUrl: 'frontend/partials/report-availability.html'
         });
+		$routeProvider.when('/report/availability/report', {
+            templateUrl: 'frontend/partials/report-availability-report.html'
+        });
 		$routeProvider.when('/report/trends', {
             templateUrl: 'frontend/partials/report-trends.html'
         });
