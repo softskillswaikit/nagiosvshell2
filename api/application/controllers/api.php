@@ -302,7 +302,7 @@ class API extends VS_Controller
      * Fetch all notifications
      *
      * @param string $day
-     * @oaram string $month
+     * @param string $month
      * @param string $year
      */
     public function notifications($day='', $month='', $year='')
@@ -310,7 +310,12 @@ class API extends VS_Controller
 
     }
 
+    public function testing()
+    {
+        $Test = $this->Testing->testing_1();
 
+        $this->output($Test);
+    }
 
 
 
