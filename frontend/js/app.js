@@ -83,9 +83,15 @@ angular.module('vshell', [
 		$routeProvider.when('/report/trends', {
             templateUrl: 'frontend/partials/report-trends.html'
         });
+		$routeProvider.when('/report/trends/report', {
+            templateUrl: 'frontend/partials/report-trends-report.html'
+        });
 		$routeProvider.when('/report/alerthistogram', {
             templateUrl: 'frontend/partials/report-alert-histogram.html'
         });	
+		$routeProvider.when('/report/alerthistogram/report', {
+            templateUrl: 'frontend/partials/report-alert-histogram-report.html'
+        });
         $routeProvider.when('/options', {
             templateUrl: 'frontend/partials/options.html'
         });

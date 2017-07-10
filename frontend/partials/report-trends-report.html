@@ -6,15 +6,15 @@
 
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
-<div id="content" class="clearfix" ng-controller="AlertHistogramReportCtrl" ng-init="init()">
+<div id="content" class="clearfix" ng-controller="TrendsReportCtrl" ng-init="init()">
 
     <div class="table-container full-width">
 
-        <h1>Alert Histogram Report</h1>
+        <h1>State Trends Report</h1>
 		
 		 <div class="table-container full-width">
 
-			<h3>Host Alert Histogram(host)</h3>
+			<h3>Host State Trends(host)</h3>
 
         <div class="table-options">
 		
@@ -22,7 +22,7 @@
 
         <div class="table-container full-width">
 
-			<h3>Service Alert Histogram(service)</h3>
+			<h3>Service State Trends(service)</h3>
 
         <div class="table-options">
 		
@@ -39,18 +39,15 @@
             <table cellspacing="0" cellpadding="0">
                 <tbody>
                     <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{}}">View Trends For This Host</a></td>
-                    </tr>
-					<tr class="footable-even">
-						<td><a target="nagios" ng-href="{{}}">View Availability Report For This Service</a></td>
-                    </tr>
-					<tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{}}">View Status Detail For This Host</a></td>
+                        <td><a target="nagios" ng-href="{{}}">View Availability Report For This Host</a></td>
                     </tr>
                     <tr class="footable-even">
-                        <td><a target="nagios" ng-href="{{}}">View History For This Host</a></td>
+                        <td><a target="nagios" ng-href="{{}}">View Status Detail For This Host</a></td>
+                    </tr>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Alert History For This Host</a></td>
                     </tr> 
-					<tr class="footable-odd">
+					<tr class="footable-even">
                         <td><a target="nagios" ng-href="{{}}">View Notifications For This Host</a></td>
                     </tr>
                 </tbody>
@@ -60,15 +57,18 @@
 			<table cellspacing="0" cellpadding="0">
                 <tbody>
                     <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{}}">View Trends For This Service</a></td>
+                        <td><a target="nagios" ng-href="{{}}">View Trends For This Host</a></td>
                     </tr>
                     <tr class="footable-even">
-                        <td><a target="nagios" ng-href="{{}}">View Availability Report For This Service</a></td>
+                        <td><a target="nagios" ng-href="{{}}">View Availability Report For This HService</a></td>
                     </tr>
                     <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{}}">View History For This Service</a></td>
+                        <td><a target="nagios" ng-href="{{}}">View Alert Histogram For This Service</a></td>
                     </tr>
-					<tr class="footable-even">
+                    <tr class="footable-even">
+                        <td><a target="nagios" ng-href="{{}}">View Alert History For This Service</a></td>
+                    </tr> 
+					<tr class="footable-odd">
                         <td><a target="nagios" ng-href="{{}}">View Notifications For This Service</a></td>
                     </tr>
                 </tbody>

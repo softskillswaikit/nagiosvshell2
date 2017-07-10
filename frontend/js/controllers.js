@@ -510,8 +510,74 @@ angular.module('vshell.controllers', [])
 			$scope.backtrackedArchives = 4;
 		};
 		
-		$scope.go = function ( path ) {
-			$location.path( path );
+        $scope.init = function() {
+
+            var options = {
+                name: 'availability',
+                url: 'availability/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, options);
+
+        };
+		$scope.reset();
+
+    }
+])
+
+.controller('TrendsCtrl', ['$scope', '$routeParams', 'async',
+    function($scope, $routeParams, async) {
+
+		$scope.reset = function(){
+			$scope.reportType = 'Host';
+			$scope.serviceType = 'Normal Service';
+			$scope.reportComponent = '';
+			$scope.startDate = '';
+			$scope.endDate = '';
+			$scope.reportPeriod = 'Last 7 Days';
+			$scope.reportTimePeriod = 'None';
+			$scope.assumeInitialStates = 'Yes';
+			$scope.assumeStateRetention = 'Yes';
+			$scope.assumeDowntimeStates = 'Yes';
+			$scope.includeSoftStates = 'No';
+			$scope.firstAssumedHostState = 'Unspecified';
+			$scope.firstAssumedServiceState = 'Unspecified';
+			$scope.backtrackedArchives = 4;
+		};
+		
+        $scope.init = function() {
+
+            var options = {
+                name: 'availability',
+                url: 'availability/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, options);
+
+        };
+		$scope.reset();
+
+    }
+])
+
+.controller('AlertHistogramCtrl', ['$scope', '$routeParams', 'async',
+    function($scope, $routeParams, async) {
+
+		$scope.reset = function(){
+			$scope.reportType = 'Host';
+			$scope.serviceType = 'Normal Service';
+			$scope.reportComponent = '';
+			$scope.startDate = '';
+			$scope.endDate = '';
+			$scope.reportPeriod = 'Last 7 Days';
+			$scope.statisticsBreakdown = 'Day of the Month';
+			$scope.eventsToGraph = 'All Hosts Events';
+			$scope.stateTypesToGraph = 'Hard and Soft States';
+			$scope.assumeStateRetention = 'Yes';
+			$scope.initialStatesLogged = 'No';
+			$scope.ignoreRepeatedStates = 'No';
 		};
 		
         $scope.init = function() {

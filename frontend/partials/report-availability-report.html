@@ -45,6 +45,7 @@
                     </td>
                 </tr>
             </tfoot>
+			-->
 			<tbody>
                 <tr ng-if="(hostgroup.HostStatusCollection | count) == 0">
                     <td colspan="5">{{ is_loading ? 'Loading...' : 'No hostgroup members are defined' }}</td>
@@ -55,7 +56,6 @@
                     <td><a ng-repeat="service in host.ServiceStatusCollection | orderObjectBy: 'service_description'" class="status-item active services-{{ service.current_state | servicestate | lowercase }}" href="#/services/{{ host.host_name }}/{{ service.service_description }}">{{ service.service_description }}</a></td>
                 </tr>
             </tbody>
-			-->
         </table>
 
     </div>
