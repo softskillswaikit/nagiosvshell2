@@ -46,8 +46,8 @@
 						<td ng-switch-when="Servicegroup(s)">Select Servicegroup:</td>
 						<td ng-switch-when="Service(s)">Select Service:</td>
 						<td><select ng-model="reportComponent" name="reportComponent" class="dropdown">
-							<option value="">{{hostname[0]}}</option>
-							<option value="">{{hostname[1]}}</option>
+							<option value="">{{hostname}}</option>
+							<option value="">{{hostname}}</option>
 							</select>
 						</td>
 					</tr>

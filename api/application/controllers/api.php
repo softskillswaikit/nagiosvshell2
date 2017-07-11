@@ -179,19 +179,103 @@ class API extends VS_Controller
 
     //Written by Soon Wei Liang
     /*
+     * Fetch name based on type : Host, Hostgroup, Service, Servicegroup
+     *
+     * @param String $type
+     */
+    public function name($type='')
+    {
+        $Data = array();
+        $name = array();
+
+        //fetch all host name
+        if($type = 'host')
+        {
+            $hosts = $this->nagios_data->get_collection('hoststatus');
+
+            foreach($hosts as $host)
+            {
+                $Data[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
+            }
+
+            foreach($Data as $host)
+            {
+                $name[] = $host['name'];
+            }
+        }
+
+        //fetch all host group name
+        else if($type == 'hostgroup')
+        {
+            $hostgroups = $this->nagios_data->get_collection('hostgroup');
+
+            foreach($hostgroups as $hostgroup)
+            {
+                $Data[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
+            }
+
+            foreach ($Data as $hostgroup) 
+            {
+                $name[] = $hostgroup['name'];
+            }      
+        }
+
+        //fetch all service name
+        else if($type == 'service')
+        {
+            $services = $this->nagios_data->get_collection('servicestatus');
+
+            foreach ($services as $service)
+            {
+                $Data[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
+            }
+
+            foreach ($Data as $service) 
+            {
+                $name[] = $service['name'];
+
+            }
+        }
+
+        //fetch all service group name
+        else if($type == 'servicegroup')
+        {
+            $servicegroups = $this->nagios_data->get_collection('servicegroup');
+
+            foreach($servicegroups as $servicegroup)
+            {
+                $Data[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
+            }
+
+            foreach ($Data as $servicegroup) 
+            {
+                $name[] = $servicegroup['name'];
+            }
+        }
+
+        $this->output($name); 
+    }
+
+    /*
      * Fetch host name
      */
     public function hostname()
     {
-        $Hosts = $this->nagios_data->get_collection('host');
+        $Data = array();
+        $hostname = array();
+        $hosts = $this->nagios_data->get_collection('hoststatus');
 
-        foreach ($Hosts as $Host) 
+        foreach($hosts as $host)
         {
-            $Host->hydrate();
-            $Hostname[] = $Hosts->host_name;
+            $Data[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
         }
 
-        $this->output($Hostname);
+        foreach($Data as $host)
+        {
+            $hostname[] = $host['name'];
+        }
+    
+        $this->output($hostname);
     }
 
     /*
@@ -199,15 +283,21 @@ class API extends VS_Controller
      */
     public function servicename()
     {
-        $Services = $this->nagios_data->get_collection('service');
+        $Data = array();
+        $servicename = array();
+        $services = $this->nagios_data->get_collection('servicestatus');
 
-        foreach ($Services as $Service)
+        foreach ($services as $service)
         {
-            $Service->hydrate();
-            $Servicename[] = $Service->service_name;
+            $Data[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
         }
 
-        $this->output($Servicename);
+        foreach ($Data as $service) 
+        {
+            $servicename[] = $service['name'];
+        }
+
+        $this->output($servicename);
     }    
 
     /*
@@ -215,15 +305,21 @@ class API extends VS_Controller
      */
     public function hostgroupname()
     {
-        $Hostgroups = $this->nagios_data->get_collection('hostgroup');
+        $Data = array();
+        $hostgroupname = array();
+        $hostgroups = $this->nagios_data->get_collection('hostgroup');
 
-        foreach($Hostgroups as $Hostgroup)
+        foreach($hostgroups as $hostgroup)
         {
-            $Hostgroup->hydrate();
-            $Hostgroupname[] = $Hostgroup->hostgroup_name;
+            $Data[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
         }
 
-        $this->output($Hostgroupname);
+        foreach ($Data as $hostgroup) 
+        {
+            $hostgroupname[] = $hostgroup['name'];
+        }
+
+        $this->output($hostgroupname);
     }
 
     /*
@@ -231,31 +327,101 @@ class API extends VS_Controller
      */
     public function servicegroupname()
     {
-        $Servicegroups = $this->nagios_data->get_collection('servicegroup');
+        $Data = array();
+        $servicegroupname = array();
+        $servicegroups = $this->nagios_data->get_collection('servicegroup');
 
-        foreach($Servicegroups as $Servicegroup)
+        foreach($servicegroups as $servicegroup)
         {
-            $Servicegroup->hydrate();
-            $Servicegroupname[] = $Servicegroup->servicegroup_name;
+            $Data[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
         }
 
-        $this->output($Servicegroupname);
+        foreach ($Data as $servicegroup) 
+        {
+            $servicegroupname[] = $servicegroup['name'];
+        }
+
+        $this->output($servicegroupname);
     }
 
     /*
      * Fetch availability
+     * 
+     * @param int $reportType
+     * @param string $name
+     * @param Date $period
+     * @param bool $initialState
+     * @param bool $stateRetention
+     * @param bool $assumeState
+     * @param bool $includeSoftState
+     * @param String $firstAssumedHost
+     * @param String $firstAssumedService
+     * @param int $backTrack
      */
-     public function availability()
+     public function availability($reportType, $name='', $period, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost='', $firstAssumedService='', $backTrack)
     {
+        $Availability = $this->availability_data->get_availability();
 
+        //hostgroup
+        if($reportType == 1)
+        {
+
+        }
+
+        //host
+        else if($reportType == 2)
+        {
+
+        }
+
+        //service group
+        else if($reportType == 3)
+        {
+
+        }
+
+        //service
+        else if($reportType == 4)
+        {
+
+        }
+
+
+        $this->output($Availability);
     }
 
     /*
      * Fetch trend
+     *
+     * @param int $reportType
+     * @param string $name
+     * @param Date $period
+     * @param bool $initialState
+     * @param bool $stateRetention
+     * @param bool $assumeState
+     * @param bool $includeSoftState
+     * @param String $firstAssumedHost
+     * @param int $backTrack
+     * @param bool suppressImage
+     * @param bool suppressPopups
      */
-    public function trend()
+    public function trend($reportType, $name='', $period, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $backTrack, $suppressImage, $suppressPopups)
     {
+        $Trend = $this->trend_data->get_trend();
 
+        //host
+        if($reportType == 1)
+        {
+
+        }
+
+        //service
+        else if($reportType == 2)
+        {
+
+        }
+
+        $this->output($Trend);
     }
 
     /*
@@ -263,64 +429,176 @@ class API extends VS_Controller
      */
     public function alerthistory()
     {
+        $AlertHistory = $this->alert_history_data->get_history_data();
 
+        $this->output($AlertHistory);
     }
 
     /*
      * Fetch alert summary
+     *
+     * @param int $reportLabel
+     * @param int $reportType
+     * @param int $reportPeriod
+     * @param Date $start
+     * @param Date $end
      */
-    public function alertsummary()
+    public function alertsummary($reportLabel, $reportType, $reportPeriod, $start, $end)
     {
+        $AlertSummary = $this->alert_summary_data->get_alert_summary();
 
+        //standard report
+        if($reportLabel == 1)
+        {
+            //25 most recent hard alert
+            if($reportType == 1)
+            {
+
+            }
+
+            //25 most recent hard host alert
+            else if ($reportType == 2)
+            {
+
+            }
+
+            //25 most recent hard service alert
+            else if ($reportType == 3)
+            {
+
+            }
+
+            //top 25 hard host alert producer
+            else if ($reportType == 4)
+            {
+
+            }
+
+            //top 25 hard service alert producer
+            else if ($reportType == 5)
+            {
+
+            }
+        }
+
+        //custom report
+        else if ($reportLabel == 2)
+        {
+            //most recent alert
+            if ($reportType == 1)
+            {
+
+            }
+
+            //alert totals
+            else if ($reportType == 2)
+            {
+
+            }
+
+            //alert totals by hostgroup
+            else if ($reportType == 3)
+            {
+
+            }
+
+            //alert totals by host
+            else if ($reportType == 4)
+            {
+
+            }
+
+            //alert totals by servicegroup
+            else if ($reportType == 5)
+            {
+
+            }
+
+            //alert totals by service
+            else if ($reportType == 6)
+            {
+
+            }
+
+            //top alert producer
+            else if ($reportType == 7)
+            {
+
+            }
+        }
+
+        $this->output($AlertSummary);
     }
 
     /*
      * Fetch alert histogram
+     *
+     * @param int $reportType
+     * @param string $name
+     * @param Date $period
+     * @param String $breakdown
+     * @param String $eventsToGraph
+     * @param String $typesToGraph
+     * @param bool $stateRetention
+     * @param bool $initialStateLogged
+     * @param bool $ignoreRepeated
+     *
      */
-    public function alerthistogram()
+    public function alerthistogram($reportType, $name='', $period, $breakdown='', $eventsToGraph='', $typesToGraph='', $stateRention, $initialStateLogged, $ignoreRepeated)
     {
-        
+        $AlertHistogram = $this->alert_histogram_data->get_alert_histogram();
+
+        //Host
+        if($reportType == 1)
+        {
+
+        }
+
+        //Service
+        else if($reportType == 2)
+        {
+
+        }
+
+        $this->output($AlertHistogram);
     }
 
 
     /*
      * Fetch all event log
      *
-     * @param  string $day
-     * @param  string $month
-     * @param  string $year
+     * @param  Date $date
      */
-    public function eventlog($day='', $month='', $year='')
+    public function eventlog($date)
     {
-        $EventLog = $this->Reports_data->get_events_log();
+        $EventLog = $this->reports_data->get_events_log($date);
 
-        $this->output($Eventlog);
+        if(!empty($EventLog))
+        {
+            $this->output($Eventlog);
+        }
     }
-
 
     /*
      * Fetch all notifications
      *
-     * @param string $day
-     * @param string $month
-     * @param string $year
+     * @param Date $date
      */
-    public function notifications($day='', $month='', $year='')
+    public function notifications($date)
     {
+        $Notificaions = $this->notifications_data->get_notification($date);
 
+        $this->output($Notificaions);
     }
 
     public function testing()
     {
-        $Test = $this->Testing->testing_1();
-        return $this->output($Test);
-        $this->output($Test);
+        log_message('error', 'qwe1.');
+        $test = $this->testing->testing_1();
+        log_message('error', 'qwe2.');
+        $this->output($test);
+        log_message('error', 'qwe3.');
     }
-
-
-
-
-
 
 
 
@@ -1148,4 +1426,5 @@ class API extends VS_Controller
 
 /* End of file api.php */
 /* Location: ./application/controllers/api.php */
+
 

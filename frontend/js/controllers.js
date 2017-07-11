@@ -168,6 +168,25 @@ angular.module('vshell.controllers', [])
     }
 ])
 
+.controller('EventLogCtrl', ['$scope', 'async',
+    function($scope, async) {
+        
+        $scope.init = function() {
+
+            var options = {
+                name: 'hostname',
+                url: 'hostname',
+                queue: 'main'
+            };
+
+       
+            async.api($scope, options);
+
+        };
+
+    }
+])
+
 .controller('HostGroupDetailsCtrl', ['$scope', '$routeParams', 'async',
     function($scope, $routeParams, async) {
 
@@ -490,6 +509,26 @@ angular.module('vshell.controllers', [])
     }
 ])
 
+//created by gnzhen
+//modified by soon wei liang
+.controller('AvailabilityCtrl', ['$scope', 'async',
+    function($scope, async) {
+        
+        $scope.init = function() {
+
+            var options = {
+                name: 'hostname',
+                url: 'hostname',
+                queue: 'main'
+            };
+
+       
+            async.api($scope, options);
+
+        };
+
+    }
+])
 .controller('OptionsCtrl', ['$scope', '$http', 'paths',
     function($scope, $http, paths) {
 

@@ -45,14 +45,19 @@ $route["status"] = "api";
 /*
 * Create by Soon Wei Liang
 */
-$route["hostnames"] = "api/hostname";
+$route["name"] = "api/name";
+$route["hostname"] = "api/hostname";
 $route["servicename"] = "api/servicename";
 $route["hostgroupname"] = "api/hostgroupname";
 $route["servicegroupname"] = "api/servicegroupname";
-$route["eventlog/(:any)/(:any)/(:any)"] = "api/eventlog/$1/$2/$3";
-$route["notification/(:any)/(:any)/(:any)"] = "api/notification/$1/$2/$3";
+$route["availability/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/availability/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10";
+$route["trend/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/trend/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10/$11";
+$route["alerthistory"] = "api/alerthistory";
+$route["alertsummary/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/alertsummary/$1/$2/$3/$4/$5";
+$route["alerthistogram/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/alerthistogram/$1/$2/$3/$4/$5/$6/$7/$8/$9";
+$route["eventlog/(:any)"] = "api/eventlog/$1";
+$route["notification/(:any)"] = "api/notification/$1";
 $route["testing"] = "api/testing";
-
 
 $route["comments/(:any)"] = "api/comments/$1";
 $route["comments"] = "api/comments";

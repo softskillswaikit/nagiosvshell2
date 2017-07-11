@@ -1,0 +1,62 @@
+<div ng-include="'frontend/partials/_header.html'"></div>
+
+<div ng-include="'frontend/partials/_status.html'"></div>
+
+<div ng-include="'frontend/partials/_browser.html'"></div>
+
+<div ng-include="'frontend/partials/_messages.html'"></div>
+
+<div id="content" class="clearfix" ng-controller="EventLogCtrl" ng-init="init()">
+
+    <div class="table-container full-width">
+
+        <h1>Event Log</h1>
+
+        <p class="subheading" ng-if="statefilter">Filtered by State {{ statefilter | capitalize }}</p>
+
+        <p class="subheading" ng-if="problemsfilter">Filtered by {{ problemsfilter | capitalize }} Problems</p>
+
+        <div class="table-options">
+            <form action="" class="filter-form" method="post">
+                <div class="filter-icon"></div>
+                <input id="footable-filter" class="footable-filter" type="text" placeholder="Filter Table"/>
+            </form>
+            <div class="pagesize-container">
+                Show <a class="active" ng-href="#" data-page-size="25">25</a> <a ng-href="#" data-page-size="100">100</a> <a ng-href="#" data-page-size="50000">All</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+            <thead>
+                <tr>
+                    <th>Host</th>
+                    <th>Status</th>
+                    <th data-hide="phone">Last Check</th>
+                    <th data-hide="phone">Duration</th>
+                    <th data-hide="phone">Status Information</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="5">
+                        <div class="results-count">{{ testing | count }} Result{{ testing | plural }}</div>
+                        <div class="footable-pagination pagination" id="footable-pagination"></div>
+                    </td>
+                </tr>
+            </tfoot>
+            <tbody>
+                <tr ng-if="(eventlogs | count) == 0">
+                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No eventlog are defined' }}</td>
+                </tr>
+                <tr>
+		<td>{{hostname}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+<div ng-include="'frontend/partials/_footer.html'"></div>
