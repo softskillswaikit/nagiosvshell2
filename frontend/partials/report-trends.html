@@ -10,141 +10,170 @@
 	
 	<h1>Create State Trends Report</h1>
 	
-	<div class="details table-container partial-width">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel panel-default">
+	 		<div class="panel-body">
 	
-		<h3>Report Details</h3>
+				<h3>Report Details</h3>
  		
-		<div class="form-options">
-			<table>
-				<form action="" class="input-form" name="inputForm" method="post" novalidate>
-                	<tr>
-						<td>Report Type:</td>
-						<td>
-							<select ng-model="reportType" name="reportType" class="dropdown" required>
-								<option value="Host">Host</option>
-								<option value="Service">Service</option>
-							</select>
-						</td>
-					</tr>
-					
-					<tr ng-show="reportType=='Host'" class="serviceType">
-						<td>Service Type:</td>
-						<td>
-							<select ng-model="serviceType" name="serviceType" class="dropdown">
-								<option value="Normal Service">Normal Service</option>
-								<option value="Host Resource">Host Resource</option>
-								<option value="Running State">Running State</option>
-							</select>
-						</td>
-					</tr>
-					<tr ng-switch on="reportType">
-						<td ng-switch-when="Host">Select Host:</td>
-						<td ng-switch-when="Service">Select Service:</td>
-						<td><select ng-model="reportComponent" name="reportComponent" class="dropdown">
-							<option value=""></option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>Report Period:</td>
-						<td>
-							<select ng-model="reportPeriod" name="reportPeriod" class="dropdown">
-								<option value="Today">Today</option>
-								<option value="Last 24 Hours">Last 24 Hours</option>
-								<option value="Yesterday">Yesterday</option>
-								<option value="This Week">This Week</option>
-								<option value="Last 7 Days">Last 7 Days</option>
-								<option value="Last Week">Last Week</option>
-								<option value="This Month">This Month</option>
-								<option value="Last 31 Days">Last 31 Days</option>
-								<option value="Last Month">Last Month</option>
-								<option value="This Year">This Year</option>
-								<option value="Last Year">Last Year</option>
-								<option value="*Custom Report Period*">*Custom Report Period*</option>
-							</select>
-						</td>
-					</tr>
-					<tr ng-show="reportPeriod=='*Custom Report Period*'" ng-model="startDate" name="startdate" class="date">
-						<td>Start Date:</td>
-						<td><input type="date" name="startdate" value=""></td>
-					</tr>
-					<tr ng-show="reportPeriod=='*Custom Report Period*'" ng-model="endDate" name="enddate" class="date">
-						<td>End Date:</td>
-						<td><input  type="date" name="enddate" value=""></td>
-					</tr>
-					<tr>
-						<td>Assume Initial States:</td>
-						<td><select ng-model="assumeInitialStates" name="assumeInitialStates" class="dropdown">
-							<option value="Yes">Yes</option>
-							<option value="No">No</option>
-							</select>
-						</td>	
-					</tr>
-					<tr>
-						<td>Assume State Retention:</td>
-						<td><select ng-model="assumeStateRetention" name="assumeStateRetention" class="dropdown">
-							<option value="Yes">Yes</option>
-							<option value="No">No</option>
-							</select>
-						</td>	
-					</tr>
-					<tr>
-						<td>Assume States During Program Downtime:</td>
-						<td><select ng-model="assumeDowntimeStates" name="assumeDowntimeStates" class="dropdown">
-							<option value="Yes">Yes</option>
-							<option value="No">No</option>
-							</select>
-						</td>	
-					</tr>
-					<tr>
-						<td>Include Soft States:</td>
-						<td><select ng-model="includeSoftStates" name="includeSoftStates" class="dropdown">
-							<option value="Yes">Yes</option>
-							<option value="No">No</option>
-							</select>
-						</td>	
-					</tr>
-					<tr ng-show="assumeInitialStates=='Yes' && reportType=='Host'" class="firstAssumedState">
-						<td>First Assumed Host State:</td>
-						<td><select ng-model="firstAssumedHostState" name="firstAssumedHostState" class="dropdown">
-							<option value="Unspecified">Unspecified</option>
-							<option value="Current State">Current State</option>
-							<option value="Host Up">Host Up</option>
-							<option value="Host Down">Host Down</option>
-							<option value="Host Unreachable">Host Unreachable</option>
-							</select>
-						</td>	
-					</tr>
-					<tr ng-show="assumeInitialStates=='Yes' && reportType=='Service'" class="firstAssumedState">
-						<td>First Assumed Service State:</td>
-						<td><select ng-model="firstAssumedServiceState" name="firstAssumedServiceState" class="dropdown">
-							<option value="Unspecified">Unspecified</option>
-							<option value="Current State">Current State</option>
-							<option value="Host Up">Host Up</option>
-							<option value="Host Down">Host Down</option>
-							<option value="Host Unreachable">Host Unreachable</option>
-							</select>
-						</td>	
-					</tr>
-					<tr>
-						<td>Backtracked Archives (To Scan For Initial States): </td>
-						<td><input ng-model="backtrackedArchives" name="backtrackedArchives" type="number" required>
+				<div class="form-options">
+			
+					<form action="" class="form-hosrizontal" name="inputForm" method="post" novalidate>
+						<div class="form-group">            		
+							<label for="reportType" class="col-md-4 control-label">Report Type:</label>
+							<div class="col-md-6">
+								<select ng-model="reportType" name="reportType" class="form-control" required>
+									<option value="Host">Host</option>
+									<option value="Service">Service</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group" ng-show="reportType=='Host'" class="serviceType">
+							<label for="serviceType" class="col-md-4 control-label">Service Type:</label>
+							<div class="col-md-6">
+								<select ng-model="serviceType" name="serviceType" class="form-control">
+									<option value="Normal Service">Normal Service</option>
+									<option value="Host Resource">Host Resource</option>
+									<option value="Running State">Running State</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group" ng-switch on="reportType">
+							<label for="reportComponent" ng-switch-when="Host" class="col-md-4 control-label">Select Host:</label><label for="reportComponent" ng-switch-when="Host(s)" class="col-md-4 control-label">Select Host:</label><label for="reportComponent" ng-switch-when="Servicegroup(s)" class="col-md-4 control-label">Select Servicegroup:</label>
+							<label for="reportComponent" ng-switch-when="Service" class="col-md-4 control-label">Select Service:</label>
+							<div class="col-md-6">
+								<select ng-model="reportComponent" name="reportComponent" class="form-control">
+									<option ng-repeat="name in componentName" value="{{name}}">{{name}}</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="reportPeriod" class="col-md-4 control-label">Report Period:</label>
+							<div class="col-md-6">
+								<select ng-model="reportPeriod" name="reportPeriod" class="form-control">
+									<option value="Today">Today</option>
+									<option value="Last 24 Hours">Last 24 Hours</option>
+									<option value="Yesterday">Yesterday</option>											<option value="This Week">This Week</option>
+									<option value="Last 7 Days">Last 7 Days</option>
+									<option value="Last Week">Last Week</option>
+									<option value="This Month">This Month</option>
+									<option value="Last 31 Days">Last 31 Days</option>
+									<option value="Last Month">Last Month</option>
+									<option value="This Year">This Year</option>
+									<option value="Last Year">Last Year</option>
+									<option value="*Custom Report Period*">*Custom Report Period*</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'" ng-model="startDate">
+							<label for="startdate" class="col-md-4 control-label">Start Date:</label>
+							<div class="col-md-6">
+								<input type="date" name="startdate" value="" class="form-control"></input>
+							</div>
+						</div>
+
+						<div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'" ng-model="endDate">
+							<label for="enddate" class="col-md-4 control-label">End Date:</label>
+							<div class="col-md-6">
+								<input type="date" name="enddate" value="" class="form-control"></input>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="assumeInitialStates" class="col-md-4 control-label">Assume Initial States:</label>
+							<div class="col-md-6">
+								<select ng-model="assumeInitialStates" name="assumeInitialStates" class="form-control">
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="assumeStateRetention" class="col-md-4 control-label">Assume State Retention:</label>
+							<div class="col-md-6">
+								<select ng-model="assumeStateRetention" name="assumeStateRetention" class="form-control">
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="assumeDowntimeStates" class="col-md-4 control-label">Assume States During Program Downtime:</label>
+							<div class="col-md-6">
+								<select ng-model="assumeDowntimeStates" name="assumeDowntimeStates" class="form-control">
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="includeSoftStates" class="col-md-4 control-label">Include Soft States:</label>
+							<div class="col-md-6">
+								<select ng-model="includeSoftStates" name="includeSoftStates" class="form-control">
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group" ng-show="assumeInitialStates=='Yes' && reportType=='Host'" class="firstAssumedState">
+							<label for="firstAssumedHostState" class="col-md-4 control-label">First Assumed Host State:</label>
+							<div class="col-md-6">
+								<select ng-model="firstAssumedHostState" name="firstAssumedHostState" class="form-control">
+									<option value="Unspecified">Unspecified</option>
+									<option value="Current State">Current State</option>
+									<option value="Host Up">Host Up</option>
+									<option value="Host Down">Host Down</option>
+									<option value="Host Unreachable">Host Unreachable</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group" ng-show="assumeInitialStates=='Yes' && reportType=='Service'" class="firstAssumedState">
+							<label for="firstAssumedServiceState" class="col-md-4 control-label">First Assumed Service State:</label>
+							<div class="col-md-6">
+								<select ng-model="firstAssumedServiceState" name="firstAssumedServiceState" class="form-control">
+									<option value="Unspecified">Unspecified</option>
+									<option value="Current State">Current State</option>
+									<option value="Host Up">Host Up</option>
+									<option value="Host Down">Host Down</option>
+									<option value="Host Unreachable">Host Unreachable</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="backtrackedArchives" class="col-md-4 control-label">Backtracked Archives (To Scan For Initial States): </label>
+							<div class="col-md-6">
+								<input ng-model="backtrackedArchives" name="backtrackedArchives" type="number" class="form-control" required></input>
 								<span style="color:red" ng-show="inputForm.backtrackedArchives.$dirty && inputForm.backtrackedArchives.$invalid">
 								<span ng-show="inputForm.backtrackedArchives.$error.required">This field is required.</span></span>
-						</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>  
-							<button class="logButtons btn btn-primary btn-sm" ng-click="reset()">Reset</button>
-                            <a ng-href="#/report/trends/report">
-								<button ng-disabled="inputForm.$invalid" class="logButtons btn btn-primary btn-sm">Create Report</button>
-							</a>
-						</td>
-					</tr>
-				</form>
-			</table>
-      	</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<div class="col-md-6 col-md-offset-4">
+								<button class="btn btn-primary" ng-click="reset()">Reset</button>
+								<a ng-href="#/report/trends/report">
+									<button ng-disabled="inputForm.$invalid" class="btn btn-primary">Create Report</button>
+								</a>
+							</div>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
+</div>
 	
 <div ng-include="'frontend/partials/_footer.html'"></div>
+
+

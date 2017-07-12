@@ -250,6 +250,7 @@ angular.module('vshell.controllers', [])
 
     }
 ])
+
 .controller('RemoteServiceCtrl', ['$scope', '$routeParams', 'async', '$http', 'ngToast',
     function($scope, $routeParams, async, $http, ngToast){
 
@@ -301,6 +302,7 @@ angular.module('vshell.controllers', [])
 
     }
 ])
+
 .controller('ServiceDetailsCtrl', ['$scope', '$routeParams', 'async',
     function($scope, $routeParams, async) {
     
@@ -320,6 +322,7 @@ angular.module('vshell.controllers', [])
        
     }
 ])
+
 .controller('ServiceLogCtrl', ['$scope', '$routeParams', '$http', 'ngToast', 'async', "$rootScope",
     function($scope, $routeParams, $http, ngToast, async, $rootScope) {
         
@@ -490,6 +493,27 @@ angular.module('vshell.controllers', [])
     }
 ])
 
+
+.controller('EventLogCtrl', ['$scope', 'async',
+    function($scope, async) {
+        
+        $scope.init = function() {
+
+            var options = {
+                name: 'testing',
+                url: 'testing',
+                queue: 'main'
+            };
+
+       
+            async.api($scope, options);
+
+        };
+
+    }
+])
+
+
 .controller('AvailabilityCtrl', ['$scope', '$routeParams', 'async',
     function($scope, $routeParams, async) {
 
@@ -512,13 +536,19 @@ angular.module('vshell.controllers', [])
 		
         $scope.init = function() {
 
-            var options = {
+			$scope.componentName =
+		    [
+				"localhost", "testserver"
+		    ];
+            /*
+			var options = {
                 name: 'availability',
-                url: 'availability/' + type,
+                url: 'availability',
                 queue: 'main'
             };
 
             async.api($scope, options);
+			*/
 
         };
 		$scope.reset();
@@ -549,8 +579,8 @@ angular.module('vshell.controllers', [])
         $scope.init = function() {
 
             var options = {
-                name: 'availability',
-                url: 'availability/' + type,
+                name: 'trends',
+                url: 'trends/',
                 queue: 'main'
             };
 
@@ -582,16 +612,143 @@ angular.module('vshell.controllers', [])
 		
         $scope.init = function() {
 
+			
+            /*
+			var options = {
+                name: 'alerthistogram',
+                url: 'alerthistogram/',
+                queue: 'main'
+            };
+
+            async.api($scope, options);
+			*/
+
+        };
+		$scope.reset();
+
+    }
+])
+
+.controller('AvailabilityReportCtrl', ['$scope', 'async',
+    function($scope, async) {
+
+        $scope.init = function() {
+		
+            /*
+			var options = {
+                name: 'hostname',
+                url: 'hostname',
+                queue: 'main'
+            };
+
+            async.api($scope, options);
+			*/
+
+        };
+
+    }
+])
+
+.controller('TrendsReportCtrl', ['$scope', 'async',
+    function($scope, async) {
+
+        $scope.init = function() {
+
             var options = {
-                name: 'availability',
-                url: 'availability/' + type,
+                name: 'trendsreport',
+                url: 'trendsreport',
                 queue: 'main'
             };
 
             async.api($scope, options);
 
         };
-		$scope.reset();
+
+    }
+])
+
+.controller('AlertHistogramReportCtrl', ['$scope', 'async',
+    function($scope, async) {
+
+        $scope.init = function() {
+
+            var options = {
+                name: 'alerthistogramreport',
+                url: 'alerthistogramreport',
+                queue: 'main'
+            };
+
+            async.api($scope, options);
+
+        };
+
+    }
+])
+
+.controller('TabsParentController', ['$scope', 'async',
+    function($scope, async) {
+
+        $scope.init = function() {
+
+            $scope.workspaces =
+		    [
+		        { id: 1, name: "Workspace 1", active:true  },
+		        { id: 2, name: "Workspace 2", active:false }
+		    ];   
+        };
+    }
+])
+
+.controller('SysCommentsCtrl', ['$scope', 'async',
+    function($scope, async) {
+
+        $scope.init = function() {
+
+            var options = {
+                name: 'syscomments',
+                url: 'syscomments',
+                queue: 'main'
+            };
+
+            async.api($scope, options);
+
+        };
+
+    }
+])
+
+.controller('SysDowntimeCtrl', ['$scope', 'async',
+    function($scope, async) {
+
+        $scope.init = function() {
+
+            var options = {
+                name: 'sysdowntime',
+                url: 'sysdowntime',
+                queue: 'main'
+            };
+
+            async.api($scope, options);
+
+        };
+
+    }
+])
+
+.controller('PerformanceInfoCtrl', ['$scope', 'async',
+    function($scope, async) {
+
+        $scope.init = function() {
+
+            var options = {
+                name: 'performanceinfo',
+                url: 'performanceinfo',
+                queue: 'main'
+            };
+
+            async.api($scope, options);
+
+        };
 
     }
 ])
@@ -612,3 +769,4 @@ angular.module('vshell.controllers', [])
     }
 ])
 ;
+
