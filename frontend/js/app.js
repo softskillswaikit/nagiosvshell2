@@ -92,6 +92,15 @@ angular.module('vshell', [
 		$routeProvider.when('/report/alerthistogram/report', {
             templateUrl: 'frontend/partials/report-alert-histogram-report.html'
         });
+		$routeProvider.when('/system/comments', {
+            templateUrl: 'frontend/partials/system-comments.html'
+        });
+		$routeProvider.when('/system/downtime', {
+            templateUrl: 'frontend/partials/system-downtime.html'
+        });
+		$routeProvider.when('/system/performanceinfo', {
+            templateUrl: 'frontend/partials/system-performance-info.html'
+        });
         $routeProvider.when('/options', {
             templateUrl: 'frontend/partials/options.html'
         });
@@ -109,3 +118,4 @@ angular.module('vshell', [
 .config(['$compileProvider', function ($compileProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|blob|ftp):/);
 }]);;
+

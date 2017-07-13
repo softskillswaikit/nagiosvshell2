@@ -1,0 +1,29 @@
+<div ng-include="'frontend/partials/_header.html'"></div>
+
+<div ng-include="'frontend/partials/_status.html'"></div>
+
+<div ng-include="'frontend/partials/_browser.html'"></div>
+
+<div ng-include="'frontend/partials/_messages.html'"></div>
+
+<div id="content" class="clearfix" ng-controller="TabsParentController" ng-init="init()">
+	
+	<h1></h1>
+	
+	<div class="details table-container partial-width">
+	
+		<h3>Comments</h3>
+		<table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+            <tbody>
+                <tr ng-repeat="workspace in workspaces"
+					 heading="{{workspace.name}}"
+					 active=workspace.active footabledata>
+                  
+                    <td>{{workspace.id}} : {{ workspace.name}}</td>
+                </tr>
+            </tbody>
+        </table>
+	</div>
+	
+<div ng-include="'frontend/partials/_footer.html'"></div>
+
