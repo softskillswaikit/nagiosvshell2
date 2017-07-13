@@ -96,29 +96,28 @@
 											<div class="form-group">
 												<label for="hostName" class="col-md-4 control-label">Host Name:</label>
 												<div class="col-md-6">
-													<input type="text" class="form-control" name="hostName"></input>
+													<input ng-model="hostNameToAdd" type="text" class="form-control" name="hostName"></input>
 												</div>
 											</div>
 
 											<div class="form-group">
+												<label for="persistent" class="col-md-4 control-label">Persistent: </label>
 												<div class="col-md-6">
-													<label>
-														<input type="checkbox" value="persistent" name="checkboxFiveInput">Persistent</input>
-													</label>
+													<input ng-model="persistentToAdd" type="checkbox" value="persistent" name="persistent"></input>
 												</div>
 											</div>
 
 											<div class="form-group">
 												<label for="author" class="col-md-4 control-label">Author(Your Name):</label>
 												<div class="col-md-6">
-													<input type="text" class="form-control" name="author"></input>
+													<input ng-model="authorToAdd" type="text" class="form-control" name="author"></input>
 												</div>
 											</div>
 
 											<div class="form-group">
 												<label for="comment" class="col-md-4 control-label">Comment:</label>
 												<div class="col-md-6">
-													<textarea class="form-control" name="comment"></textarea>
+													<textarea ng-model="commentToAddng-model="authorToAdd" " class="form-control" name="comment"></textarea>
 												</div>
 											</div>
 
@@ -197,7 +196,7 @@
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
-									<h4 class="modal-title">Add Host Comment</h4>
+									<h4 class="modal-title">Add Service Comment</h4>
 								</div>
 								<div class="modal-body">
 									<form action="" class="form-horizontal" name="inputForm" method="post" novalidate>
@@ -205,36 +204,35 @@
 										<div class="form-group">
 											<label for="hostName" class="col-md-4 control-label">Host Name:</label>
 											<div class="col-md-6">
-												<input type="text" class="form-control" name="hostName"></input>
+												<input ng-model="hostNameToAdd" type="text" class="form-control" name="hostName"></input>
 											</div>
 										</div>
 
 										<div class="form-group">
 											<label for="service" class="col-md-4 control-label">Service:</label>
 											<div class="col-md-6">
-												<input type="text" class="form-control" name="service"></input>
+												<input ng-model="serviceToAdd" type="text" class="form-control" name="service"></input>
 											</div>
 										</div>
 
 										<div class="form-group">
+											<label for="persistent" class="col-md-4 control-label">Persistent: </label>
 											<div class="col-md-6">
-												<label>
-													<input type="checkbox" value="persistent" name="checkboxFiveInput">Persistent</input>
-												</label>
+												<input ng-model="persistentToAdd" type="checkbox" value="persistent" name="persistent"></input>
 											</div>
 										</div>
 
 										<div class="form-group">
 											<label for="author" class="col-md-4 control-label">Author(Your Name):</label>
 											<div class="col-md-6">
-												<input type="text" class="form-control" name="author"></input>
+												<input ng-model="authorToAdd" type="text" class="form-control" name="author"></input>
 											</div>
 										</div>
 
 										<div class="form-group">
 											<label for="comment" class="col-md-4 control-label">Comment:</label>
 											<div class="col-md-6">
-												<textarea class="form-control" name="comment"></textarea>
+												<textarea ng-model="commentToAdd" class="form-control" name="comment"></textarea>
 											</div>
 										</div>
 
