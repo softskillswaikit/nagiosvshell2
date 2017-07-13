@@ -859,7 +859,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
         margin: 15px 0px 15px 0px;
         width: 100%;
     }
-	
+
 	.form-options {
         padding: 10px 10px 10px 10px;
 		background-color: #ffffff;
@@ -1112,7 +1112,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
             background-color: #e9ffd6;
             color: #6cb22f;
         }
-        
+
         /*20170503 WaiKit Added color styles for running state ok*/
         .table-container td.running-status.state-ok {
             background-color: #e9ffd6;
@@ -1130,7 +1130,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
             background-color: #ffccd1;
             color: #d24555;
         }
-        
+
         /*20170503 WaiKit Added color styles for running state critical*/
         .table-container td.running-status.state-critical {
             background-color: #ffccd1;
@@ -1437,9 +1437,9 @@ tr.selected{
 }
 
 .statusBox {
-    position:fixed; 
-    bottom: 10px; 
-    right: 30px; 
+    position:fixed;
+    bottom: 10px;
+    right: 30px;
 
 }
 
@@ -1447,7 +1447,7 @@ tr.selected{
     cursor: pointer;
 }
 .clickable.panel-body:hover {
-    background-color: #87ceeb; 
+    background-color: #87ceeb;
 }
 .results {
     color: #666;

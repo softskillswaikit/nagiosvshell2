@@ -6,24 +6,255 @@
 
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
-<div id="content" class="clearfix" ng-controller="TabsParentController" ng-init="init()">
-	
-	<h1></h1>
-	
-	<div class="details table-container partial-width">
-	
-		<h3>Comments</h3>
-		<table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
-            <tbody>
-                <tr ng-repeat="workspace in workspaces"
-					 heading="{{workspace.name}}"
-					 active=workspace.active footabledata>
-                  
-                    <td>{{workspace.id}} : {{ workspace.name}}</td>
-                </tr>
-            </tbody>
-        </table>
-	</div>
-	
-<div ng-include="'frontend/partials/_footer.html'"></div>
+<div id="content" class="clearfix" ng-controller="SysCommentsCtrl" ng-init="init()">
+	<h1>Comments</h1>
 
+	<div class="details table-container full-width">
+
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs">
+		  <li class="active">
+		    <a data-toggle="tab" data-target="#hostcomments">Host Comments</a>
+		  </li>
+		  <li>
+		    <a data-toggle="tab" data-target="#servicecomments">Service Comments</a>
+		  </li>
+		</ul>
+
+		<!-- Tab panes -->
+		<div class="tab-content">
+		  <div class="tab-pane active" id="hostcomments">
+
+					<!--Table-->
+					<div class="table-container full-width">
+
+						<div class="table-options">
+		            <form action="" class="filter-form" method="post">
+		                <div class="filter-icon"></div>
+		                <input id="footable-filter" class="footable-filter" type="text" placeholder="Filter Table"/>
+		            </form>
+		            <div class="pagesize-container">
+		                Show <a class="active" ng-href="#" data-page-size="25">25</a> <a ng-href="#" data-page-size="100">100</a> <a ng-href="#" data-page-size="50000">All</a>
+		            </div>
+		            <div class="clearfix"></div>
+		        </div>
+
+						<table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+		            <thead>
+		                <tr>
+		                    <th>Host Name</th>
+		                    <th>Entry Time</th>
+		                    <th>Author</th>
+												<th>Comment</th>
+												<th>Comment ID</th>
+												<th>Persistent</th>
+												<th>Type</th>
+												<th>Expires</th>
+												<th>Actions</th>
+		                </tr>
+		            </thead>
+								<!--
+		            <tfoot>
+		                <tr>
+		                    <td colspan="5">
+		                        <div class="results-count">{{ hostgroup.HostStatusCollection | count }} Result{{ hostgroup.HostStatusCollection | plural }}</div>
+		                        <div class="footable-pagination pagination" id="footable-pagination"></div>
+		                    </td>
+		                </tr>
+		            </tfoot>
+							-->
+		            <tbody>
+		                <tr ng-if="(hostgroup.HostStatusCollection | count) == 0">
+		                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No comments are defined' }}</td>
+		                </tr>
+		                <tr ng-repeat="host in hostgroup.HostStatusCollection | orderObjectBy: 'host_name'" class="state-{{ host.current_state | hoststate | lowercase }}" footabledata>
+		                    <td host-entry item="host"></td>
+		                    <td class="status">{{ host.current_state | hoststate }}</td>
+		                    <td><a ng-repeat="service in host.ServiceStatusCollection | orderObjectBy: 'service_description'" class="status-item active services-{{ service.current_state | servicestate | lowercase }}" href="#/services/{{ host.host_name }}/{{ service.service_description }}">{{ service.service_description }}</a></td>
+		                </tr>
+		            </tbody>
+			        </table>
+						</div>
+
+						<!--Button to trigger modal-->
+						<button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal"
+							data-target="#servicecommentmodal" data-backdrop="false">Add New Comment</button>
+
+						<!-- Modal -->
+					  <div class="modal fade" id="servicecommentmodal">
+					    <div class="modal-dialog">
+
+					      <!-- Modal content-->
+					      <div class="modal-content">
+					        <div class="modal-header">
+					          <button type="button" class="close" data-dismiss="modal">&times;</button>
+					          <h4 class="modal-title">Add Host Comment</h4>
+					        </div>
+					        <div class="modal-body">
+										<form action="" class="form-horizontal" name="inputForm" method="post" novalidate>
+
+											<div class="form-group">
+												<label for="hostName" class="col-md-4 control-label">Host Name:</label>
+												<div class="col-md-6">
+													<input type="text" class="form-control" name="hostName"></input>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-6">
+													<label>
+														<input type="checkbox" value="persistent" name="checkboxFiveInput">Persistent</input>
+													</label>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label for="author" class="col-md-4 control-label">Author(Your Name):</label>
+												<div class="col-md-6">
+													<input type="text" class="form-control" name="author"></input>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label for="comment" class="col-md-4 control-label">Comment:</label>
+												<div class="col-md-6">
+													<textarea class="form-control" name="comment"></textarea>
+												</div>
+											</div>
+
+										</form>
+					        </div>
+					        <div class="modal-footer">
+					          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										<button type="button" class="btn btn-primary" data-dismiss="modal">Add</button>
+					        </div>
+					      </div>
+
+					    </div>
+					  </div>
+
+					</div>
+
+		  <div class="tab-pane" id="servicecomments">
+				<div class="table-container full-width">
+
+					<div class="table-options">
+	            <form action="" class="filter-form" method="post">
+	                <div class="filter-icon"></div>
+	                <input id="footable-filter" class="footable-filter" type="text" placeholder="Filter Table"/>
+	            </form>
+	            <div class="pagesize-container">
+	                Show <a class="active" ng-href="#" data-page-size="25">25</a> <a ng-href="#" data-page-size="100">100</a> <a ng-href="#" data-page-size="50000">All</a>
+	            </div>
+	            <div class="clearfix"></div>
+	        </div>
+
+					<table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+	            <thead>
+	                <tr>
+	                    <th>Host Name</th>
+											<th>Service</th>
+	                    <th>Entry Time</th>
+	                    <th>Author</th>
+											<th>Comment</th>
+											<th>Comment ID</th>
+											<th>Persistent</th>
+											<th>Type</th>
+											<th>Expires</th>
+											<th>Actions</th>
+	                </tr>
+	            </thead>
+							<!--
+	            <tfoot>
+	                <tr>
+	                    <td colspan="5">
+	                        <div class="results-count">{{ hostgroup.HostStatusCollection | count }} Result{{ hostgroup.HostStatusCollection | plural }}</div>
+	                        <div class="footable-pagination pagination" id="footable-pagination"></div>
+	                    </td>
+	                </tr>
+	            </tfoot>
+						-->
+	            <tbody>
+	                <tr ng-if="(hostgroup.HostStatusCollection | count) == 0">
+	                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No comments are defined' }}</td>
+	                </tr>
+	                <tr ng-repeat="host in hostgroup.HostStatusCollection | orderObjectBy: 'host_name'" class="state-{{ host.current_state | hoststate | lowercase }}" footabledata>
+	                    <td host-entry item="host"></td>
+	                    <td class="status">{{ host.current_state | hoststate }}</td>
+	                    <td><a ng-repeat="service in host.ServiceStatusCollection | orderObjectBy: 'service_description'" class="status-item active services-{{ service.current_state | servicestate | lowercase }}" href="#/services/{{ host.host_name }}/{{ service.service_description }}">{{ service.service_description }}</a></td>
+	                </tr>
+	            </tbody>
+		        </table>
+					</div>
+					<button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal"
+						data-target="#hostcommentmodal" data-backdrop="false">Add New Comment</button>
+
+					<!-- Modal -->
+					<div class="modal fade" id="hostcommentmodal">
+						<div class="modal-dialog">
+
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Add Host Comment</h4>
+								</div>
+								<div class="modal-body">
+									<form action="" class="form-horizontal" name="inputForm" method="post" novalidate>
+
+										<div class="form-group">
+											<label for="hostName" class="col-md-4 control-label">Host Name:</label>
+											<div class="col-md-6">
+												<input type="text" class="form-control" name="hostName"></input>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label for="service" class="col-md-4 control-label">Service:</label>
+											<div class="col-md-6">
+												<input type="text" class="form-control" name="service"></input>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<div class="col-md-6">
+												<label>
+													<input type="checkbox" value="persistent" name="checkboxFiveInput">Persistent</input>
+												</label>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label for="author" class="col-md-4 control-label">Author(Your Name):</label>
+											<div class="col-md-6">
+												<input type="text" class="form-control" name="author"></input>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label for="comment" class="col-md-4 control-label">Comment:</label>
+											<div class="col-md-6">
+												<textarea class="form-control" name="comment"></textarea>
+											</div>
+										</div>
+
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-primary" data-dismiss="modal">Add</button>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div ng-include="'frontend/partials/_footer.html'"></div>

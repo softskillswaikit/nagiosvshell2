@@ -12,7 +12,7 @@ angular.module('vshell.controllers', [])
             });
 
         };
-        
+
         $rootScope.creatingLog = 0;
 
         // ZhengYu: Close status box
@@ -98,7 +98,7 @@ angular.module('vshell.controllers', [])
         $scope.callback = function(data, status, headers, config) {
             var state_filter = $routeParams.state,
                 problem_filter = $routeParams.handled;
-            
+
             // set pending state if it has not been checked
             // for(var i in data){
             //     if(data[i].current_state == '0' && data[i].has_been_checked == '0')
@@ -113,7 +113,7 @@ angular.module('vshell.controllers', [])
 
             return data;
         };
-        
+
         $scope.init = function() {
 
             var options = {
@@ -144,7 +144,7 @@ angular.module('vshell.controllers', [])
             };
 
             async.api($scope, options);
-            
+
         };
 
     }
@@ -255,7 +255,7 @@ angular.module('vshell.controllers', [])
     function($scope, $routeParams, async, $http, ngToast){
 
         $scope.init = function() {
-            
+
             var options = {
                 name: 'remote',
                 url: 'servicestate/' + $routeParams.host + '/' + $routeParams.service,
@@ -305,7 +305,7 @@ angular.module('vshell.controllers', [])
 
 .controller('ServiceDetailsCtrl', ['$scope', '$routeParams', 'async',
     function($scope, $routeParams, async) {
-    
+
         $scope.init = function() {
 
             var options = {
@@ -315,17 +315,17 @@ angular.module('vshell.controllers', [])
             };
 
             async.api($scope, options);
-    
+
         };
 
-        
-       
+
+
     }
 ])
 
 .controller('ServiceLogCtrl', ['$scope', '$routeParams', '$http', 'ngToast', 'async', "$rootScope",
     function($scope, $routeParams, $http, ngToast, async, $rootScope) {
-        
+
         // ZhengYu: Set selected logs and deselect selected logs
         $scope.setSelected = function (log) {
             if($scope.selectedLogs.includes(log.name)) {
@@ -338,12 +338,12 @@ angular.module('vshell.controllers', [])
                     ngToast.create({className: 'alert alert-danger',content:'File is more than 1 GB.',timeout:3000});
             }
         };
-        
+
         // ZhengYu: Clear selectedLogs
         $scope.clearSelected = function(){
             $scope.selectedLogs = [];
         };
-        
+
         // ZhengYu: Request download code with files requested
         $scope.downloadLogs = function(){
             if($scope.selectedLogs.length > 0){
@@ -354,12 +354,12 @@ angular.module('vshell.controllers', [])
                     $rootScope.file = resp.data;
                     $rootScope.isloading = false;
                 });
-                
+
             } else {
                 ngToast.create({className: 'alert alert-danger',content:'No logs are selected.',timeout:3000});
             }
         }
-        
+
         $scope.init = function() {
             $scope.selectedLogs = [];
             $scope.is_loading = true;
@@ -376,7 +376,7 @@ angular.module('vshell.controllers', [])
 
 .controller('ServiceGroupsCtrl', ['$scope', 'async',
     function($scope, async) {
-        
+
         $scope.init = function() {
 
             var options = {
@@ -496,7 +496,7 @@ angular.module('vshell.controllers', [])
 
 .controller('EventLogCtrl', ['$scope', 'async',
     function($scope, async) {
-        
+
         $scope.init = function() {
 
             var options = {
@@ -505,7 +505,7 @@ angular.module('vshell.controllers', [])
                 queue: 'main'
             };
 
-       
+
             async.api($scope, options);
 
         };
@@ -533,7 +533,7 @@ angular.module('vshell.controllers', [])
 			$scope.firstAssumedServiceState = 'Unspecified';
 			$scope.backtrackedArchives = 4;
 		};
-		
+
         $scope.init = function() {
 
 			$scope.componentName =
@@ -575,7 +575,7 @@ angular.module('vshell.controllers', [])
 			$scope.firstAssumedServiceState = 'Unspecified';
 			$scope.backtrackedArchives = 4;
 		};
-		
+
         $scope.init = function() {
 
             var options = {
@@ -609,10 +609,10 @@ angular.module('vshell.controllers', [])
 			$scope.initialStatesLogged = 'No';
 			$scope.ignoreRepeatedStates = 'No';
 		};
-		
+
         $scope.init = function() {
 
-			
+
             /*
 			var options = {
                 name: 'alerthistogram',
@@ -633,7 +633,7 @@ angular.module('vshell.controllers', [])
     function($scope, async) {
 
         $scope.init = function() {
-		
+
             /*
 			var options = {
                 name: 'hostname',
@@ -700,9 +700,9 @@ angular.module('vshell.controllers', [])
 ])
 
 .controller('SysCommentsCtrl', ['$scope', 'async',
-    function($scope, async) {
+    function($scope, async, $window) {
 
-        $scope.init = function() {
+        /*$scope.init = function() {
 
             var options = {
                 name: 'syscomments',
@@ -712,7 +712,27 @@ angular.module('vshell.controllers', [])
 
             async.api($scope, options);
 
-        };
+        };*/
+
+        $scope.data = {static: true}
+        $scope.panes = [
+           { title:"Dynamic Title 1", content:"Dynamic content 1" },
+           { title:"Dynamic Title 2", content:"Dynamic content 2" }
+         ];
+         $scope.tabs = [
+           { title:'Dynamic Title 1', content:'Dynamic content 1' },
+           { title:'Dynamic Title 2', content:'Dynamic content 2', disabled: true }
+         ];
+
+         $scope.alertMe = function() {
+           setTimeout(function() {
+             $window.alert('You\'ve selected the alert tab!');
+           });
+         };
+
+         $scope.model = {
+           name: 'Tabs'
+         };
 
     }
 ])
@@ -769,4 +789,3 @@ angular.module('vshell.controllers', [])
     }
 ])
 ;
-

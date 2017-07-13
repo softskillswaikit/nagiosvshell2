@@ -5,7 +5,7 @@ angular.module('vshell', [
     'ngRoute',
     'ngToast',
     'ngAnimate',
-    'ngSanitize',    
+    'ngSanitize',
     'vshell.filters',
     'vshell.services',
     'vshell.directives',
@@ -74,31 +74,31 @@ angular.module('vshell', [
         $routeProvider.when('/comments', {
             templateUrl: 'frontend/partials/comments.html'
         });
-		$routeProvider.when('/report/availability', {
+		    $routeProvider.when('/report/availability', {
             templateUrl: 'frontend/partials/report-availability.html'
         });
-		$routeProvider.when('/report/availability/report', {
+		    $routeProvider.when('/report/availability/report', {
             templateUrl: 'frontend/partials/report-availability-report.html'
         });
-		$routeProvider.when('/report/trends', {
+		    $routeProvider.when('/report/trends', {
             templateUrl: 'frontend/partials/report-trends.html'
         });
-		$routeProvider.when('/report/trends/report', {
+		    $routeProvider.when('/report/trends/report', {
             templateUrl: 'frontend/partials/report-trends-report.html'
         });
-		$routeProvider.when('/report/alerthistogram', {
+		    $routeProvider.when('/report/alerthistogram', {
             templateUrl: 'frontend/partials/report-alert-histogram.html'
-        });	
-		$routeProvider.when('/report/alerthistogram/report', {
+        });
+		    $routeProvider.when('/report/alerthistogram/report', {
             templateUrl: 'frontend/partials/report-alert-histogram-report.html'
         });
-		$routeProvider.when('/system/comments', {
+		    $routeProvider.when('/system/comments', {
             templateUrl: 'frontend/partials/system-comments.html'
         });
-		$routeProvider.when('/system/downtime', {
+		    $routeProvider.when('/system/downtime', {
             templateUrl: 'frontend/partials/system-downtime.html'
         });
-		$routeProvider.when('/system/performanceinfo', {
+		    $routeProvider.when('/system/performanceinfo', {
             templateUrl: 'frontend/partials/system-performance-info.html'
         });
         $routeProvider.when('/options', {
@@ -118,4 +118,3 @@ angular.module('vshell', [
 .config(['$compileProvider', function ($compileProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|blob|ftp):/);
 }]);;
-
