@@ -86,6 +86,12 @@ angular.module('vshell', [
 	$routeProvider.when('/reports/event-log', {
 		templateUrl: 'frontend/partials/reports-event-log.html'
 	});
+	$routeProvider.when('/system/process-info', {
+		templateUrl: 'frontend/partials/system-process-info.html'
+	});
+	$routeProvider.when('/system/scheduling-queue', {
+		templateUrl: 'frontend/partials/system-scheduling-queue.html'
+	});
         $routeProvider.when('/options', {
             templateUrl: 'frontend/partials/options.html'
         });

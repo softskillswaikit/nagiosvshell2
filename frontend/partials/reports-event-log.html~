@@ -50,7 +50,7 @@
                     <td colspan="5">{{ is_loading ? 'Loading...' : 'No eventlog are defined' }}</td>
                 </tr>
                 <tr>
-		<td>{{testing | count }}</td>
+		<td>{{testing.date_time}}</td>
                 </tr>
             </tbody>
         </table>

@@ -730,84 +730,6 @@ body.colorscheme-blue {
 /* Content
  * ============================================================================ */
 
-div.summaryform {
-    height: auto;
-    width: auto;
-    margin: auto;
-    margin-left: 30px;
-    margin-right: 50px;
-    margin-bottom: 20px; 
-    background-color: #f5f5f5;
-}
-
-div.summaryform h1 {
-    text-align: center;
-}
-
-form.summaryform {
-    margin: auto;
-    text-align: left;
-    padding-left: 20px;
-    padding-bottom: 10px;
-    line-height: 30px;
-}
-
-#standard, #custom {
-    width: 100%;
-}
-
-#type, #period {
-    margin-top: 20px;
-    margin-left: 20px;
-    width: 90%;
-    padding: 16px 20px;
-    border: none;
-    border-radius: 10px;
-    background-color: #d7dbdd;
-    text-align-last: center;
-}
-
-#date {
-    width: 100px;
-    background-color: #d7dbdd;
-    border: none;
-    border-radius: 10px;
-    text-align-last: center;
-}
-
-label.date {
-    width: 180px;
-}
-
-#detail {
-    display: inline-block;
-    margin: 10px;
-    width: 250px;
-    height: 60px;
-    border-radius: 10px;
-    border: none;
-    background-color: #d7dbdd;
-    text-align-last: center;
-}
-
-form.summaryform input[type="text"]{
-    width: 100px;
-    border-radius: 10px;
-}
-
-form.summaryform input[type="submit"]{
-    margin: auto;
-    margin-left: 10px;
-    width: 250px;
-    height: 60px;
-    font-size: 20px;
-}
-
-#cperiod {
-    padding-left: 20px;
-    line-height: 40px;
-}
-
 h1 a, h2 a, h3 a, h4 a, h5 a {
     color: #282828;
     text-decoration: none;
@@ -936,6 +858,29 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
     .table-container .table-options {
         margin: 15px 0px 15px 0px;
         width: 100%;
+    }
+	
+	.form-options {
+        padding: 10px 10px 10px 10px;
+	background-color: #ffffff;
+        width: 100%;
+    }
+
+	.form-control {
+	height: 45px;
+	border: groove;
+	border-radius: 5px;
+	background-color: #f1f1f1;
+	text-align-last: center;
+	font-size: 16px;
+    }
+
+	.modal-backdrop {
+	z-index: -1;
+	}
+
+	.table-hover tbody tr:hover td {
+	background-color: grey;
     }
 
         .table-container.full-width .table-options {

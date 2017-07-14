@@ -172,6 +172,33 @@ angular.module('vshell.controllers', [])
     }
 ])
 
+.controller('AlertSummaryCtrl', ['$scope', 'async',
+	function($scope, async) {
+
+		$scope.reset = function(){
+			$scope.StandardReportType = '1';
+			$scope.CustomReportType = 'Most Recent Alerts';
+			$scope.reportPeriod = 'Today';
+			$scope.startDate = '';
+			$scope.endDate = '';
+			$scope.HostgroupLimit = '**ALL HOSTGROUPS**';
+			$scope.ServicegroupLimit = '**ALL SERVICEGROUPS**';
+			$scope.HostLimit = '**ALL HOSTS**';
+			$scope.AlertTypes = 'Host and Service Alerts';
+			$scope.StateTypes = 'Hard and Soft States';
+			$scope.HostStates = 'All Host States';
+			$scope.ServiceStates = 'All Service States';
+		};
+
+		$scope.init = function() {
+
+		};
+
+		$scope.reset();
+		
+	}
+	])
+
 .controller('EventLogCtrl', ['$scope', 'async',
     function($scope, async) {
         
@@ -186,6 +213,42 @@ angular.module('vshell.controllers', [])
 	   
             async.api($scope, options);
 
+        };
+
+    }
+])
+
+.controller('NotificationsCtrl', ['$scope', 'async',
+    function($scope, async) {
+        
+        $scope.init = function() {
+
+       
+            
+
+        };
+
+    }
+])
+
+.controller('SchedulingQueueCtrl', ['$scope', 'async',
+    function($scope, async) {
+        
+        $scope.init = function() {
+
+          
+
+        };
+
+    }
+])
+
+.controller('ProcessInfoCtrl', ['$scope', 'async',
+    function($scope, async) {
+        
+        $scope.init = function() {
+
+           
         };
 
     }

@@ -70,6 +70,7 @@
 			    <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/summary.cgi">Alert Summary</a></li>
                             <li><a href="#/reports/alert-summary" active-when="/reports/alert-summary">Alert Summary</a></li>
                             <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/histogram.cgi">Alert Histogram</a></li>
+ 			    <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/notifications.cgi">Notifications</a></li>
                             <li><a href='#/reports/notifications' active-when='/reports/notifications'>Notifications</a></li>
                             <li><a href="#/reports/event-log" active-when='reports/event-log'>Event Log</a></li>
                         </ul>
@@ -80,8 +81,10 @@
                             <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/extinfo.cgi?type=3">Comments</a></li>
                             <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/extinfo.cgi?type=6">Downtime</a></li>
                             <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/extinfo.cgi?type=0">Process Info</a></li>
+			    <li><a href="#/system/process-info" active-when='system/process-info'>Process Info</a></li>
                             <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/extinfo.cgi?type=4">Performance Info</a></li>
                             <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/extinfo.cgi?type=7">Scheduling Queue</a></li>
+			    <li><a href="#/system/scheduling-queue" active-when='system/scheduling-queue'>Scheduling Queue</a></li>
                         </ul>
                     </li>
                 </ul>

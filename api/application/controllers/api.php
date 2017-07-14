@@ -312,8 +312,8 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $test = $this->Testing->testing_1();
-        return $this->output($test);
+        $test = $this->testing->testing_1();
+        $this->output($test);
     }
 
 
