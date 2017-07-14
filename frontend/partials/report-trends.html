@@ -7,19 +7,19 @@
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
 <div id="content" class="clearfix" ng-controller="TrendsCtrl" ng-init="init()">
-	
+
 	<h1>Create State Trends Report</h1>
-	
+
 	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-default">
 	 		<div class="panel-body">
-	
+
 				<h3>Report Details</h3>
- 		
+
 				<div class="form-options">
-			
-					<form action="" class="form-hosrizontal" name="inputForm" method="post" novalidate>
-						<div class="form-group">            		
+
+					<form action="" class="form-horizontal" name="inputForm" method="post" novalidate>
+						<div class="form-group">
 							<label for="reportType" class="col-md-4 control-label">Report Type:</label>
 							<div class="col-md-6">
 								<select ng-model="reportType" name="reportType" class="form-control" required>
@@ -28,7 +28,7 @@
 								</select>
 							</div>
 						</div>
-						
+
 						<div class="form-group" ng-show="reportType=='Host'" class="serviceType">
 							<label for="serviceType" class="col-md-4 control-label">Service Type:</label>
 							<div class="col-md-6">
@@ -39,7 +39,7 @@
 								</select>
 							</div>
 						</div>
-						
+
 						<div class="form-group" ng-switch on="reportType">
 							<label for="reportComponent" ng-switch-when="Host" class="col-md-4 control-label">Select Host:</label><label for="reportComponent" ng-switch-when="Host(s)" class="col-md-4 control-label">Select Host:</label><label for="reportComponent" ng-switch-when="Servicegroup(s)" class="col-md-4 control-label">Select Servicegroup:</label>
 							<label for="reportComponent" ng-switch-when="Service" class="col-md-4 control-label">Select Service:</label>
@@ -68,7 +68,7 @@
 								</select>
 							</div>
 						</div>
-						
+
 						<div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'" ng-model="startDate">
 							<label for="startdate" class="col-md-4 control-label">Start Date:</label>
 							<div class="col-md-6">
@@ -82,7 +82,7 @@
 								<input type="date" name="enddate" value="" class="form-control"></input>
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label for="assumeInitialStates" class="col-md-4 control-label">Assume Initial States:</label>
 							<div class="col-md-6">
@@ -102,7 +102,7 @@
 								</select>
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label for="assumeDowntimeStates" class="col-md-4 control-label">Assume States During Program Downtime:</label>
 							<div class="col-md-6">
@@ -122,7 +122,7 @@
 								</select>
 							</div>
 						</div>
-						
+
 						<div class="form-group" ng-show="assumeInitialStates=='Yes' && reportType=='Host'" class="firstAssumedState">
 							<label for="firstAssumedHostState" class="col-md-4 control-label">First Assumed Host State:</label>
 							<div class="col-md-6">
@@ -148,7 +148,7 @@
 								</select>
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label for="backtrackedArchives" class="col-md-4 control-label">Backtracked Archives (To Scan For Initial States): </label>
 							<div class="col-md-6">
@@ -157,7 +157,7 @@
 								<span ng-show="inputForm.backtrackedArchives.$error.required">This field is required.</span></span>
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button class="btn btn-primary" ng-click="reset()">Reset</button>
@@ -166,14 +166,12 @@
 								</a>
 							</div>
 						</div>
-						
+
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-	
+
 <div ng-include="'frontend/partials/_footer.html'"></div>
-
-

@@ -96,28 +96,29 @@
 											<div class="form-group">
 												<label for="hostName" class="col-md-4 control-label">Host Name:</label>
 												<div class="col-md-6">
-													<input ng-model="hostNameToAdd" type="text" class="form-control" name="hostName"></input>
+													<input ng-model="hostHostName" type="text" class="form-control input-sm" name="hostName"></input>
 												</div>
 											</div>
 
 											<div class="form-group">
-												<label for="persistent" class="col-md-4 control-label">Persistent: </label>
-												<div class="col-md-6">
-													<input ng-model="persistentToAdd" type="checkbox" value="persistent" name="persistent"></input>
+												<div class="col-xs-1 col-md-offset-3 input-sm">
+													<input ng-model="hostPersistent" type="checkbox" value="persistent" name="persistent"
+														class="form-control input-sm"></input>
 												</div>
+												<label for="persistent" class="control-label">Persistent</label>
 											</div>
 
 											<div class="form-group">
 												<label for="author" class="col-md-4 control-label">Author(Your Name):</label>
 												<div class="col-md-6">
-													<input ng-model="authorToAdd" type="text" class="form-control" name="author"></input>
+													<input ng-model="hostAuthor" type="text" class="form-control input-sm" name="author"></input>
 												</div>
 											</div>
 
 											<div class="form-group">
 												<label for="comment" class="col-md-4 control-label">Comment:</label>
 												<div class="col-md-6">
-													<textarea ng-model="commentToAddng-model="authorToAdd" " class="form-control" name="comment"></textarea>
+													<textarea ng-model="hostComment " class="form-control input-sm" name="comment"></textarea>
 												</div>
 											</div>
 
@@ -204,35 +205,36 @@
 										<div class="form-group">
 											<label for="hostName" class="col-md-4 control-label">Host Name:</label>
 											<div class="col-md-6">
-												<input ng-model="hostNameToAdd" type="text" class="form-control" name="hostName"></input>
+												<input ng-model="serviceHostName" type="text" class="form-control input-sm" name="hostName"></input>
 											</div>
 										</div>
 
 										<div class="form-group">
 											<label for="service" class="col-md-4 control-label">Service:</label>
 											<div class="col-md-6">
-												<input ng-model="serviceToAdd" type="text" class="form-control" name="service"></input>
+												<input ng-model="serviceService" type="text" class="form-control input-sm" name="service"></input>
 											</div>
 										</div>
 
 										<div class="form-group">
-											<label for="persistent" class="col-md-4 control-label">Persistent: </label>
-											<div class="col-md-6">
-												<input ng-model="persistentToAdd" type="checkbox" value="persistent" name="persistent"></input>
+											<div class="col-xs-1 col-md-offset-3 input-sm">
+												<input ng-model="servicePersistent" type="checkbox" value="persistent" name="persistent"
+													class="form-control input-sm"></input>
 											</div>
+											<label for="persistent" class="control-label">Persistent</label>
 										</div>
 
 										<div class="form-group">
 											<label for="author" class="col-md-4 control-label">Author(Your Name):</label>
 											<div class="col-md-6">
-												<input ng-model="authorToAdd" type="text" class="form-control" name="author"></input>
+												<input ng-model="serviceAuthor" type="text" class="form-control input-sm" name="author"></input>
 											</div>
 										</div>
 
 										<div class="form-group">
 											<label for="comment" class="col-md-4 control-label">Comment:</label>
 											<div class="col-md-6">
-												<textarea ng-model="commentToAdd" class="form-control" name="comment"></textarea>
+												<textarea ng-model="serviceComment" class="form-control input-sm" name="comment"></textarea>
 											</div>
 										</div>
 

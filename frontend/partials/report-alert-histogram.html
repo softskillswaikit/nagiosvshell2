@@ -7,19 +7,19 @@
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
 <div id="content" class="clearfix" ng-controller="AlertHistogramCtrl" ng-init="init()">
-	
+
 	<h1>Create Alert Histogram Report</h1>
-	
+
 	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-default">
 	 		<div class="panel-body">
-	
+
 				<h3>Report Details</h3>
- 		
+
 				<div class="form-options">
-			
-					<form action="" class="form-hosrizontal" name="inputForm" method="post" novalidate>
-						<div class="form-group">            		
+
+					<form action="" class="form-horizontal" name="inputForm" method="post" novalidate>
+						<div class="form-group">
 							<label for="reportType" class="col-md-4 control-label">Report Type:</label>
 							<div class="col-md-6">
 								<select ng-model="reportType" name="reportType" class="form-control" required>
@@ -28,7 +28,7 @@
 								</select>
 							</div>
 						</div>
-						
+
 						<div class="form-group" ng-show="reportType=='Host'" class="serviceType">
 							<label for="serviceType" class="col-md-4 control-label">Service Type:</label>
 							<div class="col-md-6">
@@ -39,7 +39,7 @@
 								</select>
 							</div>
 						</div>
-						
+
 						<div class="form-group" ng-switch on="reportType">
 							<label for="reportComponent" ng-switch-when="Host" class="col-md-4 control-label">Select Host:</label><label for="reportComponent" ng-switch-when="Host(s)" class="col-md-4 control-label">Select Host:</label><label for="reportComponent" ng-switch-when="Servicegroup(s)" class="col-md-4 control-label">Select Servicegroup:</label>
 							<label for="reportComponent" ng-switch-when="Service" class="col-md-4 control-label">Select Service:</label>
@@ -68,7 +68,7 @@
 								</select>
 							</div>
 						</div>
-						
+
 						<div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'" ng-model="startDate">
 							<label for="startdate" class="col-md-4 control-label">Start Date:</label>
 							<div class="col-md-6">
@@ -82,7 +82,7 @@
 								<input type="date" name="enddate" value="" class="form-control"></input>
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label for="eventsToGraph" class="col-md-4 control-label">Events To Graph:</label>
 							<div class="col-md-6">
@@ -93,9 +93,9 @@
 									<option value="Host Down Events">Host Down Events</option>
 									<option value="Host Unreachable Events">Host Unreachable Events</option>
 								</select>
-							</div>	
+							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label for="stateTypesToGraph" class="col-md-4 control-label">State Types To Graph:</label>
 							<div class="col-md-6">
@@ -104,9 +104,9 @@
 									<option value="Soft States">Soft States</option>
 									<option value="Hard and Soft States">Hard and Soft States</option>
 								</select>
-							</div>	
+							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label for="assumeStateRetention" class="col-md-4 control-label">Assume State Retention:</label>
 							<div class="col-md-6">
@@ -116,7 +116,7 @@
 								</select>
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label for="assumeStateRetention" class="col-md-4 control-label">Initial States Logged:</label>
 							<div class="col-md-6">
@@ -124,9 +124,9 @@
 									<option value="Yes">Yes</option>
 									<option value="No">No</option>
 								</select>
-							</div>	
+							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label for="ignoreRepeatedStates" class="col-md-4 control-label">Ignore Repeated States:</label>
 							<div class="col-md-6">
@@ -145,14 +145,12 @@
 								</a>
 							</div>
 						</div>
-						
+
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-	
+
 <div ng-include="'frontend/partials/_footer.html'"></div>
-
-
