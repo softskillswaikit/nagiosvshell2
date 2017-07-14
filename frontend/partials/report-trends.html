@@ -152,7 +152,8 @@
 						<div class="form-group">
 							<label for="backtrackedArchives" class="col-md-4 control-label">Backtracked Archives (To Scan For Initial States): </label>
 							<div class="col-md-6">
-								<input ng-model="backtrackedArchives" name="backtrackedArchives" type="number" class="form-control" required></input>
+								<input ng-model="backtrackedArchives" name="backtrackedArchives" type="number" class="form-control"
+									min=0 required></input>
 								<span style="color:red" ng-show="inputForm.backtrackedArchives.$dirty && inputForm.backtrackedArchives.$invalid">
 								<span ng-show="inputForm.backtrackedArchives.$error.required">This field is required.</span></span>
 							</div>

@@ -6,7 +6,7 @@
 
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
-<div id="content" class="clearfix" ng-controller="SysCommentsCtrl" ng-init="init()">
+<div id="content" class="clearfix" ng-controller="SysDowntimeCtrl" ng-init="init()">
 	<h1>Downtime</h1>
 
 	<div class="details table-container full-width">
@@ -105,7 +105,7 @@
 											<div class="form-group">
 												<label for="author" class="col-md-4 control-label">Author(Your Name):</label>
 												<div class="col-md-6">
-													<input ng-modal="hostAuthor" type="text" class="form-control" name="author"></input>
+													<input ng-modal="hostAuthor" ng-disabled="true" type="text" class="form-control" name="author"></input>
 												</div>
 											</div>
 
@@ -119,23 +119,25 @@
 											<div class="form-group">
 												<label for="triggeredBy" class="col-md-4 control-label">Triggered By:</label>
 												<div class="col-md-6">
-													<select ng-model="hostTriggeredByToAdd" name="triggeredBy" class="form-control">
+													<select ng-model="hostTriggeredBy" name="triggeredBy" class="form-control">
 														<option value="N/A">N/A</option>
 													</select>
 												</div>
 											</div>
 
-											<div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'" ng-model="startDate">
+											<div class="form-group">
 												<label for="startdate" class="col-md-4 control-label">Start Date:</label>
 												<div class="col-md-6">
-													<input ng-model="hostStartDate" type="date" name="startdate" value="" class="form-control"></input>
+													<input ng-model="hostStartDateTime" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}"
+														name="startdate" value="" class="form-control"></input>
 												</div>
 											</div>
 
-											<div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'" ng-model="endDate">
+											<div class="form-group">
 												<label for="enddate" class="col-md-4 control-label">End Date:</label>
 												<div class="col-md-6">
-													<input ng-model="hostEndDate" type="date" name="enddate" value="" class="form-control"></input>
+													<input ng-model="hostEndDateTime" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}"
+														name="enddate" value="" class="form-control"></input>
 												</div>
 											</div>
 
@@ -143,17 +145,19 @@
 												<label for="type" class="col-md-4 control-label">Type:</label>
 												<div class="col-md-6">
 													<select ng-model="hostType" name="type" class="form-control">
-														<option value="fixed">Fixed</option>
-														<option value="flexible">Flexible</option>
+														<option value="Fixed">Fixed</option>
+														<option value="Flexible">Flexible</option>
 													</select>
 												</div>
 											</div>
 
-											<div class="form-group" ng-show="hostType=='flexible'">
+											<div class="form-group" ng-show="hostType=='Flexible'">
 												<label for="durationHour" class="col-md-4 control-label">Duration:</label>
-												<div class="col-md-6">
-													<input ng-model="hostDurationHour" type="number" name="durationHour">Hour</input>
-													<input ng-model="hostDurationMin" type="number" name="durationMin">Minute</input>
+												<div class="col-md-3">
+													<input ng-model="hostDurationHour" type="number" name="durationHour" class="form-control">Hour</input>
+												</div>
+												<div class="col-md-3">
+													<input ng-model="hostDurationMin" type="number" name="durationMin" class="form-control">Minute</input>
 												</div>
 											</div>
 
@@ -168,11 +172,33 @@
 												</div>
 											</div>
 
+											<div class="form-group">
+												<div class="col-md-6 col-md-offset-1">
+													<button type="button" class="btn btn-sm btn-info" data-target="#hostdesc" data-toggle="collapse">help</button>
+												</div>
+											</div>
+
+											<!-- collapse -->
+											<div class="collapse fade" id="hostdesc">
+												<p><small>
+													This command is used to schedule downtime for a particular host.
+													During the specified downtime, Nagios will not send notifications out about the host.
+													When the scheduled downtime expires, Nagios will send out notifications for this host
+													as it normally would. Scheduled downtimes are preserved across program shutdowns and
+													restarts. If you select the fixed option, the downtime will be in effect
+													between the start and end times you specify. If you do not select the fixed option,
+													Nagios will treat this as "flexible" downtime. Flexible downtime starts when the host
+													goes down or becomes unreachable (sometime between the start and end times you specified)
+													 and lasts as long as the duration of time you enter. The duration fields do not apply
+													 for fixed downtime.
+											 </small></p>
+											</div>
+
 										</form>
 					        </div>
 					        <div class="modal-footer">
-					          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary" data-dismiss="modal">Schedule</button>
+					          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="init()">Close</button>
+										<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="init()">Schedule</button>
 					        </div>
 					      </div>
 
@@ -267,7 +293,7 @@
  									 <div class="form-group">
  										 <label for="author" class="col-md-4 control-label">Author(Your Name):</label>
  										 <div class="col-md-6">
- 											 <input ng-modal="serviceAuthor" type="text" class="form-control" name="author"></input>
+ 											 <input ng-modal="serviceAuthor" ng-disabled="true" type="text" class="form-control" name="author"></input>
  										 </div>
  									 </div>
 
@@ -287,43 +313,69 @@
  										 </div>
  									 </div>
 
- 									 <div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'" ng-model="startDate">
- 										 <label for="startdate" class="col-md-4 control-label">Start Date:</label>
- 										 <div class="col-md-6">
- 											 <input ng-model="serviceStartDate" type="date" name="startdate" value="" class="form-control"></input>
- 										 </div>
- 									 </div>
+									 <div class="form-group">
+										 <label for="startdate" class="col-md-4 control-label">Start Date:</label>
+										 <div class="col-md-6">
+											 <input ng-model="serviceStartDateTime" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}"
+											 	name="startdate" value="" class="form-control"></input>
+										 </div>
+									 </div>
 
- 									 <div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'" ng-model="endDate">
- 										 <label for="enddate" class="col-md-4 control-label">End Date:</label>
- 										 <div class="col-md-6">
- 											 <input ng-model="serviceEndDate" type="date" name="enddate" value="" class="form-control"></input>
- 										 </div>
- 									 </div>
+									 <div class="form-group">
+										 <label for="enddate" class="col-md-4 control-label">End Date:</label>
+										 <div class="col-md-6">
+											 <input ng-model="serviceEndDateTime" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}"
+											 	name="enddate" value="" class="form-control"></input>
+										 </div>
+									 </div>
 
  									 <div class="form-group">
  										 <label for="type" class="col-md-4 control-label">Type:</label>
  										 <div class="col-md-6">
  											 <select ng-model="serviceType" name="type" class="form-control">
- 												 <option value="fixed">Fixed</option>
- 												 <option value="flexible">Flexible</option>
+ 												 <option value="Fixed">Fixed</option>
+ 												 <option value="Flexible">Flexible</option>
  											 </select>
  										 </div>
  									 </div>
 
- 									 <div class="form-group" ng-show="serviceType=='flexible'">
- 										 <label for="durationHour" class="col-md-4 control-label">Duration:</label>
- 										 <div class="col-md-6">
- 											 <input ng-model="serviceDurationHour" type="number" name="durationHour">Hour</input>
- 											 <input ng-model="serviceDurationMin" type="number" name="durationMin">Minute</input>
- 										 </div>
- 									 </div>
+									 <div class="form-group" ng-show="serviceType=='Flexible'">
+										 <label for="durationHour" class="col-md-4 control-label">Duration:</label>
+										 <div class="col-md-3">
+											 <input ng-model="serviceDurationHour" type="number" name="durationHour" class="form-control">Hour</input>
+										 </div>
+										 <div class="col-md-3">
+											 <input ng-model="serviceDurationMin" type="number" name="durationMin" class="form-control">Minute</input>
+										 </div>
+									 </div>
+
+									 <div class="form-group">
+										 <div class="col-md-6 col-md-offset-1">
+											 <button type="button" class="btn btn-sm btn-info" data-target="#servicedesc" data-toggle="collapse">help</button>
+										 </div>
+									 </div>
+
+									 <!-- collapse -->
+									 <div class="collapse fade" id="servicedesc">
+										 <p><small>
+											 This command is used to schedule downtime for a particular host.
+											 During the specified downtime, Nagios will not send notifications out about the host.
+											 When the scheduled downtime expires, Nagios will send out notifications for this host
+											 as it normally would. Scheduled downtimes are preserved across program shutdowns and
+											 restarts. If you select the fixed option, the downtime will be in effect
+											 between the start and end times you specify. If you do not select the fixed option,
+											 Nagios will treat this as "flexible" downtime. Flexible downtime starts when the host
+											 goes down or becomes unreachable (sometime between the start and end times you specified)
+												and lasts as long as the duration of time you enter. The duration fields do not apply
+												for fixed downtime.
+										</small></p>
+									 </div>
 
  								 </form>
  							 </div>
  							 <div class="modal-footer">
- 								 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
- 								 <button type="button" class="btn btn-primary" data-dismiss="modal">Schedule</button>
+ 								 <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="init()">Close</button>
+ 								 <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="init()">Schedule</button>
  							 </div>
  						 </div>
 

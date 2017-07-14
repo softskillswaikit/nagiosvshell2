@@ -607,8 +607,6 @@ angular.module('vshell.controllers', [])
         {name : "testserver"}
       ];
 
-
-
       $scope.today = new Date();
       $scope.todayString = $filter('date')(Date.now(), 'MM/dd/yyyy');
 
@@ -664,7 +662,7 @@ angular.module('vshell.controllers', [])
     function($scope, async) {
 
         $scope.init = function() {
-
+          /*
             var options = {
                 name: 'trendsreport',
                 url: 'trendsreport',
@@ -672,7 +670,7 @@ angular.module('vshell.controllers', [])
             };
 
             async.api($scope, options);
-
+*/
         };
 
     }
@@ -682,7 +680,7 @@ angular.module('vshell.controllers', [])
     function($scope, async) {
 
         $scope.init = function() {
-
+/*
             var options = {
                 name: 'alerthistogramreport',
                 url: 'alerthistogramreport',
@@ -690,31 +688,27 @@ angular.module('vshell.controllers', [])
             };
 
             async.api($scope, options);
-
+*/
         };
 
-    }
-])
-
-.controller('TabsParentController', ['$scope', 'async',
-    function($scope, async) {
-
-        $scope.init = function() {
-
-            $scope.workspaces =
-		    [
-		        { id: 1, name: "Workspace 1", active:true  },
-		        { id: 2, name: "Workspace 2", active:false }
-		    ];   
-        };
     }
 ])
 
 .controller('SysCommentsCtrl', ['$scope', 'async',
-    function($scope, async, $window) {
+    function($scope, async) {
 
-        /*$scope.init = function() {
+      $scope.init = function() {
+        $scope.hostHostName = '';
+        $scope.hostPersistent = true;
+        $scope.hostAuthor = '';
+        $scope.hostComment = '';
 
+        $scope.serviceHostName = '';
+        $scope.serviceService = '';
+        $scope.servicePersistent = true;
+        $scope.serviceAuthor = '';
+        $scope.serviceComment = '';
+/*
             var options = {
                 name: 'syscomments',
                 url: 'syscomments',
@@ -722,37 +716,42 @@ angular.module('vshell.controllers', [])
             };
 
             async.api($scope, options);
+*/
+        };
 
-        };*/
-
-        $scope.data = {static: true}
-        $scope.panes = [
-           { title:"Dynamic Title 1", content:"Dynamic content 1" },
-           { title:"Dynamic Title 2", content:"Dynamic content 2" }
-         ];
-         $scope.tabs = [
-           { title:'Dynamic Title 1', content:'Dynamic content 1' },
-           { title:'Dynamic Title 2', content:'Dynamic content 2', disabled: true }
-         ];
-
-         $scope.alertMe = function() {
-           setTimeout(function() {
-             $window.alert('You\'ve selected the alert tab!');
-           });
-         };
-
-         $scope.model = {
-           name: 'Tabs'
-         };
 
     }
 ])
 
-.controller('SysDowntimeCtrl', ['$scope', 'async',
-    function($scope, async) {
+.controller('SysDowntimeCtrl', ['$scope', '$filter', 'async',
+    function($scope, $filter, async) {
 
         $scope.init = function() {
+          $scope.now = new Date();
+          $scope.nowString = $filter('date')(Date.now(), 'MM/dd/yyyy HH:mm:ss');
 
+          $scope.hostHostName = '';
+          $scope.hostAuthor = '';
+          $scope.hostComment = "";
+          $scope.hostTriggeredBy = 'N/A';
+          $scope.hostStartDateTime = $scope.nowString ;
+          $scope.hostEndDateTime =  $scope.nowString ;
+          $scope.hostType = 'Fixed';
+          $scope.hostDurationHour = 2;
+          $scope.hosteDurationMin = 0;
+          $scope.hostChildHost = 'doNothing';
+
+          $scope.serviceHostName = '';
+          $scope.serviceService = '';
+          $scope.serviceAuthor = '';
+          $scope.servicComment = '';
+          $scope.serviceTriggeredBy = 'N/A';
+          $scope.serviceStartDateTime = $scope.nowString;
+          $scope.serviceEndDateTime = $scope.nowString;
+          $scope.serviceType = 'Fixed';
+          $scope.serviceDurationHour = 2;
+          $scope.serviceDurationMin = 0;
+/*
             var options = {
                 name: 'sysdowntime',
                 url: 'sysdowntime',
@@ -760,7 +759,7 @@ angular.module('vshell.controllers', [])
             };
 
             async.api($scope, options);
-
+*/
         };
 
     }
@@ -770,7 +769,7 @@ angular.module('vshell.controllers', [])
     function($scope, async) {
 
         $scope.init = function() {
-
+/*
             var options = {
                 name: 'performanceinfo',
                 url: 'performanceinfo',
@@ -778,7 +777,7 @@ angular.module('vshell.controllers', [])
             };
 
             async.api($scope, options);
-
+*/
         };
 
     }

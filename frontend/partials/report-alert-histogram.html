@@ -56,7 +56,8 @@
 								<select ng-model="reportPeriod" name="reportPeriod" class="form-control">
 									<option value="Today">Today</option>
 									<option value="Last 24 Hours">Last 24 Hours</option>
-									<option value="Yesterday">Yesterday</option>											<option value="This Week">This Week</option>
+									<option value="Yesterday">Yesterday</option>
+									<option value="This Week">This Week</option>
 									<option value="Last 7 Days">Last 7 Days</option>
 									<option value="Last Week">Last Week</option>
 									<option value="This Month">This Month</option>
@@ -72,14 +73,14 @@
 						<div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'" ng-model="startDate">
 							<label for="startdate" class="col-md-4 control-label">Start Date:</label>
 							<div class="col-md-6">
-								<input type="date" ng-model="startDate" max="{{today | date: 'yyyy-MM-dd'}}" name="startdate" class="form-control"></input>
+								<input type="date" ng-model="startDate" max="{{today | date: 'MM/dd/yyyy'}}" name="startdate" class="form-control"></input>
 							</div>
 						</div>
 
 						<div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'" ng-model="endDate">
 							<label for="enddate" class="col-md-4 control-label">End Date:</label>
 							<div class="col-md-6">
-								<input type="date" ng-model="endDate" max="{{today | date: 'yyyy-MM-dd'}}" name="enddate" class="form-control"></input>
+								<input type="date" ng-model="endDate" max="{{today | date: 'MM/dd/yyyy'}}" name="enddate" class="form-control"></input>
 							</div>
 						</div>
 

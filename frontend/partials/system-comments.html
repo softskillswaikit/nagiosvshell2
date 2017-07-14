@@ -111,7 +111,7 @@
 											<div class="form-group">
 												<label for="author" class="col-md-4 control-label">Author(Your Name):</label>
 												<div class="col-md-6">
-													<input ng-model="hostAuthor" type="text" class="form-control input-sm" name="author"></input>
+													<input ng-model="hostAuthor" ng-disabled="true" type="text" class="form-control input-sm" name="author"></input>
 												</div>
 											</div>
 
@@ -122,11 +122,28 @@
 												</div>
 											</div>
 
+											<div class="form-group">
+												<div class="col-md-6 col-md-offset-1">
+													<button type="button" class="btn btn-sm btn-info" data-target="#hostdesc" data-toggle="collapse">help</button>
+												</div>
+											</div>
+
+											<!-- collapse -->
+											<div class="collapse fade" id="hostdesc">
+												<p><small>
+													This command is used to add a comment for the specified host.
+													If you work with other administrators, you may find it useful to
+													share information about a host that is having problems if more than
+													one of you may be working on it. If you do not check the 'persistent'
+													option, the comment will be automatically be deleted the next time Nagios
+													is restarted.
+											 </small></p>
+											</div>
 										</form>
 					        </div>
 					        <div class="modal-footer">
-					          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary" data-dismiss="modal">Add</button>
+					          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="init()">Close</button>
+										<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="init()">Add</button>
 					        </div>
 					      </div>
 
@@ -227,7 +244,7 @@
 										<div class="form-group">
 											<label for="author" class="col-md-4 control-label">Author(Your Name):</label>
 											<div class="col-md-6">
-												<input ng-model="serviceAuthor" type="text" class="form-control input-sm" name="author"></input>
+												<input ng-model="serviceAuthor" ng-disabled="true" type="text" class="form-control input-sm" name="author"></input>
 											</div>
 										</div>
 
@@ -238,11 +255,27 @@
 											</div>
 										</div>
 
+										<div class="form-group">
+											<div class="col-md-6 col-md-offset-1">
+												<button type="button" class="btn btn-sm btn-info" data-target="#servicedesc" data-toggle="collapse">help</button>
+											</div>
+										</div>
+										<!-- collapse -->
+										<div class="collapse fade" id="servicedesc">
+											<p><small>
+														This command is used to add a comment for the specified service.
+														If you work with other administrators, you may find it useful to
+														share information about a host or service that is having problems
+														if more than one of you may be working on it.
+														If you do not check the 'persistent' option,
+														the comment will automatically be deleted the next time Nagios is restarted.
+										 </small></p>
+										</div>
 									</form>
 								</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									<button type="button" class="btn btn-primary" data-dismiss="modal">Add</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="init()">Close</button>
+									<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="init()">Add</button>
 								</div>
 							</div>
 
