@@ -514,45 +514,43 @@ angular.module('vshell.controllers', [])
 ])
 
 
-.controller('AvailabilityCtrl', ['$scope', '$routeParams', 'async',
-    function($scope, $routeParams, async) {
+.controller('AvailabilityCtrl', ['$scope', '$routeParams', '$filter', 'async',
+    function($scope, $routeParams, $filter, async) {
+      $scope.init = function() {
+        $scope.componentName =   [
+          {name : "localhost"},
+          {name : "testserver"}
+        ];
 
-		$scope.reset = function(){
-			$scope.reportType = 'Hostgroup(s)';
-			$scope.serviceType = 'Normal Service';
-			$scope.reportComponent = '';
-			$scope.startDate = '';
-			$scope.endDate = '';
-			$scope.reportPeriod = 'Last 7 Days';
-			$scope.reportTimePeriod = 'None';
-			$scope.assumeInitialStates = 'Yes';
-			$scope.assumeStateRetention = 'Yes';
-			$scope.assumeDowntimeStates = 'Yes';
-			$scope.includeSoftStates = 'No';
-			$scope.firstAssumedHostState = 'Unspecified';
-			$scope.firstAssumedServiceState = 'Unspecified';
-			$scope.backtrackedArchives = 4;
-		};
+        $scope.today = new Date();
+        $scope.todayString = $filter('date')(Date.now(), 'MM/dd/yyyy');
 
-        $scope.init = function() {
+        $scope.reportType = 'Hostgroup(s)';
+        $scope.serviceType = 'Normal Service';
+        $scope.reportComponent = $scope.componentName[0].name;
+        $scope.startDate =  $scope.todayString;
+        $scope.endDate =  $scope.todayString;
+        $scope.reportPeriod = 'Last 7 Days';
+        $scope.reportTimePeriod = 'None';
+        $scope.assumeInitialStates = 'Yes';
+        $scope.assumeStateRetention = 'Yes';
+        $scope.assumeDowntimeStates = 'Yes';
+        $scope.includeSoftStates = 'No';
+        $scope.firstAssumedHostState = 'Unspecified';
+        $scope.firstAssumedServiceState = 'Unspecified';
+        $scope.backtrackedArchives = 4;
 
-			$scope.componentName =
-		    [
-				"localhost", "testserver"
-		    ];
-            /*
-			var options = {
-                name: 'availability',
-                url: 'availability',
-                queue: 'main'
-            };
 
-            async.api($scope, options);
-			*/
+              /*
+        var options = {
+                  name: 'availability',
+                  url: 'availability',
+                  queue: 'main'
+              };
 
-        };
-		$scope.reset();
-
+              async.api($scope, options);
+        */
+      };
     }
 ])
 
