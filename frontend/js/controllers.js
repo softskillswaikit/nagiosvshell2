@@ -522,6 +522,11 @@ angular.module('vshell.controllers', [])
           {name : "testserver"}
         ];
 
+        $scope.availability =   [
+          {name : "localhost"},
+          {name : "testserver"}
+        ];
+
         $scope.today = new Date();
         $scope.todayString = $filter('date')(Date.now(), 'MM/dd/yyyy');
 
@@ -554,51 +559,64 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('TrendsCtrl', ['$scope', '$routeParams', 'async',
-    function($scope, $routeParams, async) {
-
-		$scope.reset = function(){
-			$scope.reportType = 'Host';
-			$scope.serviceType = 'Normal Service';
-			$scope.reportComponent = '';
-			$scope.startDate = '';
-			$scope.endDate = '';
-			$scope.reportPeriod = 'Last 7 Days';
-			$scope.reportTimePeriod = 'None';
-			$scope.assumeInitialStates = 'Yes';
-			$scope.assumeStateRetention = 'Yes';
-			$scope.assumeDowntimeStates = 'Yes';
-			$scope.includeSoftStates = 'No';
-			$scope.firstAssumedHostState = 'Unspecified';
-			$scope.firstAssumedServiceState = 'Unspecified';
-			$scope.backtrackedArchives = 4;
-		};
+.controller('TrendsCtrl', ['$scope', '$routeParams', '$filter', 'async',
+    function($scope, $routeParams, $filter, async) {
 
         $scope.init = function() {
+          $scope.componentName =   [
+            {name : "localhost"},
+            {name : "testserver"}
+          ];
 
-            var options = {
+          $scope.today = new Date();
+          $scope.todayString = $filter('date')(Date.now(), 'MM/dd/yyyy');
+
+          $scope.reportType = 'Host';
+    			$scope.serviceType = 'Normal Service';
+          $scope.reportComponent = $scope.componentName[0].name;
+          $scope.startDate =  $scope.todayString;
+          $scope.endDate =  $scope.todayString;
+    			$scope.reportPeriod = 'Last 7 Days';
+    			$scope.reportTimePeriod = 'None';
+    			$scope.assumeInitialStates = 'Yes';
+    			$scope.assumeStateRetention = 'Yes';
+    			$scope.assumeDowntimeStates = 'Yes';
+    			$scope.includeSoftStates = 'No';
+    			$scope.firstAssumedHostState = 'Unspecified';
+    			$scope.firstAssumedServiceState = 'Unspecified';
+    			$scope.backtrackedArchives = 4;
+            /*var options = {
                 name: 'trends',
                 url: 'trends/',
                 queue: 'main'
             };
 
-            async.api($scope, options);
+            async.api($scope, options);*/
 
         };
-		$scope.reset();
 
     }
 ])
 
-.controller('AlertHistogramCtrl', ['$scope', '$routeParams', 'async',
-    function($scope, $routeParams, async) {
+.controller('AlertHistogramCtrl', ['$scope', '$routeParams', '$filter', 'async',
+    function($scope, $routeParams, $filter, async) {
 
-		$scope.reset = function(){
+		$scope.init = function(){
+      $scope.componentName =   [
+        {name : "localhost"},
+        {name : "testserver"}
+      ];
+
+
+
+      $scope.today = new Date();
+      $scope.todayString = $filter('date')(Date.now(), 'MM/dd/yyyy');
+
 			$scope.reportType = 'Host';
 			$scope.serviceType = 'Normal Service';
-			$scope.reportComponent = '';
-			$scope.startDate = '';
-			$scope.endDate = '';
+      $scope.reportComponent = $scope.componentName[0].name;
+      $scope.startDate =  $scope.todayString;
+      $scope.endDate =  $scope.todayString;
 			$scope.reportPeriod = 'Last 7 Days';
 			$scope.statisticsBreakdown = 'Day of the Month';
 			$scope.eventsToGraph = 'All Hosts Events';
@@ -606,9 +624,6 @@ angular.module('vshell.controllers', [])
 			$scope.assumeStateRetention = 'Yes';
 			$scope.initialStatesLogged = 'No';
 			$scope.ignoreRepeatedStates = 'No';
-		};
-
-        $scope.init = function() {
 
 
             /*
@@ -621,9 +636,7 @@ angular.module('vshell.controllers', [])
             async.api($scope, options);
 			*/
 
-        };
-		$scope.reset();
-
+	     };
     }
 ])
 
