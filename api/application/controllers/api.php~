@@ -593,11 +593,8 @@ class API extends VS_Controller
 
     public function testing()
     {
-        log_message('error', 'qwe1.');
-        $test = $this->Testing->testing_1();
-        log_message('error', 'qwe2.');
-        $this->output($test);
-        log_message('error', 'qwe3.');
+       $Data = 100;
+	$this->output(var_dump($Data));
     }
 
 

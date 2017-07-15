@@ -174,16 +174,18 @@ angular.module('vshell.controllers', [])
         $scope.init = function() {
 
             var options = {
-                name: 'hostname',
-                url: 'hostname',
+                name: 'testing',
+                url: 'testing',
                 queue: 'main'
             };
 
-       
-            async.api($scope, options);
 
+           
+
+            async.api($scope, options);
         };
 
+        $scope.range = 1;
     }
 ])
 

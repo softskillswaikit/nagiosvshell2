@@ -593,14 +593,20 @@ class API extends VS_Controller
 
     public function testing()
     {
-       $Eventlogs[] = $this->testing->get_event_log();
-       
+        $Eventlogs = array();
+        $Data = $this->testing->get_event_log();
+	   foreach ($Data as $Eventlog) 
+        {
+            $Eventlogs[] = $Eventlog;
+        }
 
-       if(!empty($Eventlogs))
-       {
-            $this->output(var_dump($Eventlogs));
-       }
+
+        $this->output($Eventlogs);
     }
+
+    /*
+     *
+     */
 
 
 

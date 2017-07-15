@@ -1,0 +1,83 @@
+<div ng-include="'frontend/partials/_header.html'"></div>
+
+<div ng-include="'frontend/partials/_status.html'"></div>
+
+<div ng-include="'frontend/partials/_browser.html'"></div>
+
+<div ng-include="'frontend/partials/_messages.html'"></div>
+
+<div id="content" class="clearfix" ng-controller="AlertHistogramReportCtrl" ng-init="init()">
+
+    <div class="table-container full-width">
+
+        <h1>Alert Histogram Report</h1>
+		
+		 <div class="table-container full-width">
+
+			<h3>Host Alert Histogram(host)</h3>
+
+        <div class="table-options">
+		
+		</div>
+
+        <div class="table-container full-width">
+
+			<h3>Service Alert Histogram(service)</h3>
+
+        <div class="table-options">
+		
+		</div>
+
+    </div>
+	
+	<div class="table-container partial-width">
+		<div class="commands">
+
+            <h3>View</h3>
+
+			<!--show if a single host is selected-->
+            <table cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Trends For This Host</a></td>
+                    </tr>
+					<tr class="footable-even">
+						<td><a target="nagios" ng-href="{{}}">View Availability Report For This Service</a></td>
+                    </tr>
+					<tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Status Detail For This Host</a></td>
+                    </tr>
+                    <tr class="footable-even">
+                        <td><a target="nagios" ng-href="{{}}">View History For This Host</a></td>
+                    </tr> 
+					<tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Notifications For This Host</a></td>
+                    </tr>
+                </tbody>
+            </table>
+			
+			<!--show if a single service is selected-->
+			<table cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Trends For This Service</a></td>
+                    </tr>
+                    <tr class="footable-even">
+                        <td><a target="nagios" ng-href="{{}}">View Availability Report For This Service</a></td>
+                    </tr>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View History For This Service</a></td>
+                    </tr>
+					<tr class="footable-even">
+                        <td><a target="nagios" ng-href="{{}}">View Notifications For This Service</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+	</div>
+
+
+</div>
+
+<div ng-include="'frontend/partials/_footer.html'"></div>
+

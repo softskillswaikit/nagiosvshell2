@@ -120,14 +120,14 @@ class Testing extends CI_Model
 		//return $this->test_data;
 		//return $this->_data_array;
 		//return $this->_alert_array;
-		//return $this->_notifications_array;
+		return $this->_notifications_array;
 		//return $this->_nagios_log;
 		//return $this->_archives_log;
 	}
 
 	public function get_event_log()
 	{
-		$this->event_array = $this->parse_log($this->_data_array);
+		$this->event_array = $this->parse_log($this->_data_array, 'event');
 
 		//encode the data into JSON format
 		foreach($this->event_array as $items)
@@ -139,13 +139,8 @@ class Testing extends CI_Model
 	}
 
 	//function to parse the log 
-	private function parse_log($input_array)
+	private function parse_log($input_array, $_type)
 	{
-		//arrays for each line of data
-		//$input_data_array[0] is the date and time
-		//$input_data_array[1] is the messages
-		$input_data_array = array();
-
 		//array that store the $sorted_obj
 		$sorted_array = array();	
 
@@ -154,18 +149,48 @@ class Testing extends CI_Model
 
 		foreach($input_array as $logs)
 		{
-			$input_data_array = explode(' ', $logs, 2);
+			list($input_time, $event_message) = explode(' ', $logs, 2);
+			list($logtype, $information) = explode(':', $event_message, 2);
+			list($hostname, $servicename, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 6);
 
-			$sorted_obj = new StdCLass();
-			$sorted_obj->datetime = $this->unixtime_convert($input_data_array[0]);
-			$sorted_obj->messages = $input_data_array[1];
+			if(strcmp($_type, 'event') == 0)
+			{
+				$sorted_obj = new StdCLass();
+				$sorted_obj->datetime = $this->unixtime_convert($input_time);
+				$sorted_obj->messages = $event_message;
+
+				if(strcmp($logtype, 'HOST ALERT') == 0)
+				{
+					$sorted_obj->logtype = $state;
+				}
+				else if(strcmp($logtype, 'SERVICE ALERT') == 0)
+				{
+					$sorted_obj->logtype = $state;
+				}
+				else if(strcmp($logtype, 'HOST NOTIFICATION') == 0)
+				{
+					$sorted_obj->logtype = $logtype;
+				}
+				else if(strcmp($logtype, 'SERVICE NOTIFICATION') == 0)
+				{
+					$sorted_obj->logtype = $logtype;
+				}
+				else if(strcmp($logtype, 'SERVICE FLAPPING ALERT') == 0)
+				{
+					$sorted_obj->logtype = 'FLAPPING';
+				}
+				else
+				{
+					$sorted_obj->logtype = 'INFORMATION';
+				}
+			}
 
 			$sorted_array[$i] = $sorted_obj;
 
 			$i++;
 
 			//clear the data
-			unset($input_data_array);
+			unset($input_time, $event_message, $logtype, $information, $hostname, $servicename, $state, $state_type, $retry_count, $detail_message);
 			unset($sorted_obj);
 		}
 

@@ -58,9 +58,9 @@ $route["alerthistogram/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(
 $route["eventlog/(:any)"] = "api/eventlog/$1";
 $route["notification/(:any)"] = "api/notification/$1";
 $route["testing"] = "api/testing";
-
 $route["comments/(:any)"] = "api/comments/$1";
 $route["comments"] = "api/comments";
+
 $route["configurations/(:any)"] = "api/configurations/$1";
 $route["configurations"] = "api/configurations";
 $route["hostgroupstatus/(:any)"] = "api/hostgroupstatus/$1";
