@@ -10,26 +10,37 @@
 
     <div class="table-container full-width">
 
-        <h1>Alert Histogram Report</h1>
-		
+    <h1>Alert Histogram Report</h1>
+
+
 		 <div class="table-container full-width">
 
 			<h3>Host Alert Histogram(host)</h3>
 
-        <div class="table-options">
-		
+      <div fusioncharts
+        width="600"
+        height="400"
+        type="area2d"
+        datasource="{{dataSource}}">
+      </div>
+
 		</div>
 
-        <div class="table-container full-width">
+     <div class="table-container full-width">
 
 			<h3>Service Alert Histogram(service)</h3>
 
-        <div class="table-options">
-		
+      <div fusioncharts
+        width="600"
+        height="400"
+        type="area2d"
+        datasource="{{dataSource}}">
+      </div>
+
 		</div>
 
     </div>
-	
+
 	<div class="table-container partial-width">
 		<div class="commands">
 
@@ -49,13 +60,13 @@
                     </tr>
                     <tr class="footable-even">
                         <td><a target="nagios" ng-href="{{}}">View History For This Host</a></td>
-                    </tr> 
+                    </tr>
 					<tr class="footable-odd">
                         <td><a target="nagios" ng-href="{{}}">View Notifications For This Host</a></td>
                     </tr>
                 </tbody>
             </table>
-			
+
 			<!--show if a single service is selected-->
 			<table cellspacing="0" cellpadding="0">
                 <tbody>
@@ -80,5 +91,3 @@
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>
-
-

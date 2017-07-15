@@ -493,7 +493,6 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-
 .controller('EventLogCtrl', ['$scope', 'async',
     function($scope, async) {
 
@@ -512,7 +511,6 @@ angular.module('vshell.controllers', [])
 
     }
 ])
-
 
 .controller('AvailabilityCtrl', ['$scope', '$routeParams', '$filter', 'async',
     function($scope, $routeParams, $filter, async) {
@@ -662,6 +660,48 @@ angular.module('vshell.controllers', [])
     function($scope, async) {
 
         $scope.init = function() {
+          $scope.dataSource = {
+            chart: {
+              "caption": "State History For ",
+              "subCaption": "-",
+              "xAxisName": "Time",
+              "yAxisName": "State",
+              //"theme": "fint",
+              //Setting gradient fill to true
+              "usePlotGradientColor": "1",
+              //Setting the gradient formation color
+              "plotGradientColor": "#00f254"
+              },
+              data:
+                [
+                  {
+                      "label": "Jul 8 15:34",
+                      "value": "0"
+                  },
+                  {
+                      "label": "Jul 8 15:34",
+                      "value": "1"
+                  },
+                  {
+                      "label": "Jul 8 15:34",
+                      "value": "2"
+                  },
+                  {
+                      "label": "Jul 8 15:34",
+                      "value": "3"
+                  },
+                  {
+                      "label": "Jul 8 15:34",
+                      "value": "4"
+                  },
+                  {
+                      "label": "Jul 8 15:34",
+                      "value": "1"
+                  }
+              ]
+          }
+
+
           /*
             var options = {
                 name: 'trendsreport',
@@ -680,6 +720,49 @@ angular.module('vshell.controllers', [])
     function($scope, async) {
 
         $scope.init = function() {
+
+          $scope.dataSource = {
+            chart: {
+              "caption": "State History For ",
+              "subCaption": "-",
+              "xAxisName": "Time",
+              "yAxisName": "State",
+              "theme": "fint",
+              //Setting gradient fill to true
+              "usePlotGradientColor": "1",
+              //Setting the gradient formation color
+              "plotGradientColor": "#00f254"
+              },
+              data:
+                [
+                  {
+                      "label": "Jul 8 15:34",
+                      "value": "0"
+                  },
+                  {
+                      "label": "Jul 8 15:34",
+                      "value": "1"
+                  },
+                  {
+                      "label": "Jul 8 15:34",
+                      "value": "2"
+                  },
+                  {
+                      "label": "Jul 8 15:34",
+                      "value": "3"
+                  },
+                  {
+                      "label": "Jul 8 15:34",
+                      "value": "4"
+                  },
+                  {
+                      "label": "Jul 8 15:34",
+                      "value": "1"
+                  }
+              ]
+          }
+
+
 /*
             var options = {
                 name: 'alerthistogramreport',
