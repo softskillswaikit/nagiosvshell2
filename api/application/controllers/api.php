@@ -566,7 +566,7 @@ class API extends VS_Controller
 
     {
 
-        $Availability = $this->availability_data->get_availability();
+        $Availability = $this->reports_data->get_availability();
 
 
 
@@ -660,7 +660,7 @@ class API extends VS_Controller
 
     {
 
-        $Trend = $this->trend_data->get_trend();
+        $Trend = $this->reports_data->get_trend();
 
 
 
@@ -704,7 +704,7 @@ class API extends VS_Controller
 
     {
 
-        $AlertHistory = $this->alert_history_data->get_history_data();
+        $AlertHistory = $this->reports_data->get_history_data();
 
 
 
@@ -736,7 +736,7 @@ class API extends VS_Controller
 
     {
 
-        $AlertSummary = $this->alert_summary_data->get_alert_summary();
+        $AlertSummary = $this->reports_data->get_alert_summary();
 
 
 
@@ -938,7 +938,7 @@ class API extends VS_Controller
 
     {
 
-        $AlertHistogram = $this->alert_histogram_data->get_alert_histogram();
+        $AlertHistogram = $this->reports_data->get_alert_histogram();
 
 
 
@@ -989,7 +989,7 @@ class API extends VS_Controller
     {
     log_message('error', 'qwe123');
 
-        $EventLog = $this->reports_data->get_events_log($date);
+        $EventLog = $this->reports_data->get_event_log();
 
 
 
@@ -1019,7 +1019,7 @@ class API extends VS_Controller
 
     {
 
-        $Notificaions = $this->notifications_data->get_notification($date);
+        $Notificaions = $this->reports_data->get_notification();
 
 
 
@@ -1035,7 +1035,9 @@ class API extends VS_Controller
 
         log_message('error', 'qwe1.');
 
-        $test = $this->testing->testing_1();
+        //$test = $this->testing->testing_1();
+    //$test = $this->testing->get_event_log();
+    $test = $this->testing->get_notification();
 
         log_message('error', 'qwe2.');
 
