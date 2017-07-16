@@ -8,39 +8,139 @@
 
 <div id="content" class="clearfix" ng-controller="AlertHistogramReportCtrl" ng-init="init()">
 
-    <div class="table-container full-width">
-
     <h1>Alert Histogram Report</h1>
 
+		<div class="table-container full-width">
 
-		 <div class="table-container full-width">
+ 			<h3>Host Alert Histogram(host)</h3>
 
-			<h3>Host Alert Histogram(host)</h3>
+      <div class="table-container partial-width">
+       <div fusioncharts
+         width="600"
+         height="400"
+         type="area2d"
+         datasource="{{dataSource}}">
+       </div>
+     </div>
 
-      <div fusioncharts
-        width="600"
-        height="400"
-        type="area2d"
-        datasource="{{dataSource}}">
-      </div>
-
-		</div>
-
-     <div class="table-container full-width">
-
-			<h3>Service Alert Histogram(service)</h3>
-
-      <div fusioncharts
-        width="600"
-        height="400"
-        type="area2d"
-        datasource="{{dataSource}}">
-      </div>
-
-		</div>
+       <div class="table-container partial-width">
+           <table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+             <thead>
+                 <tr>
+                     <th>EVENT TYPE</th>
+                     <th>MIN</th>
+                     <th>MAX</th>
+                     <th>SUM</th>
+                     <th>AVG</th>
+                 </tr>
+             </thead>
+             <!--<tfoot>
+                 <tr>
+                     <td colspan="5">
+                         <div class="results-count">{{ hosts | count }} Result{{ hosts | plural }}</div>
+                         <div class="footable-pagination pagination" id="footable-pagination"></div>
+                     </td>
+                 </tr>
+             </tfoot>-->
+             <tbody>
+                 <tr>
+                   <td>Recovery(Up):</td>
+                   <td>0</td>
+                   <td>0</td>
+                   <td>0</td>
+                   <td>0.00</td>
+                 </tr>
+                 <tr>
+                   <td>Down:</td>
+                   <td>0</td>
+                   <td>0</td>
+                   <td>0</td>
+                   <td>0.00</td>
+                 </tr>
+                 <tr>
+                   <td>Unreachable:</td>
+                   <td>0</td>
+                   <td>0</td>
+                   <td>0</td>
+                   <td>0.00</td>
+                 </tr>
+             </tbody>
+         </table>
+       </div>
 
     </div>
 
+    <div class="table-container full-width">
+
+    			<h3>Service Alert Histogram(service)</h3>
+
+     <div class="table-container partial-width">
+
+      <div fusioncharts
+        width="600"
+        height="400"
+        type="area2d"
+        datasource="{{dataSource}}">
+      </div>
+    </div>
+
+      <div class="table-container partial-width">
+          <table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+            <thead>
+                <tr>
+                    <th>EVENT TYPE</th>
+                    <th>MIN</th>
+                    <th>MAX</th>
+                    <th>SUM</th>
+                    <th>AVG</th>
+                </tr>
+            </thead>
+            <!--<tfoot>
+                <tr>
+                    <td colspan="5">
+                        <div class="results-count">{{ hosts | count }} Result{{ hosts | plural }}</div>
+                        <div class="footable-pagination pagination" id="footable-pagination"></div>
+                    </td>
+                </tr>
+            </tfoot>-->
+            <tbody>
+                <tr>
+                  <td>Recovery(Ok):</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0.00</td>
+                </tr>
+                <tr>
+                  <td>Warning:</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0.00</td>
+                </tr>
+                <tr>
+                  <td>Unknown:</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0.00</td>
+                </tr>
+                <tr>
+                  <td>Critical:</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0.00</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+
+		</div>
+
+  </div>
+
+<div class="table-container full-width">
 	<div class="table-container partial-width">
 		<div class="commands">
 
@@ -85,8 +185,8 @@
                 </tbody>
             </table>
         </div>
-	</div>
-
+	     </div>
+    </div>
 
 </div>
 

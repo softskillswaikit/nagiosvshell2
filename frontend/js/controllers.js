@@ -727,7 +727,7 @@ angular.module('vshell.controllers', [])
               "subCaption": "-",
               "xAxisName": "Time",
               "yAxisName": "State",
-              "theme": "fint",
+              //"theme": "fint",
               //Setting gradient fill to true
               "usePlotGradientColor": "1",
               //Setting the gradient formation color
@@ -761,7 +761,6 @@ angular.module('vshell.controllers', [])
                   }
               ]
           }
-
 
 /*
             var options = {
