@@ -178,8 +178,8 @@ class API extends VS_Controller
 
 
     //Written by Soon Wei Liang
-    /*
-     * Fetch name based on type : Host, Hostgroup, Service, Servicegroup
+    /**
+     * Fetch name based on type : host, hostgroup, service, servicegroup
      *
      * @param String $type
      */
@@ -189,7 +189,7 @@ class API extends VS_Controller
         $name = array();
 
         //fetch all host name
-        if($type = 'host')
+        if($type == 'host')
         {
             $hosts = $this->nagios_data->get_collection('hoststatus');
 
@@ -256,7 +256,7 @@ class API extends VS_Controller
         $this->output($name); 
     }
 
-    /*
+    /**
      * Fetch host name
      */
     public function hostname()
@@ -278,7 +278,7 @@ class API extends VS_Controller
         $this->output($hostname);
     }
 
-    /*
+    /**
      * Fetch service name
      */
     public function servicename()
@@ -300,7 +300,7 @@ class API extends VS_Controller
         $this->output($servicename);
     }    
 
-    /*
+    /**
      * Fetch host group name 
      */
     public function hostgroupname()
@@ -322,7 +322,7 @@ class API extends VS_Controller
         $this->output($hostgroupname);
     }
 
-    /*
+    /**
      * Fetch service group name
      */
     public function servicegroupname()
@@ -344,10 +344,10 @@ class API extends VS_Controller
         $this->output($servicegroupname);
     }
 
-    /*
+    /**
      * Fetch availability
      * 
-     * @param int $reportType
+     * @param int $reportType, 1:hostgroup , 2:host, 3:servicegroup, 4:service
      * @param string $name
      * @param Date $period
      * @param bool $initialState
@@ -390,7 +390,7 @@ class API extends VS_Controller
         $this->output($Availability);
     }
 
-    /*
+    /**
      * Fetch trend
      *
      * @param int $reportType
@@ -424,7 +424,7 @@ class API extends VS_Controller
         $this->output($Trend);
     }
 
-    /*
+    /**
      * Fetch alert history
      */
     public function alerthistory()
@@ -434,7 +434,7 @@ class API extends VS_Controller
         $this->output($AlertHistory);
     }
 
-    /*
+    /**
      * Fetch alert summary
      *
      * @param int $reportLabel
@@ -530,7 +530,7 @@ class API extends VS_Controller
         $this->output($AlertSummary);
     }
 
-    /*
+    /**
      * Fetch alert histogram
      *
      * @param int $reportType
@@ -564,38 +564,18 @@ class API extends VS_Controller
     }
 
 
-    /*
+    /**
      * Fetch all event log
      *
      * @param  Date $date
      */
     public function eventlog($date)
     {
-        $EventLog = $this->reports_data->get_events_log($date);
-
-        if(!empty($EventLog))
-        {
-            $this->output($Eventlog);
-        }
-    }
-
-    /*
-     * Fetch all notifications
-     *
-     * @param Date $date
-     */
-    public function notifications($date)
-    {
-        $Notificaions = $this->notifications_data->get_notification($date);
-
-        $this->output($Notificaions);
-    }
-
-    public function testing()
-    {
         $Eventlogs = array();
-        $Data = $this->testing->get_event_log();
-	   foreach ($Data as $Eventlog) 
+
+        $Data = $this->reports_data->get_event_log();
+
+        foreach ($Data as $Eventlog) 
         {
             $Eventlogs[] = $Eventlog;
         }
@@ -604,9 +584,117 @@ class API extends VS_Controller
         $this->output($Eventlogs);
     }
 
-    /*
+    /**
+     * Fetch all notifications
      *
+     * @param Date $date
      */
+    public function notifications($date)
+    {
+        $Notificaions = array();
+
+        $Data = $this->reports_data->get_notification();
+
+        foreach ($Data as $Notification) 
+        {
+            $notifications[] = $Notification;
+        }
+
+
+        $this->output($Notifications);
+    }
+
+    public function testing()
+    {
+        $this->output("100");
+    }
+
+    /**
+     * Add comments
+     *
+     * @param String $type
+     * @param String $name
+     * @param bool $persistent
+     * @param String $author
+     * @param String $comments
+     */
+    public function addComments($type='', $name='', $persistent, $author='', $comments='')
+    {
+        $result = false;
+
+        //add host comment
+        if($type == 'hostcomment')
+        {
+            $result = $this->system_commands->add_host_comment($name, $persistent, $author, $comments);
+        }
+
+        //add service comment
+        else if($type == 'servicecomment')
+        {
+            $result = $this->system_commands->add_service_comment($name, $persistent, $author, $comments);
+        }
+
+        $this->output($result);
+    }
+
+    /**
+     * Schedule downtime
+     *
+     * @param String $type
+     * @param String $name
+     * @param String $author
+     * @param String $comment
+     * @param String $start
+     * @param String $end
+     * @param String $fixed - true = fixed , false = flexible
+     * @param int $hour
+     * @param int $minute
+     * @param String $child
+     */
+    public function downtime($type='', $name='', $author='', $comment='', $start='', $end='', $fixed='', $hour, $minute, $child='')
+    {
+        $success = false;
+
+        //check empty input
+        if(!empty($type) && !empty($name) && !empty($author) && !empty($comment) && !empty($start) && !empty($end) && !empty($fixed))
+        {
+            //schedule host downtime
+            if($type == 'host')
+            {
+
+            }
+
+            //schedule service downtime
+            else if($type == 'service')
+            {
+
+            }
+        }
+        
+        $this->output($success);
+    }
+
+    /**
+     * Fetch process information
+     * 
+     */
+    public function processinfo()
+    {
+        $processinfo = $this->process_info->get_process_info();
+
+        $this->output($processinfo);
+    }
+
+    /**
+     * Fetch performance information
+     */
+    public function performanceinfo()
+    {
+        $performanceinfo = $this->performanceinfo->get_performance_info();
+
+        $this->output($performanceinfo);
+    }
+
 
 
 

@@ -45,7 +45,7 @@ $route["status"] = "api";
 /*
 * Create by Soon Wei Liang
 */
-$route["name"] = "api/name";
+$route["name/(:any)"] = "api/name/$1";
 $route["hostname"] = "api/hostname";
 $route["servicename"] = "api/servicename";
 $route["hostgroupname"] = "api/hostgroupname";
@@ -60,6 +60,9 @@ $route["notification/(:any)"] = "api/notification/$1";
 $route["testing"] = "api/testing";
 $route["comments/(:any)"] = "api/comments/$1";
 $route["comments"] = "api/comments";
+$route["addcomments/(:any)/(:any)/(:any)/(:any)"] = "api/addComments/$1/$2/$3/$4";
+$route["downtime/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/downtime/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10";
+$route["processinfo"] = "api/processinfo";
 
 $route["configurations/(:any)"] = "api/configurations/$1";
 $route["configurations"] = "api/configurations";
