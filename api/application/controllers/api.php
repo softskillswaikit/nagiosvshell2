@@ -1034,10 +1034,9 @@ class API extends VS_Controller
     {
 
         log_message('error', 'qwe1.');
+    $test = $this->testing->test_add_host_comment();
 
-        //$test = $this->testing->testing_1();
-    //$test = $this->testing->get_event_log();
-    $test = $this->testing->get_notification();
+        //$test = $this->testing->test_performance_info();
 
         log_message('error', 'qwe2.');
 
