@@ -1034,9 +1034,21 @@ class API extends VS_Controller
     {
 
         log_message('error', 'qwe1.');
-    $test = $this->testing->test_add_host_comment();
+    //$test = $this->testing->get_availability();
+    //$test = $this->testing->get_trend();
+    //$test = $this->testing->get_history_data();
+    //$test = $this->testing->get_alert_summary();
+    //$test = $this->testing->get_alert_histogram();
+    //$test = $this->testing->get_notification('2017-06-14');
+    //$test = $this->testing->get_event_log('2017-07-13');
 
-        //$test = $this->testing->test_performance_info();
+    //$test = $this->testing->add_comment();
+
+        //$test = $this->testing->delete_comment();
+    //$test = $this->testing->schedule_downtime();
+    //$test = $this->testing->modify_process_info();
+    //$test = $this->testing->performance_info_commands();
+    //$test = $this->testing->scheduling_queue();
 
         log_message('error', 'qwe2.');
 
