@@ -83,11 +83,8 @@ angular.module('vshell', [
         $routeProvider.when('/reports/notifications', {
             templateUrl: 'frontend/partials/reports-notifications.html'
         });
-        $routeProvider.when('/reports/event-log/', {
+        $routeProvider.when('/reports/event-log', {
             templateUrl: 'frontend/partials/reports-event-log.html'
-        });
-	$routeProvider.when('/system/process-info/', {
-            templateUrl: 'frontend/partials/system-process-info.html'
         });
         $routeProvider.when('/report/availability', {
             templateUrl: 'frontend/partials/report-availability.html'

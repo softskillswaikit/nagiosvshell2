@@ -73,44 +73,6 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('AlertSummaryCtrl', ['$scope', '$routeParams', 'async',
-	function($scope, $routeParams, async) {
-
-		$scope.reset = function(){
-			$scope.StandardReportType = '1';
-			$scope.CustomReportType = 'Most Recent Alerts';
-			$scope.reportPeriod = 'Today';
-			$scope.startDate = '';
-			$scope.endDate = '';
-			$scope.HostgroupLimit = '**ALL HOSTGROUPS**';
-			$scope.ServicegroupLimit = '**ALL SERVICEGROUPS**';
-			$scope.HostLimit = '**ALL HOSTS**';
-			$scope.AlertTypes = 'Host and Service Alerts';
-			$scope.StateTypes = 'Hard and Soft States';
-			$scope.HostStates = 'All Host States';
-			$scope.ServiceStates = 'All Service States';
-		};
-
-		
-
-		$scope.init = function() {
-		
-			var options = {
-				name: 'name',
-				url: 'name',
-				queue: 'main'
-			};
-
-			async.api($scope, options);	
-		};
-
-
-		$scope.reset();
-		
-		
-	}
-	])
-
 .controller('OverviewCtrl', ['$scope', 'async',
     function($scope, async) {
 
@@ -206,24 +168,43 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('EventLogCtrl', ['$scope', '$routeParams', 'async',
-    function($scope, $routeParams, async) {
-	
+.controller('NotificationsCtrl', ['$scope', 'async',
+    function($scope, async) {
+        
         $scope.init = function() {
 
-	var date = new Date();
-	var string = date.valueOf(date);
+	var utcdate = '1497398400';
 
             var options = {
-                name: 'evetlog',
-                url: 'eventlog/' + string,
+                name: 'notifications',
+                url: 'notifications/' + utcdate,
                 queue: 'main'
             };
+           
 
             async.api($scope, options);
         };
-	
-	
+    }
+])
+
+.controller('EventLogCtrl', ['$scope', 'async',
+    function($scope, async) {
+        
+        $scope.init = function() {
+
+	var utcdate = new Date();
+	var timestamp = utcdate.getTime() / 1000;
+	var date = timestamp.toString();
+
+            var options = {
+                name: 'eventlog',
+                url: 'eventlog/' + date,
+                queue: 'main'
+            };
+           
+
+            async.api($scope, options);
+        };
     }
 ])
 

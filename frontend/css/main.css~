@@ -860,9 +860,9 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
         width: 100%;
     }
 
-	.form-options {
+    .form-options {
         padding: 10px 10px 10px 10px;
-		background-color: #ffffff;
+        background-color: #ffffff;
         width: 100%;
     }
 
@@ -1112,7 +1112,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
             background-color: #e9ffd6;
             color: #6cb22f;
         }
-
+        
         /*20170503 WaiKit Added color styles for running state ok*/
         .table-container td.running-status.state-ok {
             background-color: #e9ffd6;
@@ -1130,7 +1130,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
             background-color: #ffccd1;
             color: #d24555;
         }
-
+        
         /*20170503 WaiKit Added color styles for running state critical*/
         .table-container td.running-status.state-critical {
             background-color: #ffccd1;
@@ -1248,24 +1248,15 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
             }
 
             .status-callout-text h4 {
-                font-size: 20px;
+                font-size: 16px;
                 line-height: 20px;
+                margin: 0px 0px 0px 0px;
             }
 
     .status-overview-tables {
         background: #fff;
         padding: 30px 0px 0px 0px;
     }
-
-        .status-overview-tables h3 {
-          text-align: center;
-        }
-
-        .status-overview-tables h4 {
-          text-align: center;
-          font-size: 20px;
-          line-height: 20px;
-        }
 
         .status-overview-tables table {
             font-size: 13px;
@@ -1279,10 +1270,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
             .status-overview-tables th:nth-child(2),
             .status-overview-tables td:nth-child(2),
             .status-overview-tables th:nth-child(3),
-            .status-overview-tables td:nth-child(3),
-            .status-overview-tables th:nth-child(4),
-            .status-overview-tables td:nth-child(4)
-             {
+            .status-overview-tables td:nth-child(3) {
                 text-align: right;
                 width: 100px;
             }
@@ -1449,9 +1437,9 @@ tr.selected{
 }
 
 .statusBox {
-    position:fixed;
-    bottom: 10px;
-    right: 30px;
+    position:fixed; 
+    bottom: 10px; 
+    right: 30px; 
 
 }
 
@@ -1459,7 +1447,7 @@ tr.selected{
     cursor: pointer;
 }
 .clickable.panel-body:hover {
-    background-color: #87ceeb;
+    background-color: #87ceeb; 
 }
 .results {
     color: #666;

@@ -51,8 +51,13 @@
                 <tr ng-if="(eventlog | count) == 0">
                     <td colspan="5">{{ is_loading ? 'Loading...' : 'No eventlog are defined' }}</td>
                 </tr>
-                <tr>
-                    <td>{{ eventlog }}</td>
+                <tr ng-repeat="x in eventlog" footabledata>
+                    <td>{{ x.datetime * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+		    <div>
+			<td ng-if="x.logtype=='CRITICAL'" style="background-color: #ffccd1; color: #d24555;">{{ x.logtype }}</td>
+			<td ng-if="x.logtype=='INFORMATION'">{{ x.logtype }}</td>
+		    </div>
+		    <td>{{ x.messages }}</td>
                 </tr>
             </tbody>
         </table>
@@ -62,5 +67,4 @@
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>
-
 

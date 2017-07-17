@@ -865,10 +865,6 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
 		background-color: #ffffff;
         width: 100%;
     }
-	
-	.modal-backdrop {
-	z-index: -1;
-	}
 
         .table-container.full-width .table-options {
             padding: 0px 40px;

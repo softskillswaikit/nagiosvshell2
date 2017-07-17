@@ -1,0 +1,214 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"data",
+				"data_array"
+			],
+			[
+				"noti",
+				"notifications_array"
+			],
+			[
+				"_",
+				"_archives_log"
+			],
+			[
+				"_get",
+				"_get_archives_log"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/LENOVO/Desktop/nagiosvshell2/api/application/libraries/factory/objects/Host.php",
+		"/C/Users/LENOVO/Desktop/nagiosvshell2/api/application/libraries/factory/collections/HostCollection.php",
+		"/C/Users/LENOVO/Desktop/nagiosvshell2/api/application/libraries/factory/objects/Heartbeat.php",
+		"/C/Users/LENOVO/Desktop/nagiosvshell2/api/application/libraries/factory/objects/Heartbeatstatus.php",
+		"/C/Users/LENOVO/Desktop/nagiosvshell2/api/application/libraries/factory/Collection.php",
+		"/C/Users/LENOVO/Desktop/nagiosvshell2/api/application/libraries/factory/NagiosCollection.php",
+		"/C/Users/LENOVO/Desktop/nagiosvshell2/api/application/libraries/factory/objects/Command.php",
+		"/C/Users/LENOVO/Desktop/nagiosvshell2/api/application/libraries/factory/NagiosObject.php",
+		"/C/Users/LENOVO/Desktop/nagiosvshell2/api/application/libraries/factory/NagiosGroup.php",
+		"/C/Users/LENOVO/Desktop/nagiosvshell2/api/application/libraries/factory/collections/HostcommentCollection.php",
+		"/C/Users/LENOVO/Desktop/nagiosvshell2/api/application/libraries/factory/collections/HeartbeatCollection.php",
+		"/C/Users/LENOVO/Desktop/nagiosvshell2/api/application/libraries/factory/collections/CommandCollection.php",
+		"/C/Users/LENOVO/Desktop/nagiosvshell2/api/application/libraries/factory/collections/ContactStatusCollection.php",
+		"/C/Users/LENOVO/Desktop/nagiosvshell2/api/application/libraries/factory/collections/ContactCollection.php",
+		"/C/Users/LENOVO/Desktop/nagiosvshell2/api/application/libraries/factory/collections/RunningstateCollection.php",
+		"/C/Users/LENOVO/Desktop/nagiosvshell2/api/application/controllers/api.php",
+		"/C/Users/LENOVO/Desktop/Team Project/User account.txt",
+		"/C/Users/LENOVO/Desktop/Team Project/Nagios files/Nagios_data.php",
+		"/C/Users/LENOVO/Desktop/Team Project/Nagios files/Reports_data v5.0.php",
+		"/C/Users/LENOVO/Desktop/nagiosvshell2/api/application/libraries/factory/objects/Runningstate.php",
+		"/C/Users/LENOVO/Desktop/nagiosvshell2/api/application/libraries/factory/objects/Hostgroup.php",
+		"/C/Users/LENOVO/Desktop/nagiosvshell2/api/application/libraries/JSON.php",
+		"/C/Users/LENOVO/Desktop/vshell2/nagiosvshell2/api/application/controllers/api.php",
+		"/C/Users/LENOVO/Desktop/vshell2/nagiosvshell2/api/application/config/routes.php",
+		"/C/Users/LENOVO/Desktop/vshell2/nagiosvshell2/api/application/config/config.php",
+		"/C/Users/LENOVO/Desktop/vshell2/nagiosvshell2/api/application/config/autoload.php",
+		"/C/Users/LENOVO/Desktop/vshell2/nagiosvshell2/api/application/models/reports_data.php",
+		"/C/Users/LENOVO/Desktop/Team Project/Nagios files/Reports_data.php",
+		"/C/Users/LENOVO/Desktop/vshell2/nagiosvshell2/api/application/models/testing.php",
+		"/C/Users/LENOVO/Desktop/Team Project/Nagios files/Testing.php",
+		"/C/Users/LENOVO/Desktop/Team Project/Nagios files/Reports_data v4.0.php",
+		"/C/Users/LENOVO/Desktop/vshell2/nagiosvshell2/api/application/libraries/factory/objects/Contact.php",
+		"/C/Users/LENOVO/Desktop/Team Project/Nagios files/NagiosLog.txt",
+		"/C/Users/LENOVO/Desktop/vshell2/nagiosvshell2/api/application/models/Reports_data.php"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "autoload.sublime-project",
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

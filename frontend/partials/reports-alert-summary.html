@@ -6,193 +6,61 @@
 
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
-<div id="content" class="clearfix" ng-controller="AlertSummaryCtrl" ng-init="init()">
-	
-	<h1>Create Alert Summary Report</h1>
-	
-	<div class="col-md-8 col-md-offset-2">
-		<div class="panel panel-default">
-	 		<div class="panel-body">
+<div id="content" class="clearfix" ng-controller="AlertHistoryCtrl" ng-init="init()">
 
-				<h3>Report Details</h3>
-				
-				<div class="form-options">
-					
-					<form action="" class="form-horizontal" name="inputForm" method="post" novalidate>
+    <div class="table-container full-width">
 
-						<div class="form-group">
-							<label for="StandardRadioBtn" class="col-md-4 control-label">
-								<input type="radio" ng-model="RadioBtn" name="report" ng-checked="false" value="standard">
-								Standard Report
-							</label>
-						</div>
+        <h1>Alert History For All Hosts and Services</h1>
 
-						<div class="form-group" ng-show="RadioBtn == 'standard'">
-							<label for="StandardReportType" class="col-md-4 control-label">Report Type:</label>
-							<div class="col-md-7">
-								<select ng-model="StandardReportType" name="StandardReportType" class="form-control">
-									<option value="1">25 Most Recent Hard Alerts</option>
-									<option value="2">25 Most Recent Hard Host Alerts</option>
-									<option value="3">25 Most Recent Hard Service Alerts</option>
-									<option value="4">Top 25 Hard Host Alert Producers</option>
-									<option value="5">Top 25 Hard Service Alert Producers</option>
-								</select>
-							</div>
-						</div>
+        <p class="subheading" ng-if="statefilter">Filtered by State {{ statefilter | capitalize }}</p>
 
-						<div class="form-group">
-							<label for="CustomRadioBtn" class="col-md-4 control-label" style="padding-right:26px">
-								<input type="radio" ng-model="RadioBtn" name="report" ng-checked="false" value="custom">
-								Custom Report
-							</label>
-						</div>
-							
-						<div class="form-group" ng-show="RadioBtn == 'custom'">
-							<label for="CustomReportType" class="col-md-4 control-label">Report Type:</label>
-							<div class="col-md-7">
-								<select ng-model="CustomReportType" name="CustomReportType" class="form-control">
-									<option value="Most Recent Alerts">Most Recent Alerts</option>
-									<option value="Alert Totals">Alerts Total</option>
-									<option value="Alert Totals By Hostgroup">Alert Totals By Hostgroup</option>
-									<option value="Alert Totals By Host">Alert Totals By Host</option>
-									<option value="Alert Totals By Servicegroup">Alert Totals By Servicegroup</option>
-									<option value="Alert Totals By Service">Alert Totals By Service</option>
-									<option value="Top Alert Producers">Top Alert Producers</option>
-								</select>
-							</div>
-						</div>
+        <p class="subheading" ng-if="problemsfilter">Filtered by {{ problemsfilter | capitalize }} Problems</p>
 
-						<div class="form-group" ng-show="RadioBtn == 'custom'">
-							<label for="reportPeriod" class="col-md-4 control-label">Report Period:</label>
-							<div class="col-md-7">
-								<select ng-model="reportPeriod" name="reportPeriod" class="form-control">
-									<option value="Today">Today</option>
-									<option value="Last 24 Hours">Last 24 Hours</option>
-									<option value="Yesterday">Yesterday</option>											<option value="This Week">This Week</option>
-							 		<option value="Last 7 Days">Last 7 Days</option>
-									<option value="Last Week">Last Week</option>
-									<option value="This Month">This Month</option>
-									<option value="Last 31 Days">Last 31 Days</option>
-									<option value="Last Month">Last Month</option>
-									<option value="This Year">This Year</option>
-									<option value="Last Year">Last Year</option>
-									<option value="*Custom Report Period*">*Custom Report Period*</option>
-								</select>
-							</div>
-						</div>
+        <div class="table-options">
+            <form action="" class="filter-form" method="post">
+                <div class="filter-icon"></div>
+                <input id="footable-filter" class="footable-filter" type="text" placeholder="Filter Table"/>
+            </form>
+            <div class="pagesize-container">
+                Show <a class="active" ng-href="#" data-page-size="25">25</a> <a ng-href="#" data-page-size="100">100</a> <a ng-href="#" data-page-size="50000">All</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
 
-						<div class="form-group" ng-show="reportPeriod == '*Custom Report Period*'" ng-model="startDate">
-							<label  for="startdate" class="col-md-4 control-label">Start Date:</label>
-							<div class="col-md-7">
-								<input type="date" name="startdate" value="" class="form-control"></input>
-							</div>
-						</div>
+        <table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+            <thead>
+                <tr>
+                    <th>Host</th>
+                    <th>Status</th>
+                    <th data-hide="phone">Last Check</th>
+                    <th data-hide="phone">Duration</th>
+                    <th data-hide="phone">Status Information</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="5">
+                        <div class="results-count">{{ alert-history | count }} Result{{ alert-history | plural }}</div>
+                        <div class="footable-pagination pagination" id="footable-pagination"></div>
+                    </td>
+                </tr>
+            </tfoot>
+            <tbody>
+                <tr ng-if="(hosts | count) == 0">
+                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No alert-history are defined' }}</td>
+                </tr>
+                <tr ng-repeat="host in hosts | orderObjectBy: 'host_name'" class="state-{{ host.current_state | hoststate | lowercase }}" footabledata>
+                    <td host-entry item="host"></td>
+                    <td class="status">{{ alert-history.current_state | hoststate }}</td>
+                    <td>{{ alert-history.last_check * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
+                    <td>{{ alert-history.last_state_change | ago }}</td>
+                    <td>{{ alert-history.plugin_output }}</td>
+                </tr>
+            </tbody>
+        </table>
 
-						<div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'" ng-model="endDate">
-							<label for="enddate" class="col-md-4 control-label">End Date:</label>
-							<div class="col-md-7">
-								<input type="date" name="enddate" value="" class="form-control"></input>
-							</div>
-						</div>
+    </div>
 
-						<div class="form-group" ng-show="RadioBtn == 'custom'">
-							<label for="HostgroupLimit" class="col-md-4 control-label">Limit To Hostgroup:</label>
-							<div class="col-md-7">
-								<select ng-model="HostgroupLimit" name="HostgroupLimit" class="form-control">
-									<option value="**ALL HOSTGROUPS**">**ALL HOSTGROUPS**</option>
-									<option ng-repeat="hostgroup in name.hostgroup">{{ hostgroup }}</option>
-								</select>
-							</div>
-						</div>
-
-						<div class="form-group" ng-show="RadioBtn == 'custom'">
-							<label for="ServicegroupLimit" class="col-md-4 control-label">Limit To Servicegroup:</label>
-							<div class="col-md-7">
-								<select ng-model="ServicegroupLimit" name="ServicegroupLimit" class="form-control">
-									<option value="**ALL SERVICEGROUPS**">**ALL SERVICEGROUPS**</option>
-									<option ng-repeat="servicegroup in name.servicegroup">{{ servicegroup }}</option>
-								</select>
-							</div>
-						</div>
-
-						<div class="form-group" ng-show="RadioBtn == 'custom'">
-							<label for="HostLimit" class="col-md-4 control-label">Limit To Host:</label>
-							<div class="col-md-7">
-								<select ng-model="HostLimit" name="HostLimit" class="form-control">
-									<option value="**ALL HOSTS**">**ALL HOSTS**</option>
-									<option ng-repeat="host in name.host">{{ host }}</option>
-								</select>	
-							</div>
-						</div>
-
-						<div class="form-group" ng-show="RadioBtn == 'custom'">
-							<label for="AlertTypes" class="col-md-4 control-label">Alert Types:</label>
-							<div class="col-md-7">
-								<select ng-model="AlertTypes" name="AlertTypes" class="form-control">
-									<option value="Host and Service Alerts">Host and Service Alerts</option>
-									<option value="Host Alerts">Host Alerts</option>
-									<option value="Service Alerts">Service Alerts</option>
-								</select>
-							</div>
-						</div>
-
-						<div class="form-group" ng-show="RadioBtn == 'custom'">
-							<label for="StateTypes" class="col-md-4 control-label">State Types:</label>
-							<div class="col-md-7">
-								<select ng-model="StateTypes" name="StateTypes" class="form-control">
-									<option value="Hard and Soft States">Hard and Soft States</option>
-									<option value="Hard States">Hard States</option>
-									<option value="Soft States">Soft States</option>
-								</select>
-							</div>
-						</div>
-
-						<div class="form-group" ng-show="RadioBtn == 'custom'">
-							<label for="HostStates" class="col-md-4 control-label">Host States:</label>
-							<div class="col-md-7">
-								<select ng-model="HostStates" name="HostStates" class="form-control">
-									<option value="All Host States">All Host States</option>
-									<option value="Host Problem States">Host Problem States</option>
-									<option value="Host Up States">Host Up States</option>
-									<option value="Host Down States">Host Down States</option>
-									<option value="Host Unreachable States">Host Unreachable States</option>
-								</select>
-							</div>
-						</div>
-
-						<div class="form-group" class="ServiceStates" ng-show="RadioBtn == 'custom'">
-							<label for="ServiceStates" class="col-md-4 control-label">Service States:</label>
-							<div class="col-md-7">
-								<select ng-model="ServiceStates" name="ServiceStates" class="form-control">
-									<option value="All Service States">All Service States</option>
-									<option value="Service Problem States">Service Problem States</option>
-									<option value="Service Ok States">Service Ok States</option>
-									<option value="Service Warning States">Service Warning States</option>
-									<option value="Service Unknown States">Service Unknown States</option>
-									<option value="Service Critical States">Service Critical States</option>
-								</select>
-							</div>	
-						</div>	
-
-						<div class="form-group" ng-show="RadioBtn == 'custom' || RadioBtn == 'standard'"> 
-							<div class="col-md-6 col-md-offset-4">
-								<button class="btn btn-primary" ng-click="reset()">Reset</button>
-								<a ng-href="#/reports/alert-history">
-									<button  ng-disabled="inputForm.$invalid" class="btn btn-primary">Create Report</button>
-								</a>
-							</div>
-						</div>
-
-					</form>
-
-				</div>
-			</div>	
-		</div>	
-	</div>
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>
-
-
-
-

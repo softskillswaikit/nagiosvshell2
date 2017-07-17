@@ -619,79 +619,8 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $Data = array();
-        $hostname = array();
-        $hostgroupname = array();
-        $servicename = array();
-        $servicegroupname = array();
-        $allName;
-
-        
-        $hosts = $this->nagios_data->get_collection('hoststatus');
-
-        foreach($hosts as $host)
-        {
-            $Data1[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
-        }
-
-        foreach($Data1 as $host)
-        {
-            $hostname[] = $host['name'];
-        }
-
-        $allName['host'] = $hostname;
-    
-
-    
-        $hostgroups = $this->nagios_data->get_collection('hostgroup');
-
-        foreach($hostgroups as $hostgroup)
-        {
-            $Data2[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
-        }
-
-        foreach ($Data2 as $hostgroup) 
-        {
-            $hostgroupname[] = $hostgroup['name'];
-        } 
-
-        $allName['hostgroup'] = $hostgroupname;     
-    
-
-    
-        $services = $this->nagios_data->get_collection('servicestatus');
-
-        foreach ($services as $service)
-        {
-            $Data3[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
-        }
-
-        foreach ($Data3 as $service) 
-        {
-            $servicename[] = $service['name'];
-
-        }
-
-        $allName['service'] = $servicename;
-    
-
-    
-        $servicegroups = $this->nagios_data->get_collection('servicegroup');
-
-        foreach($servicegroups as $servicegroup)
-        {
-            $Data4[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
-        }
-
-        foreach ($Data4 as $servicegroup) 
-        {
-            $servicegroupname[] = $servicegroup['name'];
-        }
-
-        $allName['servicegroup'] = $servicegroupname;
-        
-
-        $this->output(var_dump($allName)); 
+       $test = $this->reports_data->get_event_log("1500318258");
+	$this->output($test);
     }
 
     /**
@@ -1701,5 +1630,6 @@ class API extends VS_Controller
 
 /* End of file api.php */
 /* Location: ./application/controllers/api.php */
+
 
 

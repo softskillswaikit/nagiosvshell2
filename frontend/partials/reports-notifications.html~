@@ -1,9 +1,75 @@
 <div ng-include="'frontend/partials/_header.html'"></div>
 
+<div ng-include="'frontend/partials/_status.html'"></div>
+
 <div ng-include="'frontend/partials/_browser.html'"></div>
 
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
-<p>Notifications</p>
+<div id="content" class="clearfix" ng-controller="NotificationsCtrl" ng-init="init()">
+
+    <div class="table-container full-width">
+
+        <h1>Notifications For All Host and Service</h1>
+
+        <div class="table-options">
+            <form action="" class="filter-form" method="post">
+                <div class="filter-icon"></div>
+                <input id="footable-filter" class="footable-filter" type="text" placeholder="Filter Table"/>
+            </form>
+            <div class="btn-group">
+                <button type="button" class="btn btn-link">
+                    Previous Day
+                </button>
+                <button type="button" class="btn btn-link">
+                    Next Day
+                </button>
+            </div>
+            <div class="pagesize-container">
+                Show <a class="active" ng-href="#" data-page-size="25">25</a> <a ng-href="#" data-page-size="100">100</a> <a ng-href="#" data-page-size="50000">All</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+            <thead>
+                <tr>
+                    <th>Host</th>
+                    <th>Service</th>
+                    <th> Type </th>
+		    <th> Time </th>
+		    <th> Contact </th>
+		    <th> Notification Command </th>
+		    <th> Information </th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="8">
+                        <div class="results-count">{{ notifications | count }} Result{{ notifications | plural }}</div>
+                        <div class="footable-pagination pagination" id="footable-pagination"></div>
+                    </td>
+                </tr>
+            </tfoot>
+            <tbody>
+                <tr ng-if="(notifications | count) == 0">
+                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No notification are defined' }}</td>
+                </tr>
+                <tr ng-repeat="notification in notifications" footabledata>
+                    <td>{{ notification.host }}</td>
+		    <td>{{ notification.service }}</td>
+		    <td>{{ notification.state }}</td>
+		    <td>{{ notification.datetime * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+		    <td>{{ notification.contact }}</td>
+		    <td>{{ notification.notificationcommand }}</td>
+		    <td>{{ notification.messages }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>
+

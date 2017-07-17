@@ -56,7 +56,7 @@ $route["alerthistory"] = "api/alerthistory";
 $route["alertsummary/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/alertsummary/$1/$2/$3/$4/$5";
 $route["alerthistogram/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/alerthistogram/$1/$2/$3/$4/$5/$6/$7/$8/$9";
 $route["eventlog/(:any)"] = "api/eventlog/$1";
-$route["notification/(:any)"] = "api/notification/$1";
+$route["notifications/(:any)"] = "api/notifications/$1";
 $route["testing"] = "api/testing";
 $route["comments/(:any)"] = "api/comments/$1";
 $route["comments"] = "api/comments";
@@ -91,3 +91,4 @@ $route["vshellconfig"] = "api/vshellconfig";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
+
