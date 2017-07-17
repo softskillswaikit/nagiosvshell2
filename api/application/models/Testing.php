@@ -36,6 +36,7 @@ class Testing extends CI_Model
 
 	//Written by Low Zhi Jian
 	//Functions to be called by web service
+	//Availability section
 	public function get_availability()
 	{
 		$this->availability_array = $this->parse_log($this->_alert_array, 'alert');
@@ -49,6 +50,7 @@ class Testing extends CI_Model
 		return $this->availability_array;
 	}
 
+	//Trends section
 	public function get_trend()
 	{
 		$this->trends_array = $this->parse_log($this->_alert_array, 'alert');
@@ -62,20 +64,35 @@ class Testing extends CI_Model
 		return $this->trends_array;
 	}
 
-	public function get_history_data()
+	//Alert History section
+	public function get_history_data($input_date)
 	{
+		//temporary array
+		$temp_array = array();
+		$i = 0;
+
 		$this->alert_history_array = $this->parse_log($this->_alert_array, 'alert');
 
 		//encode the data into JSON format
+		//also filter the data by date
 		foreach($this->alert_history_array as $items)
 		{
-			$items = json_encode($items);
+			if($this->compare_date($input_date, $items->datetime))
+			{
+				$temp_array[$i] = $items;
+				$items = json_encode($items);
+
+				$i++;
+			}
 		}
+
+		$this->alert_history_array = $temp_array;
 
 		return $this->alert_history_array;
 	}
 
-	public function get_alert_summary($summary_type = 'NORMAL', $input_date, $input_host, $input_logtype, $input_state_type, $input_state, $maxitem=NULL)
+	//Alert Summary section
+	public function get_alert_summary($summary_type = 'NORMAL', $input_date, $input_host_service, $input_service, $input_logtype, $input_state_type, $input_state, $maxitem=NULL)
 	{
 		//temporary array
 		$temp_array = array();
@@ -90,8 +107,8 @@ class Testing extends CI_Model
 			//compare date
 			if($this->compare_date($input_date, $items->datetime))
 			{
-				//compare hostname
-				if($this->compare_string($input_host, $items->hostname))
+				//compare hostname or servicename based on different input
+				if($this->compare_string($input_host_service, $items->hostname) or $this->compare_string($input_host_service, $items->servicename))
 				{
 					//compare logtype
 					if($this->compare_string($input_logtype, $items->logtype))
@@ -211,6 +228,7 @@ class Testing extends CI_Model
 		}
 	}
 
+	//Alert Histogram section
 	public function get_alert_histogram()
 	{
 		$this->alert_histogram_array = $this->parse_log($this->_alert_array, 'alert');
@@ -224,6 +242,7 @@ class Testing extends CI_Model
 		return $this->alert_histogram_array;
 	}
 
+	//Notifications section
 	public function get_notification($input_date)
 	{
 		//temporary array
@@ -250,6 +269,7 @@ class Testing extends CI_Model
 		return $this->notification_array;
 	}
 
+	//Event Log section
 	public function get_event_log($input_date)
 	{
 		//temporary array
@@ -514,6 +534,7 @@ class Testing extends CI_Model
 		{
 			return true;
 		}
+		//the date is not same
 		else
 		{
 			return false;
@@ -548,7 +569,8 @@ class Testing extends CI_Model
 				return true;
 			}
 		}
-		else if(strcmp($input_string, 'HOST_PROBLEM_STATE') == 0)
+		
+		if(strcmp($input_string, 'HOST_PROBLEM_STATE') == 0)
 		{
 			if(strcmp($data_string, 'DOWN') == 0 or strcmp($data_string, 'UNREACHABLE') == 0 or strcmp($data_string, 'PENDING') == 0)
 			{
@@ -564,7 +586,8 @@ class Testing extends CI_Model
 				return true;
 			}
 		}
-		else if(strcmp($input_string, 'SERVICE_PROBLEM_STATE') == 0)
+		
+		if(strcmp($input_string, 'SERVICE_PROBLEM_STATE') == 0)
 		{
 			if(strcmp($data_string, 'WARNING') == 0 or strcmp($data_string, 'UNKNOWN') == 0 or strcmp($data_string, 'CRITICAL') == 0 or strcmp($data_string, 'PENDING') == 0)
 			{
@@ -576,6 +599,7 @@ class Testing extends CI_Model
 		{
 			return true;
 		}
+		//the data is not same
 		else
 		{
 			return false;
