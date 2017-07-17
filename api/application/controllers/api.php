@@ -615,7 +615,7 @@ class API extends VS_Controller
     {
         $performanceinfo = $this->system_commands->performance_info_commands();
 
-        $this->output(var_dump($performanceinfo));
+        $this->output(100);
     }
 
     /**
@@ -632,7 +632,20 @@ class API extends VS_Controller
     {
         $result = false;
 
-        $result = $this->system_commands->add_comment($name, $serviceDescription, $persistent, $author, $comments, $type);
+        $allowed_types = array(
+            'host',
+            'svc'
+        );
+
+        //check for empty input
+        if(!empty($type) && !empty($name) && !empty($serviceDescription) && !empty($persistent) && !empty($author) && !empty($comments))
+        {
+            //compare types with allowed types
+            if(in_array($type, $allowed_types))
+            {
+                $result = $this->system_commands->add_comment($name, $serviceDescription, $persistent, $author, $comments, $type);
+            }
+        }
 
         $this->output($result);
     }
@@ -647,9 +660,19 @@ class API extends VS_Controller
     {
         $result = false;
 
+        $allowed_types = array(
+            'host',
+            'svc'
+        );
+
+        //check for empty input
         if(!empty($id) && !empty($type))
         {
-            $result = $this->system_commands->delete_comment($id, $type);
+            //compare type with allowed types
+            if(in_array($type, $allowed_types))
+            {
+                $result = $this->system_commands->delete_comment($id, $type);
+            }
         }
 
         $this->output($result);
@@ -674,10 +697,19 @@ class API extends VS_Controller
     {
         $success = false;
 
+        $allowed_types = array(
+            'host',
+            'svc'
+        );
+
         //check empty input
         if(!empty($type) && !empty($name) && !empty($author) && !empty($comment) && !empty($start) && !empty($end) && !empty($fixed))
         {
-            $success = $this->system_commands->schedule_downtime($name, $start, $end, $fixed, $triggerID, $duration, $author, $comment, $type);
+            //compare type with allowed types
+            if(in_array($type, $allowed_types))
+            {
+                $success = $this->system_commands->schedule_downtime($name, $start, $end, $fixed, $triggerID, $duration, $author, $comment, $type);
+            }
         }
         
         $this->output($success);
