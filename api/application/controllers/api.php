@@ -183,7 +183,7 @@ class API extends VS_Controller
      *
      * @param String $type
      */
-    public function name($type='')
+    public function name()
     {
         $Data = array();
         $hostname = array();
@@ -193,6 +193,7 @@ class API extends VS_Controller
         $allName;
 
         
+        //all host name
         $hosts = $this->nagios_data->get_collection('hoststatus');
 
         foreach($hosts as $host)
@@ -208,7 +209,7 @@ class API extends VS_Controller
         $allName['host'] = $hostname;
     
 
-    
+        //all hostgroup name    
         $hostgroups = $this->nagios_data->get_collection('hostgroup');
 
         foreach($hostgroups as $hostgroup)
@@ -224,7 +225,7 @@ class API extends VS_Controller
         $allName['hostgroup'] = $hostgroupname;     
     
 
-    
+        //all service name
         $services = $this->nagios_data->get_collection('servicestatus');
 
         foreach ($services as $service)
@@ -241,7 +242,7 @@ class API extends VS_Controller
         $allName['service'] = $servicename;
     
 
-    
+        //all service group name
         $servicegroups = $this->nagios_data->get_collection('servicegroup');
 
         foreach($servicegroups as $servicegroup)
