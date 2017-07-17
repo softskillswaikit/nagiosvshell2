@@ -1,7 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); 
 
 class Testing extends CI_Model
-
 {
 	//array of data taken from nagios log file
 	protected $_nagios_log = array();
@@ -76,17 +75,140 @@ class Testing extends CI_Model
 		return $this->alert_history_array;
 	}
 
-	public function get_alert_summary()
+	public function get_alert_summary($summary_type = 'NORMAL', $input_date, $input_host, $input_logtype, $input_state_type, $input_state, $maxitem=NULL)
 	{
+		//temporary array
+		$temp_array = array();
+		$i = 0;
+
 		$this->alert_summary_array = $this->parse_log($this->_alert_array, 'alert');
 
-		//encode the data into JSON format
+		//filter the array based on request
 		foreach($this->alert_summary_array as $items)
 		{
-			$items = json_encode($items);
+			//custom report option
+			//compare date
+			if($this->compare_date($input_date, $items->datetime))
+			{
+				//compare hostname
+				if($this->compare_string($input_host, $items->hostname))
+				{
+					//compare logtype
+					if($this->compare_string($input_logtype, $items->logtype))
+					{
+						//compare state_type
+						if($this->compare_string($input_state_type, $items->state_type))
+						{
+							//compare state
+							if($this->compare_string($input_state, $items->state))
+							{		
+								if(!empty($maxitem))
+								{				
+									if($i === $maxitem)
+									{
+										break;
+									}
+								}
+
+								$temp_array[$i] = $items;
+
+								$i++;	
+							}
+						}
+					}
+				}
+			}
 		}
 
-		return $this->alert_summary_array;
+		$this->alert_summary_array = $temp_array;
+
+		//find alert totals for alert summary section
+		$alert_totals = 0;
+		$alert_host_up = 0;
+		$alert_host_down = 0;
+		$alert_host_unreachable = 0;
+		$alert_host_pending = 0;
+		$alert_service_ok = 0;
+		$alert_service_warning = 0;
+		$alert_service_unknown = 0;
+		$alert_service_critical = 0;
+		$alert_service_pending = 0;
+
+		$alert_obj = new StdCLass();
+
+		foreach($this->alert_summary_array as $alerts)
+		{
+			$alert_totals++;
+
+			if(strcmp($alerts->state, 'UP') == 0)
+			{
+				$alert_host_up++;
+			}
+			else if(strcmp($alerts->state, 'DOWN') == 0)
+			{
+				$alert_host_down++;
+			}
+			else if(strcmp($alerts->state, 'UNREACHABLE') == 0)
+			{
+				$alert_host_unreachable++;
+			}
+			else if(strcmp($alerts->state, 'OK') == 0)
+			{
+				$alert_service_ok++;
+			}
+			else if(strcmp($alerts->state, 'WARNING') == 0)
+			{
+				$alert_service_warning++;
+			}
+			else if(strcmp($alerts->state, 'UNKNOWN') == 0)
+			{
+				$alert_service_unknown++;
+			}
+			else if(strcmp($alerts->state, 'CRITICAL') == 0)
+			{
+				$alert_service_critical++;
+			}
+			//$alert->state = PENDING
+			else 
+			{
+				//for HOST ALERT, the servicename is NULL
+				if(empty($alerts->servicename))
+				{
+					$alert_host_pending++;
+				}
+				else
+				{
+					$alert_service_pending++;
+				}
+			}
+
+			//encode the $this->alert_summary_array after filter into JSON format
+			$alerts = json_encode($alerts);
+		}
+
+		$alert_obj->alert_totals = $alert_totals;
+		$alert_obj->alert_host_up = $alert_host_up;
+		$alert_obj->alert_host_down = $alert_host_down;
+		$alert_obj->alert_host_unreachable = $alert_host_unreachable;
+		$alert_obj->alert_host_pending = $alert_host_pending;
+		$alert_obj->alert_service_ok = $alert_service_ok;
+		$alert_obj->alert_service_warning = $alert_service_warning;
+		$alert_obj->alert_service_unknown = $alert_service_unknown;
+		$alert_obj->alert_service_critical = $alert_service_critical;
+		$alert_obj->alert_service_pending = $alert_service_pending;
+
+		$json_alert_obj = json_encode($alert_obj);
+		unset($alert_obj);
+
+		if($this->compare_string($summary_type, 'NORMAL'))
+		{
+			return $this->alert_summary_array;
+		}
+		//$summary_type = 'ALERT_TOTAL'
+		else 
+		{
+			return $json_alert_obj;
+		}
 	}
 
 	public function get_alert_histogram()
@@ -199,19 +321,17 @@ class Testing extends CI_Model
 		//_data_array counter
 		$i = 0;
 
-		foreach($this->_nagios_log as $logs)
-		{
-			$this->_data_array[$i] = $logs;
-			$i++;
-		}
-
-
 		foreach($this->_archives_log as $logs)
 		{
 			$this->_data_array[$i] = $logs;
 			$i++;
 		}
 
+		foreach($this->_nagios_log as $logs)
+		{
+			$this->_data_array[$i] = $logs;
+			$i++;
+		}
 
 		//_alert_array counter
 		$j = 0;
@@ -250,14 +370,14 @@ class Testing extends CI_Model
 		{
 			if(strcmp($_type, 'notification') == 0)
 			{
-				if(strpos($logs, 'HOST NOTIFICATION:') !== false)
+				if(strpos($logs, 'HOST NOTIFICATION') !== false)
 				{
 					list($input_time, $other_message) = explode(' ', $logs, 2);
 					list($logtype, $information) = explode(':', $other_message, 2);
 					list($contact, $host, $state, $notificationcommand, $detail_message) = explode(';', $information, 5);
 
 					$sorted_obj = new StdCLass();
-					$sorted_obj->datetime = $this->unixtime_convert($input_time);
+					$sorted_obj->datetime = trim($input_time, '[]');
 					$sorted_obj->logtype = $logtype;
 					$sorted_obj->contact = $contact;
 					$sorted_obj->host = $host;
@@ -266,14 +386,15 @@ class Testing extends CI_Model
 					$sorted_obj->notificationcommand = $notificationcommand;
 					$sorted_obj->messages = $detail_message;
 				}
+				//strpos($logs, 'SERVICE NOTIFICATION') !== false
 				else
 				{
 					list($input_time, $other_message) = explode(' ', $logs, 2);
 					list($logtype, $information) = explode(':', $other_message, 2);
 					list($contact, $host, $service, $state, $notificationcommand, $detail_message) = explode(';', $information, 6);
 
-					$sorted_obj = new StdCLass();
-					$sorted_obj->datetime = $this->unixtime_convert($input_time);
+					$sorted_obj = new StdClass();
+					$sorted_obj->datetime = trim($input_time, '[]');
 					$sorted_obj->logtype = $logtype;
 					$sorted_obj->contact = $contact;
 					$sorted_obj->host = $host;
@@ -285,14 +406,14 @@ class Testing extends CI_Model
 			}
 			else if(strcmp($_type, 'alert') == 0)
 			{
-				if(strpos($logs, 'HOST ALERT:') !== false)
+				if(strpos($logs, 'HOST ALERT') !== false)
 				{
 					list($input_time, $event_message) = explode(' ', $logs, 2);
 					list($logtype, $information) = explode(':', $event_message, 2);
 					list($hostname, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 5);
 		
 					$sorted_obj = new StdCLass();
-					$sorted_obj->datetime = $this->unixtime_convert($input_time);
+					$sorted_obj->datetime = trim($input_time, '[]');
 					$sorted_obj->logtype = $logtype;
 					$sorted_obj->hostname = $hostname;
 					$sorted_obj->servicename = NULL;
@@ -301,6 +422,7 @@ class Testing extends CI_Model
 					$sorted_obj->retry_count = $retry_count;
 					$sorted_obj->messages = $detail_message;
 				}
+				//strpos($logs, 'SERVICE ALERT') !== false
 				else
 				{
 					list($input_time, $event_message) = explode(' ', $logs, 2);
@@ -308,7 +430,7 @@ class Testing extends CI_Model
 					list($hostname, $servicename, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 6);
 		
 					$sorted_obj = new StdCLass();
-					$sorted_obj->datetime = $this->unixtime_convert($input_time);
+					$sorted_obj->datetime = trim($input_time, '[]');
 					$sorted_obj->logtype = $logtype;
 					$sorted_obj->hostname = $hostname;
 					$sorted_obj->servicename = $servicename;
@@ -318,34 +440,35 @@ class Testing extends CI_Model
 					$sorted_obj->messages = $detail_message;
 				}
 			}
+			//$_type = 'event'
 			else
 			{
 				list($input_time, $event_message) = explode(' ', $logs, 2);
 
 				$sorted_obj = new StdCLass();
-				$sorted_obj->datetime = $this->unixtime_convert($input_time);
+				$sorted_obj->datetime = trim($input_time, '[]');
 				$sorted_obj->messages = $event_message;
 
-				if(strpos($logs, 'HOST NOTIFICATION:') !== false)
+				if(strpos($logs, 'HOST NOTIFICATION') !== false)
 				{
 					list($logtype, $information) = explode(':', $event_message, 2);
 
 					$sorted_obj->logtype = $logtype;
 				}
-				else if(strpos($logs, 'SERVICE NOTIFICATION:') !== false)
+				else if(strpos($logs, 'SERVICE NOTIFICATION') !== false)
 				{
 					list($logtype, $information) = explode(':', $event_message, 2);
 					
 					$sorted_obj->logtype = $logtype;
 				}
-				else if(strpos($logs, 'HOST ALERT:') !== false)
+				else if(strpos($logs, 'HOST ALERT') !== false)
 				{
 					list($logtype, $information) = explode(':', $event_message, 2);
 					list($hostname, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 5);
 
 					$sorted_obj->logtype = $state;
 				}
-				else if(strpos($logs, 'SERVICE ALERT:') !== false)
+				else if(strpos($logs, 'SERVICE ALERT') !== false)
 				{
 					list($logtype, $information) = explode(':', $event_message, 2);
 					list($hostname, $servicename, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 6);
@@ -356,6 +479,11 @@ class Testing extends CI_Model
 				{
 					$sorted_obj->logtype = 'FLAPPING';
 				}
+				else if(strpos($logs, 'LOG ROTATION') !== false)
+				{
+					$sorted_obj->logtype = 'LOG ROTATION';
+				}
+				//other messages
 				else
 				{
 					$sorted_obj->logtype = 'INFORMATION';
@@ -376,24 +504,13 @@ class Testing extends CI_Model
 		return $sorted_array;
 	}
 
-	//function to convert unix timestamp to localtime
-	private function unixtime_convert($unixtime)
-	{
-		//remove any non-numeric character
-		$old_unixtime = trim($unixtime, '[]');
-		$new_unixtime = (int)$old_unixtime;
-
-		return date('Y-m-d H:i:s', $new_unixtime);
-	}
-
 	//function used to compare date
 	private function compare_date($input_date, $data_date)
 	{
-		//$temp_date_array[0] is the date
-		//$temp_date_array[1] is the time
-		$temp_date_array = explode(' ', $data_date, 2);
-
-		if(strcmp($input_date, $temp_date_array[0]) == 0)
+		$modify_input_date = date('Y-m-d', (int)$input_date);
+		$modify_data_date = date('Y-m-d', (int)$data_date);
+	
+		if(strcmp($modify_input_date, $modify_data_date) == 0)
 		{
 			return true;
 		}
@@ -402,6 +519,70 @@ class Testing extends CI_Model
 			return false;
 		}
 	}
+
+	private function compare_string($input_string, $data_string)
+	{
+		//compare host
+		if(strcmp($input_string, 'ALL_HOST') == 0)
+		{
+			return true;
+		}
+
+		//compare logtype
+		if(strcmp($input_string, 'ALL_ALERT') == 0)
+		{
+			return true;
+		}
+
+		//compare state_type
+		if(strcmp($input_string, 'ALL_STATE_TYPE') == 0)
+		{
+			return true;
+		}
+
+		//compare host state
+		if(strcmp($input_string, 'ALL_HOST_STATE') == 0)
+		{
+			if(strcmp($data_string, 'UP') == 0 or strcmp($data_string, 'DOWN') == 0 or strcmp($data_string, 'UNREACHABLE') == 0 or strcmp($data_string, 'PENDING') == 0)
+			{
+				return true;
+			}
+		}
+		else if(strcmp($input_string, 'HOST_PROBLEM_STATE') == 0)
+		{
+			if(strcmp($data_string, 'DOWN') == 0 or strcmp($data_string, 'UNREACHABLE') == 0 or strcmp($data_string, 'PENDING') == 0)
+			{
+				return true;
+			}
+		}
+
+		//compare service state
+		if(strcmp($input_string, 'ALL_SERVICE_STATE') == 0)
+		{
+			if(strcmp($data_string, 'OK') == 0 or strcmp($data_string, 'WARNING') == 0 or strcmp($data_string, 'UNKNOWN') == 0 or strcmp($data_string, 'CRITICAL') == 0 or strcmp($data_string, 'PENDING') == 0)
+			{
+				return true;
+			}
+		}
+		else if(strcmp($input_string, 'SERVICE_PROBLEM_STATE') == 0)
+		{
+			if(strcmp($data_string, 'WARNING') == 0 or strcmp($data_string, 'UNKNOWN') == 0 or strcmp($data_string, 'CRITICAL') == 0 or strcmp($data_string, 'PENDING') == 0)
+			{
+				return true;
+			}
+		}
+
+		if(strcmp($input_string, $data_string) == 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+
 }
 
 ?>

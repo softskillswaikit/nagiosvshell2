@@ -987,7 +987,7 @@ class API extends VS_Controller
     public function eventlog($date)
 
     {
-    log_message('error', 'qwe123');
+        log_message('error', 'qwe123');
 
         $EventLog = $this->reports_data->get_event_log();
 
@@ -1029,26 +1029,25 @@ class API extends VS_Controller
 
 
 
-    public function testing()
+   public function testing()
 
     {
 
         log_message('error', 'qwe1.');
-    //$test = $this->testing->get_availability();
-    //$test = $this->testing->get_trend();
-    //$test = $this->testing->get_history_data();
-    //$test = $this->testing->get_alert_summary();
-    //$test = $this->testing->get_alert_histogram();
-    //$test = $this->testing->get_notification('2017-06-14');
-    //$test = $this->testing->get_event_log('2017-07-13');
+        //$test = $this->testing->get_availability();
+        //$test = $this->testing->get_trend();
+        //$test = $this->testing->get_history_data();
+        //$test = $this->testing->get_alert_summary();
+        //$test = $this->testing->get_alert_histogram();
+        //$test = $this->testing->get_notification('1497451146');
+        //$test = $this->testing->get_event_log('1499644800');
 
-    //$test = $this->testing->add_comment();
-
+        //$test = $this->testing->add_comment();
         //$test = $this->testing->delete_comment();
-    //$test = $this->testing->schedule_downtime();
-    //$test = $this->testing->modify_process_info();
-    //$test = $this->testing->performance_info_commands();
-    //$test = $this->testing->scheduling_queue();
+        //$test = $this->testing->schedule_downtime();
+        //$test = $this->testing->modify_process_info();
+        //$test = $this->testing->performance_info_commands();
+        //$test = $this->testing->scheduling_queue();
 
         log_message('error', 'qwe2.');
 
