@@ -127,7 +127,6 @@ $autoload['model'] = array(
 	'tac_data',
 	'testing',
 	'reports_data'
-
 );
 
 /*

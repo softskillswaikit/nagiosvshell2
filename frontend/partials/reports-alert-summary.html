@@ -100,7 +100,7 @@
 							<div class="col-md-7">
 								<select ng-model="HostgroupLimit" name="HostgroupLimit" class="form-control">
 									<option value="**ALL HOSTGROUPS**">**ALL HOSTGROUPS**</option>
-									<option ng-repeat="type in name">{{ type }}</option>
+									<option ng-repeat="hostgroup in name.hostgroup">{{ hostgroup }}</option>
 								</select>
 							</div>
 						</div>
@@ -110,6 +110,7 @@
 							<div class="col-md-7">
 								<select ng-model="ServicegroupLimit" name="ServicegroupLimit" class="form-control">
 									<option value="**ALL SERVICEGROUPS**">**ALL SERVICEGROUPS**</option>
+									<option ng-repeat="servicegroup in name.servicegroup">{{ servicegroup }}</option>
 								</select>
 							</div>
 						</div>
@@ -119,6 +120,7 @@
 							<div class="col-md-7">
 								<select ng-model="HostLimit" name="HostLimit" class="form-control">
 									<option value="**ALL HOSTS**">**ALL HOSTS**</option>
+									<option ng-repeat="host in name.host">{{ host }}</option>
 								</select>	
 							</div>
 						</div>

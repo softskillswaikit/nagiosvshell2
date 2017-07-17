@@ -91,20 +91,22 @@ angular.module('vshell.controllers', [])
 			$scope.ServiceStates = 'All Service States';
 		};
 
-		$scope.init = function() {
+		
 
-			var type = 'host';
-			$scope.type = type;
-			$routeParams.type = $scope.type;
+		$scope.init = function() {
 		
 			var options = {
 				name: 'name',
-				url: 'name/' + $routeParams.type,
+				url: 'name',
 				queue: 'main'
 			};
+
+			async.api($scope, options);	
 		};
 
+
 		$scope.reset();
+		
 		
 	}
 	])
@@ -207,11 +209,14 @@ angular.module('vshell.controllers', [])
 .controller('EventLogCtrl', ['$scope', '$routeParams', 'async',
     function($scope, $routeParams, async) {
 	
-        $scope.init = function() {	
+        $scope.init = function() {
+
+	var date = new Date();
+	var string = date.valueOf(date);
 
             var options = {
-                name: 'testing',
-                url: 'testing',
+                name: 'evetlog',
+                url: 'eventlog/' + string,
                 queue: 'main'
             };
 

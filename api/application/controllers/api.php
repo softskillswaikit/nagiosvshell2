@@ -178,85 +178,90 @@ class API extends VS_Controller
 
 
     //Written by Soon Wei Liang
-    /*
-     * Fetch name based on type : Host, Hostgroup, Service, Servicegroup
+    /**
+     * Fetch name based on type : host, hostgroup, service, servicegroup
      *
      * @param String $type
      */
-    public function name($type='')
+    public function name()
     {
         $Data = array();
-        $name = array();
+        $hostname = array();
+        $hostgroupname = array();
+        $servicename = array();
+        $servicegroupname = array();
+        $allName;
 
-        //fetch all host name
-        if($type == 'host')
+        
+        //all host name
+        $hosts = $this->nagios_data->get_collection('hoststatus');
+
+        foreach($hosts as $host)
         {
-            $hosts = $this->nagios_data->get_collection('hoststatus');
-
-            foreach($hosts as $host)
-            {
-                $Data[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
-            }
-
-            foreach($Data as $host)
-            {
-                $name[] = $host['name'];
-            }
+            $Data1[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
         }
 
-        //fetch all host group name
-        else if($type == 'hostgroup')
+        foreach($Data1 as $host)
         {
-            $hostgroups = $this->nagios_data->get_collection('hostgroup');
-
-            foreach($hostgroups as $hostgroup)
-            {
-                $Data[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
-            }
-
-            foreach ($Data as $hostgroup) 
-            {
-                $name[] = $hostgroup['name'];
-            }      
+            $hostname[] = $host['name'];
         }
 
-        //fetch all service name
-        else if($type == 'service')
+        $allName['host'] = $hostname;
+    
+
+        //all hostgroup name    
+        $hostgroups = $this->nagios_data->get_collection('hostgroup');
+
+        foreach($hostgroups as $hostgroup)
         {
-            $services = $this->nagios_data->get_collection('servicestatus');
-
-            foreach ($services as $service)
-            {
-                $Data[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
-            }
-
-            foreach ($Data as $service) 
-            {
-                $name[] = $service['name'];
-
-            }
+            $Data2[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
         }
 
-        //fetch all service group name
-        else if($type == 'servicegroup')
+        foreach ($Data2 as $hostgroup) 
         {
-            $servicegroups = $this->nagios_data->get_collection('servicegroup');
+            $hostgroupname[] = $hostgroup['name'];
+        } 
 
-            foreach($servicegroups as $servicegroup)
-            {
-                $Data[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
-            }
+        $allName['hostgroup'] = $hostgroupname;     
+    
 
-            foreach ($Data as $servicegroup) 
-            {
-                $name[] = $servicegroup['name'];
-            }
+        //all service name
+        $services = $this->nagios_data->get_collection('servicestatus');
+
+        foreach ($services as $service)
+        {
+            $Data3[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
         }
 
-        $this->output($name); 
+        foreach ($Data3 as $service) 
+        {
+            $servicename[] = $service['name'];
+
+        }
+
+        $allName['service'] = $servicename;
+    
+
+        //all service group name
+        $servicegroups = $this->nagios_data->get_collection('servicegroup');
+
+        foreach($servicegroups as $servicegroup)
+        {
+            $Data4[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
+        }
+
+        foreach ($Data4 as $servicegroup) 
+        {
+            $servicegroupname[] = $servicegroup['name'];
+        }
+
+        $allName['servicegroup'] = $servicegroupname;
+        
+
+        $this->output($allName); 
     }
 
-    /*
+    /**
      * Fetch host name
      */
     public function hostname()
@@ -278,7 +283,7 @@ class API extends VS_Controller
         $this->output($hostname);
     }
 
-    /*
+    /**
      * Fetch service name
      */
     public function servicename()
@@ -300,7 +305,7 @@ class API extends VS_Controller
         $this->output($servicename);
     }    
 
-    /*
+    /**
      * Fetch host group name 
      */
     public function hostgroupname()
@@ -322,7 +327,7 @@ class API extends VS_Controller
         $this->output($hostgroupname);
     }
 
-    /*
+    /**
      * Fetch service group name
      */
     public function servicegroupname()
@@ -344,12 +349,13 @@ class API extends VS_Controller
         $this->output($servicegroupname);
     }
 
-    /*
+    /**
      * Fetch availability
      * 
-     * @param int $reportType
+     * @param int $reportType, 1:hostgroup , 2:host, 3:servicegroup, 4:service
      * @param string $name
-     * @param Date $period
+     * @param string $start
+     * @param string $end
      * @param bool $initialState
      * @param bool $stateRetention
      * @param bool $assumeState
@@ -358,44 +364,49 @@ class API extends VS_Controller
      * @param String $firstAssumedService
      * @param int $backTrack
      */
-     public function availability($reportType, $name='', $period, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost='', $firstAssumedService='', $backTrack)
+     public function availability($reportType, $name='', $start, $end, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost='', $firstAssumedService='', $backTrack)
     {
-        $Availability = $this->availability_data->get_availability();
+        $Availability = array();
 
-        //hostgroup
-        if($reportType == 1)
+        //check empty input
+        if(!empty($reportType) && !empty($name) && !empty($start) && !empty($end) && !empty($initialState) && !empty($stateRetention) && !empty($assumeState) && !empty($includeSoftState) && !empty($firstAssumedHost) && !empty($firstAssumedService) && !empty($backTrack))
         {
+            //hostgroup
+            if($reportType == 1)
+            {
+                $Availability = $this->availability_data->get_availability_hostgroup($name, $start, $end, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $firstAssumedService, $backTrack);
+            }
 
-        }
+            //host
+            else if($reportType == 2)
+            {
+                $Availability = $this->availability_data->get_availability_host($name, $start, $end, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $firstAssumedService, $backTrack);
+            }
 
-        //host
-        else if($reportType == 2)
-        {
+            //service group
+            else if($reportType == 3)
+            {
+                $Availability = $this->availability_data->get_availability_servicegroup($name, $start, $end, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $firstAssumedService, $backTrack);
+            }
 
-        }
-
-        //service group
-        else if($reportType == 3)
-        {
-
-        }
-
-        //service
-        else if($reportType == 4)
-        {
-
+            //service
+            else if($reportType == 4)
+            {
+                $Availability = $this->availability_data->get_availability_service($name, $start, $end, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $firstAssumedService, $backTrack);
+            }
         }
 
 
         $this->output($Availability);
     }
 
-    /*
+    /**
      * Fetch trend
      *
      * @param int $reportType
      * @param string $name
-     * @param Date $period
+     * @param string $start
+     * @param string $end
      * @param bool $initialState
      * @param bool $stateRetention
      * @param bool $assumeState
@@ -405,26 +416,27 @@ class API extends VS_Controller
      * @param bool suppressImage
      * @param bool suppressPopups
      */
-    public function trend($reportType, $name='', $period, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $backTrack, $suppressImage, $suppressPopups)
+    public function trend($reportType, $name='', $start='', $end='', $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $backTrack, $suppressImage, $suppressPopups)
     {
-        $Trend = $this->trend_data->get_trend();
+        $Trend = array();
+        
 
         //host
         if($reportType == 1)
         {
-
+            $Trend = $this->trend_data->get_trend_host();
         }
 
         //service
         else if($reportType == 2)
         {
-
+            $Trend = $this->trend_data->get_trend_service();
         }
 
         $this->output($Trend);
     }
 
-    /*
+    /**
      * Fetch alert history
      */
     public function alerthistory()
@@ -434,7 +446,7 @@ class API extends VS_Controller
         $this->output($AlertHistory);
     }
 
-    /*
+    /**
      * Fetch alert summary
      *
      * @param int $reportLabel
@@ -530,7 +542,7 @@ class API extends VS_Controller
         $this->output($AlertSummary);
     }
 
-    /*
+    /**
      * Fetch alert histogram
      *
      * @param int $reportType
@@ -564,38 +576,19 @@ class API extends VS_Controller
     }
 
 
-    /*
+    /**
      * Fetch all event log
      *
-     * @param  Date $date
+     * @param  String $date
      */
     public function eventlog($date)
     {
-        $EventLog = $this->reports_data->get_events_log($date);
-
-        if(!empty($EventLog))
-        {
-            $this->output($Eventlog);
-        }
-    }
-
-    /*
-     * Fetch all notifications
-     *
-     * @param Date $date
-     */
-    public function notifications($date)
-    {
-        $Notificaions = $this->notifications_data->get_notification($date);
-
-        $this->output($Notificaions);
-    }
-
-    public function testing()
-    {
         $Eventlogs = array();
-        $Data = $this->testing->get_event_log();
-	foreach ($Data as $Eventlog) 
+        //example $date = "2017-07-10";
+
+        $Data = $this->reports_data->get_event_log($date);
+
+        foreach ($Data as $Eventlog) 
         {
             $Eventlogs[] = $Eventlog;
         }
@@ -604,9 +597,283 @@ class API extends VS_Controller
         $this->output($Eventlogs);
     }
 
-    /*
+    /**
+     * Fetch all notifications
      *
+     * @param Date $date
      */
+    public function notifications($date)
+    {
+        $Notificaions = array();
+
+        $Data = $this->reports_data->get_notification($date);
+
+        foreach ($Data as $Notification) 
+        {
+            $Notifications[] = $Notification;
+        }
+
+
+        $this->output($Notifications);
+    }
+
+    public function testing()
+    {
+        $Data = array();
+        $hostname = array();
+        $hostgroupname = array();
+        $servicename = array();
+        $servicegroupname = array();
+        $allName;
+
+        
+        $hosts = $this->nagios_data->get_collection('hoststatus');
+
+        foreach($hosts as $host)
+        {
+            $Data1[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
+        }
+
+        foreach($Data1 as $host)
+        {
+            $hostname[] = $host['name'];
+        }
+
+        $allName['host'] = $hostname;
+    
+
+    
+        $hostgroups = $this->nagios_data->get_collection('hostgroup');
+
+        foreach($hostgroups as $hostgroup)
+        {
+            $Data2[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
+        }
+
+        foreach ($Data2 as $hostgroup) 
+        {
+            $hostgroupname[] = $hostgroup['name'];
+        } 
+
+        $allName['hostgroup'] = $hostgroupname;     
+    
+
+    
+        $services = $this->nagios_data->get_collection('servicestatus');
+
+        foreach ($services as $service)
+        {
+            $Data3[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
+        }
+
+        foreach ($Data3 as $service) 
+        {
+            $servicename[] = $service['name'];
+
+        }
+
+        $allName['service'] = $servicename;
+    
+
+    
+        $servicegroups = $this->nagios_data->get_collection('servicegroup');
+
+        foreach($servicegroups as $servicegroup)
+        {
+            $Data4[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
+        }
+
+        foreach ($Data4 as $servicegroup) 
+        {
+            $servicegroupname[] = $servicegroup['name'];
+        }
+
+        $allName['servicegroup'] = $servicegroupname;
+        
+
+        $this->output(var_dump($allName)); 
+    }
+
+    /**
+     * Add comments
+     *
+     * @param String $type, host : host, svc : service
+     * @param String $name
+     * @param String $serviceDescription
+     * @param bool $persistent
+     * @param String $author
+     * @param String $comments
+     */
+    public function addComments($type='', $name='', $serviceDescription='', $persistent, $author='', $comments='')
+    {
+        $result = false;
+
+        $allowed_types = array(
+            'host',
+            'svc'
+        );
+
+        //check for empty input
+        if(!empty($type) && !empty($name) && !empty($serviceDescription) && !empty($persistent) && !empty($author) && !empty($comments))
+        {
+            //compare types with allowed types
+            if(in_array($type, $allowed_types))
+            {
+                $result = $this->system_commands->add_comment($name, $serviceDescription, $persistent, $author, $comments, $type);
+            }
+        }
+
+        $this->output($result);
+    }
+
+    /**
+     * Delete comments
+     *
+     * @param int $id
+     * @param String $type, host : host, svc : service
+     */
+    public function deleteComments($id, $type='')
+    {
+        $result = false;
+
+        $allowed_types = array(
+            'host',
+            'svc'
+        );
+
+        //check for empty input
+        if(!empty($id) && !empty($type))
+        {
+            //compare type with allowed types
+            if(in_array($type, $allowed_types))
+            {
+                $result = $this->system_commands->delete_comment($id, $type);
+            }
+        }
+
+        $this->output($result);
+    }
+
+    /**
+     * Schedule downtime
+     *
+     * @param String $type, host : host, svc : service
+     * @param String $name
+     * @param String $author
+     * @param String $comment
+     * @param String $start
+     * @param String $end
+     * @param String $fixed - true = fixed , false = flexible
+     * @param int $triggerID
+     * @param int $duration , in minutes
+     * @param String $child
+     */
+    public function downtime($type='', $name='', $author='', $comment='', $start='', $end='', $fixed='', $triggerID, $duration, $child='')
+    {
+        $success = false;
+
+        $allowed_types = array(
+            'host',
+            'svc'
+        );
+
+        //check empty input
+        if(!empty($type) && !empty($name) && !empty($author) && !empty($comment) && !empty($start) && !empty($end) && !empty($fixed))
+        {
+            //compare type with allowed types
+            if(in_array($type, $allowed_types))
+            {
+                $success = $this->system_commands->schedule_downtime($name, $start, $end, $fixed, $triggerID, $duration, $author, $comment, $type);
+            }
+        }
+        
+        $this->output($success);
+    }
+
+    /**
+     * Modify process information
+     *
+     * @param String $type
+     */
+    public function processinfo($type='')
+    {
+        //only these types are allowed
+        $allowed_types = array(
+            'shutdown_nagios',
+            'restart_nagios',
+            'enable_notification',
+            'disable_notification',
+            'start_service_check',
+            'stop_service_check',
+            'start_passive_service_check',
+            'stop_passive_service_check',
+            'enable_event_handler',
+            'disable_event_handler',
+            'start_obsess_over_svc',
+            'stop_obsess_over_svc',
+            'start_obsess_over_host',
+            'stop_obsess_over_host',
+            'enable_performance',
+            'disable_performance',
+            'start_host_check',
+            'stop_host_check',
+            'start_passive_host_check',
+            'stop_passive_host_check',
+            'enable_flap',
+            'disable_flap'
+        );
+
+        //check empty input
+        if( $type != '' )
+        {
+            //compare type with allowed types
+            if(in_array($type, $allowed_types) )
+            {
+                $processinfo = $this->system_commands->modify_process_info($type);
+            }
+        }
+
+        $this->output($processinfo);
+    }
+
+    /**
+     * Fetch performance information
+     */
+    public function performanceinfo()
+    {
+        $performanceinfos = $this->system_commands->performance_info_commands();
+
+        $this->output($performanceinfos);
+    }
+
+    /**
+     * Schedule queue
+     *
+     * @param String $hostname
+     * @param String $serviceDescription
+     * @param String $checktime
+     * @param String $type
+     */
+     public function schedulequeue($hostname='', $serviceDescription='', $checktime='', $type='')
+     {
+        $allowed_types = array(
+            'enable_svc_check',
+            'disable_svc_check',
+            'schedule_svc_check'
+        );
+
+        //check empty input
+        if( $type != '' )
+        {
+            //compare type with allowed types
+            if(in_array($type, $allowed_types) )
+            {
+                $schedulequeues = $this->system_commands->scheduling_queue($hostname, $serviceDescription, $checktime, $type);
+            }
+        }
+
+        $this->output($schedulequeues);
+     }
 
 
 

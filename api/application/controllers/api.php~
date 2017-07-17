@@ -189,7 +189,7 @@ class API extends VS_Controller
         $name = array();
 
         //fetch all host name
-        if($type == 'host')
+        if($type = 'host')
         {
             $hosts = $this->nagios_data->get_collection('hoststatus');
 
@@ -593,20 +593,9 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $Eventlogs = array();
-        $Data = $this->testing->get_event_log();
-	   foreach ($Data as $Eventlog) 
-        {
-            $Eventlogs[] = $Eventlog;
-        }
-
-
-        $this->output($Eventlogs);
+       $Data = 100;
+	$this->output(var_dump($Data));
     }
-
-    /*
-     *
-     */
 
 
 

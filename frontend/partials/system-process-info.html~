@@ -160,10 +160,10 @@
 				<td>
 					Shutdown the Nagios Process
 				</td>
-				<td data-toggle="modal" data-target="#ShutDownModal">
-					
+				<td>
+					<a data-toggle="modal" data-target="#ShutDownModal">
 						Toggle
-					
+					</a>
 					<div class="modal fade" id="ShutDownModal" role="dialog">
 						<div class="modal-dialog">
 							<div class="modal-content">
@@ -194,87 +194,362 @@
 					Restart the Nagios Process
 				</td>
 				<td>
-					Toggle
+					<a data-toggle="modal" data-target="#RestartModal">
+						Toggle
+					</a>
+					<div class="modal fade" id="RestartModal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">
+										&times;
+									</button>
+									<h4 class="modal-title">Restart the Nagios Process</h4>
+								</div>
+								<div class="modal-body">
+									<button type="button" class="btn btn-success">Yes</button>
+									<button type="button" class="btn btn-danger">
+										No
+									</button>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">
+										Close
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</td>
 			</tr>
-			<tr style="background-color: #8dcd54">
+			<tr style="background-color: #e9ffd6; color: #6cb22f;">
 				<td>
 					Disable Notifications
 				</td>
 				<td>
-					Toggle
+					<a data-toggle="modal" data-target="#NotificationsModal">
+						Toggle
+					</a>
+					<div class="modal fade" id="NotificationsModal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">
+										&times;
+									</button>
+									<h4 class="modal-title">Notifications Command</h4>
+								</div>
+								<div class="modal-body">
+									<button type="button" class="btn btn-success">Yes</button>
+									<button type="button" class="btn btn-danger">
+										No
+									</button>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">
+										Close
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</td>
 			</tr>
-			<tr style="background-color: #8dcd54">
+			<tr style="background-color: #e9ffd6; color: #6cb22f;">
 				<td>
 					Stop executing service checks
 				</td>
 				<td>
-					Toggle
+					<a data-toggle="modal" data-target="#ServiceCheckModal">
+						Toggle
+					</a>
+					<div class="modal fade" id="ServiceCheckModal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">
+										&times;
+									</button>
+									<h4 class="modal-title">Service Check Command</h4>
+								</div>
+								<div class="modal-body">
+									<button type="button" class="btn btn-success">Yes</button>
+									<button type="button" class="btn btn-danger">
+										No
+									</button>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">
+										Close
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</td>
 			</tr>
-			<tr style="background-color: #8dcd54">
+			<tr style="background-color: #e9ffd6; color: #6cb22f;">
 				<td>
 					Stop accepting passive service checks
 				</td>
 				<td>
-					Toggle
+					<a data-toggle="modal" data-target="#PassiveServiceModal">
+						Toggle
+					</a>
+					<div class="modal fade" id="PassiveServiceModal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">
+										&times;
+									</button>
+									<h4 class="modal-title">Passive Service Check Command</h4>
+								</div>
+								<div class="modal-body">
+									<button type="button" class="btn btn-success">Yes</button>
+									<button type="button" class="btn btn-danger">
+										No
+									</button>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">
+										Close
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</td>
 			</tr>
-			<tr style="background-color: #8dcd54">
+			<tr style="background-color: #e9ffd6; color: #6cb22f;">
 				<td>
 					Stop executing host checks
 				</td>
 				<td>
-					Toggle
+					<a data-toggle="modal" data-target="#HostCheckModal">
+						Toggle
+					</a>
+					<div class="modal fade" id="HostCheckModal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">
+										&times;
+									</button>
+									<h4 class="modal-title">Host Check Command</h4>
+								</div>
+								<div class="modal-body">
+									<button type="button" class="btn btn-success">Yes</button>
+									<button type="button" class="btn btn-danger">
+										No
+									</button>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">
+										Close
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</td>
 			</tr>
-			<tr style="background-color: #8dcd54">
+			<tr style="background-color: #e9ffd6; color: #6cb22f;">
 				<td>
 					Stop accepting passive host checks
 				</td>
 				<td>
-					Toggle
+					<a data-toggle="modal" data-target="#PassiveHostModal">
+						Toggle
+					</a>
+					<div class="modal fade" id="PassiveHostModal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">
+										&times;
+									</button>
+									<h4 class="modal-title">Passive Host Check Command</h4>
+								</div>
+								<div class="modal-body">
+									<button type="button" class="btn btn-success">Yes</button>
+									<button type="button" class="btn btn-danger">
+										No
+									</button>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">
+										Close
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</td>
 			</tr>
-			<tr style="background-color: #8dcd54">
+			<tr style="background-color: #e9ffd6; color: #6cb22f;">
 				<td>
 					Disable event handlers
 				</td>
 				<td>
-					Toggle
+					<a data-toggle="modal" data-target="#EventHandlerModal">
+						Toggle
+					</a>
+					<div class="modal fade" id="EventHandlerModal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">
+										&times;
+									</button>
+									<h4 class="modal-title">Event Handler Command</h4>
+								</div>
+								<div class="modal-body">
+									<button type="button" class="btn btn-success">Yes</button>
+									<button type="button" class="btn btn-danger">
+										No
+									</button>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">
+										Close
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</td>
 			</tr>
-			<tr style="background-color: #d24555">
+			<tr style="background-color: #ffccd1; color: #d24555;">
 				<td>
 					Start obsessing over services
 				</td>
 				<td>
-					Toggle
+					<a data-toggle="modal" data-target="#ObsessingServiceModal">
+						Toggle
+					</a>
+					<div class="modal fade" id="ObsessingServiceModal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">
+										&times;
+									</button>
+									<h4 class="modal-title">Obsessing Over Service Command</h4>
+								</div>
+								<div class="modal-body">
+									<button type="button" class="btn btn-success">Yes</button>
+									<button type="button" class="btn btn-danger">
+										No
+									</button>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">
+										Close
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</td>
 			</tr>
-			<tr style="background-color: #d24555">
+			<tr style="background-color: #ffccd1; color: #d24555;">
 				<td>
 					Start obsessing over hosts
 				</td>
 				<td>
-					Toggle
+					<a data-toggle="modal" data-target="#ObsessingHostModal">
+						Toggle
+					</a>
+					<div class="modal fade" id="ObsessingHostModal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">
+										&times;
+									</button>
+									<h4 class="modal-title">Obsessing Over Host Command</h4>
+								</div>
+								<div class="modal-body">
+									<button type="button" class="btn btn-success">Yes</button>
+									<button type="button" class="btn btn-danger">
+										No
+									</button>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">
+										Close
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</td>
 			</tr>
-			<tr style="background-color: #8dcd54">
+			<tr style="background-color: #e9ffd6">
 				<td>
 					Disable flap detection
 				</td>
 				<td>
-					Toggle
+					<a data-toggle="modal" data-target="#FlapDetectModal">
+						Toggle
+					</a>
+					<div class="modal fade" id="FlapDetectModal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">
+										&times;
+									</button>
+									<h4 class="modal-title">Flap Detection Model</h4>
+								</div>
+								<div class="modal-body">
+									<button type="button" class="btn btn-success">Yes</button>
+									<button type="button" class="btn btn-danger">
+										No
+									</button>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">
+										Close
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</td>
 			</tr>
-			<tr style="background-color: #d24555">
+			<tr style="background-color: #ffccd1; color: #d24555;">
 				<td>
 					Enable performance data
 				</td>
 				<td>
-					Toggle
+					<a data-toggle="modal" data-target="#PerformanceModal">
+						Toggle
+					</a>
+					<div class="modal fade" id="PerformanceModal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">
+										&times;
+									</button>
+									<h4 class="modal-title">Performance Data Command</h4>
+								</div>
+								<div class="modal-body">
+									<button type="button" class="btn btn-success">Yes</button>
+									<button type="button" class="btn btn-danger">
+										No
+									</button>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">
+										Close
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</td>
 			</tr>
 		</tbody>
@@ -284,5 +559,6 @@
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>
+
 
 
