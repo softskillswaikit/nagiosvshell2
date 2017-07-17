@@ -186,7 +186,10 @@ class API extends VS_Controller
     public function name($type='')
     {
         $Data = array();
-        $name = array();
+        $hostname = array();
+        $hostgroupname = array();
+        $servicename = array();
+        $servicegroupname = array();
         $allName;
 
         
@@ -194,15 +197,15 @@ class API extends VS_Controller
 
         foreach($hosts as $host)
         {
-            $Data[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
+            $Data1[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
         }
 
-        foreach($Data as $host)
+        foreach($Data1 as $host)
         {
-            $name[] = $host['name'];
+            $hostname[] = $host['name'];
         }
 
-        $allName['host'] = $name;
+        $allName['host'] = $hostname;
     
 
     
@@ -210,15 +213,15 @@ class API extends VS_Controller
 
         foreach($hostgroups as $hostgroup)
         {
-            $Data[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
+            $Data2[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
         }
 
-        foreach ($Data as $hostgroup) 
+        foreach ($Data2 as $hostgroup) 
         {
-            $name[] = $hostgroup['name'];
+            $hostgroupname[] = $hostgroup['name'];
         } 
 
-        $allName['hostgroup'] = $name;     
+        $allName['hostgroup'] = $hostgroupname;     
     
 
     
@@ -226,16 +229,16 @@ class API extends VS_Controller
 
         foreach ($services as $service)
         {
-            $Data[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
+            $Data3[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
         }
 
-        foreach ($Data as $service) 
+        foreach ($Data3 as $service) 
         {
-            $name[] = $service['name'];
+            $servicename[] = $service['name'];
 
         }
 
-        $allName['service'] = $name;
+        $allName['service'] = $servicename;
     
 
     
@@ -243,18 +246,18 @@ class API extends VS_Controller
 
         foreach($servicegroups as $servicegroup)
         {
-            $Data[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
+            $Data4[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
         }
 
-        foreach ($Data as $servicegroup) 
+        foreach ($Data4 as $servicegroup) 
         {
-            $name[] = $servicegroup['name'];
+            $servicegroupname[] = $servicegroup['name'];
         }
 
-        $allName['servicegroup'] = $name;
+        $allName['servicegroup'] = $servicegroupname;
         
 
-        $this->output(var_dump($allName)); 
+        $this->output($allName); 
     }
 
     /**
@@ -602,7 +605,7 @@ class API extends VS_Controller
     {
         $Notificaions = array();
 
-        $Data = $this->reports_data->get_notification();
+        $Data = $this->reports_data->get_notification($date);
 
         foreach ($Data as $Notification) 
         {
@@ -616,7 +619,10 @@ class API extends VS_Controller
     public function testing()
     {
         $Data = array();
-        $name = array();
+        $hostname = array();
+        $hostgroupname = array();
+        $servicename = array();
+        $servicegroupname = array();
         $allName;
 
         
@@ -624,15 +630,15 @@ class API extends VS_Controller
 
         foreach($hosts as $host)
         {
-            $Data[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
+            $Data1[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
         }
 
-        foreach($Data as $host)
+        foreach($Data1 as $host)
         {
-            $name[] = $host['name'];
+            $hostname[] = $host['name'];
         }
 
-        $allName['host'] = $name;
+        $allName['host'] = $hostname;
     
 
     
@@ -640,15 +646,15 @@ class API extends VS_Controller
 
         foreach($hostgroups as $hostgroup)
         {
-            $Data[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
+            $Data2[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
         }
 
-        foreach ($Data as $hostgroup) 
+        foreach ($Data2 as $hostgroup) 
         {
-            $name[] = $hostgroup['name'];
+            $hostgroupname[] = $hostgroup['name'];
         } 
 
-        $allName['hostgroup'] = $name;     
+        $allName['hostgroup'] = $hostgroupname;     
     
 
     
@@ -656,16 +662,16 @@ class API extends VS_Controller
 
         foreach ($services as $service)
         {
-            $Data[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
+            $Data3[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
         }
 
-        foreach ($Data as $service) 
+        foreach ($Data3 as $service) 
         {
-            $name[] = $service['name'];
+            $servicename[] = $service['name'];
 
         }
 
-        $allName['service'] = $name;
+        $allName['service'] = $servicename;
     
 
     
@@ -673,15 +679,15 @@ class API extends VS_Controller
 
         foreach($servicegroups as $servicegroup)
         {
-            $Data[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
+            $Data4[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
         }
 
-        foreach ($Data as $servicegroup) 
+        foreach ($Data4 as $servicegroup) 
         {
-            $name[] = $servicegroup['name'];
+            $servicegroupname[] = $servicegroup['name'];
         }
 
-        $allName['servicegroup'] = $name;
+        $allName['servicegroup'] = $servicegroupname;
         
 
         $this->output(var_dump($allName)); 
