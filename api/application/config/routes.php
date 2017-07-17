@@ -45,7 +45,7 @@ $route["status"] = "api";
 /*
 * Create by Soon Wei Liang
 */
-$route["name"] = "api/name";
+$route["name/(:any)"] = "api/name/$1";
 $route["hostname"] = "api/hostname";
 $route["servicename"] = "api/servicename";
 $route["hostgroupname"] = "api/hostgroupname";
