@@ -141,15 +141,33 @@ class Testing extends CI_Model
 
 		//find alert totals for alert summary section
 		$alert_totals = 0;
-		$alert_host_up = 0;
-		$alert_host_down = 0;
-		$alert_host_unreachable = 0;
-		$alert_host_pending = 0;
-		$alert_service_ok = 0;
-		$alert_service_warning = 0;
-		$alert_service_unknown = 0;
-		$alert_service_critical = 0;
-		$alert_service_pending = 0;
+		$alert_host_up_total = 0;
+		$alert_host_up_soft = 0;
+		$alert_host_up_hard = 0;
+		$alert_host_down_total = 0;
+		$alert_host_down_soft = 0;
+		$alert_host_down_hard = 0;
+		$alert_host_unreachable_total = 0;
+		$alert_host_unreachable_soft = 0;
+		$alert_host_unreachable_hard = 0;
+		$alert_host_pending_total = 0;
+		$alert_host_pending_soft = 0;
+		$alert_host_pending_hard = 0;
+		$alert_service_ok_total = 0;
+		$alert_service_ok_soft = 0;
+		$alert_service_ok_hard = 0;
+		$alert_service_warning_total = 0;
+		$alert_service_warning_soft = 0;
+		$alert_service_warning_hard = 0;
+		$alert_service_unknown_total = 0;
+		$alert_service_unknown_soft = 0;
+		$alert_service_unknown_hard = 0;
+		$alert_service_critical_total = 0;
+		$alert_service_critical_soft = 0;
+		$alert_service_critical_hard = 0;
+		$alert_service_pending_total = 0;
+		$alert_service_pending_soft = 0;
+		$alert_service_pending_hard = 0;
 
 		$alert_obj = new StdCLass();
 
@@ -157,45 +175,111 @@ class Testing extends CI_Model
 		{
 			$alert_totals++;
 
-			if(strcmp($alerts->state, 'UP') == 0)
+			if(strcmp($alerts->state_type, 'SOFT') == 0)
 			{
-				$alert_host_up++;
-			}
-			else if(strcmp($alerts->state, 'DOWN') == 0)
-			{
-				$alert_host_down++;
-			}
-			else if(strcmp($alerts->state, 'UNREACHABLE') == 0)
-			{
-				$alert_host_unreachable++;
-			}
-			else if(strcmp($alerts->state, 'OK') == 0)
-			{
-				$alert_service_ok++;
-			}
-			else if(strcmp($alerts->state, 'WARNING') == 0)
-			{
-				$alert_service_warning++;
-			}
-			else if(strcmp($alerts->state, 'UNKNOWN') == 0)
-			{
-				$alert_service_unknown++;
-			}
-			else if(strcmp($alerts->state, 'CRITICAL') == 0)
-			{
-				$alert_service_critical++;
-			}
-			//$alert->state = PENDING
-			else 
-			{
-				//for HOST ALERT, the servicename is NULL
-				if(empty($alerts->servicename))
+				if(strcmp($alerts->state, 'UP') == 0)
 				{
-					$alert_host_pending++;
+					$alert_host_up_total++;
+					$alert_host_up_soft++;
 				}
-				else
+				else if(strcmp($alerts->state, 'DOWN') == 0)
 				{
-					$alert_service_pending++;
+					$alert_host_down_total++;
+					$alert_host_down_soft++;
+				}
+				else if(strcmp($alerts->state, 'UNREACHABLE') == 0)
+				{
+					$alert_host_unreachable_total++;
+					$alert_host_unreachable_soft++;
+				}
+				else if(strcmp($alerts->state, 'OK') == 0)
+				{
+					$alert_service_ok_total++;
+					$alert_service_ok_soft++;
+				}
+				else if(strcmp($alerts->state, 'WARNING') == 0)
+				{
+					$alert_service_warning_total++;
+					$alert_service_warning_soft++;
+				}
+				else if(strcmp($alerts->state, 'UNKNOWN') == 0)
+				{
+					$alert_service_unknown_total++;
+					$alert_service_unknown_soft++;
+				}
+				else if(strcmp($alerts->state, 'CRITICAL') == 0)
+				{
+					$alert_service_critical_total++;
+					$alert_service_critical_soft++;
+				}
+				//$alert->state = PENDING
+				else 
+				{
+					//for HOST ALERT, the servicename is NULL
+					if(empty($alerts->servicename))
+					{
+						$alert_host_pending_total++;
+						$alert_host_pending_soft++;
+					}
+					else
+					{
+						$alert_service_pending_total++;
+						$alert_service_pending_soft++;
+					}
+				}
+			}
+			//strcmp($alerts->state_type, 'HARD') == 0
+			else
+			{
+				if(strcmp($alerts->state, 'UP') == 0)
+				{
+					$alert_host_up_total++;
+					$alert_host_up_hard++;
+				}
+				else if(strcmp($alerts->state, 'DOWN') == 0)
+				{
+					$alert_host_down_total++;
+					$alert_host_down_hard++;
+				}
+				else if(strcmp($alerts->state, 'UNREACHABLE') == 0)
+				{
+					$alert_host_unreachable_total++;
+					$alert_host_unreachable_hard++;
+				}
+				else if(strcmp($alerts->state, 'OK') == 0)
+				{
+					$alert_service_ok_total++;
+					$alert_service_ok_hard++;
+				}
+				else if(strcmp($alerts->state, 'WARNING') == 0)
+				{
+					$alert_service_warning_total++;
+					$alert_service_warning_hard++;
+				}
+				else if(strcmp($alerts->state, 'UNKNOWN') == 0)
+				{
+					$alert_service_unknown_total++;
+					$alert_service_unknown_hard++;
+				}
+				else if(strcmp($alerts->state, 'CRITICAL') == 0)
+				{
+					$alert_service_critical_total++;
+					$alert_service_critical_hard++;
+				}
+				//$alert->state = PENDING
+				else 
+				{
+					//for HOST ALERT, the servicename is NULL
+					if(empty($alerts->servicename))
+					{
+						$alert_host_pending_total++;
+						$alert_host_pending_hard++;
+					}
+					else
+					{
+						$alert_service_pending_total++;
+						$alert_service_pending_hard++;
+					}
 				}
 			}
 
@@ -204,15 +288,33 @@ class Testing extends CI_Model
 		}
 
 		$alert_obj->alert_totals = $alert_totals;
-		$alert_obj->alert_host_up = $alert_host_up;
-		$alert_obj->alert_host_down = $alert_host_down;
-		$alert_obj->alert_host_unreachable = $alert_host_unreachable;
-		$alert_obj->alert_host_pending = $alert_host_pending;
-		$alert_obj->alert_service_ok = $alert_service_ok;
-		$alert_obj->alert_service_warning = $alert_service_warning;
-		$alert_obj->alert_service_unknown = $alert_service_unknown;
-		$alert_obj->alert_service_critical = $alert_service_critical;
-		$alert_obj->alert_service_pending = $alert_service_pending;
+		$alert_obj->alert_host_up_total = $alert_host_up_total;
+		$alert_obj->alert_host_up_soft = $alert_host_up_soft;
+		$alert_obj->alert_host_up_hard = $alert_host_up_hard;
+		$alert_obj->alert_host_down_total = $alert_host_down_total;
+		$alert_obj->alert_host_down_soft = $alert_host_down_soft;
+		$alert_obj->alert_host_down_hard = $alert_host_down_hard;
+		$alert_obj->alert_host_unreachable_total = $alert_host_unreachable_total;
+		$alert_obj->alert_host_unreachable_soft = $alert_host_unreachable_soft;
+		$alert_obj->alert_host_unreachable_hard = $alert_host_unreachable_hard;
+		$alert_obj->alert_host_pending_total = $alert_host_pending_total;
+		$alert_obj->alert_host_pending_soft = $alert_host_pending_soft;
+		$alert_obj->alert_host_pending_hard = $alert_host_pending_hard;
+		$alert_obj->alert_service_ok_total = $alert_service_ok_total;
+		$alert_obj->alert_service_ok_soft = $alert_service_ok_soft;
+		$alert_obj->alert_service_ok_hard = $alert_service_ok_hard;
+		$alert_obj->alert_service_warning_total = $alert_service_warning_total;
+		$alert_obj->alert_service_warning_soft = $alert_service_warning_soft;
+		$alert_obj->alert_service_warning_hard = $alert_service_warning_hard;
+		$alert_obj->alert_service_unknown_total = $alert_service_unknown_total;
+		$alert_obj->alert_service_unknown_soft = $alert_service_unknown_soft;
+		$alert_obj->alert_service_unknown_hard = $alert_service_unknown_hard;
+		$alert_obj->alert_service_critical_total = $alert_service_critical_total;
+		$alert_obj->alert_service_critical_soft = $alert_service_critical_soft;
+		$alert_obj->alert_service_critical_hard = $alert_service_critical_hard;
+		$alert_obj->alert_service_pending_total = $alert_service_pending_total;
+		$alert_obj->alert_service_pending_soft = $alert_service_pending_soft;
+		$alert_obj->alert_service_pending_hard = $alert_service_pending_hard;
 
 		$json_alert_obj = json_encode($alert_obj);
 		unset($alert_obj);
@@ -442,8 +544,7 @@ class Testing extends CI_Model
 					$sorted_obj->retry_count = $retry_count;
 					$sorted_obj->messages = $detail_message;
 				}
-				//strpos($logs, 'SERVICE ALERT') !== false
-				else
+				else if(strpos($logs, 'SERVICE ALERT') !== false)
 				{
 					list($input_time, $event_message) = explode(' ', $logs, 2);
 					list($logtype, $information) = explode(':', $event_message, 2);
@@ -457,6 +558,23 @@ class Testing extends CI_Model
 					$sorted_obj->state = $state;
 					$sorted_obj->state_type = $state_type;
 					$sorted_obj->retry_count = $retry_count;
+					$sorted_obj->messages = $detail_message;
+				}
+				//strpos($logs, 'SERVICE FLAPPING ALERT') !== false
+				else
+				{
+					list($input_time, $event_message) = explode(' ', $logs, 2);
+					list($logtype, $information) = explode(':', $event_message, 2);
+					list($hostname, $servicename, $state, $detail_message) = explode(';', $information, 4);
+
+					$sorted_obj = new StdCLass();
+					$sorted_obj->datetime = trim($input_time, '[]');
+					$sorted_obj->logtype = $logtype;
+					$sorted_obj->hostname = $hostname;
+					$sorted_obj->servicename = $servicename;
+					$sorted_obj->state = $state;
+					$sorted_obj->state_type = NULL;
+					$sorted_obj->retry_count = NULL;
 					$sorted_obj->messages = $detail_message;
 				}
 			}
