@@ -1,0 +1,157 @@
+<div ng-include="'frontend/partials/_header.html'"></div>
+
+<div ng-include="'frontend/partials/_status.html'"></div>
+
+<div ng-include="'frontend/partials/_browser.html'"></div>
+
+<div ng-include="'frontend/partials/_messages.html'"></div>
+
+<div id="content" class="clearfix" ng-controller="AlertHistogramCtrl" ng-init="init()">
+
+	<h1>Create Alert Histogram Report</h1>
+
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel panel-default">
+	 		<div class="panel-body">
+
+				<h3>Report Details</h3>
+
+				<div class="form-options">
+
+					<form action="" class="form-horizontal" name="inputForm" method="post" novalidate>
+						<div class="form-group">
+							<label for="reportType" class="col-md-4 control-label">Report Type:</label>
+							<div class="col-md-6">
+								<select ng-model="reportType" name="reportType" class="form-control" required>
+									<option value="Host">Host</option>
+									<option value="Service">Service</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group" ng-show="reportType=='Host'" class="serviceType">
+							<label for="serviceType" class="col-md-4 control-label">Service Type:</label>
+							<div class="col-md-6">
+								<select ng-model="serviceType" name="serviceType" class="form-control">
+									<option value="Normal Service">Normal Service</option>
+									<option value="Host Resource">Host Resource</option>
+									<option value="Running State">Running State</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group" ng-switch on="reportType">
+							<label for="reportComponent" ng-switch-when="Host" class="col-md-4 control-label">Select Host:</label><label for="reportComponent" ng-switch-when="Host(s)" class="col-md-4 control-label">Select Host:</label><label for="reportComponent" ng-switch-when="Servicegroup(s)" class="col-md-4 control-label">Select Servicegroup:</label>
+							<label for="reportComponent" ng-switch-when="Service" class="col-md-4 control-label">Select Service:</label>
+							<div class="col-md-6">
+								<select ng-model="reportComponent" ng-options="component.name as component.name for component in componentName"
+									 name="reportComponent" class="form-control">
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="reportPeriod" class="col-md-4 control-label">Report Period:</label>
+							<div class="col-md-6">
+								<select ng-model="reportPeriod" name="reportPeriod" class="form-control">
+									<option value="Today">Today</option>
+									<option value="Last 24 Hours">Last 24 Hours</option>
+									<option value="Yesterday">Yesterday</option>
+									<option value="This Week">This Week</option>
+									<option value="Last 7 Days">Last 7 Days</option>
+									<option value="Last Week">Last Week</option>
+									<option value="This Month">This Month</option>
+									<option value="Last 31 Days">Last 31 Days</option>
+									<option value="Last Month">Last Month</option>
+									<option value="This Year">This Year</option>
+									<option value="Last Year">Last Year</option>
+									<option value="*Custom Report Period*">*Custom Report Period*</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'" ng-model="startDate">
+							<label for="startdate" class="col-md-4 control-label">Start Date:</label>
+							<div class="col-md-6">
+								<input type="date" ng-model="startDate" max="{{today | date: 'MM/dd/yyyy'}}" name="startdate" class="form-control"></input>
+							</div>
+						</div>
+
+						<div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'" ng-model="endDate">
+							<label for="enddate" class="col-md-4 control-label">End Date:</label>
+							<div class="col-md-6">
+								<input type="date" ng-model="endDate" max="{{today | date: 'MM/dd/yyyy'}}" name="enddate" class="form-control"></input>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="eventsToGraph" class="col-md-4 control-label">Events To Graph:</label>
+							<div class="col-md-6">
+								<select ng-model="eventsToGraph" name="eventsToGraph" class="form-control">
+									<option value="All Hosts Events">All Hosts Events</option>
+									<option value="Host Problem Events">Host Problem Events</option>
+									<option value="Host Up Events">Host Up Events</option>
+									<option value="Host Down Events">Host Down Events</option>
+									<option value="Host Unreachable Events">Host Unreachable Events</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="stateTypesToGraph" class="col-md-4 control-label">State Types To Graph:</label>
+							<div class="col-md-6">
+								<select ng-model="stateTypesToGraph" name="stateTypesToGraph" class="form-control">
+									<option value="Hard States">Hard States</option>
+									<option value="Soft States">Soft States</option>
+									<option value="Hard and Soft States">Hard and Soft States</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="assumeStateRetention" class="col-md-4 control-label">Assume State Retention:</label>
+							<div class="col-md-6">
+								<select ng-model="assumeStateRetention" name="assumeStateRetention" class="form-control">
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="assumeStateRetention" class="col-md-4 control-label">Initial States Logged:</label>
+							<div class="col-md-6">
+								<select ng-model="initialStatesLogged" name="initialStatesLogged" class="form-control">
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="ignoreRepeatedStates" class="col-md-4 control-label">Ignore Repeated States:</label>
+							<div class="col-md-6">
+								<select ng-model="ignoreRepeatedStates" name="ignoreRepeatedStates" class="form-control">
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-md-6 pull-right">
+								<button class="btn btn-primary" ng-click="init()">Reset</button>
+								<a ng-href="#/report/trends/report">
+									<button ng-disabled="inputForm.$invalid" class="btn btn-primary">Create Report</button>
+								</a>
+							</div>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div ng-include="'frontend/partials/_footer.html'"></div>

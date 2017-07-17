@@ -12,15 +12,19 @@
 
         <h1>Event Log</h1>
 
-        <p class="subheading" ng-if="statefilter">Filtered by State {{ statefilter | capitalize }}</p>
-
-        <p class="subheading" ng-if="problemsfilter">Filtered by {{ problemsfilter | capitalize }} Problems</p>
-
         <div class="table-options">
             <form action="" class="filter-form" method="post">
                 <div class="filter-icon"></div>
                 <input id="footable-filter" class="footable-filter" type="text" placeholder="Filter Table"/>
             </form>
+            <div class="btn-group">
+                <button type="button" class="btn btn-link">
+                    Previous Day
+                </button>
+                <button type="button" class="btn btn-link">
+                    Next Day
+                </button>
+            </div>
             <div class="pagesize-container">
                 Show <a class="active" ng-href="#" data-page-size="25">25</a> <a ng-href="#" data-page-size="100">100</a> <a ng-href="#" data-page-size="50000">All</a>
             </div>
@@ -30,11 +34,9 @@
         <table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
             <thead>
                 <tr>
-                    <th>Host</th>
-                    <th>Status</th>
-                    <th data-hide="phone">Last Check</th>
-                    <th data-hide="phone">Duration</th>
-                    <th data-hide="phone">Status Information</th>
+                    <th>Date & Time</th>
+                    <th>Type</th>
+                    <th data-hide="phone"> LogStatus Information</th>
                 </tr>
             </thead>
             <tfoot>
@@ -46,11 +48,13 @@
                 </tr>
             </tfoot>
             <tbody>
-                <tr ng-if="(eventlogs | count) == 0">
+                <tr ng-if="(testing | count) == 0">
                     <td colspan="5">{{ is_loading ? 'Loading...' : 'No eventlog are defined' }}</td>
                 </tr>
-                <tr>
-		<td>{{testing.date_time}}</td>
+                <tr ng-repeat="x in testing" footabledata>
+                    <td>{{ testing[$index].datetime }}</td>
+		    <td>{{ testing[$index].logtype }}</td>
+		    <td>{{ tesitng[$index].messages }}</td>
                 </tr>
             </tbody>
         </table>

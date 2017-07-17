@@ -2,12 +2,19 @@
 
 class Reports_data extends CI_Model
 {
+	//Written by Low Zhi Jian
 	//array of data taken from nagios log file
 	protected $_nagios_log = array();
+	protected $_archives_log = array();
 
-	//variable used to store data from nagios log file
-	//adapted from: nagios_data.php
-	//location: ./application/models/nagios_data.php
+	//array contains data from $_nagios_log array and $_archives_log array
+	protected $_data_array = array();
+
+	//array contains only lines with 'HOST ALERT:' and 'SERVICE ALERT:'
+	protected $_alert_array = array();
+
+	//array contains only lines with 'HOST NOTIFICATION:' and 'SERVICE NOTIFICATION:'
+	protected $_notifications_array = array();
 
 	protected $properties = array(
 		'date_time' => '',
@@ -17,29 +24,101 @@ class Reports_data extends CI_Model
 		'state' => '',
 		'state_type' => '',
 		'retry_count' => '',
-		'messages' => ''
+		'messages' => '',
 	);
 
-	//array for properties array
 	protected $properties_array = array();
 
 	//constructor
 	public function __construct()
 	{
 		parent::__construct();
-		
+
+		$this->_get_nagios_log();
+		$this->_get_archives_log();
+		$this->_insert_data();
+	}
+
+	//get log file data
+	private function _get_nagios_log()
+	{
 		//opening the nagios log file
-		$logfile = fopen("../../../../nagios/var/nagios.log", "r") or die("Unable to open file!");
+		$logfile = fopen("/usr/local/nagios/var/nagios.log", "r") or die("Unable to open file!");
 		
 		//array counter
 		$i = 0;
-		while(! foef($logfile) )
+		while(! feof($logfile) )
 		{
-			$_nagios_log[$i] = fgets($logfile);
+			$this->_nagios_log[$i] = fgets($logfile);
 			$i++;
 		}
 
 		fclose($logfile);
+	}
+
+	//get archives log file data
+	//adapted from https://stackoverflow.com/questions/18558445/read-multiple-files-with-php-from-directory
+	private function _get_archives_log()
+	{
+		//array counter
+		$i = 0;
+
+		//opening the files in archives folder
+		foreach (glob("/usr/local/nagios/var/archives/*.log") as $file)
+		{
+			$file_handle = fopen($file, "r");
+
+			while(! feof($file_handle) )
+			{
+				$this->_archives_log[$i] = fgets($file_handle);
+				$i++;
+			}
+
+			fclose($file_handle);
+		}
+	}
+
+	private function _insert_data()
+	{
+		//_data_array counter
+		$i = 0;
+
+		foreach($this->_nagios_log as $logs)
+		{
+			$this->_data_array[$i] = $logs;
+			$i++;
+		}
+
+
+		foreach($this->_archives_log as $logs)
+		{
+			$this->_data_array[$i] = $logs;
+			$i++;
+		}
+
+
+		//_alert_array counter
+		$j = 0;
+		foreach($this->_data_array as $logs)
+		{
+			if(strpos($logs, 'HOST ALERT:') !== false or strpos($logs, 'SERVICE ALERT:') !== false)
+			{
+				$this->_alert_array[$j] = $logs;
+				$j++;
+			}
+		}
+
+		//_notifications_array counter
+		$k = 0;
+
+		foreach($this->_data_array as $logs)
+		{
+			if(strpos($logs, 'HOST NOTIFICATION:') !== false or strpos($logs, 'SERVICE NOTIFICATION:') !== false)
+			{
+				$this->_notifications_array[$k] = $logs;
+				$k++;
+			}
+		}
 	}
 
 	public function get_events_log($date_required)
@@ -52,29 +131,29 @@ class Reports_data extends CI_Model
 		//properties_array counter
 		$k = 0;
 
-		for($j = 0; $j < count($this->_nagios_log); $j++)
+		foreach($this->_data_array as $logs)
 		{
-			$event_data = explode(' ', $_nagios_log[$j], 2);
+			$event_data = explode(' ', $logs, 2);
 			$unixtime = $event_data[0];
 			$messages = $event_data[1];
-			$properties['date_time'] = unixtime_convert($unixtime);
+			$this->properties['date_time'] = unixtime_convert($unixtime);
 
-			if(compare_date($properties['date_time'], $date_required))
+			if(compare_date($this->properties['date_time'], $date_required))
 			{
-				$properties['messages'] = $messages;
-				$properties_array[$k] = json_encode($properties);
+				$this->properties['messages'] = $messages;
+				$this->properties_array[$k] = json_encode($this->properties);
 				$k++;
 			}
 		}
 
-		return $properties_array;
+		return $this->properties_array;
 	}
 
 	//function to convert unix timestamp to localtime
 	private function unixtime_convert($unixtime)
 	{
 		//remove any non-numeric character
-		$new_unixtime = preg_replace('/\D/', '', $unixtime);
+		$new_unixtime = trim($unixtime, '[]');
 
 		return date('M d Y H:i:s', $new_unixtime);
 	}

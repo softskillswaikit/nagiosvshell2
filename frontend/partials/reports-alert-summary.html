@@ -100,6 +100,7 @@
 							<div class="col-md-7">
 								<select ng-model="HostgroupLimit" name="HostgroupLimit" class="form-control">
 									<option value="**ALL HOSTGROUPS**">**ALL HOSTGROUPS**</option>
+									<option ng-repeat="type in name">{{ type }}</option>
 								</select>
 							</div>
 						</div>
@@ -189,6 +190,7 @@
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>
+
 
 
 

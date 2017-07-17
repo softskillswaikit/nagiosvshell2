@@ -1,0 +1,198 @@
+<div ng-include="'frontend/partials/_header.html'"></div>
+
+<div ng-include="'frontend/partials/_status.html'"></div>
+
+<div ng-include="'frontend/partials/_browser.html'"></div>
+
+<div ng-include="'frontend/partials/_messages.html'"></div>
+
+<div id="content" class="clearfix" ng-controller="AvailabilityCtrl" ng-init="init()">
+
+	<h1>Create Availability Report</h1>
+
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel panel-default">
+	 		<div class="panel-body">
+
+				<h3>Report Details</h3>
+
+				<div class="form-options">
+
+					<form action="" class="form-horizontal" name="inputForm" method="post" novalidate>
+
+						<div class="form-group">
+							<label for="reportType" class="col-md-4 control-label">Report Type:</label>
+							<div class="col-md-6">
+								<select ng-model="reportType" name="reportType" class="form-control" required>
+									<option value="Hostgroup(s)">Hostgroup(s)</option>
+									<option value="Host(s)">Host(s)</option>
+									<option value="Servicegroup(s)">Servicegroup(s)</option>
+									<option value="Service(s)">Service(s)</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group" ng-show="reportType=='Hostgroup(s)' || reportType=='Host(s)'">
+							<label for="serviceType" class="col-md-4 control-label">Service Type:</label>
+							<div class="col-md-6">
+								<select ng-model="serviceType" name="serviceType" class="form-control">
+									<option value="Normal Service">Normal Service</option>
+									<option value="Host Resource">Host Resource</option>
+									<option value="Running State">Running State</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group" ng-switch on="reportType">
+							<label for="reportComponent" ng-switch-when="Hostgroup(s)" class="col-md-4 control-label">Select Hostgroup:</label>
+							<label for="reportComponent" ng-switch-when="Host(s)" class="col-md-4 control-label">Select Host:</label>
+							<label for="reportComponent" ng-switch-when="Servicegroup(s)" class="col-md-4 control-label">Select Servicegroup:</label>
+							<label for="reportComponent" ng-switch-when="Service(s)" class="col-md-4 control-label">Select Service:</label>
+							<div class="col-md-6">
+								<select ng-model="reportComponent" ng-options="component.name as component.name for component in componentName"
+									 name="reportComponent" class="form-control">
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="reportPeriod" class="col-md-4 control-label">Report Period:</label>
+							<div class="col-md-6">
+								<select ng-model="reportPeriod" name="reportPeriod" class="form-control">
+									<option value="Today">Today</option>
+									<option value="Last 24 Hours">Last 24 Hours</option>
+									<option value="Yesterday">Yesterday</option>
+									<option value="This Week">This Week</option>
+							 		<option value="Last 7 Days">Last 7 Days</option>
+									<option value="Last Week">Last Week</option>
+									<option value="This Month">This Month</option>
+									<option value="Last 31 Days">Last 31 Days</option>
+									<option value="Last Month">Last Month</option>
+									<option value="This Year">This Year</option>
+									<option value="Last Year">Last Year</option>
+									<option value="*Custom Report Period*">*Custom Report Period*</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'">
+							<label for="startdate" class="col-md-4 control-label">Start Date:</label>
+							<div class="col-md-6">
+								<input type="date" ng-model="startDate" max="{{today | date: 'yyyy-MM-dd'}}" name="startdate" class="form-control"></input>
+							</div>
+						</div>
+
+						<div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'">
+							<label for="enddate" class="col-md-4 control-label">End Date:</label>
+							<div class="col-md-6">
+								<input type="date" ng-model="endDate" max="{{today | date: 'yyyy-MM-dd'}}" name="enddate" value="{{endDate}}" class="form-control"></input>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="reportTimePeriod" class="col-md-4 control-label">Report Time Period:</label>
+							<div class="col-md-6">
+								<select ng-model="reportTimePeriod" name="reportTimePeriod" class="form-control">
+									<option value="None">None</option>
+									<option value="24x7">24x7</option>
+									<option value="24x7_sans_holidays">24x7_sans_holidays</option>
+									<option value="US-holidays">US-holidays</option>
+									<option value="Workhours">Workhours</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="assumeInitialStates" class="col-md-4 control-label">Assume Initial States:</label>
+							<div class="col-md-6">
+								<select ng-model="assumeInitialStates" name="assumeInitialStates" class="form-control">
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="assumeStateRetention" class="col-md-4 control-label">Assume State Retention:</label>
+							<div class="col-md-6">
+								<select ng-model="assumeStateRetention" name="assumeStateRetention" class="form-control">
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="assumeDowntimeStates" class="col-md-4 control-label">Assume States During Program Downtime:</label>
+							<div class="col-md-6">
+								<select ng-model="assumeDowntimeStates" name="assumeDowntimeStates" class="form-control">
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="includeSoftStates" class="col-md-4 control-label">Include Soft States:</label>
+							<div class="col-md-6">
+								<select ng-model="includeSoftStates" name="includeSoftStates" class="form-control">
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group" ng-show="assumeInitialStates=='Yes' && reportType!='Service(s)'" class="form-control">
+							<label for="firstAssumedHostState" class="col-md-4 control-label">First Assumed Host State:</label>
+							<div class="col-md-6">
+								<select ng-model="firstAssumedHostState" name="firstAssumedHostState" class="form-control">
+									<option value="Unspecified">Unspecified</option>
+									<option value="Current State">Current State</option>
+									<option value="Host Up">Host Up</option>
+									<option value="Host Down">Host Down</option>
+									<option value="Host Unreachable">Host Unreachable</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group" ng-show="assumeInitialStates=='Yes'" class="firstAssumedState">
+							<label for="firstAssumedServiceState" class="col-md-4 control-label">First Assumed Service State:</label>
+							<div class="col-md-6">
+								<select ng-model="firstAssumedServiceState" name="firstAssumedServiceState" class="form-control">
+									<option value="Unspecified">Unspecified</option>
+									<option value="Current State">Current State</option>
+									<option value="Host Up">Host Up</option>
+									<option value="Host Down">Host Down</option>
+									<option value="Host Unreachable">Host Unreachable</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="backtrackedArchives" class="col-md-4 control-label">Backtracked Archives (To Scan For Initial States): </label>
+							<div class="col-md-6">
+								<input ng-model="backtrackedArchives" name="backtrackedArchives" type="number" class="form-control"
+									min=0 required></input>
+								<span style="color:red" ng-show="inputForm.backtrackedArchives.$dirty && inputForm.backtrackedArchives.$invalid">
+								<span ng-show="inputForm.backtrackedArchives.$error.required">This field is required.</span></span>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-md-6 pull-right">
+								<button class="btn btn-primary" ng-click="init()">Reset</button>
+		            <a ng-href="#/report/availability/report">
+									<button ng-disabled="inputForm.$invalid" class="btn btn-primary">Create Report</button>
+								</a>
+							</div>
+						</div>
+
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div ng-include="'frontend/partials/_footer.html'"></div>

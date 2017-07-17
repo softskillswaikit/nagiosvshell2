@@ -73,6 +73,42 @@ angular.module('vshell.controllers', [])
     }
 ])
 
+.controller('AlertSummaryCtrl', ['$scope', '$routeParams', 'async',
+	function($scope, $routeParams, async) {
+
+		$scope.reset = function(){
+			$scope.StandardReportType = '1';
+			$scope.CustomReportType = 'Most Recent Alerts';
+			$scope.reportPeriod = 'Today';
+			$scope.startDate = '';
+			$scope.endDate = '';
+			$scope.HostgroupLimit = '**ALL HOSTGROUPS**';
+			$scope.ServicegroupLimit = '**ALL SERVICEGROUPS**';
+			$scope.HostLimit = '**ALL HOSTS**';
+			$scope.AlertTypes = 'Host and Service Alerts';
+			$scope.StateTypes = 'Hard and Soft States';
+			$scope.HostStates = 'All Host States';
+			$scope.ServiceStates = 'All Service States';
+		};
+
+		$scope.init = function() {
+
+			var type = 'host';
+			$scope.type = type;
+			$routeParams.type = type;
+		
+			var options = {
+				name: 'name',
+				url: 'name/' + $routeParams.type,
+				queue: 'main'
+			};
+		};
+
+		$scope.reset();
+		
+	}
+	])
+
 .controller('OverviewCtrl', ['$scope', 'async',
     function($scope, async) {
 
@@ -132,93 +168,6 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('AlertHistoryCtrl', ['$scope', '$routeParams', '$filter', 'async',
-    function($scope, $routeParams, $filter, async) {
-
-        $scope.callback = function(data, status, headers, config) {
-            var state_filter = $routeParams.state,
-                problem_filter = $routeParams.handled;
-            
-            // set pending state if it has not been checked
-            // for(var i in data){
-            //     if(data[i].current_state == '0' && data[i].has_been_checked == '0')
-            //         data[i].current_state = '3';
-            // }
-
-            if (state_filter) {
-                data = $filter('by_state')(data, 'host', state_filter);
-            } else if (problem_filter) {
-                data = $filter('by_problem')(data, problem_filter);
-            }
-
-            return data;
-        };
-        
-        $scope.init = function() {
-
-            var options = {
-                name: 'alert-history',
-                url: 'hoststatus',
-                queue: 'main'
-            };
-
-            $scope.statefilter = $routeParams.state || '';
-            $scope.problemsfilter = $routeParams.handled || '';
-
-            async.api($scope, options);
-
-        };
-
-    }
-])
-
-.controller('AlertSummaryCtrl', ['$scope', 'async',
-	function($scope, async) {
-
-		$scope.reset = function(){
-			$scope.StandardReportType = '1';
-			$scope.CustomReportType = 'Most Recent Alerts';
-			$scope.reportPeriod = 'Today';
-			$scope.startDate = '';
-			$scope.endDate = '';
-			$scope.HostgroupLimit = '**ALL HOSTGROUPS**';
-			$scope.ServicegroupLimit = '**ALL SERVICEGROUPS**';
-			$scope.HostLimit = '**ALL HOSTS**';
-			$scope.AlertTypes = 'Host and Service Alerts';
-			$scope.StateTypes = 'Hard and Soft States';
-			$scope.HostStates = 'All Host States';
-			$scope.ServiceStates = 'All Service States';
-		};
-
-		$scope.init = function() {
-
-		};
-
-		$scope.reset();
-		
-	}
-	])
-
-.controller('EventLogCtrl', ['$scope', 'async',
-    function($scope, async) {
-        
-        $scope.init = function() {
-
-            var options = {
-                name: 'testing',
-                url: 'testing',
-                queue: 'main'
-            };
-
-	   
-            async.api($scope, options);
-
-        };
-
-    }
-])
-
-
 .controller('HostDetailsCtrl', ['$scope', '$routeParams', 'async',
     function($scope, $routeParams, async) {
 
@@ -252,6 +201,24 @@ angular.module('vshell.controllers', [])
 
         };
 
+    }
+])
+
+.controller('EventLogCtrl', ['$scope', '$routeParams', 'async',
+    function($scope, $routeParams, async) {
+	
+        $scope.init = function() {	
+
+            var options = {
+                name: 'testing',
+                url: 'testing',
+                queue: 'main'
+            };
+
+            async.api($scope, options);
+        };
+	
+	
     }
 ])
 
@@ -577,6 +544,26 @@ angular.module('vshell.controllers', [])
     }
 ])
 
+//created by gnzhen
+//modified by soon wei liang
+.controller('AvailabilityCtrl', ['$scope', 'async',
+    function($scope, async) {
+        
+        $scope.init = function() {
+
+            var options = {
+                name: 'hostname',
+                url: 'hostname',
+                queue: 'main'
+            };
+
+       
+            async.api($scope, options);
+
+        };
+
+    }
+])
 .controller('OptionsCtrl', ['$scope', '$http', 'paths',
     function($scope, $http, paths) {
 
