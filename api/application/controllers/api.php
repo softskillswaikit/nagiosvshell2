@@ -187,73 +187,74 @@ class API extends VS_Controller
     {
         $Data = array();
         $name = array();
+        $allName;
 
-        //fetch all host name
-        if($type == 'host')
+        
+        $hosts = $this->nagios_data->get_collection('hoststatus');
+
+        foreach($hosts as $host)
         {
-            $hosts = $this->nagios_data->get_collection('hoststatus');
-
-            foreach($hosts as $host)
-            {
-                $Data[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
-            }
-
-            foreach($Data as $host)
-            {
-                $name[] = $host['name'];
-            }
+            $Data[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
         }
 
-        //fetch all host group name
-        else if($type == 'hostgroup')
+        foreach($Data as $host)
         {
-            $hostgroups = $this->nagios_data->get_collection('hostgroup');
-
-            foreach($hostgroups as $hostgroup)
-            {
-                $Data[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
-            }
-
-            foreach ($Data as $hostgroup) 
-            {
-                $name[] = $hostgroup['name'];
-            }      
+            $name[] = $host['name'];
         }
 
-        //fetch all service name
-        else if($type == 'service')
+        $allName['host'] = $name;
+    
+
+    
+        $hostgroups = $this->nagios_data->get_collection('hostgroup');
+
+        foreach($hostgroups as $hostgroup)
         {
-            $services = $this->nagios_data->get_collection('servicestatus');
-
-            foreach ($services as $service)
-            {
-                $Data[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
-            }
-
-            foreach ($Data as $service) 
-            {
-                $name[] = $service['name'];
-
-            }
+            $Data[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
         }
 
-        //fetch all service group name
-        else if($type == 'servicegroup')
+        foreach ($Data as $hostgroup) 
         {
-            $servicegroups = $this->nagios_data->get_collection('servicegroup');
+            $name[] = $hostgroup['name'];
+        } 
 
-            foreach($servicegroups as $servicegroup)
-            {
-                $Data[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
-            }
+        $allName['hostgroup'] = $name;     
+    
 
-            foreach ($Data as $servicegroup) 
-            {
-                $name[] = $servicegroup['name'];
-            }
+    
+        $services = $this->nagios_data->get_collection('servicestatus');
+
+        foreach ($services as $service)
+        {
+            $Data[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
         }
 
-        $this->output($name); 
+        foreach ($Data as $service) 
+        {
+            $name[] = $service['name'];
+
+        }
+
+        $allName['service'] = $name;
+    
+
+    
+        $servicegroups = $this->nagios_data->get_collection('servicegroup');
+
+        foreach($servicegroups as $servicegroup)
+        {
+            $Data[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
+        }
+
+        foreach ($Data as $servicegroup) 
+        {
+            $name[] = $servicegroup['name'];
+        }
+
+        $allName['servicegroup'] = $name;
+        
+
+        $this->output(var_dump($allName)); 
     }
 
     /**
@@ -579,6 +580,7 @@ class API extends VS_Controller
     public function eventlog($date)
     {
         $Eventlogs = array();
+        //example $date = "2017-07-10";
 
         $Data = $this->reports_data->get_event_log($date);
 
@@ -604,7 +606,7 @@ class API extends VS_Controller
 
         foreach ($Data as $Notification) 
         {
-            $notifications[] = $Notification;
+            $Notifications[] = $Notification;
         }
 
 
@@ -613,9 +615,76 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $performanceinfo = $this->system_commands->performance_info_commands();
+        $Data = array();
+        $name = array();
+        $allName;
 
-        $this->output(100);
+        
+        $hosts = $this->nagios_data->get_collection('hoststatus');
+
+        foreach($hosts as $host)
+        {
+            $Data[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
+        }
+
+        foreach($Data as $host)
+        {
+            $name[] = $host['name'];
+        }
+
+        $allName['host'] = $name;
+    
+
+    
+        $hostgroups = $this->nagios_data->get_collection('hostgroup');
+
+        foreach($hostgroups as $hostgroup)
+        {
+            $Data[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
+        }
+
+        foreach ($Data as $hostgroup) 
+        {
+            $name[] = $hostgroup['name'];
+        } 
+
+        $allName['hostgroup'] = $name;     
+    
+
+    
+        $services = $this->nagios_data->get_collection('servicestatus');
+
+        foreach ($services as $service)
+        {
+            $Data[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
+        }
+
+        foreach ($Data as $service) 
+        {
+            $name[] = $service['name'];
+
+        }
+
+        $allName['service'] = $name;
+    
+
+    
+        $servicegroups = $this->nagios_data->get_collection('servicegroup');
+
+        foreach($servicegroups as $servicegroup)
+        {
+            $Data[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
+        }
+
+        foreach ($Data as $servicegroup) 
+        {
+            $name[] = $servicegroup['name'];
+        }
+
+        $allName['servicegroup'] = $name;
+        
+
+        $this->output(var_dump($allName)); 
     }
 
     /**
@@ -690,7 +759,6 @@ class API extends VS_Controller
      * @param String $fixed - true = fixed , false = flexible
      * @param int $triggerID
      * @param int $duration , in minutes
-     * @param int $minute
      * @param String $child
      */
     public function downtime($type='', $name='', $author='', $comment='', $start='', $end='', $fixed='', $triggerID, $duration, $child='')
