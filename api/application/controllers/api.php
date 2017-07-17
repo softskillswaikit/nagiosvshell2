@@ -581,7 +581,7 @@ class API extends VS_Controller
      *
      * @param  String $date
      */
-    public function eventlog($date)
+    public function eventlogs($date)
     {
         $Eventlogs = array();
         //$date = "1490279712";
@@ -600,11 +600,12 @@ class API extends VS_Controller
     /**
      * Fetch all notifications
      *
-     * @param Date $date
+     * @param String $date
      */
     public function notifications($date)
     {
         $Notificaions = array();
+        //$date = "1490279712";
 
         $Data = $this->reports_data->get_notification($date);
 
@@ -619,18 +620,18 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $Eventlogs = array();
-        $date = "1490279712";
+        $Notificaions = array();
+        $date = "1497421839";
 
-        $Data = $this->reports_data->get_event_log($date);
+        $Data = $this->reports_data->get_notification($date);
 
-        foreach ($Data as $Eventlog) 
+        foreach ($Data as $Notification) 
         {
-            $Eventlogs[] = $Eventlog;
+            $Notifications[] = $Notification;
         }
 
 
-        $this->output(var_dump($Eventlogs));
+        $this->output(var_dump($Notifications));
     }
 
     /**
