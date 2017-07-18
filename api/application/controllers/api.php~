@@ -439,11 +439,18 @@ class API extends VS_Controller
     /**
      * Fetch alert history
      */
-    public function alerthistory()
+    public function alerthistory($date)
     {
-        $AlertHistory = $this->alert_history_data->get_history_data();
+        $AlertHistorys = array();
 
-        $this->output($AlertHistory);
+	$Data = $this->alert_history_data->get_history_data($date);
+
+	foreach ($Data as $AlertHistory)
+	{
+		$AlertHistorys[] = $AlertHistory;
+	}
+
+        $this->output($AlertHistorys);
     }
 
     /**
@@ -581,7 +588,7 @@ class API extends VS_Controller
      *
      * @param  String $date
      */
-    public function eventlogs($date)
+    public function eventlog($date)
     {
         $Eventlogs = array();
         //example $date = "2017-07-10";

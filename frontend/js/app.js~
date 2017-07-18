@@ -74,8 +74,8 @@ angular.module('vshell', [
         $routeProvider.when('/comments', {
             templateUrl: 'frontend/partials/comments.html'
         });
-        $routeProvider.when('/reports/alert-history', {
-        templateUrl: 'frontend/partials/reports-alert-history.html'
+        $routeProvider.when('/report/alert-history', {
+        templateUrl: 'frontend/partials/report-alert-history.html'
         });
         $routeProvider.when('/reports/alert-summary', {
             templateUrl: 'frontend/partials/reports-alert-summary.html'
@@ -83,10 +83,7 @@ angular.module('vshell', [
         $routeProvider.when('/reports/notifications', {
             templateUrl: 'frontend/partials/reports-notifications.html'
         });
-        $routeProvider.when('/reports/event-log/', {
-            templateUrl: 'frontend/partials/reports-event-log.html'
-        });
-	$routeProvider.when('/system/process-info/', {
+        $routeProvider.when('/reports/event-log', {
             templateUrl: 'frontend/partials/reports-event-log.html'
         });
         $routeProvider.when('/report/availability', {

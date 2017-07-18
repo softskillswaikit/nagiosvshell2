@@ -439,11 +439,18 @@ class API extends VS_Controller
     /**
      * Fetch alert history
      */
-    public function alerthistory()
+    public function alerthistory($date)
     {
-        $AlertHistory = $this->alert_history_data->get_history_data();
+        $AlertHistorys = array();
 
-        $this->output($AlertHistory);
+	$Data = $this->reports_data->get_history_data($date);
+
+	foreach ($Data as $AlertHistory)
+	{
+		$AlertHistorys[] = $AlertHistory;
+	}
+
+        $this->output($AlertHistorys);
     }
 
     /**

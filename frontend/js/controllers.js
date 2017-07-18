@@ -168,6 +168,52 @@ angular.module('vshell.controllers', [])
     }
 ])
 
+.controller('AlertHistoryCtrl', ['$scope', 'async',
+    function($scope, async) {
+        
+        $scope.init = function() {
+
+	var utcdate = new Date();
+	var timestamp = utcdate.getTime() / 1000;
+	var date = timestamp.toString();
+	
+
+	$scope.previousday = function(parameter) {
+	
+	var dateint = parseInt(timestamp);
+	var previoustimestamp = dateint - 86400000;
+	console.log(previoustimestamp);
+	var previousdate = "1500249600"
+	
+            var options = {
+                name: 'alerthistorys',
+                url: 'alerthistory/' + previousdate,
+                queue: 'main'
+            };
+           
+
+            async.api($scope, options);
+        };
+
+	
+            var options = {
+                name: 'alerthistorys',
+                url: 'alerthistory/' + date,
+                queue: 'main'
+            };
+           
+
+            async.api($scope, options);
+        };
+	
+	
+	
+
+	
+	
+    }
+])
+
 .controller('NotificationsCtrl', ['$scope', 'async',
     function($scope, async) {
         
