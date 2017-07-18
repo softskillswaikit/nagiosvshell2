@@ -170,65 +170,197 @@ angular.module('vshell.controllers', [])
 
 .controller('AlertHistoryCtrl', ['$scope', 'async',
     function($scope, async) {
+	var cnt = 1;
+	var next = 1;
         
         $scope.init = function() {
 
-	var utcdate = new Date();
-	var timestamp = utcdate.getTime() / 1000;
-	var date = timestamp.toString();
-	
+		var utcdate = new Date();
+		var timestamp = (utcdate.getTime() - 86400000) / 1000;
+		var date = timestamp.toString();
 
-	$scope.previousday = function(parameter) {
-	
-	var dateint = parseInt(timestamp);
-	var previoustimestamp = dateint - 86400;
-	console.log(previoustimestamp);
-	var previousdate = "1500249600"
-	
-            var options = {
-                name: 'alerthistorys',
-                url: 'alerthistory/' + previousdate,
-                queue: 'main'
-            };
-           
+		$scope.previousday = function() {
+			
+			next = 1;
+			cnt++;
+			var predate = parseInt(timestamp);
+			var previoustimestamp = predate - (86400 * cnt);
+			console.log(previoustimestamp);
+			var previousdate = previoustimestamp.toString();
 
-            async.api($scope, options);
+			$scope.nextday = function() {
+				
+				cnt = 1;
+				next++;
+				var ntdate = parseInt(previousdate);
+				var nexttimestamp = ntdate + (86400 * next);
+				console.log(nexttimestamp);
+				var nextdate = nexttimestamp.toString();
+		
+	
+            			var options = {
+                			name: 'alerthistorys',
+                			url: 'alerthistory/' + nextdate,
+                			queue: 'main'
+            			};
+
+            			async.api($scope, options);
+        		};
+		
+	
+            		var options = {
+                		name: 'alerthistorys',
+                		url: 'alerthistory/' + previousdate,
+                		queue: 'main'
+            		};
+
+            		async.api($scope, options);
+        	};
+
+		$scope.nextday = function() {
+			
+			cnt = 1;
+			next++;
+			var ntdate = parseInt(timestamp);
+			var nexttimestamp = predate + (86400 * next);
+			console.log(nexttimestamp);
+			var nextdate = nexttimestamp.toString();
+
+			$scope.previousday = function() {
+				
+				next = 1;
+				cnt++;
+				var previousdate = parseInt(nextdate);
+				var previoustimestamp = ntdate - (86400 * cnt);
+				console.log(previoustimestamp);
+				var previousdate = previoustimestamp.toString();
+		
+	
+            			var options = {
+                			name: 'alerthistorys',
+                			url: 'alerthistory/' + previousdate,
+                			queue: 'main'
+            			};
+
+            			async.api($scope, options);
+        		};
+		
+	
+            		var options = {
+                		name: 'alerthistorys',
+                		url: 'alerthistory/' + nextdate,
+                		queue: 'main'
+            		};
+
+            		async.api($scope, options);
+        	};
+
+		
+
+            	var options = {
+                	name: 'alerthistorys',
+                	url: 'alerthistory/' + date,
+                	queue: 'main'
+            	};
+
+            	async.api($scope, options);
         };
-
-	
-            var options = {
-                name: 'alerthistorys',
-                url: 'alerthistory/' + date,
-                queue: 'main'
-            };
-           
-
-            async.api($scope, options);
-        };
-	
-	
-	
-
-	
-	
     }
 ])
 
 .controller('NotificationsCtrl', ['$scope', 'async',
     function($scope, async) {
         
+        var cnt = 1;
+	var next = 1;
+        
         $scope.init = function() {
 
-	var utcdate = '1497398400';
+		var utcdate = new Date();
+		var timestamp = (utcdate.getTime()) / 1000;
+		var date = timestamp.toString();
 
-            var options = {
-                name: 'notifications',
-                url: 'notifications/' + utcdate,
-                queue: 'main'
-            };
-           
+		$scope.previousday = function() {
+			
+			next = 1;
+			cnt++;
+			var predate = parseInt(timestamp);
+			var previoustimestamp = predate - (86400 * cnt);
+			var previousdate = previoustimestamp.toString();
 
-            async.api($scope, options);
+			$scope.nextday = function() {
+				
+				cnt = 1;
+				next++;
+				var ntdate = parseInt(previousdate);
+				var nexttimestamp = ntdate + (86400 * next);
+				var nextdate = nexttimestamp.toString();
+		
+	
+            			var options = {
+                			name: 'notifications',
+                			url: 'notifications/' + nextdate,
+                			queue: 'main'
+            			};
+
+            			async.api($scope, options);
+        		};
+		
+	
+            		var options = {
+                		name: 'notifications',
+                		url: 'notifications/' + previousdate,
+                		queue: 'main'
+            		};
+
+            		async.api($scope, options);
+        	};
+
+		$scope.nextday = function() {
+			
+			cnt = 1;
+			next++;
+			var ntdate = parseInt(timestamp);
+			var nexttimestamp = predate + (86400 * next);
+			var nextdate = nexttimestamp.toString();
+
+			$scope.previousday = function() {
+				
+				next = 1;
+				cnt++;
+				var previousdate = parseInt(nextdate);
+				var previoustimestamp = ntdate - (86400 * cnt);
+				var previousdate = previoustimestamp.toString();
+		
+	
+            			var options = {
+                			name: 'notifications',
+                			url: 'notifications/' + previousdate,
+                			queue: 'main'
+            			};
+
+            			async.api($scope, options);
+        		};
+		
+	
+            		var options = {
+                		name: 'notifications',
+                		url: 'notifications/' + nextdate,
+                		queue: 'main'
+            		};
+
+            		async.api($scope, options);
+        	};
+
+		
+
+            	var options = {
+                	name: 'notifications',
+                	url: 'notifications/' + date,
+                	queue: 'main'
+            	};
+
+            	async.api($scope, options);
         };
     }
 ])
@@ -236,20 +368,96 @@ angular.module('vshell.controllers', [])
 .controller('EventLogCtrl', ['$scope', 'async',
     function($scope, async) {
         
+        var cnt = 1;
+	var next = 1;
+        
         $scope.init = function() {
 
-	var utcdate = new Date();
-	var timestamp = utcdate.getTime() / 1000;
-	var date = timestamp.toString();
+		var utcdate = new Date();
+		var timestamp = (utcdate.getTime()) / 1000;
+		var date = timestamp.toString();
 
-            var options = {
-                name: 'eventlog',
-                url: 'eventlog/' + date,
-                queue: 'main'
-            };
-           
+		$scope.previousday = function() {
+			
+			next = 1;
+			cnt++;
+			var predate = parseInt(timestamp);
+			var previoustimestamp = predate - (86400 * cnt);
+			var previousdate = previoustimestamp.toString();
 
-            async.api($scope, options);
+			$scope.nextday = function() {
+				
+				cnt = 1;
+				next++;
+				var ntdate = parseInt(previousdate);
+				var nexttimestamp = ntdate + (86400 * next);
+				var nextdate = nexttimestamp.toString();
+		
+	
+            			var options = {
+                			name: 'eventlog',
+                			url: 'eventlog/' + nextdate,
+                			queue: 'main'
+            			};
+
+            			async.api($scope, options);
+        		};
+		
+	
+            		var options = {
+                		name: 'eventlog',
+                		url: 'eventlog/' + previousdate,
+                		queue: 'main'
+            		};
+
+            		async.api($scope, options);
+        	};
+
+		$scope.nextday = function() {
+			
+			cnt = 1;
+			next++;
+			var ntdate = parseInt(timestamp);
+			var nexttimestamp = predate + (86400 * next);
+			var nextdate = nexttimestamp.toString();
+
+			$scope.previousday = function() {
+				
+				next = 1;
+				cnt++;
+				var previousdate = parseInt(nextdate);
+				var previoustimestamp = ntdate - (86400 * cnt);
+				var previousdate = previoustimestamp.toString();
+		
+	
+            			var options = {
+                			name: 'eventlog',
+                			url: 'eventlog/' + previousdate,
+                			queue: 'main'
+            			};
+
+            			async.api($scope, options);
+        		};
+		
+	
+            		var options = {
+                		name: 'eventlog',
+                		url: 'eventlog/' + nextdate,
+                		queue: 'main'
+            		};
+
+            		async.api($scope, options);
+        	};
+
+		
+
+            	var options = {
+                	name: 'eventlog',
+                	url: 'eventlog/' + date,
+                	queue: 'main'
+            	};
+
+            	async.api($scope, options);
         };
     }
 ])

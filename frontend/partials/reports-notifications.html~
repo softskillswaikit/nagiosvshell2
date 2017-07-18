@@ -57,7 +57,10 @@
                 </tr>
                 <tr ng-repeat="notification in notifications" footabledata>
                     <td>{{ notification.host }}</td>
-		    <td>{{ notification.service }}</td>
+		<div>
+		    <td ng-if="notification.service == null">N/A</td>
+		    <td ng-if="notification.service != null">{{ notification.service }}</td>
+		</div>
 		    <td>{{ notification.state }}</td>
 		    <td>{{ notification.datetime * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
 		    <td>{{ notification.contact }}</td>

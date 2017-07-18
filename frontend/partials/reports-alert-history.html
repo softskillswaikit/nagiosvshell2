@@ -21,7 +21,7 @@
                 <button type="button" class="btn btn-link" ng-click="previousday()">
                     Previous Day
                 </button>
-                <button type="button" class="btn btn-link" ng-clicked="nextday();">
+                <button type="button" class="btn btn-link" ng-click="nextday()">
                     Next Day
                 </button>
             </div>
@@ -54,7 +54,7 @@
             </tfoot>
             <tbody>
                 <tr ng-if="(alerthistorys | count) == 0">
-                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No history are defined' }}</td>
+                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No history for this day' }}</td>
                 </tr>
                 <tr ng-repeat="alerthistory in alerthistorys" footabledata>
 		<div>
