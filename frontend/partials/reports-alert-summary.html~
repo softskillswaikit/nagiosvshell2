@@ -100,7 +100,7 @@
 							<div class="col-md-7">
 								<select ng-model="HostgroupLimit" name="HostgroupLimit" class="form-control">
 									<option value="**ALL HOSTGROUPS**">**ALL HOSTGROUPS**</option>
-									<option ng-repeat="hostgroup in testing.hostgroup">{{ hostgroup }}</option>
+									<option ng-repeat="hostgroup in name.hostgroup">{{ hostgroup }}</option>
 								</select>
 							</div>
 						</div>
@@ -110,7 +110,7 @@
 							<div class="col-md-7">
 								<select ng-model="ServicegroupLimit" name="ServicegroupLimit" class="form-control">
 									<option value="**ALL SERVICEGROUPS**">**ALL SERVICEGROUPS**</option>
-									<option ng-repeat="servicegroup in testing.servicegroup">{{ servicegroup }}</option>
+									<option ng-repeat="servicegroup in name.servicegroup">{{ servicegroup }}</option>
 								</select>
 							</div>
 						</div>
@@ -120,7 +120,7 @@
 							<div class="col-md-7">
 								<select ng-model="HostLimit" name="HostLimit" class="form-control">
 									<option value="**ALL HOSTS**">**ALL HOSTS**</option>
-									<option ng-repeat="host in testing.host">{{ host }}</option>
+									<option ng-repeat="host in name.host">{{ host }}</option>
 								</select>	
 							</div>
 						</div>
@@ -177,8 +177,8 @@
 						<div class="form-group" ng-show="RadioBtn == 'custom' || RadioBtn == 'standard'"> 
 							<div class="col-md-6 col-md-offset-4">
 								<button class="btn btn-primary" ng-click="reset()">Reset</button>
-								<a ng-href="#/reports/alert-history">
-									<button  ng-disabled="inputForm.$invalid" class="btn btn-primary">Create Report</button>
+								<a ng-href="#/reports/alert-summary-detail">
+									<button  ng-disabled="inputForm.$invalid" class="btn btn-primary" ng-click="create()">Create Report</button>
 								</a>
 							</div>
 						</div>

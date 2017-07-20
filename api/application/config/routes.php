@@ -53,7 +53,7 @@ $route["servicegroupname"] = "api/servicegroupname";
 $route["availability/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/availability/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10/$11";
 $route["trend/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/trend/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10/$11/$12";
 $route["alerthistory/(:any)"] = "api/alerthistory/$1";
-$route["alertsummary/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/alertsummary/$1/$2/$3/$4/$5";
+$route["alertsummary/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/alertsummary/$1/$2/$3/$4/$5/$6/$7";
 $route["alerthistogram/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/alerthistogram/$1/$2/$3/$4/$5/$6/$7/$8/$9";
 $route["eventlog/(:any)"] = "api/eventlog/$1";
 $route["notifications/(:any)"] = "api/notifications/$1";
@@ -91,4 +91,3 @@ $route["vshellconfig"] = "api/vshellconfig";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
-

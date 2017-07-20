@@ -443,12 +443,12 @@ class API extends VS_Controller
     {
         $AlertHistorys = array();
 
-	$Data = $this->reports_data->get_history_data($date);
+    $Data = $this->reports_data->get_history_data($date);
 
-	foreach ($Data as $AlertHistory)
-	{
-		$AlertHistorys[] = $AlertHistory;
-	}
+    foreach ($Data as $AlertHistory)
+    {
+        $AlertHistorys[] = $AlertHistory;
+    }
 
         $this->output($AlertHistorys);
     }
@@ -456,94 +456,20 @@ class API extends VS_Controller
     /**
      * Fetch alert summary
      *
-     * @param int $reportLabel
-     * @param int $reportType
-     * @param int $reportPeriod
-     * @param Date $start
-     * @param Date $end
+     * @param string $type
+     * @param string $date , in Unix Timestamp
+     * @param string $name , host / service name
+     * @param string $service
+     * @param string $logtype
+     * @param string $statetype
+     * @param string maxitem
      */
-    public function alertsummary($reportLabel, $reportType, $reportPeriod, $start, $end)
+    //$summary_type = 'NORMAL', $input_date, $input_host_service, $input_service, $input_logtype, $input_state_type, $input_state, $maxitem=NULL
+    public function alertsummary($type, $date, $name, $service, $logtype, $statetype, $maxitem)
     {
-        $AlertSummary = $this->alert_summary_data->get_alert_summary();
-
-        //standard report
-        if($reportLabel == 1)
+        if(!empty($type) && !empty($date) && !empty($name) && !empty($service) && !empty($logtype) && !empty($statetype))
         {
-            //25 most recent hard alert
-            if($reportType == 1)
-            {
-
-            }
-
-            //25 most recent hard host alert
-            else if ($reportType == 2)
-            {
-
-            }
-
-            //25 most recent hard service alert
-            else if ($reportType == 3)
-            {
-
-            }
-
-            //top 25 hard host alert producer
-            else if ($reportType == 4)
-            {
-
-            }
-
-            //top 25 hard service alert producer
-            else if ($reportType == 5)
-            {
-
-            }
-        }
-
-        //custom report
-        else if ($reportLabel == 2)
-        {
-            //most recent alert
-            if ($reportType == 1)
-            {
-
-            }
-
-            //alert totals
-            else if ($reportType == 2)
-            {
-
-            }
-
-            //alert totals by hostgroup
-            else if ($reportType == 3)
-            {
-
-            }
-
-            //alert totals by host
-            else if ($reportType == 4)
-            {
-
-            }
-
-            //alert totals by servicegroup
-            else if ($reportType == 5)
-            {
-
-            }
-
-            //alert totals by service
-            else if ($reportType == 6)
-            {
-
-            }
-
-            //top alert producer
-            else if ($reportType == 7)
-            {
-
-            }
+            $AlertSummary = $this->reports_data->get_alert_summary($type, $date, $name, $service, $logtype, $statetype, $maxitem);
         }
 
         $this->output($AlertSummary);
@@ -627,7 +553,7 @@ class API extends VS_Controller
     public function testing()
     {
        $test = $this->reports_data->get_event_log("1500318258");
-	$this->output($test);
+    $this->output($test);
     }
 
     /**
@@ -1637,6 +1563,5 @@ class API extends VS_Controller
 
 /* End of file api.php */
 /* Location: ./application/controllers/api.php */
-
 
 

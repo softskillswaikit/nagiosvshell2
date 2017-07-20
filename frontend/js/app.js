@@ -80,6 +80,9 @@ angular.module('vshell', [
         $routeProvider.when('/reports/alert-summary', {
             templateUrl: 'frontend/partials/reports-alert-summary.html'
         });
+    $routeProvider.when('/reports/alert-summary-detail', {
+            templateUrl: 'frontend/partials/reports-alert-summary-detail.html'
+        });
         $routeProvider.when('/reports/notifications', {
             templateUrl: 'frontend/partials/reports-notifications.html'
         });
