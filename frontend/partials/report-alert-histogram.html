@@ -44,8 +44,9 @@
 							<label for="reportComponent" ng-switch-when="Host" class="col-md-4 control-label">Select Host:</label><label for="reportComponent" ng-switch-when="Host(s)" class="col-md-4 control-label">Select Host:</label><label for="reportComponent" ng-switch-when="Servicegroup(s)" class="col-md-4 control-label">Select Servicegroup:</label>
 							<label for="reportComponent" ng-switch-when="Service" class="col-md-4 control-label">Select Service:</label>
 							<div class="col-md-6">
-								<select ng-model="reportComponent" ng-options="component.name as component.name for component in componentName"
-									 name="reportComponent" class="form-control">
+								<select ng-model="reportComponent" name="reportComponent" class="form-control">
+									 <option value="ALL">-- ALL --</option>
+									 <option ng-repeat="option in componentName" value="{{option.name}}">{{option.name}}</option>
 								</select>
 							</div>
 						</div>
@@ -83,7 +84,17 @@
 								<input type="date" ng-model="endDate" max="{{today | date: 'MM/dd/yyyy'}}" name="enddate" class="form-control"></input>
 							</div>
 						</div>
-
+						<div class="form-group">
+							<label for="statisticsBreakdown" class="col-md-4 control-label">Statistics Breakdown:</label>
+							<div class="col-md-6">
+								<select ng-model="statisticsBreakdown" name="statisticsBreakdown" class="form-control">
+									<option value="Month">Month</option>
+									<option value="Day of the Month">Day of the Month</option>
+									<option value="Day of the Week">Day of the Week</option>
+									<option value="Hour of the Day">Hour of the Day</option>
+								</select>
+							</div>
+						</div>
 						<div class="form-group">
 							<label for="eventsToGraph" class="col-md-4 control-label">Events To Graph:</label>
 							<div class="col-md-6">
@@ -119,7 +130,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="assumeStateRetention" class="col-md-4 control-label">Initial States Logged:</label>
+							<label for="initialStatesLogged" class="col-md-4 control-label">Initial States Logged:</label>
 							<div class="col-md-6">
 								<select ng-model="initialStatesLogged" name="initialStatesLogged" class="form-control">
 									<option value="Yes">Yes</option>

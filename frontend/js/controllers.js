@@ -530,7 +530,7 @@ angular.module('vshell.controllers', [])
 
         $scope.reportType = 'Hostgroup(s)';
         $scope.serviceType = 'Normal Service';
-        $scope.reportComponent = $scope.componentName[0].name;
+        $scope.reportComponent = 'ALL';
         $scope.startDate =  $scope.todayString;
         $scope.endDate =  $scope.todayString;
         $scope.reportPeriod = 'Last 7 Days';
@@ -571,7 +571,7 @@ angular.module('vshell.controllers', [])
 
           $scope.reportType = 'Host';
     			$scope.serviceType = 'Normal Service';
-          $scope.reportComponent = $scope.componentName[0].name;
+          $scope.reportComponent = 'ALL';
           $scope.startDate =  $scope.todayString;
           $scope.endDate =  $scope.todayString;
     			$scope.reportPeriod = 'Last 7 Days';
@@ -610,7 +610,7 @@ angular.module('vshell.controllers', [])
 
 			$scope.reportType = 'Host';
 			$scope.serviceType = 'Normal Service';
-      $scope.reportComponent = $scope.componentName[0].name;
+      $scope.reportComponent = 'ALL';
       $scope.startDate =  $scope.todayString;
       $scope.endDate =  $scope.todayString;
 			$scope.reportPeriod = 'Last 7 Days';

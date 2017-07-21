@@ -9,7 +9,7 @@
 <div id="content" class="clearfix" ng-controller="AvailabilityReportCtrl" ng-init="init()">
 
 	<h1>Availability Report</h1>
-	
+
 	<!--(hostgroup-one/all, host-all)-->
     <div class="table-container full-width">
 
@@ -59,11 +59,11 @@
         </table>
 
     </div>
-	
+
 	<!--(host-one, service-one)-->
 	<div class="table-container full-width">
-	
-        <h3>Host State Breakdowns(host-one)</h3>
+
+        <h3>Host State Breakdowns(host-one/service-one)</h3>
 
         <div class="table-options">
             <form action="" class="filter-form" method="post">
@@ -109,10 +109,10 @@
         </table>
 
     </div>
-	
+
 	<!--(host-one, service-all)-->
 	<div class="table-container full-width">
-	
+
         <h3>State Breakdowns For Host Service(host-one)</h3>
 
         <div class="table-options">
@@ -161,7 +161,7 @@
         </table>
 
     </div>
-	
+
 	<!--(host-one, service-one)-->
 	<div class="table-container full-width">
 
@@ -211,11 +211,11 @@
         </table>
 
     </div>
-	
+
 	<!--(service-all)-->
 	<div class="table-container full-width">
 
-        <h3>Service State Breakdowns(service-all)</h3>
+        <h3>Service State Breakdowns(service-all, service-one)</h3>
 
         <div class="table-options">
             <form action="" class="filter-form" method="post">
@@ -284,13 +284,13 @@
                     </tr>
                     <tr class="footable-even">
                         <td><a target="nagios" ng-href="{{}}">View Alert History For This Host</a></td>
-                    </tr> 
+                    </tr>
 					<tr class="footable-odd">
                         <td><a target="nagios" ng-href="{{}}">View Notifications For This Host</a></td>
                     </tr>
                 </tbody>
             </table>
-			
+
 			<!--show if a single service is selected-->
 			<table cellspacing="0" cellpadding="0">
                 <tbody>
@@ -305,7 +305,7 @@
                     </tr>
                     <tr class="footable-even">
                         <td><a target="nagios" ng-href="{{}}">View Alert History For This Service</a></td>
-                    </tr> 
+                    </tr>
 					<tr class="footable-odd">
                         <td><a target="nagios" ng-href="{{}}">View Notifications For This Service</a></td>
                     </tr>
@@ -316,6 +316,3 @@
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>
-
-
-

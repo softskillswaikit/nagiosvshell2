@@ -44,8 +44,9 @@
 							<label for="reportComponent" ng-switch-when="Host" class="col-md-4 control-label">Select Host:</label><label for="reportComponent" ng-switch-when="Host(s)" class="col-md-4 control-label">Select Host:</label><label for="reportComponent" ng-switch-when="Servicegroup(s)" class="col-md-4 control-label">Select Servicegroup:</label>
 							<label for="reportComponent" ng-switch-when="Service" class="col-md-4 control-label">Select Service:</label>
 							<div class="col-md-6">
-								<select ng-model="reportComponent" ng-options="component.name as component.name for component in componentName"
-									 name="reportComponent" class="form-control">
+								<select ng-model="reportComponent" name="reportComponent" class="form-control">
+									 <option value="ALL">-- ALL --</option>
+									 <option ng-repeat="option in componentName" value="{{option.name}}">{{option.name}}</option>
 								</select>
 							</div>
 						</div>
@@ -69,17 +70,17 @@
 							</div>
 						</div>
 
-						<div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'" ng-model="startDate">
-							<label for="startdate" class="col-md-4 control-label">Start Date:</label>
+						<div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'">
+							<label for="startDate" class="col-md-4 control-label">Start Date:</label>
 							<div class="col-md-6">
-								<input type="date" ng-model="startDate" max="{{today | date: 'yyyy-MM-dd'}}" name="startdate" class="form-control"></input>
+								<input type="date" ng-model="startDate" max="{{today | date: 'yyyy-MM-dd'}}" name="startDate" class="form-control"></input>
 							</div>
 						</div>
 
-						<div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'" ng-model="endDate">
-							<label for="enddate" class="col-md-4 control-label">End Date:</label>
+						<div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'">
+							<label for="endDate" class="col-md-4 control-label">End Date:</label>
 							<div class="col-md-6">
-								<input type="date" ng-model="endDate" max="{{today | date: 'yyyy-MM-dd'}}" name="enddate" class="form-control"></input>
+								<input type="date" ng-model="endDate" max="{{today | date: 'yyyy-MM-dd'}}" name="endDate" class="form-control"></input>
 							</div>
 						</div>
 
