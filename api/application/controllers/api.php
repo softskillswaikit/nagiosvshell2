@@ -459,10 +459,9 @@ class API extends VS_Controller
      * @param string $statetype
      * @param string maxitem
      */
-    //$summary_type = 'NORMAL', $input_date, $input_host_service, $input_service, $input_logtype, $input_state_type, $input_state, $maxitem=NULL
     public function alertsummary($type, $date, $name, $service, $logtype, $statetype, $maxitem)
     {
-        if(!empty($type) && !empty($) && !empty($name) && !empty($service) && !empty($logtype) && !empty($statetype))
+        if(!empty($type) && !empty($date) && !empty($name) && !empty($service) && !empty($logtype) && !empty($statetype))
         {
             $AlertSummary = $this->reports_data->get_alert_summary($type, $name, $service, $logtype, $statetype, $maxitem);
         }
@@ -516,11 +515,13 @@ class API extends VS_Controller
 
         $Data = $this->reports_data->get_event_log($date);
 
-        foreach ($Data as $Eventlog) 
+        if(!empty($date) && strlen($date) == 10)
         {
-            $Eventlogs[] = $Eventlog;
+            foreach ($Data as $Eventlog) 
+            {
+                $Eventlogs[] = $Eventlog;
+            }
         }
-
 
         $this->output($Eventlogs);
     }
@@ -537,11 +538,15 @@ class API extends VS_Controller
 
         $Data = $this->reports_data->get_notification($date);
 
-        foreach ($Data as $Notification) 
+        if(!empty($date) && strlen($date) == 10)
         {
-            $Notifications[] = $Notification;
-        }
+            $Data = $this->reports_data->get_notification($date);
 
+            foreach ($Data as $Notification) 
+            {
+                $Notifications[] = $Notification;
+            }
+        }
 
         $this->output($Notifications);
     }
