@@ -2,8 +2,6 @@
 
 class ServiceStatusCollection extends NagiosCollection
 {
-
-
 	protected $_type = 'servicestatus';
 
 	protected $_index = array(
@@ -11,5 +9,4 @@ class ServiceStatusCollection extends NagiosCollection
 		'service_description' => array(),
 		'current_state' => array(),
 		);
-
 }

@@ -28,17 +28,8 @@
 									<option value="Host(s)">Host(s)</option>
 									<option value="Servicegroup(s)">Servicegroup(s)</option>
 									<option value="Service(s)">Service(s)</option>
-								</select>
-							</div>
-						</div>
-
-						<div class="form-group" ng-show="reportType=='Hostgroup(s)' || reportType=='Host(s)'">
-							<label for="serviceType" class="col-md-4 control-label">Service Type:</label>
-							<div class="col-md-6">
-								<select ng-model="serviceType" name="serviceType" class="form-control">
-									<option value="Normal Service">Normal Service</option>
 									<option value="Host Resource">Host Resource</option>
-									<option value="Running State">Running State</option>
+									<option value="Service Running State">Service Running State</option>
 								</select>
 							</div>
 						</div>
@@ -48,6 +39,8 @@
 							<label for="reportComponent" ng-switch-when="Host(s)" class="col-md-4 control-label">Select Host:</label>
 							<label for="reportComponent" ng-switch-when="Servicegroup(s)" class="col-md-4 control-label">Select Servicegroup:</label>
 							<label for="reportComponent" ng-switch-when="Service(s)" class="col-md-4 control-label">Select Service:</label>
+							<label for="reportComponent" ng-switch-when="Host Resource" class="col-md-4 control-label">Select Host Resource:</label>
+							<label for="reportComponent" ng-switch-when="Service Running State" class="col-md-4 control-label">Select Service Running State:</label>
 							<div class="col-md-6">
 								<select ng-model="reportComponent" name="reportComponent" class="form-control">
 									 <option value="ALL">-- ALL --</option>
@@ -184,7 +177,7 @@
 							<div class="col-md-6 pull-right">
 								<button class="btn btn-primary" ng-click="init()">Reset</button>
 		            <a ng-href="#/report/availability/report">
-									<button ng-disabled="inputForm.$invalid" class="btn btn-primary">Create Report</button>
+									<button ng-click="create()" ng-disabled="inputForm.$invalid" class="btn btn-primary">Create Report</button>
 								</a>
 							</div>
 						</div>

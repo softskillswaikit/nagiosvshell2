@@ -10,7 +10,8 @@ angular.module('vshell', [
     'vshell.services',
     'vshell.directives',
     'vshell.controllers',
-    'ng-fusioncharts'
+    'ng-fusioncharts',
+    'ui.bootstrap'
 ])
 
 .config(['$routeProvider',
@@ -100,6 +101,9 @@ angular.module('vshell', [
             templateUrl: 'frontend/partials/system-downtime.html'
         });
 		    $routeProvider.when('/system/performanceinfo', {
+            templateUrl: 'frontend/partials/system-performance-info.html'
+        });
+        $routeProvider.when('/modal/comments', {
             templateUrl: 'frontend/partials/system-performance-info.html'
         });
         $routeProvider.when('/options', {

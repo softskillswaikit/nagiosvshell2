@@ -25,24 +25,34 @@
 								<select ng-model="reportType" name="reportType" class="form-control" required>
 									<option value="Host">Host</option>
 									<option value="Service">Service</option>
-								</select>
-							</div>
-						</div>
-
-						<div class="form-group" ng-show="reportType=='Host'" class="serviceType">
-							<label for="serviceType" class="col-md-4 control-label">Service Type:</label>
-							<div class="col-md-6">
-								<select ng-model="serviceType" name="serviceType" class="form-control">
-									<option value="Normal Service">Normal Service</option>
 									<option value="Host Resource">Host Resource</option>
-									<option value="Running State">Running State</option>
+									<option value="Service Running State">Service Running State</option>
 								</select>
 							</div>
 						</div>
 
-						<div class="form-group" ng-switch on="reportType">
-							<label for="reportComponent" ng-switch-when="Host" class="col-md-4 control-label">Select Host:</label><label for="reportComponent" ng-switch-when="Host(s)" class="col-md-4 control-label">Select Host:</label><label for="reportComponent" ng-switch-when="Servicegroup(s)" class="col-md-4 control-label">Select Servicegroup:</label>
-							<label for="reportComponent" ng-switch-when="Service" class="col-md-4 control-label">Select Service:</label>
+						<div class="form-group" ng-show="reportType!='Service'">
+							<label for="reportComponent" class="col-md-4 control-label">Select Host:</label>
+							<div class="col-md-6">
+								<select ng-model="reportComponent" name="reportComponent" class="form-control">
+									 <option value="ALL">-- ALL --</option>
+									 <option ng-repeat="option in componentName" value="{{option.name}}">{{option.name}}</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group" ng-show="reportType=='Service' || reportType=='Service Running State'">
+							<label for="reportComponent" class="col-md-4 control-label">Select Service:</label>
+							<div class="col-md-6">
+								<select ng-model="reportComponent" name="reportComponent" class="form-control">
+									 <option value="ALL">-- ALL --</option>
+									 <option ng-repeat="option in componentName" value="{{option.name}}">{{option.name}}</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group" ng-show="reportType=='Host Resource'">
+							<label for="reportComponent" class="col-md-4 control-label">Select Host Resource:</label>
 							<div class="col-md-6">
 								<select ng-model="reportComponent" name="reportComponent" class="form-control">
 									 <option value="ALL">-- ALL --</option>

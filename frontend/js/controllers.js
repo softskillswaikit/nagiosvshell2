@@ -147,6 +147,8 @@ angular.module('vshell.controllers', [])
 
         };
 
+
+
     }
 ])
 
@@ -544,16 +546,20 @@ angular.module('vshell.controllers', [])
         $scope.backtrackedArchives = 4;
 
 
-              /*
-        var options = {
-                  name: 'availability',
-                  url: 'availability',
-                  queue: 'main'
-              };
-
-              async.api($scope, options);
-        */
       };
+
+      $scope.create = function(){
+
+        var options = {
+               name: 'testing',
+               url: 'testing',
+               queue: 'main'
+           };
+
+          console.log($scope.reportType);
+
+           async.api($scope, options);
+      }
     }
 ])
 

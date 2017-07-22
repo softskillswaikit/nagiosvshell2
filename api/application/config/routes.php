@@ -42,9 +42,31 @@ $route["default_controller"] = "api";
 $route["404_override"] = "";
 
 $route["status"] = "api";
-
+/*
+* Create by Soon Wei Liang
+*/
+$route["name/(:any)"] = "api/name/$1";
+$route["hostname"] = "api/hostname";
+$route["servicename"] = "api/servicename";
+$route["hostgroupname"] = "api/hostgroupname";
+$route["servicegroupname"] = "api/servicegroupname";
+$route["availability/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/availability/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10/$11";
+$route["trend/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/trend/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10/$11/$12";
+$route["alerthistory"] = "api/alerthistory";
+$route["alertsummary/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/alertsummary/$1/$2/$3/$4/$5";
+$route["alerthistogram/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/alerthistogram/$1/$2/$3/$4/$5/$6/$7/$8/$9";
+$route["eventlog/(:any)"] = "api/eventlog/$1";
+$route["notification/(:any)"] = "api/notification/$1";
+$route["testing"] = "api/testing";
 $route["comments/(:any)"] = "api/comments/$1";
 $route["comments"] = "api/comments";
+$route["addcomments/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/addComments/$1/$2/$3/$4/$5/$6";
+$route["deletecomments/(:any)/(:any)"] = "api/deleteComments/$1/$2";
+$route["downtime/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/downtime/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10";
+$route["processinfo/(:any)"] = "api/processinfo/$1";
+$route["performanceinfo"] = "api/performanceinfo";
+$route["schedulequeue/(:any)/(:any)/(:any)"] = "api/schedulequeue/$1/$2/$3";
+
 $route["configurations/(:any)"] = "api/configurations/$1";
 $route["configurations"] = "api/configurations";
 $route["hostgroupstatus/(:any)"] = "api/hostgroupstatus/$1";
