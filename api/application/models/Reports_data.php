@@ -32,17 +32,76 @@ class Reports_data extends CI_Model
 	//Written by Low Zhi Jian
 	//Functions to be called by web service
 	//Availability section
-	public function get_availability()
+	public function get_availability($input_period, $input_date, $input_host_service, $assume_initial_state, $assume_state_retention, $assume_state_during_downtime, $include_soft_state, $first_assume_host_state, $first_assume_service_state, $backtrack_archive)
 	{
-		$this->return_array = $this->parse_log($this->_alert_array, 'alert');
+		/*
+		//array counter 
+		$i = 0;
 
-		//encode the data into JSON format
-		foreach($this->return_array as $items)
+		$this->temp_array = $this->parse_log($this->_alert_array, 'alert');
+
+		//filter the data into $return_array based on request
+		if(is_array($input_host_service))
 		{
-			$items = json_encode($items);
+			for($j = 0; $j < count($input_host_service); $j++)
+			{
+				//filter the array based on request
+				foreach($this->temp_array as $items)
+				{
+					//custom report option
+					//compare date
+					if($this->compare_date($input_period, $input_date, $items->datetime))
+					{
+						$this->return_array[$i] = $items;
+
+						$i++;
+					}
+				}
+			}
+		}
+		else
+		{
+			//filter the array based on request
+			foreach($this->temp_array as $items)
+			{
+				//custom report option
+				//compare date
+				if($this->compare_date($input_period, $input_date, $items->datetime))
+				{
+					$this->return_array[$i] = $items;
+
+					$i++;
+				}
+			}
+		}
+
+		if(is_array($input_date))
+		{
+			$start_date = date('Y-m-d', (int)$input_date[0]);
+		}
+		else
+		{
+			$start_date = $this->get_date($input_period, $input_date);
+		}
+
+		$current_state = NULL;
+
+		foreach($return_array as $data)
+		{
+			if($this->compare_date('TODAY', $start_date, $data->datetime))
+			{
+				$current_state = $data->state;
+			}
+		}
+
+		foreach($this->return_array as $alerts)
+		{
+			//encode the $this->return_array after filter into JSON format
+			$alerts = json_encode($alerts);
 		}
 
 		return $this->return_array;
+		*/
 	}
 
 	//Trends section
@@ -885,6 +944,7 @@ class Reports_data extends CI_Model
 	}
 
 	//function used to compare date
+	//Adapted from : http://php.net/manual/en/datetime.formats.relative.php
 	private function compare_date($input_period, $input_date, $data_date)
 	{
 		if($this->compare_string($input_period, 'TODAY'))
@@ -940,24 +1000,13 @@ class Reports_data extends CI_Model
 		}
 		else if($this->compare_string($input_period, 'THIS WEEK'))
 		{
-			/*
-			//Another option
-			//Adapted from : https://stackoverflow.com/questions/1897727/get-first-day-of-week-in-php
-			$modify_input_date = new \DateTime(date('Y-m-d', (int)$input_date));
-			$monday = clone $modify_input_date->modify( ('Sunday' == $modify_input_date->format('1')) ? 'Monday last week' : 'Monday this week' );
-			$sunday = clone $modify_input_date->modify('Sunday this week');
+			$monday = new DateTime();
+			$monday->setTimestamp( (int)$input_date );
+			$monday->modify('Monday this week');
 
-			$modify_data_date = new DateTime();
-			$modify_data_date->setTimestamp( (int)$data_date );
-			*/
-
-			//Adapted from : https://stackoverflow.com/questions/8541466/getting-first-last-date-of-the-week
-			$date = date('Y-m-d', (int)$input_date);
-			$numberOfDay = date('N', strtotime($date));
-			$monday = new DateTime($date);
-			$sunday = new DateTime($date);
-			$monday->modify('-'.($numberOfDay-1).' days');
-			$sunday->modify('+'.(7-$numberOfDay).' days');
+			$sunday = new DateTime();
+			$sunday->setTimestamp( (int)$input_date );
+			$sunday->modify('Sunday this week');
 
 			$modify_data_date = new DateTime();
 			$modify_data_date->setTimestamp( (int)$data_date );
@@ -968,7 +1017,7 @@ class Reports_data extends CI_Model
 			}
 			else
 			{
-				if($this->compare_string( (date('Y-m-d', (int)$data_date)), $sunday ))
+				if($this->compare_string( (date('Y-m-d', (int)$data_date)), ($sunday->format('Y-m-d')) ))
 				{
 					return true;
 				}
@@ -997,20 +1046,13 @@ class Reports_data extends CI_Model
 		}
 		else if($this->compare_string($input_period, 'LAST WEEK'))
 		{
-			//Adapted from : https://stackoverflow.com/questions/21644002/how-can-i-get-last-week-date-range-in-php
-			$previous_week = strtotime("-1 week +1 day", (int)$input_date);
-
-			$mondayLast = strtotime("last monday",$previous_week);
-			$sundayLast = strtotime("next sunday",$previous_week);
-
-			$mondayDate = date("Y-m-d",$mondayLast);
-			$sundayDate = date("Y-m-d",$sundayLast);
-
 			$monday = new DateTime();
-			$monday->setTimestamp(strtotime($mondayDate));
+			$monday->setTimestamp( (int)$input_date );
+			$monday->modify('Monday last week');
 
 			$sunday = new DateTime();
-			$sunday->setTimestamp(strtotime($sundayDate));
+			$sunday->setTimestamp( (int)$input_date );
+			$sunday->modify('Sunday last week');
 
 			$modify_data_date = new DateTime();
 			$modify_data_date->setTimestamp( (int)$data_date );
@@ -1021,7 +1063,7 @@ class Reports_data extends CI_Model
 			}
 			else
 			{
-				if($this->compare_string( (date('Y-m-d', (int)$data_date)), $sundayDate ))
+				if($this->compare_string( (date('Y-m-d', (int)$data_date)), ($sunday->format('Y-m-d')) ))
 				{
 					return true;
 				}
@@ -1140,8 +1182,116 @@ class Reports_data extends CI_Model
 		}
 	}
 
+	//get the start date 
+	//Adapted from : http://php.net/manual/en/datetime.formats.relative.php
+	private function get_date($input_period, $input_date)
+	{
+		if($this->compare_string($input_period, 'TODAY'))
+		{
+			$modify_input_date = date('Y-m-d', (int)$input_date);
+		
+			return $modify_input_date;
+		}
+		else if($this->compare_string($input_period, 'LAST 24 HOURS'))
+		{
+			$modify_input_date = new DateTime();
+			$modify_input_date->setTimestamp( (int)$input_date );
+
+			$modify_input_date->modify('-1 day');
+			
+			return $modify_input_date->format('Y-m-d');
+		}
+		//1 day = 24 hour * 60 min * 60 sec = 86400 sec
+		else if($this->compare_string($input_period, 'YESTERDAY'))
+		{
+			$monday = new DateTime();
+			$monday->setTimestamp( (int)$input_date );
+
+			$monday->modify('yesterday');
+
+			return $monday->format('Y-m-d');
+		}
+		else if($this->compare_string($input_period, 'THIS WEEK'))
+		{
+			$monday = new DateTime();
+			$monday->setTimestamp( (int)$input_date );
+
+			$monday->modify('Monday this week');
+
+			return $monday->format('Y-m-d');
+		}
+		else if($this->compare_string($input_period, 'LAST 7 DAYS'))
+		{
+			$modify_input_date = new DateTime();
+			$modify_input_date->setTimestamp( (int)$input_date );
+		
+			$modify_input_date->modify('-7 days');
+			
+			return $modify_input_date->format('Y-m-d');
+		}
+		else if($this->compare_string($input_period, 'LAST WEEK'))
+		{
+			$monday = new DateTime();
+			$monday->setTimestamp( (int)$input_date );
+
+			$monday->modify('Monday last week');
+
+			return $monday->format('Y-m-d');
+		}
+		else if($this->compare_string($input_period, 'THIS MONTH'))
+		{
+			//Adapted from : https://stackoverflow.com/questions/2094797/the-first-day-of-the-current-month-in-php-using-date-modify-as-datetime-object
+			$modify_input_month = new DateTime();
+			$modify_input_month->setTimestamp( (int)$input_date );
+
+			$modify_input_month->modify('first day of this month');
+
+			return $modify_input_month->format('Y-m-d');
+		}
+		else if($this->compare_string($input_period, 'LAST 31 DAYS'))
+		{
+			$modify_input_date = new DateTime();
+			$modify_input_date->setTimestamp( (int)$input_date );
+
+			$modify_input_date->modify('-31 days');
+			
+			return $modify_input_date->format('Y-m-d');
+		}
+		else if($this->compare_string($input_period, 'LAST MONTH'))
+		{
+			$modify_input_month = new DateTime();
+			$modify_input_month->setTimestamp( (int)$input_date );
+
+			$modify_input_month->modify('first day of last month');
+
+			return $modify_input_month->format('Y-m-d');
+		}
+		else if($this->compare_string($input_period, 'THIS YEAR'))
+		{
+			$input_year = date('Y', (int)$input_date);
+			
+			$modify_input_year = $input_year.'-01-01';
+
+			return $modify_input_year;
+		}
+		//if($this->compare_string($input_period, 'LAST YEAR'))
+		else 
+		{
+			$input_year = date('Y', (int)$input_date) - 1;
+			
+			$modify_input_year = $input_year.'-01-01';
+
+			return $modify_input_year;
+		}
+	}
+
 	private function compare_string($input_string, $data_string)
 	{
+		if(strcmp($input_string, 'ALL') == 0)
+		{
+			return true;
+		}
+
 		//compare host
 		if(strcmp($input_string, 'ALL HOST') == 0)
 		{
@@ -1205,10 +1355,6 @@ class Reports_data extends CI_Model
 		}
 	}
 
-	public function testing_1()
-	{
-		return $this->_alert_array;
-	}
 
 
 }
