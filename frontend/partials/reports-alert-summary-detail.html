@@ -6,7 +6,7 @@
 
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
-<div id="content" class="clearfix">
+<div id="content" class="clearfix" ng-controller="AlertSummaryCtrl">
 
     <div class="table-container full-width">
 
@@ -33,17 +33,17 @@
             <tfoot>
                 <tr>
                     <td colspan="8">
-                        <div class="results-count">{{ testing | count }} Result{{ testing | plural }}</div>
+                        <div class="results-count">{{ alertsummary | count }} Result{{ alertsummary | plural }}</div>
                         <div class="footable-pagination pagination" id="footable-pagination"></div>
                     </td>
                 </tr>
             </tfoot>
             <tbody>
-                <tr ng-if="(testing | count) == 0">
-                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No history for this day' }}</td>
+                <tr ng-if="(alertsummary | count) == 0">
+                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No alertsummary for this day' }}</td>
                 </tr>
                 <tr>
-		    <td>{{ testing }}</td>
+		    <td>{{ alertsummary }}</td>
                 </tr>
             </tbody>
         </table>

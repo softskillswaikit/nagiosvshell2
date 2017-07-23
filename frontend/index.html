@@ -66,11 +66,11 @@
                         <ul>
                             <li><a ng-href="#/report/availability" active-when="/report/availability">Availability</a></li>
                             <li><a ng-href="#/report/trends" active-when="/report/trends">Trends</a></li>
-                            <li><a href="#/reports/alert-history" active-when="/reports/alert-history">Alert History</a></li>
-                            <li><a href="#/reports/alert-summary" active-when="/reports/alert-summary">Alert Summary</a></li>
+                            <li><a ng-href="#/reports/alert-history" active-when="/reports/alert-history">Alert History</a></li>
+                            <li><a ng-href="#/reports/alert-summary" active-when="/reports/alert-summary">Alert Summary</a></li>
    		    	    <li><a ng-href="#/report/alerthistogram" active-when="/report/alerthistogram">Alert Histogram</a></li>
-                            <li><a href='#/reports/notifications' active-when='/reports/notifications'>Notifications</a></li>
-                            <li><a href="#/reports/event-log" active-when='reports/event-log'>Event Log</a></li>
+                            <li><a ng-href='#/reports/notifications' active-when='/reports/notifications'>Notifications</a></li>
+                            <li><a ng-href="#/reports/event-log" active-when='reports/event-log'>Event Log</a></li>
                         </ul>
                     </li>
                     <li>
@@ -78,7 +78,7 @@
                         <ul>
                             <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/extinfo.cgi?type=3">Comments</a></li>
                             <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/extinfo.cgi?type=6">Downtime</a></li>
-                            <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/extinfo.cgi?type=0">Process Info</a></li>
+			    <li><a ng-href='#/system/process-info' active-when='/system/process-info'>Process Info</a></li>
                             <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/extinfo.cgi?type=4">Performance Info</a></li>
                             <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/extinfo.cgi?type=7">Scheduling Queue</a></li>
                         </ul>

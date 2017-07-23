@@ -457,19 +457,60 @@ class API extends VS_Controller
      * Fetch alert summary
      *
      * @param string $type
-     * @param string $date , in Unix Timestamp
-     * @param string $name , host / service name
+     * @param string $period 
+     * @param string $date , for custom period : date in array (start date, end date)
      * @param string $service
      * @param string $logtype
      * @param string $statetype
-     * @param string maxitem
+     * @param string $state
      */
-    //$summary_type = 'NORMAL', $input_date, $input_host_service, $input_service, $input_logtype, $input_state_type, $input_state, $maxitem=NULL
-    public function alertsummary($type, $date, $name, $service, $logtype, $statetype, $maxitem)
+    public function alertsummary($type, $period, $date, $service, $logtype, $statetype, $state)
     {
-        if(!empty($type) && !empty($date) && !empty($name) && !empty($service) && !empty($logtype) && !empty($statetype))
+        //allowed type of alert
+        $allowed_types = array(
+            'TOP_PRODUCER',
+            'ALERT_TOTAL',
+            'NORMAL'
+        );
+
+        //allowed type of period
+        $allowed_periods = array(
+            'TODAY',
+            'LAST 24 HOURS',
+            'YESTERDAY',
+            'THIS WEEK',
+            'LAST 7 DAYS',
+            'LAST WEEK',
+            'THIS MONTH',
+            'LAST 31 DAYS',
+            'LAST MONTH', 
+            'THIS YEAR', 
+            'LAST YEAR', 
+            'CUSTOM'
+        );
+
+        //allowed logtype
+        $allowed_logtypes = array(
+            'HOST ALERT',
+            'SERVICE ALERT',
+            'ALL ALERT'
+        );
+
+        //allowed statetype
+        $allowed_statetypes = array(
+            'HARD',
+            'SOFT',
+            'ALL STATE TYPE'
+        );
+
+        //check empty inputs
+        if(!empty($type) && !empty($period) && !empty($date) && !empty($service) && !empty($logtype) && !empty($statetype) && !empty($state))
         {
-            $AlertSummary = $this->reports_data->get_alert_summary($type, $date, $name, $service, $logtype, $statetype, $maxitem);
+            //verify inputs
+            if(in_array($type, $allowed_types) && in_array($period, $allowed_periods) && in_array($logtype, $allowed_logtypes) && in_array($statetype, $allowed_statetypes))
+            {
+                $AlertSummary = $this->reports_data->get_alert_summary($type, $period, $date, $service, $logtype, $statetype, $state);
+            }
         }
 
         $this->output($AlertSummary);

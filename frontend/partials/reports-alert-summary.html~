@@ -31,11 +31,11 @@
 							<label for="StandardReportType" class="col-md-4 control-label">Report Type:</label>
 							<div class="col-md-7">
 								<select ng-model="StandardReportType" name="StandardReportType" class="form-control">
-									<option value="1">25 Most Recent Hard Alerts</option>
-									<option value="2">25 Most Recent Hard Host Alerts</option>
-									<option value="3">25 Most Recent Hard Service Alerts</option>
-									<option value="4">Top 25 Hard Host Alert Producers</option>
-									<option value="5">Top 25 Hard Service Alert Producers</option>
+									<option value="25 Most Recent Hard Alerts">25 Most Recent Hard Alerts</option>
+									<option value="25 Most Recent Hard Host Alerts">25 Most Recent Hard Host Alerts</option>
+									<option value="25 Most Recent Hard Service Alerts">25 Most Recent Hard Service Alerts</option>
+									<option value="Top 25 Hard Host Alert Producers">Top 25 Hard Host Alert Producers</option>
+									<option value="Top 25 Hard Service Alert Producers">Top 25 Hard Service Alert Producers</option>
 								</select>
 							</div>
 						</div>

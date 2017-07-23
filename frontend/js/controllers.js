@@ -298,10 +298,12 @@ angular.module('vshell.controllers', [])
         };
 
         $scope.create = function() {
+
+	    var date = '1500796724';
             
             var options = {
-                name: 'testing',
-                url: 'testing',
+                name: 'alersummary',
+                url: 'alertsummary/NORMAL/LAST 7 DAYS/' + date + '/testserver/ALL ALERT/ALL STATE TYPE/ALL SERVICE STATE',
                 queue: 'main'
             };
 
@@ -458,52 +460,14 @@ angular.module('vshell.controllers', [])
                     async.api($scope, options);
             };
 
-        $scope.nextday = function() {
-            
-            cnt = 1;
-            next++;
-            var ntdate = parseInt(timestamp);
-            var nexttimestamp = predate + (86400 * next);
-            var nextdate = nexttimestamp.toString();
-
-            $scope.previousday = function() {
-                
-                next = 1;
-                cnt++;
-                var previousdate = parseInt(nextdate);
-                var previoustimestamp = ntdate - (86400 * cnt);
-                var previousdate = previoustimestamp.toString();
-        
-    
-                        var options = {
-                            name: 'eventlog',
-                            url: 'eventlog/' + previousdate,
-                            queue: 'main'
-                        };
-
-                        async.api($scope, options);
-                };
-        
-    
-                    var options = {
-                        name: 'eventlog',
-                        url: 'eventlog/' + nextdate,
-                        queue: 'main'
-                    };
-
-                    async.api($scope, options);
-            };
-
-        
-
-                var options = {
-                    name: 'eventlog',
-                    url: 'eventlog/' + date,
-                    queue: 'main'
-                };
-
-                async.api($scope, options);
         };
+    }
+])
+
+.controller('ProcessInfoCtrl', ['$scope', '$routeParams', 'async',
+    function($scope, $routeParams, async) {
+
+
     }
 ])
 

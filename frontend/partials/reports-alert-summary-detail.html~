@@ -6,7 +6,7 @@
 
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
-<div id="content" class="clearfix">
+<div id="content" class="clearfix" ng-controller="AlertSummaryCtrl">
 
     <div class="table-container full-width">
 
@@ -39,10 +39,11 @@
                 </tr>
             </tfoot>
             <tbody>
-                <tr ng-if="(testing | count) == 0">
-                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No history for this day' }}</td>
+                <tr ng-if="(alertsummary | count) == 0">
+                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No alertsummary for this day' }}</td>
                 </tr>
                 <tr>
+		    <td>{{ alertsummary }}</td>
                 </tr>
             </tbody>
         </table>
