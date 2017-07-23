@@ -29,16 +29,20 @@ class System_commands extends CI_Model
 
 	public function add_comment($input_host_name, $input_service_description, $input_persistent, $input_author, $input_comments, $input_type)
 	{
-		$host_name = $input_host_name;
-		$service_description = $input_service_description;
-		$persistent = $input_persistent;
-		$author = $input_author;
-		$comments = $input_comments;
-		$type = $input_type;
-		//$type = 'host';
-		//$type = 'svc';
+		$commands = '';
 
-		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/add_comment.sh ".escapeshellarg($host_name)." ".escapeshellarg($service_description)." ".escapeshellarg($persistent)." ".escapeshellarg($author)." ".escapeshellarg($comments)." ".escapeshellarg($type));
+		//$input_type = 'host';
+		if($this->_compare_string($input_type, 'host'))
+		{
+			$commands = 'ADD_HOST_COMMENT;'.$input_host_name.';'.$input_persistent.';'.$input_author.';'.$input_comments;
+		}
+		//$input_type = 'svc';
+		else
+		{
+			$commands = 'ADD_SVC_COMMENT;'.$input_host_name.';'.$input_service_description.';'.$input_persistent.';'.$input_author.';'.$input_comments; 
+		}
+
+		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
 		if(empty($this->return_value))
@@ -52,13 +56,21 @@ class System_commands extends CI_Model
 	}
 
 	public function delete_comment($input_comment_id, $input_type)
-	{
-		$comment_id = $input_comment_id;
-		$type = $input_type;
-		//$type = 'host';
-		//$type = 'svc';
+	{	
+		$commands = '';
 
-		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/delete_comment.sh ".escapeshellarg($comment_id)." ".escapeshellarg($type));
+		//$type = 'host';
+		if($this->_compare_string($input_type, 'host'))
+		{
+			$commands = 'DEL_HOST_COMMENT;'.$input_comment_id;
+		}
+		//$type = 'svc';
+		else
+		{
+			$commands = 'DEL_SVC_COMMENT;'.$input_comment_id;
+		}
+
+		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
 		if(empty($this->return_value))
@@ -73,19 +85,20 @@ class System_commands extends CI_Model
 
 	public function schedule_downtime($input_host_name, $input_start_time, $input_end_time, $input_fixed, $input_trigger_id, $input_duration, $input_author, $input_comments, $input_type)
 	{
-		$host_name = $input_host_name;
-		$start_time = $input_start_time;
-		$end_time = $input_end_time;
-		$fixed = $input_fixed;
-		$trigger_id = $input_trigger_id;
-		$duration = $input_duration;
-		$author = $input_author;
-		$comments = $input_comments;
-		$type = $input_type;
-		//$type = 'host';
-		//$type = 'svc';
+		$commands = '';
 
-		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/schedule_downtime.sh ".escapeshellarg($host_name)." ".escapeshellarg($start_time)." ".escapeshellarg($end_time)." ".escapeshellarg($fixed)." ".escapeshellarg($trigger_id)." ".escapeshellarg($duration)." ".escapeshellarg($author)." ".escapeshellarg($comments)." ".escapeshellarg($type));
+		//$type = 'host';
+		if($this->_compare_string($input_type, 'host'))
+		{
+			$commands = 'SCHEDULE_HOST_DOWNTIME;'.$input_host_name.';'.$input_start_time.';'.$input_end_time.';'.$input_fixed.';'.$input_trigger_id.';'.$input_duration.';'.$input_author.';'.$input_comments;
+		}
+		//$type = 'svc';
+		else
+		{
+			$commands = 'SCHEDULE_HOST_SVC_DOWNTIME;'.$input_host_name.';'.$input_start_time.';'.$input_end_time.';'.$input_fixed.';'.$input_trigger_id.';'.$input_duration.';'.$input_author.';'.$input_comments;
+		}
+
+		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
 		if(empty($this->return_value))
@@ -100,31 +113,120 @@ class System_commands extends CI_Model
 
 	public function modify_process_info($input_type)
 	{
-		$type = $input_type;
-		//$type = 'shutdown_nagios';
-		//$type = 'restart_nagios';
-		//$type = 'enable_notification';
-		//$type = 'disable_notification';
-		//$type = 'start_service_check';
-		//$type = 'stop_service_check';
-		//$type = 'start_passive_service_check';
-		//$type = 'stop_passive_service_check';
-		//$type = 'enable_event_handler';
-		//$type = 'disable_event_handler';
-		//$type = 'start_obsess_over_svc';
-		//$type = 'stop_obsess_over_svc';
-		//$type = 'start_obsess_over_host';
-		//$type = 'stop_obsess_over_host';
-		//$type = 'enable_performance';
-		//$type = 'disable_performance';
-		//$type = 'start_host_check';
-		//$type = 'stop_host_check';
-		//$type = 'start_passive_host_check';
-		//$type = 'stop_passive_host_check';
-		//$type = 'enable_flap';
-		//$type = 'disable_flap';
+		$commands = '';
 
-		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/modify_process_info.sh ".escapeshellarg($type));
+		//$type = 'shutdown_nagios';
+		if($this->_compare_string($input_type, 'shutdown_nagios'))
+		{
+			$commands = 'SHUTDOWN_PROGRAM';
+		}
+		//$type = 'restart_nagios';
+		else if($this->_compare_string($input_type, 'restart_nagios'))
+		{
+			$commands = 'RESTART_PROGRAM';
+		}
+		//$type = 'enable_notification';
+		else if($this->_compare_string($input_type, 'enable_notification'))
+		{
+			$commands = 'ENABLE_NOTIFICATIONS';
+		}
+		//$type = 'disable_notification';
+		else if($this->_compare_string($input_type, 'disable_notification'))
+		{
+			$commands = 'DISABLE_NOTIFICATIONS';
+		}
+		//$type = 'start_service_check';
+		else if($this->_compare_string($input_type, 'start_service_check'))
+		{
+			$commands = 'START_EXECUTING_SVC_CHECKS';
+		}
+		//$type = 'stop_service_check';
+		else if($this->_compare_string($input_type, 'stop_service_check'))
+		{
+			$commands = 'STOP_EXECUTING_SVC_CHECKS';
+		}
+		//$type = 'start_passive_service_check';
+		else if($this->_compare_string($input_type, 'start_passive_service_check'))
+		{
+			$commands = 'START_ACCEPTING_PASSIVE_SVC_CHECKS';
+		}	
+		//$type = 'stop_passive_service_check';
+		else if($this->_compare_string($input_type, 'stop_passive_service_check'))
+		{
+			$commands = 'STOP_ACCEPTING_PASSIVE_SVC_CHECKS';
+		}
+		//$type = 'enable_event_handler';
+		else if($this->_compare_string($input_type, 'enable_event_handler'))
+		{
+			$commands = 'ENABLE_EVENT_HANDLERS';
+		}
+		//$type = 'disable_event_handler';
+		else if($this->_compare_string($input_type, 'disable_event_handler'))
+		{
+			$commands = 'DISABLE_EVENT_HANDLERS';
+		}
+		//$type = 'start_obsess_over_svc';
+		else if($this->_compare_string($input_type, 'start_obsess_over_svc'))
+		{
+			$commands = 'START_OBSESSING_OVER_SVC_CHECKS';
+		}
+		//$type = 'stop_obsess_over_svc';
+		else if($this->_compare_string($input_type, 'stop_obsess_over_svc'))
+		{
+			$commands = 'STOP_OBSESSING_OVER_SVC_CHECKS';
+		}
+		//$type = 'start_obsess_over_host';
+		else if($this->_compare_string($input_type, 'start_obsess_over_host'))
+		{
+			$commands = 'START_OBSESSING_OVER_HOST_CHECKS';
+		}
+		//$type = 'stop_obsess_over_host';
+		else if($this->_compare_string($input_type, 'stop_obsess_over_host'))
+		{
+			$commands = 'STOP_OBSESSING_OVER_HOST_CHECKS';
+		}
+		//$type = 'enable_performance';
+		else if($this->_compare_string($input_type, 'enable_performance'))
+		{
+			$commands = 'ENABLE_PERFORMANCE_DATA';
+		}
+		//$type = 'disable_performance';
+		else if($this->_compare_string($input_type, 'disable_performance'))
+		{
+			$commands = 'DISABLE_PERFORMANCE_DATA';
+		}
+		//$type = 'start_host_check';
+		else if($this->_compare_string($input_type, 'start_host_check'))
+		{
+			$commands = 'START_EXECUTING_HOST_CHECKS';
+		}
+		//$type = 'stop_host_check';
+		else if($this->_compare_string($input_type, 'stop_host_check'))
+		{
+			$commands = 'STOP_EXECUTING_HOST_CHECKS';
+		}
+		//$type = 'start_passive_host_check';
+		else if($this->_compare_string($input_type, 'start_passive_host_check'))
+		{	
+			$commands = 'START_ACCEPTING_PASSIVE_HOST_CHECKS';
+		}
+		//$type = 'stop_passive_host_check';
+		else if($this->_compare_string($input_type, 'stop_passive_host_check'))
+		{
+			$commands = 'STOP_ACCEPTING_PASSIVE_HOST_CHECKS';
+		}
+		//$type = 'enable_flap';
+		else if($this->_compare_string($input_type, 'enable_flap'))
+		{
+			$commands = 'ENABLE_FLAP_DETECTION';
+		}
+		//$type = 'disable_flap';
+		else
+		{
+			$commands = 'DISABLE_FLAP_DETECTION';
+		}
+
+		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
 		if(empty($this->return_value))
@@ -151,15 +253,25 @@ class System_commands extends CI_Model
 
 	public function scheduling_queue($input_host_name, $input_service_description, $input_checktime, $input_type)
 	{
-		$host_name = $input_host_name;
-		$service_description = $input_service_description;
-		$checktime = $input_checktime;
-		$type = $input_type;
-		//$type = 'enable_svc_check';
-		//$type = 'disable_svc_check';
-		//$type = 'schedule_svc_check';
+		$commands = '';
 
-		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/scheduling_queue.sh ".escapeshellarg($host_name)." ".escapeshellarg($service_description)." ".escapeshellarg($checktime)." ".escapeshellarg($type));
+		//$type = 'enable_svc_check';
+		if($this->_compare_string($input_type, 'enable_svc_check'))
+		{
+			$commands = 'ENABLE_SVC_CHECK;'.$input_host_name.';'.$input_service_description;
+		}
+		//$type = 'disable_svc_check';
+		else if($this->_compare_string($input_type, 'disable_svc_check'))
+		{
+			$commands = 'DISABLE_SVC_CHECK;'.$input_host_name.';'.$input_service_description;
+		}
+		//$type = 'schedule_svc_check';
+		else
+		{
+			$commands = 'SCHEDULE_SVC_CHECK;'.$input_host_name.';'.$input_service_description.';'.$input_checktime;
+		}
+
+		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
 		if(empty($this->return_value))
@@ -171,6 +283,20 @@ class System_commands extends CI_Model
 			return trim($this->return_value);
 		}
 	}
+
+	private function _compare_string($input_string, $data_string)
+	{
+		if(strcmp($input_string, $data_string) == 0)
+		{
+			return true;
+		}
+		//the data is not same
+		else
+		{
+			return false;
+		}
+	}
+
 
 }
 

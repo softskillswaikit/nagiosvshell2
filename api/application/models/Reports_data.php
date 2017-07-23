@@ -27,18 +27,37 @@ class Reports_data extends CI_Model
 		$this->_get_nagios_log();
 		$this->_get_archives_log();
 		$this->_insert_data();
+
+		if(!empty($this->return_array))
+		{
+			unset($this->return_array);
+		}
 	}
 
 	//Written by Low Zhi Jian
 	//Functions to be called by web service
 	//Availability section
-	public function get_availability($input_period, $input_date, $input_host_service, $assume_initial_state, $assume_state_retention, $assume_state_during_downtime, $include_soft_state, $first_assume_host_state, $first_assume_service_state, $backtrack_archive)
+	public function get_availability($return_type, $input_period, $input_date, $input_host_service, $assume_initial_state, $assume_state_retention, $assume_state_during_downtime, $include_soft_state, $first_assume_host_state, $first_assume_service_state, $backtrack_archive)
 	{
-		/*
+		$availability_array = array();
+
 		//array counter 
 		$i = 0;
 
 		$this->temp_array = $this->parse_log($this->_alert_array, 'alert');
+
+		if(is_array($input_date))
+		{
+			$start_date_string = date('Y-m-d', (int)$input_date[0]);
+			$modified_start_date = $start_date_string.' 00-00-00';
+			$start_date_obj = DateTime::createFromFormat('Y-m-d H-i-s', $modified_start_date);
+
+			$start_date = $start_date_obj->getTimestamp();
+		}
+		else
+		{
+			$start_date = $this->get_date($input_period, $input_date);
+		}
 
 		//filter the data into $return_array based on request
 		if(is_array($input_host_service))
@@ -52,9 +71,13 @@ class Reports_data extends CI_Model
 					//compare date
 					if($this->compare_date($input_period, $input_date, $items->datetime))
 					{
-						$this->return_array[$i] = $items;
+						//compare hostname or servicename based on different input
+						if($this->compare_string($input_host_service[$j], $items->hostname) or $this->compare_string($input_host_service[$j], $items->servicename))
+						{
+							$availability_array[$i] = $items;
 
-						$i++;
+							$i++;
+						}
 					}
 				}
 			}
@@ -68,29 +91,114 @@ class Reports_data extends CI_Model
 				//compare date
 				if($this->compare_date($input_period, $input_date, $items->datetime))
 				{
-					$this->return_array[$i] = $items;
+					//compare hostname or servicename based on different input
+					if($this->compare_string($input_host_service[$j], $items->hostname) or $this->compare_string($input_host_service[$j], $items->servicename))
+					{
+						$availability_array[$i] = $items;
 
-					$i++;
+						$i++;
+					}
 				}
 			}
 		}
 
-		if(is_array($input_date))
-		{
-			$start_date = date('Y-m-d', (int)$input_date[0]);
-		}
-		else
-		{
-			$start_date = $this->get_date($input_period, $input_date);
-		}
+		
+		$return_obj = new StdCLass();
+		$state_breakdown = new StdClass();
+		$service_obj = new StdClass();
+		$event_info = new StdClass();
 
-		$current_state = NULL;
+		//array counter 
+		$count = 0;
 
-		foreach($return_array as $data)
+		foreach($availability_array as $data)
 		{
-			if($this->compare_date('TODAY', $start_date, $data->datetime))
+			if(!empty($return_array))
 			{
-				$current_state = $data->state;
+
+			}
+			else
+			{
+				//for all host and hostgroup
+				//$return_type can also be 'ALL HOST'
+				if($this->compare_string($return_type, 'HOSTGROUP')) 
+				{
+					$return_obj->hostname = $data->hostname;
+					$return_obj->time_up = 0;
+					$return_obj->time_down = 0;
+					$return_obj->time_unreachable = 0;
+					$return_obj->time_undetermined = 0;
+
+					$return_array[$count] = $return_obj;
+					$count++;
+
+					unset($return_obj);
+				}
+				//for servicegroup
+				else if($this->compare_string($return_type, 'SERVICEGROUP'))
+				{
+					$return_obj->hostname = $data->hostname;
+					$return_obj->servicename = $data->servicename;
+					$return_obj->time_up = 0;
+					$return_obj->time_down = 0;
+					$return_obj->time_unreachable = 0;
+					$return_obj->time_undetermined = 0;
+					$return_obj->time_ok = 0;
+					$return_obj->time_warning = 0;
+					$return_obj->time_unknown = 0;
+					$return_obj->time_critical = 0;
+					$return_obj->time_undetermined = 0;
+
+					$return_array[$count] = $return_obj;
+					$count++;
+
+					unset($return_obj);
+				}
+				//for all service
+				else if($this->compare_string($return_type, 'ALL SERVICE'))
+				{
+					$return_obj->hostname = $data->hostname;
+					$return_obj->servicename = $data->servicename;
+					$return_obj->time_ok = 0;
+					$return_obj->time_warning = 0;
+					$return_obj->time_unknown = 0;
+					$return_obj->time_critical = 0;
+					$return_obj->time_undetermined = 0;
+
+					$return_array[$count] = $return_obj;
+					$count++;
+
+					unset($return_obj);
+				}
+				//for individual host
+				else if($this->compare_string($return_type, 'HOST'))
+				{
+					//$state_breakdown->state = $data->state;
+
+					$service_obj->hostname = $data->hostname;
+					$service_obj->servicename = $data->servicename;
+					$service_obj->time_ok = 0;
+					$service_obj->time_warning = 0;
+					$service_obj->time_unknown = 0;
+					$service_obj->time_critical = 0;
+					$service_obj->time_undetermined = 0;
+
+					$event_info->
+
+					$return_array[$count] = $return_obj;
+					$count++;
+
+					unset($return_obj);
+				}
+				//for individual service
+				//if($this->compare_string($return_type, 'SERVICE'))
+				else
+				{
+					$return_array[$count] = $return_obj;
+					$count++;
+
+					unset($return_obj);
+				}
 			}
 		}
 
@@ -101,7 +209,6 @@ class Reports_data extends CI_Model
 		}
 
 		return $this->return_array;
-		*/
 	}
 
 	//Trends section
@@ -236,7 +343,7 @@ class Reports_data extends CI_Model
 					{
 						if($this->compare_string($alert_producer->hostname, $producer->hostname) && $this->compare_string($alert_producer->servicename, $producer->servicename))
 						{
-							$producer->total_alert++;
+							$producer_array[$k]->total_alert++;
 						}
 						else
 						{
@@ -1184,13 +1291,17 @@ class Reports_data extends CI_Model
 
 	//get the start date 
 	//Adapted from : http://php.net/manual/en/datetime.formats.relative.php
+	//Adapted from : https://stackoverflow.com/questions/7768716/set-time-in-php-to-000000
 	private function get_date($input_period, $input_date)
 	{
 		if($this->compare_string($input_period, 'TODAY'))
 		{
-			$modify_input_date = date('Y-m-d', (int)$input_date);
+			$modify_input_date = new DateTime();
+			$modify_input_date->setTimestamp( (int)$input_date );
+
+			$modify_input_date->setTime(0, 0, 0);
 		
-			return $modify_input_date;
+			return $modify_input_date->getTimestamp();
 		}
 		else if($this->compare_string($input_period, 'LAST 24 HOURS'))
 		{
@@ -1199,7 +1310,7 @@ class Reports_data extends CI_Model
 
 			$modify_input_date->modify('-1 day');
 			
-			return $modify_input_date->format('Y-m-d');
+			return $modify_input_date->getTimestamp();
 		}
 		//1 day = 24 hour * 60 min * 60 sec = 86400 sec
 		else if($this->compare_string($input_period, 'YESTERDAY'))
@@ -1208,8 +1319,9 @@ class Reports_data extends CI_Model
 			$monday->setTimestamp( (int)$input_date );
 
 			$monday->modify('yesterday');
+			$monday->setTime(0, 0, 0);
 
-			return $monday->format('Y-m-d');
+			return $monday->getTimestamp();
 		}
 		else if($this->compare_string($input_period, 'THIS WEEK'))
 		{
@@ -1217,8 +1329,9 @@ class Reports_data extends CI_Model
 			$monday->setTimestamp( (int)$input_date );
 
 			$monday->modify('Monday this week');
+			$monday->setTime(0, 0, 0);
 
-			return $monday->format('Y-m-d');
+			return $monday->getTimestamp();
 		}
 		else if($this->compare_string($input_period, 'LAST 7 DAYS'))
 		{
@@ -1227,7 +1340,7 @@ class Reports_data extends CI_Model
 		
 			$modify_input_date->modify('-7 days');
 			
-			return $modify_input_date->format('Y-m-d');
+			return $modify_input_date->getTimestamp();
 		}
 		else if($this->compare_string($input_period, 'LAST WEEK'))
 		{
@@ -1235,8 +1348,9 @@ class Reports_data extends CI_Model
 			$monday->setTimestamp( (int)$input_date );
 
 			$monday->modify('Monday last week');
+			$monday->setTime(0, 0, 0);
 
-			return $monday->format('Y-m-d');
+			return $monday->getTimestamp();
 		}
 		else if($this->compare_string($input_period, 'THIS MONTH'))
 		{
@@ -1245,8 +1359,9 @@ class Reports_data extends CI_Model
 			$modify_input_month->setTimestamp( (int)$input_date );
 
 			$modify_input_month->modify('first day of this month');
+			$modify_input_month->setTime(0, 0, 0);
 
-			return $modify_input_month->format('Y-m-d');
+			return $modify_input_month->getTimestamp();
 		}
 		else if($this->compare_string($input_period, 'LAST 31 DAYS'))
 		{
@@ -1255,7 +1370,7 @@ class Reports_data extends CI_Model
 
 			$modify_input_date->modify('-31 days');
 			
-			return $modify_input_date->format('Y-m-d');
+			return $modify_input_date->getTimestamp();
 		}
 		else if($this->compare_string($input_period, 'LAST MONTH'))
 		{
@@ -1263,25 +1378,30 @@ class Reports_data extends CI_Model
 			$modify_input_month->setTimestamp( (int)$input_date );
 
 			$modify_input_month->modify('first day of last month');
+			$modify_input_month->setTime(0, 0, 0);
 
-			return $modify_input_month->format('Y-m-d');
+			return $modify_input_month->getTimestamp();
 		}
 		else if($this->compare_string($input_period, 'THIS YEAR'))
 		{
 			$input_year = date('Y', (int)$input_date);
 			
-			$modify_input_year = $input_year.'-01-01';
+			$modify_input_year = $input_year.'-01-01 00-00-00';
 
-			return $modify_input_year;
+			$return_year = DateTime::createFromFormat('Y-m-d H-i-s', $modify_input_year);
+
+			return $return_year->getTimestamp();
 		}
 		//if($this->compare_string($input_period, 'LAST YEAR'))
 		else 
 		{
 			$input_year = date('Y', (int)$input_date) - 1;
 			
-			$modify_input_year = $input_year.'-01-01';
+			$modify_input_year = $input_year.'-01-01 00-00-00';
 
-			return $modify_input_year;
+			$return_year = DateTime::createFromFormat('Y-m-d H-i-s', $modify_input_year);
+
+			return $return_year->getTimestamp();
 		}
 	}
 
