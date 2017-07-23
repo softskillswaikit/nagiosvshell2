@@ -452,18 +452,60 @@ class API extends VS_Controller
      * Fetch alert summary
      *
      * @param string $type
-     * @param string $date , in Unix Timestamp
-     * @param string $name , host/ service name
+     * @param string $period 
+     * @param string $date , for custom period : date in array (start date, end date)
      * @param string $service
      * @param string $logtype
      * @param string $statetype
-     * @param string maxitem
+     * @param string $state
      */
-    public function alertsummary($type, $date, $name, $service, $logtype, $statetype, $maxitem)
+    public function alertsummary($type, $period, $date, $service, $logtype, $statetype, $state)
     {
-        if(!empty($type) && !empty($date) && !empty($name) && !empty($service) && !empty($logtype) && !empty($statetype))
+        //allowed type of alert
+        $allowed_types = array(
+            'TOP_PRODUCER',
+            'ALERT_TOTAL',
+            'NORMAL'
+        );
+
+        //allowed type of period
+        $allowed_periods = array(
+            'TODAY',
+            'LAST 24 HOURS',
+            'YESTERDAY',
+            'THIS WEEK',
+            'LAST 7 DAYS',
+            'LAST WEEK',
+            'THIS MONTH',
+            'LAST 31 DAYS',
+            'LAST MONTH', 
+            'THIS YEAR', 
+            'LAST YEAR', 
+            'CUSTOM'
+        );
+
+        //allowed logtype
+        $allowed_logtypes = array(
+            'HOST ALERT',
+            'SERVICE ALERT',
+            'ALL ALERT'
+        );
+
+        //allowed statetype
+        $allowed_statetypes = array(
+            'HARD',
+            'SOFT',
+            'ALL STATE TYPE'
+        );
+
+        //check empty inputs
+        if(!empty($type) && !empty($period) && !empty($date) && !empty($service) && !empty($logtype) && !empty($statetype) && !empty($state))
         {
-            $AlertSummary = $this->reports_data->get_alert_summary($type, $name, $service, $logtype, $statetype, $maxitem);
+            //verify inputs
+            if(in_array($type, $allowed_types) && in_array($period, $allowed_periods) && in_array($logtype, $allowed_logtypes) && in_array($statetype, $allowed_statetypes))
+            {
+                $AlertSummary = $this->reports_data->get_alert_summary($type, $period, $date, $service, $logtype, $statetype, $state);
+            }
         }
 
         $this->output($AlertSummary);
@@ -472,8 +514,8 @@ class API extends VS_Controller
     /**
      * Fetch alert histogram
      *
-     * @param int $reportType
-     * @param string $name
+     * @param string $returnType,   'TOP_PRODUCER', 'ALERT_TOTAL', 'NORMAL'
+     * @param string $period,       
      * @param Date $period
      * @param String $breakdown
      * @param String $eventsToGraph
@@ -553,21 +595,28 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $Notificaions = array();
-        $date = "1497421839";
+        $host_name = 'localhost';
+        $Data = $this->nagios_data->get_collection('hoststatus');
 
-        if(!empty($date) && strlen($date) == 10)
+        //fetch by host name
+        if(!empty($host_name))
         {
-            $Data = $this->reports_data->get_notification($date);
-
-            foreach ($Data as $Notification) 
+            $Data = $Data->get_index_key('host_name', $host_name);
+            
+            if( empty($Data) )
             {
-                $Notifications[] = $Notification;
-            }
+                return $this->output($Data);
+            } 
+
+            $Data = $Data->first();
+
+            //add host resources
+            $all_resources = $this->nagios_data->get_collection('hostresourcestatus');
+            $host_resources = $all_resources->get_index_key('host_name', $host_name);
+            $Data->hostresources = $host_resources ? $host_resources->to_array() : array();
         }
 
-
-        $this->output($Notifications);
+        $this->output(var_dump($Data));
     }
 
     /**
