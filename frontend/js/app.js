@@ -11,7 +11,8 @@ angular.module('vshell', [
     'vshell.directives',
     'vshell.controllers',
     'ng-fusioncharts',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    
 ])
 
 .config(['$routeProvider',
@@ -104,7 +105,10 @@ angular.module('vshell', [
             templateUrl: 'frontend/partials/system-performance-info.html'
         });
         $routeProvider.when('/modal/comments', {
-            templateUrl: 'frontend/partials/system-performance-info.html'
+            templateUrl: 'frontend/partials/modal-comments.html'
+        });
+        $routeProvider.when('/modal/confirm', {
+            templateUrl: 'frontend/partials/modal-confirm.html'
         });
         $routeProvider.when('/options', {
             templateUrl: 'frontend/partials/options.html'

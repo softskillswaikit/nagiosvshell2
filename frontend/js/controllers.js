@@ -136,7 +136,6 @@ angular.module('vshell.controllers', [])
     function($scope, $routeParams, async) {
 
         $scope.init = function() {
-
             var options = {
                 name: 'host',
                 url: 'hoststatus/' + $routeParams.host,
@@ -144,11 +143,7 @@ angular.module('vshell.controllers', [])
             };
 
             async.api($scope, options);
-
-        };
-
-
-
+        }
     }
 ])
 
@@ -571,24 +566,6 @@ angular.module('vshell.controllers', [])
             {name : "localhost"},
             {name : "testserver"}
           ];
-
-          $scope.today = new Date();
-          $scope.todayString = $filter('date')(Date.now(), 'MM/dd/yyyy');
-
-          $scope.reportType = 'Host';
-    			$scope.serviceType = 'Normal Service';
-          $scope.reportComponent = 'ALL';
-          $scope.startDate =  $scope.todayString;
-          $scope.endDate =  $scope.todayString;
-    			$scope.reportPeriod = 'Last 7 Days';
-    			$scope.reportTimePeriod = 'None';
-    			$scope.assumeInitialStates = 'Yes';
-    			$scope.assumeStateRetention = 'Yes';
-    			$scope.assumeDowntimeStates = 'Yes';
-    			$scope.includeSoftStates = 'No';
-    			$scope.firstAssumedHostState = 'Unspecified';
-    			$scope.firstAssumedServiceState = 'Unspecified';
-    			$scope.backtrackedArchives = 4;
             /*var options = {
                 name: 'trends',
                 url: 'trends/',
@@ -596,9 +573,429 @@ angular.module('vshell.controllers', [])
             };
 
             async.api($scope, options);*/
-
+            $scope.reset();
         };
 
+        $scope.reset = function(){
+                    $scope.today = new Date();
+                    $scope.todayString = $filter('date')(Date.now(), 'MM/dd/yyyy');
+
+                    $scope.reportType = 'Host';
+              			$scope.serviceType = 'Normal Service';
+                    $scope.reportComponent = 'ALL';
+                    $scope.startDate =  $scope.todayString;
+                    $scope.endDate =  $scope.todayString;
+              			$scope.reportPeriod = 'Last 7 Days';
+              			$scope.reportTimePeriod = 'None';
+              			$scope.assumeInitialStates = 'Yes';
+              			$scope.assumeStateRetention = 'Yes';
+              			$scope.assumeDowntimeStates = 'Yes';
+              			$scope.includeSoftStates = 'No';
+              			$scope.firstAssumedHostState = 'Unspecified';
+              			$scope.firstAssumedServiceState = 'Unspecified';
+              			$scope.backtrackedArchives = 4;
+        };
+
+        $scope.createReport = function(){
+          console.log("report created");
+          $scope.report =
+            {
+              host : "app_server",
+              reportType : "Host",
+
+                time : ["Mon", "Tue", "Wed", "Thu", "Fri"]
+            };
+
+          $scope.hostdata = {
+            "chart": {
+                "caption": "State History For Host " + $scope.report['host'],
+                "captionfontsize": "16",
+                "subCaption": "From " + $scope.report['time'][0] + " To " + $scope.report['time'][4],
+                "xaxisname": "Time",
+                "yaxisname": " ",
+                "yaxisnamepadding": "80",
+                "showyaxisvalues": "0",
+                "theme": "fint",
+                "showvalues": "0",
+                "showtooltip": "0",
+                "linethickness": "4",
+                "anchorhoverradius": "8",
+                "anchorradius": "4",
+                "anchorborderthickness": "2"
+            },
+            "annotations": {
+                "groups": [
+                    {
+                        "id": "yaxisline",
+                        "items": [
+                            {
+                                "id": "line",
+                                "type": "line",
+                                "color": "#1a1a1a",
+                                "x": "$canvasstartx - 5",
+                                "y": "$canvasstarty",
+                                "tox": "$canvasstartx - 5",
+                                "toy": "$canvasendy",
+                                "thickness": "1"
+                            },
+                            {
+                                "id": "pending-label-bg",
+                                "type": "rectangle",
+                                "fillcolor": "#858585",
+                                "x": "$canvasstartx - 85",
+                                "tox": "$canvasstartx - 15",
+                                "y": "$canvasendy - 10",
+                                "toy": "$canvasendy + 10",
+                                "radius": "3"
+                            },
+                            {
+                                "id": "pending-dot",
+                                "type": "circle",
+                                "radius": "5",
+                                "x": "$canvasstartx - 5",
+                                "y": "$canvasendy",
+                                "color": "#858585"
+                            },
+                            {
+                                "id": "pending-label",
+                                "type": "text",
+                                "fillcolor": "#ffffff",
+                                "text": "Pending",
+                                "x": "$canvasstartx - 50",
+                                "y": "$canvasendy",
+                                "fontsize": "13"
+                            },
+                            {
+                                "id": "unreachable-label-bg",
+                                "type": "rectangle",
+                                "fillcolor": "#ee8425",
+                                "x": "$canvasstartx - 102",
+                                "tox": "$canvasstartx - 15",
+                                "y": "$canvasendy - 69",
+                                "toy": "$canvasendy - 49",
+                                "radius": "3"
+                            },
+                            {
+                                "id": "unreachable-dot",
+                                "type": "circle",
+                                "radius": "5",
+                                "x": "$canvasstartx - 5",
+                                "y": "$canvasendy - 59",
+                                "color": "#ee8425"
+                            },
+                            {
+                                "id": "unreachable-label",
+                                "type": "text",
+                                "fillcolor": "#ffffff",
+                                "text": "Unreachable",
+                                "x": "$canvasstartx - 59",
+                                "y": "$canvasendy - 59",
+                                "fontsize": "13"
+                            },
+                            {
+                                "id": "down-label-bg",
+                                "type": "rectangle",
+                                "fillcolor": "#d24555",
+                                "x": "$canvasstartx - 85",
+                                "tox": "$canvasstartx - 15",
+                                "y": "$canvasendy - 127",
+                                "toy": "$canvasendy - 107",
+                                "radius": "3"
+                            },
+                            {
+                                "id": "down-dot",
+                                "type": "circle",
+                                "radius": "5",
+                                "x": "$canvasstartx - 5",
+                                "y": "$canvasendy - 117",
+                                "color": "#d24555"
+                            },
+                            {
+                                "id": "down-label",
+                                "type": "text",
+                                "fillcolor": "#ffffff",
+                                "text": "Down",
+                                "x": "$canvasstartx - 50",
+                                "y": "$canvasendy - 117",
+                                "fontsize": "13"
+                            },
+                            {
+                                "id": "up-label-bg",
+                                "type": "rectangle",
+                                "fillcolor": "#6cb22f",
+                                "x": "$canvasstartx - 88",
+                                "tox": "$canvasstartx - 15",
+                                "y": "$canvasendy - 185",
+                                "toy": "$canvasendy - 165",
+                                "radius": "3"
+                            },
+                            {
+                                "id": "up-dot",
+                                "type": "circle",
+                                "radius": "5",
+                                "x": "$canvasstartx - 5",
+                                "y": "$canvasendy - 175",
+                                "color": "#6cb22f"
+                            },
+                            {
+                                "id": "up-label",
+                                "type": "text",
+                                "fillcolor": "#ffffff",
+                                "text": "Up",
+                                "x": "$canvasstartx - 52",
+                                "y": "$canvasendy - 175",
+                                "fontsize": "13"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "dataset": [
+                {
+                    "seriesname": "Host State Trends",
+                    "data": [
+                        {
+                          "label" : "Mon",
+                          "value": "3"
+                        },
+                        {
+                          "label" : "Tue",
+                          "value": "3"
+                        },
+                        {
+                          "label" : "Wed",
+                          "value": "2"
+                        },
+                        {
+                          "label" : "Thu",
+                          "value": "3"
+                        },
+                        {
+                          "label" : "Fri",
+                          "value": "1"
+                        },
+                        {
+                          "label" : "Sat",
+                          "value": "2"
+                        },
+                        {
+                          "label" : "Sun",
+                          "value": "0"
+                        }
+                    ]
+                }
+            ]
+          }
+
+          $scope.servicedata = {
+            "chart": {
+                "caption": "State History For Service " + $scope.report['host'],
+                "captionfontsize": "16",
+                "subCaption": "From " + $scope.report['time'][0] + " To " + $scope.report['time'][4],
+                "xaxisname": "Time",
+                "yaxisname": " ",
+                "yaxisnamepadding": "80",
+                "showyaxisvalues": "0",
+                "theme": "fint",
+                "showvalues": "0",
+                "showtooltip": "0",
+                "linethickness": "4",
+                "anchorhoverradius": "8",
+                "anchorradius": "4",
+                "anchorborderthickness": "2"
+            },
+            "annotations": {
+                "groups": [
+                    {
+                        "id": "yaxisline",
+                        "items": [
+                            {
+                                "id": "line",
+                                "type": "line",
+                                "color": "#1a1a1a",
+                                "x": "$canvasstartx - 5",
+                                "y": "$canvasstarty",
+                                "tox": "$canvasstartx - 5",
+                                "toy": "$canvasendy",
+                                "thickness": "1"
+                            },
+                            {
+                                "id": "pending-label-bg",
+                                "type": "rectangle",
+                                "fillcolor": "#858585",
+                                "x": "$canvasstartx - 88",
+                                "tox": "$canvasstartx - 15",
+                                "y": "$canvasendy - 10",
+                                "toy": "$canvasendy + 10",
+                                "radius": "3"
+                            },
+                            {
+                                "id": "pending-dot",
+                                "type": "circle",
+                                "radius": "5",
+                                "x": "$canvasstartx - 5",
+                                "y": "$canvasendy",
+                                "color": "#858585"
+                            },
+                            {
+                                "id": "pending-label",
+                                "type": "text",
+                                "fillcolor": "#ffffff",
+                                "text": "Pending",
+                                "x": "$canvasstartx - 50",
+                                "y": "$canvasendy",
+                                "fontsize": "13"
+                            },
+                            {
+                                "id": "critical-label-bg",
+                                "type": "rectangle",
+                                "fillcolor": "#d24555",
+                                "x": "$canvasstartx - 88",
+                                "tox": "$canvasstartx - 15",
+                                "y": "$canvasendy - 69",
+                                "toy": "$canvasendy - 49",
+                                "radius": "3"
+                            },
+                            {
+                                "id": "critical-dot",
+                                "type": "circle",
+                                "radius": "5",
+                                "x": "$canvasstartx - 5",
+                                "y": "$canvasendy - 59",
+                                "color": "#d24555"
+                            },
+                            {
+                                "id": "critical-label",
+                                "type": "text",
+                                "fillcolor": "#ffffff",
+                                "text": "Critical",
+                                "x": "$canvasstartx - 52",
+                                "y": "$canvasendy - 59",
+                                "fontsize": "13"
+                            },
+                            {
+                                "id": "unknown-label-bg",
+                                "type": "rectangle",
+                                "fillcolor": "#ee8425",
+                                "x": "$canvasstartx - 88",
+                                "tox": "$canvasstartx - 15",
+                                "y": "$canvasendy - 127",
+                                "toy": "$canvasendy - 107",
+                                "radius": "3"
+                            },
+                            {
+                                "id": "unknown-dot",
+                                "type": "circle",
+                                "radius": "5",
+                                "x": "$canvasstartx - 5",
+                                "y": "$canvasendy - 117",
+                                "color": "#ee8425"
+                            },
+                            {
+                                "id": "unknown-label",
+                                "type": "text",
+                                "fillcolor": "#ffffff",
+                                "text": "Unknown",
+                                "x": "$canvasstartx - 50",
+                                "y": "$canvasendy - 117",
+                                "fontsize": "13"
+                            },
+                            {
+                                "id": "warning-label-bg",
+                                "type": "rectangle",
+                                "fillcolor": "#dba102",
+                                "x": "$canvasstartx - 88",
+                                "tox": "$canvasstartx - 15",
+                                "y": "$canvasendy - 185",
+                                "toy": "$canvasendy - 165",
+                                "radius": "3"
+                            },
+                            {
+                                "id": "warning-dot",
+                                "type": "circle",
+                                "radius": "5",
+                                "x": "$canvasstartx - 5",
+                                "y": "$canvasendy - 175",
+                                "color": "#dba102"
+                            },
+                            {
+                                "id": "warning-label",
+                                "type": "text",
+                                "fillcolor": "#ffffff",
+                                "text": "Warning",
+                                "x": "$canvasstartx - 52",
+                                "y": "$canvasendy - 175",
+                                "fontsize": "13"
+                            },
+                            {
+                                "id": "ok-label-bg",
+                                "type": "rectangle",
+                                "fillcolor": "#6cb22f",
+                                "x": "$canvasstartx - 88",
+                                "tox": "$canvasstartx - 15",
+                                "y": "$canvasendy - 243",
+                                "toy": "$canvasendy - 223",
+                                "radius": "3"
+                            },
+                            {
+                                "id": "ok-dot",
+                                "type": "circle",
+                                "radius": "5",
+                                "x": "$canvasstartx - 5",
+                                "y": "$canvasendy - 233",
+                                "color": "#6cb22f"
+                            },
+                            {
+                                "id": "ok-label",
+                                "type": "text",
+                                "fillcolor": "#ffffff",
+                                "text": "Ok",
+                                "x": "$canvasstartx - 52",
+                                "y": "$canvasendy - 233",
+                                "fontsize": "13"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "dataset": [
+                {
+                    "seriesname": "Host State Trends",
+                    "data": [
+                        {
+                          "label" : "Mon",
+                          "value": "3"
+                        },
+                        {
+                          "label" : "Tue",
+                          "value": "3"
+                        },
+                        {
+                          "label" : "Wed",
+                          "value": "2"
+                        },
+                        {
+                          "label" : "Thu",
+                          "value": "3"
+                        },
+                        {
+                          "label" : "Fri",
+                          "value": "1"
+                        },
+                        {
+                          "label" : "Sat",
+                          "value": "2"
+                        },
+                        {
+                          "label" : "Sun",
+                          "value": "0"
+                        }
+                    ]
+                }
+            ]
+          }
+
+        };
     }
 ])
 
@@ -611,23 +1008,7 @@ angular.module('vshell.controllers', [])
         {name : "testserver"}
       ];
 
-      $scope.today = new Date();
-      $scope.todayString = $filter('date')(Date.now(), 'MM/dd/yyyy');
-
-			$scope.reportType = 'Host';
-			$scope.serviceType = 'Normal Service';
-      $scope.reportComponent = 'ALL';
-      $scope.startDate =  $scope.todayString;
-      $scope.endDate =  $scope.todayString;
-			$scope.reportPeriod = 'Last 7 Days';
-			$scope.statisticsBreakdown = 'Day of the Month';
-			$scope.eventsToGraph = 'All Hosts Events';
-			$scope.stateTypesToGraph = 'Hard and Soft States';
-			$scope.assumeStateRetention = 'Yes';
-			$scope.initialStatesLogged = 'No';
-			$scope.ignoreRepeatedStates = 'No';
-
-
+      $scope.reset();
             /*
 			var options = {
                 name: 'alerthistogram',
@@ -639,6 +1020,140 @@ angular.module('vshell.controllers', [])
 			*/
 
 	     };
+
+       $scope.reset = function(){
+          $scope.today = new Date();
+          $scope.todayString = $filter('date')(Date.now(), 'MM/dd/yyyy');
+
+     			$scope.reportType = 'Host';
+     			$scope.serviceType = 'Normal Service';
+          $scope.reportComponent = 'ALL';
+          $scope.startDate =  $scope.todayString;
+          $scope.endDate =  $scope.todayString;
+     			$scope.reportPeriod = 'Last 7 Days';
+     			$scope.statisticsBreakdown = 'Day of the Month';
+     			$scope.eventsToGraph = 'All Hosts Events';
+     			$scope.stateTypesToGraph = 'Hard and Soft States';
+     			$scope.assumeStateRetention = 'Yes';
+     			$scope.initialStatesLogged = 'No';
+     			$scope.ignoreRepeatedStates = 'No';
+       };
+
+       $scope.createReport = function(){
+         console.log("report created");
+         $scope.report = {
+           host : "app_server",
+           reportType : "Host",
+           statisticsBreakdown:"Day of the Month"
+         };
+
+         $scope.hostdata = {
+           "chart": {
+               "caption": "State History For Host " + $scope.report['host'],
+               "captionfontsize": "16",
+               "subCaption": "From " + " To ",
+               "xaxisname": $scope.report['statisticsBreakdown'],
+               "yaxisname": "Number of Events",
+               "showyaxisvalues": "1",
+               "theme": "fint",
+               "showvalues": "0",
+               "showtooltip": "0",
+               "linethickness": "4",
+               "anchorhoverradius": "8",
+               "anchorradius": "4",
+               "anchorborderthickness": "2"
+           },
+           "dataset": [
+               {
+                   "seriesname": "Host State Trends",
+                   "data": [
+                       {
+                         "label" : "Mon",
+                         "value": "3"
+                       },
+                       {
+                         "label" : "Tue",
+                         "value": "3"
+                       },
+                       {
+                         "label" : "Wed",
+                         "value": "2"
+                       },
+                       {
+                         "label" : "Thu",
+                         "value": "3"
+                       },
+                       {
+                         "label" : "Fri",
+                         "value": "1"
+                       },
+                       {
+                         "label" : "Sat",
+                         "value": "2"
+                       },
+                       {
+                         "label" : "Sun",
+                         "value": "0"
+                       }
+                   ]
+               }
+           ]
+         }
+
+         $scope.servicedata = {
+           "chart": {
+               "caption": "State History For Service " + $scope.report['host'],
+               "captionfontsize": "16",
+               "subCaption": "From " + " To ",
+               "xaxisname": $scope.report['statisticsBreakdown'],
+               "yaxisname": "Number of Events",
+               "showyaxisvalues": "1",
+               "theme": "fint",
+               "showvalues": "0",
+               "showtooltip": "0",
+               "linethickness": "4",
+               "anchorhoverradius": "8",
+               "anchorradius": "4",
+               "anchorborderthickness": "2"
+           },
+           "dataset": [
+               {
+                   "seriesname": "Host State Trends",
+                   "data": [
+                       {
+                         "label" : "Mon",
+                         "value": "3"
+                       },
+                       {
+                         "label" : "Tue",
+                         "value": "3"
+                       },
+                       {
+                         "label" : "Wed",
+                         "value": "2"
+                       },
+                       {
+                         "label" : "Thu",
+                         "value": "3"
+                       },
+                       {
+                         "label" : "Fri",
+                         "value": "1"
+                       },
+                       {
+                         "label" : "Sat",
+                         "value": "2"
+                       },
+                       {
+                         "label" : "Sun",
+                         "value": "0"
+                       }
+                   ]
+               }
+           ]
+         }
+
+       };
     }
 ])
 
@@ -666,48 +1181,6 @@ angular.module('vshell.controllers', [])
     function($scope, async) {
 
         $scope.init = function() {
-          $scope.dataSource = {
-            chart: {
-              "caption": "State History For ",
-              "subCaption": "-",
-              "xAxisName": "Time",
-              "yAxisName": "State",
-              //"theme": "fint",
-              //Setting gradient fill to true
-              "usePlotGradientColor": "1",
-              //Setting the gradient formation color
-              "plotGradientColor": "#00f254"
-              },
-              data:
-                [
-                  {
-                      "label": "Jul 8 15:34",
-                      "value": "0"
-                  },
-                  {
-                      "label": "Jul 8 15:34",
-                      "value": "1"
-                  },
-                  {
-                      "label": "Jul 8 15:34",
-                      "value": "2"
-                  },
-                  {
-                      "label": "Jul 8 15:34",
-                      "value": "3"
-                  },
-                  {
-                      "label": "Jul 8 15:34",
-                      "value": "4"
-                  },
-                  {
-                      "label": "Jul 8 15:34",
-                      "value": "1"
-                  }
-              ]
-          }
-
-
           /*
             var options = {
                 name: 'trendsreport',
@@ -779,6 +1252,12 @@ angular.module('vshell.controllers', [])
 */
         };
 
+    }
+])
+
+.controller('confirmModalCtrl', ['$scope', '$dialog',
+    function ($scope, $dialog) {
+      $dialog.dialog({}).open('confirmModalCtrl.html');
     }
 ])
 

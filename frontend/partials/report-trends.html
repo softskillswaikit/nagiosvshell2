@@ -6,7 +6,7 @@
 
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
-<div id="content" class="clearfix" ng-controller="TrendsCtrl" ng-init="init()">
+<div id="content" class="clearfix" ng-controller="TrendsCtrl" ng-init="init();">
 
 	<h1>Create State Trends Report</h1>
 
@@ -67,7 +67,8 @@
 								<select ng-model="reportPeriod" name="reportPeriod" class="form-control">
 									<option value="Today">Today</option>
 									<option value="Last 24 Hours">Last 24 Hours</option>
-									<option value="Yesterday">Yesterday</option>											<option value="This Week">This Week</option>
+									<option value="Yesterday">Yesterday</option>
+									<option value="This Week">This Week</option>
 									<option value="Last 7 Days">Last 7 Days</option>
 									<option value="Last Week">Last Week</option>
 									<option value="This Month">This Month</option>
@@ -172,9 +173,9 @@
 
 						<div class="form-group">
 							<div class="col-md-6 pull-right">
-								<button class="btn btn-primary" ng-click="init()">Reset</button>
+								<button class="btn btn-primary" ng-click="reset()">Reset</button>
 								<a ng-href="#/report/trends/report">
-									<button ng-disabled="inputForm.$invalid" class="btn btn-primary">Create Report</button>
+									<button ng-disabled="inputForm.$invalid" class="btn btn-primary" ng-click="createReport()" >Create Report</button>
 								</a>
 							</div>
 						</div>

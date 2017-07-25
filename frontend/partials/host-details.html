@@ -94,15 +94,15 @@
 
             <h3>Attributes</h3>
 
-            <table cellpadding="0" cellspacing="0">
+              <table cellpadding="0" cellspacing="0">
                 <tbody>
                     <tr class="{{ host.active_checks_enabled | is_enabled }}">
                         <td>Active Checks: {{ host.active_checks_enabled | is_enabled | capitalize }}</td>
-                        <td><a ng-click="showCommentsModal()">Toggle</a></td>
+                        <td><a>Toggle</a></td>
                     </tr>
                     <tr class="{{ host.passive_checks_enabled | is_enabled }}">
                         <td>Passive Checks: {{ host.passive_checks_enabled | is_enabled | capitalize }}</td>
-                        <td><a ng-click="showCommentsModal()">Toggle</a></td>
+                        <td><a>Toggle</a></td>
                     </tr>
                     <tr class="{{ host.obsess_over_host | is_enabled }}">
                         <td>Obsession: {{ host.obsess_over_host | is_enabled | capitalize }}</td>
@@ -118,7 +118,6 @@
                     </tr>
                 </tbody>
             </table>
-
         </div>
 
         <div class="commands">

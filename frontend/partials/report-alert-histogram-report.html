@@ -6,21 +6,21 @@
 
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
-<div id="content" class="clearfix" ng-controller="AlertHistogramReportCtrl" ng-init="init()">
+<div id="content" class="clearfix" ng-controller="AlertHistogramCtrl" ng-init="createReport()">
 
     <h1>Alert Histogram Report</h1>
 
-		<div class="table-container full-width">
+		<div class="table-container full-width" ng-if="report.reportType=='Host'">
 
- 			<h3>Host Alert Histogram(host)</h3>
+ 			<h3>Host Alert Histogram</h3>
 
-      <div class="table-container partial-width">
-       <div fusioncharts
-         width="600"
-         height="400"
-         type="area2d"
-         datasource="{{dataSource}}">
-       </div>
+      <div class="table-container partial-width half">
+          <div fusioncharts
+            width="600"
+            height="400"
+            type="line"
+            datasource="{{hostdata}}">
+          </div>
      </div>
 
        <div class="table-container partial-width">
@@ -34,14 +34,6 @@
                      <th>AVG</th>
                  </tr>
              </thead>
-             <!--<tfoot>
-                 <tr>
-                     <td colspan="5">
-                         <div class="results-count">{{ hosts | count }} Result{{ hosts | plural }}</div>
-                         <div class="footable-pagination pagination" id="footable-pagination"></div>
-                     </td>
-                 </tr>
-             </tfoot>-->
              <tbody>
                  <tr>
                    <td>Recovery(Up):</td>
@@ -70,21 +62,21 @@
 
     </div>
 
-    <div class="table-container full-width">
+    <div class="table-container full-width" ng-if="true">
 
-    			<h3>Service Alert Histogram(service)</h3>
+    	<h3>Service Alert Histogram</h3>
 
-     <div class="table-container partial-width">
+     <div class="table-container partial-width half">
 
-      <div fusioncharts
-        width="600"
-        height="400"
-        type="area2d"
-        datasource="{{dataSource}}">
-      </div>
-    </div>
+       <div fusioncharts
+         width="600"
+         height="400"
+         type="line"
+         datasource="{{servicedata}}">
+       </div>
+     </div>
 
-      <div class="table-container partial-width">
+    <div class="table-container partial-width">
           <table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
             <thead>
                 <tr>
@@ -95,14 +87,6 @@
                     <th>AVG</th>
                 </tr>
             </thead>
-            <!--<tfoot>
-                <tr>
-                    <td colspan="5">
-                        <div class="results-count">{{ hosts | count }} Result{{ hosts | plural }}</div>
-                        <div class="footable-pagination pagination" id="footable-pagination"></div>
-                    </td>
-                </tr>
-            </tfoot>-->
             <tbody>
                 <tr>
                   <td>Recovery(Ok):</td>
@@ -138,37 +122,34 @@
 
 		</div>
 
-  </div>
-
-<div class="table-container full-width">
-	<div class="table-container partial-width">
+	<div class="table-container partial-width full">
 		<div class="commands">
 
-            <h3>View</h3>
+    <h3>View</h3>
 
 			<!--show if a single host is selected-->
-            <table cellspacing="0" cellpadding="0">
+            <table cellspacing="0" cellpadding="0" ng-if="report.reportType=='Host'">
                 <tbody>
                     <tr class="footable-odd">
                         <td><a target="nagios" ng-href="{{}}">View Trends For This Host</a></td>
                     </tr>
-					<tr class="footable-even">
-						<td><a target="nagios" ng-href="{{}}">View Availability Report For This Service</a></td>
+                    <tr class="footable-even">
+                      <td><a target="nagios" ng-href="{{}}">View Availability Report For This Service</a></td>
                     </tr>
-					<tr class="footable-odd">
+                    <tr class="footable-odd">
                         <td><a target="nagios" ng-href="{{}}">View Status Detail For This Host</a></td>
                     </tr>
                     <tr class="footable-even">
                         <td><a target="nagios" ng-href="{{}}">View History For This Host</a></td>
                     </tr>
-					<tr class="footable-odd">
+                    <tr class="footable-odd">
                         <td><a target="nagios" ng-href="{{}}">View Notifications For This Host</a></td>
                     </tr>
                 </tbody>
             </table>
 
 			<!--show if a single service is selected-->
-			<table cellspacing="0" cellpadding="0">
+      <table cellspacing="0" cellpadding="0" ng-if="report.reportType=='Service'">
                 <tbody>
                     <tr class="footable-odd">
                         <td><a target="nagios" ng-href="{{}}">View Trends For This Service</a></td>
@@ -179,13 +160,12 @@
                     <tr class="footable-odd">
                         <td><a target="nagios" ng-href="{{}}">View History For This Service</a></td>
                     </tr>
-					<tr class="footable-even">
+                    <tr class="footable-even">
                         <td><a target="nagios" ng-href="{{}}">View Notifications For This Service</a></td>
                     </tr>
                 </tbody>
-            </table>
-        </div>
-	     </div>
+        </table>
+      </div>
     </div>
 
 </div>

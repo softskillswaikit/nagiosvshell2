@@ -6,38 +6,26 @@
 
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
-<div id="content" class="clearfix" ng-controller="TrendsReportCtrl" ng-init="init()">
+<div id="content" class="clearfix" ng-controller="TrendsCtrl" ng-init="createReport()">
 
   <h1>State Trends Report</h1>
+    <div class="table-container full-width" ng-if="report.reportType=='Host'">
+    <h3>Host State Trends</h3>
 
-  <div class="table-container full-width">
-
-    <h3>Host State Trends(host)</h3>
-
-      <div class="table-container partial-width">
-
+    <div class="table-container partial-width half">
         <div fusioncharts
           width="600"
           height="400"
-          type="area2d"
-          datasource="{{dataSource}}">
+          type="line"
+          datasource="{{hostdata}}">
         </div>
-      </div>
+    </div>
 
-        <div class="table-container partial-width">
-            <table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
-
-              <!--<tfoot>
-                  <tr>
-                      <td colspan="5">
-                          <div class="results-count">{{ hosts | count }} Result{{ hosts | plural }}</div>
-                          <div class="footable-pagination pagination" id="footable-pagination"></div>
-                      </td>
-                  </tr>
-              </tfoot>-->
+    <div class="table-container partial-width">
+        <table cellspacing="0" cellpadding="0">
               <tbody>
                   <tr>
-                    <td>Up:</td>
+                    <td>Up:</th>
                     <td>%</td>
                     <td>d h m s</td>
                   </tr>
@@ -52,40 +40,31 @@
                     <td>d h m s</td>
                   </tr>
                   <tr>
-                    <td>Interminate:</td>
+                    <td>Pending:</td>
                     <td>%</td>
                     <td>d h m s</td>
                   </tr>
               </tbody>
           </table>
         </div>
-   </div>
+    </div>
 
-  <div class="table-container full-width">
+  <div class="table-container full-width" ng-if="true">
 
-	     <h3>Service State Trends(service)</h3>
+	     <h3>Service State Trends</h3>
 
-       <div class="table-container partial-width">
+       <div class="table-container partial-width half">
 
          <div fusioncharts
            width="600"
            height="400"
-           type="area2d"
-           datasource="{{dataSource}}">
+           type="line"
+           datasource="{{servicedata}}">
          </div>
         </div>
 
        <div class="table-container partial-width">
-           <table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
-
-             <!--<tfoot>
-                 <tr>
-                     <td colspan="5">
-                         <div class="results-count">{{ hosts | count }} Result{{ hosts | plural }}</div>
-                         <div class="footable-pagination pagination" id="footable-pagination"></div>
-                     </td>
-                 </tr>
-             </tfoot>-->
+           <table cellspacing="0" cellpadding="0">
              <tbody>
                  <tr>
                    <td>Ok:</td>
@@ -118,14 +97,13 @@
        </div>
      </div>
 
-  <div class="table-container full-width">
-	 <div class="table-container partial-width">
+  <div class="table-container partial-width full">
 		<div class="commands">
 
             <h3>View</h3>
 
 			<!--show if a single host is selected-->
-            <table cellspacing="0" cellpadding="0">
+            <table cellspacing="0" cellpadding="0" ng-if="report.reportType=='Host'">
                 <tbody>
                     <tr class="footable-odd">
                         <td><a target="nagios" ng-href="{{}}">View Availability Report For This Host</a></td>
@@ -143,13 +121,13 @@
             </table>
 
 			<!--show if a single service is selected-->
-			<table cellspacing="0" cellpadding="0">
+			<table cellspacing="0" cellpadding="0" ng-if="report.reportType=='Service'">
                 <tbody>
                     <tr class="footable-odd">
                         <td><a target="nagios" ng-href="{{}}">View Trends For This Host</a></td>
                     </tr>
                     <tr class="footable-even">
-                        <td><a target="nagios" ng-href="{{}}">View Availability Report For This HService</a></td>
+                        <td><a target="nagios" ng-href="{{}}">View Availability Report For This Service</a></td>
                     </tr>
                     <tr class="footable-odd">
                         <td><a target="nagios" ng-href="{{}}">View Alert Histogram For This Service</a></td>
@@ -157,13 +135,12 @@
                     <tr class="footable-even">
                         <td><a target="nagios" ng-href="{{}}">View Alert History For This Service</a></td>
                     </tr>
-					<tr class="footable-odd">
+                    <tr class="footable-odd">
                         <td><a target="nagios" ng-href="{{}}">View Notifications For This Service</a></td>
                     </tr>
                 </tbody>
             </table>
         </div>
-	    </div>
 
   </div>
 </div>

@@ -143,9 +143,6 @@
                         <td>Flap Detection: {{ service.flap_detection_enabled | is_enabled | capitalize }}</td>
                         <td><a target="nagios" ng-href="{{ service.host_name | servicecommand: service.service_description: 'flap_detection' }}">Toggle</a></td>
                     </tr>
-                    <tr>
-                        <td colspan="2"><small>Commands will not appear until after page reload</small></td>
-                    </tr>
                 </tbody>
             </table>
 
