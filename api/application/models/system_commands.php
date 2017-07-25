@@ -31,7 +31,16 @@ class System_commands extends CI_Model
 	//command id = 1
 	public function add_host_comment($input_host_name, $input_persistent, $input_author, $input_comments)
 	{
-		$commands = 'ADD_HOST_COMMENT;'.$input_host_name.';'.$input_persistent.';'.$input_author.';'.$input_comments;
+		if($input_persistent)
+		{
+			$persistent = '1';
+		}
+		else
+		{
+			$persistent = '0';
+		}
+
+		$commands = 'ADD_HOST_COMMENT;'.$input_host_name.';'.$persistent.';'.$input_author.';'.$input_comments;
 
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
@@ -49,7 +58,16 @@ class System_commands extends CI_Model
 	//command id = 2
 	public function add_svc_comment($input_host_name, $input_service_description, $input_persistent, $input_author, $input_comments)
 	{
-		$commands = 'ADD_SVC_COMMENT;'.$input_host_name.';'.$input_service_description.';'.$input_persistent.';'.$input_author.';'.$input_comments; 
+		if($input_persistent)
+		{
+			$persistent = '1';
+		}
+		else
+		{
+			$persistent = '0';
+		}
+
+		$commands = 'ADD_SVC_COMMENT;'.$input_host_name.';'.$input_service_description.';'.$persistent.';'.$input_author.';'.$input_comments; 
 
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
@@ -317,9 +335,17 @@ class System_commands extends CI_Model
 	}
 
 	//command id = 29
-	public function schedule_svc_check($input_host_name, $input_service_description, $input_checktime)
+	//command id = 129 (force check)
+	public function schedule_svc_check($input_host_name, $input_service_description, $input_checktime, $input_force_check)
 	{
-		$commands = 'SCHEDULE_SVC_CHECK;'.$input_host_name.';'.$input_service_description.';'.$input_checktime;
+		if($input_force_check)
+		{
+			$commands = 'SCHEDULE_FORCED_SVC_CHECK;'.$input_host_name.';'.$input_service_description.';'.$input_checktime;
+		}
+		else
+		{
+			$commands = 'SCHEDULE_SVC_CHECK;'.$input_host_name.';'.$input_service_description.';'.$input_checktime;
+		}
 
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
@@ -335,9 +361,17 @@ class System_commands extends CI_Model
 	}
 
 	//command id = 30
-	public function schedule_host_svc_check($input_host_name, $input_checktime)
+	//command id = 130 (force check)
+	public function schedule_host_svc_check($input_host_name, $input_checktime, $input_force_check)
 	{
-		$commands = 'SCHEDULE_HOST_SVC_CHECKS;'.$input_host_name.';'.$input_checktime;
+		if($input_force_check)
+		{
+			$commands = 'SCHEDULE_FORCED_HOST_SVC_CHECKS;'.$input_host_name.';'.$input_checktime;
+		}
+		else
+		{
+			$commands = 'SCHEDULE_HOST_SVC_CHECKS;'.$input_host_name.';'.$input_checktime;
+		}
 
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
@@ -427,7 +461,34 @@ class System_commands extends CI_Model
 	//command id = 39
 	public function acknowledge_host_problem($input_host_name, $input_sticky, $input_notify, $input_persistent, $input_author, $input_comments)
 	{
-		$commands = 'ACKNOWLEDGE_HOST_PROBLEM;'.$input_host_name.';'.$input_sticky.';'.$input_notify.';'.$input_persistent.';'.$input_author.';'.$input_comments;
+		if($input_sticky)
+		{
+			$sticky = '2';
+		}
+		else
+		{
+			$sticky = '0';
+		}
+
+		if($input_notify)
+		{
+			$notify = '1';
+		}
+		else
+		{
+			$notify = '0';
+		}
+
+		if($input_persistent)
+		{
+			$persistent = '1';
+		}
+		else
+		{
+			$persistent = '0';
+		}
+
+		$commands = 'ACKNOWLEDGE_HOST_PROBLEM;'.$input_host_name.';'.$sticky.';'.$notify.';'.$persistent.';'.$input_author.';'.$input_comments;
 
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
@@ -445,7 +506,34 @@ class System_commands extends CI_Model
 	//command id = 40
 	public function acknowledge_svc_problem($input_host_name, $input_service_description, $input_sticky, $input_notify, $input_persistent, $input_author, $input_comments)
 	{
-		$commands = 'ACKNOWLEDGE_SVC_PROBLEM;'.$input_host_name.';'.$input_service_description.';'.$input_sticky.';'.$input_notify.';'.$input_persistent.';'.$input_author.';'.$input_comments;
+		if($input_sticky)
+		{
+			$sticky = '2';
+		}
+		else
+		{
+			$sticky = '0';
+		}
+
+		if($input_notify)
+		{
+			$notify = '1';
+		}
+		else
+		{
+			$notify = '0';
+		}
+
+		if($input_persistent)
+		{
+			$persistent = '1';
+		}
+		else
+		{
+			$persistent = '0';
+		}
+
+		$commands = 'ACKNOWLEDGE_SVC_PROBLEM;'.$input_host_name.';'.$input_service_description.';'.$sticky.';'.$notify.';'.$persistent.';'.$input_author.';'.$input_comments;
 
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
@@ -1019,9 +1107,18 @@ class System_commands extends CI_Model
 	}
 
 	//command id = 118
-	public function schedule_host_downtime($input_host_name, $input_start_time, $input_end_time, $input_fixed, $input_trigger_id, $input_duration, $input_author, $input_comments)
+	public function schedule_host_downtime($input_host_name, $input_start_time, $input_end_time, $input_fixed, $input_trigger_id='0', $input_duration, $input_author, $input_comments)
 	{
-		$commands = 'SCHEDULE_HOST_DOWNTIME;'.$input_host_name.';'.$input_start_time.';'.$input_end_time.';'.$input_fixed.';'.$input_trigger_id.';'.$input_duration.';'.$input_author.';'.$input_comments;
+		if($input_fixed)
+		{
+			$fixed = '1';
+		}
+		else
+		{
+			$fixed = '0';
+		}
+
+		$commands = 'SCHEDULE_HOST_DOWNTIME;'.$input_host_name.';'.$input_start_time.';'.$input_end_time.';'.$fixed.';'.$input_trigger_id.';'.$input_duration.';'.$input_author.';'.$input_comments;
 
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
@@ -1037,9 +1134,18 @@ class System_commands extends CI_Model
 	}
 
 	//command id = 119
-	public function schedule_svc_downtime($input_host_name, $input_service_description, $input_start_time, $input_end_time, $input_fixed, $input_trigger_id, $input_duration, $input_author, $input_comments)
+	public function schedule_svc_downtime($input_host_name, $input_service_description, $input_start_time, $input_end_time, $input_fixed, $input_trigger_id='0', $input_duration, $input_author, $input_comments)
 	{
-		$commands = 'SCHEDULE_SVC_DOWNTIME;'.$input_host_name.';'.$input_service_description.';'.$input_start_time.';'.$input_end_time.';'.$input_fixed.';'.$input_trigger_id.';'.$input_duration.';'.$input_author.';'.$input_comments;
+		if($input_fixed)
+		{
+			$fixed = '1';
+		}
+		else
+		{
+			$fixed = '0';
+		}
+
+		$commands = 'SCHEDULE_SVC_DOWNTIME;'.$input_host_name.';'.$input_service_description.';'.$input_start_time.';'.$input_end_time.';'.$fixed.';'.$input_trigger_id.';'.$input_duration.';'.$input_author.';'.$input_comments;
 
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
@@ -1055,9 +1161,18 @@ class System_commands extends CI_Model
 	}
 
 	//command id = 122
-	public function schedule_host_svc_downtime($input_host_name, $input_start_time, $input_end_time, $input_fixed, $input_trigger_id, $input_duration, $input_author, $input_comments)
+	public function schedule_host_svc_downtime($input_host_name, $input_start_time, $input_end_time, $input_fixed, $input_trigger_id='0', $input_duration, $input_author, $input_comments)
 	{
-		$commands = 'SCHEDULE_HOST_SVC_DOWNTIME;'.$input_host_name.';'.$input_start_time.';'.$input_end_time.';'.$input_fixed.';'.$input_trigger_id.';'.$input_duration.';'.$input_author.';'.$input_comments;
+		if($input_fixed)
+		{
+			$fixed = '1';
+		}
+		else
+		{
+			$fixed = '0';
+		}
+
+		$commands = 'SCHEDULE_HOST_SVC_DOWNTIME;'.$input_host_name.';'.$input_start_time.';'.$input_end_time.';'.$fixed.';'.$input_trigger_id.';'.$input_duration.';'.$input_author.';'.$input_comments;
 
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
@@ -1073,9 +1188,17 @@ class System_commands extends CI_Model
 	}
 
 	//command id = 127
-	public function schedule_host_check($input_host_name, $input_checktime)
+	//command id = 128 (force check)
+	public function schedule_host_check($input_host_name, $input_checktime, $input_force_check)
 	{
-		$commands = 'SCHEDULE_HOST_CHECK;'.$input_host_name.';'.$input_checktime;
+		if($input_force_check)
+		{
+			$commands = 'SCHEDULE_FORCED_HOST_CHECK;'.$input_host_name.';'.$input_checktime;
+		}
+		else
+		{
+			$commands = 'SCHEDULE_HOST_CHECK;'.$input_host_name.';'.$input_checktime;
+		}
 
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
@@ -1091,9 +1214,26 @@ class System_commands extends CI_Model
 	}
 
 	//command id = 134
-	public function send_custom_host_notification($input_host_name, $input_option, $input_author, $input_comments)
+	public function send_custom_host_notification($input_host_name, $input_force, $input_broadcast, $input_author, $input_comments)
 	{
-		$commands = 'SEND_CUSTOM_HOST_NOTIFICATION;'.$input_host_name.';'.$input_option.';'.$input_author.';'.$input_comments;
+		if($input_force && $input_broadcast)
+		{
+			$option = '3';
+		}
+		else if($input_force)
+		{
+			$option = '2';
+		}
+		else if($input_broadcast)
+		{	
+			$option = '1';
+		}
+		else
+		{
+			$option = '0';
+		}
+
+		$commands = 'SEND_CUSTOM_HOST_NOTIFICATION;'.$input_host_name.';'.$option.';'.$input_author.';'.$input_comments;
 
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
@@ -1109,9 +1249,26 @@ class System_commands extends CI_Model
 	}
 
 	//command id = 135
-	public function send_custom_svc_notification($input_host_name, $input_service_description, $input_option, $input_author, $input_comments)
+	public function send_custom_svc_notification($input_host_name, $input_service_description, $input_force, $input_broadcast, $input_author, $input_comments)
 	{
-		$commands = 'SEND_CUSTOM_SVC_NOTIFICATION;'.$input_host_name.';'.$input_service_description.';'.$input_option.';'.$input_author.';'.$input_comments;
+		if($input_force && $input_broadcast)
+		{
+			$option = '3';
+		}
+		else if($input_force)
+		{
+			$option = '2';
+		}
+		else if($input_broadcast)
+		{	
+			$option = '1';
+		}
+		else
+		{
+			$option = '0';
+		}
+
+		$commands = 'SEND_CUSTOM_SVC_NOTIFICATION;'.$input_host_name.';'.$input_service_description.';'.$option.';'.$input_author.';'.$input_comments;
 
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
@@ -1142,6 +1299,18 @@ class System_commands extends CI_Model
 		{
 			return trim($this->return_value);
 		}
+	}
+
+	public function performance_info_commands()
+	{
+		$this->return_value = shell_exec("/usr/local/nagios/bin/nagiostats -c /usr/local/nagios/etc/nagios.cfg");
+
+		$this->return_value = trim($this->return_value);
+
+		//split using newline character
+		$return_array = preg_split("/\\r\\n|\\r|\\n/", $this->return_value);
+
+		return $return_array;
 	}
 
 

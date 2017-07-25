@@ -61,6 +61,9 @@
 # https://old.nagios.org/developerinfo/externalcommands/commandinfo.php?command_id=119
 # https://old.nagios.org/developerinfo/externalcommands/commandinfo.php?command_id=122
 # https://old.nagios.org/developerinfo/externalcommands/commandinfo.php?command_id=127
+# https://old.nagios.org/developerinfo/externalcommands/commandinfo.php?command_id=128
+# https://old.nagios.org/developerinfo/externalcommands/commandinfo.php?command_id=129
+# https://old.nagios.org/developerinfo/externalcommands/commandinfo.php?command_id=130
 # https://old.nagios.org/developerinfo/externalcommands/commandinfo.php?command_id=134
 # https://old.nagios.org/developerinfo/externalcommands/commandinfo.php?command_id=135
 # https://old.nagios.org/developerinfo/externalcommands/commandinfo.php?command_id=150
