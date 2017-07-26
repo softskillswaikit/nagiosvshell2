@@ -803,6 +803,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
     width: 33%;
 }
 
+    .table-container.partial-width.chart {
+        position: relative;
+        overflow: hidden;
+    }
+
     .table-container.partial-width.half {
         width: 50%;
     }

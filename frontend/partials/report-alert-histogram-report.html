@@ -14,17 +14,17 @@
 
  			<h3>Host Alert Histogram</h3>
 
-      <div class="table-container partial-width half">
+      <div class="table-container partial-width chart">
           <div fusioncharts
             width="600"
             height="400"
-            type="line"
+            type="msline"
             datasource="{{hostdata}}">
           </div>
      </div>
 
        <div class="table-container partial-width">
-           <table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+           <table cellspacing="0" cellpadding="0">
              <thead>
                  <tr>
                      <th>EVENT TYPE</th>
@@ -66,18 +66,18 @@
 
     	<h3>Service Alert Histogram</h3>
 
-     <div class="table-container partial-width half">
+     <div class="table-container partial-width chart">
 
        <div fusioncharts
          width="600"
          height="400"
-         type="line"
+         type="msline"
          datasource="{{servicedata}}">
        </div>
      </div>
 
     <div class="table-container partial-width">
-          <table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+          <table cellspacing="0" cellpadding="0">
             <thead>
                 <tr>
                     <th>EVENT TYPE</th>

@@ -1052,51 +1052,126 @@ angular.module('vshell.controllers', [])
                "caption": "State History For Host " + $scope.report['host'],
                "captionfontsize": "16",
                "subCaption": "From " + " To ",
+               "paletteColors": "#6cb22f,#d24555,#ee8425",
                "xaxisname": $scope.report['statisticsBreakdown'],
                "yaxisname": "Number of Events",
                "showyaxisvalues": "1",
                "theme": "fint",
                "showvalues": "0",
                "showtooltip": "0",
-               "linethickness": "4",
-               "anchorhoverradius": "8",
-               "anchorradius": "4",
+               "linethickness": "2",
+               "anchorhoverradius": "4",
+               "anchorradius": "2",
                "anchorborderthickness": "2"
            },
+           "categories": [
+            {
+              "category": [
+                {
+                    "label": "Mon"
+                },
+                {
+                    "label": "Tue"
+                },
+                {
+                    "label": "Wed"
+                },
+                {
+                    "label": "Thu"
+                },
+                {
+                    "label": "Fri"
+                },
+                {
+                    "label": "Sat"
+                },
+                {
+                    "label": "Sun"
+                }
+              ]
+            }
+          ],
            "dataset": [
                {
-                   "seriesname": "Host State Trends",
+                   "seriesname": "Recovery(Up)",
                    "data": [
                        {
-                         "label" : "Mon",
-                         "value": "3"
+                         "value": "6"
                        },
                        {
-                         "label" : "Tue",
-                         "value": "3"
+                         "value": "7"
                        },
                        {
-                         "label" : "Wed",
-                         "value": "2"
+                         "value": "4"
                        },
                        {
-                         "label" : "Thu",
-                         "value": "3"
+                         "value": "13"
                        },
                        {
-                         "label" : "Fri",
+                         "value": "7"
+                       },
+                       {
+                         "value": "12"
+                       },
+                       {
+                         "value": "10"
+                       }
+                   ]
+               },
+               {
+                   "seriesname": "Down",
+                   "data": [
+                       {
                          "value": "1"
                        },
                        {
-                         "label" : "Sat",
+                         "value": "5"
+                       },
+                       {
+                         "value": "7"
+                       },
+                       {
+                         "value": "5"
+                       },
+                       {
+                         "value": "3"
+                       },
+                       {
+                         "value": "3"
+                       },
+                       {
+                         "value": "0"
+                       }
+                   ]
+               },
+               {
+                   "seriesname": "Unreachable",
+                   "data": [
+                       {
+                         "value": "0"
+                       },
+                       {
+                         "value": "0"
+                       },
+                       {
                          "value": "2"
                        },
                        {
-                         "label" : "Sun",
+                         "value": "1"
+                       },
+                       {
+                         "value": "0"
+                       },
+                       {
+                         "value": "2"
+                       },
+                       {
                          "value": "0"
                        }
                    ]
                }
+
+
            ]
          }
 
@@ -1105,51 +1180,152 @@ angular.module('vshell.controllers', [])
                "caption": "State History For Service " + $scope.report['host'],
                "captionfontsize": "16",
                "subCaption": "From " + " To ",
+               "paletteColors": "#6cb22f,#dba102,#ee8425,#d24555",
                "xaxisname": $scope.report['statisticsBreakdown'],
                "yaxisname": "Number of Events",
                "showyaxisvalues": "1",
                "theme": "fint",
                "showvalues": "0",
                "showtooltip": "0",
-               "linethickness": "4",
-               "anchorhoverradius": "8",
-               "anchorradius": "4",
+               "linethickness": "2",
+               "anchorhoverradius": "4",
+               "anchorradius": "2",
                "anchorborderthickness": "2"
            },
+           "categories": [
+            {
+              "category": [
+                {
+                    "label": "Mon"
+                },
+                {
+                    "label": "Tue"
+                },
+                {
+                    "label": "Wed"
+                },
+                {
+                    "label": "Thu"
+                },
+                {
+                    "label": "Fri"
+                },
+                {
+                    "label": "Sat"
+                },
+                {
+                    "label": "Sun"
+                }
+              ]
+            }
+          ],
            "dataset": [
                {
-                   "seriesname": "Host State Trends",
+                   "seriesname": "Recovery(Up)",
                    "data": [
                        {
-                         "label" : "Mon",
-                         "value": "3"
+                         "value": "6"
                        },
                        {
-                         "label" : "Tue",
-                         "value": "3"
+                         "value": "7"
                        },
                        {
-                         "label" : "Wed",
-                         "value": "2"
+                         "value": "4"
                        },
                        {
-                         "label" : "Thu",
-                         "value": "3"
+                         "value": "13"
                        },
                        {
-                         "label" : "Fri",
+                         "value": "7"
+                       },
+                       {
+                         "value": "12"
+                       },
+                       {
+                         "value": "10"
+                       }
+                   ]
+               },
+               {
+                   "seriesname": "Warning",
+                   "data": [
+                       {
                          "value": "1"
                        },
                        {
-                         "label" : "Sat",
+                         "value": "5"
+                       },
+                       {
+                         "value": "7"
+                       },
+                       {
+                         "value": "5"
+                       },
+                       {
+                         "value": "7"
+                       },
+                       {
+                         "value": "3"
+                       },
+                       {
+                         "value": "0"
+                       }
+                   ]
+               },
+               {
+                   "seriesname": "Unknown",
+                   "data": [
+                       {
+                         "value": "0"
+                       },
+                       {
+                         "value": "0"
+                       },
+                       {
                          "value": "2"
                        },
                        {
-                         "label" : "Sun",
+                         "value": "1"
+                       },
+                       {
+                         "value": "0"
+                       },
+                       {
+                         "value": "2"
+                       },
+                       {
+                         "value": "0"
+                       }
+                   ]
+               },
+               {
+                   "seriesname": "Critical",
+                   "data": [
+                       {
+                         "value": "0"
+                       },
+                       {
+                         "value": "0"
+                       },
+                       {
+                         "value": "0"
+                       },
+                       {
+                         "value": "3"
+                       },
+                       {
+                         "value": "0"
+                       },
+                       {
+                         "value": "3"
+                       },
+                       {
                          "value": "0"
                        }
                    ]
                }
+
+
            ]
          }
 
