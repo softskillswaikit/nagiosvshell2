@@ -509,24 +509,23 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('AvailabilityCtrl', ['$scope', '$routeParams', '$filter', 'async',
-    function($scope, $routeParams, $filter, async) {
+.controller('AvailabilityCtrl', ['$scope', '$routeParams', '$filter', 'async', '$rootScope',
+    function($scope, $routeParams, $filter, async, $rootScope) {
+
       $scope.init = function() {
         $scope.componentName =   [
           {name : "localhost"},
           {name : "testserver"}
         ];
 
-        $scope.availability =   [
-          {name : "localhost"},
-          {name : "testserver"}
-        ];
+        $scope.reset();
+      };
 
+      $scope.reset = function(){
         $scope.today = new Date();
         $scope.todayString = $filter('date')(Date.now(), 'MM/dd/yyyy');
 
         $scope.reportType = 'Hostgroup(s)';
-        $scope.serviceType = 'Normal Service';
         $scope.reportComponent = 'ALL';
         $scope.startDate =  $scope.todayString;
         $scope.endDate =  $scope.todayString;
@@ -539,9 +538,219 @@ angular.module('vshell.controllers', [])
         $scope.firstAssumedHostState = 'Unspecified';
         $scope.firstAssumedServiceState = 'Unspecified';
         $scope.backtrackedArchives = 4;
+      };
 
+      $scope.savedRT = localStorage.getItem('reportType');
+      $scope.reportType = $scope.savedRT;
+      $scope.savedRC = localStorage.getItem('reportComponent');
+      $scope.reportComponent = $scope.savedRC;
+      console.log("reporttype");
+      console.log($scope.reportType);
+      console.log("reportComponent");
+      console.log($scope.reportComponent);
+
+      $scope.createReport = function(){
+        localStorage.setItem('reportType', $scope.reportType);
+        localStorage.setItem('reportComponent', $scope.reportComponent);
+
+/*      //data for host(s)
+        $scope.reports =  [
+          {hosts:[
+              {
+                host_name: "localhost",
+                timeup_percent : "100.00",
+                timedown_percent : "0.00",
+                timeunreachable_percent : "0.00",
+                timepending_percent : "0.00"
+              },
+              {
+                host_name: "app_server",
+                timeup_percent : "100.00",
+                timedown_percent : "0.00",
+                timeunreachable_percent : "0.00",
+                timepending_percent : "0.00"
+              },
+              {
+                host_name: "web_server",
+                timeup_percent : "100.00",
+                timedown_percent : "0.00",
+                timeunreachable_percent : "0.00",
+                timepending_percent : "0.00"
+              }
+            ]
+          }
+        ];
+        */
+/*
+            //data for hostgroup(s)
+              $scope.reports =  [
+                {
+                  hostgroup : "linux-server",
+                  hosts : [
+                    {
+                      host_name: "localhost",
+                      timeup_percent : "100.00",
+                      timedown_percent : "0.00",
+                      timeunreachable_percent : "0.00",
+                      timepending_percent : "0.00"
+                    }
+                  ]
+                },
+                {
+                  hostgroup : "windows-servers",
+                  hosts : [
+                    {
+                      host_name: "app_server",
+                      timeup_percent : "100.00",
+                      timedown_percent : "0.00",
+                      timeunreachable_percent : "0.00",
+                      timepending_percent : "0.00"
+                    },
+                    {
+                      host_name: "web_server",
+                      timeup_percent : "100.00",
+                      timedown_percent : "0.00",
+                      timeunreachable_percent : "0.00",
+                      timepending_percent : "0.00"
+                    }
+                  ]
+                }
+              ];
+*/
+
+            //data for one host/one service
+              $scope.reports1 =  [
+                {
+                  state : "OK",
+                  type : [
+                    {
+                      label:"Unscheduled",
+                      time: "7d 0h 0m 0s",
+                      totaltime_percent: "100.00",
+                      knowntime_percent: "100.00"
+                    },
+                    {
+                      label:"Scheduled",
+                      time: "0d 0h 0m 0s",
+                      totaltime_percent: "0.00",
+                      knowntime_percent: "0.00"
+                    },
+                    {
+                      label:"Total",
+                      time: "7d 0h 0m 0s",
+                      totaltime_percent: "100.00",
+                      knowntime_percent: "100.00"
+                    }
+                  ]
+                },
+                {
+                  state : "WARNING",
+                  type : [
+                    {
+                      label:"Unscheduled",
+                      time: "0d 0h 0m 0s",
+                      totaltime_percent: "0.00",
+                      knowntime_percent: "0.00"
+                    },
+                    {
+                      label:"Scheduled",
+                      time: "0d 0h 0m 0s",
+                      totaltime_percent: "0.00",
+                      knowntime_percent: "0.00"
+                    },
+                    {
+                      label:"Total",
+                      time: "7d 0h 0m 0s",
+                      totaltime_percent: "100.00",
+                      knowntime_percent: "100.00"
+                    }
+                  ]
+                },
+                {
+                  state : "UNKNOWN",
+                  type : [
+                    {
+                      label:"Unscheduled",
+                      time: "0d 0h 0m 0s",
+                      totaltime_percent: "0.00",
+                      knowntime_percent: "0.00"
+                    },
+                    {
+                      label:"Scheduled",
+                      time: "0d 0h 0m 0s",
+                      totaltime_percent: "0.00",
+                      knowntime_percent: "0.00"
+                    },
+                    {
+                      label:"Total",
+                      time: "7d 0h 0m 0s",
+                      totaltime_percent: "100.00",
+                      knowntime_percent: "100.00"
+                    }
+                  ]
+                },
+                {
+                  state : "CRITICAL",
+                  type : [
+                    {
+                      label:"Unscheduled",
+                      time: "0d 0h 0m 0s",
+                      totaltime_percent: "0.00",
+                      knowntime_percent: "0.00"
+                    },
+                    {
+                      label:"Scheduled",
+                      time: "0d 0h 0m 0s",
+                      totaltime_percent: "0.00",
+                      knowntime_percent: "0.00"
+                    },
+                    {
+                      label:"Total",
+                      time: "7d 0h 0m 0s",
+                      totaltime_percent: "100.00",
+                      knowntime_percent: "100.00"
+                    }
+                  ]
+                },
+                {
+                  state : "PENDING",
+                  type : [
+                    {
+                      label:"Nagios Not Running",
+                      time: "0d 0h 0m 0s",
+                      totaltime_percent: "0.00",
+                      knowntime_percent: "0.00"
+                    },
+                    {
+                      label:"insufficient Data",
+                      time: "0d 0h 0m 0s",
+                      totaltime_percent: "0.00",
+                      knowntime_percent: "0.00"
+                    },
+                    {
+                      label:"Total",
+                      time: "7d 0h 0m 0s",
+                      totaltime_percent: "100.00",
+                      knowntime_percent: "100.00"
+                    }
+                  ]
+                },
+                {
+                  state : "ALL",
+                  type : [
+                    {
+                      label:"Total",
+                      time: "7d 0h 0m 0s",
+                      totaltime_percent: "100.00",
+                      knowntime_percent: "100.00"
+                    }
+                  ]
+                }
+              ];
 
       };
+
+
 
       $scope.create = function(){
 
@@ -551,10 +760,9 @@ angular.module('vshell.controllers', [])
                queue: 'main'
            };
 
-          console.log($scope.reportType);
 
            async.api($scope, options);
-      }
+      };
     }
 ])
 
@@ -597,7 +805,6 @@ angular.module('vshell.controllers', [])
         };
 
         $scope.createReport = function(){
-          console.log("report created");
           $scope.report =
             {
               host : "app_server",
@@ -1040,7 +1247,7 @@ angular.module('vshell.controllers', [])
        };
 
        $scope.createReport = function(){
-         console.log("report created");
+
          $scope.report = {
            host : "app_server",
            reportType : "Host",
@@ -1338,18 +1545,7 @@ angular.module('vshell.controllers', [])
 
         $scope.init = function() {
 
-            /*
-			var options = {
-                name: 'hostname',
-                url: 'hostname',
-                queue: 'main'
-            };
-
-            async.api($scope, options);
-			*/
-
-        };
-
+        }
     }
 ])
 
@@ -1376,46 +1572,6 @@ angular.module('vshell.controllers', [])
 
         $scope.init = function() {
 
-          $scope.dataSource = {
-            chart: {
-              "caption": "State History For ",
-              "subCaption": "-",
-              "xAxisName": "Time",
-              "yAxisName": "State",
-              //"theme": "fint",
-              //Setting gradient fill to true
-              "usePlotGradientColor": "1",
-              //Setting the gradient formation color
-              "plotGradientColor": "#00f254"
-              },
-              data:
-                [
-                  {
-                      "label": "Jul 8 15:34",
-                      "value": "0"
-                  },
-                  {
-                      "label": "Jul 8 15:34",
-                      "value": "1"
-                  },
-                  {
-                      "label": "Jul 8 15:34",
-                      "value": "2"
-                  },
-                  {
-                      "label": "Jul 8 15:34",
-                      "value": "3"
-                  },
-                  {
-                      "label": "Jul 8 15:34",
-                      "value": "4"
-                  },
-                  {
-                      "label": "Jul 8 15:34",
-                      "value": "1"
-                  }
-              ]
-          }
 
 /*
             var options = {

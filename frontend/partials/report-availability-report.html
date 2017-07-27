@@ -6,14 +6,16 @@
 
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
-<div id="content" class="clearfix" ng-controller="AvailabilityReportCtrl" ng-init="init()">
+<div id="content" class="clearfix" ng-controller="AvailabilityCtrl" ng-init="init()">
 
 	<h1>Availability Report</h1>
 
 	<!--(hostgroup-one/all, host-all)-->
-    <div class="table-container full-width">
+	<div ng-if="reportType=='Hostgroup(s)' || (reportType=='Host(s)' && reportComponent=='ALL')">
+    <div ng-repeat="report in reports" class="table-container full-width">
 
-        <h3>Host State Breakdowns(hostgroup-one/all, host-all)</h3>
+        <h3 ng-if="reportType=='Hostgroup(s)'">Host State Breakdowns For {{reportType}} '{{report.hostgroup}}'</h3>
+				<h3 ng-if="reportType=='Host(s)'">Host State Breakdowns</h3>
 
         <div class="table-options">
             <form action="" class="filter-form" method="post">
@@ -36,28 +38,28 @@
                     <th>Time Undetermined (%)</th>
                 </tr>
             </thead>
-            <!--
             <tfoot>
                 <tr>
                     <td colspan="5">
-                        <div class="results-count">{{ hostgroup.HostStatusCollection | count }} Result{{ hostgroup.HostStatusCollection | plural }}</div>
+                        <div class="results-count">{{ report.hosts | count }} Result{{ report.hosts | plural }}</div>
                         <div class="footable-pagination pagination" id="footable-pagination"></div>
                     </td>
                 </tr>
             </tfoot>
-			-->
-			<tbody>
-                <tr ng-if="(hostgroup.HostStatusCollection | count) == 0">
-                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No hostgroup members are defined' }}</td>
+						<tbody>
+                <tr ng-if="(report.hosts | count) == 0">
+                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No data defined' }}</td>
                 </tr>
-                <tr ng-repeat="host in hostgroup.HostStatusCollection | orderObjectBy: 'host_name'" class="state-{{ host.current_state | hoststate | lowercase }}" footabledata>
-                    <td host-entry item="host"></td>
-                    <td class="status">{{ host.current_state | hoststate }}</td>
-                    <td><a ng-repeat="service in host.ServiceStatusCollection | orderObjectBy: 'service_description'" class="status-item active services-{{ service.current_state | servicestate | lowercase }}" href="#/services/{{ host.host_name }}/{{ service.service_description }}">{{ service.service_description }}</a></td>
+                <tr ng-repeat="host in report.hosts | orderObjectBy: 'host_name'" class="state-{{ host.current_state | hoststate | lowercase }}" footabledata>
+                    <td host-availability-entry item="host"></td>
+										<td>{{host.timeup_percent}}</td>
+										<td>{{host.timedown_percent}}</td>
+										<td>{{host.timeunreachable_percent}}</td>
+										<td>{{host.timeundetermined_percent}}</td>
                 </tr>
             </tbody>
         </table>
-
+			</div>
     </div>
 
 	<!--(host-one, service-one)-->
