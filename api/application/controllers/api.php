@@ -613,98 +613,63 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $Data = array();
-        $hostname = array();
-        $hostgroupname = array();
-        $servicename = array();
-        $servicegroupname = array();
-        $servicestatename = array();
-        $allName;
+        $type = 'hostcomment';
+        $allowed_types = array(
+            'hostcomment',
+            'servicecomment'
+        );
 
-        
-        //all host name
-        $hosts = $this->nagios_data->get_collection('hoststatus');
-
-        foreach($hosts as $host)
+        if( $type != '' )
         {
-            $DataHost[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
-        }
+            if( ! in_array($type, $allowed_types) )
+            {
+                return $this->output(array());
+            }
 
-        foreach($DataHost as $host)
-        {
-            $hostname[] = $host['name'];
-        }
-
-        $allName['host'] = $hostname;
-    
-
-        //all hostgroup name    
-        $hostgroups = $this->nagios_data->get_collection('hostgroup');
-
-        foreach($hostgroups as $hostgroup)
-        {
-            $DataHostgroup[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
-        }
-
-        foreach ($DataHostgroup as $hostgroup) 
-        {
-            $hostgroupname[] = $hostgroup['name'];
+            $specific_comments = $this->nagios_data->get_collection($type)->get_index('host_name');
+            $comments = $this->comments_flatten($specific_comments);
         } 
-
-        $allName['hostgroup'] = $hostgroupname;     
-    
-
-        //all service name
-        $services = $this->nagios_data->get_collection('servicestatus');
-
-        foreach ($services as $service)
+        else
         {
-            $DataService[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
+            $host_comments = $this->nagios_data->get_collection('hostcomment')->get_index('host_name');
+            $service_comments = $this->nagios_data->get_collection('servicecomment')->get_index('host_name');
+            $comments = $this->comments_merge($host_comments, $service_comments);
         }
 
-        foreach ($DataService as $service) 
-        {
-            $servicename[] = $service['name'];
+        $this->output(var_dump($comments));
+    }
 
+    /**
+     * Fetch all comments or only those of a certain type.
+     * Returns a flat array of comment objects.
+     *
+     * @param  string $type, '' return all 
+     */
+    public function comments($type = '') 
+    {
+        $allowed_types = array(
+            'hostcomment',
+            'servicecomment'
+        );
+
+        if( $type != '' )
+        {
+            if( ! in_array($type, $allowed_types) )
+            {
+                return $this->output(array());
+            }
+
+            $specific_comments = $this->nagios_data->get_collection($type)->get_index('host_name');
+            $comments = $this->comments_flatten($specific_comments);
+        } 
+        else
+        {
+            $host_comments = $this->nagios_data->get_collection('hostcomment')->get_index('host_name');
+            $service_comments = $this->nagios_data->get_collection('servicecomment')->get_index('host_name');
+            $comments = $this->comments_merge($host_comments, $service_comments);
         }
 
-        $allName['service'] = $servicename;
-    
-
-        //all service group name
-        $servicegroups = $this->nagios_data->get_collection('servicegroup');
-
-        foreach($servicegroups as $servicegroup)
-        {
-            $DataServicegroup[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
-        }
-
-        foreach ($DataServicegroup as $servicegroup) 
-        {
-            $servicegroupname[] = $servicegroup['name'];
-        }
-
-        $allName['servicegroup'] = $servicegroupname;
-
-
-        //all service running state
-        $servicestates = $this->nagios_data->get_collection('servicestatus');
-
-        foreach ($servicestates as $servicestate)
-        {
-            $DataServicestate[] = $this->quicksearch_item('service', $servicestate->service_description.' on '.$servicestate->host_name, $servicestate->host_name.'/'.$servicestate->service_description);
-        }
-
-        foreach ($DataServicestate as $servicestate) 
-        {
-            $servicestatename[] = array('servicename' => $servicestate['name'], 'host' => $servicestate['uri']);
-
-        }
-
-        $allName['servicestate'] = $servicestatename;
-        
-
-        $this->output($allName); 
+        $this->output($comments);
     }
 
     /**
@@ -713,13 +678,13 @@ class API extends VS_Controller
      * @param String $type, host : host, svc : service
      * @param String $name
      * @param String $serviceDescription
-     * @param bool $persistent
+     * @param String $persistent , 1 or 0
      * @param String $author
      * @param String $comments
      */
     public function addComments($type='', $name='', $serviceDescription='', $persistent, $author='', $comments='')
     {
-        $result = false;
+        $result = '';
 
         $allowed_types = array(
             'host',
@@ -727,12 +692,19 @@ class API extends VS_Controller
         );
 
         //check for empty input
-        if(!empty($type) && !empty($name) && !empty($serviceDescription) && !empty($persistent) && !empty($author) && !empty($comments))
+        if(!empty($type) && !empty($name) && !empty($persistent) && !empty($author) && !empty($comments))
         {
             //compare types with allowed types
             if(in_array($type, $allowed_types))
             {
-                $result = $this->system_commands->add_comment($name, $serviceDescription, $persistent, $author, $comments, $type);
+                if($type == 'host')
+                {
+                    $result = $this->system_commands->add_host_comment($name, $persistent, $author, $comments);
+                }
+                else
+                {
+                    $result = $this->system_commands->add_svc_comment($name, $service, $persistent, $author, $comments);
+                }
             }
         }
 
@@ -742,12 +714,12 @@ class API extends VS_Controller
     /**
      * Delete comments
      *
-     * @param int $id
+     * @param String $id
      * @param String $type, host : host, svc : service
      */
     public function deleteComments($id, $type='')
     {
-        $result = false;
+        $result = '';
 
         $allowed_types = array(
             'host',
@@ -760,7 +732,14 @@ class API extends VS_Controller
             //compare type with allowed types
             if(in_array($type, $allowed_types))
             {
-                $result = $this->system_commands->delete_comment($id, $type);
+                if($type == 'host')
+                {
+                    $result = $this->system_commands->delete_host_comment($id);
+                }
+                else
+                {
+                    $result = $this->system_commands->delete_service_comment($id);
+                }
             }
         }
 
@@ -1522,38 +1501,7 @@ class API extends VS_Controller
         $this->output($configurations);
     }
 
-    /**
-     * Fetch all comments or only those of a certain type.
-     * Returns a flat array of comment objects.
-     *
-     * @param  string $type
-     */
-    public function comments($type = '') 
-    {
-        $allowed_types = array(
-            'hostcomment',
-            'servicecomment'
-        );
-
-        if( $type != '' )
-        {
-            if( ! in_array($type, $allowed_types) )
-            {
-                return $this->output(array());
-            }
-
-            $specific_comments = $this->nagios_data->get_collection($type)->get_index('host_name');
-            $comments = $this->comments_flatten($specific_comments);
-        } 
-        else
-        {
-            $host_comments = $this->nagios_data->get_collection('hostcomment')->get_index('host_name');
-            $service_comments = $this->nagios_data->get_collection('servicecomment')->get_index('host_name');
-            $comments = $this->comments_merge($host_comments, $service_comments);
-        }
-
-        $this->output($comments);
-    }
+    
     
     /**
      * Check if the service is allowed to remote control.
@@ -1714,5 +1662,4 @@ class API extends VS_Controller
 
 /* End of file api.php */
 /* Location: ./application/controllers/api.php */
-
 
