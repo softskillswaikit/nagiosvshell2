@@ -10,6 +10,8 @@ class System_commands extends CI_Model
 		parent::__construct();
 
 		$this->return_value = "";
+
+		date_default_timezone_set('UTC');
 	}
 
 	//Written by : Low Zhi Jian (UTAR)
@@ -1301,18 +1303,412 @@ class System_commands extends CI_Model
 		}
 	}
 
-	public function performance_info_commands()
+	public function get_return_array($return_type)
 	{
-		$this->return_value = shell_exec("/usr/local/nagios/bin/nagiostats -c /usr/local/nagios/etc/nagios.cfg");
+		//process info section
+		$process_obj = new StdClass();
+		$process_array = array();
 
-		$this->return_value = trim($this->return_value);
+		//performance info section
+		$performance_obj = new StdClass();
+		$parse_value = shell_exec("/usr/local/nagios/bin/nagiostats -c /usr/local/nagios/etc/nagios.cfg");
+
+		$parse_value = trim($parse_value);
 
 		//split using newline character
-		$return_array = preg_split("/\\r\\n|\\r|\\n/", $this->return_value);
+		$parse_array = preg_split("/\\r\\n|\\r|\\n/", $parse_value);
 
-		return $return_array;
+		if(strcmp($return_type, 'PROCESS') == 0)
+		{
+			//opening and get data from status.dat file
+			$status_file = fopen("/usr/local/nagios/var/status.dat", "r") or die("Unable to open file!");
+
+			//array counter 
+			$i = 0;
+
+			while(! feof($status_file) )
+			{
+				if($i >= 54)
+				{
+					break;
+				}
+
+				$process_array[$i] = trim(fgets($status_file));
+				$i++;
+			}
+
+			fclose($status_file);
+
+			//program veersion
+			list($version, $version_no) = explode('=', $process_array[9], 2);
+			$process_obj->$version = $version_no;
+
+			//program start time
+			list($start_time, $program_start_time) = explode('=', $process_array[21], 2);
+			$process_obj->$start_time = $program_start_time;
+
+			//total running time
+			list($run_time, $program_run_time) = explode(':', $parse_array[11], 2);
+			$process_obj->total_run_time = trim($program_run_time); 
+
+			//last log rotation
+			list($last_log, $last_log_rotation) = explode('=', $process_array[22], 2);
+			$process_obj->$last_log = $last_log_rotation;
+
+			//nagios PID
+			list($nagios_id, $nagios_pid) = explode('=', $process_array[19], 2);
+			$process_obj->$nagios_id = $nagios_pid;
+
+			//enable notification?
+			list($notification, $enable_notification) = explode('=', $process_array[23], 2);
+
+			if((int)$enable_notification)
+			{
+				$process_obj->$notification = 'YES';
+			}
+			else
+			{
+				$process_obj->$notification = 'NO';
+			}
+
+			//service check being executed?
+			list($service_check, $service_check_execute) = explode('=', $process_array[24], 2);
+
+			if((int)$service_check_execute)
+			{
+				$process_obj->$service_check = 'YES';
+			}
+			else
+			{
+				$process_obj->$service_check = 'NO';
+			}
+
+			//passive service check being accepted?
+			list($passive_service_check, $passive_service_check_accept) = explode('=', $process_array[25], 2);
+
+			if((int)$passive_service_check_accept)
+			{
+				$process_obj->$passive_service_check = 'YES';
+			}
+			else
+			{
+				$process_obj->$passive_service_check = 'NO';
+			}
+
+			//host check being executed?
+			list($host_check, $host_check_execute) = explode('=', $process_array[26], 2);
+
+			if((int)$host_check_execute)
+			{
+				$process_obj->$host_check = 'YES';
+			}
+			else
+			{
+				$process_obj->$host_check = 'NO';
+			}
+
+			//passive host check being accepted?
+			list($passive_host_check, $passive_host_check_accept) = explode('=', $process_array[27], 2);
+
+			if((int)$passive_host_check_accept)
+			{
+				$process_obj->$passive_host_check = 'YES';
+			}
+			else
+			{
+				$process_obj->$passive_host_check = 'NO';
+			}
+
+			//enable event handler?
+			list($event_handler, $event_handler_enable) = explode('=', $process_array[28], 2);
+
+			if((int)$event_handler_enable)
+			{
+				$process_obj->$event_handler = 'YES';
+			}
+			else
+			{
+				$process_obj->$event_handler = 'NO';
+			}
+
+			//obsessing over service?
+			list($obsess_service, $obsess_over_service) = explode('=', $process_array[29], 2);
+
+			if((int)$obsess_over_service)
+			{
+				$process_obj->$obsess_service = 'YES';
+			}
+			else
+			{
+				$process_obj->$obsess_service = 'NO';
+			}
+
+			//obsessing over host?
+			list($obsess_host, $obsess_over_host) = explode('=', $process_array[30], 2);
+
+			if((int)$obsess_over_host)
+			{
+				$process_obj->$obsess_host = 'YES';
+			}
+			else
+			{
+				$process_obj->$obsess_host = 'NO';
+			}
+
+			//enable flap detection?
+			list($flap_detection, $flap_detection_enable) = explode('=', $process_array[33], 2);
+
+			if((int)$flap_detection_enable)
+			{
+				$process_obj->$flap_detection = 'YES';
+			}
+			else
+			{
+				$process_obj->$flap_detection = 'NO';
+			}
+
+			//performance data being processed?
+			list($performance_data, $process_performance_data) = explode('=', $process_array[34], 2);
+
+			if((int)$process_performance_data)
+			{
+				$process_obj->$performance_data = 'YES';
+			}
+			else
+			{
+				$process_obj->$performance_data = 'NO';
+			}
+
+			foreach($process_obj as $items)
+			{
+				$items = json_encode($items);
+			}
+
+			return $process_obj;
+		}
+		//$return_type = 'PERFORMANCE'
+		else
+		{
+			//active service checked total
+			list($info1, $active_service_check_total) = explode(':', $parse_array[17], 2);
+			$performance_obj->active_service_checked_since_program_start = trim($active_service_check_total);
+
+			//active service checked last 1/5/15/60 min
+			list($info1, $active_service_check_duration) = explode(':', $parse_array[23], 2);
+			list($active_service_check_1, $active_service_check_5, $active_service_check_15, $active_service_check_60) = explode('/', $active_service_check_duration, 4);
+
+			$performance_obj->active_service_check_1 = trim($active_service_check_1);
+			$performance_obj->active_service_check_5 = trim($active_service_check_5);
+			$performance_obj->active_service_check_15 = trim($active_service_check_15);
+			$performance_obj->active_service_check_60 = trim($active_service_check_60);
+
+			//active service execution time
+			list($info1, $active_service_execution_time) = explode(':', $parse_array[21], 2);
+			$active_service_execution_time = trim($active_service_execution_time, 'sec');
+			list($active_service_execution_min, $active_service_execution_max, $active_service_execution_average) = explode('/', $active_service_execution_time, 3);
+
+			$performance_obj->active_service_execution_min = trim($active_service_execution_min).' sec';
+			$performance_obj->active_service_execution_max = trim($active_service_execution_max).' sec';
+			$performance_obj->active_service_execution_average = trim($active_service_execution_average).' sec';
+
+			//active service latency
+			list($info1, $active_service_latency) = explode(':', $parse_array[20], 2);
+			$active_service_latency = trim($active_service_latency, 'sec');
+			list($active_service_latency_min, $active_service_latency_max, $active_service_latency_average) = explode('/', $active_service_latency, 3);
+
+			$performance_obj->active_service_latency_min = trim($active_service_latency_min).' sec';
+			$performance_obj->active_service_latency_max = trim($active_service_latency_max).' sec';
+			$performance_obj->active_service_latency_average = trim($active_service_latency_average).' sec';
+
+			//active service percent state change
+			list($info1, $active_service_state_change) = explode(':', $parse_array[22], 2);
+			$active_service_state_change = trim($active_service_state_change, '%');
+			list($active_service_state_change_min, $active_service_state_change_max, $active_service_state_change_average) = explode('/', $active_service_state_change, 3);
+
+			$performance_obj->active_service_state_change_min = trim($active_service_state_change_min).' %';
+			$performance_obj->active_service_state_change_max = trim($active_service_state_change_max).' %';
+			$performance_obj->active_service_state_change_average = trim($active_service_state_change_average).' %';
+
+			//passive service checked total
+			list($info1, $passive_service_check_total) = explode(':', $parse_array[18], 2);
+			$performance_obj->passive_service_checked_since_program_start = trim($passive_service_check_total);
+
+			//passive service checked last 1/5/15/60 min
+			list($info1, $passive_service_check_duration) = explode(':', $parse_array[26], 2);
+			list($passive_service_check_1, $passive_service_check_5, $passive_service_check_15, $passive_service_check_60) = explode('/', $passive_service_check_duration, 4);
+
+			$performance_obj->passive_service_check_1 = trim($passive_service_check_1);
+			$performance_obj->passive_service_check_5 = trim($passive_service_check_5);
+			$performance_obj->passive_service_check_15 = trim($passive_service_check_15);
+			$performance_obj->passive_service_check_60 = trim($passive_service_check_60);
+
+			//passive service percent state change
+			list($info1, $passive_service_state_change) = explode(':', $parse_array[25], 2);
+			$passive_service_state_change = trim($passive_service_state_change, '%');
+			list($passive_service_state_change_min, $passive_service_state_change_max, $passive_service_state_change_average) = explode('/', $passive_service_state_change, 3);
+
+			$performance_obj->passive_service_state_change_min = trim($passive_service_state_change_min).' %';
+			$performance_obj->passive_service_state_change_max = trim($passive_service_state_change_max).' %';
+			$performance_obj->passive_service_state_change_average = trim($passive_service_state_change_average).' %';
+
+			//active host checked total
+			list($info1, $active_host_check_total) = explode(':', $parse_array[34], 2);
+			$performance_obj->active_host_checked_since_program_start = trim($active_host_check_total);
+
+			//active host checked last 1/5/15/60 min
+			list($info1, $active_host_check_duration) = explode(':', $parse_array[40], 2);
+			list($active_host_check_1, $active_host_check_5, $active_host_check_15, $active_host_check_60) = explode('/', $active_host_check_duration, 4);
+
+			$performance_obj->active_host_check_1 = trim($active_host_check_1);
+			$performance_obj->active_host_check_5 = trim($active_host_check_5);
+			$performance_obj->active_host_check_15 = trim($active_host_check_15);
+			$performance_obj->active_host_check_60 = trim($active_host_check_60);
+
+			//active host execution time
+			list($info1, $active_host_execution_time) = explode(':', $parse_array[38], 2);
+			$active_host_execution_time = trim($active_host_execution_time, 'sec');
+			list($active_host_execution_min, $active_host_execution_max, $active_host_execution_average) = explode('/', $active_host_execution_time, 3);
+
+			$performance_obj->active_host_execution_min = trim($active_host_execution_min).' sec';
+			$performance_obj->active_host_execution_max = trim($active_host_execution_max).' sec';
+			$performance_obj->active_host_execution_average = trim($active_host_execution_average).' sec';
+
+			//active host latency
+			list($info1, $active_host_latency) = explode(':', $parse_array[37], 2);
+			$active_host_latency = trim($active_host_latency, 'sec');
+			list($active_host_latency_min, $active_host_latency_max, $active_host_latency_average) = explode('/', $active_host_latency, 3);
+
+			$performance_obj->active_host_latency_min = trim($active_host_latency_min).' sec';
+			$performance_obj->active_host_latency_max = trim($active_host_latency_max).' sec';
+			$performance_obj->active_host_latency_average = trim($active_host_latency_average).' sec';
+
+			//active host percent state change
+			list($info1, $active_host_state_change) = explode(':', $parse_array[39], 2);
+			$active_host_state_change = trim($active_host_state_change, '%');
+			list($active_host_state_change_min, $active_host_state_change_max, $active_host_state_change_average) = explode('/', $active_host_state_change, 3);
+
+			$performance_obj->active_host_state_change_min = trim($active_host_state_change_min).' %';
+			$performance_obj->active_host_state_change_max = trim($active_host_state_change_max).' %';
+			$performance_obj->active_host_state_change_average = trim($active_host_state_change_average).' %';
+
+			//passive host checked total
+			list($info1, $passive_host_check_total) = explode(':', $parse_array[35], 2);
+			$performance_obj->passive_host_checked_since_program_start = trim($passive_host_check_total);
+
+			//passive host checked last 1/5/15/60 min
+			list($info1, $passive_host_check_duration) = explode(':', $parse_array[43], 2);
+			list($passive_host_check_1, $passive_host_check_5, $passive_host_check_15, $passive_host_check_60) = explode('/', $passive_host_check_duration, 4);
+
+			$performance_obj->passive_host_check_1 = trim($passive_host_check_1);
+			$performance_obj->passive_host_check_5 = trim($passive_host_check_5);
+			$performance_obj->passive_host_check_15 = trim($passive_host_check_15);
+			$performance_obj->passive_host_check_60 = trim($passive_host_check_60);
+
+			//passive host percent state change
+			list($info1, $passive_host_state_change) = explode(':', $parse_array[42], 2);
+			$passive_host_state_change = trim($passive_host_state_change, '%');
+			list($passive_host_state_change_min, $passive_host_state_change_max, $passive_host_state_change_average) = explode('/', $passive_host_state_change, 3);
+
+			$performance_obj->passive_host_state_change_min = trim($passive_host_state_change_min).' %';
+			$performance_obj->passive_host_state_change_max = trim($passive_host_state_change_max).' %';
+			$performance_obj->passive_host_state_change_average = trim($passive_host_state_change_average).' %';
+
+			//active scheduled host checks
+			list($info1, $active_schedule_host_check) = explode(':', $parse_array[49], 2);
+			list($active_schedule_host_check_1, $active_schedule_host_check_5, $active_schedule_host_check_15) = explode('/', $active_schedule_host_check, 3);
+
+			$performance_obj->active_schedule_host_check_1 = trim($active_schedule_host_check_1);
+			$performance_obj->active_schedule_host_check_5 = trim($active_schedule_host_check_5);
+			$performance_obj->active_schedule_host_check_15 = trim($active_schedule_host_check_15);
+
+			//active on-demand host checks
+			list($info1, $active_ondemand_host_check) = explode(':', $parse_array[50], 2);
+			list($active_ondemand_host_check_1, $active_ondemand_host_check_5, $active_ondemand_host_check_15) = explode('/', $active_ondemand_host_check, 3);
+
+			$performance_obj->active_ondemand_host_check_1 = trim($active_ondemand_host_check_1);
+			$performance_obj->active_ondemand_host_check_5 = trim($active_ondemand_host_check_5);
+			$performance_obj->active_ondemand_host_check_15 = trim($active_ondemand_host_check_15);
+
+			//parallel host checks
+			list($info1, $parallel_host_check) = explode(':', $parse_array[51], 2);
+			list($parallel_host_check_1, $parallel_host_check_5, $parallel_host_check_15) = explode('/', $parallel_host_check, 3);
+
+			$performance_obj->parallel_host_check_1 = trim($parallel_host_check_1);
+			$performance_obj->parallel_host_check_5 = trim($parallel_host_check_5);
+			$performance_obj->parallel_host_check_15 = trim($parallel_host_check_15);
+
+			//serial host checks
+			list($info1, $serial_host_check) = explode(':', $parse_array[52], 2);
+			list($serial_host_check_1, $serial_host_check_5, $serial_host_check_15) = explode('/', $serial_host_check, 3);
+
+			$performance_obj->serial_host_check_1 = trim($serial_host_check_1);
+			$performance_obj->serial_host_check_5 = trim($serial_host_check_5);
+			$performance_obj->serial_host_check_15 = trim($serial_host_check_15);
+
+			//cached host checks
+			list($info1, $cached_host_check) = explode(':', $parse_array[53], 2);
+			list($cached_host_check_1, $cached_host_check_5, $cached_host_check_15) = explode('/', $cached_host_check, 3);
+
+			$performance_obj->cached_host_check_1 = trim($cached_host_check_1);
+			$performance_obj->cached_host_check_5 = trim($cached_host_check_5);
+			$performance_obj->cached_host_check_15 = trim($cached_host_check_15);
+
+			//passive host checks
+			list($info1, $passive_host_check_last) = explode(':', $parse_array[54], 2);
+			list($passive_host_check_last_1, $passive_host_check_last_5, $passive_host_check_last_15) = explode('/', $passive_host_check_last, 3);
+
+			$performance_obj->passive_host_check_last_1 = trim($passive_host_check_last_1);
+			$performance_obj->passive_host_check_last_5 = trim($passive_host_check_last_5);
+			$performance_obj->passive_host_check_last_15 = trim($passive_host_check_last_15);
+
+			//active scheduled service checks
+			list($info1, $active_schedule_service_check) = explode(':', $parse_array[56], 2);
+			list($active_schedule_service_check_1, $active_schedule_service_check_5, $active_schedule_service_check_15) = explode('/', $active_schedule_service_check, 3);
+
+			$performance_obj->active_schedule_service_check_1 = trim($active_schedule_service_check_1);
+			$performance_obj->active_schedule_service_check_5 = trim($active_schedule_service_check_5);
+			$performance_obj->active_schedule_service_check_15 = trim($active_schedule_service_check_15);
+
+			//active on-demand service checks
+			list($info1, $active_ondemand_service_check) = explode(':', $parse_array[57], 2);
+			list($active_ondemand_service_check_1, $active_ondemand_service_check_5, $active_ondemand_service_check_15) = explode('/', $active_ondemand_service_check, 3);
+
+			$performance_obj->active_ondemand_service_check_1 = trim($active_ondemand_service_check_1);
+			$performance_obj->active_ondemand_service_check_5 = trim($active_ondemand_service_check_5);
+			$performance_obj->active_ondemand_service_check_15 = trim($active_ondemand_service_check_15);
+
+			//cached service checks
+			list($info1, $cached_service_check) = explode(':', $parse_array[58], 2);
+			list($cached_service_check_1, $cached_service_check_5, $cached_service_check_15) = explode('/', $cached_service_check, 3);
+
+			$performance_obj->cached_service_check_1 = trim($cached_service_check_1);
+			$performance_obj->cached_service_check_5 = trim($cached_service_check_5);
+			$performance_obj->cached_service_check_15 = trim($cached_service_check_15);
+
+			//passive service checks
+			list($info1, $passive_service_check_last) = explode(':', $parse_array[59], 2);
+			list($passive_service_check_last_1, $passive_service_check_last_5, $passive_service_check_last_15) = explode('/', $passive_service_check_last, 3);
+
+			$performance_obj->passive_service_check_last_1 = trim($passive_service_check_last_1);
+			$performance_obj->passive_service_check_last_5 = trim($passive_service_check_last_5);
+			$performance_obj->passive_service_check_last_15 = trim($passive_service_check_last_15);
+
+			//external commands
+			list($info1, $external_commands_last) = explode(':', $parse_array[61], 2);
+			list($external_commands_last_1, $external_commands_last_5, $external_commands_last_15) = explode('/', $external_commands_last, 3);
+
+			$performance_obj->external_commands_last_1 = trim($external_commands_last_1);
+			$performance_obj->external_commands_last_5 = trim($external_commands_last_5);
+			$performance_obj->external_commands_last_15 = trim($external_commands_last_15);
+
+			foreach($performance_obj as $data)
+			{
+				$data = json_encode($data);
+			}
+
+			return $performance_obj;
+		}
 	}
-
 
 
 

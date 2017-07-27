@@ -24,6 +24,8 @@ class Reports_data extends CI_Model
 	{
 		parent::__construct();
 
+		date_default_timezone_set('UTC');
+
 		$this->_get_nagios_log();
 		$this->_get_archives_log();
 		$this->_insert_data();

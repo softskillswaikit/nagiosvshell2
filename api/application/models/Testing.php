@@ -37,6 +37,7 @@ class Testing extends CI_Model
 		$type = $input_type;
 		//$type = 'host';
 		//$type = 'svc';
+		if($type )
 
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
