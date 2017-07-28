@@ -459,9 +459,12 @@ class API extends VS_Controller
      *
      * @param String $date
      */
-    public function alerthistory()
+    public function alerthistory($date)
     {
-        $AlertHistory = $this->alert_history_data->get_history_data();
+        if(!empty($date) && strlen($date) == 10)
+        {
+            $AlertHistory = $this->alert_history_data->get_history_data();
+        }
 
         $this->output($AlertHistory);
     }
