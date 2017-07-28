@@ -967,6 +967,16 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
         width: 100%;
     }
 
+    .table-container table.righttd {
+        background: #fff;
+        border: none;
+        font-size: 12px;
+        line-height: 16px;
+        margin: 0px 0px 0px 0px;
+        text-align: left;
+        width: 100%;
+    }
+
     .table-container th {
         border-bottom: 1px solid #f2f2f2;
         color: #333;
@@ -987,6 +997,9 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
         .table-container.full-width th:first-child,
         .table-container.full-width td:first-child {
             padding-left: 40px;
+        }
+        .table-container.full-width.nopadding td:first-child {
+            padding-left: 9px;
         }
 
         .table-container.full-width th:last-child,

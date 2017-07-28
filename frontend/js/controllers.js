@@ -618,135 +618,129 @@ angular.module('vshell.controllers', [])
               ];
 */
 
+          $scope.testdata=[
+          {
+              host:"app_server",
+              data:[
+                {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
+                {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
+              ]
+            },
+            {
+              host:"localhost",
+              data:[
+                {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
+                {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
+              ]
+            }
+          ];
+
+          //data for event log(host-one service-one)
+          $scope.report3=[
+            {
+                0:"07-17-2017 00:00:00",
+                1:"07-18-2017 00:00:00",
+                2:"1d 0h 0m 0s",
+                3:"SERVICE OK (HARD)",
+                4:"c:\ - total: 23.66 Gb - used: 16.59 Gb (70%) - free 7.06 Gb (30%)"
+            },
+            {
+              0:"07-17-2017 00:00:00",
+              1:"07-18-2017 00:00:00",
+              2:"1d 0h 0m 0s",
+              3:"SERVICE OK (HARD)",
+              4:"c:\ - total: 23.66 Gb - used: 16.59 Gb (70%) - free 7.06 Gb (30%)"
+            },
+            {
+              0:"07-17-2017 00:00:00",
+              1:"07-18-2017 00:00:00",
+              2:"1d 0h 0m 0s",
+              3:"SERVICE OK (HARD)",
+              4:"c:\ - total: 23.66 Gb - used: 16.59 Gb (70%) - free 7.06 Gb (30%)"
+            }
+          ];
+          //data for host-one service-one
+          $scope.report2=[
+          {
+              host:"app_server",
+              data:[
+                {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
+                {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
+              ]
+            },
+            {
+              host:"localhost",
+              data:[
+                {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
+                {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
+              ]
+            }
+          ];
             //data for one host/one service
-              $scope.reports1 =  [
-                {
-                  state : "OK",
-                  type : [
-                    {
-                      label:"Unscheduled",
-                      time: "7d 0h 0m 0s",
-                      totaltime_percent: "100.00",
-                      knowntime_percent: "100.00"
-                    },
-                    {
-                      label:"Scheduled",
-                      time: "0d 0h 0m 0s",
-                      totaltime_percent: "0.00",
-                      knowntime_percent: "0.00"
-                    },
-                    {
-                      label:"Total",
-                      time: "7d 0h 0m 0s",
-                      totaltime_percent: "100.00",
-                      knowntime_percent: "100.00"
-                    }
-                  ]
-                },
-                {
-                  state : "WARNING",
-                  type : [
-                    {
-                      label:"Unscheduled",
-                      time: "0d 0h 0m 0s",
-                      totaltime_percent: "0.00",
-                      knowntime_percent: "0.00"
-                    },
-                    {
-                      label:"Scheduled",
-                      time: "0d 0h 0m 0s",
-                      totaltime_percent: "0.00",
-                      knowntime_percent: "0.00"
-                    },
-                    {
-                      label:"Total",
-                      time: "7d 0h 0m 0s",
-                      totaltime_percent: "100.00",
-                      knowntime_percent: "100.00"
-                    }
-                  ]
-                },
-                {
-                  state : "UNKNOWN",
-                  type : [
-                    {
-                      label:"Unscheduled",
-                      time: "0d 0h 0m 0s",
-                      totaltime_percent: "0.00",
-                      knowntime_percent: "0.00"
-                    },
-                    {
-                      label:"Scheduled",
-                      time: "0d 0h 0m 0s",
-                      totaltime_percent: "0.00",
-                      knowntime_percent: "0.00"
-                    },
-                    {
-                      label:"Total",
-                      time: "7d 0h 0m 0s",
-                      totaltime_percent: "100.00",
-                      knowntime_percent: "100.00"
-                    }
-                  ]
-                },
-                {
-                  state : "CRITICAL",
-                  type : [
-                    {
-                      label:"Unscheduled",
-                      time: "0d 0h 0m 0s",
-                      totaltime_percent: "0.00",
-                      knowntime_percent: "0.00"
-                    },
-                    {
-                      label:"Scheduled",
-                      time: "0d 0h 0m 0s",
-                      totaltime_percent: "0.00",
-                      knowntime_percent: "0.00"
-                    },
-                    {
-                      label:"Total",
-                      time: "7d 0h 0m 0s",
-                      totaltime_percent: "100.00",
-                      knowntime_percent: "100.00"
-                    }
-                  ]
-                },
-                {
-                  state : "PENDING",
-                  type : [
-                    {
-                      label:"Nagios Not Running",
-                      time: "0d 0h 0m 0s",
-                      totaltime_percent: "0.00",
-                      knowntime_percent: "0.00"
-                    },
-                    {
-                      label:"insufficient Data",
-                      time: "0d 0h 0m 0s",
-                      totaltime_percent: "0.00",
-                      knowntime_percent: "0.00"
-                    },
-                    {
-                      label:"Total",
-                      time: "7d 0h 0m 0s",
-                      totaltime_percent: "100.00",
-                      knowntime_percent: "100.00"
-                    }
-                  ]
-                },
-                {
-                  state : "ALL",
-                  type : [
-                    {
-                      label:"Total",
-                      time: "7d 0h 0m 0s",
-                      totaltime_percent: "100.00",
-                      knowntime_percent: "100.00"
-                    }
-                  ]
-                }
-              ];
+              $scope.reports1 = [
+                  {
+                    state:"OK",
+                    data:[
+                      {0:"Unscheduled", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"},
+                      {0:"Scheduled", 1:"0d 0h 0m 0s", 2:"1.00", 3:"2.00"},
+                      {0:"Total", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"}
+                    ]
+                  },
+                  {
+                    state: "WARNING",
+                    data:[
+                      {0:"Unscheduled", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"},
+                      {0:"Scheduled", 1:"0d 0h 0m 0s", 2:"1.00", 3:"2.00"},
+                      {0:"Total", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"}
+                    ]
+                  },
+                  {
+                    state:"UNKNOWN",
+                    data:[
+                      {0:"Unscheduled", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"},
+                      {0:"Scheduled", 1:"0d 0h 0m 0s", 2:"1.00", 3:"2.00"},
+                      {0:"Total", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"}
+                    ]
+                  },
+                  {
+                    state: "PENDING",
+                    data:[
+                      {0:"Nagios Not Running", 1: "0d 0h 0m 0s", 2: "0.00", 3: "0.00"},
+                      {0:"insufficient Data", 1: "0d 0h 0m 0s", 2: "0.00", 3: "0.00"},
+                      {0:"Total", 1: "7d 0h 0m 0s", 2: "100.00", 3: "100.00"}
+                    ]
+                  },
+                  {
+                    state:"ALL",
+                    data:[
+                      {0:"Total", 1: "7d 0h 0m 0s", 2: "100.00", 3: "100.00"}
+                    ]
+                  }
+                ];
+
+            //data for hostgroup/servicegroup
+                $scope.reports=[
+                  {
+                    hostgroup:"linux_servers",
+                    data:[
+                      {0:"localhost",1:"0.00",2:"0.00",3:"0.00",4:"0.00"}
+                    ]
+                  },
+                  {
+                    hostgroup:"windows-servers",
+                    data:[
+                      {0:"app_server",1:"0.00",2:"0.00",3:"0.00",4:"0.00"},
+                      {0:"web_server",1:"0.00",2:"0.00",3:"0.00",4:"0.00"}
+                    ]
+                  }
+                ];
+
+            //data for host-all
+            $scope.hostall=[
+              {0:"localhost",1:"0.00",2:"0.00",3:"0.00",4:"0.00"},
+              {0:"app_server",1:"0.00",2:"0.00",3:"0.00",4:"0.00"},
+              {0:"web_server",1:"0.00",2:"0.00",3:"0.00",4:"0.00"}
+            ];
 
       };
 
