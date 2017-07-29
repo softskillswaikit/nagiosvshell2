@@ -119,7 +119,6 @@ $autoload['language'] = array();
 //require_once('/var/www/html/nagiosvshell/www/application/models/Service.php');
 
 $autoload['model'] = array(
-
 	'cache_or_disk',
 	'nagios_data',
 	'nagios_group',

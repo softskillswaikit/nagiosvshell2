@@ -16,103 +16,311 @@ class Reports_data extends CI_Model
 	protected $_notifications_array = array();
 
 	//array that store return data for each component under Reports section
-	protected $availability_array = array();
-	protected $trends_array = array();
-	protected $alert_history_array = array();
-	protected $alert_summary_array = array();
-	protected $alert_histogram_array = array();
-	protected $notification_array = array();
-	protected $event_array = array();
+	protected $return_array = array();
+	protected $temp_array = array();
 
 	//constructor
 	public function __construct()
 	{
 		parent::__construct();
 
+		date_default_timezone_set('UTC');
+
 		$this->_get_nagios_log();
 		$this->_get_archives_log();
 		$this->_insert_data();
+
+		if(!empty($this->return_array))
+		{
+			unset($this->return_array);
+		}
 	}
 
 	//Written by Low Zhi Jian
 	//Functions to be called by web service
-	public function get_availability()
+	//Availability section
+	public function get_availability($return_type, $input_period, $input_date, $input_host_service, $assume_initial_state, $assume_state_retention, $assume_state_during_downtime, $include_soft_state, $first_assume_host_state, $first_assume_service_state, $backtrack_archive)
 	{
-		$this->availability_array = $this->parse_log($this->_alert_array, 'alert');
+		$availability_array = array();
 
-		//encode the data into JSON format
-		foreach($this->availability_array as $items)
-		{
-			$items = json_encode($items);
-		}
-
-		return $this->availability_array;
-	}
-
-	public function get_trend()
-	{
-		$this->trends_array = $this->parse_log($this->_alert_array, 'alert');
-
-		//encode the data into JSON format
-		foreach($this->trends_array as $items)
-		{
-			$items = json_encode($items);
-		}
-
-		return $this->trends_array;
-	}
-
-	public function get_history_data()
-	{
-		$this->alert_history_array = $this->parse_log($this->_alert_array, 'alert');
-
-		//encode the data into JSON format
-		foreach($this->alert_history_array as $items)
-		{
-			$items = json_encode($items);
-		}
-
-		return $this->alert_history_array;
-	}
-
-	public function get_alert_summary($summary_type = 'NORMAL', $input_date, $input_host, $input_logtype, $input_state_type, $input_state, $maxitem=NULL)
-	{
-		//temporary array
-		$temp_array = array();
+		//array counter 
 		$i = 0;
 
-		$this->alert_summary_array = $this->parse_log($this->_alert_array, 'alert');
+		$this->temp_array = $this->parse_log($this->_alert_array, 'alert');
 
-		//filter the array based on request
-		foreach($this->alert_summary_array as $items)
+		if(is_array($input_date))
 		{
-			//custom report option
-			//compare date
-			if($this->compare_date($input_date, $items->datetime))
+			$start_date_string = date('Y-m-d', (int)$input_date[0]);
+			$modified_start_date = $start_date_string.' 00-00-00';
+			$start_date_obj = DateTime::createFromFormat('Y-m-d H-i-s', $modified_start_date);
+
+			$start_date = $start_date_obj->getTimestamp();
+		}
+		else
+		{
+			$start_date = $this->get_date($input_period, $input_date);
+		}
+
+		//filter the data into $return_array based on request
+		if(is_array($input_host_service))
+		{
+			for($j = 0; $j < count($input_host_service); $j++)
 			{
-				//compare hostname
-				if($this->compare_string($input_host, $items->hostname))
+				//filter the array based on request
+				foreach($this->temp_array as $items)
 				{
-					//compare logtype
-					if($this->compare_string($input_logtype, $items->logtype))
+					//custom report option
+					//compare date
+					if($this->compare_date($input_period, $input_date, $items->datetime))
 					{
-						//compare state_type
-						if($this->compare_string($input_state_type, $items->state_type))
+						//compare hostname or servicename based on different input
+						if($this->compare_string($input_host_service[$j], $items->hostname) or $this->compare_string($input_host_service[$j], $items->servicename))
 						{
-							//compare state
-							if($this->compare_string($input_state, $items->state))
-							{		
-								if(!empty($maxitem))
-								{				
-									if($i === $maxitem)
-									{
-										break;
+							$availability_array[$i] = $items;
+
+							$i++;
+						}
+					}
+				}
+			}
+		}
+		else
+		{
+			//filter the array based on request
+			foreach($this->temp_array as $items)
+			{
+				//custom report option
+				//compare date
+				if($this->compare_date($input_period, $input_date, $items->datetime))
+				{
+					//compare hostname or servicename based on different input
+					if($this->compare_string($input_host_service[$j], $items->hostname) or $this->compare_string($input_host_service[$j], $items->servicename))
+					{
+						$availability_array[$i] = $items;
+
+						$i++;
+					}
+				}
+			}
+		}
+
+		
+		$return_obj = new StdCLass();
+		$state_breakdown = new StdClass();
+		$service_obj = new StdClass();
+		$event_info = new StdClass();
+
+		//array counter 
+		$count = 0;
+
+		foreach($availability_array as $data)
+		{
+			if(!empty($return_array))
+			{
+
+			}
+			else
+			{
+				//for all host and hostgroup
+				//$return_type can also be 'ALL HOST'
+				if($this->compare_string($return_type, 'HOSTGROUP')) 
+				{
+					$return_obj->hostname = $data->hostname;
+					$return_obj->time_up = 0;
+					$return_obj->time_down = 0;
+					$return_obj->time_unreachable = 0;
+					$return_obj->time_undetermined = 0;
+
+					$return_array[$count] = $return_obj;
+					$count++;
+
+					unset($return_obj);
+				}
+				//for servicegroup
+				else if($this->compare_string($return_type, 'SERVICEGROUP'))
+				{
+					$return_obj->hostname = $data->hostname;
+					$return_obj->servicename = $data->servicename;
+					$return_obj->time_up = 0;
+					$return_obj->time_down = 0;
+					$return_obj->time_unreachable = 0;
+					$return_obj->time_undetermined = 0;
+					$return_obj->time_ok = 0;
+					$return_obj->time_warning = 0;
+					$return_obj->time_unknown = 0;
+					$return_obj->time_critical = 0;
+					$return_obj->time_undetermined = 0;
+
+					$return_array[$count] = $return_obj;
+					$count++;
+
+					unset($return_obj);
+				}
+				//for all service
+				else if($this->compare_string($return_type, 'ALL SERVICE'))
+				{
+					$return_obj->hostname = $data->hostname;
+					$return_obj->servicename = $data->servicename;
+					$return_obj->time_ok = 0;
+					$return_obj->time_warning = 0;
+					$return_obj->time_unknown = 0;
+					$return_obj->time_critical = 0;
+					$return_obj->time_undetermined = 0;
+
+					$return_array[$count] = $return_obj;
+					$count++;
+
+					unset($return_obj);
+				}
+				//for individual host
+				else if($this->compare_string($return_type, 'HOST'))
+				{
+					//$state_breakdown->state = $data->state;
+
+					$service_obj->hostname = $data->hostname;
+					$service_obj->servicename = $data->servicename;
+					$service_obj->time_ok = 0;
+					$service_obj->time_warning = 0;
+					$service_obj->time_unknown = 0;
+					$service_obj->time_critical = 0;
+					$service_obj->time_undetermined = 0;
+
+					$event_info->
+
+					$return_array[$count] = $return_obj;
+					$count++;
+
+					unset($return_obj);
+				}
+				//for individual service
+				//if($this->compare_string($return_type, 'SERVICE'))
+				else
+				{
+					$return_array[$count] = $return_obj;
+					$count++;
+
+					unset($return_obj);
+				}
+			}
+		}
+
+		foreach($this->return_array as $alerts)
+		{
+			//encode the $this->return_array after filter into JSON format
+			$alerts = json_encode($alerts);
+		}
+
+		return $this->return_array;
+	}
+
+	//Trends section
+	public function get_trend()
+	{
+		$this->return_array = $this->parse_log($this->_alert_array, 'alert');
+
+		//encode the data into JSON format
+		foreach($this->return_array as $items)
+		{
+			$items = json_encode($items);
+		}
+
+		return $this->return_array;
+	}
+
+	//Alert History section
+	public function get_history_data($input_date)
+	{
+		//array counter
+		$i = 0;
+
+		$this->return_array = $this->parse_log($this->_alert_array, 'alert');
+
+		//encode the data into JSON format
+		//also filter the data by date
+		foreach($this->return_array as $items)
+		{
+			if($this->compare_date('TODAY', $input_date, $items->datetime))
+			{
+				$this->temp_array[$i] = $items;
+				$items = json_encode($items);
+
+				$i++;
+			}
+		}
+
+		$this->return_array = $this->temp_array;
+
+		return $this->return_array;
+	}
+
+	//Alert Summary section
+	public function get_alert_summary($return_type, $input_period, $input_date, $input_host_service, $input_logtype, $input_state_type, $input_state)
+	{
+		//array counter
+		$i = 0;
+
+		$this->temp_array = $this->parse_log($this->_alert_array, 'alert');
+
+		//filter the data into $return_array based on request
+		if(is_array($input_host_service))
+		{
+			for($j = 0; $j < count($input_host_service); $j++)
+			{
+				//filter the array based on request
+				foreach($this->temp_array as $items)
+				{
+					//custom report option
+					//compare date
+					if($this->compare_date($input_period, $input_date, $items->datetime))
+					{
+						//compare hostname or servicename based on different input
+						if($this->compare_string($input_host_service[$j], $items->hostname) or $this->compare_string($input_host_service[$j], $items->servicename))
+						{
+							//compare logtype
+							if($this->compare_string($input_logtype, $items->logtype))
+							{
+								//compare state_type
+								if($this->compare_string($input_state_type, $items->state_type))
+								{
+									//compare state
+									if($this->compare_string($input_state, $items->state))
+									{		
+										$this->return_array[$i] = $items;
+
+										$i++;	
 									}
 								}
+							}
+						}
+					}
+				}
+			}
+		}
+		else
+		{
+			//filter the array based on request
+			foreach($this->temp_array as $items)
+			{
+				//custom report option
+				//compare date
+				if($this->compare_date($input_period, $input_date, $items->datetime))
+				{
+					//compare hostname or servicename based on different input
+					if($this->compare_string($input_host_service, $items->hostname) or $this->compare_string($input_host_service, $items->servicename))
+					{
+						//compare logtype
+						if($this->compare_string($input_logtype, $items->logtype))
+						{
+							//compare state_type
+							if($this->compare_string($input_state_type, $items->state_type))
+							{
+								//compare state
+								if($this->compare_string($input_state, $items->state))
+								{		
+									$this->return_array[$i] = $items;
 
-								$temp_array[$i] = $items;
-
-								$i++;	
+									$i++;	
+								}
 							}
 						}
 					}
@@ -120,160 +328,488 @@ class Reports_data extends CI_Model
 			}
 		}
 
-		$this->alert_summary_array = $temp_array;
-
-		//find alert totals for alert summary section
-		$alert_totals = 0;
-		$alert_host_up = 0;
-		$alert_host_down = 0;
-		$alert_host_unreachable = 0;
-		$alert_host_pending = 0;
-		$alert_service_ok = 0;
-		$alert_service_warning = 0;
-		$alert_service_unknown = 0;
-		$alert_service_critical = 0;
-		$alert_service_pending = 0;
-
-		$alert_obj = new StdCLass();
-
-		foreach($this->alert_summary_array as $alerts)
+		//$return_type = 'TOP_PRODUCER' section
+		if($this->compare_string($return_type, 'TOP_PRODUCER'))
 		{
-			$alert_totals++;
+			$producer_array = array();
+			$producer_obj = new StdCLass();
 
-			if(strcmp($alerts->state, 'UP') == 0)
+			//array counter
+			$i = 0;
+
+			foreach($this->return_array as $alert_producer)
 			{
-				$alert_host_up++;
-			}
-			else if(strcmp($alerts->state, 'DOWN') == 0)
-			{
-				$alert_host_down++;
-			}
-			else if(strcmp($alerts->state, 'UNREACHABLE') == 0)
-			{
-				$alert_host_unreachable++;
-			}
-			else if(strcmp($alerts->state, 'OK') == 0)
-			{
-				$alert_service_ok++;
-			}
-			else if(strcmp($alerts->state, 'WARNING') == 0)
-			{
-				$alert_service_warning++;
-			}
-			else if(strcmp($alerts->state, 'UNKNOWN') == 0)
-			{
-				$alert_service_unknown++;
-			}
-			else if(strcmp($alerts->state, 'CRITICAL') == 0)
-			{
-				$alert_service_critical++;
-			}
-			//$alert->state = PENDING
-			else 
-			{
-				//for HOST ALERT, the servicename is NULL
-				if(empty($alerts->servicename))
+				if(!empty($producer_array))
 				{
-					$alert_host_pending++;
+					for($k = 0; $k < count($producer_array); $k++)
+					{
+						if($this->compare_string($alert_producer->hostname, $producer->hostname) && $this->compare_string($alert_producer->servicename, $producer->servicename))
+						{
+							$producer_array[$k]->total_alert++;
+						}
+						else
+						{
+							$producer_obj->logtype = $alert_producer->logtype;
+							$producer_obj->hostname = $alert_producer->hostname;
+							$producer_obj->servicename = $alert_producer->servicename;
+							$producer_obj->total_alert = 1;
+
+							$producer_array[$i] = $producer_obj;
+							$i++;
+
+							unset($producer_obj);
+						}
+					}
 				}
 				else
 				{
-					$alert_service_pending++;
+					$producer_obj->logtype = $alert_producer->logtype;
+					$producer_obj->hostname = $alert_producer->hostname;
+					$producer_obj->servicename = $alert_producer->servicename;
+					$producer_obj->total_alert = 1;
+
+					$producer_array[$i] = $producer_obj;
+					$i++;
+
+					unset($producer_obj);
 				}
 			}
 
-			//encode the $this->alert_summary_array after filter into JSON format
-			$alerts = json_encode($alerts);
+			foreach($producer_array as $producers)
+			{
+				$producers = json_encode($producers);
+			}
+
+			return $producer_array;
 		}
-
-		$alert_obj->alert_totals = $alert_totals;
-		$alert_obj->alert_host_up = $alert_host_up;
-		$alert_obj->alert_host_down = $alert_host_down;
-		$alert_obj->alert_host_unreachable = $alert_host_unreachable;
-		$alert_obj->alert_host_pending = $alert_host_pending;
-		$alert_obj->alert_service_ok = $alert_service_ok;
-		$alert_obj->alert_service_warning = $alert_service_warning;
-		$alert_obj->alert_service_unknown = $alert_service_unknown;
-		$alert_obj->alert_service_critical = $alert_service_critical;
-		$alert_obj->alert_service_pending = $alert_service_pending;
-
-		$json_alert_obj = json_encode($alert_obj);
-		unset($alert_obj);
-
-		if($this->compare_string($summary_type, 'NORMAL'))
+		//$return_type = 'ALERT_TOTAL' section
+		//find alert totals for alert summary section
+		else if($this->compare_string($return_type, 'ALERT_TOTAL'))
 		{
-			return $this->alert_summary_array;
+			$alert_totals = 0;
+			$alert_host_up_total = 0;
+			$alert_host_up_soft = 0;
+			$alert_host_up_hard = 0;
+			$alert_host_down_total = 0;
+			$alert_host_down_soft = 0;
+			$alert_host_down_hard = 0;
+			$alert_host_unreachable_total = 0;
+			$alert_host_unreachable_soft = 0;
+			$alert_host_unreachable_hard = 0;
+			$alert_host_pending_total = 0;
+			$alert_host_pending_soft = 0;
+			$alert_host_pending_hard = 0;
+			$alert_service_ok_total = 0;
+			$alert_service_ok_soft = 0;
+			$alert_service_ok_hard = 0;
+			$alert_service_warning_total = 0;
+			$alert_service_warning_soft = 0;
+			$alert_service_warning_hard = 0;
+			$alert_service_unknown_total = 0;
+			$alert_service_unknown_soft = 0;
+			$alert_service_unknown_hard = 0;
+			$alert_service_critical_total = 0;
+			$alert_service_critical_soft = 0;
+			$alert_service_critical_hard = 0;
+			$alert_service_pending_total = 0;
+			$alert_service_pending_soft = 0;
+			$alert_service_pending_hard = 0;
+
+			$alert_obj = new StdCLass();
+
+			$alert_obj_array = array();
+
+			if(is_array($input_host_service))
+			{
+				for($i = 0; $i < count($input_host_service); $i++)
+				{
+					foreach($this->return_array as $alerts)
+					{
+						if($this->compare_string($input_host_service[$i], $alerts->hostname) or $this->compare_string($input_host_service[$i], $alerts->servicename))
+						{
+							$alert_totals++;
+
+							if($this->compare_string($alerts->state_type, 'SOFT'))
+							{
+								if($this->compare_string($alerts->state, 'UP'))
+								{
+									$alert_host_up_total++;
+									$alert_host_up_soft++;
+								}
+								else if($this->compare_string($alerts->state, 'DOWN'))
+								{
+									$alert_host_down_total++;
+									$alert_host_down_soft++;
+								}
+								else if($this->compare_string($alerts->state, 'UNREACHABLE'))
+								{
+									$alert_host_unreachable_total++;
+									$alert_host_unreachable_soft++;
+								}
+								else if($this->compare_string($alerts->state, 'OK'))
+								{
+									$alert_service_ok_total++;
+									$alert_service_ok_soft++;
+								}
+								else if($this->compare_string($alerts->state, 'WARNING'))
+								{
+									$alert_service_warning_total++;
+									$alert_service_warning_soft++;
+								}
+								else if($this->compare_string($alerts->state, 'UNKNOWN'))
+								{
+									$alert_service_unknown_total++;
+									$alert_service_unknown_soft++;
+								}
+								else if($this->compare_string($alerts->state, 'CRITICAL'))
+								{
+									$alert_service_critical_total++;
+									$alert_service_critical_soft++;
+								}
+								//$alert->state = PENDING
+								else 
+								{
+									//for HOST ALERT, the servicename is NULL
+									if(empty($alerts->servicename))
+									{
+										$alert_host_pending_total++;
+										$alert_host_pending_soft++;
+									}
+									else
+									{
+										$alert_service_pending_total++;
+										$alert_service_pending_soft++;
+									}
+								}
+							}
+							//$this->compare_string($alerts->state_type, 'HARD') = true
+							else
+							{
+								if($this->compare_string($alerts->state, 'UP'))
+								{
+									$alert_host_up_total++;
+									$alert_host_up_hard++;
+								}
+								else if($this->compare_string($alerts->state, 'DOWN'))
+								{
+									$alert_host_down_total++;
+									$alert_host_down_hard++;
+								}
+								else if($this->compare_string($alerts->state, 'UNREACHABLE'))
+								{
+									$alert_host_unreachable_total++;
+									$alert_host_unreachable_hard++;
+								}
+								else if($this->compare_string($alerts->state, 'OK'))
+								{
+									$alert_service_ok_total++;
+									$alert_service_ok_hard++;
+								}
+								else if($this->compare_string($alerts->state, 'WARNING'))
+								{
+									$alert_service_warning_total++;
+									$alert_service_warning_hard++;
+								}
+								else if($this->compare_string($alerts->state, 'UNKNOWN'))
+								{
+									$alert_service_unknown_total++;
+									$alert_service_unknown_hard++;
+								}
+								else if($this->compare_string($alerts->state, 'CRITICAL'))
+								{
+									$alert_service_critical_total++;
+									$alert_service_critical_hard++;
+								}
+								//$alert->state = PENDING
+								else 
+								{
+									//for HOST ALERT, the servicename is NULL
+									if(empty($alerts->servicename))
+									{
+										$alert_host_pending_total++;
+										$alert_host_pending_hard++;
+									}
+									else
+									{
+										$alert_service_pending_total++;
+										$alert_service_pending_hard++;
+									}
+								}
+							}
+
+							$alert_obj->hostname = $alerts->hostname;
+							$alert_obj->servicename = $alerts->servicename;
+							$alert_obj->alert_totals = $alert_totals;
+							$alert_obj->alert_host_up_total = $alert_host_up_total;
+							$alert_obj->alert_host_up_soft = $alert_host_up_soft;
+							$alert_obj->alert_host_up_hard = $alert_host_up_hard;
+							$alert_obj->alert_host_down_total = $alert_host_down_total;
+							$alert_obj->alert_host_down_soft = $alert_host_down_soft;
+							$alert_obj->alert_host_down_hard = $alert_host_down_hard;
+							$alert_obj->alert_host_unreachable_total = $alert_host_unreachable_total;
+							$alert_obj->alert_host_unreachable_soft = $alert_host_unreachable_soft;
+							$alert_obj->alert_host_unreachable_hard = $alert_host_unreachable_hard;
+							$alert_obj->alert_host_pending_total = $alert_host_pending_total;
+							$alert_obj->alert_host_pending_soft = $alert_host_pending_soft;
+							$alert_obj->alert_host_pending_hard = $alert_host_pending_hard;
+							$alert_obj->alert_service_ok_total = $alert_service_ok_total;
+							$alert_obj->alert_service_ok_soft = $alert_service_ok_soft;
+							$alert_obj->alert_service_ok_hard = $alert_service_ok_hard;
+							$alert_obj->alert_service_warning_total = $alert_service_warning_total;
+							$alert_obj->alert_service_warning_soft = $alert_service_warning_soft;
+							$alert_obj->alert_service_warning_hard = $alert_service_warning_hard;
+							$alert_obj->alert_service_unknown_total = $alert_service_unknown_total;
+							$alert_obj->alert_service_unknown_soft = $alert_service_unknown_soft;
+							$alert_obj->alert_service_unknown_hard = $alert_service_unknown_hard;
+							$alert_obj->alert_service_critical_total = $alert_service_critical_total;
+							$alert_obj->alert_service_critical_soft = $alert_service_critical_soft;
+							$alert_obj->alert_service_critical_hard = $alert_service_critical_hard;
+							$alert_obj->alert_service_pending_total = $alert_service_pending_total;
+							$alert_obj->alert_service_pending_soft = $alert_service_pending_soft;
+							$alert_obj->alert_service_pending_hard = $alert_service_pending_hard;
+
+
+							$alert_obj_array[$i] = $alert_obj;
+							unset($alert_obj);
+						}
+					}
+				}
+			}
+			else
+			{
+				foreach($this->return_array as $alerts)
+				{			
+					$alert_totals++;
+
+					if($this->compare_string($alerts->state_type, 'SOFT'))
+					{
+						if($this->compare_string($alerts->state, 'UP'))
+						{
+							$alert_host_up_total++;
+							$alert_host_up_soft++;
+						}
+						else if($this->compare_string($alerts->state, 'DOWN'))
+						{
+							$alert_host_down_total++;
+							$alert_host_down_soft++;
+						}
+						else if($this->compare_string($alerts->state, 'UNREACHABLE'))
+						{
+							$alert_host_unreachable_total++;
+							$alert_host_unreachable_soft++;
+						}
+						else if($this->compare_string($alerts->state, 'OK'))
+						{
+							$alert_service_ok_total++;
+							$alert_service_ok_soft++;
+						}
+						else if($this->compare_string($alerts->state, 'WARNING'))
+						{
+							$alert_service_warning_total++;
+							$alert_service_warning_soft++;
+						}
+						else if($this->compare_string($alerts->state, 'UNKNOWN'))
+						{
+							$alert_service_unknown_total++;
+							$alert_service_unknown_soft++;
+						}
+						else if($this->compare_string($alerts->state, 'CRITICAL'))
+						{
+							$alert_service_critical_total++;
+							$alert_service_critical_soft++;
+						}
+						//$alert->state = PENDING
+						else 
+						{
+							//for HOST ALERT, the servicename is NULL
+							if(empty($alerts->servicename))
+							{
+								$alert_host_pending_total++;
+								$alert_host_pending_soft++;
+							}
+							else
+							{
+								$alert_service_pending_total++;
+								$alert_service_pending_soft++;
+							}
+						}
+					}
+					//$this->compare_string($alerts->state_type, 'HARD') = true
+					else
+					{
+						if($this->compare_string($alerts->state, 'UP'))
+						{
+							$alert_host_up_total++;
+							$alert_host_up_hard++;
+						}
+						else if($this->compare_string($alerts->state, 'DOWN'))
+						{
+							$alert_host_down_total++;
+							$alert_host_down_hard++;
+						}
+						else if($this->compare_string($alerts->state, 'UNREACHABLE'))
+						{
+							$alert_host_unreachable_total++;
+							$alert_host_unreachable_hard++;
+						}
+						else if($this->compare_string($alerts->state, 'OK'))
+						{
+							$alert_service_ok_total++;
+							$alert_service_ok_hard++;
+						}
+						else if($this->compare_string($alerts->state, 'WARNING'))
+						{
+							$alert_service_warning_total++;
+							$alert_service_warning_hard++;
+						}
+						else if($this->compare_string($alerts->state, 'UNKNOWN'))
+						{
+							$alert_service_unknown_total++;
+							$alert_service_unknown_hard++;
+						}
+						else if($this->compare_string($alerts->state, 'CRITICAL'))
+						{
+							$alert_service_critical_total++;
+							$alert_service_critical_hard++;
+						}
+						//$alert->state = PENDING
+						else 
+						{
+							//for HOST ALERT, the servicename is NULL
+							if(empty($alerts->servicename))
+							{
+								$alert_host_pending_total++;
+								$alert_host_pending_hard++;
+							}
+							else
+							{
+								$alert_service_pending_total++;
+								$alert_service_pending_hard++;
+							}
+						}
+					}
+
+					$alert_obj->hostname = $alerts->hostname;
+					$alert_obj->servicename = $alerts->servicename;
+					$alert_obj->alert_totals = $alert_totals;
+					$alert_obj->alert_host_up_total = $alert_host_up_total;
+					$alert_obj->alert_host_up_soft = $alert_host_up_soft;
+					$alert_obj->alert_host_up_hard = $alert_host_up_hard;
+					$alert_obj->alert_host_down_total = $alert_host_down_total;
+					$alert_obj->alert_host_down_soft = $alert_host_down_soft;
+					$alert_obj->alert_host_down_hard = $alert_host_down_hard;
+					$alert_obj->alert_host_unreachable_total = $alert_host_unreachable_total;
+					$alert_obj->alert_host_unreachable_soft = $alert_host_unreachable_soft;
+					$alert_obj->alert_host_unreachable_hard = $alert_host_unreachable_hard;
+					$alert_obj->alert_host_pending_total = $alert_host_pending_total;
+					$alert_obj->alert_host_pending_soft = $alert_host_pending_soft;
+					$alert_obj->alert_host_pending_hard = $alert_host_pending_hard;
+					$alert_obj->alert_service_ok_total = $alert_service_ok_total;
+					$alert_obj->alert_service_ok_soft = $alert_service_ok_soft;
+					$alert_obj->alert_service_ok_hard = $alert_service_ok_hard;
+					$alert_obj->alert_service_warning_total = $alert_service_warning_total;
+					$alert_obj->alert_service_warning_soft = $alert_service_warning_soft;
+					$alert_obj->alert_service_warning_hard = $alert_service_warning_hard;
+					$alert_obj->alert_service_unknown_total = $alert_service_unknown_total;
+					$alert_obj->alert_service_unknown_soft = $alert_service_unknown_soft;
+					$alert_obj->alert_service_unknown_hard = $alert_service_unknown_hard;
+					$alert_obj->alert_service_critical_total = $alert_service_critical_total;
+					$alert_obj->alert_service_critical_soft = $alert_service_critical_soft;
+					$alert_obj->alert_service_critical_hard = $alert_service_critical_hard;
+					$alert_obj->alert_service_pending_total = $alert_service_pending_total;
+					$alert_obj->alert_service_pending_soft = $alert_service_pending_soft;
+					$alert_obj->alert_service_pending_hard = $alert_service_pending_hard;
+
+
+					$alert_obj_array[0] = $alert_obj;
+					unset($alert_obj);
+				}
+			}
+
+			foreach($alert_obj_array as $items)
+			{
+				$items = json_encode($items);
+			}
+				
+			return $alert_obj_array;
 		}
-		//$summary_type = 'ALERT_TOTAL'
-		else 
+		//if($this->compare_string($return_type, 'NORMAL'))
+		else
 		{
-			return $json_alert_obj;
+			foreach($this->return_array as $alerts)
+			{
+				//encode the $this->return_array after filter into JSON format
+				$alerts = json_encode($alerts);
+			}
+
+			return $this->return_array;
 		}
 	}
 
+	//Alert Histogram section
 	public function get_alert_histogram()
 	{
-		$this->alert_histogram_array = $this->parse_log($this->_alert_array, 'alert');
+		$this->return_array = $this->parse_log($this->_alert_array, 'alert');
 
 		//encode the data into JSON format
-		foreach($this->alert_histogram_array as $items)
+		foreach($this->return_array as $items)
 		{
 			$items = json_encode($items);
 		}
 
-		return $this->alert_histogram_array;
+		return $this->return_array;
 	}
 
+	//Notifications section
 	public function get_notification($input_date)
 	{
-		//temporary array
-		$temp_array = array();
+		//array_counter
 		$i = 0;
 
-		$this->notification_array = $this->parse_log($this->_notifications_array, 'notification');
+		$this->return_array = $this->parse_log($this->_notifications_array, 'notification');
 
 		//encode the data into JSON format
 		//also filter the data by date
-		foreach($this->notification_array as $items)
+		foreach($this->return_array as $items)
 		{
-			if($this->compare_date($input_date, $items->datetime))
+			if($this->compare_date('TODAY', $input_date, $items->datetime))
 			{
-				$temp_array[$i] = $items;
+				$this->temp_array[$i] = $items;
 				$items = json_encode($items);
 
 				$i++;
 			}
 		}
 
-		$this->notification_array = $temp_array;
+		$this->return_array = $this->temp_array;
 
-		return $this->notification_array;
+		return $this->return_array;
 	}
 
+	//Event Log section
 	public function get_event_log($input_date)
 	{
-		//temporary array
-		$temp_array = array();
+		//array counter
 		$i = 0;
 
-		$this->event_array = $this->parse_log($this->_data_array, 'event');
+		$this->return_array = $this->parse_log($this->_data_array, 'event');
 
 		//encode the data into JSON format
 		//also filter the data by date
-		foreach($this->event_array as $items)
+		foreach($this->return_array as $items)
 		{
-			if($this->compare_date($input_date, $items->datetime))
+			if($this->compare_date('TODAY', $input_date, $items->datetime))
 			{
-				$temp_array[$i] = $items;
+				$this->temp_array[$i] = $items;
 				$items = json_encode($items);
 
 				$i++;
 			}
 		}
 
-		$this->event_array = $temp_array;
+		$this->return_array = $this->temp_array;
 
-		return $this->event_array;
+		return $this->return_array;
 	}
 
 	//UTILITY FUNCTION
@@ -366,9 +902,11 @@ class Reports_data extends CI_Model
 		//counter for $this->return_array;
 		$i = 0;
 
+		$sorted_obj = new StdCLass();
+
 		foreach($input_array as $logs)
 		{
-			if(strcmp($_type, 'notification') == 0)
+			if($this->compare_string($_type, 'notification'))
 			{
 				if(strpos($logs, 'HOST NOTIFICATION') !== false)
 				{
@@ -376,7 +914,6 @@ class Reports_data extends CI_Model
 					list($logtype, $information) = explode(':', $other_message, 2);
 					list($contact, $host, $state, $notificationcommand, $detail_message) = explode(';', $information, 5);
 
-					$sorted_obj = new StdCLass();
 					$sorted_obj->datetime = trim($input_time, '[]');
 					$sorted_obj->logtype = $logtype;
 					$sorted_obj->contact = $contact;
@@ -393,7 +930,6 @@ class Reports_data extends CI_Model
 					list($logtype, $information) = explode(':', $other_message, 2);
 					list($contact, $host, $service, $state, $notificationcommand, $detail_message) = explode(';', $information, 6);
 
-					$sorted_obj = new StdClass();
 					$sorted_obj->datetime = trim($input_time, '[]');
 					$sorted_obj->logtype = $logtype;
 					$sorted_obj->contact = $contact;
@@ -404,7 +940,7 @@ class Reports_data extends CI_Model
 					$sorted_obj->messages = $detail_message;
 				}
 			}
-			else if(strcmp($_type, 'alert') == 0)
+			else if($this->compare_string($_type, 'alert'))
 			{
 				if(strpos($logs, 'HOST ALERT') !== false)
 				{
@@ -412,7 +948,6 @@ class Reports_data extends CI_Model
 					list($logtype, $information) = explode(':', $event_message, 2);
 					list($hostname, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 5);
 		
-					$sorted_obj = new StdCLass();
 					$sorted_obj->datetime = trim($input_time, '[]');
 					$sorted_obj->logtype = $logtype;
 					$sorted_obj->hostname = $hostname;
@@ -422,14 +957,12 @@ class Reports_data extends CI_Model
 					$sorted_obj->retry_count = $retry_count;
 					$sorted_obj->messages = $detail_message;
 				}
-				//strpos($logs, 'SERVICE ALERT') !== false
-				else
+				else if(strpos($logs, 'SERVICE ALERT') !== false)
 				{
 					list($input_time, $event_message) = explode(' ', $logs, 2);
 					list($logtype, $information) = explode(':', $event_message, 2);
 					list($hostname, $servicename, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 6);
 		
-					$sorted_obj = new StdCLass();
 					$sorted_obj->datetime = trim($input_time, '[]');
 					$sorted_obj->logtype = $logtype;
 					$sorted_obj->hostname = $hostname;
@@ -439,13 +972,28 @@ class Reports_data extends CI_Model
 					$sorted_obj->retry_count = $retry_count;
 					$sorted_obj->messages = $detail_message;
 				}
+				//strpos($logs, 'SERVICE FLAPPING ALERT') !== false
+				else
+				{
+					list($input_time, $event_message) = explode(' ', $logs, 2);
+					list($logtype, $information) = explode(':', $event_message, 2);
+					list($hostname, $servicename, $state, $detail_message) = explode(';', $information, 4);
+
+					$sorted_obj->datetime = trim($input_time, '[]');
+					$sorted_obj->logtype = $logtype;
+					$sorted_obj->hostname = $hostname;
+					$sorted_obj->servicename = $servicename;
+					$sorted_obj->state = $state;
+					$sorted_obj->state_type = NULL;
+					$sorted_obj->retry_count = NULL;
+					$sorted_obj->messages = $detail_message;
+				}
 			}
 			//$_type = 'event'
 			else
 			{
 				list($input_time, $event_message) = explode(' ', $logs, 2);
 
-				$sorted_obj = new StdCLass();
 				$sorted_obj->datetime = trim($input_time, '[]');
 				$sorted_obj->messages = $event_message;
 
@@ -505,50 +1053,395 @@ class Reports_data extends CI_Model
 	}
 
 	//function used to compare date
-	private function compare_date($input_date, $data_date)
+	//Adapted from : http://php.net/manual/en/datetime.formats.relative.php
+	private function compare_date($input_period, $input_date, $data_date)
 	{
-		$modify_input_date = date('Y-m-d', (int)$input_date);
-		$modify_data_date = date('Y-m-d', (int)$data_date);
-	
-		if(strcmp($modify_input_date, $modify_data_date) == 0)
+		if($this->compare_string($input_period, 'TODAY'))
 		{
-			return true;
+			$modify_input_date = date('Y-m-d', (int)$input_date);
+			$modify_data_date = date('Y-m-d', (int)$data_date);
+		
+			if($this->compare_string($modify_input_date, $modify_data_date))
+			{
+				return true;
+			}
+			//the date is not same
+			else
+			{
+				return false;
+			}
 		}
+		else if($this->compare_string($input_period, 'LAST 24 HOURS'))
+		{
+			$modify_input_date = new DateTime();
+			$modify_data_date = new DateTime();
+
+			//Adapted from : http://php.net/manual/en/datetime.settimestamp.php
+			$modify_input_date->setTimestamp( (int)$input_date );
+			$modify_data_date->setTimestamp( (int)$data_date );
+
+			//Adapted from : https://stackoverflow.com/questions/17718107/how-do-i-subtract-24-hour-from-date-time-object-in-php
+			//Adapted from : https://stackoverflow.com/questions/15911312/how-to-check-if-time-is-between-two-times-in-php
+			if( ($modify_data_date <= $modify_input_date) && ($modify_data_date >= ($modify_input_date->modify('-1 day'))) )
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		//1 day = 24 hour * 60 min * 60 sec = 86400 sec
+		else if($this->compare_string($input_period, 'YESTERDAY'))
+		{
+			$modify_input_date = date('Y-m-d', ( ((int)$input_date) - 86400) );
+			$modify_data_date = date('Y-m-d', (int)$data_date);
+
+			if($this->compare_string($modify_input_date, $modify_data_date))
+			{
+				return true;
+			}
+			//the date is not same
+			else
+			{
+				return false;
+			}
+		}
+		else if($this->compare_string($input_period, 'THIS WEEK'))
+		{
+			$monday = new DateTime();
+			$monday->setTimestamp( (int)$input_date );
+			$monday->modify('Monday this week');
+
+			$sunday = new DateTime();
+			$sunday->setTimestamp( (int)$input_date );
+			$sunday->modify('Sunday this week');
+
+			$modify_data_date = new DateTime();
+			$modify_data_date->setTimestamp( (int)$data_date );
+
+			if( ($modify_data_date <= $sunday) && ($modify_data_date >= $monday) )
+			{
+				return true;
+			}
+			else
+			{
+				if($this->compare_string( (date('Y-m-d', (int)$data_date)), ($sunday->format('Y-m-d')) ))
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+		}
+		else if($this->compare_string($input_period, 'LAST 7 DAYS'))
+		{
+			$modify_input_date = new DateTime();
+			$modify_data_date = new DateTime();
+
+			$modify_input_date->setTimestamp( (int)$input_date );
+			$modify_data_date->setTimestamp( (int)$data_date );
+
+			if( ($modify_data_date <= $modify_input_date) && ($modify_data_date >= ($modify_input_date->modify('-7 days'))) )
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else if($this->compare_string($input_period, 'LAST WEEK'))
+		{
+			$monday = new DateTime();
+			$monday->setTimestamp( (int)$input_date );
+			$monday->modify('Monday last week');
+
+			$sunday = new DateTime();
+			$sunday->setTimestamp( (int)$input_date );
+			$sunday->modify('Sunday last week');
+
+			$modify_data_date = new DateTime();
+			$modify_data_date->setTimestamp( (int)$data_date );
+
+			if( ($modify_data_date <= $sunday) && ($modify_data_date >= $monday) )
+			{
+				return true;
+			}
+			else
+			{
+				if($this->compare_string( (date('Y-m-d', (int)$data_date)), ($sunday->format('Y-m-d')) ))
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+		}
+		else if($this->compare_string($input_period, 'THIS MONTH'))
+		{
+			$modify_input_month = date('Y-m', (int)$input_date);
+			$modify_data_month = date('Y-m', (int)$data_date);
+
+			if($this->compare_string($modify_input_month, $modify_data_month))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else if($this->compare_string($input_period, 'LAST 31 DAYS'))
+		{
+			$modify_input_date = new DateTime();
+			$modify_data_date = new DateTime();
+
+			$modify_input_date->setTimestamp( (int)$input_date );
+			$modify_data_date->setTimestamp( (int)$data_date );
+
+			if( ($modify_data_date <= $modify_input_date) && ($modify_data_date >= ($modify_input_date->modify('-31 days'))) )
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else if($this->compare_string($input_period, 'LAST MONTH'))
+		{
+			$modify_input_month = date('Y-m-d', (int)$input_date);
+			$modify_data_month = date('Y-m', (int)$data_date);
+
+			$last_month_string = $modify_input_month.' -1 month';
+			$last_month = date('Y-m', (strtotime($last_month_string)));
+
+			if($this->compare_string($last_month, $modify_data_month))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else if($this->compare_string($input_period, 'THIS YEAR'))
+		{
+			$modify_input_year = date('Y', (int)$input_date);
+			$modify_data_year = date('Y', (int)$data_date);
+
+			if($this->compare_string($modify_input_year, $modify_data_year))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else if($this->compare_string($input_period, 'LAST YEAR'))
+		{
+			$modify_input_year = date('Y', (int)$input_date) - 1;
+			$modify_data_year = date('Y', (int)$data_date);
+
+			if($this->compare_string($modify_input_year, $modify_data_year))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		//if($this->compare_string($input_period, 'CUSTOM'))
 		else
 		{
-			return false;
+			if(is_array($input_date))
+			{
+				$start_date = new DateTime();
+				$end_date = new DateTime();
+
+				$start_date->setTimestamp( (int)$input_date[0] );
+				$end_date->setTimestamp( (int)$input_date[1] );
+
+				$modify_data_date = new DateTime();
+				$modify_data_date->setTimestamp( (int)$data_date );
+
+				if( ($modify_data_date <= $end_date) && ($modify_data_date >= $start_date) )
+				{
+					return true;
+				}
+				else
+				{
+					if($this->compare_string( (date('Y-m-d', (int)$data_date)), (date('Y-m-d', (int)$input_date[1])) ))
+					{
+						return true;
+					}
+					else
+					{
+						return false;
+					}
+				}
+			}
+		}
+	}
+
+	//get the start date 
+	//Adapted from : http://php.net/manual/en/datetime.formats.relative.php
+	//Adapted from : https://stackoverflow.com/questions/7768716/set-time-in-php-to-000000
+	private function get_date($input_period, $input_date)
+	{
+		if($this->compare_string($input_period, 'TODAY'))
+		{
+			$modify_input_date = new DateTime();
+			$modify_input_date->setTimestamp( (int)$input_date );
+
+			$modify_input_date->setTime(0, 0, 0);
+		
+			return $modify_input_date->getTimestamp();
+		}
+		else if($this->compare_string($input_period, 'LAST 24 HOURS'))
+		{
+			$modify_input_date = new DateTime();
+			$modify_input_date->setTimestamp( (int)$input_date );
+
+			$modify_input_date->modify('-1 day');
+			
+			return $modify_input_date->getTimestamp();
+		}
+		//1 day = 24 hour * 60 min * 60 sec = 86400 sec
+		else if($this->compare_string($input_period, 'YESTERDAY'))
+		{
+			$monday = new DateTime();
+			$monday->setTimestamp( (int)$input_date );
+
+			$monday->modify('yesterday');
+			$monday->setTime(0, 0, 0);
+
+			return $monday->getTimestamp();
+		}
+		else if($this->compare_string($input_period, 'THIS WEEK'))
+		{
+			$monday = new DateTime();
+			$monday->setTimestamp( (int)$input_date );
+
+			$monday->modify('Monday this week');
+			$monday->setTime(0, 0, 0);
+
+			return $monday->getTimestamp();
+		}
+		else if($this->compare_string($input_period, 'LAST 7 DAYS'))
+		{
+			$modify_input_date = new DateTime();
+			$modify_input_date->setTimestamp( (int)$input_date );
+		
+			$modify_input_date->modify('-7 days');
+			
+			return $modify_input_date->getTimestamp();
+		}
+		else if($this->compare_string($input_period, 'LAST WEEK'))
+		{
+			$monday = new DateTime();
+			$monday->setTimestamp( (int)$input_date );
+
+			$monday->modify('Monday last week');
+			$monday->setTime(0, 0, 0);
+
+			return $monday->getTimestamp();
+		}
+		else if($this->compare_string($input_period, 'THIS MONTH'))
+		{
+			//Adapted from : https://stackoverflow.com/questions/2094797/the-first-day-of-the-current-month-in-php-using-date-modify-as-datetime-object
+			$modify_input_month = new DateTime();
+			$modify_input_month->setTimestamp( (int)$input_date );
+
+			$modify_input_month->modify('first day of this month');
+			$modify_input_month->setTime(0, 0, 0);
+
+			return $modify_input_month->getTimestamp();
+		}
+		else if($this->compare_string($input_period, 'LAST 31 DAYS'))
+		{
+			$modify_input_date = new DateTime();
+			$modify_input_date->setTimestamp( (int)$input_date );
+
+			$modify_input_date->modify('-31 days');
+			
+			return $modify_input_date->getTimestamp();
+		}
+		else if($this->compare_string($input_period, 'LAST MONTH'))
+		{
+			$modify_input_month = new DateTime();
+			$modify_input_month->setTimestamp( (int)$input_date );
+
+			$modify_input_month->modify('first day of last month');
+			$modify_input_month->setTime(0, 0, 0);
+
+			return $modify_input_month->getTimestamp();
+		}
+		else if($this->compare_string($input_period, 'THIS YEAR'))
+		{
+			$input_year = date('Y', (int)$input_date);
+			
+			$modify_input_year = $input_year.'-01-01 00-00-00';
+
+			$return_year = DateTime::createFromFormat('Y-m-d H-i-s', $modify_input_year);
+
+			return $return_year->getTimestamp();
+		}
+		//if($this->compare_string($input_period, 'LAST YEAR'))
+		else 
+		{
+			$input_year = date('Y', (int)$input_date) - 1;
+			
+			$modify_input_year = $input_year.'-01-01 00-00-00';
+
+			$return_year = DateTime::createFromFormat('Y-m-d H-i-s', $modify_input_year);
+
+			return $return_year->getTimestamp();
 		}
 	}
 
 	private function compare_string($input_string, $data_string)
 	{
+		if(strcmp($input_string, 'ALL') == 0)
+		{
+			return true;
+		}
+
 		//compare host
-		if(strcmp($input_string, 'ALL_HOST') == 0)
+		if(strcmp($input_string, 'ALL HOST') == 0)
 		{
 			return true;
 		}
 
 		//compare logtype
-		if(strcmp($input_string, 'ALL_ALERT') == 0)
+		if(strcmp($input_string, 'ALL ALERT') == 0)
 		{
 			return true;
 		}
 
 		//compare state_type
-		if(strcmp($input_string, 'ALL_STATE_TYPE') == 0)
+		if(strcmp($input_string, 'ALL STATE TYPE') == 0)
 		{
 			return true;
 		}
 
 		//compare host state
-		if(strcmp($input_string, 'ALL_HOST_STATE') == 0)
+		if(strcmp($input_string, 'ALL HOST STATE') == 0)
 		{
 			if(strcmp($data_string, 'UP') == 0 or strcmp($data_string, 'DOWN') == 0 or strcmp($data_string, 'UNREACHABLE') == 0 or strcmp($data_string, 'PENDING') == 0)
 			{
 				return true;
 			}
 		}
-		else if(strcmp($input_string, 'HOST_PROBLEM_STATE') == 0)
+		
+		if(strcmp($input_string, 'HOST PROBLEM STATE') == 0)
 		{
 			if(strcmp($data_string, 'DOWN') == 0 or strcmp($data_string, 'UNREACHABLE') == 0 or strcmp($data_string, 'PENDING') == 0)
 			{
@@ -557,14 +1450,15 @@ class Reports_data extends CI_Model
 		}
 
 		//compare service state
-		if(strcmp($input_string, 'ALL_SERVICE_STATE') == 0)
+		if(strcmp($input_string, 'ALL SERVICE STATE') == 0)
 		{
 			if(strcmp($data_string, 'OK') == 0 or strcmp($data_string, 'WARNING') == 0 or strcmp($data_string, 'UNKNOWN') == 0 or strcmp($data_string, 'CRITICAL') == 0 or strcmp($data_string, 'PENDING') == 0)
 			{
 				return true;
 			}
 		}
-		else if(strcmp($input_string, 'SERVICE_PROBLEM_STATE') == 0)
+		
+		if(strcmp($input_string, 'SERVICE PROBLEM STATE') == 0)
 		{
 			if(strcmp($data_string, 'WARNING') == 0 or strcmp($data_string, 'UNKNOWN') == 0 or strcmp($data_string, 'CRITICAL') == 0 or strcmp($data_string, 'PENDING') == 0)
 			{
@@ -576,11 +1470,13 @@ class Reports_data extends CI_Model
 		{
 			return true;
 		}
+		//the data is not same
 		else
 		{
 			return false;
 		}
 	}
+
 
 
 }

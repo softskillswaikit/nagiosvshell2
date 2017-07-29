@@ -190,7 +190,8 @@ class API extends VS_Controller
         $hostgroupname = array();
         $servicename = array();
         $servicegroupname = array();
-        $servicestatename = array();
+        $runningstatename = array();
+        $hostresourcename = array();
         $allName;
 
         
@@ -259,114 +260,42 @@ class API extends VS_Controller
         $allName['servicegroup'] = $servicegroupname;
 
 
+        //all host resource
+        $hostresources = $this->nagios_data->get_collection('hostresource');
+
+        foreach ($hostresources as $hostresource) 
+        {
+            $DataHostresource[] = $this->quicksearch_item('hostresource', $hostresource->host_name, $hostresource->service_description);
+        }
+
+        foreach ($DataHostresource as $hostresource) 
+        {
+            $hostresourcename[] = array('hostname' => $hostresource['name'], 'servicename' => $hostresource['uri']);
+        }
+
+        $allName['hostresource'] = $hostresourcename;
+
         //all service running state
-        $servicestates = $this->nagios_data->get_collection('servicestatus');
+        $runningstates = $this->nagios_data->get_collection('runningstate');
 
-        foreach ($servicestates as $servicestate)
+        foreach ($runningstates as $runningstate)
         {
-            $DataServicestate[] = $this->quicksearch_item('service', $servicestate->service_description.' on '.$servicestate->host_name, $servicestate->host_name.'/'.$servicestate->service_description);
+            $DataRunningstate[] = $this->quicksearch_item('runningstate', $runningstate->host_name, $runningstate->service_description);
         }
 
-        foreach ($DataServicestate as $servicestate) 
+        foreach ($DataRunningstate as $runningstate) 
         {
-            $servicestatename[] = array('servicename' => $servicestate['name'], 'host' => $servicestate['uri']);
+            $runningstatename[] = array('hostname' => $runningstate['name'], 'servicename' => $servicestate['uri']);
 
         }
 
-        $allName['servicestate'] = $servicestatename;
+        $allName['runningstate'] = $runningstatename;
         
-
         $this->output($allName); 
     }
 
-    /**
-     * Fetch host name
-     */
-    public function hostname()
-    {
-        $Data = array();
-        $hostname = array();
-        $hosts = $this->nagios_data->get_collection('hoststatus');
-
-        foreach($hosts as $host)
-        {
-            $Data[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
-        }
-
-        foreach($Data as $host)
-        {
-            $hostname[] = $host['name'];
-        }
     
-        $this->output($hostname);
-    }
-
-    /**
-     * Fetch service name
-     */
-    public function servicename()
-    {
-        $Data = array();
-        $servicename = array();
-        $services = $this->nagios_data->get_collection('servicestatus');
-
-        foreach ($services as $service)
-        {
-            $Data[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
-        }
-
-        foreach ($Data as $service) 
-        {
-            $servicename[] = $service['name'];
-        }
-
-        $this->output($servicename);
-    }    
-
-    /**
-     * Fetch host group name 
-     */
-    public function hostgroupname()
-    {
-        $Data = array();
-        $hostgroupname = array();
-        $hostgroups = $this->nagios_data->get_collection('hostgroup');
-
-        foreach($hostgroups as $hostgroup)
-        {
-            $Data[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
-        }
-
-        foreach ($Data as $hostgroup) 
-        {
-            $hostgroupname[] = $hostgroup['name'];
-        }
-
-        $this->output($hostgroupname);
-    }
-
-    /**
-     * Fetch service group name
-     */
-    public function servicegroupname()
-    {
-        $Data = array();
-        $servicegroupname = array();
-        $servicegroups = $this->nagios_data->get_collection('servicegroup');
-
-        foreach($servicegroups as $servicegroup)
-        {
-            $Data[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
-        }
-
-        foreach ($Data as $servicegroup) 
-        {
-            $servicegroupname[] = $servicegroup['name'];
-        }
-
-        $this->output($servicegroupname);
-    }
-
+    
     /**
      * Fetch availability
      * 
@@ -459,12 +388,9 @@ class API extends VS_Controller
      *
      * @param String $date
      */
-    public function alerthistory($date)
+    public function alerthistory()
     {
-        if(!empty($date) && strlen($date) == 10)
-        {
-            $AlertHistory = $this->alert_history_data->get_history_data();
-        }
+        $AlertHistory = $this->alert_history_data->get_history_data();
 
         $this->output($AlertHistory);
     }
@@ -616,30 +542,114 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $type = 'hostcomment';
-        $allowed_types = array(
-            'hostcomment',
-            'servicecomment'
-        );
+        $Data = array();
+        $hostname = array();
+        $hostgroupname = array();
+        $servicename = array();
+        $servicegroupname = array();
+        $runningstatename = array();
+        $hostresourcename = array();
+        $allName;
 
-        if( $type != '' )
-        {
-            if( ! in_array($type, $allowed_types) )
-            {
-                return $this->output(array());
-            }
+        
+        //all host name
+        $hosts = $this->nagios_data->get_collection('hoststatus');
 
-            $specific_comments = $this->nagios_data->get_collection($type)->get_index('host_name');
-            $comments = $this->comments_flatten($specific_comments);
-        } 
-        else
+        foreach($hosts as $host)
         {
-            $host_comments = $this->nagios_data->get_collection('hostcomment')->get_index('host_name');
-            $service_comments = $this->nagios_data->get_collection('servicecomment')->get_index('host_name');
-            $comments = $this->comments_merge($host_comments, $service_comments);
+            $DataHost[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
         }
 
-        $this->output(var_dump($comments));
+        foreach($DataHost as $host)
+        {
+            $hostname[] = $host['name'];
+        }
+
+        $allName['host'] = $hostname;
+    
+
+        //all hostgroup name    
+        $hostgroups = $this->nagios_data->get_collection('hostgroup');
+
+        foreach($hostgroups as $hostgroup)
+        {
+            $DataHostgroup[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
+        }
+
+        foreach ($DataHostgroup as $hostgroup) 
+        {
+            $hostgroupname[] = $hostgroup['name'];
+        } 
+
+        $allName['hostgroup'] = $hostgroupname;     
+    
+
+        //all service name
+        $services = $this->nagios_data->get_collection('servicestatus');
+
+        foreach ($services as $service)
+        {
+            $DataService[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
+        }
+
+        foreach ($DataService as $service) 
+        {
+            $servicename[] = $service['name'];
+
+        }
+
+        $allName['service'] = $servicename;
+    
+
+        //all service group name
+        $servicegroups = $this->nagios_data->get_collection('servicegroup');
+
+        foreach($servicegroups as $servicegroup)
+        {
+            $DataServicegroup[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
+        }
+
+        foreach ($DataServicegroup as $servicegroup) 
+        {
+            $servicegroupname[] = $servicegroup['name'];
+        }
+
+        $allName['servicegroup'] = $servicegroupname;
+
+
+        //all host resource
+        $hostresources = $this->nagios_data->get_collection('hostresource');
+
+        foreach ($hostresources as $hostresource) 
+        {
+            $DataHostresource[] = $this->quicksearch_item('hostresource', $hostresource->host_name, $hostresource->service_description);
+        }
+
+        foreach ($DataHostresource as $hostresource) 
+        {
+            $hostresourcename[] = array('hostname' => $hostresource['name'], 'servicename' => $hostresource['uri']);
+        }
+
+        $allName['hostresource'] = $hostresourcename;
+
+        //all service running state
+        $runningstates = $this->nagios_data->get_collection('runningstate');
+
+        foreach ($runningstates as $runningstate)
+        {
+            $DataRunningstate[] = $this->quicksearch_item('runningstate', $runningstate->host_name, $runningstate->service_description);
+        }
+
+        foreach ($DataRunningstate as $runningstate) 
+        {
+            $runningstatename[] = array('hostname' => $runningstate['name'], 'servicename' => $servicestate['uri']);
+
+        }
+
+        $allName['runningstate'] = $runningstatename;
+        
+
+        $this->output($allName); 
     }
 
     /**
