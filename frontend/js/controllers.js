@@ -1514,7 +1514,7 @@ angular.module('vshell.controllers', [])
     function($scope, async) {
 
       $scope.init = function() {
-
+        console.log("init");
         var options = {
             name: 'comments',
             url: 'comments/' + '',
@@ -1522,42 +1522,44 @@ angular.module('vshell.controllers', [])
         };
         async.api($scope, options);
 
+        $scope.reset();
+      };
+      $scope.reset = function(){
+        console.log("reset");
         var options = {
             name: 'status',
             url: 'status',
             queue: 'status-' + '',
             cache: true
         };
-
         async.api($scope, options);
-
-        $scope.reset();
+        console.log("username");
+        //console.log($scope.status['username']);
+        $scope.hostName = '';
+        $scope.service = '';
+        $scope.persistent = true;
+        $scope.author = '';
+        $scope.comment = '';
+        $scope.addHostComment.$setPristine(true);
+        //$scope.addServiceComment.$setPristine();
       };
 
-      $scope.reset = function(){
-        $scope.hostHostName = '';
-        $scope.hostPersistent = true;
-        $scope.hostAuthor = ;
-        $scope.hostComment = '';
-
-        $scope.serviceHostName = '';
-        $scope.serviceService = '';
-        $scope.servicePersistent = true;
-        $scope.serviceAuthor = '';
-        $scope.serviceComment = '';
-      };
-
-      $scope.addComment = function(){
+      $scope.addComment = function(type){
+        console.log("addComment");
+        console.log("type="+type+$scope.hostName+$scope.service+$scope.persistent);
+        console.log("author="+$scope.author);
+        console.log($scope.comment);
         var options = {
             name: 'success',
-            url: 'addComments/',
+            url: 'addComments/'+ type + '/' + $scope.hostName + '/' + $scope.service
+              + '/' + $scope.persistent + '/' + $scope.author + '/' + $scope.comment,
             queue: 'main'
         };
         async.api($scope, options);
-        console.log("init");
       };
 
-      $scope.deleteComment = function(){
+      $scope.deleteComment = function(id, type){
+        console.log("deleteComment");
         var options = {
             name: 'success',
             url: 'deleteComments/' + '',
