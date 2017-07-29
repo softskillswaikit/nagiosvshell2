@@ -544,7 +544,7 @@ angular.module('vshell.controllers', [])
       $scope.reportType = $scope.savedRT;
       $scope.savedRC = localStorage.getItem('reportComponent');
       $scope.reportComponent = $scope.savedRC;
-      console.log("reporttype");
+      console.log("reportType");
       console.log($scope.reportType);
       console.log("reportComponent");
       console.log($scope.reportComponent);
@@ -553,195 +553,161 @@ angular.module('vshell.controllers', [])
         localStorage.setItem('reportType', $scope.reportType);
         localStorage.setItem('reportComponent', $scope.reportComponent);
 
-/*      //data for host(s)
-        $scope.reports =  [
-          {hosts:[
-              {
-                host_name: "localhost",
-                timeup_percent : "100.00",
-                timedown_percent : "0.00",
-                timeunreachable_percent : "0.00",
-                timepending_percent : "0.00"
-              },
-              {
-                host_name: "app_server",
-                timeup_percent : "100.00",
-                timedown_percent : "0.00",
-                timeunreachable_percent : "0.00",
-                timepending_percent : "0.00"
-              },
-              {
-                host_name: "web_server",
-                timeup_percent : "100.00",
-                timedown_percent : "0.00",
-                timeunreachable_percent : "0.00",
-                timepending_percent : "0.00"
-              }
+        //data for test
+        $scope.testdata=[
+          {
+            host:"app_server",
+            data:[
+              {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
+              {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
+            ]
+          },
+          {
+            host:"localhost",
+            data:[
+              {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
+              {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
             ]
           }
         ];
-        */
-/*
-            //data for hostgroup(s)
-              $scope.reports =  [
-                {
-                  hostgroup : "linux-server",
-                  hosts : [
-                    {
-                      host_name: "localhost",
-                      timeup_percent : "100.00",
-                      timedown_percent : "0.00",
-                      timeunreachable_percent : "0.00",
-                      timepending_percent : "0.00"
-                    }
-                  ]
-                },
-                {
-                  hostgroup : "windows-servers",
-                  hosts : [
-                    {
-                      host_name: "app_server",
-                      timeup_percent : "100.00",
-                      timedown_percent : "0.00",
-                      timeunreachable_percent : "0.00",
-                      timepending_percent : "0.00"
-                    },
-                    {
-                      host_name: "web_server",
-                      timeup_percent : "100.00",
-                      timedown_percent : "0.00",
-                      timeunreachable_percent : "0.00",
-                      timepending_percent : "0.00"
-                    }
-                  ]
-                }
-              ];
-*/
-
-          $scope.testdata=[
+        //data for event log(host-one service-one)
+        $scope.report3=[
           {
-              host:"app_server",
-              data:[
-                {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
-                {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
-              ]
-            },
-            {
-              host:"localhost",
-              data:[
-                {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
-                {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
-              ]
-            }
-          ];
-
-          //data for event log(host-one service-one)
-          $scope.report3=[
-            {
-                0:"07-17-2017 00:00:00",
-                1:"07-18-2017 00:00:00",
-                2:"1d 0h 0m 0s",
-                3:"SERVICE OK (HARD)",
-                4:"c:\ - total: 23.66 Gb - used: 16.59 Gb (70%) - free 7.06 Gb (30%)"
-            },
-            {
               0:"07-17-2017 00:00:00",
               1:"07-18-2017 00:00:00",
               2:"1d 0h 0m 0s",
               3:"SERVICE OK (HARD)",
               4:"c:\ - total: 23.66 Gb - used: 16.59 Gb (70%) - free 7.06 Gb (30%)"
-            },
-            {
-              0:"07-17-2017 00:00:00",
-              1:"07-18-2017 00:00:00",
-              2:"1d 0h 0m 0s",
-              3:"SERVICE OK (HARD)",
-              4:"c:\ - total: 23.66 Gb - used: 16.59 Gb (70%) - free 7.06 Gb (30%)"
-            }
-          ];
-          //data for host-one service-one
-          $scope.report2=[
+          },
           {
-              host:"app_server",
-              data:[
-                {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
-                {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
-              ]
-            },
-            {
-              host:"localhost",
-              data:[
-                {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
-                {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
-              ]
-            }
-          ];
-            //data for one host/one service
-              $scope.reports1 = [
-                  {
-                    state:"OK",
-                    data:[
-                      {0:"Unscheduled", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"},
-                      {0:"Scheduled", 1:"0d 0h 0m 0s", 2:"1.00", 3:"2.00"},
-                      {0:"Total", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"}
-                    ]
-                  },
-                  {
-                    state: "WARNING",
-                    data:[
-                      {0:"Unscheduled", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"},
-                      {0:"Scheduled", 1:"0d 0h 0m 0s", 2:"1.00", 3:"2.00"},
-                      {0:"Total", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"}
-                    ]
-                  },
-                  {
-                    state:"UNKNOWN",
-                    data:[
-                      {0:"Unscheduled", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"},
-                      {0:"Scheduled", 1:"0d 0h 0m 0s", 2:"1.00", 3:"2.00"},
-                      {0:"Total", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"}
-                    ]
-                  },
-                  {
-                    state: "PENDING",
-                    data:[
-                      {0:"Nagios Not Running", 1: "0d 0h 0m 0s", 2: "0.00", 3: "0.00"},
-                      {0:"insufficient Data", 1: "0d 0h 0m 0s", 2: "0.00", 3: "0.00"},
-                      {0:"Total", 1: "7d 0h 0m 0s", 2: "100.00", 3: "100.00"}
-                    ]
-                  },
-                  {
-                    state:"ALL",
-                    data:[
-                      {0:"Total", 1: "7d 0h 0m 0s", 2: "100.00", 3: "100.00"}
-                    ]
-                  }
-                ];
-
-            //data for hostgroup/servicegroup
-                $scope.reports=[
-                  {
-                    hostgroup:"linux_servers",
-                    data:[
-                      {0:"localhost",1:"0.00",2:"0.00",3:"0.00",4:"0.00"}
-                    ]
-                  },
-                  {
-                    hostgroup:"windows-servers",
-                    data:[
-                      {0:"app_server",1:"0.00",2:"0.00",3:"0.00",4:"0.00"},
-                      {0:"web_server",1:"0.00",2:"0.00",3:"0.00",4:"0.00"}
-                    ]
-                  }
-                ];
-
-            //data for host-all
-            $scope.hostall=[
-              {0:"localhost",1:"0.00",2:"0.00",3:"0.00",4:"0.00"},
+            0:"07-17-2017 00:00:00",
+            1:"07-18-2017 00:00:00",
+            2:"1d 0h 0m 0s",
+            3:"SERVICE OK (HARD)",
+            4:"c:\ - total: 23.66 Gb - used: 16.59 Gb (70%) - free 7.06 Gb (30%)"
+          },
+          {
+            0:"07-17-2017 00:00:00",
+            1:"07-18-2017 00:00:00",
+            2:"1d 0h 0m 0s",
+            3:"SERVICE OK (HARD)",
+            4:"c:\ - total: 23.66 Gb - used: 16.59 Gb (70%) - free 7.06 Gb (30%)"
+          }
+        ];
+        //data for host-one service-one
+        $scope.report2=[
+          {
+            host:"app_server",
+            data:[
+              {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
+              {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
+            ]
+          },
+          {
+            host:"localhost",
+            data:[
+              {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
+              {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
+            ]
+          }
+        ];
+        //data for host one
+        $scope.report4=[
+          {
+            type:"Service",
+            data:[
+              {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
+              {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
+            ]
+          },
+          {
+            type:"Resource",
+            data:[
+              {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
+              {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
+            ]
+          },
+          {
+            type:"Service Running State",
+            data:[
+              {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
+              {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
+            ]
+          }
+        ];
+        //data for servicegroup-all/one
+        $scope.report5=[
+          {
+            host:"app_server",
+            service:[
+              {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
+              {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
+            ]
+          }
+        ];
+        //data for one host/one service
+        $scope.reports1 = [
+          {
+            state:"OK",
+            data:[
+              {0:"Unscheduled", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"},
+              {0:"Scheduled", 1:"0d 0h 0m 0s", 2:"1.00", 3:"2.00"},
+              {0:"Total", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"}
+            ]
+          },
+          {
+            state: "WARNING",
+            data:[
+              {0:"Unscheduled", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"},
+              {0:"Scheduled", 1:"0d 0h 0m 0s", 2:"1.00", 3:"2.00"},
+              {0:"Total", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"}
+            ]
+          },
+          {
+            state:"UNKNOWN",
+            data:[
+              {0:"Unscheduled", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"},
+              {0:"Scheduled", 1:"0d 0h 0m 0s", 2:"1.00", 3:"2.00"},
+              {0:"Total", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"}
+            ]
+          },
+          {
+            state: "PENDING",
+            data:[
+              {0:"Nagios Not Running", 1: "0d 0h 0m 0s", 2: "0.00", 3: "0.00"},
+              {0:"insufficient Data", 1: "0d 0h 0m 0s", 2: "0.00", 3: "0.00"},
+              {0:"Total", 1: "7d 0h 0m 0s", 2: "100.00", 3: "100.00"}
+            ]
+          },
+          {
+            state:"ALL",
+            data:[
+              {0:"Total", 1: "7d 0h 0m 0s", 2: "100.00", 3: "100.00"}
+            ]
+          }
+        ];
+        //data for hostgroup/servicegroup
+        $scope.reports=[
+          {
+            hostgroup:"linux_servers",
+            data:[
+              {0:"localhost",1:"0.00",2:"0.00",3:"0.00",4:"0.00"}
+            ]
+          },
+          {
+            hostgroup:"windows-servers",
+            data:[
               {0:"app_server",1:"0.00",2:"0.00",3:"0.00",4:"0.00"},
               {0:"web_server",1:"0.00",2:"0.00",3:"0.00",4:"0.00"}
-            ];
-
+            ]
+          }
+        ];
+        //data for host-all
+        $scope.hostall=[
+          {0:"localhost",1:"0.00",2:"0.00",3:"0.00",4:"0.00"},
+          {0:"app_server",1:"0.00",2:"0.00",3:"0.00",4:"0.00"},
+          {0:"web_server",1:"0.00",2:"0.00",3:"0.00",4:"0.00"}
+        ];
       };
 
 
@@ -779,23 +745,25 @@ angular.module('vshell.controllers', [])
         };
 
         $scope.reset = function(){
-                    $scope.today = new Date();
-                    $scope.todayString = $filter('date')(Date.now(), 'MM/dd/yyyy');
+          $scope.today = new Date();
+          $scope.todayString = $filter('date')(Date.now(), 'MM/dd/yyyy');
 
-                    $scope.reportType = 'Host';
-              			$scope.serviceType = 'Normal Service';
-                    $scope.reportComponent = 'ALL';
-                    $scope.startDate =  $scope.todayString;
-                    $scope.endDate =  $scope.todayString;
-              			$scope.reportPeriod = 'Last 7 Days';
-              			$scope.reportTimePeriod = 'None';
-              			$scope.assumeInitialStates = 'Yes';
-              			$scope.assumeStateRetention = 'Yes';
-              			$scope.assumeDowntimeStates = 'Yes';
-              			$scope.includeSoftStates = 'No';
-              			$scope.firstAssumedHostState = 'Unspecified';
-              			$scope.firstAssumedServiceState = 'Unspecified';
-              			$scope.backtrackedArchives = 4;
+          $scope.reportType = 'Host';
+    			$scope.serviceType = 'Normal Service';
+          $scope.reportHost = 'ALL';
+          $scope.reportService = 'ALL';
+          $scope.reportHostResource = 'ALL';
+          $scope.startDate =  $scope.todayString;
+          $scope.endDate =  $scope.todayString;
+    			$scope.reportPeriod = 'Last 7 Days';
+    			$scope.reportTimePeriod = 'None';
+    			$scope.assumeInitialStates = 'Yes';
+    			$scope.assumeStateRetention = 'Yes';
+    			$scope.assumeDowntimeStates = 'Yes';
+    			$scope.includeSoftStates = 'No';
+    			$scope.firstAssumedHostState = 'Unspecified';
+    			$scope.firstAssumedServiceState = 'Unspecified';
+    			$scope.backtrackedArchives = 4;
         };
 
         $scope.createReport = function(){
@@ -1209,7 +1177,6 @@ angular.module('vshell.controllers', [])
         {name : "testserver"}
       ];
 
-      $scope.reset();
             /*
 			var options = {
                 name: 'alerthistogram',
@@ -1219,6 +1186,7 @@ angular.module('vshell.controllers', [])
 
             async.api($scope, options);
 			*/
+            $scope.reset();
 
 	     };
 
@@ -1228,7 +1196,9 @@ angular.module('vshell.controllers', [])
 
      			$scope.reportType = 'Host';
      			$scope.serviceType = 'Normal Service';
-          $scope.reportComponent = 'ALL';
+          $scope.reportHost = 'ALL';
+          $scope.reportService = 'ALL';
+          $scope.reportHostResource = 'ALL';
           $scope.startDate =  $scope.todayString;
           $scope.endDate =  $scope.todayString;
      			$scope.reportPeriod = 'Last 7 Days';
@@ -1534,53 +1504,6 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('AvailabilityReportCtrl', ['$scope', 'async',
-    function($scope, async) {
-
-        $scope.init = function() {
-
-        }
-    }
-])
-
-.controller('TrendsReportCtrl', ['$scope', 'async',
-    function($scope, async) {
-
-        $scope.init = function() {
-          /*
-            var options = {
-                name: 'trendsreport',
-                url: 'trendsreport',
-                queue: 'main'
-            };
-
-            async.api($scope, options);
-*/
-        };
-
-    }
-])
-
-.controller('AlertHistogramReportCtrl', ['$scope', 'async',
-    function($scope, async) {
-
-        $scope.init = function() {
-
-
-/*
-            var options = {
-                name: 'alerthistogramreport',
-                url: 'alerthistogramreport',
-                queue: 'main'
-            };
-
-            async.api($scope, options);
-*/
-        };
-
-    }
-])
-
 .controller('confirmModalCtrl', ['$scope', '$dialog',
     function ($scope, $dialog) {
       $dialog.dialog({}).open('confirmModalCtrl.html');
@@ -1591,9 +1514,30 @@ angular.module('vshell.controllers', [])
     function($scope, async) {
 
       $scope.init = function() {
+
+        var options = {
+            name: 'comments',
+            url: 'comments/' + '',
+            queue: 'main'
+        };
+        async.api($scope, options);
+
+        var options = {
+            name: 'status',
+            url: 'status',
+            queue: 'status-' + '',
+            cache: true
+        };
+
+        async.api($scope, options);
+
+        $scope.reset();
+      };
+
+      $scope.reset = function(){
         $scope.hostHostName = '';
         $scope.hostPersistent = true;
-        $scope.hostAuthor = '';
+        $scope.hostAuthor = ;
         $scope.hostComment = '';
 
         $scope.serviceHostName = '';
@@ -1601,18 +1545,26 @@ angular.module('vshell.controllers', [])
         $scope.servicePersistent = true;
         $scope.serviceAuthor = '';
         $scope.serviceComment = '';
-/*
-            var options = {
-                name: 'syscomments',
-                url: 'syscomments',
-                queue: 'main'
-            };
+      };
 
-            async.api($scope, options);
-*/
+      $scope.addComment = function(){
+        var options = {
+            name: 'success',
+            url: 'addComments/',
+            queue: 'main'
         };
+        async.api($scope, options);
+        console.log("init");
+      };
 
-
+      $scope.deleteComment = function(){
+        var options = {
+            name: 'success',
+            url: 'deleteComments/' + '',
+            queue: 'main'
+        };
+        async.api($scope, options);
+      };
     }
 ])
 
