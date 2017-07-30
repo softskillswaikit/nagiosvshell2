@@ -75,8 +75,24 @@ $route["schedulecheck/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/scheduleCheck/
 $route["hostservicecheck/(:any)/(:any)"] = "api/hostServiceCheck/$1/$2";
 $route["hostservicenotification//(:any)/(:any)"] = "api/hostServiceNotification/$1/$2";
 $route["acknowledgeproblem/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/acknowledgeProblem/$1/$2/$3/$4/$5/$6/$7/$8";
-
-
+$route["allservicecheck/(:any)"] = "api/allServiceCheck/$1";
+$route["allpassiveservicecheck/(:any)"] = "api/allPassiveServiceCheck/$1";
+$route["eventhandler/(:any)"] = "api/eventHandler/$1";
+$route["hostcheck/(:any)/(:any)"] = "api/hostCheck/$1/$2";
+$route["obsessoverservicecheck/(:any)"] = "api/obsessOverServiceCheck/$1";
+$route["obsessoverhostcheck/(:any)"] = "api/obsessOverHostCheck/$1";
+$route["obsessoverservice/(:any)/(:any)/(:any)"] = "api/obsessOverService/$1/$2/$3";
+$route["obsessoverhost/(:any)/(:any)"] = "api/obsessOverHost/$1/$2";
+$route["performancedata/(:any)"] = "api/performanceData/$1";
+$route["allhostcheck/(:any)"] = "api/allHostCheck/$1";
+$route["allpassivehostcheck/(:any)"] = "api/allPassiveHostCheck/$1";
+$route["passivehostcheck/(:any)/(:any)"] = "api/passiveHostCheck/$1/$2";
+$route["allflapdetection/(:any)"] = "api/allFlapDetection/$1";
+$route["hostflapdetection/(:any)/(:any)"] = "api/hostFlapDetection/$1/$2"; 
+$route["serviceflapdetection/(:any)/(:any)/(:any)"] = "api/serviceFlapDetection/$1/$2/$3";
+$route["schedulehostservicedowntime/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/scheduleHostServiceDowntime/$1/$2/$3/$4/$5/$6/$7/$8";
+$route["schedulehostcheck/(:any)/(:any)/(:any)"] = "api/scheduleHostCheck/$1/$2/$3"; 
+$route["sendcustomnotification/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/sendCustomNotification/$1/$2/$3/$4/$5/$6/$7";
 
 $route["configurations/(:any)"] = "api/configurations/$1";
 $route["configurations"] = "api/configurations";

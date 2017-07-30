@@ -727,7 +727,7 @@ class API extends VS_Controller
      * @param String $type, host : host, svc : service
      * @param String $name
      * @param String $serviceDescription
-     * @param String $persistent , 1 or 0
+     * @param bool $persistent 
      * @param String $author
      * @param String $comments
      */
@@ -806,14 +806,18 @@ class API extends VS_Controller
      */
     public function servicecheck($type, $hostname, $service)
     {
+        $result ='';
+
         if($type == 'enable')
         {
-            $this->system_commands->enable_svc_check();
+            $result = $this->system_commands->enable_svc_check();
         }
         else if($type == 'disable')
         {
-            $this->system_commands->disable_svc_check();
+            $result = $this->system_commands->disable_svc_check();
         }
+
+        $this->output($result);
     }
 
     /**
@@ -823,14 +827,18 @@ class API extends VS_Controller
      */
     public function allnotifications($type)
     {
+        $result = '';
+
         if($type == 'enable')
         {
-            $this->system_commands->enable_all_notification();
+            $result = $this->system_commands->enable_all_notification();
         }
         else if($type == 'disable')
         {
-            $this->system_commands->disable_all_notification();
+            $result = $this->system_commands->disable_all_notification();
         }
+
+        $this->output($result);
     }
 
     /**
@@ -840,14 +848,18 @@ class API extends VS_Controller
      */
     public function nagiosOperation($type)
     {
+        $result = '';
+
         if($type == 'restart')
         {
-            $this->system_commands->restart_nagios();
+            $result = $this->system_commands->restart_nagios();
         }
         else if($type == 'shutdown')
         {
-            $this->system_commands->shutdown_nagios();
+            $result = $this->system_commands->shutdown_nagios();
         }
+
+        $this->output($result);
     }
 
     /**
@@ -859,14 +871,18 @@ class API extends VS_Controller
      */
     public function serviceNotification($type, $host, $service)
     {
+        $result = '';
+
         if($type == 'enable')
         {
-            $this->system_commands->enable_svc_notification();
+            $result = $this->system_commands->enable_svc_notification();
         }
         else if($type == 'disable')
         {
-            $this->system_commands->disable_svc_notification();
+            $result = $this->system_commands->disable_svc_notification();
         }
+
+        $this->output($result);
     }
 
     /**
@@ -878,14 +894,18 @@ class API extends VS_Controller
      */
     public function deleteAllComment($type, $host, $service='')
     {
+        $result = '';
+
         if($type == 'host')
         {
-            $this->system_commands->delete_all_host_comments($host);
+           $result =  $this->system_commands->delete_all_host_comments($host);
         }
         else if($type == 'service')
         {
-            $this->system_commands->delete_all_service_comments($host, $service);
+            $result = $this->system_commands->delete_all_service_comments($host, $service);
         }
+
+        $this->output($result);
     }
 
     /**
@@ -896,14 +916,18 @@ class API extends VS_Controller
      */
     public function hostNotification($type,$host)
     {
+        $result = '';
+
         if($type == 'enable')
         {
-            $this->system_commands->enable_host_notification($host);
+            $result = $this->system_commands->enable_host_notification($host);
         }
         else if($type == 'disable')
         {
-            $this->system_commands->disable_host_notification($host);
+            $result =  $this->system_commands->disable_host_notification($host);
         }
+
+        $this->output($result);
     }
 
     /**
@@ -917,14 +941,18 @@ class API extends VS_Controller
      */
     public function scheduleCheck($type, $host, $service='', $checktime, $forceCheck)
     {
+        $result = '';
+
         if($type == 'host')
         {
-            $this->system_commands->schedule_host_svc_check($host, $checktime, $forceCheck);
+            $result = $this->system_commands->schedule_host_svc_check($host, $checktime, $forceCheck);
         }
         else if($type == 'service')
         {
-            $this->system_commands->schedule_svc_check($host, $service, $checktime, $forceCheck);
+            $result = $this->system_commands->schedule_svc_check($host, $service, $checktime, $forceCheck);
         }
+
+        $this->output($result);
     }
 
     /**
@@ -935,14 +963,18 @@ class API extends VS_Controller
      */
      public function hostServiceCheck($type, $host)
      {
+        $result = '';
+
         if($type == 'enable')
         {
-            $this->system_commands->enable_host_svc_check($host);
+            $result = $this->system_commands->enable_host_svc_check($host);
         }
         else if($type == 'disable')
         {
-            $this->system_commands->disable_host_svc_check($host);
+            $result = $this->system_commands->disable_host_svc_check($host);
         }
+
+        $this->output($result);
      } 
 
      /**
@@ -953,14 +985,18 @@ class API extends VS_Controller
       */
      public function hostServiceNotification($type, $host)
      {
+        $result = '';
+
         if($type == 'enable')
         {
-            $this->system_commands->enable_host_svc_notification($host);
+            $result = $this->system_commands->enable_host_svc_notification($host);
         }
         else if($type == 'disable')
         {
-            $this->system_commands->disable_host_svc_notification($host);
+            $result = $this->system_commands->disable_host_svc_notification($host);
         }
+
+        $this->output($result);
      }
 
      /**
@@ -977,28 +1013,406 @@ class API extends VS_Controller
       */
      public function acknowledgeProblem($type, $host, $service='', $sticky, $notify, $persistent, $author, $comment)
      {
+        $result = '';
+
         if($type == 'host')
         {
-            $this->system_commands->acknowledge_host_problem($host, $sticky, $notify, $persistent, $author, $comment );
+            $result = $this->system_commands->acknowledge_host_problem($host, $sticky, $notify, $persistent, $author, $comment);
         }
         else if($type == 'service')
         {
-            $this->system_commands->acknowledge_svc_problem($host, $service, $sticky, $notify, $persistent, $author, $comment);
+            $result = $this->system_commands->acknowledge_svc_problem($host, $service, $sticky, $notify, $persistent, $author, $comment);
         }
+
+        $this->output($result);
      }
 
+     /**
+      * Start or stop all service check
+      *
+      * @param String $type, 'start', 'stop'
+      */
+     public function allServiceCheck($type)
+     {
+        $result = '';
 
-    
+        if($type == 'start')
+        {
+            $result = $this->system_commands->start_svc_check();
+        }
+        else if($type == 'stop')
+        {
+            $result = $this->system_commands->stop_svc_check();
+        }
 
-    /**
-     * Fetch performance information
-     */
-    public function performanceinfo()
-    {
-        $performanceinfos = $this->system_commands->performance_info_commands();
+        $this->output($result);
+     }
 
-        $this->output($performanceinfos);
-    }
+     /**
+      * Start or stop all passive service check
+      *
+      * @param String $type, 'start', 'stop'
+      */
+     public function allPassiveServiceCheck($type)
+     {
+        $result = '';
+
+        if($type == 'start')
+        {
+            $result = $this->system_commands->start_passive_svc_check();
+        }
+        else if($type == 'stop')
+        {
+            $result = $this->system_commands->stop_passive_svc_check();
+        }
+
+        $this->output($result);
+     }
+
+     /**
+      * Enable or disable event handler
+      *
+      * @param String $type, 'enable', 'disable'
+      */
+     public function eventHandler($type)
+     {
+        $result = '';
+
+        if($type == 'enable')
+        {
+            $result = $this->system_commands->enable_event_handler();
+        }
+        else if ($type == 'disable')
+        {
+            $result = $this->system_commands->disable_event_handler();
+        }
+
+        $this->output($result);
+     }
+
+     /**
+      * Enable or disable host check
+      *
+      * @param String $type, 'enable', 'disable'
+      * @param String $host
+      */
+     public function hostCheck($type, $host)
+     {
+        $result = '';
+
+        if($type == 'enable')
+        {
+            $result = $this->system_commands->enable_host_check($host);
+        }
+        else if($type == 'disable')
+        {
+            $result = $this->system_commands->disable_host_check($host);
+        }
+
+        $this->output($result);
+     }
+
+     /**
+      * Start or stop obsess over service check
+      *
+      * @param String $type, 'start', 'host'
+      */
+     public function obsessOverServiceCheck($type)
+     {
+        $result = '';
+
+        if($type == 'start')
+        {
+            $result = $this->system_commands->start_obsess_over_svc_check();
+        }
+        else if($type == 'stop')
+        {
+            $result = $this->system_commands->stop_obsess_over_svc_check();
+        }
+
+        $this->output($result);
+     }
+
+     /**
+      * Start or stop obsess over host check
+      *
+      * @param String $type, 'start', 'stop'
+      */
+     public function obsessOverHostCheck($type)
+     {
+        $result = '';
+
+        if($type == 'start')
+        {
+            $result = $this->system_commands->start_obsess_over_host_check();
+        }
+        else if($type == 'stop')
+        {
+            $result = $this->system_commands->stop_obsess_over_host_check();
+        }
+
+        $this->output($result);
+     }
+
+     /**
+      * Start or stop obsess over host
+      *
+      * @param String $type, 'start', 'stop'
+      * @param String $host
+      */
+     public function obsessOverHost($type, $host)
+     {
+        $result = '';
+
+        if($type == 'start')
+        {
+            $result = $this->system_commands->start_obsess_over_host($host);
+        }
+        else if($type == 'stop')
+        {
+            $result = $this->system_commands->stop_obsess_over_host($host);
+        }
+
+        $this->output($result);
+     }
+
+     /**
+      * Start or stop obsess over service
+      *
+      * @param String $type, 'start', 'stop'
+      * @param String $host
+      * @param String $service
+      */
+     public function obsessOverService($type, $host, $service)
+     {
+        $result = '';
+
+        if($type == 'start')
+        {
+            $result = $this->system_commands->start_obsess_over_svc($host, $service);
+        }
+        else if($type == 'stop')
+        {
+            $result = $this->system_commands->stop_obsess_over_svc($host, $service);
+        }
+
+        $this->output($result);
+     }
+
+     /**
+      * Enable or disable performance data
+      *
+      * @param String $type, 'enable', 'disable'
+      */
+     public function performanceData($type)
+     {
+        $result = '';
+
+        if($type == 'enable')
+        {
+            $result = $this->system_commands->enable_performance_data();
+        }
+        else if($type == 'disable')
+        {
+            $result = $this->system_commands->disable_performance_data();
+        }
+
+        $this->output($result);
+     }
+
+     /**
+      * Start or stop all host check
+      *
+      * @param String $type , 'start', 'stop'
+      */
+     public function allHostCheck($type)
+     {
+        $result = '';
+
+        if($type == 'start')
+        {
+            $result = $this->system_commands->start_host_check();
+        }
+        else if($type == 'stop')
+        {
+            $result = $this->system_commands->stop_host_check();
+        }
+
+        $this->output($result);
+     }
+
+     /**
+      * Start or stop all passive host check
+      *
+      * @param String $type, 'start', 'stop'
+      */
+     public function allPassiveHostCheck($type)
+     {
+        $result = '';
+
+        if($type == 'start')
+        {
+            $result = $this->system_commands->start_passive_host_check();
+        }
+        else if($type == 'stop')
+        {
+            $result = $this->system_commands->stop_passive_host_check();
+        }
+
+        $this->output($result);
+     }
+
+     /**
+      * Enable or disable passive host check
+      *
+      * @param String $type, 'enable', 'disable'
+      * @param String $host
+      */
+     public function passiveHostCheck($type, $host)
+     {
+        $result = '';
+
+        if($type == 'enable')
+        {
+            $result = $this->system_commands->enable_passive_host_check($host);
+        }
+        else if($type == 'disable')
+        {
+            $result = $this->system_commands->disable_passive_host_check($host);
+        }
+
+        $this->output($result);
+     }
+
+     /**
+      * Enable or disable all flap detection
+      *
+      * @param String $type , 'enable', 'disable
+      */
+     public function allFlapDetection($type)
+     {
+        $result = '';
+
+        if($type == 'enable')
+        {
+            $result = $this->system_commands->enable_flap_detection();
+        }
+        else if($type == 'disable')
+        {
+            $result = $this->system_commands->disable_flap_detection();
+        }
+
+        $this->output($result);
+     }
+
+     /**
+      * Enable or disable host flap detection
+      *
+      * @param String $type, 'enable', 'disable'
+      * @param String $host
+      */
+     public function hostFlapDetection($type, $host)
+     {
+        $result = '';
+
+        if($type == 'enable')
+        {
+            $result = $this->system_commands->enable_host_flap_detection($host);
+        }
+        else if($type == 'disable')
+        {
+            $result = $this->system_commands->disable_host_flap_detection($host);
+        }
+
+        $this->output($result);
+     }
+
+     /**
+      * Enable or disable service flap detection
+      *
+      * @param String $type, 'enable', 'disable'
+      * @param String $host
+      * @param String $service
+      */
+     public function serviceFlapDetection($type, $host, $service)
+     {
+        $result = '';
+
+        if($type == 'enable')
+        {
+            $result = $this->system_commands->enable_svc_flap_detection($host, $service);
+        }
+        else if($type == 'disable')
+        {
+            $result = $this->system_commands->disable_svc_flap_detection($host, $service);
+        }
+
+        $this->output($result);
+     }
+
+     /**
+      * Schedule host service downtime
+      *
+      * @param String $host
+      * @param String $start
+      * @param String $end
+      * @param bool $fixed
+      * @param String $trigger
+      * @param String $duration
+      * @param String $author
+      * @param String $comment
+      */
+     public function scheduleHostServiceDowntime($host, $start, $end, $fixed, $trigger, $duration, $author, $comment)
+     {
+        $result = '';
+
+        $result = $this->system_commands->schedule_host_svc_downtime($host, $start, $end, $fixed, $trigger, $duration, $author, $comment);
+
+        $this->output($result);
+     }
+
+     /**
+      * Schedule host check
+      *
+      * @param String $host
+      * @param String $checktime
+      * @param bool $forceCheck
+      */
+     public function scheduleHostCheck($host, $checktime, $forceCheck)
+     {
+        $result = '';
+
+        $result = $this->system_commands->schedule_host_check($host, $checktime, $forceCheck);
+
+        $this->output($result);
+     }
+
+     /**
+      * Send custom host or service notifications
+      *
+      * @param String $type , 'host', 'service'
+      * @param String $host
+      * @param String $service
+      * @param bool $force
+      * @param bool $broadcast
+      * @param String $author
+      * @param String $comment
+      */
+     public function sendCustomNotification($type, $host, $service, $force, $broadcast, $author, $comment)
+     {
+        $result = '';
+
+        if($type == 'host')
+        {
+            $result = $this->system_commands->send_custom_host_notification($host, $force, $broadcast, $author, $comment);
+        }
+        else if($type == 'service')
+        {
+            $result = $this->system_commands->send_custom_svc_notification($host, $service, $force, $broadcast, $author, $comment);
+        }
+
+        $this->output($result);
+     }
 
 
     /**
