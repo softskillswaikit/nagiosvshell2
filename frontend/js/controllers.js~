@@ -433,7 +433,7 @@ angular.module('vshell.controllers', [])
 	
 	$scope.open = function(operation) {
 
-		
+		console.log(operation);
 
 		if (operation == 'shutdown'){
 
@@ -443,7 +443,7 @@ angular.module('vshell.controllers', [])
 				queue: 'main'
 			};
 
-		async.api($scope, result);
+			async.api($scope, result);
 
 		}else if (operation == 'restart'){
 
@@ -454,8 +454,13 @@ angular.module('vshell.controllers', [])
 			};
 
 			async.api($scope, result);
+		}
+				
+	};
 
-		}else if (operation == 'YES'){
+	$scope.notification = function(operation){
+		
+		if (operation == "YES"){
 
 			var type = "disable";
 
@@ -469,9 +474,268 @@ angular.module('vshell.controllers', [])
 
 		}else if (operation == 'NO'){
 
-			console.log(operation);
+			var type = "enable";
+
+			var result = {
+				name: 'allnotifications',
+				url: 'allnotifications/' + type,
+				queue: 'main'
+			};
+
+			async.api($scope, result);
 		}
-				
+	};
+
+	$scope.activeservice = function(operation){
+		
+		if (operation == "YES"){
+
+			var type = "stop";
+
+			var result = {
+				name: 'allservicecheck',
+				url: 'allServiceCheck/' + type,
+				queue: 'main'
+			};
+
+			async.api($scope, result);
+
+		}else if (operation == 'NO'){
+
+			var type = "start";
+
+			var result = {
+				name: 'allservicecheck',
+				url: 'allServiceCheck/' + type,
+				queue: 'main'
+			};
+
+			async.api($scope, result);
+		}
+	};
+
+	$scope.passiveservice = function(operation){
+		
+		if (operation == "YES"){
+
+			var type = "stop";
+
+			var result = {
+				name: 'allpassiveservicecheck',
+				url: 'allPassiveServiceCheck/' + type,
+				queue: 'main'
+			};
+
+			async.api($scope, result);
+
+		}else if (operation == 'NO'){
+
+			var type = "start";
+
+			var result = {
+				name: 'allpassiveservicecheck',
+				url: 'allPassiveServiceCheck/' + type,
+				queue: 'main'
+			};
+
+			async.api($scope, result);
+		}
+	};
+
+	$scope.activehost = function(operation){
+		
+		if (operation == "YES"){
+
+			var type = "stop";
+
+			var result = {
+				name: 'allhostcheck',
+				url: 'allHostCheck/' + type,
+				queue: 'main'
+			};
+
+			async.api($scope, result);
+
+		}else if (operation == 'NO'){
+
+			var type = "start";
+
+			var result = {
+				name: 'allhostcheck',
+				url: 'allHostCheck/' + type,
+				queue: 'main'
+			};
+
+			async.api($scope, result);
+		}
+	};
+
+	$scope.passivehost = function(operation){
+		
+		if (operation == "YES"){
+
+			var type = "stop";
+
+			var result = {
+				name: 'allpassivehostcheck',
+				url: 'allPassiveHostCheck/' + type,
+				queue: 'main'
+			};
+
+			async.api($scope, result);
+
+		}else if (operation == 'NO'){
+
+			var type = "start";
+
+			var result = {
+				name: 'allpassivehostcheck',
+				url: 'allPassiveHostCheck/' + type,
+				queue: 'main'
+			};
+
+			async.api($scope, result);
+		}
+	};
+
+	$scope.event = function(operation){
+		
+		if (operation == "YES"){
+
+			var type = "disable";
+
+			var result = {
+				name: 'eventhandler',
+				url: 'eventHandler/' + type,
+				queue: 'main'
+			};
+
+			async.api($scope, result);
+
+		}else if (operation == 'NO'){
+
+			var type = "enable";
+
+			var result = {
+				name: 'eventhandler',
+				url: 'eventHandler/' + type,
+				queue: 'main'
+			};
+
+			async.api($scope, result);
+		}
+	};
+
+	$scope.obsessservice = function(operation){
+		
+		if (operation == "YES"){
+
+			var type = "stop";
+
+			var result = {
+				name: 'obsessservice',
+				url: 'obsessOverServiceCheck/' + type,
+				queue: 'main'
+			};
+
+			async.api($scope, result);
+
+		}else if (operation == 'NO'){
+
+			var type = "start";
+
+			var result = {
+				name: 'obsessservice',
+				url: 'obsessOverServiceCheck/' + type,
+				queue: 'main'
+			};
+
+			async.api($scope, result);
+		}
+	};
+	
+	$scope.obsesshost = function(operation){
+		
+		if (operation == "YES"){
+
+			var type = "stop";
+
+			var result = {
+				name: 'obsesshost',
+				url: 'obsessOverHostCheck/' + type,
+				queue: 'main'
+			};
+
+			async.api($scope, result);
+
+		}else if (operation == 'NO'){
+
+			var type = "start";
+
+			var result = {
+				name: 'obsesshost',
+				url: 'obsessOverHostCheck/' + type,
+				queue: 'main'
+			};
+
+			async.api($scope, result);
+		}
+	};
+	
+	$scope.flap = function(operation){
+		
+		if (operation == "YES"){
+
+			var type = "disable";
+
+			var result = {
+				name: 'flapdetection',
+				url: 'allFlapDetection/' + type,
+				queue: 'main'
+			};
+
+			async.api($scope, result);
+
+		}else if (operation == 'NO'){
+
+			var type = "enable";
+
+			var result = {
+				name: 'flapdetection',
+				url: 'allFlapDetection/' + type,
+				queue: 'main'
+			};
+
+			async.api($scope, result);
+		}
+	};
+	
+	$scope.perform = function(operation){
+		
+		if (operation == "YES"){
+
+			var type = "disable";
+
+			var result = {
+				name: 'obsessservice',
+				url: 'obsessOverServiceCheck/' + type,
+				queue: 'main'
+			};
+
+			async.api($scope, result);
+
+		}else if (operation == 'NO'){
+
+			var type = "enable";
+
+			var result = {
+				name: 'obsessservice',
+				url: 'obsessOverServiceCheck/' + type,
+				queue: 'main'
+			};
+
+			async.api($scope, result);
+		}
 	};
 
     }

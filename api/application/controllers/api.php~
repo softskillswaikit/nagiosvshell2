@@ -549,6 +549,24 @@ class API extends VS_Controller
 
         $this->output($Notifications);
     }
+    /**
+     * Modify process information
+     *
+     * @param String $type
+     */
+    public function processinfo()
+    {
+	
+	$processinfo = array();
+        $Data = $this->system_commands->get_return_array('PROCESS');
+        
+	foreach ($Data as $array) 
+            {
+                $processinfo[] = $array;
+            }
+
+        $this->output($processinfo);
+    }
 
     public function testing()
     {

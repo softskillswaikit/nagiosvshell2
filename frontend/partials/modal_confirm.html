@@ -26,9 +26,6 @@
 					<button type="button" class="btn btn-success" ng-click="open('restart')" data-dismiss="modal">Yes</button>
 					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -41,11 +38,8 @@
 					<h4 class="modal-title">Notifications Command</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success" ng-click="open(processinfo.enable_notifications)" data-dismiss="modal">Yes</button>
+					<button type="button" class="btn btn-success" ng-click="notification(processinfo.enable_notifications)" data-dismiss="modal">Yes</button>
 					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
@@ -59,11 +53,8 @@
 					<h4 class="modal-title">Service Check Command</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success">Yes</button>
-					<button type="button" class="btn btn-danger">No</button>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-success" ng-click="activeservice(processinfo.active_service_checks_enabled)" data-dismiss="modal">Yes</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
 				</div>
 			</div>
 		</div>
@@ -77,11 +68,8 @@
 					<h4 class="modal-title">Passive Service Check Command</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success">Yes</button>
-					<button type="button" class="btn btn-danger">No</button>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-success" ng-click="passiveservice(processinfo.passive_service_checks_enabled)" data-dismiss="modal">Yes</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
 				</div>
 			</div>
 		</div>
@@ -95,11 +83,8 @@
 					<h4 class="modal-title">Host Check Command</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success">Yes</button>
-					<button type="button" class="btn btn-danger">No</button>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-success" ng-click="activehost(processinfo.active_host_checks_enabled)" data-dismiss="modal">Yes</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
 				</div>
 			</div>
 		</div>
@@ -113,11 +98,8 @@
 					<h4 class="modal-title">Passive Host Check Command</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success">Yes</button>
-					<button type="button" class="btn btn-danger">No</button>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-success" ng-click="passivehost(processinfo.passive_host_checks_enabled)" data-dismiss="modal">Yes</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
 				</div>
 			</div>
 		</div>
@@ -131,11 +113,8 @@
 					<h4 class="modal-title">Event Handler Command</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success">Yes</button>
-					<button type="button" class="btn btn-danger">No</button>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-success" ng-click="event(processinfo.enable_event_handlers)" data-dismiss="modal">Yes</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
 				</div>
 			</div>
 		</div>
@@ -149,11 +128,8 @@
 					<h4 class="modal-title">Obsessing Over Service Command</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success">Yes</button>
-					<button type="button" class="btn btn-danger">No</button>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-success" ng-click="obsessservice(processinfo.obsess_over_services)" data-dismiss="modal">Yes</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
 				</div>
 			</div>
 		</div>
@@ -167,11 +143,8 @@
 					<h4 class="modal-title">Obsessing Over Hosts Command</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success">Yes</button>
-					<button type="button" class="btn btn-danger">No</button>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-success" ng-click="obsesshost(processinfo.obsess_over_hosts)" data-dismiss="modal">Yes</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
 				</div>
 			</div>
 		</div>
@@ -185,11 +158,8 @@
 					<h4 class="modal-title">Flap Detection Model</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success">Yes</button>
-					<button type="button" class="btn btn-danger">No</button>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-success" ng-click="flap(processinfo.enable_flap_detection)" data-dismiss="modal">Yes</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
 				</div>
 			</div>
 		</div>
@@ -203,11 +173,8 @@
 					<h4 class="modal-title">Performance Data Command</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success">Yes</button>
-					<button type="button" class="btn btn-danger">No</button>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-success" ng-click="perform(processinfo.process_performance_data)" data-dismiss="modal">Yes</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
 				</div>
 			</div>
 		</div>
