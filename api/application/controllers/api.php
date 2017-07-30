@@ -653,6 +653,42 @@ class API extends VS_Controller
     }
 
     /**
+     * Schedule downtime
+     *
+     * @param String $type, host : host, svc : service
+     * @param String $name
+     * @param String $author
+     * @param String $comment
+     * @param String $start
+     * @param String $end
+     * @param String $fixed - true = fixed , false = flexible
+     * @param int $triggerID
+     * @param int $duration , in minutes
+     * @param String $child
+     */
+    public function downtime($type='', $name='', $author='', $comment='', $start='', $end='', $fixed='', $triggerID, $duration, $child='')
+    {
+        $success = false;
+
+        $allowed_types = array(
+            'host',
+            'svc'
+        );
+
+        //check empty input
+        if(!empty($type) && !empty($name) && !empty($author) && !empty($comment) && !empty($start) && !empty($end) && !empty($fixed))
+        {
+            //compare type with allowed types
+            if(in_array($type, $allowed_types))
+            {
+                $success = $this->system_commands->schedule_downtime($name, $start, $end, $fixed, $triggerID, $duration, $author, $comment, $type);
+            }
+        }
+        
+        $this->output($success);
+    }
+
+    /**
      * Fetch all comments or only those of a certain type.
      * Returns a flat array of comment objects.
      *
@@ -759,87 +795,200 @@ class API extends VS_Controller
         $this->output($result);
     }
 
+    
+
     /**
-     * Schedule downtime
+     * Enable or disable service check
      *
-     * @param String $type, host : host, svc : service
-     * @param String $name
-     * @param String $author
-     * @param String $comment
-     * @param String $start
-     * @param String $end
-     * @param String $fixed - true = fixed , false = flexible
-     * @param int $triggerID
-     * @param int $duration , in minutes
-     * @param String $child
+     * @param String $type , 'enable' ,'disable'
+     * @param String $hostname
+     * @param String $service
      */
-    public function downtime($type='', $name='', $author='', $comment='', $start='', $end='', $fixed='', $triggerID, $duration, $child='')
+    public function servicecheck($type, $hostname, $service)
     {
-        $success = false;
-
-        $allowed_types = array(
-            'host',
-            'svc'
-        );
-
-        //check empty input
-        if(!empty($type) && !empty($name) && !empty($author) && !empty($comment) && !empty($start) && !empty($end) && !empty($fixed))
+        if($type == 'enable')
         {
-            //compare type with allowed types
-            if(in_array($type, $allowed_types))
-            {
-                $success = $this->system_commands->schedule_downtime($name, $start, $end, $fixed, $triggerID, $duration, $author, $comment, $type);
-            }
+            $this->system_commands->enable_svc_check();
         }
-        
-        $this->output($success);
+        else if($type == 'disable')
+        {
+            $this->system_commands->disable_svc_check();
+        }
     }
 
     /**
-     * Modify process information
+     * Enable or disable all notifications
      *
-     * @param String $type
+     * @param String $type, 'enable', 'disable'
      */
-    public function processinfo($type='')
+    public function allnotifications($type)
     {
-        //only these types are allowed
-        $allowed_types = array(
-            'shutdown_nagios',
-            'restart_nagios',
-            'enable_notification',
-            'disable_notification',
-            'start_service_check',
-            'stop_service_check',
-            'start_passive_service_check',
-            'stop_passive_service_check',
-            'enable_event_handler',
-            'disable_event_handler',
-            'start_obsess_over_svc',
-            'stop_obsess_over_svc',
-            'start_obsess_over_host',
-            'stop_obsess_over_host',
-            'enable_performance',
-            'disable_performance',
-            'start_host_check',
-            'stop_host_check',
-            'start_passive_host_check',
-            'stop_passive_host_check',
-            'enable_flap',
-            'disable_flap'
-        );
-
-        //check empty input
-        if( $type != '' )
+        if($type == 'enable')
         {
-            //compare type with allowed types
-            if(in_array($type, $allowed_types) )
-            {
-                $processinfo = $this->system_commands->modify_process_info($type);
-            }
+            $this->system_commands->enable_all_notification();
         }
-
-        $this->output($processinfo);
+        else if($type == 'disable')
+        {
+            $this->system_commands->disable_all_notification();
+        }
     }
+
+    /**
+     * Restart or shut down nagios
+     *
+     * @param String $type , 'restart', 'shutdown'
+     */
+    public function nagiosOperation($type)
+    {
+        if($type == 'restart')
+        {
+            $this->system_commands->restart_nagios();
+        }
+        else if($type == 'shutdown')
+        {
+            $this->system_commands->shutdown_nagios();
+        }
+    }
+
+    /**
+     * Enable or disable service notification
+     *
+     * @param String $type, 'enable', 'disable'
+     * @param String $host
+     * @param String $service
+     */
+    public function serviceNotification($type, $host, $service)
+    {
+        if($type == 'enable')
+        {
+            $this->system_commands->enable_svc_notification();
+        }
+        else if($type == 'disable')
+        {
+            $this->system_commands->disable_svc_notification();
+        }
+    }
+
+    /**
+     * Delete all host or service comment
+     *
+     * @param String $type, 'host', 'service'
+     * @param String $host
+     * @param String $service , [if delete all host name, $service should be '']
+     */
+    public function deleteAllComment($type, $host, $service='')
+    {
+        if($type == 'host')
+        {
+            $this->system_commands->delete_all_host_comments($host);
+        }
+        else if($type == 'service')
+        {
+            $this->system_commands->delete_all_service_comments($host, $service);
+        }
+    }
+
+    /**
+     * Enable or disable host notification
+     *
+     * @param String $type, 'enable', 'disable'
+     * @param String $host
+     */
+    public function hostNotification($type,$host)
+    {
+        if($type == 'enable')
+        {
+            $this->system_commands->enable_host_notification($host);
+        }
+        else if($type == 'disable')
+        {
+            $this->system_commands->disable_host_notification($host);
+        }
+    }
+
+    /**
+     * Schedule host or service check
+     *
+     * @param String $type, 'host', 'service'
+     * @param String $host
+     * @param String $service , [if type is host, service should be '']
+     * @param String $checktime
+     * @param bool $forceCheck 
+     */
+    public function scheduleCheck($type, $host, $service='', $checktime, $forceCheck)
+    {
+        if($type == 'host')
+        {
+            $this->system_commands->schedule_host_svc_check($host, $checktime, $forceCheck);
+        }
+        else if($type == 'service')
+        {
+            $this->system_commands->schedule_svc_check($host, $service, $checktime, $forceCheck);
+        }
+    }
+
+    /**
+     * Enable or disable host service check
+     *
+     * @param String $type, 'enable', 'disable'
+     * @param String $host
+     */
+     public function hostServiceCheck($type, $host)
+     {
+        if($type == 'enable')
+        {
+            $this->system_commands->enable_host_svc_check($host);
+        }
+        else if($type == 'disable')
+        {
+            $this->system_commands->disable_host_svc_check($host);
+        }
+     } 
+
+     /**
+      * Enable or disable host service notification
+      *
+      * @param String $type, 'enable', 'disable'
+      * @param String $host
+      */
+     public function hostServiceNotification($type, $host)
+     {
+        if($type == 'enable')
+        {
+            $this->system_commands->enable_host_svc_notification($host);
+        }
+        else if($type == 'disable')
+        {
+            $this->system_commands->disable_host_svc_notification($host);
+        }
+     }
+
+     /**
+      * Acknowledge host or service problem
+      *
+      * @param String $type, 'host', 'service'
+      * @param String $host
+      * @param String $service, [if type is 'host', service will be '']
+      * @param bool $sticky
+      * @param bool $notify
+      * @param bool $persistent
+      * @param String $author
+      * @param String $comment
+      */
+     public function acknowledgeProblem($type, $host, $service='', $sticky, $notify, $persistent, $author, $comment)
+     {
+        if($type == 'host')
+        {
+            $this->system_commands->acknowledge_host_problem($host, $sticky, $notify, $persistent, $author, $comment );
+        }
+        else if($type == 'service')
+        {
+            $this->system_commands->acknowledge_svc_problem($host, $service, $sticky, $notify, $persistent, $author, $comment);
+        }
+     }
+
+
+    
 
     /**
      * Fetch performance information
@@ -850,36 +999,6 @@ class API extends VS_Controller
 
         $this->output($performanceinfos);
     }
-
-    /**
-     * Schedule queue
-     *
-     * @param String $hostname
-     * @param String $serviceDescription
-     * @param String $checktime
-     * @param String $type
-     */
-     public function schedulequeue($hostname='', $serviceDescription='', $checktime='', $type='')
-     {
-        $allowed_types = array(
-            'enable_svc_check',
-            'disable_svc_check',
-            'schedule_svc_check'
-        );
-
-        //check empty input
-        if( $type != '' )
-        {
-            //compare type with allowed types
-            if(in_array($type, $allowed_types) )
-            {
-                $schedulequeues = $this->system_commands->scheduling_queue($hostname, $serviceDescription, $checktime, $type);
-            }
-        }
-
-        $this->output($schedulequeues);
-     }
-
 
 
     /**

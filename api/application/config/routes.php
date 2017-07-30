@@ -60,12 +60,23 @@ $route["notification/(:any)"] = "api/notifications/$1";
 $route["testing"] = "api/testing";
 $route["comments/(:any)"] = "api/comments/$1";
 $route["comments"] = "api/comments";
+$route["downtime/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/downtime/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10";
+
+//System commands
 $route["addcomments/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/addComments/$1/$2/$3/$4/$5/$6";
 $route["deletecomments/(:any)/(:any)"] = "api/deleteComments/$1/$2";
-$route["downtime/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/downtime/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10";
-$route["processinfo/(:any)"] = "api/processinfo/$1";
-$route["performanceinfo"] = "api/performanceinfo";
-$route["schedulequeue/(:any)/(:any)/(:any)"] = "api/schedulequeue/$1/$2/$3";
+$route["servicecheck/(:any)/(:any)/(:any)"] = "api/servicecheck/$1/$2/$3";
+$route["allnotifications/(:any)"] = "api/allnotifications/$1";
+$route["nagiosoperation/(:any)"] = "api/nagiosOperation/$1";
+$route["servicenotification/(:any)/(:any)/(:any)"] = "api/serviceNotification/$1/$2/$3";
+$route["deleteallcomment/(:any)/(:any)/(:any)"] = "api/deleteAllComment/$1/$2/$3";
+$route["hostnotification/(:any)/(:any)"] = "api/hostNotification/$1/$2";
+$route["schedulecheck/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/scheduleCheck/$1/$2/$3/$4/$5";
+$route["hostservicecheck/(:any)/(:any)"] = "api/hostServiceCheck/$1/$2";
+$route["hostservicenotification//(:any)/(:any)"] = "api/hostServiceNotification/$1/$2";
+$route["acknowledgeproblem/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/acknowledgeProblem/$1/$2/$3/$4/$5/$6/$7/$8";
+
+
 
 $route["configurations/(:any)"] = "api/configurations/$1";
 $route["configurations"] = "api/configurations";
