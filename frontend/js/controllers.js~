@@ -178,24 +178,25 @@ angular.module('vshell.controllers', [])
         var utcdate = new Date();
         var timestamp = (utcdate.getTime() - 86400000) / 1000;
         var date = timestamp.toString();
+	date = date.substring(0, 10);
 
         $scope.previousday = function() {
             
             next = 1;
-            cnt++;
             var predate = parseInt(timestamp);
             var previoustimestamp = predate - (86400 * cnt);
             console.log(previoustimestamp);
             var previousdate = previoustimestamp.toString();
+	    cnt++;
 
             $scope.nextday = function() {
                 
                 cnt = 1;
-                next++;
                 var ntdate = parseInt(previousdate);
                 var nexttimestamp = ntdate + (86400 * next);
                 console.log(nexttimestamp);
                 var nextdate = nexttimestamp.toString();
+		next++;
         
     
                         var options = {
@@ -217,45 +218,6 @@ angular.module('vshell.controllers', [])
                     async.api($scope, options);
             };
 
-        $scope.nextday = function() {
-            
-            cnt = 1;
-            next++;
-            var ntdate = parseInt(timestamp);
-            var nexttimestamp = predate + (86400 * next);
-            console.log(nexttimestamp);
-            var nextdate = nexttimestamp.toString();
-
-            $scope.previousday = function() {
-                
-                next = 1;
-                cnt++;
-                var previousdate = parseInt(nextdate);
-                var previoustimestamp = ntdate - (86400 * cnt);
-                console.log(previoustimestamp);
-                var previousdate = previoustimestamp.toString();
-        
-    
-                        var options = {
-                            name: 'alerthistorys',
-                            url: 'alerthistory/' + previousdate,
-                            queue: 'main'
-                        };
-
-                        async.api($scope, options);
-                };
-        
-    
-                    var options = {
-                        name: 'alerthistorys',
-                        url: 'alerthistory/' + nextdate,
-                        queue: 'main'
-                    };
-
-                    async.api($scope, options);
-            };
-
-        
 
                 var options = {
                     name: 'alerthistorys',
@@ -268,8 +230,11 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('AlertSummaryCtrl', ['$scope', 'async',
-    function($scope, async) {
+.controller('AlertSummaryCtrl', ['$scope', '$attrs', 'async',
+    function($scope, $attrs, async) {
+
+	
+	
 
         $scope.reset = function(){
             $scope.StandardReportType = '25 Most Recent Hard Alerts';
@@ -295,6 +260,16 @@ angular.module('vshell.controllers', [])
             };
 
             async.api($scope, options);
+
+	    var result = {
+                name: 'status',
+                url: 'status',
+                queue: 'status-' + '',
+                cache: true
+            };
+
+	    async.api($scope, result);
+	    
         };
 
         $scope.create = function() {
@@ -303,7 +278,7 @@ angular.module('vshell.controllers', [])
             
             var options = {
                 name: 'alersummary',
-                url: 'alertsummary/NORMAL/LAST 7 DAYS/' + date + '/hostname/ALL ALERT/ALL STATE TYPE/ALL SERVICE STATE',
+                url: 'alertsummary/NORMAL/LAST 7 DAYS/' + date + '/testserver/ALL ALERT/ALL STATE TYPE/ALL SERVICE STATE',
                 queue: 'main'
             };
 
@@ -320,30 +295,33 @@ angular.module('vshell.controllers', [])
 .controller('NotificationsCtrl', ['$scope', 'async',
     function($scope, async) {
         
-        var cnt = 1;
+    var cnt = 1;
     var next = 1;
         
-        $scope.init = function() {
+    $scope.init = function() {
 
         var utcdate = new Date();
         var timestamp = (utcdate.getTime()) / 1000;
         var date = timestamp.toString();
+	date = date.substring(0, 10);
 
         $scope.previousday = function() {
             
             next = 1;
-            cnt++;
+            
             var predate = parseInt(timestamp);
             var previoustimestamp = predate - (86400 * cnt);
             var previousdate = previoustimestamp.toString();
+	    cnt++;
 
             $scope.nextday = function() {
                 
                 cnt = 1;
-                next++;
+                
                 var ntdate = parseInt(previousdate);
                 var nexttimestamp = ntdate + (86400 * next);
                 var nextdate = nexttimestamp.toString();
+		next++;
         
     
                         var options = {
@@ -363,43 +341,7 @@ angular.module('vshell.controllers', [])
                     };
 
                     async.api($scope, options);
-            };
-
-        $scope.nextday = function() {
-            
-            cnt = 1;
-            next++;
-            var ntdate = parseInt(timestamp);
-            var nexttimestamp = predate + (86400 * next);
-            var nextdate = nexttimestamp.toString();
-
-            $scope.previousday = function() {
-                
-                next = 1;
-                cnt++;
-                var previousdate = parseInt(nextdate);
-                var previoustimestamp = ntdate - (86400 * cnt);
-                var previousdate = previoustimestamp.toString();
-        
-    
-                        var options = {
-                            name: 'notifications',
-                            url: 'notifications/' + previousdate,
-                            queue: 'main'
-                        };
-
-                        async.api($scope, options);
-                };
-        
-    
-                    var options = {
-                        name: 'notifications',
-                        url: 'notifications/' + nextdate,
-                        queue: 'main'
-                    };
-
-                    async.api($scope, options);
-            };
+         };
 
                 var options = {
                     name: 'notifications',
@@ -415,7 +357,7 @@ angular.module('vshell.controllers', [])
 .controller('EventLogCtrl', ['$scope', 'async',
     function($scope, async) {
         
-        var cnt = 1;
+    var cnt = 1;
     var next = 1;
         
         $scope.init = function() {
@@ -423,27 +365,28 @@ angular.module('vshell.controllers', [])
         var utcdate = new Date();
         var timestamp = (utcdate.getTime()) / 1000;
         var date = timestamp.toString();
+	date = date.substring(0, 10);
 
         $scope.previousday = function() {
             
             next = 1;
-            cnt++;
             var predate = parseInt(timestamp);
             var previoustimestamp = predate - (86400 * cnt);
             var previousdate = previoustimestamp.toString();
+	    cnt++;
 
             $scope.nextday = function() {
                 
                 cnt = 1;
-                next++;
                 var ntdate = parseInt(previousdate);
                 var nexttimestamp = ntdate + (86400 * next);
                 var nextdate = nexttimestamp.toString();
+		next++;
         
     
                         var options = {
                             name: 'eventlog',
-                            url: 'eventlog/' + nextdate,
+                            url: 'eventlogs/' + nextdate,
                             queue: 'main'
                         };
 
@@ -453,13 +396,21 @@ angular.module('vshell.controllers', [])
     
                     var options = {
                         name: 'eventlog',
-                        url: 'eventlog/' + previousdate,
+                        url: 'eventlogs/' + previousdate,
                         queue: 'main'
                     };
 
                     async.api($scope, options);
             };
 
+		var options = {
+                        name: 'eventlog',
+                        url: 'eventlogs/' + date,
+                        queue: 'main'
+                    };
+
+                    async.api($scope, options);
+		
         };
     }
 ])
@@ -467,6 +418,80 @@ angular.module('vshell.controllers', [])
 .controller('ProcessInfoCtrl', ['$scope', '$routeParams', 'async',
     function($scope, $routeParams, async) {
 
+
+        $scope.init = function() {
+
+            var options = {
+                name: 'processinfo',
+                url: 'processinfo',
+                queue: 'main'
+            };
+
+            async.api($scope, options);
+
+        };
+	
+	$scope.open = function(operation) {
+
+		
+
+		if (operation == 'shutdown'){
+
+			var result = {
+				name: 'nagiosoperation',
+				url: 'nagiosOperation/' + operation,
+				queue: 'main'
+			};
+
+		async.api($scope, result);
+
+		}else if (operation == 'restart'){
+
+			var result = {
+				name: 'nagiosoperation',
+				url: 'nagiosOperation/' + operation,
+				queue: 'main'
+			};
+
+			async.api($scope, result);
+
+		}else if (operation == 'YES'){
+
+			var type = "disable";
+
+			var result = {
+				name: 'allnotifications',
+				url: 'allnotifications/' + type,
+				queue: 'main'
+			};
+
+			async.api($scope, result);
+
+		}else if (operation == 'NO'){
+
+			console.log(operation);
+		}
+				
+	};
+
+    }
+])
+
+.controller('SchedulingQueueCtrl', ['$scope', 'async',
+    function($scope, async) {
+
+
+        $scope.init = function() {
+
+            var options = {
+                name: 'schedulequeue',
+                url: 'schedulequeue',
+                queue: 'main'
+            };
+
+            async.api($scope, options);
+
+        };
 
     }
 ])

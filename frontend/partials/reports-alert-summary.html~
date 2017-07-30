@@ -51,7 +51,7 @@
 							<label for="CustomReportType" class="col-md-4 control-label">Report Type:</label>
 							<div class="col-md-7">
 								<select ng-model="CustomReportType" name="CustomReportType" class="form-control">
-									<option value="Most Recent Alerts">Most Recent Alerts</option>
+									<option value="{{ status.username }}">Most Recent Alerts</option>
 									<option value="Alert Totals">Alerts Total</option>
 									<option value="Alert Totals By Hostgroup">Alert Totals By Hostgroup</option>
 									<option value="Alert Totals By Host">Alert Totals By Host</option>

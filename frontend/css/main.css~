@@ -859,11 +859,28 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
         margin: 15px 0px 15px 0px;
         width: 100%;
     }
-
-    .form-options {
+	
+	.form-options {
         padding: 10px 10px 10px 10px;
-        background-color: #ffffff;
+	background-color: #ffffff;
         width: 100%;
+    }
+
+	.form-control {
+	height: 45px;
+	border: groove;
+	border-radius: 5px;
+	background-color: #f1f1f1;
+	text-align-last: center;
+	font-size: 16px;
+    }
+
+	.modal-backdrop {
+	z-index: -1;
+	}
+
+	.table-hover tbody tr:hover td {
+	background-color: grey;
     }
 
         .table-container.full-width .table-options {
@@ -1102,12 +1119,14 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
         }
 
     .table-container tr.state-ok td,
+    .table-container tr.state-yes td,
     .table-container tr.state-up td {
 
     }
 
         .table-container tr.enabled td,
         .table-container tr.state-ok td.status,
+	.table-container tr.state-yes td.status,
         .table-container tr.state-up td.status {
             background-color: #e9ffd6;
             color: #6cb22f;
@@ -1120,12 +1139,14 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
         }
 
     .table-container tr.state-critical td,
+    .table-container tr.state-no td,
     .table-container tr.state-down td {
 
     }
 
         .table-container tr.disabled td,
         .table-container tr.state-critical td.status,
+	.table-container tr.state-no td.status,
         .table-container tr.state-down td.status {
             background-color: #ffccd1;
             color: #d24555;
@@ -1460,3 +1481,4 @@ tr.selected{
     display: inline;
     margin: 0;
 }
+

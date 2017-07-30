@@ -1,0 +1,216 @@
+<div ng-controller="ProcessInfoCtrl">
+
+	<div class="modal fade" id="ShutDownModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Shut Down The Nagios</h4>
+				</div>
+				<div class="modal-body">
+					<button type="button" class="btn btn-success" ng-click="open('shutdown')" data-dismiss="modal">Yes</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="RestartModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Restart the Nagios Process</h4>
+				</div>
+				<div class="modal-body">
+					<button type="button" class="btn btn-success" ng-click="open('restart')" data-dismiss="modal">Yes</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="NotificationsModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Notifications Command</h4>
+				</div>
+				<div class="modal-body">
+					<button type="button" class="btn btn-success" ng-click="open(processinfo.enable_notifications)">Yes</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="ServiceCheckModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Service Check Command</h4>
+				</div>
+				<div class="modal-body">
+					<button type="button" class="btn btn-success">Yes</button>
+					<button type="button" class="btn btn-danger">No</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="PassiveServiceModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Passive Service Check Command</h4>
+				</div>
+				<div class="modal-body">
+					<button type="button" class="btn btn-success">Yes</button>
+					<button type="button" class="btn btn-danger">No</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="HostCheckModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Host Check Command</h4>
+				</div>
+				<div class="modal-body">
+					<button type="button" class="btn btn-success">Yes</button>
+					<button type="button" class="btn btn-danger">No</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="PassiveHostModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Passive Host Check Command</h4>
+				</div>
+				<div class="modal-body">
+					<button type="button" class="btn btn-success">Yes</button>
+					<button type="button" class="btn btn-danger">No</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="EventHandlerModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Event Handler Command</h4>
+				</div>
+				<div class="modal-body">
+					<button type="button" class="btn btn-success">Yes</button>
+					<button type="button" class="btn btn-danger">No</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="ObsessingServiceModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Obsessing Over Service Command</h4>
+				</div>
+				<div class="modal-body">
+					<button type="button" class="btn btn-success">Yes</button>
+					<button type="button" class="btn btn-danger">No</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="ObsessingHostModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Obsessing Over Hosts Command</h4>
+				</div>
+				<div class="modal-body">
+					<button type="button" class="btn btn-success">Yes</button>
+					<button type="button" class="btn btn-danger">No</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="FlapDetectModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Flap Detection Model</h4>
+				</div>
+				<div class="modal-body">
+					<button type="button" class="btn btn-success">Yes</button>
+					<button type="button" class="btn btn-danger">No</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="PerformanceModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Performance Data Command</h4>
+				</div>
+				<div class="modal-body">
+					<button type="button" class="btn btn-success">Yes</button>
+					<button type="button" class="btn btn-danger">No</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
