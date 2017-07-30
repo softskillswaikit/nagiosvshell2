@@ -839,7 +839,7 @@ class System_commands extends CI_Model
 	}
 
 	//command id = 61
-	public function start_obsess_oveer_svc($input_host_name, $input_service_description)
+	public function start_obsess_over_svc($input_host_name, $input_service_description)
 	{
 		$commands = 'START_OBSESSING_OVER_SVC;'.$input_host_name.';'.$input_service_description;
 
