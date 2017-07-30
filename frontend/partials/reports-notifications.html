@@ -36,11 +36,12 @@
                 <tr>
                     <th>Host</th>
                     <th>Service</th>
-                    <th> Type </th>
+		    <th data-hide="phone"> Type </th>
+                    <th> Status </th>
 		    <th> Time </th>
-		    <th> Contact </th>
-		    <th> Notification Command </th>
-		    <th> Information </th>
+		    <th data-hide="phone"> Contact </th>
+		    <th data-hide="phone"> Notification Command </th>
+		    <th data-hide="phone"> Information </th>
                 </tr>
             </thead>
             <tfoot>
@@ -55,13 +56,14 @@
                 <tr ng-if="(notifications | count) == 0">
                     <td colspan="5">{{ is_loading ? 'Loading...' : 'No notification are defined' }}</td>
                 </tr>
-                <tr ng-repeat="notification in notifications" footabledata>
+                <tr ng-repeat="notification in notifications" footabledata class="state-{{ notification.state | lowercase }}">
                     <td>{{ notification.host }}</td>
 		<div>
 		    <td ng-if="notification.service == null">N/A</td>
 		    <td ng-if="notification.service != null">{{ notification.service }}</td>
 		</div>
-		    <td>{{ notification.state }}</td>
+		    <td>{{ notification.logtype }}</td>
+		    <td class="status">{{ notification.state }}</td>
 		    <td>{{ notification.datetime * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
 		    <td>{{ notification.contact }}</td>
 		    <td>{{ notification.notificationcommand }}</td>

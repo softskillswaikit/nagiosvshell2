@@ -37,10 +37,10 @@
                     <th> Host </th>
 		    <th> Service </th>
                     <th> Date & Time </th>
-                    <th> Status </th>
-		    <th> Type </th>
-		    <th> State </th>
-		    <th> Retry Count </th>
+                    <th data-hide="phone"> Status </th>
+		    <th data-hide="phone"> Type </th>
+		    <th data-hide="phone"> State </th>
+		    <th data-hide="phone"> Retry Count </th>
 		    <th data-hide="phone"> Information </th>
                 </tr>
             </thead>
@@ -56,7 +56,7 @@
                 <tr ng-if="(alerthistorys | count) == 0">
                     <td colspan="5">{{ is_loading ? 'Loading...' : 'No history for this day' }}</td>
                 </tr>
-                <tr ng-repeat="alerthistory in alerthistorys" footabledata>
+                <tr ng-repeat="alerthistory in alerthistorys" footabledata class="state-{{ alerthistory.state | lowercase }}">
 		<div>
 		    <td ng-if="alerthistory.hostname != null">{{ alerthistory.hostname }}</td>
 		    <td ng-if="alerthistory.hostname == null"> N/A </td>
@@ -66,9 +66,7 @@
 		    <td ng-if="alerthistory.servicename == null"> N/A </td>
 		</div>
 		    <td>{{ alerthistory.datetime * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
-		<div>
-		    <td ng-if="alerthistory.state == 'DOWN' || alerthistory.state == 'CRITICAL'" style="background-color: #ffccd1; color: #d24555;">{{ alerthistory.state }}</td>
-		</div>
+		    <td class="status">{{ alerthistory.state }}</td>
 		    <td>{{ alerthistory.logtype }}</td>
 		    <td>{{ alerthistory.state_type }}</td>
 		    <td>{{ alerthistory.retry_count }}</td>

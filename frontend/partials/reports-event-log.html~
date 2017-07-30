@@ -51,13 +51,10 @@
                 <tr ng-if="(eventlog | count) == 0">
                     <td colspan="5">{{ is_loading ? 'Loading...' : 'No eventlog are defined' }}</td>
                 </tr>
-                <tr ng-repeat="x in eventlog" footabledata>
-                    <td>{{ x.datetime * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
-		    <div>
-			<td class="state-{{ x.logtype | lowercase }}">{{ x.logtype }}</td>
-			<td ng-if="x.logtype=='INFORMATION'">{{ x.logtype }}</td>
-		    </div>
-		    <td>{{ x.messages }}</td>
+                <tr ng-repeat="log in eventlog" footabledata class="state-{{ eventlog.logtype | lowercase }}">
+                    <td>{{ log.datetime * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+		    <td class="status">{{ log.logtype }}</td>
+		    <td>{{ log.messages }}</td>
                 </tr>
             </tbody>
         </table>
