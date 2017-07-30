@@ -1,13 +1,5 @@
-
-<div ng-include="'frontend/partials/_header.html'"></div>
-
-<div ng-include="'frontend/partials/_status.html'"></div>
-
-<div ng-include="'frontend/partials/_browser.html'"></div>
-
-<div ng-include="'frontend/partials/_messages.html'"></div>
-
-<div class="modal fade" id="servicecommentmodal">
+<!-- Modal addhost-->
+<div class="modal fade" id="hostcommentmodal" data-backdrop="false">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -17,19 +9,20 @@
         <h4 class="modal-title">Add Host Comment</h4>
       </div>
       <div class="modal-body">
-        <form action="" class="form-horizontal" name="inputForm" method="post" novalidate>
+        <form action="" class="form-horizontal" name="addHostComment" method="get" novalidate>
 
           <div class="form-group">
             <label for="hostName" class="col-md-4 control-label">Host Name:</label>
             <div class="col-md-6">
-              <input ng-model="hostHostName" type="text" class="form-control input-sm" name="hostName"></input>
+              <input ng-model="hostName" type="text" class="form-control input-md" name="hostName" required></input>
+              <span style="color:red" ng-show="addHostComment.hostName.$dirty && addHostComment.hostName.$invalid">
+              <span ng-show="addHostComment.hostName.$error.required">This field is required.</span></span>
             </div>
           </div>
 
           <div class="form-group">
             <div class="col-xs-1 col-md-offset-3 input-sm">
-              <input ng-model="hostPersistent" type="checkbox" value="persistent" name="persistent"
-                class="form-control input-sm"></input>
+              <input ng-model="persistent" type="checkbox" value="persistent" class="form-control input-sm"></input>
             </div>
             <label for="persistent" class="control-label">Persistent</label>
           </div>
@@ -37,14 +30,16 @@
           <div class="form-group">
             <label for="author" class="col-md-4 control-label">Author(Your Name):</label>
             <div class="col-md-6">
-              <input ng-model="hostAuthor" ng-disabled="true" type="text" class="form-control input-sm" name="author"></input>
+              <input value="{{status.username}}" ng-disabled="true" type="text" class="form-control input-md" name="author"></input>
             </div>
           </div>
 
           <div class="form-group">
             <label for="comment" class="col-md-4 control-label">Comment:</label>
             <div class="col-md-6">
-              <textarea ng-model="hostComment " class="form-control input-sm" name="comment"></textarea>
+              <textarea ng-model="comment" class="form-control input-md" name="comment" required></textarea>
+              <span style="color:red" ng-show="addHostComment.comment.$dirty && addHostComment.comment.$invalid">
+              <span ng-show="addHostComment.comment.$error.required">This field is required.</span></span>
             </div>
           </div>
 
@@ -68,11 +63,10 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="init()">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="init()">Add</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reset()">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addComment('host')" title="Please complete the form" ng-disabled="addHostComment.$invalid">Add</button>
       </div>
     </div>
 
   </div>
 </div>
-<div ng-include="'frontend/partials/_footer.html'"></div>

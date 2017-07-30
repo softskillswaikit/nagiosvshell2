@@ -923,34 +923,13 @@ angular.module('vshell.controllers', [])
                 {
                     "seriesname": "Host State Trends",
                     "data": [
-                        {
-                          "label" : "Mon",
-                          "value": "3"
-                        },
-                        {
-                          "label" : "Tue",
-                          "value": "3"
-                        },
-                        {
-                          "label" : "Wed",
-                          "value": "2"
-                        },
-                        {
-                          "label" : "Thu",
-                          "value": "3"
-                        },
-                        {
-                          "label" : "Fri",
-                          "value": "1"
-                        },
-                        {
-                          "label" : "Sat",
-                          "value": "2"
-                        },
-                        {
-                          "label" : "Sun",
-                          "value": "0"
-                        }
+                        {"label" : "Mon","value": "3"},
+                        {"label" : "Tue","value": "3"},
+                        {"label" : "Wed","value": "2"},
+                        {"label" : "Thu","value": "3"},
+                        {"label" : "Fri","value": "1"},
+                        {"label" : "Sat","value": "2"},
+                        {"label" : "Sun","value": "0"}
                     ]
                 }
             ]
@@ -1131,39 +1110,17 @@ angular.module('vshell.controllers', [])
                 {
                     "seriesname": "Host State Trends",
                     "data": [
-                        {
-                          "label" : "Mon",
-                          "value": "3"
-                        },
-                        {
-                          "label" : "Tue",
-                          "value": "3"
-                        },
-                        {
-                          "label" : "Wed",
-                          "value": "2"
-                        },
-                        {
-                          "label" : "Thu",
-                          "value": "3"
-                        },
-                        {
-                          "label" : "Fri",
-                          "value": "1"
-                        },
-                        {
-                          "label" : "Sat",
-                          "value": "2"
-                        },
-                        {
-                          "label" : "Sun",
-                          "value": "0"
-                        }
+                        {"label" : "Mon","value": "3"},
+                        {"label" : "Tue","value": "3"},
+                        {"label" : "Wed","value": "2"},
+                        {"label" : "Thu","value": "3"},
+                        {"label" : "Fri","value": "1"},
+                        {"label" : "Sat","value": "2"},
+                        {"label" : "Sun","value": "0"}
                     ]
                 }
             ]
           }
-
         };
     }
 ])
@@ -1238,111 +1195,23 @@ angular.module('vshell.controllers', [])
            "categories": [
             {
               "category": [
-                {
-                    "label": "Mon"
-                },
-                {
-                    "label": "Tue"
-                },
-                {
-                    "label": "Wed"
-                },
-                {
-                    "label": "Thu"
-                },
-                {
-                    "label": "Fri"
-                },
-                {
-                    "label": "Sat"
-                },
-                {
-                    "label": "Sun"
-                }
+                {"label": "Mon"},{"label": "Tue"},{"label": "Wed"},  {"label": "Thu"},{"label": "Fri"},{"label": "Sat"},{"label": "Sun"}
               ]
             }
           ],
            "dataset": [
                {
                    "seriesname": "Recovery(Up)",
-                   "data": [
-                       {
-                         "value": "6"
-                       },
-                       {
-                         "value": "7"
-                       },
-                       {
-                         "value": "4"
-                       },
-                       {
-                         "value": "13"
-                       },
-                       {
-                         "value": "7"
-                       },
-                       {
-                         "value": "12"
-                       },
-                       {
-                         "value": "10"
-                       }
-                   ]
+                   "data": [{"value": "6"},{"value": "7"},{"value": "4"},{"value": "13"},{ "value": "7"},{"value": "12"},{"value": "10"}]
                },
                {
                    "seriesname": "Down",
-                   "data": [
-                       {
-                         "value": "1"
-                       },
-                       {
-                         "value": "5"
-                       },
-                       {
-                         "value": "7"
-                       },
-                       {
-                         "value": "5"
-                       },
-                       {
-                         "value": "3"
-                       },
-                       {
-                         "value": "3"
-                       },
-                       {
-                         "value": "0"
-                       }
-                   ]
+                   "data": [{"value": "1"},{"value": "5"},{"value": "7"},{"value": "5"},{"value": "3"},{"value": "3"},{"value": "0"}]
                },
                {
                    "seriesname": "Unreachable",
-                   "data": [
-                       {
-                         "value": "0"
-                       },
-                       {
-                         "value": "0"
-                       },
-                       {
-                         "value": "2"
-                       },
-                       {
-                         "value": "1"
-                       },
-                       {
-                         "value": "0"
-                       },
-                       {
-                         "value": "2"
-                       },
-                       {
-                         "value": "0"
-                       }
-                   ]
+                   "data": [{"value": "0"},{"value": "0"},{"value": "2"},{"value": "1"},{"value": "0"},{"value": "2"},{"value": "0"}]
                }
-
-
            ]
          }
 
@@ -1366,27 +1235,7 @@ angular.module('vshell.controllers', [])
            "categories": [
             {
               "category": [
-                {
-                    "label": "Mon"
-                },
-                {
-                    "label": "Tue"
-                },
-                {
-                    "label": "Wed"
-                },
-                {
-                    "label": "Thu"
-                },
-                {
-                    "label": "Fri"
-                },
-                {
-                    "label": "Sat"
-                },
-                {
-                    "label": "Sun"
-                }
+                {"label": "Mon"},{"label": "Tue"},{"label": "Wed"},{"label": "Thu"},{"label": "Fri"},{"label": "Sat"},{"label": "Sun"}
               ]
             }
           ],
@@ -1394,112 +1243,29 @@ angular.module('vshell.controllers', [])
                {
                    "seriesname": "Recovery(Up)",
                    "data": [
-                       {
-                         "value": "6"
-                       },
-                       {
-                         "value": "7"
-                       },
-                       {
-                         "value": "4"
-                       },
-                       {
-                         "value": "13"
-                       },
-                       {
-                         "value": "7"
-                       },
-                       {
-                         "value": "12"
-                       },
-                       {
-                         "value": "10"
-                       }
+                       {"value": "6"},{"value": "7"},{"value": "4"},{"value": "13"}, {"value": "7"},{"value": "12"},{"value": "10"}
                    ]
                },
                {
                    "seriesname": "Warning",
                    "data": [
-                       {
-                         "value": "1"
-                       },
-                       {
-                         "value": "5"
-                       },
-                       {
-                         "value": "7"
-                       },
-                       {
-                         "value": "5"
-                       },
-                       {
-                         "value": "7"
-                       },
-                       {
-                         "value": "3"
-                       },
-                       {
-                         "value": "0"
-                       }
+                       {"value": "1"},{"value": "5"},{"value": "7"},{"value": "5"},{"value": "7"},{"value": "3"},{"value": "0"}
                    ]
                },
                {
                    "seriesname": "Unknown",
                    "data": [
-                       {
-                         "value": "0"
-                       },
-                       {
-                         "value": "0"
-                       },
-                       {
-                         "value": "2"
-                       },
-                       {
-                         "value": "1"
-                       },
-                       {
-                         "value": "0"
-                       },
-                       {
-                         "value": "2"
-                       },
-                       {
-                         "value": "0"
-                       }
+                       {"value": "0"},{"value": "0"},{"value": "2"},{"value": "1"},{"value": "0"},{"value": "2"},{"value": "0"}
                    ]
                },
                {
                    "seriesname": "Critical",
                    "data": [
-                       {
-                         "value": "0"
-                       },
-                       {
-                         "value": "0"
-                       },
-                       {
-                         "value": "0"
-                       },
-                       {
-                         "value": "3"
-                       },
-                       {
-                         "value": "0"
-                       },
-                       {
-                         "value": "3"
-                       },
-                       {
-                         "value": "0"
-                       }
+                       {"value": "0"},{"value": "0"},{"value": "0" },{"value": "3" },{"value": "0"},{"value": "3"},{"value": "0"}
                    ]
                }
-
-
            ]
          }
-
        };
     }
 ])
@@ -1510,11 +1276,22 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('SysCommentsCtrl', ['$scope', 'async',
-    function($scope, async) {
+.controller('SysCommentsCtrl', ['$scope', 'async', '$timeout',
+    function($scope, async, $timeout) {
 
       $scope.init = function() {
         console.log("init");
+
+        $scope.testdata = [
+          {"id":1,"host_name":"localhost","entry_type":"1","comment_id":"1","source":"1","persistent":"1","entry_time":"1501193956","expires":"0","expire_time":"0","author":"nagiosadmin","comment_data":"test comment 1"},
+          {"id":1,"host_name":"localhost","entry_type":"1","comment_id":"2","source":"1","persistent":"1","entry_time":"1501193956","expires":"0","expire_time":"0","author":"nagiosadmin","comment_data":"test comment 2"}
+        ]
+
+        $scope.reset();
+      };
+      $scope.reset = function(){
+
+        //get comments data
         var options = {
             name: 'comments',
             url: 'comments/' + '',
@@ -1522,51 +1299,90 @@ angular.module('vshell.controllers', [])
         };
         async.api($scope, options);
 
-        $scope.reset();
-      };
-      $scope.reset = function(){
-        console.log("reset");
-        var options = {
+        //get author
+        var options1 = {
             name: 'status',
             url: 'status',
             queue: 'status-' + '',
             cache: true
         };
-        async.api($scope, options);
-        console.log("username");
-        //console.log($scope.status['username']);
+        async.api($scope, options1);
+
+        //initialize scope
         $scope.hostName = '';
-        $scope.service = '';
+        $scope.service = ' ';
         $scope.persistent = true;
-        $scope.author = '';
+        $scope.author = ' ';
         $scope.comment = '';
-        $scope.addHostComment.$setPristine(true);
-        //$scope.addServiceComment.$setPristine();
+        if($scope.addHostComment)
+          $scope.addHostComment.$setPristine();
+        if($scope.addServiceComment)
+          $scope.addServiceComment.$setPristine();
+
+        $scope.hideAlert('#success-alert');
+        $scope.hideModal();
       };
 
       $scope.addComment = function(type){
+
         console.log("addComment");
-        console.log("type="+type+$scope.hostName+$scope.service+$scope.persistent);
+        console.log("type="+type);
+        console.log("host="+$scope.hostName);
+        console.log("service="+$scope.service);
+        console.log("persistent="+$scope.persistent);
         console.log("author="+$scope.author);
-        console.log($scope.comment);
+        console.log("comment="+$scope.comment);
+
         var options = {
-            name: 'success',
-            url: 'addComments/'+ type + '/' + $scope.hostName + '/' + $scope.service
+            name: 'result',
+            url: 'addcomments/'+ type + '/' + $scope.hostName + '/' + $scope.service
               + '/' + $scope.persistent + '/' + $scope.author + '/' + $scope.comment,
             queue: 'main'
         };
         async.api($scope, options);
+
+        if(type=='host')
+          $scope.hideModal('#hostcommentmodal');
+        else if(type=='srv')
+          $scope.hideModal('#servicecommentmodal');
+
+        $scope.showAlert('#success-alert');
+        $scope.reset();
       };
 
       $scope.deleteComment = function(id, type){
-        console.log("deleteComment");
-        var options = {
-            name: 'success',
-            url: 'deleteComments/' + '',
-            queue: 'main'
-        };
-        async.api($scope, options);
+        $scope.showModal('#confirm');
+        $scope.delete = function(){
+
+          var options = {
+              name: 'success',
+              url: 'deletecomments/' + id + '/' + type,
+              queue: 'main'
+          };
+
+          async.api($scope, options);
+
+          $scope.showAlert('#success-alert');
+          $scope.reset();
+        }
       };
+
+      $scope.showModal = function(modal_id){
+        $(modal_id).modal('show');
+      };
+
+      $scope.hideModal = function(modal_id){
+        $(modal_id).modal('hide');
+      };
+
+      $scope.showAlert = function(alert_id){
+        $(alert_id).show();
+      };
+
+      $scope.hideAlert = function(alert_id){
+        $timeout(function(){ $(alert_id).fadeOut("slow"); }, 2000);
+      };
+
     }
 ])
 
