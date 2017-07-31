@@ -132,18 +132,115 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('HostDetailsCtrl', ['$scope', '$routeParams', 'async',
-    function($scope, $routeParams, async) {
+.controller('HostDetailsCtrl', ['$scope', '$routeParams', 'async', '$timeout',
+    function($scope, $routeParams, async, $timeout) {
 
         $scope.init = function() {
+            $scope.reset();
+        };
+
+        $scope.reset = function(){
+          var options = {
+              name: 'host',
+              url: 'hoststatus/' + $routeParams.host,
+              queue: 'main'
+          };
+
+          async.api($scope, options);
+
+          //get author
+          var options1 = {
+              name: 'status',
+              url: 'status',
+              queue: 'status-' + '',
+              cache: true
+          };
+          async.api($scope, options1);
+
+          //initialize scope
+          $scope.hostName = $routeParams.host;
+          $scope.service = ' ';
+          $scope.persistent = true;
+          $scope.author = ' ';
+          $scope.comment = '';
+          if($scope.addHostComment)
+            $scope.addHostComment.$setPristine();
+
+          //close all modal
+          $scope.hideModal('#hostcommentmodal');
+          $scope.hideModal('#success');
+          $scope.hideModal('#fail');
+          $scope.hideModal('#confirm-delete');
+          $scope.hideModal('#confirm-toggle');
+        };
+
+        $scope.toggle = function(action, is_enabled){
+          console.log('toggle');
+
+          $scope.showModal('#confirm-toggle');
+
+          $scope.toggleAction = function(){
+
+            $scope.showModal('#success');
+            $scope.reset();
+          };
+        };
+
+        $scope.addComment = function(type){
+          if(type=='host')
+            $scope.showModal('#hostcommentmodal');
+
+          $scope.add = function(){
+            console.log("addComment");
+            console.log("type="+type);
+            console.log("host="+$scope.hostName);
+            console.log("service="+$scope.service);
+            console.log("persistent="+$scope.persistent);
+            console.log("author="+$scope.author);
+            console.log("comment="+$scope.comment);
+
             var options = {
-                name: 'host',
-                url: 'hoststatus/' + $routeParams.host,
+                name: 'result',
+                url: 'addcomments/'+ type + '/' + $scope.hostName + '/' + $scope.service
+                  + '/' + $scope.persistent + '/' + $scope.author + '/' + $scope.comment,
+                queue: 'main'
+            };
+            async.api($scope, options);
+
+            $scope.showModal('#success');
+
+            $scope.reset();
+          };
+        };
+
+        $scope.deleteComment = function(id, type){
+          $scope.showModal('#confirm-delete');
+          $scope.delete = function(){
+            var options = {
+                name: 'success',
+                url: 'deletecomments/' + id + '/' + type,
                 queue: 'main'
             };
 
             async.api($scope, options);
-        }
+
+            $scope.showModal('#success');
+            $scope.reset();
+          }
+        };
+
+        $scope.showModal = function(modal_id){
+          console.log("show " + modal_id);
+          $(modal_id).modal('show');
+        };
+
+        $scope.hideModal = function(modal_id){
+          console.log("hide modal " + modal_id);
+          if(modal_id=='#success'||modal_id=='#fail')
+            $timeout(function(){ $(modal_id).modal("hide"); }, 2000);
+          else
+            $(modal_id).modal('hide');
+        };
     }
 ])
 
@@ -1270,12 +1367,6 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('confirmModalCtrl', ['$scope', '$dialog',
-    function ($scope, $dialog) {
-      $dialog.dialog({}).open('confirmModalCtrl.html');
-    }
-])
-
 .controller('SysCommentsCtrl', ['$scope', 'async', '$timeout',
     function($scope, async, $timeout) {
 
@@ -1319,35 +1410,41 @@ angular.module('vshell.controllers', [])
         if($scope.addServiceComment)
           $scope.addServiceComment.$setPristine();
 
-        $scope.hideAlert('#success-alert');
-        $scope.hideModal();
+        //close all modal
+        $scope.hideModal('#servicecommentmodal');
+        $scope.hideModal('#hostcommentmodal');
+        $scope.hideModal('#success');
+        $scope.hideModal('#fail');
+        $scope.hideModal('#confirm');
       };
 
       $scope.addComment = function(type){
-
-        console.log("addComment");
-        console.log("type="+type);
-        console.log("host="+$scope.hostName);
-        console.log("service="+$scope.service);
-        console.log("persistent="+$scope.persistent);
-        console.log("author="+$scope.author);
-        console.log("comment="+$scope.comment);
-
-        var options = {
-            name: 'result',
-            url: 'addcomments/'+ type + '/' + $scope.hostName + '/' + $scope.service
-              + '/' + $scope.persistent + '/' + $scope.author + '/' + $scope.comment,
-            queue: 'main'
-        };
-        async.api($scope, options);
-
         if(type=='host')
-          $scope.hideModal('#hostcommentmodal');
-        else if(type=='srv')
-          $scope.hideModal('#servicecommentmodal');
+          $scope.showModal('#hostcommentmodal');
+        else if(type=='svc')
+          $scope.showModal('#servicecommentmodal');
 
-        $scope.showAlert('#success-alert');
-        $scope.reset();
+        $scope.add = function(){
+          console.log("addComment");
+          console.log("type="+type);
+          console.log("host="+$scope.hostName);
+          console.log("service="+$scope.service);
+          console.log("persistent="+$scope.persistent);
+          console.log("author="+$scope.author);
+          console.log("comment="+$scope.comment);
+
+          var options = {
+              name: 'result',
+              url: 'addcomments/'+ type + '/' + $scope.hostName + '/' + $scope.service
+                + '/' + $scope.persistent + '/' + $scope.author + '/' + $scope.comment,
+              queue: 'main'
+          };
+          async.api($scope, options);
+
+          $scope.showModal('#success');
+
+          $scope.reset();
+        };
       };
 
       $scope.deleteComment = function(id, type){
@@ -1362,25 +1459,21 @@ angular.module('vshell.controllers', [])
 
           async.api($scope, options);
 
-          $scope.showAlert('#success-alert');
+          $scope.showModal('#success');
           $scope.reset();
         }
       };
 
       $scope.showModal = function(modal_id){
+        console.log("show " + modal_id);
         $(modal_id).modal('show');
       };
 
       $scope.hideModal = function(modal_id){
-        $(modal_id).modal('hide');
-      };
-
-      $scope.showAlert = function(alert_id){
-        $(alert_id).show();
-      };
-
-      $scope.hideAlert = function(alert_id){
-        $timeout(function(){ $(alert_id).fadeOut("slow"); }, 2000);
+        if(modal_id=='#success'||modal_id=='#fail')
+          $timeout(function(){ $(modal_id).modal("hide"); }, 2000);
+        else
+          $(modal_id).modal('hide');
       };
 
     }

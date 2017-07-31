@@ -46,7 +46,7 @@
 							<tfoot>
 	                <tr>
 	                    <td colspan="9">
-												<a class="add-comment no-margin" role="button" ng-click="showModal('#hostcommentmodal')">Add Comment</a>
+												<a class="add-comment no-margin" role="button" ng-click="addComment('host')">Add Comment</a>
 											</td>
 	                </tr>
 	            </tfoot>
@@ -63,7 +63,7 @@
 											<td>{{ comment.persistent }}</td>
 											<td>{{ comment.entry_type }}</td>
 											<td>{{ comment.expires }}</td>
-	                    <td><a ng-click="deleteComment(comment.comment_id, 'host')">Delete Comment</a></td>
+	                    <td><a role="button" ng-click="deleteComment(comment.comment_id, 'host')">Delete Comment</a></td>
 	                </tr>
 	            </tbody>
 			      </table>
@@ -93,7 +93,7 @@
 							<tfoot>
 									<tr>
 											<td colspan="10">
-												<a class="add-comment no-margin" role="button" ng-click="showModal('#servicecommentmodal')">Add Comment</a>
+												<a class="add-comment no-margin" role="button" ng-click="addComment('svc')">Add Comment</a>
 											</td>
 									</tr>
 							</tfoot>
@@ -120,22 +120,38 @@
 
 		</div>
 
-		<!--success alert-->
-		<div table-container partial-width>
-			<div hidden class="alert alert-success fade in" id="success-alert">
-				<a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-	    	<strong>Success!</strong>
-	  	</div>
-		</div>
+	</div>
 
-		<!--fail alert-->
-		<div table-container partial-width>
-			<div hidden class="alert alert-danger fade in" id="fail-alert">
-				<a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-	    	<strong>Fail!</strong>
-	  	</div>
+	<!--modal success-->
+	<div class="modal fade" id="success" data-backdrop="false" >
+		<div class="modal-dialog modal-sm">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header" hidden="true"></div>
+				<div class="modal-body" style="margin:0px;padding:0px">
+					<div class="alert alert-success fade in" id="success-alert">
+						<a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>Success!</strong>
+					</div>
+					<div class="modal-footer" hidden="true"></div>
+				</div>
+			</div>
 		</div>
+	</div>
 
+	<!--modal fail-->
+	<div class="modal fade" id="success" data-backdrop="false" >
+		<div class="modal-dialog modal-sm">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<div hidden class="alert alert-success fade in" id="fail-alert">
+						<a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>Success!</strong>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<!--Modal confirm-->
@@ -144,10 +160,7 @@
 
 			<!-- Modal content-->
 			<div class="modal-content">
-				<div class="modal-header">
-					<h1 class="modal-title">Delete</h1>
-				</div>
-				<div class="modal-body">
+				<div class="modal-body no-padding">
 					<p>Are you sure?</p>
 				</div>
 				<div class="modal-footer">
@@ -226,7 +239,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reset()">Close</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addComment('host')" title="Please complete the form" ng-disabled="addHostComment.$invalid">Add</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="add()" title="Please complete the form" ng-disabled="addHostComment.$invalid">Add</button>
 				</div>
 			</div>
 
@@ -308,7 +321,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reset()">Close</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addComment('srv')" ng-disabled="addServiceComment.$invalid" title="Please complete the form">Add</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="add()" ng-disabled="addServiceComment.$invalid" title="Please complete the form">Add</button>
 				</div>
 			</div>
 		</div>
