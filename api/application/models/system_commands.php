@@ -49,11 +49,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -76,11 +76,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -94,11 +94,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -112,11 +112,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -130,11 +130,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}	
 
@@ -148,11 +148,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -166,11 +166,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -184,11 +184,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -202,11 +202,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -220,11 +220,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -238,11 +238,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -256,11 +256,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -274,11 +274,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -292,11 +292,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -310,11 +310,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -328,11 +328,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -354,11 +354,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -380,11 +380,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -398,11 +398,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -416,11 +416,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -434,11 +434,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -452,11 +452,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -497,11 +497,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -542,11 +542,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -560,11 +560,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -578,11 +578,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -596,11 +596,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -614,11 +614,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -632,11 +632,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -650,11 +650,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -668,11 +668,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -686,11 +686,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -704,11 +704,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -722,11 +722,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -740,11 +740,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -758,11 +758,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -776,11 +776,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -791,14 +791,14 @@ class System_commands extends CI_Model
 
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
-		//check that the command runs successfully
+		///check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -812,11 +812,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -830,11 +830,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -848,11 +848,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -866,11 +866,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -884,11 +884,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -902,11 +902,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -920,11 +920,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -938,11 +938,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -956,11 +956,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -974,11 +974,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -992,11 +992,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -1010,11 +1010,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -1028,11 +1028,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -1046,11 +1046,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -1064,11 +1064,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -1082,11 +1082,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -1100,11 +1100,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -1127,11 +1127,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -1154,11 +1154,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -1181,11 +1181,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -1207,11 +1207,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -1242,11 +1242,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -1277,11 +1277,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -1295,11 +1295,11 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if(empty($this->return_value))
 		{
-			return "The command failed to run !";
+			return false;
 		}
 		else
 		{
-			return trim($this->return_value);
+			return true;
 		}
 	}
 
@@ -1364,11 +1364,11 @@ class System_commands extends CI_Model
 
 			if((int)$enable_notification)
 			{
-				$process_obj->$notification = 'YES';
+				$process_obj->$notification = true;
 			}
 			else
 			{
-				$process_obj->$notification = 'NO';
+				$process_obj->$notification = false;
 			}
 
 			//service check being executed?
@@ -1376,11 +1376,11 @@ class System_commands extends CI_Model
 
 			if((int)$service_check_execute)
 			{
-				$process_obj->$service_check = 'YES';
+				$process_obj->$service_check = true;
 			}
 			else
 			{
-				$process_obj->$service_check = 'NO';
+				$process_obj->$service_check = false;
 			}
 
 			//passive service check being accepted?
@@ -1388,11 +1388,11 @@ class System_commands extends CI_Model
 
 			if((int)$passive_service_check_accept)
 			{
-				$process_obj->$passive_service_check = 'YES';
+				$process_obj->$passive_service_check = true;
 			}
 			else
 			{
-				$process_obj->$passive_service_check = 'NO';
+				$process_obj->$passive_service_check = false;
 			}
 
 			//host check being executed?
@@ -1400,11 +1400,11 @@ class System_commands extends CI_Model
 
 			if((int)$host_check_execute)
 			{
-				$process_obj->$host_check = 'YES';
+				$process_obj->$host_check = true;
 			}
 			else
 			{
-				$process_obj->$host_check = 'NO';
+				$process_obj->$host_check = false;
 			}
 
 			//passive host check being accepted?
@@ -1412,11 +1412,11 @@ class System_commands extends CI_Model
 
 			if((int)$passive_host_check_accept)
 			{
-				$process_obj->$passive_host_check = 'YES';
+				$process_obj->$passive_host_check = true;
 			}
 			else
 			{
-				$process_obj->$passive_host_check = 'NO';
+				$process_obj->$passive_host_check = false;
 			}
 
 			//enable event handler?
@@ -1424,11 +1424,11 @@ class System_commands extends CI_Model
 
 			if((int)$event_handler_enable)
 			{
-				$process_obj->$event_handler = 'YES';
+				$process_obj->$event_handler = true;
 			}
 			else
 			{
-				$process_obj->$event_handler = 'NO';
+				$process_obj->$event_handler = false;
 			}
 
 			//obsessing over service?
@@ -1436,11 +1436,11 @@ class System_commands extends CI_Model
 
 			if((int)$obsess_over_service)
 			{
-				$process_obj->$obsess_service = 'YES';
+				$process_obj->$obsess_service = true;
 			}
 			else
 			{
-				$process_obj->$obsess_service = 'NO';
+				$process_obj->$obsess_service = false;
 			}
 
 			//obsessing over host?
@@ -1448,11 +1448,11 @@ class System_commands extends CI_Model
 
 			if((int)$obsess_over_host)
 			{
-				$process_obj->$obsess_host = 'YES';
+				$process_obj->$obsess_host = true;
 			}
 			else
 			{
-				$process_obj->$obsess_host = 'NO';
+				$process_obj->$obsess_host = false;
 			}
 
 			//enable flap detection?
@@ -1460,11 +1460,11 @@ class System_commands extends CI_Model
 
 			if((int)$flap_detection_enable)
 			{
-				$process_obj->$flap_detection = 'YES';
+				$process_obj->$flap_detection = true;
 			}
 			else
 			{
-				$process_obj->$flap_detection = 'NO';
+				$process_obj->$flap_detection = false;
 			}
 
 			//performance data being processed?
@@ -1472,11 +1472,11 @@ class System_commands extends CI_Model
 
 			if((int)$process_performance_data)
 			{
-				$process_obj->$performance_data = 'YES';
+				$process_obj->$performance_data = true;
 			}
 			else
 			{
-				$process_obj->$performance_data = 'NO';
+				$process_obj->$performance_data = false;
 			}
 
 			foreach($process_obj as $items)

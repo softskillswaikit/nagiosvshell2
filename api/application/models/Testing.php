@@ -140,6 +140,12 @@ class Testing extends CI_Model
 
 			return $producer_array;
 		}
+		//$return_type = 'ALERT_TOTAL_HOST'
+		//find alert totals for host
+		else if($this->_compare_string($return_type, 'ALERT_TOTAL_HOST'))
+		{
+
+		}
 		//$return_type = 'NORMAL'
 		else
 		{	
@@ -1091,6 +1097,202 @@ class Testing extends CI_Model
 		}
 
 		return $return_array;
+	}
+
+	//Funtion used to get alert total for host and hostgroup
+	private function _get_alert_total_host($input_host_name)
+	{
+		$alert_obj = new StdCLass();
+
+		$alert_host_total = 0;
+		$alert_host_soft_total = 0;
+		$alert_host_hard_total = 0;
+
+		$alert_host_up_total = 0;
+		$alert_host_up_soft = 0;
+		$alert_host_up_hard = 0;
+
+		$alert_host_down_total = 0;
+		$alert_host_down_soft = 0;
+		$alert_host_down_hard = 0;
+
+		$alert_host_unreachable_total = 0;
+		$alert_host_unreachable_soft = 0;
+		$alert_host_unreachable_hard = 0;
+
+		$alert_service_total = 0;
+		$alert_service_soft_total = 0;
+		$alert_service_hard_total = 0;
+
+		$alert_service_ok_total = 0;
+		$alert_service_ok_soft = 0;
+		$alert_service_ok_hard = 0;
+
+		$alert_service_warning_total = 0;
+		$alert_service_warning_soft = 0;
+		$alert_service_warning_hard = 0;
+
+		$alert_service_unknown_total = 0;
+		$alert_service_unknown_soft = 0;
+		$alert_service_unknown_hard = 0;
+
+		$alert_service_critical_total = 0;
+		$alert_service_critical_soft = 0;
+		$alert_service_critical_hard = 0;
+
+		foreach($this->_alert_summary_array as $alert_producer)
+		{
+			if($this->_compare_string($input_host_name, $alert_producer->hostname))
+			{
+				if($this->_compare_string($alert_producer->logtype, 'HOST ALERT'))
+				{
+					$alert_host_total++;
+
+					if($this->_compare_string($alert_producer->state_type, 'SOFT'))
+					{
+						$alert_host_soft_total++;
+
+						if($this->_compare_string($alert_producer->state, 'UP'))
+						{
+							$alert_host_up_total++;
+							$alert_host_up_soft++;
+						}
+						else if($this->_compare_string($alert_producer->state, 'DOWN'))
+						{
+							$alert_host_down_total++;
+							$alert_host_down_soft++;
+						}
+						//$alert_producer->state = 'UNREACHABLE'
+						else
+						{
+							$alert_host_unreachable_total++;
+							$alert_host_unreachable_soft++;
+						}
+					}
+					//$alert_producer->state_type = 'HARD'
+					else
+					{
+						$alert_host_hard_total++;
+
+						if($this->_compare_string($alert_producer->state, 'UP'))
+						{
+							$alert_host_up_total++;
+							$alert_host_up_hard++;
+						}
+						else if($this->_compare_string($alert_producer->state, 'DOWN'))
+						{
+							$alert_host_down_total++;
+							$alert_host_down_hard++;
+						}
+						//$alert_producer->state = 'UNREACHABLE'
+						else
+						{
+							$alert_host_unreachable_total++;
+							$alert_host_unreachable_hard++;
+						}
+					}
+				}
+				//$alert_producer->logtype = 'SERVICE ALERT'
+				else
+				{
+					$alert_service_total++;
+
+					if($this->_compare_string($alert_producer->state_type, 'SOFT'))
+					{
+						$alert_service_soft_total++;
+
+						if($this->_compare_string($alert_producer->state, 'OK'))
+						{
+							$alert_service_ok_total++;
+							$alert_service_ok_soft++;
+						}
+						else if($this->_compare_string($alert_producer->state, 'WARNING'))
+						{
+							$alert_service_warning_total++;
+							$alert_service_warning_soft++;
+						}
+						else if($this->_compare_string($alert_producer->state, 'UNKNOWN'))
+						{
+							$alert_service_unknown_total++;
+							$alert_service_unknown_soft++;
+						}
+						//$alert_producer->state = 'CRITICAL'
+						else
+						{
+							$alert_service_critical_total++;
+							$alert_service_critical_soft++;
+						}
+					}
+					//$alert_producer->state_type = 'HARD'
+					else
+					{
+						$alert_service_hard_total++;
+
+						if($this->_compare_string($alert_producer->state, 'OK'))
+						{
+							$alert_service_ok_total++;
+							$alert_service_ok_hard++;
+						}
+						else if($this->_compare_string($alert_producer->state, 'WARNING'))
+						{
+							$alert_service_warning_total++;
+							$alert_service_warning_hard++;
+						}
+						else if($this->_compare_string($alert_producer->state, 'UNKNOWN'))
+						{
+							$alert_service_unknown_total++;
+							$alert_service_unknown_hard++;
+						}
+						//$alert_producer->state = 'CRITICAL'
+						else
+						{	
+							$alert_service_critical_total++;
+							$alert_service_critical_hard++;
+						}
+					}
+				}
+			}
+		}
+
+		$alert_obj->hostname = $input_host_name;
+
+		$alert_obj->alert_host_total = $alert_host_total;
+		$alert_obj->alert_host_soft_total = $alert_host_soft_total;
+		$alert_obj->alert_host_hard_total = $alert_host_up_total;
+
+		$alert_obj->alert_host_up_total = $alert_host_up_total;
+		$alert_obj->alert_host_up_soft = $alert_host_up_soft;
+		$alert_obj->alert_host_up_hard = $alert_host_up_hard;
+
+		$alert_obj->alert_host_down_total = $alert_host_down_total;
+		$alert_obj->alert_host_down_soft = $alert_host_down_soft;
+		$alert_obj->alert_host_down_hard = $alert_host_down_hard;
+
+		$alert_obj->alert_host_unreachable_total = $alert_host_unreachable_total;
+		$alert_obj->alert_host_unreachable_soft = $alert_host_unreachable_soft;
+		$alert_obj->alert_host_unreachable_hard = $alert_host_unreachable_hard;
+
+		$alert_obj->alert_service_total = $alert_service_total;
+		$alert_obj->alert_service_soft_total = $alert_service_soft_total;
+		$alert_obj->alert_service_hard_total = $alert_service_hard_total;
+
+		$alert_obj->alert_service_ok_total = $alert_service_ok_total;
+		$alert_obj->alert_service_ok_soft = $alert_service_ok_soft;
+		$alert_obj->alert_service_ok_hard = $alert_service_ok_hard;
+
+		$alert_obj->alert_service_warning_total = $alert_service_warning_total;
+		$alert_obj->alert_service_warning_soft = $alert_service_warning_soft;
+		$alert_obj->alert_service_warning_hard = $alert_service_warning_hard;
+
+		$alert_obj->alert_service_unknown_total = $alert_service_unknown_total;
+		$alert_obj->alert_service_unknown_soft = $alert_service_unknown_soft;
+		$alert_obj->alert_service_unknown_hard = $alert_service_unknown_hard;
+
+		$alert_obj->alert_service_critical_total = $alert_service_critical_total;
+		$alert_obj->alert_service_critical_soft = $alert_service_critical_soft;
+		$alert_obj->alert_service_critical_hard = $alert_service_critical_hard;
+
+		return $alert_obj;
 	}
 
 
