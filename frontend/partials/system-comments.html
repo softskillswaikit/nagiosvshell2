@@ -51,10 +51,10 @@
 	                </tr>
 	            </tfoot>
 	            <tbody>
-	                <tr ng-if="(testdata | count) == 0">
+	                <tr ng-if="(comments | count) == 0">
 	                    <td colspan="9">{{ is_loading ? 'Loading...' : 'No comments for host' }}</td>
 	                </tr>
-	                <tr ng-repeat="comment in testdata" ng-class-odd="'footable-odd'" ng-class-even="'footable-even'">
+	                <tr ng-repeat="comment in comments" ng-class-odd="'footable-odd'" ng-class-even="'footable-even'">
 	                    <td>{{ comment.host_name }}</td>
 	                    <td>{{ comment.entry_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
 											<td>{{ comment.author }}</td>
@@ -205,7 +205,7 @@
 						<div class="form-group">
 							<label for="author" class="col-md-4 control-label">Author(Your Name):</label>
 							<div class="col-md-6">
-								<input value="{{status.username}}" ng-disabled="true" type="text" class="form-control input-md" name="author"></input>
+								<input ng-model="author" ng-disabled="true" type="text" class="form-control input-md" name="author"></input>
 							</div>
 						</div>
 
@@ -288,7 +288,7 @@
 						<div class="form-group">
 							<label for="author" class="col-md-4 control-label">Author(Your Name):</label>
 							<div class="col-md-6">
-								<input value="{{status.username}}" ng-disabled="true" type="text" class="form-control input-md" name="author"></input>
+								<input ng-model="author" ng-disabled="true" type="text" class="form-control input-md" name="author"></input>
 							</div>
 						</div>
 

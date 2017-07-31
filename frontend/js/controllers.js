@@ -148,6 +148,14 @@ angular.module('vshell.controllers', [])
 
           async.api($scope, options);
 
+          var optionscomment = {
+              name: 'comments',
+              url: 'comments/' + '',
+              queue: 'main'
+          };
+
+          async.api($scope, optionscomment);
+
           //get author
           var options1 = {
               name: 'status',
@@ -156,22 +164,23 @@ angular.module('vshell.controllers', [])
               cache: true
           };
           async.api($scope, options1);
+          $timeout(function(){
+            //initialize scope
+            $scope.hostName = $scope.host.host_name;
+            $scope.service = ' ';
+            $scope.persistent = true;
+            $scope.author = $scope.status.username;
+            $scope.comment = '';
+            if($scope.addHostComment)
+              $scope.addHostComment.$setPristine();
 
-          //initialize scope
-          $scope.hostName = $routeParams.host;
-          $scope.service = ' ';
-          $scope.persistent = true;
-          $scope.author = ' ';
-          $scope.comment = '';
-          if($scope.addHostComment)
-            $scope.addHostComment.$setPristine();
-
-          //close all modal
-          $scope.hideModal('#hostcommentmodal');
-          $scope.hideModal('#success');
-          $scope.hideModal('#fail');
-          $scope.hideModal('#confirm-delete');
-          $scope.hideModal('#confirm-toggle');
+            //close all modal
+            $scope.hideModal('#hostcommentmodal');
+            $scope.hideModal('#success');
+            $scope.hideModal('#fail');
+            $scope.hideModal('#confirm-delete');
+            $scope.hideModal('#confirm-toggle');
+          }, 500);
         };
 
         $scope.toggle = function(action, is_enabled){
@@ -207,9 +216,15 @@ angular.module('vshell.controllers', [])
             };
             async.api($scope, options);
 
-            $scope.showModal('#success');
 
-            $scope.reset();
+            $timeout(function(){
+              if($scope.result=='"The command run successfully !"')
+                $scope.showModal('#success');
+              else
+                $scope.showModal('#fail');
+
+                $scope.reset();
+            }, 500);
           };
         };
 
@@ -230,12 +245,10 @@ angular.module('vshell.controllers', [])
         };
 
         $scope.showModal = function(modal_id){
-          console.log("show " + modal_id);
           $(modal_id).modal('show');
         };
 
         $scope.hideModal = function(modal_id){
-          console.log("hide modal " + modal_id);
           if(modal_id=='#success'||modal_id=='#fail')
             $timeout(function(){ $(modal_id).modal("hide"); }, 2000);
           else
@@ -1373,11 +1386,6 @@ angular.module('vshell.controllers', [])
       $scope.init = function() {
         console.log("init");
 
-        $scope.testdata = [
-          {"id":1,"host_name":"localhost","entry_type":"1","comment_id":"1","source":"1","persistent":"1","entry_time":"1501193956","expires":"0","expire_time":"0","author":"nagiosadmin","comment_data":"test comment 1"},
-          {"id":1,"host_name":"localhost","entry_type":"1","comment_id":"2","source":"1","persistent":"1","entry_time":"1501193956","expires":"0","expire_time":"0","author":"nagiosadmin","comment_data":"test comment 2"}
-        ]
-
         $scope.reset();
       };
       $scope.reset = function(){
@@ -1400,15 +1408,19 @@ angular.module('vshell.controllers', [])
         async.api($scope, options1);
 
         //initialize scope
-        $scope.hostName = '';
-        $scope.service = ' ';
-        $scope.persistent = true;
-        $scope.author = ' ';
-        $scope.comment = '';
-        if($scope.addHostComment)
-          $scope.addHostComment.$setPristine();
-        if($scope.addServiceComment)
-          $scope.addServiceComment.$setPristine();
+        $timeout(function(){
+          console.log($scope.comments);
+          $scope.hostName = '';
+          $scope.service = ' ';
+          $scope.persistent = true;
+          $scope.author = $scope.status.username;
+          $scope.comment = '';
+          if($scope.addHostComment)
+            $scope.addHostComment.$setPristine();
+          if($scope.addServiceComment)
+            $scope.addServiceComment.$setPristine();
+
+        }, 500);
 
         //close all modal
         $scope.hideModal('#servicecommentmodal');
