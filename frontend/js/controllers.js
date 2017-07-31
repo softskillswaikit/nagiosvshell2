@@ -165,6 +165,7 @@ angular.module('vshell.controllers', [])
           };
           async.api($scope, options1);
           $timeout(function(){
+            
             //initialize scope
             $scope.hostName = $scope.host.host_name;
             $scope.service = ' ';
