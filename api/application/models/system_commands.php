@@ -9,7 +9,7 @@ class System_commands extends CI_Model
 	{
 		parent::__construct();
 
-		$this->return_value = "";
+		$this->return_value = 0;
 
 		date_default_timezone_set('UTC');
 	}
@@ -47,13 +47,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -74,13 +74,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -92,13 +92,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -110,13 +110,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -128,13 +128,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}	
 
@@ -146,13 +146,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -164,13 +164,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -182,13 +182,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -200,13 +200,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -218,13 +218,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -236,13 +236,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -254,13 +254,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -272,13 +272,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -290,13 +290,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -308,13 +308,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -326,13 +326,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -352,13 +352,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -378,13 +378,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -396,13 +396,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -414,13 +414,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -432,13 +432,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -450,13 +450,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -495,13 +495,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -540,13 +540,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -558,13 +558,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -576,13 +576,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -594,13 +594,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -612,13 +612,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -630,13 +630,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -648,13 +648,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -666,13 +666,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -684,13 +684,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -702,13 +702,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -720,13 +720,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -738,13 +738,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -756,13 +756,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -774,13 +774,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -791,14 +791,14 @@ class System_commands extends CI_Model
 
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
-		///check that the command runs successfully
-		if(empty($this->return_value))
+		//check that the command runs successfully
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -810,13 +810,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -828,13 +828,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -846,13 +846,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -864,13 +864,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -882,13 +882,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -900,13 +900,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -918,13 +918,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -936,13 +936,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -954,13 +954,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -972,13 +972,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -990,13 +990,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -1008,13 +1008,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -1026,13 +1026,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -1044,13 +1044,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -1062,13 +1062,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -1080,13 +1080,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -1098,13 +1098,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -1125,13 +1125,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -1152,13 +1152,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -1179,13 +1179,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -1205,13 +1205,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -1240,13 +1240,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -1275,13 +1275,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
@@ -1293,13 +1293,13 @@ class System_commands extends CI_Model
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
 		//check that the command runs successfully
-		if(empty($this->return_value))
+		if((int)$this->return_value)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 
