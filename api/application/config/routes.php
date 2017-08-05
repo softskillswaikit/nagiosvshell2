@@ -77,6 +77,7 @@ $route["hostservicenotification//(:any)/(:any)"] = "api/hostServiceNotification/
 $route["acknowledgeproblem/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/acknowledgeProblem/$1/$2/$3/$4/$5/$6/$7/$8";
 $route["allservicecheck/(:any)"] = "api/allServiceCheck/$1";
 $route["allpassiveservicecheck/(:any)"] = "api/allPassiveServiceCheck/$1";
+$route["passiveservicecheck/(:any)/(:any)/(:any)"] = "api/passiveServiceCheck/$1/$2/$3";
 $route["eventhandler/(:any)"] = "api/eventHandler/$1";
 $route["hostcheck/(:any)/(:any)"] = "api/hostCheck/$1/$2";
 $route["obsessoverservicecheck/(:any)"] = "api/obsessOverServiceCheck/$1";
