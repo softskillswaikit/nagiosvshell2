@@ -61,6 +61,7 @@ $route["testing"] = "api/testing";
 $route["comments/(:any)"] = "api/comments/$1";
 $route["comments"] = "api/comments";
 $route["downtime/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/downtime/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10";
+$route["schedulequeue"] = "api/scheduleQueue";
 
 //System commands
 $route["addcomments/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/addComments/$1/$2/$3/$4/$5/$6";

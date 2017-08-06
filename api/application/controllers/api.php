@@ -542,9 +542,45 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $Data = $this->nagios_data->get_collection("timeperiod");
+        $DataHost = $this->nagios_data->get_collection("hoststatus");
+        $DataService = $this->nagios_data->get_collection("servicestatus");
+        $DataHostresource = $this->nagios_data->get_collection("hostresourcestatus");
+        $DataRunningstate = $this->nagios_data->get_collection("runningstatestatus");
 
-        $this->output($Data);
+        $Host = array();
+        $Service = array();
+        $Hostresource = array();
+        $Runningstate = array();
+        
+
+        foreach ($DataHost as $host) 
+        {
+            $Host[] = array('hostname'=> $host->host_name, 'lastcheck'=>$host->last_check, 'nextcheck'=> $host->next_check, 'activecheck'=>$host->active_checks_enabled);
+        }
+
+        foreach ($DataService as $service) 
+        {
+            $Service[] = array('hostname'=> $service->host_name, 'servicename'=> $service->service_description, 'lastcheck'=> $service->last_check, 'nextcheck'=>$service->next_check,'activecheck'=>$service->active_checks_enabled);
+        }
+
+        foreach ($DataHostresource as $hostresource) 
+        {
+            $Hostresource[] = array('hostname'=> $hostresource->host_name, 'servicename'=> $hostresource->service_description, 'lastcheck'=> $hostresource->last_check, 'nextcheck'=>$hostresource->next_check, 'activecheck'=>$hostresource->active_checks_enabled);
+        }
+
+        foreach ($DataRunningstate as $runningstate) 
+        {
+            $Runningstate[] = array('hostname'=> $runningstate->host_name, 'servicename'=> $runningstate->service_description, 'lastcheck'=> $runningstate->last_check, 'nextcheck'=>$runningstate->next_check, 'activecheck'=>$runningstate->active_checks_enabled);
+        }
+
+
+        $Schedule['host'] = $Host;
+        $Schedule['service'] = $Service;
+        $Schedule['hostresource'] = $Hostresource;
+        $Schedule['runningstate'] = $Runningstate;
+
+
+        $this->output($Schedule);
     }
 
     /**
@@ -594,6 +630,54 @@ class API extends VS_Controller
         
         $this->output($success);
     }
+
+    /**
+     * Return schedule queue of host and service
+     *
+     */
+    public function scheduleQueue()
+    {
+        $DataHost = $this->nagios_data->get_collection("hoststatus");
+        $DataService = $this->nagios_data->get_collection("servicestatus");
+        $DataHostresource = $this->nagios_data->get_collection("hostresourcestatus");
+        $DataRunningstate = $this->nagios_data->get_collection("runningstatestatus");
+
+        $Host = array();
+        $Service = array();
+        $Hostresource = array();
+        $Runningstate = array();
+        
+
+        foreach ($DataHost as $host) 
+        {
+            $Host[] = array('hostname'=> $host->host_name, 'lastcheck'=>$host->last_check, 'nextcheck'=> $host->next_check, 'activecheck'=>$host->active_checks_enabled);
+        }
+
+        foreach ($DataService as $service) 
+        {
+            $Service[] = array('hostname'=> $service->host_name, 'servicename'=> $service->service_description, 'lastcheck'=> $service->last_check, 'nextcheck'=>$service->next_check,'activecheck'=>$service->active_checks_enabled);
+        }
+
+        foreach ($DataHostresource as $hostresource) 
+        {
+            $Hostresource[] = array('hostname'=> $hostresource->host_name, 'servicename'=> $hostresource->service_description, 'lastcheck'=> $hostresource->last_check, 'nextcheck'=>$hostresource->next_check, 'activecheck'=>$hostresource->active_checks_enabled);
+        }
+
+        foreach ($DataRunningstate as $runningstate) 
+        {
+            $Runningstate[] = array('hostname'=> $runningstate->host_name, 'servicename'=> $runningstate->service_description, 'lastcheck'=> $runningstate->last_check, 'nextcheck'=>$runningstate->next_check, 'activecheck'=>$runningstate->active_checks_enabled);
+        }
+
+
+        $Schedule['host'] = $Host;
+        $Schedule['service'] = $Service;
+        $Schedule['hostresource'] = $Hostresource;
+        $Schedule['runningstate'] = $Runningstate;
+
+
+        $this->output($Schedule);
+    }
+
 
     /**
      * Fetch all comments or only those of a certain type.
