@@ -550,24 +550,25 @@ class API extends VS_Controller
     /**
      * Schedule downtime
      *
-     * @param String $type, host : host, svc : service
-     * @param String $name
-     * @param String $author
-     * @param String $comment
+     * @param String $type, host : host, svc : service, hostsvc : hostservice
+     * @param String $host
+     * @param String $service, [if type is host or hostsvc, $service = '']
      * @param String $start
      * @param String $end
-     * @param String $fixed - true = fixed , false = flexible
-     * @param int $triggerID
-     * @param int $duration , in minutes
-     * @param String $child
+     * @param Bool $fixed
+     * @param String $triggerID
+     * @param String $duration , in minutes
+     * @param String $author
+     * @param String $comments
      */
-    public function downtime($type='', $name='', $author='', $comment='', $start='', $end='', $fixed='', $triggerID, $duration, $child='')
+    public function downtime($type='', $host='', $service='', $start, $end, $fixed, $triggerID='0', $duration, $author, $comments='')
     {
         $success = false;
 
         $allowed_types = array(
             'host',
-            'svc'
+            'svc',
+            'hostsvc'
         );
 
         //check empty input
@@ -576,7 +577,18 @@ class API extends VS_Controller
             //compare type with allowed types
             if(in_array($type, $allowed_types))
             {
-                $success = $this->system_commands->schedule_downtime($name, $start, $end, $fixed, $triggerID, $duration, $author, $comment, $type);
+                if($type == 'host')
+                {
+                    $success = $this->system_commands->schedule_host_downtime($host, $start, $end, $fixed, $triggerID, $duration, $author, $comments);
+                }
+                else if($type == 'svc')
+                {
+                    $success = $this->system_commands->schedule_svc_downtime($host, $service, $start, $end, $fixed, $triggerID, $duration, $author, $comments);
+                }
+                else
+                {
+                    $success = $this->system_commands->schedule_host_svc_downtime($host, $start, $end, $fixed, $triggerID, $duration, $author, $comments);
+                }
             }
         }
         
