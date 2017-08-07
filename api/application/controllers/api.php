@@ -1,3 +1,4 @@
+
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class API extends VS_Controller
@@ -542,43 +543,34 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $DataHost = $this->nagios_data->get_collection("hoststatus");
-        $DataService = $this->nagios_data->get_collection("servicestatus");
-        $DataHostresource = $this->nagios_data->get_collection("hostresourcestatus");
-        $DataRunningstate = $this->nagios_data->get_collection("runningstatestatus");
+        $result = false;
 
-        $Host = array();
-        $Service = array();
-        $Hostresource = array();
-        $Runningstate = array();
-        
+        $type = 'svc';
+        $id = '3';
 
-        foreach ($DataHost as $host) 
+        $allowed_types = array(
+            'host',
+            'svc'
+        );
+
+        //check for empty input
+        if(!empty($id) && !empty($type))
         {
-            $Schedule[] = array('type'=>"host", 'hostname'=> $host->host_name, 'lastcheck'=>$host->last_check, 'nextcheck'=> $host->next_check, 'activecheck'=>$host->active_checks_enabled);
+            //compare type with allowed types
+            if(in_array($type, $allowed_types))
+            {
+                if($type == 'host')
+                {
+                    $result = $this->system_commands->delete_host_comment($id);
+                }
+                else
+                {
+                    $result = $this->system_commands->delete_svc_comment($id);
+                }
+            }
         }
 
-        foreach ($DataService as $service) 
-        {
-            $Schedule[] = array('type'=>"service", 'hostname'=> $service->host_name, 'servicename'=> $service->service_description, 'lastcheck'=> $service->last_check, 'nextcheck'=>$service->next_check,'activecheck'=>$service->active_checks_enabled);
-        }
-
-        foreach ($DataHostresource as $hostresource) 
-        {
-            $Schedule[] = array('type'=> "hostresource", 'hostname'=> $hostresource->host_name, 'servicename'=> $hostresource->service_description, 'lastcheck'=> $hostresource->last_check, 'nextcheck'=>$hostresource->next_check, 'activecheck'=>$hostresource->active_checks_enabled);
-        }
-
-        foreach ($DataRunningstate as $runningstate) 
-        {
-            $Schedule[] = array('type'=> "runningstate", 'hostname'=> $runningstate->host_name, 'servicename'=> $runningstate->service_description, 'lastcheck'=> $runningstate->last_check, 'nextcheck'=>$runningstate->next_check, 'activecheck'=>$runningstate->active_checks_enabled);
-        }
-
-        usort($Schedule, function($a, $b)
-        {
-            return strcmp($a->nextcheck, $b->nextcheck);
-        });
-        
-        $this->output($Schedule);
+        $this->output($result);
     }
 
     /**
@@ -775,7 +767,7 @@ class API extends VS_Controller
                 }
                 else
                 {
-                    $result = $this->system_commands->delete_service_comment($id);
+                    $result = $this->system_commands->delete_svc_comment($id);
                 }
             }
         }
@@ -788,7 +780,7 @@ class API extends VS_Controller
     /**
      * Enable or disable service check
      *
-     * @param Bool $type, true = 'enable', false = 'disable'
+     * @param String $type , 'enable' ,'disable'
      * @param String $hostname
      * @param String $service
      */
@@ -796,11 +788,11 @@ class API extends VS_Controller
     {
         $result = false;
 
-        if($type)
+        if($type == 'enable')
         {
             $result = $this->system_commands->enable_svc_check();
         }
-        else
+        else if($type == 'disable')
         {
             $result = $this->system_commands->disable_svc_check();
         }
