@@ -1,4 +1,3 @@
-
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class API extends VS_Controller
@@ -543,34 +542,7 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $result = false;
-
-        $type = 'svc';
-        $id = '3';
-
-        $allowed_types = array(
-            'host',
-            'svc'
-        );
-
-        //check for empty input
-        if(!empty($id) && !empty($type))
-        {
-            //compare type with allowed types
-            if(in_array($type, $allowed_types))
-            {
-                if($type == 'host')
-                {
-                    $result = $this->system_commands->delete_host_comment($id);
-                }
-                else
-                {
-                    $result = $this->system_commands->delete_svc_comment($id);
-                }
-            }
-        }
-
-        $this->output($result);
+        
     }
 
     /**
@@ -706,12 +678,12 @@ class API extends VS_Controller
      *
      * @param String $type, host : host, svc : service
      * @param String $name
-     * @param String $serviceDescription
+     * @param String $service
      * @param bool $persistent 
      * @param String $author
      * @param String $comments
      */
-    public function addComments($type='', $name='', $serviceDescription='', $persistent, $author='', $comments='')
+    public function addComments($type, $name, $service='', $persistent, $author, $comments)
     {
         $result = false;
 
