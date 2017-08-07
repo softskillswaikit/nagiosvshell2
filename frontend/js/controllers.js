@@ -132,14 +132,10 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('HostDetailsCtrl', ['$scope', '$routeParams', 'async', '$timeout',
-    function($scope, $routeParams, async, $timeout) {
+.controller('HostDetailsCtrl', ['$scope', '$routeParams', 'async', '$timeout', '$interval', '$route', 'ngToast',
+    function($scope, $routeParams, async, $timeout, $interval, $route, ngToast) {
 
         $scope.init = function() {
-            $scope.reset();
-        };
-
-        $scope.reset = function(){
           var options = {
               name: 'host',
               url: 'hoststatus/' + $routeParams.host,
@@ -148,90 +144,74 @@ angular.module('vshell.controllers', [])
 
           async.api($scope, options);
 
-          var optionscomment = {
-              name: 'comments',
-              url: 'comments/' + '',
-              queue: 'main'
-          };
-
-          async.api($scope, optionscomment);
-
           //get author
-          var options1 = {
+          var optionsstatus = {
               name: 'status',
               url: 'status',
               queue: 'status-' + '',
               cache: true
           };
-          async.api($scope, options1);
-          $timeout(function(){
-            
-            //initialize scope
-            $scope.hostName = $scope.host.host_name;
+
+          async.api($scope, optionsstatus);
+
+          };
+
+          $scope.resetModal = function(){
+            $scope.hostName = $routeParams.host;
             $scope.service = ' ';
             $scope.persistent = true;
-            $scope.author = $scope.status.username;
+            $timeout(function(){$scope.author = $scope.status.username}, 500);
             $scope.comment = '';
             if($scope.addHostComment)
               $scope.addHostComment.$setPristine();
 
-            //close all modal
-            $scope.hideModal('#hostcommentmodal');
-            $scope.hideModal('#success');
-            $scope.hideModal('#fail');
-            $scope.hideModal('#confirm-delete');
-            $scope.hideModal('#confirm-toggle');
-          }, 500);
-        };
+            console.log("comment");
+            console.log($scope.comment);
+          };
 
         $scope.toggle = function(action, is_enabled){
-          console.log('toggle');
-
-          $scope.showModal('#confirm-toggle');
 
           $scope.toggleAction = function(){
-
-            $scope.showModal('#success');
+            console.log('toggle');
             $scope.reset();
           };
         };
 
         $scope.addComment = function(type){
-          if(type=='host')
-            $scope.showModal('#hostcommentmodal');
+          $scope.resetModal();
 
-          $scope.add = function(){
+          $scope.add = function(persistent, comment){
             console.log("addComment");
             console.log("type="+type);
             console.log("host="+$scope.hostName);
             console.log("service="+$scope.service);
-            console.log("persistent="+$scope.persistent);
-            console.log("author="+$scope.author);
-            console.log("comment="+$scope.comment);
+            console.log("persistent="+persistent);
+            console.log("author="+$scope.status.username);
+            console.log("comment="+comment);
 
             var options = {
-                name: 'result',
-                url: 'addcomments/'+ type + '/' + $scope.hostName + '/' + $scope.service
-                  + '/' + $scope.persistent + '/' + $scope.author + '/' + $scope.comment,
+                name: 'success',
+                url: 'addcomments/'+ type + '/' + $routeParams.host + '/' + ' '
+                  + '/' + persistent + '/' + $scope.status.username + '/' + comment,
                 queue: 'main'
             };
             async.api($scope, options);
 
+            $scope.callback = function(data, status, headers, config) {
 
-            $timeout(function(){
-              if($scope.result=='"The command run successfully !"')
-                $scope.showModal('#success');
+              if(data)
+                ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
               else
-                $scope.showModal('#fail');
+                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+            };
 
-                $scope.reset();
-            }, 500);
           };
         };
 
-        $scope.deleteComment = function(id, type){
-          $scope.showModal('#confirm-delete');
+      $scope.deleteComment = function(id, type){
+
           $scope.delete = function(){
+
             var options = {
                 name: 'success',
                 url: 'deletecomments/' + id + '/' + type,
@@ -240,20 +220,14 @@ angular.module('vshell.controllers', [])
 
             async.api($scope, options);
 
-            $scope.showModal('#success');
-            $scope.reset();
+            $scope.callback = function(data, status, headers, config) {
+
+              if(data)
+                ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
+              else
+                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+            };
           }
-        };
-
-        $scope.showModal = function(modal_id){
-          $(modal_id).modal('show');
-        };
-
-        $scope.hideModal = function(modal_id){
-          if(modal_id=='#success'||modal_id=='#fail')
-            $timeout(function(){ $(modal_id).modal("hide"); }, 2000);
-          else
-            $(modal_id).modal('hide');
         };
     }
 ])
@@ -411,8 +385,8 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('ServiceDetailsCtrl', ['$scope', '$routeParams', 'async',
-    function($scope, $routeParams, async) {
+.controller('ServiceDetailsCtrl', ['$scope', '$routeParams', 'async', '$timeout', 'ngToast',
+    function($scope, $routeParams, async, $timeout, ngToast) {
 
         $scope.init = function() {
 
@@ -424,11 +398,91 @@ angular.module('vshell.controllers', [])
 
             async.api($scope, options);
 
+            //get author
+            var optionsstatus = {
+                name: 'status',
+                url: 'status',
+                queue: 'status-' + '',
+                cache: true
+            };
+
+            async.api($scope, optionsstatus);
+
+            //reset modal
+            $scope.resetModal();
         };
 
+        $scope.resetModal = function(){
+          //initialize scope
+          $scope.hostName = $routeParams.host;
+          $scope.service = 'routeParams.service';
+          $scope.persistent = true;
+          $timeout(function(){$scope.author = $scope.status.username;}, 1000);
+          $scope.comment = '';
+          if($scope.addServiceComment)
+            $scope.addServiceComment.$setPristine();
 
+            console.log("scope service");
+            console.log($scope.status.username);
+        };
 
-    }
+        $scope.toggle = function(action, is_enabled){
+
+          $scope.toggleAction = function(){
+
+          };
+        };
+
+        $scope.addComment = function(type){
+
+          console.log("add comment");
+          $scope.add = function(persistent, comment){
+            console.log("addComment");
+            console.log("type="+type);
+            console.log("host="+$routeParams.host);
+            console.log("service="+$routeParams.service);
+            console.log("persistent="+persistent);
+            console.log("author="+$scope.status.username);
+            console.log("comment="+comment);
+
+            var options = {
+                name: 'success',
+                url: 'addcomments/'+ type + '/' + $routeParams.host + '/' + $routeParams.service
+                  + '/' + persistent + '/' + $scope.status.username + '/' + comment,
+                queue: 'main'
+            };
+            async.api($scope, options);
+
+            $scope.callback = function(data, status, headers, config) {
+              if(data)
+                ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
+              else
+                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+            };
+          };
+        };
+
+        $scope.deleteComment = function(id, type){
+            $scope.delete = function(){
+
+              var options = {
+                  name: 'success',
+                  url: 'deletecomments/' + id + '/' + type,
+                  queue: 'main'
+              };
+
+              async.api($scope, options);
+
+              $scope.callback = function(data, status, headers, config) {
+                if(data)
+                  ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
+                else
+                  ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+              };
+
+            };
+          };
+      }
 ])
 
 .controller('ServiceLogCtrl', ['$scope', '$routeParams', '$http', 'ngToast', 'async', "$rootScope",
@@ -1381,23 +1435,24 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('SysCommentsCtrl', ['$scope', 'async', '$timeout',
-    function($scope, async, $timeout) {
+.controller('SysCommentsCtrl', ['$scope', 'async', '$timeout', '$window', 'ngToast',
+    function($scope, async, $timeout, $window, ngToast) {
 
       $scope.init = function() {
-        console.log("init");
-
-        $scope.reset();
-      };
-      $scope.reset = function(){
-
         //get comments data
-        var options = {
-            name: 'comments',
-            url: 'comments/' + '',
+        var optionshost = {
+            name: 'hostcomments',
+            url: 'comments/' + 'hostcomment',
             queue: 'main'
         };
-        async.api($scope, options);
+        async.api($scope, optionshost);
+
+        var optionsservice = {
+            name: 'servicecomments',
+            url: 'comments/' + 'servicecomment',
+            queue: 'main'
+        };
+        async.api($scope, optionsservice);
 
         //get author
         var options1 = {
@@ -1408,62 +1463,55 @@ angular.module('vshell.controllers', [])
         };
         async.api($scope, options1);
 
-        //initialize scope
-        $timeout(function(){
-          console.log($scope.comments);
-          $scope.hostName = '';
-          $scope.service = ' ';
-          $scope.persistent = true;
-          $scope.author = $scope.status.username;
-          $scope.comment = '';
-          if($scope.addHostComment)
-            $scope.addHostComment.$setPristine();
-          if($scope.addServiceComment)
-            $scope.addServiceComment.$setPristine();
+        //$scope.resetModal();
+      };
 
-        }, 500);
-
-        //close all modal
-        $scope.hideModal('#servicecommentmodal');
-        $scope.hideModal('#hostcommentmodal');
-        $scope.hideModal('#success');
-        $scope.hideModal('#fail');
-        $scope.hideModal('#confirm');
+      $scope.resetModal = function(){
+        $scope.hostName = '';
+        $scope.service = ' ';
+        $scope.persistent = true;
+        $timeout(function(){$scope.author = $scope.status.username;}, 1000);
+        $scope.comment = '';
+        if($scope.addHostComment)
+          $scope.addHostComment.$setPristine();
+        if($scope.addServiceComment)
+          $scope.addServiceComment.$setPristine();
       };
 
       $scope.addComment = function(type){
-        if(type=='host')
-          $scope.showModal('#hostcommentmodal');
-        else if(type=='svc')
-          $scope.showModal('#servicecommentmodal');
 
-        $scope.add = function(){
+        $scope.resetModal();
+
+        $scope.add = function(hostName, service, persistent, comment){
           console.log("addComment");
           console.log("type="+type);
-          console.log("host="+$scope.hostName);
-          console.log("service="+$scope.service);
-          console.log("persistent="+$scope.persistent);
-          console.log("author="+$scope.author);
-          console.log("comment="+$scope.comment);
+          console.log("host="+hostName);
+          console.log("service="+service);
+          console.log("persistent="+persistent);
+          console.log("author="+$scope.status.username);
+          console.log("comment="+comment);
 
           var options = {
-              name: 'result',
-              url: 'addcomments/'+ type + '/' + $scope.hostName + '/' + $scope.service
-                + '/' + $scope.persistent + '/' + $scope.author + '/' + $scope.comment,
+              name: 'success',
+              url: 'addcomments/'+ type + '/' + hostName + '/' + service
+                + '/' + persistent + '/' + $scope.status.username + '/' + comment,
               queue: 'main'
           };
+
           async.api($scope, options);
 
-          $scope.showModal('#success');
-
-          $scope.reset();
+          $scope.callback = function(data, status, headers, config) {
+            if(data)
+              ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
+            else
+              ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+          };
         };
       };
 
       $scope.deleteComment = function(id, type){
-        $scope.showModal('#confirm');
-        $scope.delete = function(){
 
+        $scope.delete = function(){
           var options = {
               name: 'success',
               url: 'deletecomments/' + id + '/' + type,
@@ -1472,23 +1520,15 @@ angular.module('vshell.controllers', [])
 
           async.api($scope, options);
 
-          $scope.showModal('#success');
-          $scope.reset();
-        }
-      };
+          $scope.callback = function(data, status, headers, config) {
+            if(data)
+              ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
+            else
+              ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+          };
 
-      $scope.showModal = function(modal_id){
-        console.log("show " + modal_id);
-        $(modal_id).modal('show');
+        };
       };
-
-      $scope.hideModal = function(modal_id){
-        if(modal_id=='#success'||modal_id=='#fail')
-          $timeout(function(){ $(modal_id).modal("hide"); }, 2000);
-        else
-          $(modal_id).modal('hide');
-      };
-
     }
 ])
 

@@ -10,9 +10,7 @@ angular.module('vshell', [
     'vshell.services',
     'vshell.directives',
     'vshell.controllers',
-    'ng-fusioncharts',
-    'ui.bootstrap',
-    
+    'ng-fusioncharts'
 ])
 
 .config(['$routeProvider',

@@ -74,5 +74,12 @@ commandfile='/usr/local/nagios/var/rw/nagios.cmd'
 # Written by : Low Zhi Jian (UTAR)
 commands=$1
 
-/usr/bin/printf "[%lu] $commands\n" $now > $commandfile
-echo "The command run successfully !"
+SENT=`/usr/bin/printf "[%lu] $commands\n" $now > $commandfile`
+
+#check whether the external command runs successfully
+if [ $? -eq 0 ]; then
+	echo "1"
+else
+	echo "0"
+fi
+
