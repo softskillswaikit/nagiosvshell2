@@ -1,183 +1,375 @@
-<div ng-controller="ProcessInfoCtrl">
+<div class="confirm_modal" ng-controller="ProcessInfoCtrl">
+	
+	<!--modal success-->
+	<div class="modal fade" id="success" data-backdrop="false" >
+		<div class="modal-dialog modal-sm">
+        <!-- Modal content-->
+        		<div class="modal-content">
+          			<div class="modal-body" style="margin:0px;padding:0px">
+            				<div class="alert alert-success fade in" id="success-alert">
+              					<strong>Success!</strong>
+            				</div>
+				</div>
+	        	</div>
+		</div>
+	</div>
+
+	<!--modal fail-->
+	<div class="modal fade" id="fail" data-backdrop="false" >
+		<div class="modal-dialog modal-sm">
+        <!-- Modal content-->
+        		<div class="modal-content">
+          			<div class="modal-header" hidden="true"></div>
+          			<div class="modal-body" style="margin:0px;padding:0px">
+            				<div class="alert alert-danger fade in" id="fail-alert">
+              					<strong>Fail!</strong>
+            				</div>
+            			<div class="modal-footer" hidden="true"></div>
+				</div>
+	        	</div>
+		</div>
+	</div>
 
 	<div class="modal fade" id="ShutDownModal" role="dialog">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Shut Down The Nagios</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success" ng-click="open('shutdown')" data-dismiss="modal">Yes</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-primary btn-lg" ng-click="open('shutdown')" data-dismiss="modal">Yes</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="modal fade" id="RestartModal" role="dialog">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Restart the Nagios Process</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success" ng-click="open('restart')" data-dismiss="modal">Yes</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-primary btn-lg" ng-click="open('restart')" data-dismiss="modal">Yes</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="modal fade" id="NotificationsModal" role="dialog">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Notifications Command</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success" ng-click="notification(processinfo.enable_notifications)" data-dismiss="modal">Yes</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-primary btn-lg" ng-click="notification(processinfo.enable_notifications)" data-dismiss="modal">Yes</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="modal fade" id="ServiceCheckModal" role="dialog">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Service Check Command</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success" ng-click="activeservice(processinfo.active_service_checks_enabled)" data-dismiss="modal">Yes</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-primary btn-lg" ng-click="activeservice(processinfo.active_service_checks_enabled)" data-dismiss="modal">Yes</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="modal fade" id="PassiveServiceModal" role="dialog">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Passive Service Check Command</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success" ng-click="passiveservice(processinfo.passive_service_checks_enabled)" data-dismiss="modal">Yes</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-primary btn-lg" ng-click="passiveservice(processinfo.passive_service_checks_enabled)" data-dismiss="modal">Yes</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="modal fade" id="HostCheckModal" role="dialog">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Host Check Command</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success" ng-click="activehost(processinfo.active_host_checks_enabled)" data-dismiss="modal">Yes</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-primary btn-lg" ng-click="activehost(processinfo.active_host_checks_enabled)" data-dismiss="modal">Yes</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="modal fade" id="PassiveHostModal" role="dialog">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Passive Host Check Command</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success" ng-click="passivehost(processinfo.passive_host_checks_enabled)" data-dismiss="modal">Yes</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-primary btn-lg" ng-click="passivehost(processinfo.passive_host_checks_enabled)" data-dismiss="modal">Yes</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="modal fade" id="EventHandlerModal" role="dialog">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Event Handler Command</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success" ng-click="event(processinfo.enable_event_handlers)" data-dismiss="modal">Yes</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-primary btn-lg" ng-click="event(processinfo.enable_event_handlers)" data-dismiss="modal">Yes</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="modal fade" id="ObsessingServiceModal" role="dialog">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Obsessing Over Service Command</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success" ng-click="obsessservice(processinfo.obsess_over_services)" data-dismiss="modal">Yes</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-primary btn-lg" ng-click="obsessservice(processinfo.obsess_over_services)" data-dismiss="modal">Yes</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="modal fade" id="ObsessingHostModal" role="dialog">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Obsessing Over Hosts Command</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success" ng-click="obsesshost(processinfo.obsess_over_hosts)" data-dismiss="modal">Yes</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn btn-lg" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-primary btn-lg" ng-click="obsesshost(processinfo.obsess_over_hosts)" data-dismiss="modal">Yes</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="modal fade" id="FlapDetectModal" role="dialog">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Flap Detection Model</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success" ng-click="flap(processinfo.enable_flap_detection)" data-dismiss="modal">Yes</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-primary btn-lg" ng-click="flap(processinfo.enable_flap_detection)" data-dismiss="modal">Yes</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="modal fade" id="PerformanceModal" role="dialog">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Performance Data Command</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" class="btn btn-success" ng-click="perform(processinfo.process_performance_data)" data-dismiss="modal">Yes</button>
-					<button type="button" class="btn btn-danger">No</button>
+					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-primary btn-lg" ng-click="perform(processinfo.process_performance_data)" data-dismiss="modal">Yes</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
+</div>
+
+<div ng-controller="SchedulingQueueCtrl">
+	
+	<div class="modal fade" id="DisableModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content modal-sm">
+				<div class="modal-header">
+					<h4 class="modal-title">Disable Active Check</h4>
+				</div>
+				<div class="modal-body">
+					<form>
+						<label for="Host Name:">
+							Host Name:
+							<input disabled type="text" ng-model="host" name="host">
+						</label>
+						<label for="Service:" ng-model="service_label" name="service_label" ng-hide="Disableshow">
+							Service Name:
+							<input disabled type="text" ng-model="service" name="service">
+						</label>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-primary btn-lg" ng-click="disable()" data-dismiss="modal">Yes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="ScheduleModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content modal-sm">
+				<div class="modal-header">
+					<h4 class="modal-title">Schedule Check Time</h4>
+				</div>
+				<div class="modal-body"">
+					<form>
+						<label class="form-group" for="HostName">
+							Host Name:
+							<input disabled type="text" ng-model="host" name="host">
+						</label>
+						<label class="form-group" for="Service" ng-model="service_label" name="service_label" ng-hide="Scheduleshow">
+							Service Name:
+							<input disabled type="text" ng-model="service" name="service">
+						</label>
+						<label class="form-group" for="CheckTime">
+							Check Time:
+							<input type="text" ng-model="check_time" name="check_time">
+						</label>
+						<label class="form-group" for="ForceCheck">
+							Force Check:
+							<input type="checkbox"  ng-model="force_check" name="force_check" ng-checked="true">
+						</label>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<p class="btn btn-sm" data-toggle="tooltip" title="This command is used to schedule the next check of a particular service. Nagios will re-queue the service to be checked at the time you specify. If you select the force check option, Nagios will force a check of the service regardless of both what time the scheduled check occurs and whether or not checks are enabled for the service.">?</p>
+					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-primary btn-lg" ng-click="schedule()" data-dismiss="modal">Yes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div ng-controller="HostDetailsCtrl">
+	<div class="modal fade" id="CustomNotification" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content modal-sm">
+				<div class="modal-header">
+					<h4 class="modal-title">Schedule Check Time</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-group">
+						<label for="HostName">
+							Host Name:
+							<input disabled type="text" ng-model="custom_host" name="custom_host">
+						</label>
+						<label  for="Force">
+							Force:
+							<input type="checkbox" ng-model="force" name="force" ng-checked="force" ng-change="forcechange(force);">
+						</label>
+						<label  for="CheckTime">
+							Broadcast:
+							<input type="checkbox" ng-model="broadcast" name="broadcast" ng-checked="broadcast" ng-change="broadcastchange(broadcast)">
+						</label>
+						<label  for="Author">
+							Author(Your Name):
+							<input disabled type="text" ng-model="author" name="author">
+						</label>
+						<label for="Comment">
+							Comment:
+							<input type="text" ng-model="comment" name="comment" value="comment">
+						</label>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-primary btn-lg" data-dismiss="modal" ng-click='custom(comment)'>Yes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="Acknowledge" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content modal-sm">
+				<div class="modal-header">
+					<h4 class="modal-title">Acknowledge Problem</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-group">
+						<label for="HostName">
+							Host Name:
+							<input disabled type="text" ng-model="ack_host" name="ack_host">
+						</label>
+						<label  for="StickyAcknowledgement">
+							Sticky Acknowledgement:
+							<input type="checkbox" ng-model="stickyack" name="stickyack" ng-checked="stickyack" ng-change="sticky(stickyack);">
+						</label>
+						<label  for="SendNotification">
+							Send Notification:
+							<input type="checkbox" ng-model="sendnotify" name="sendnotify" ng-checked="sendnotify" ng-change="notify(sendnotify)">
+						</label>
+						<label  for="PersistentComment">
+							Persistent Comment:
+							<input type="checkbox" ng-model="persistent" name="persistent" ng-checked="persistent" ng-change="persist(persistent)">
+						</label>
+						<label  for="Author">
+							Author(Your Name):
+							<input disabled type="text" ng-model="author" name="author">
+						</label>
+						<label for="Comment">
+							Comment:
+							<input type="text" ng-model="comment" name="comment" value="comment">
+						</label>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-primary btn-lg" data-dismiss="modal" ng-click='acknowledge(comment)'>Yes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="EnableAllService" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Enable All Service</h4>
+				</div>
+				<div class="modal-body">
+					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-primary btn-lg" ng-click="service_check(type = true, host.host_name)" data-dismiss="modal">Yes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="DisableAllService" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Disable All Service</h4>
+				</div>
+				<div class="modal-body">
+					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-primary btn-lg" ng-click="service_check(type = true, host.host_name)" data-dismiss="modal">Yes</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

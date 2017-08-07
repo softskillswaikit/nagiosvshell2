@@ -134,8 +134,17 @@ angular.module('vshell.controllers', [])
 
 .controller('HostDetailsCtrl', ['$scope', '$routeParams', 'async',
     function($scope, $routeParams, async) {
-
+	
         $scope.init = function() {
+
+	    var value = {
+		name: 'status',
+		url: 'status',
+		queue: 'status-' + '',
+		cache: true
+	    };
+
+	    async.api($scope, value);
 
             var options = {
                 name: 'host',
@@ -147,6 +156,105 @@ angular.module('vshell.controllers', [])
             
         };
 
+	$scope.passcustom = function(host, parameter) {
+		
+		$scope.custom_host = host;
+		$scope.author = parameter;
+		$scope.force = false;
+		$scope.broadcast = false;
+		var type = 'host';
+		var service = null;
+		
+		$scope.forcechange = function (status){
+			if (status == false){
+				$scope.force = status;
+			}else if (status == true){
+				$scope.force = status;
+			}
+		};
+
+		$scope.broadcastchange = function (status){
+			if (status == false){
+				$scope.broadcast = status;
+				
+			}else if (status == true){
+				$scope.broadcast = status;
+			}
+		};
+		
+		$scope.custom = function(comment) {
+			var options = {
+		    		name: 'CustomNotification',
+		    		url: 'sendcustomnotification/' + type + '/' + $scope.custom_host + '/' + service + '/' + $scope.force + '/'
+					+ $scope.broadcast + '/' + $scope.author + '/' + comment,
+		    		queue: 'main'
+			};
+			async.api($scope, options);
+		};
+	};
+
+	$scope.passack = function (host, parameter) {
+	
+		$scope.ack_host = host;
+		$scope.author = parameter;
+		$scope.stickyack = true;
+		$scope.sendnotify = true;
+		$scope.persistent = false;
+		$scope.comment = null;
+		var type = 'host';
+		var service = null;
+
+		$scope.sticky = function (status){
+			if (status == false){
+				$scope.stickyack = status;
+			}else if (status == true){
+				$scope.stickyack = status;
+			}
+		};
+
+		$scope.notify = function (status){
+			if (status == false){
+				$scope.sendnotify = status;
+				
+			}else if (status == true){
+				$scope.sendnotify = status;
+			}
+		};
+
+		$scope.persist = function (status){
+			if (status == false){
+				$scope.persistent = status;
+				
+			}else if (status == true){
+				$scope.persistent = status;
+			}
+		};
+
+		$scope.acknowledge = function (comment) {
+			$scope.comment = comment;
+			var options = {
+				name: 'acknowledge',
+				url: 'acknowledgeproblem/' + type + '/' + $scope.ack_host + '/' + service + '/'
+				+ $scope.stickyack + '/' + $scope.sendnotify + '/' + $scope.persistent + '/'
+				+ $scope.author + '/' + $scope.comment,
+				queue: 'main'
+			};
+
+			async.api($scope, options);
+			
+		};
+	};
+
+	$scope.service_check = function (type, hostname) {
+		
+		var options = {
+			name: 'ServiceCheck',
+			url: 'hostservicecheck/' + type + '/' + hostname,
+			queue: 'main'
+		};
+
+		async.api($scope, options);
+	};
     }
 ])
 
@@ -415,25 +523,43 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('ProcessInfoCtrl', ['$scope', '$routeParams', 'async',
-    function($scope, $routeParams, async) {
+.controller('ProcessInfoCtrl', ['$scope', '$interval', '$timeout', 'async',
+    function($scope, $interval, $timeout, async) {
 
+	$scope.showModal = function(modal_id){
+          $(modal_id).modal('show');
+        };
+
+	$scope.closeModal = function(modal_id){
+          $(modal_id).modal('hide');
+        };
 
         $scope.init = function() {
 
             var options = {
-                name: 'processinfo',
-                url: 'processinfo',
-                queue: 'main'
-            };
+                	name: 'processinfo',
+                	url: 'processinfo',
+                	queue: 'main'
+            	};
+	
 
-            async.api($scope, options);
+	    async.api($scope, options);
+
+	    $interval(function(){
+
+		var options = {
+                	name: 'processinfo',
+                	url: 'processinfo',
+                	queue: 'main'
+            	};
+
+		async.api($scope, options);
+	    }, 3000);
+            
 
         };
 	
 	$scope.open = function(operation) {
-
-		console.log(operation);
 
 		if (operation == 'shutdown'){
 
@@ -469,9 +595,9 @@ angular.module('vshell.controllers', [])
 				url: 'allnotifications/' + type,
 				queue: 'main'
 			};
-
+			
 			async.api($scope, result);
-
+			
 		}else if (operation == 'NO'){
 
 			var type = "enable";
@@ -484,6 +610,24 @@ angular.module('vshell.controllers', [])
 
 			async.api($scope, result);
 		}
+		
+		$timeout(function(){
+			if ($scope.allnotifications == '"The command run successfully !"'){
+				$scope.showModal('#success');
+				$timeout(function(){
+					$scope.closeModal('#success');
+				}, 2000)
+			}
+			else{
+				$scope.showModal('#fail');
+				$timeout(function(){
+					$scope.closeModal('#fail');
+				}, 2000)
+			}
+		}, 1000);
+
+		
+
 	};
 
 	$scope.activeservice = function(operation){
@@ -512,6 +656,21 @@ angular.module('vshell.controllers', [])
 
 			async.api($scope, result);
 		}
+
+		$timeout(function(){
+			if ($scope.allservicecheck == '"The command run successfully !"'){
+				$scope.showModal('#success');
+				$timeout(function(){
+					$scope.closeModal('#success');
+				}, 2000)
+			}
+			else{
+				$scope.showModal('#fail');
+				$timeout(function(){
+					$scope.closeModal('#fail');
+				}, 2000)
+			}
+		}, 1000);
 	};
 
 	$scope.passiveservice = function(operation){
@@ -540,6 +699,21 @@ angular.module('vshell.controllers', [])
 
 			async.api($scope, result);
 		}
+
+		$timeout(function(){
+			if ($scope.allpassiveservicecheck == '"The command run successfully !"'){
+				$scope.showModal('#success');
+				$timeout(function(){
+					$scope.closeModal('#success');
+				}, 2000)
+			}
+			else{
+				$scope.showModal('#fail');
+				$timeout(function(){
+					$scope.closeModal('#fail');
+				}, 2000)
+			}
+		}, 1000);
 	};
 
 	$scope.activehost = function(operation){
@@ -568,6 +742,21 @@ angular.module('vshell.controllers', [])
 
 			async.api($scope, result);
 		}
+
+		$timeout(function(){
+			if ($scope.allhostcheck == '"The command run successfully !"'){
+				$scope.showModal('#success');
+				$timeout(function(){
+					$scope.closeModal('#success');
+				}, 2000)
+			}
+			else{
+				$scope.showModal('#fail');
+				$timeout(function(){
+					$scope.closeModal('#fail');
+				}, 2000)
+			}
+		}, 1000);
 	};
 
 	$scope.passivehost = function(operation){
@@ -596,6 +785,21 @@ angular.module('vshell.controllers', [])
 
 			async.api($scope, result);
 		}
+
+		$timeout(function(){
+			if ($scope.allpassivehostcheck == '"The command run successfully !"'){
+				$scope.showModal('#success');
+				$timeout(function(){
+					$scope.closeModal('#success');
+				}, 2000)
+			}
+			else{
+				$scope.showModal('#fail');
+				$timeout(function(){
+					$scope.closeModal('#fail');
+				}, 2000)
+			}
+		}, 1000);
 	};
 
 	$scope.event = function(operation){
@@ -624,6 +828,21 @@ angular.module('vshell.controllers', [])
 
 			async.api($scope, result);
 		}
+
+		$timeout(function(){
+			if ($scope.alleventhandler == '"The command run successfully !"'){
+				$scope.showModal('#success');
+				$timeout(function(){
+					$scope.closeModal('#success');
+				}, 2000)
+			}
+			else{
+				$scope.showModal('#fail');
+				$timeout(function(){
+					$scope.closeModal('#fail');
+				}, 2000)
+			}
+		}, 1000);
 	};
 
 	$scope.obsessservice = function(operation){
@@ -652,6 +871,21 @@ angular.module('vshell.controllers', [])
 
 			async.api($scope, result);
 		}
+
+		$timeout(function(){
+			if ($scope.obsessservice == '"The command run successfully !"'){
+				$scope.showModal('#success');
+				$timeout(function(){
+					$scope.closeModal('#success');
+				}, 2000)
+			}
+			else{
+				$scope.showModal('#fail');
+				$timeout(function(){
+					$scope.closeModal('#fail');
+				}, 2000)
+			}
+		}, 1000);
 	};
 	
 	$scope.obsesshost = function(operation){
@@ -680,6 +914,21 @@ angular.module('vshell.controllers', [])
 
 			async.api($scope, result);
 		}
+
+		$timeout(function(){
+			if ($scope.obsesshost == '"The command run successfully !"'){
+				$scope.showModal('#success');
+				$timeout(function(){
+					$scope.closeModal('#success');
+				}, 2000)
+			}
+			else{
+				$scope.showModal('#fail');
+				$timeout(function(){
+					$scope.closeModal('#fail');
+				}, 2000)
+			}
+		}, 1000);
 	};
 	
 	$scope.flap = function(operation){
@@ -708,6 +957,21 @@ angular.module('vshell.controllers', [])
 
 			async.api($scope, result);
 		}
+
+		$timeout(function(){
+			if ($scope.flapdetection == '"The command run successfully !"'){
+				$scope.showModal('#success');
+				$timeout(function(){
+					$scope.closeModal('#success');
+				}, 2000)
+			}
+			else{
+				$scope.showModal('#fail');
+				$timeout(function(){
+					$scope.closeModal('#fail');
+				}, 2000)
+			}
+		}, 1000);
 	};
 	
 	$scope.perform = function(operation){
@@ -736,6 +1000,21 @@ angular.module('vshell.controllers', [])
 
 			async.api($scope, result);
 		}
+
+		$timeout(function(){
+			if ($scope.performancedata == '"The command run successfully !"'){
+				$scope.showModal('#success');
+				$timeout(function(){
+					$scope.closeModal('#success');
+				}, 2000)
+			}
+			else{
+				$scope.showModal('#fail');
+				$timeout(function(){
+					$scope.closeModal('#fail');
+				}, 2000)
+			}
+		}, 1000);
 	};
 
     }
@@ -744,18 +1023,87 @@ angular.module('vshell.controllers', [])
 .controller('SchedulingQueueCtrl', ['$scope', 'async',
     function($scope, async) {
 
+	$('[data-toggle="tooltip"]').tooltip();
+
 
         $scope.init = function() {
 
-            var options = {
-                name: 'schedulequeue',
-                url: 'schedulequeue',
-                queue: 'main'
-            };
-
-            async.api($scope, options);
+		$scope.testdata = [
+		{
+			host: "localhost",
+			service: "Uptime",
+			last_check: "1501427329",
+			next_check: "1501427329",
+			type: "NORMAL",
+			active_check: "ENABLED",
+		},
+		{
+			host: "testserver",
+			service: "Uptime",
+			last_check: "1501427329",
+			next_check: "1501427329",
+			type: "NORMAL",
+			active_check: "OK",
+		},
+		{
+			host: "testserver",
+			service: null,
+			last_check: "1501427329",
+			next_check: "1501427329",
+			type: "NORMAL",
+			active_check: "OK",
+		},
+	];
 
         };
+
+	
+
+	$scope.parameterdisable = function(host, service, type){
+		
+		$scope.host = host;
+		$scope.service = service;
+		
+		if ($scope.service != null){
+			$scope.Disableshow = false;
+		}else{
+			$scope.Disableshow = true;
+		}
+
+		$scope.disable = function(){
+			if ($scope.Disableshow = false){
+				
+			}
+			else{
+				
+			}
+			
+		};
+	};
+
+	$scope.parameterschedule = function(host, service, check_time){
+
+		$scope.check_time = check_time;
+		$scope.host = host;
+		$scope.service = service;
+		
+		if ($scope.service != null){
+			$scope.Scheduleshow = false;
+		}else{
+			$scope.Scheduleshow = true;
+		}
+
+		$scope.schedule = function(){
+			if ($scope.Scheduleshow = false){
+				
+				
+			}
+			else{
+				
+			}
+			
+		};
+	};
 
     }
 ])

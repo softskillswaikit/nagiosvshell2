@@ -126,7 +126,7 @@
 			</tr>
 			<tr class="state-{{ processinfo.passive_host_checks_enabled | lowercase }}">
 				<td class="status" ng-if="processinfo.passive_host_checks_enabled == 'NO'">Start accepting passive host checks</td>
-				<td class="status" ng-if="processinfo.active_host_checks_enabled == 'YES'">Stop accepting passive host checks</td>
+				<td class="status" ng-if="processinfo.passive_host_checks_enabled == 'YES'">Stop accepting passive host checks</td>
 				<td class="status"><a data-toggle="modal" data-target="#PassiveHostModal">Toggle</a></td>
 			</tr>
 			<tr class="state-{{ processinfo.enable_event_handlers | lowercase }}">

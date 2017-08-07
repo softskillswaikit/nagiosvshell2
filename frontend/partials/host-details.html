@@ -133,7 +133,7 @@
                         <td><a target="nagios" ng-href="{{ host.host_name | hostcommand: 'custom_notification' }}">Enable Notification for all services on this Host</a></td>
                     </tr>
                     <tr class="footable-even">
-                        <td><a target="nagios" ng-href="{{ host.host_name | hostcommand: 'custom_notification' }}">Send custom notification</a></td>
+                        <td><a data-toggle="modal" data-target="#CustomNotification" ng-click="passcustom(host.host_name, status.username)">Send custom notification</a></td>
                     </tr>
                     <tr class="footable-odd">
                         <td><a target="nagios" ng-href="{{ host.host_name | hostcommand: 'schedule_downtime' }}">Schedule downtime</a></td>
@@ -148,13 +148,13 @@
                         <td><a target="nagios" ng-href="{{ host.host_name | hostcommand: 'schedule_check_for_all' }}">Schedule a check for all services of this host</a></td>
                     </tr>
 		    <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{ host.host_name | hostcommand: 'custom_notification' }}">Disable checks of all services on this host</a></td>
+                        <td><a data-toggle="modal" data-target="#DisableAllService">Disable checks of all services on this host</a></td>
                     </tr>
 		    <tr class="footable-even">
-                        <td><a target="nagios" ng-href="{{ host.host_name | hostcommand: 'custom_notification' }}">Enable checks of all services on this host</a></td>
+                        <td><a data-toggle="modal" data-target="#EnableAllService">Enable checks of all services on this host</a></td>
                     </tr>
-                    <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{ host.host_name | hostcommand: 'acknowledge_problem' }}">Acknowledge Problem</a></td>
+		    <tr class="footable-odd">
+                        <td><a data-toggle="modal" data-target="#Acknowledge" ng-click="passack(host.host_name, status.username)">Acknowledge Problem</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -196,7 +196,7 @@
         </table>
 
     </div>
-
+<div ng-include="'frontend/partials/modal_confirm.html'"></div>
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>

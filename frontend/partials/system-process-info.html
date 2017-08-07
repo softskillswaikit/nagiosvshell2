@@ -112,7 +112,7 @@
 			<tr class="state-{{ processinfo.active_service_checks_enabled | lowercase }}">
 				<td class="status" ng-if="processinfo.active_service_checks_enabled == 'NO'">Start executing service checks</td>
 				<td class="status" ng-if="processinfo.active_service_checks_enabled == 'YES'">Stop executing service checks</td>
-				<td class="status"><a data-toggle="modal" data-target="#ServiceCheckModal">Toggle</a>	</td>
+				<td class="status"><a data-toggle="modal" data-target="#ServiceCheckModal">Toggle</a></td>
 			</tr>
 			<tr class="state-{{ processinfo.passive_service_checks_enabled | lowercase }}">
 				<td class="status" ng-if="processinfo.passive_service_checks_enabled == 'NO'">Start accepting passive service checks</td>

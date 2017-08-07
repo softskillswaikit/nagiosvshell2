@@ -874,9 +874,17 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
 	text-align-last: center;
 	font-size: 16px;
     }
+	.alert{
+		width: auto;
+		margin: auto;
+	}
 
 	.modal-backdrop {
 	z-index: -1;
+	}
+
+	.confirm_modal .modal-body{
+		text-align: center;
 	}
 
 	.table-hover tbody tr:hover td {
@@ -1123,9 +1131,14 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
     .table-container tr.state-up td {
 
     }
+	.table-container tr.state-information td.status {
+		background-color: lightblue;
+		color: blue;
+	}
 
         .table-container tr.enabled td,
         .table-container tr.state-ok td.status,
+	.table-container tr.state-enabled td.status,
 	.table-container tr.state-yes td.status,
         .table-container tr.state-up td.status {
             background-color: #e9ffd6;
