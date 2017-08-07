@@ -1147,7 +1147,7 @@ class API extends VS_Controller
      /**
       * Start or stop obsess over host check
       *
-      * @param Bool $type, true - start, false - disable
+      * @param Bool $type, true - start, false - stop
       */
      public function obsessOverHostCheck($type)
      {
@@ -1168,7 +1168,7 @@ class API extends VS_Controller
      /**
       * Start or stop obsess over host
       *
-      * @param Bool $type, true - start, false - disable
+      * @param Bool $type, true - start, false - stop
       * @param String $host
       */
      public function obsessOverHost($type, $host)
@@ -1190,7 +1190,7 @@ class API extends VS_Controller
      /**
       * Start or stop obsess over service
       *
-      * @param Bool $type, true - start, false - disable
+      * @param Bool $type, true - start, false - stop
       * @param String $host
       * @param String $service
       */
@@ -1234,17 +1234,17 @@ class API extends VS_Controller
      /**
       * Start or stop all host check
       *
-      * @param String $type , 'start', 'stop'
+      * @param Bool $type, true - start, false - stop
       */
      public function allHostCheck($type)
      {
         $result = false;
 
-        if($type == 'start')
+        if($type)
         {
             $result = $this->system_commands->start_host_check();
         }
-        else if($type == 'stop')
+        else
         {
             $result = $this->system_commands->stop_host_check();
         }
@@ -1255,17 +1255,17 @@ class API extends VS_Controller
      /**
       * Start or stop all passive host check
       *
-      * @param String $type, 'start', 'stop'
+      * @param Bool $type, true - start, false - stop
       */
      public function allPassiveHostCheck($type)
      {
         $result = false;
 
-        if($type == 'start')
+        if($type)
         {
             $result = $this->system_commands->start_passive_host_check();
         }
-        else if($type == 'stop')
+        else
         {
             $result = $this->system_commands->stop_passive_host_check();
         }
