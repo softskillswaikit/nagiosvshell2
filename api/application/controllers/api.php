@@ -788,7 +788,7 @@ class API extends VS_Controller
     /**
      * Enable or disable service check
      *
-     * @param String $type , 'enable' ,'disable'
+     * @param Bool $type, true = 'enable', false = 'disable'
      * @param String $hostname
      * @param String $service
      */
@@ -796,11 +796,11 @@ class API extends VS_Controller
     {
         $result = false;
 
-        if($type == 'enable')
+        if($type)
         {
             $result = $this->system_commands->enable_svc_check();
         }
-        else if($type == 'disable')
+        else
         {
             $result = $this->system_commands->disable_svc_check();
         }
