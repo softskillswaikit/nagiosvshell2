@@ -7,6 +7,7 @@
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
 <div id="content" class="clearfix" ng-controller="SysDowntimeCtrl" ng-init="init()">
+
 	<h1>Downtime</h1>
 
 	<div class="details table-container full-width">
@@ -14,30 +15,17 @@
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs">
 		  <li class="active">
-		    <a data-toggle="tab" data-target="#hostcomments">Host Downtime</a>
+		    <a role="button" data-toggle="tab" data-target="#hostcomments">Host Downtime</a>
 		  </li>
 		  <li>
-		    <a data-toggle="tab" data-target="#servicecomments">Service Downtime</a>
+		    <a role="button" data-toggle="tab" data-target="#servicecomments">Service Downtime</a>
 		  </li>
 		</ul>
 
 		<!-- Tab panes -->
 		<div class="tab-content">
 		  <div class="tab-pane active" id="hostcomments">
-
-					<!--Table-->
 					<div class="table-container full-width">
-
-						<div class="table-options">
-		            <form action="" class="filter-form" method="post">
-		                <div class="filter-icon"></div>
-		                <input id="footable-filter" class="footable-filter" type="text" placeholder="Filter Table"/>
-		            </form>
-		            <div class="pagesize-container">
-		                Show <a class="active" ng-href="#" data-page-size="25">25</a> <a ng-href="#" data-page-size="100">100</a> <a ng-href="#" data-page-size="50000">All</a>
-		            </div>
-		            <div class="clearfix"></div>
-		        </div>
 
 						<table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
 		            <thead>
@@ -55,171 +43,36 @@
 												<th>Actions</th>
 		                </tr>
 		            </thead>
-								<!--
-		            <tfoot>
+								<tfoot>
 		                <tr>
-		                    <td colspan="5">
-		                        <div class="results-count">{{ hostgroup.HostStatusCollection | count }} Result{{ hostgroup.HostStatusCollection | plural }}</div>
-		                        <div class="footable-pagination pagination" id="footable-pagination"></div>
-		                    </td>
+		                    <td colspan="11">
+													<a class="add-comment no-margin" role="button" data-toggle="modal" data-target="#hostDowntime" ng-click="scheduleDowntime('host')">Schedule Downtime</a>
+												</td>
 		                </tr>
 		            </tfoot>
-							-->
 		            <tbody>
-		                <tr ng-if="(hostgroup.HostStatusCollection | count) == 0">
-		                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No scheduled host are defined' }}</td>
+		                <tr ng-if="(hostdowntimes | count) == 0">
+		                    <td colspan="11">{{ is_loading ? 'Loading...' : 'No scheduled host are defined' }}</td>
 		                </tr>
-		                <tr ng-repeat="host in hostgroup.HostStatusCollection | orderObjectBy: 'host_name'" class="state-{{ host.current_state | hoststate | lowercase }}" footabledata>
-		                    <td host-entry item="host"></td>
-		                    <td class="status">{{ host.current_state | hoststate }}</td>
-		                    <td><a ng-repeat="service in host.ServiceStatusCollection | orderObjectBy: 'service_description'" class="status-item active services-{{ service.current_state | servicestate | lowercase }}" href="#/services/{{ host.host_name }}/{{ service.service_description }}">{{ service.service_description }}</a></td>
+										<tr ng-repeat="downtime in hostdowntimes" ng-class-odd="'footable-odd'" ng-class-even="'footable-even'">
+		                    <td>{{ downtime.host_name }}</td>
+		                    <td>{{ downtime.entry_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
+												<td>{{ downtime.author }}</td>
+		                    <td>{{ comment.comment_data }}</td>
+												<td>{{ comment.start_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}}}</td>
+												<td>{{ comment.end_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }} }}</td>
+												<td>{{ comment.entry_type }}</td>
+												<td>{{ comment.downtime_id }}</td>
+												<td>{{ comment.trigger_id }}</td>
+												<td><a role="button" data-toggle="modal" data-target="#confirm" ng-click="deleteDowntime(downtime.downtime_id, 'host')">Delete Comment</a></td>
 		                </tr>
 		            </tbody>
-			        </table>
-						</div>
-
-						<!--Button to trigger modal-->
-						<button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal"
-							data-target="#hostdowntimemodal" data-backdrop="false">Schedule Downtime</button>
-
-						<!-- Modal -->
-					  <div class="modal fade" id="hostdowntimemodal">
-					    <div class="modal-dialog">
-
-					      <!-- Modal content-->
-					      <div class="modal-content">
-					        <div class="modal-header">
-					          <button type="button" class="close" data-dismiss="modal">&times;</button>
-					          <h4 class="modal-title">Schedule Host Downtime</h4>
-					        </div>
-					        <div class="modal-body">
-										<form action="" class="form-horizontal" name="inputForm" method="post" novalidate>
-
-											<div class="form-group">
-												<label for="hostName" class="col-md-4 control-label">Host Name:</label>
-												<div class="col-md-6">
-													<input ng-modal="hostHostName" type="text" class="form-control" name="hostName"></input>
-												</div>
-											</div>
-
-											<div class="form-group">
-												<label for="author" class="col-md-4 control-label">Author(Your Name):</label>
-												<div class="col-md-6">
-													<input ng-modal="hostAuthor" ng-disabled="true" type="text" class="form-control" name="author"></input>
-												</div>
-											</div>
-
-											<div class="form-group">
-												<label for="comment" class="col-md-4 control-label">Comment:</label>
-												<div class="col-md-6">
-													<textarea ng-modal="hostComment" class="form-control" name="comment"></textarea>
-												</div>
-											</div>
-
-											<div class="form-group">
-												<label for="triggeredBy" class="col-md-4 control-label">Triggered By:</label>
-												<div class="col-md-6">
-													<select ng-model="hostTriggeredBy" name="triggeredBy" class="form-control">
-														<option value="N/A">N/A</option>
-													</select>
-												</div>
-											</div>
-
-											<div class="form-group">
-												<label for="startdate" class="col-md-4 control-label">Start Date:</label>
-												<div class="col-md-6">
-													<input ng-model="hostStartDateTime" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}"
-														name="startdate" value="" class="form-control"></input>
-												</div>
-											</div>
-
-											<div class="form-group">
-												<label for="enddate" class="col-md-4 control-label">End Date:</label>
-												<div class="col-md-6">
-													<input ng-model="hostEndDateTime" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}"
-														name="enddate" value="" class="form-control"></input>
-												</div>
-											</div>
-
-											<div class="form-group">
-												<label for="type" class="col-md-4 control-label">Type:</label>
-												<div class="col-md-6">
-													<select ng-model="hostType" name="type" class="form-control">
-														<option value="Fixed">Fixed</option>
-														<option value="Flexible">Flexible</option>
-													</select>
-												</div>
-											</div>
-
-											<div class="form-group" ng-show="hostType=='Flexible'">
-												<label for="durationHour" class="col-md-4 control-label">Duration:</label>
-												<div class="col-md-3">
-													<input ng-model="hostDurationHour" type="number" name="durationHour" class="form-control">Hour</input>
-												</div>
-												<div class="col-md-3">
-													<input ng-model="hostDurationMin" type="number" name="durationMin" class="form-control">Minute</input>
-												</div>
-											</div>
-
-											<div class="form-group">
-												<label for="childHost" class="col-md-4 control-label">Child Hosts:</label>
-												<div class="col-md-6">
-													<select ng-model="hostChildHost" name="childHost" class="form-control">
-														<option value="doNothing">Do nothing with child hosts</option>
-														<option value="scheduleTriggeredDowntime">Schedule triggered downtime to all child hosts</option>
-														<option value="scheduleNonTriggeredDowntime">Schedule non-triggered downtime to all child hosts</option>
-													</select>
-												</div>
-											</div>
-
-											<div class="form-group">
-												<div class="col-md-6 col-md-offset-1">
-													<button type="button" class="btn btn-sm btn-info" data-target="#hostdesc" data-toggle="collapse">help</button>
-												</div>
-											</div>
-
-											<!-- collapse -->
-											<div class="collapse fade" id="hostdesc">
-												<p><small>
-													This command is used to schedule downtime for a particular host.
-													During the specified downtime, Nagios will not send notifications out about the host.
-													When the scheduled downtime expires, Nagios will send out notifications for this host
-													as it normally would. Scheduled downtimes are preserved across program shutdowns and
-													restarts. If you select the fixed option, the downtime will be in effect
-													between the start and end times you specify. If you do not select the fixed option,
-													Nagios will treat this as "flexible" downtime. Flexible downtime starts when the host
-													goes down or becomes unreachable (sometime between the start and end times you specified)
-													 and lasts as long as the duration of time you enter. The duration fields do not apply
-													 for fixed downtime.
-											 </small></p>
-											</div>
-
-										</form>
-					        </div>
-					        <div class="modal-footer">
-					          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="init()">Close</button>
-										<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="init()">Schedule</button>
-					        </div>
-					      </div>
-
-					    </div>
-					  </div>
-
+			      </table>
 					</div>
+			</div>
 
 		  <div class="tab-pane" id="servicecomments">
 				<div class="table-container full-width">
-
-					<div class="table-options">
-	            <form action="" class="filter-form" method="post">
-	                <div class="filter-icon"></div>
-	                <input id="footable-filter" class="footable-filter" type="text" placeholder="Filter Table"/>
-	            </form>
-	            <div class="pagesize-container">
-	                Show <a class="active" ng-href="#" data-page-size="25">25</a> <a ng-href="#" data-page-size="100">100</a> <a ng-href="#" data-page-size="50000">All</a>
-	            </div>
-	            <div class="clearfix"></div>
-	        </div>
 
 					<table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
 	            <thead>
@@ -238,156 +91,38 @@
 											<th>Actions</th>
 	                </tr>
 	            </thead>
-							<!--
-	            <tfoot>
-	                <tr>
-	                    <td colspan="5">
-	                        <div class="results-count">{{ hostgroup.HostStatusCollection | count }} Result{{ hostgroup.HostStatusCollection | plural }}</div>
-	                        <div class="footable-pagination pagination" id="footable-pagination"></div>
-	                    </td>
-	                </tr>
-	            </tfoot>
-						-->
-	            <tbody>
-	                <tr ng-if="(hostgroup.HostStatusCollection | count) == 0">
-	                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No scheduled service are defined' }}</td>
-	                </tr>
-	                <tr ng-repeat="host in hostgroup.HostStatusCollection | orderObjectBy: 'host_name'" class="state-{{ host.current_state | hoststate | lowercase }}" footabledata>
-	                    <td host-entry item="host"></td>
-	                    <td class="status">{{ host.current_state | hoststate }}</td>
-	                    <td><a ng-repeat="service in host.ServiceStatusCollection | orderObjectBy: 'service_description'" class="status-item active services-{{ service.current_state | servicestate | lowercase }}" href="#/services/{{ host.host_name }}/{{ service.service_description }}">{{ service.service_description }}</a></td>
-	                </tr>
-	            </tbody>
-		        </table>
-					</div>
-					<button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal"
-						data-target="#hostcommentmodal" data-backdrop="false">Schedule Downtime</button>
-
-					<!-- Modal -->
-					<div class="modal fade" id="hostcommentmodal">
-						<div class="modal-dialog">
-
-							<!-- Modal content-->
-							<div class="modal-content">
- 							 <div class="modal-header">
- 								 <button type="button" class="close" data-dismiss="modal">&times;</button>
- 								 <h4 class="modal-title">Schedule Service Downtime</h4>
- 							 </div>
- 							 <div class="modal-body">
- 								 <form action="" class="form-horizontal" name="inputForm" method="post" novalidate>
-
- 									 <div class="form-group">
- 										 <label for="hostName" class="col-md-4 control-label">Host Name:</label>
- 										 <div class="col-md-6">
- 											 <input ng-modal="serviceHostName" type="text" class="form-control" name="hostName"></input>
- 										 </div>
- 									 </div>
-
-									 <div class="form-group">
- 										 <label for="service" class="col-md-4 control-label">Service:</label>
- 										 <div class="col-md-6">
- 											 <input ng-modal="serviceService" type="text" class="form-control" name="hostName"></input>
- 										 </div>
- 									 </div>
-
- 									 <div class="form-group">
- 										 <label for="author" class="col-md-4 control-label">Author(Your Name):</label>
- 										 <div class="col-md-6">
- 											 <input ng-modal="serviceAuthor" ng-disabled="true" type="text" class="form-control" name="author"></input>
- 										 </div>
- 									 </div>
-
- 									 <div class="form-group">
- 										 <label for="comment" class="col-md-4 control-label">Comment:</label>
- 										 <div class="col-md-6">
- 											 <textarea ng-modal="servicComment" class="form-control" name="comment"></textarea>
- 										 </div>
- 									 </div>
-
- 									 <div class="form-group">
- 										 <label for="triggeredBy" class="col-md-4 control-label">Triggered By:</label>
- 										 <div class="col-md-6">
- 											 <select ng-model="serviceTriggeredBy" name="triggeredBy" class="form-control">
- 												 <option value="N/A">N/A</option>
- 											 </select>
- 										 </div>
- 									 </div>
-
-									 <div class="form-group">
-										 <label for="startdate" class="col-md-4 control-label">Start Date:</label>
-										 <div class="col-md-6">
-											 <input ng-model="serviceStartDateTime" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}"
-											 	name="startdate" value="" class="form-control"></input>
-										 </div>
-									 </div>
-
-									 <div class="form-group">
-										 <label for="enddate" class="col-md-4 control-label">End Date:</label>
-										 <div class="col-md-6">
-											 <input ng-model="serviceEndDateTime" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}"
-											 	name="enddate" value="" class="form-control"></input>
-										 </div>
-									 </div>
-
- 									 <div class="form-group">
- 										 <label for="type" class="col-md-4 control-label">Type:</label>
- 										 <div class="col-md-6">
- 											 <select ng-model="serviceType" name="type" class="form-control">
- 												 <option value="Fixed">Fixed</option>
- 												 <option value="Flexible">Flexible</option>
- 											 </select>
- 										 </div>
- 									 </div>
-
-									 <div class="form-group" ng-show="serviceType=='Flexible'">
-										 <label for="durationHour" class="col-md-4 control-label">Duration:</label>
-										 <div class="col-md-3">
-											 <input ng-model="serviceDurationHour" type="number" name="durationHour" class="form-control">Hour</input>
-										 </div>
-										 <div class="col-md-3">
-											 <input ng-model="serviceDurationMin" type="number" name="durationMin" class="form-control">Minute</input>
-										 </div>
-									 </div>
-
-									 <div class="form-group">
-										 <div class="col-md-6 col-md-offset-1">
-											 <button type="button" class="btn btn-sm btn-info" data-target="#servicedesc" data-toggle="collapse">help</button>
-										 </div>
-									 </div>
-
-									 <!-- collapse -->
-									 <div class="collapse fade" id="servicedesc">
-										 <p><small>
-											 This command is used to schedule downtime for a particular host.
-											 During the specified downtime, Nagios will not send notifications out about the host.
-											 When the scheduled downtime expires, Nagios will send out notifications for this host
-											 as it normally would. Scheduled downtimes are preserved across program shutdowns and
-											 restarts. If you select the fixed option, the downtime will be in effect
-											 between the start and end times you specify. If you do not select the fixed option,
-											 Nagios will treat this as "flexible" downtime. Flexible downtime starts when the host
-											 goes down or becomes unreachable (sometime between the start and end times you specified)
-												and lasts as long as the duration of time you enter. The duration fields do not apply
-												for fixed downtime.
-										</small></p>
-									 </div>
-
- 								 </form>
- 							 </div>
- 							 <div class="modal-footer">
- 								 <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="init()">Close</button>
- 								 <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="init()">Schedule</button>
- 							 </div>
- 						 </div>
-
-						</div>
-					</div>
-
-
+							<tfoot>
+									<tr>
+											<td colspan="12">
+												<a class="add-comment no-margin" role="button" data-toggle="modal" data-target="#serviceDowntime" ng-click="scheduleDowntime('svc')">Schedule Downtime</a>
+											</td>
+									</tr>
+							</tfoot>
+							<tbody>
+									<tr ng-if="(servicedowntimes | count) == 0">
+											<td colspan="11">{{ is_loading ? 'Loading...' : 'No scheduled host are defined' }}</td>
+									</tr>
+									<tr ng-repeat="downtime in servicedowntimes" ng-class-odd="'footable-odd'" ng-class-even="'footable-even'">
+											<td>{{ downtime.host_name }}</td>
+											<td>{{ downtime.service_description }}</td>
+											<td>{{ downtime.entry_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
+											<td>{{ downtime.author }}</td>
+											<td>{{ comment.comment_data }}</td>
+											<td>{{ comment.start_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}}}</td>
+											<td>{{ comment.end_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }} }}</td>
+											<td>{{ comment.entry_type }}</td>
+											<td>{{ comment.downtime_id }}</td>
+											<td>{{ comment.trigger_id }}</td>
+											<td><a role="button" data-toggle="modal" data-target="#confirm" ng-click="deleteDowntime(downtime.downtime_id, 'svc')">Delete Comment</a></td>
+									</tr>
+							</tbody>
+		      </table>
 				</div>
-
 			</div>
+
 		</div>
 	</div>
+	<div ng-include="'frontend/partials/modals.html'"></div>
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>

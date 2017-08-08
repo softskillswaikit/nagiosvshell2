@@ -156,7 +156,7 @@ angular.module('vshell.controllers', [])
 
           };
 
-          $scope.resetModal = function(){
+          $scope.reset = function(){
               $scope.hostName = $routeParams.host;
               $scope.service = ' ';
               $scope.persistent = true;
@@ -177,7 +177,7 @@ angular.module('vshell.controllers', [])
         };
 
         $scope.addComment = function(type){
-            $scope.resetModal();
+            $scope.reset();
 
             $scope.add = function(persistent, comment){
                 console.log("addComment");
@@ -413,10 +413,10 @@ angular.module('vshell.controllers', [])
             async.api($scope, optionsstatus);
 
             //reset modal
-            $scope.resetModal();
+            $scope.reset();
         };
 
-        $scope.resetModal = function(){
+        $scope.reset = function(){
           //initialize scope
           $scope.hostName = $routeParams.host;
           $scope.service = 'routeParams.service';
@@ -700,7 +700,7 @@ angular.module('vshell.controllers', [])
 
       $scope.reset = function(){
         $scope.today = new Date();
-        $scope.todayString = $filter('date')(Date.now(), 'MM/dd/yyyy');
+        $scope.todayString = $filter('date')(Date.now(), 'yyyy-MM-dd');
 
         $scope.reportType = 'Hostgroup(s)';
         $scope.reportComponent = 'ALL';
@@ -923,7 +923,7 @@ angular.module('vshell.controllers', [])
 
         $scope.reset = function(){
           $scope.today = new Date();
-          $scope.todayString = $filter('date')(Date.now(), 'MM/dd/yyyy');
+          $scope.todayString = $filter('date')(Date.now(), 'yyyy-MM-dd');
 
           $scope.reportType = 'Host';
     			$scope.serviceType = 'Normal Service';
@@ -1326,7 +1326,7 @@ angular.module('vshell.controllers', [])
 
        $scope.reset = function(){
           $scope.today = new Date();
-          $scope.todayString = $filter('date')(Date.now(), 'MM/dd/yyyy');
+          $scope.todayString = $filter('date')(Date.now(), 'yyyy-MM-dd');
 
      			$scope.reportType = 'Host';
      			$scope.serviceType = 'Normal Service';
@@ -1452,7 +1452,6 @@ angular.module('vshell.controllers', [])
 
       $scope.init = function() {
 
-        $interval(function(){$window.location.reload()}, 60000);
         //get comments data
         var optionshost = {
             name: 'hostcomments',
@@ -1468,6 +1467,15 @@ angular.module('vshell.controllers', [])
         };
         async.api($scope, optionsservice);
 
+        //get host and service name
+        var options = {
+            name: 'name',
+            url: 'name' + '/' + 'all',
+            queue: 'main'
+        };
+
+        async.api($scope, options);
+
         //get author
         var options1 = {
             name: 'status',
@@ -1477,12 +1485,12 @@ angular.module('vshell.controllers', [])
         };
         async.api($scope, options1);
 
-        //$scope.resetModal();
+        //$scope.reset();
       };
 
-      $scope.resetModal = function(){
-        $scope.hostName = '';
-        $scope.service = ' ';
+      $scope.reset = function(){
+        $scope.hostName = $scope.name.host[0];
+        $scope.service = $scope.name.service[0];
         $scope.persistent = true;
         $timeout(function(){$scope.author = $scope.status.username;}, 500);
         $scope.comment = '';
@@ -1494,7 +1502,7 @@ angular.module('vshell.controllers', [])
 
       $scope.addComment = function(type){
 
-        $scope.resetModal();
+        $scope.reset();
 
         $scope.add = function(hostName, service, persistent, comment){
 
@@ -1504,15 +1512,17 @@ angular.module('vshell.controllers', [])
                 + '/' + persistent + '/' + $scope.status.username + '/' + comment,
               queue: 'main'
           };
+
           async.api($scope, options);
 
           $scope.callback = function(data, status, headers, config) {
             if(config != null){
                 if(config.url.includes("addcomments")){
                     if(data == 'true')
-                      ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
+                      ngToast.create({className: 'alert alert-success',content:'Success! Update may take some time.',timeout:3000});
                     else
-                      ngToast.create({className: 'alert alert-danger',content:'Fail! Check your host or service name.',timeout:3000});
+                      ngToast.create({className: 'alert alert-danger',content:'Fail! Please check your host or service name.',timeout:3000});
+                    $timeout(function(){$window.location.reload()}, 2000);
                 }
             }
           };
@@ -1534,9 +1544,10 @@ angular.module('vshell.controllers', [])
               if(config != null){
                 if(config.url.includes("deletecomments")){
                   if(data == 'true')
-                    ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
+                    ngToast.create({className: 'alert alert-success',content:'Success! Update may take some time.',timeout:3000});
                   else
-                    ngToast.create({className: 'alert alert-danger',content:'Fail! ',timeout:3000});
+                    ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                  $timeout(function(){$window.location.reload()}, 2000);
                 }
               }
           };
@@ -1545,44 +1556,107 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('SysDowntimeCtrl', ['$scope', '$filter', 'async',
-    function($scope, $filter, async) {
+.controller('SysDowntimeCtrl', ['$scope', '$filter', 'async', '$timeout',
+    function($scope, $filter, async, $timeout) {
 
         $scope.init = function() {
-          $scope.now = new Date();
-          $scope.nowString = $filter('date')(Date.now(), 'MM/dd/yyyy HH:mm:ss');
 
-          $scope.hostHostName = '';
-          $scope.hostAuthor = '';
-          $scope.hostComment = "";
-          $scope.hostTriggeredBy = 'N/A';
-          $scope.hostStartDateTime = $scope.nowString ;
-          $scope.hostEndDateTime =  $scope.nowString ;
-          $scope.hostType = 'Fixed';
-          $scope.hostDurationHour = 2;
-          $scope.hosteDurationMin = 0;
-          $scope.hostChildHost = 'doNothing';
-
-          $scope.serviceHostName = '';
-          $scope.serviceService = '';
-          $scope.serviceAuthor = '';
-          $scope.servicComment = '';
-          $scope.serviceTriggeredBy = 'N/A';
-          $scope.serviceStartDateTime = $scope.nowString;
-          $scope.serviceEndDateTime = $scope.nowString;
-          $scope.serviceType = 'Fixed';
-          $scope.serviceDurationHour = 2;
-          $scope.serviceDurationMin = 0;
-/*
+            //get host and service name
             var options = {
-                name: 'sysdowntime',
-                url: 'sysdowntime',
+                name: 'name',
+                url: 'name' + '/' + 'all',
                 queue: 'main'
             };
 
             async.api($scope, options);
-*/
+
+            //get author
+            var options1 = {
+                name: 'status',
+                url: 'status',
+                queue: 'status-' + '',
+                cache: true
+            };
+            async.api($scope, options1);
         };
+
+        $scope.reset = function(){
+          console.log("reset");
+          $scope.now = new Date();
+          $scope.nowString = $filter('date')(Date.now(), 'yyyy-MM-ddTHH:mm');
+
+          $scope.hostName = $scope.name.host[0];
+          $scope.service = $scope.name.service[0];
+          $timeout(function(){$scope.author = $scope.status.username;}, 500);
+          $scope.comment = ' ';
+          $scope.triggeredBy = 'N/A';
+          $scope.startDate = $scope.nowString;
+          $scope.endDate = $scope.nowString;
+          $scope.type = 'Fixed';
+          $scope.durationHour = 2;
+          $scope.durationMin = 0;
+          $scope.childHost = 'doNothing';
+
+          if($scope.addHostComment)
+            $scope.addHostComment.$setPristine();
+          if($scope.addServiceComment)
+            $scope.addServiceComment.$setPristine();
+        };
+
+        $scope.scheduleDowntime = function(type){
+
+          $scope.reset();
+
+          $scope.schedule = function(hostName, service, start, end, fixed, triggerID, duration, comment){
+
+            var options = {
+                name: 'success',
+                url: 'scheduledowntime/'+ type + '/' + hostName + '/' + service + '/'+ start
+                  + '/' + end + '/' + fixed + '/' + triggerID + '/' + duration
+                  + '/' + $scope.status.username + '/' + comment,
+                queue: 'main'
+            };
+            async.api($scope, options);
+
+            $scope.callback = function(data, status, headers, config) {
+              if(config != null){
+                  if(config.url.includes("scheduledowntime")){
+                      if(data == 'true')
+                        ngToast.create({className: 'alert alert-success',content:'Success! Update may take some time.',timeout:3000});
+                      else
+                        ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                      $timeout(function(){$window.location.reload()}, 2000);
+                  }
+              }
+            };
+          };
+        };
+
+        $scope.deleteDowntime = function(id, type){
+
+          $scope.delete = function(){
+            var options = {
+                name: 'success',
+                url: 'deletedowntimes/' + id + '/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, options);
+
+            $scope.callback = function(data, status, headers, config) {
+                if(config != null){
+                  if(config.url.includes("deletedowntimes")){
+                    if(data == 'true')
+                      ngToast.create({className: 'alert alert-success',content:'Success! Update may take some time.',timeout:3000});
+                    else
+                      ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                    $timeout(function(){$window.location.reload()}, 2000);
+                  }
+                }
+            };
+          };
+        };
+
 
     }
 ])
