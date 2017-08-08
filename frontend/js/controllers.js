@@ -1578,6 +1578,8 @@ angular.module('vshell.controllers', [])
                 cache: true
             };
             async.api($scope, options1);
+
+            $timeout(function(){$scope.reset();}, 500);
         };
 
         $scope.reset = function(){
@@ -1601,6 +1603,9 @@ angular.module('vshell.controllers', [])
             $scope.addHostComment.$setPristine();
           if($scope.addServiceComment)
             $scope.addServiceComment.$setPristine();
+
+          $scope.startDateUnix = parseInt((new Date($scope.startDate).getTime() / 1000).toFixed(0));
+          $scope.endDateUnix = parseInt((new Date($scope.endDate).getTime() / 1000).toFixed(0));
         };
 
         $scope.scheduleDowntime = function(type){
