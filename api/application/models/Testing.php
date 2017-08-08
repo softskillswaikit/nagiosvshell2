@@ -578,6 +578,80 @@ class Testing extends CI_Model
 				$return_obj->critical_count = $this->_get_alert_hour($resource_array, 'CRITICAL', true);
 			}
 		}
+		//$return_type= 'SERVICE RUNNING STATE'
+		else
+		{
+			$running_state_array = array();
+			$running_state_obj = new StdClass();
+
+			//array counter 
+			$i = 0;
+
+			foreach($this->_data_array as $data)
+			{
+				if(strpos($data, '_running_state'))
+				{
+					list($input_time, $event_message) = explode(' ', $data, 2);
+
+					$running_state_obj->datetime = trim($input_time, '[]');
+						
+					if(strpos($event_message, 'OK') !== false)
+					{
+						$running_state_obj->state = 'OK';
+					}
+					else if(strpos($event_message, 'WARNING') !== false) 
+					{
+						$running_state_obj->state = 'WARNING';
+					}
+					else if(strpos($event_message, 'UNKNOWN') !== false)
+					{
+						$running_state_obj->state = 'UNKNOWN';
+					}
+					else if(strpos($event_message, 'CRITICAL') !== false)
+					{
+						$running_state_obj->state = 'CRITICAL';
+					}
+				
+					$running_state_array[$i] = $running_state_obj;
+					$i++;
+
+					unset($input_time, $event_message, $running_state_obj);
+				}
+			}
+
+			//$statistic_breakdown option : Month
+			if($statistic_breakdown === 1)
+			{
+				$return_obj->ok_count = $this->_get_alert_month($running_state_array, 'OK', true);
+				$return_obj->warning_count = $this->_get_alert_month($running_state_array, 'WARNING', true);
+				$return_obj->unknown_count = $this->_get_alert_month($running_state_array, 'UNKNOWN', true);
+				$return_obj->critical_count = $this->_get_alert_month($running_state_array, 'CRITICAL', true);
+			}
+			//$statistic_breakdown option : Day of the Month
+			else if($statistic_breakdown === 2)
+			{
+				$return_obj->ok_count = $this->_get_alert_day_of_month($running_state_array, 'OK', true);
+				$return_obj->warning_count = $this->_get_alert_day_of_month($running_state_array, 'WARNING', true);
+				$return_obj->unknown_count = $this->_get_alert_day_of_month($running_state_array, 'UNKNOWN', true);
+				$return_obj->critical_count = $this->_get_alert_day_of_month($running_state_array, 'CRITICAL', true);
+			}
+			//$statistic_breakdown option : Day of the Week
+			else if($statistic_breakdown === 3)
+			{
+				$return_obj->ok_count = $this->_get_alert_day_of_week($running_state_array, 'OK', true);
+				$return_obj->warning_count = $this->_get_alert_day_of_week($running_state_array, 'WARNING', true);
+				$return_obj->unknown_count = $this->_get_alert_day_of_week($running_state_array, 'UNKNOWN', true);
+				$return_obj->critical_count = $this->_get_alert_day_of_week($running_state_array, 'CRITICAL', true);
+			}
+			//$statistic_breakdown option : Hour of the Day
+			else
+			{
+				$return_obj->ok_count = $this->_get_alert_hour($running_state_array, 'OK', true);
+				$return_obj->warning_count = $this->_get_alert_hour($running_state_array, 'WARNING', true);
+				$return_obj->unknown_count = $this->_get_alert_hour($running_state_array, 'UNKNOWN', true);
+				$return_obj->critical_count = $this->_get_alert_hour($running_state_array, 'CRITICAL', true);
+			}
+		}
 
 		foreach($return_obj as $items)
 		{
