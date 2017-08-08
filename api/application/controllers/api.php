@@ -181,11 +181,9 @@ class API extends VS_Controller
     /**
      * Fetch name based on type : host, hostgroup, service, servicegroup
      *
-     * @param String $type
      */
     public function name()
     {
-        $Data = array();
         $hostname = array();
         $hostgroupname = array();
         $servicename = array();
@@ -200,12 +198,7 @@ class API extends VS_Controller
 
         foreach($hosts as $host)
         {
-            $DataHost[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
-        }
-
-        foreach($DataHost as $host)
-        {
-            $hostname[] = $host['name'];
+            $hostname[] = array($host->host_name);
         }
 
         $allName['host'] = $hostname;
@@ -216,13 +209,8 @@ class API extends VS_Controller
 
         foreach($hostgroups as $hostgroup)
         {
-            $DataHostgroup[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
+            $hostgroupname[] = array($hostgroup->alias);
         }
-
-        foreach ($DataHostgroup as $hostgroup) 
-        {
-            $hostgroupname[] = $hostgroup['name'];
-        } 
 
         $allName['hostgroup'] = $hostgroupname;     
     
@@ -232,13 +220,7 @@ class API extends VS_Controller
 
         foreach ($services as $service)
         {
-            $DataService[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
-        }
-
-        foreach ($DataService as $service) 
-        {
-            $servicename[] = $service['name'];
-
+            $servicename[] = array('service'=> $service->service_description, 'host' =>$service->host_name);
         }
 
         $allName['service'] = $servicename;
@@ -249,12 +231,7 @@ class API extends VS_Controller
 
         foreach($servicegroups as $servicegroup)
         {
-            $DataServicegroup[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
-        }
-
-        foreach ($DataServicegroup as $servicegroup) 
-        {
-            $servicegroupname[] = $servicegroup['name'];
+            $servicegroupname[] = array($servicegroup->alias);
         }
 
         $allName['servicegroup'] = $servicegroupname;
@@ -265,12 +242,7 @@ class API extends VS_Controller
 
         foreach ($hostresources as $hostresource) 
         {
-            $DataHostresource[] = $this->quicksearch_item('hostresource', $hostresource->host_name, $hostresource->service_description);
-        }
-
-        foreach ($DataHostresource as $hostresource) 
-        {
-            $hostresourcename[] = array('hostname' => $hostresource['name'], 'servicename' => $hostresource['uri']);
+            $hostresourcename[] = array('host'=> $hostresource->host_name, 'hostresource'=> $hostresource->service_description);
         }
 
         $allName['hostresource'] = $hostresourcename;
@@ -280,13 +252,7 @@ class API extends VS_Controller
 
         foreach ($runningstates as $runningstate)
         {
-            $DataRunningstate[] = $this->quicksearch_item('runningstate', $runningstate->host_name, $runningstate->service_description);
-        }
-
-        foreach ($DataRunningstate as $runningstate) 
-        {
-            $runningstatename[] = array('hostname' => $runningstate['name'], 'servicename' => $servicestate['uri']);
-
+            $runningstatename[] = array('host'=> $runningstate->host_name, 'runningstate' => $runningstate->service_description);
         }
 
         $allName['runningstate'] = $runningstatename;
@@ -542,7 +508,9 @@ class API extends VS_Controller
 
     public function testing()
     {
+        $hoststatus = $this->nagios_data->get_collection('host');
         
+        $this->output($hoststatus); 
     }
 
     /**
@@ -559,7 +527,7 @@ class API extends VS_Controller
      * @param String $author
      * @param String $comments
      */
-    public function downtime($type='', $host='', $service='', $start, $end, $fixed, $triggerID='0', $duration, $author, $comments='')
+    public function scheduleDowntime($type='', $host='', $service='', $start, $end, $fixed, $triggerID, $duration, $author, $comments='')
     {
         $success = false;
 
@@ -1325,26 +1293,6 @@ class API extends VS_Controller
         $this->output($result);
      }
 
-     /**
-      * Schedule host service downtime
-      *
-      * @param String $host
-      * @param String $start
-      * @param String $end
-      * @param bool $fixed
-      * @param String $trigger
-      * @param String $duration
-      * @param String $author
-      * @param String $comment
-      */
-     public function scheduleHostServiceDowntime($host, $start, $end, $fixed, $trigger, $duration, $author, $comment)
-     {
-        $result = false;
-
-        $result = $this->system_commands->schedule_host_svc_downtime($host, $start, $end, $fixed, $trigger, $duration, $author, $comment);
-
-        $this->output($result);
-     }
 
      /**
       * Schedule host check
