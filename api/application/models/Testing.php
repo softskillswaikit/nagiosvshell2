@@ -7,9 +7,6 @@ class Testing extends CI_Model
 	protected $_host_service_notification_array = array();
 	protected $_host_service_alert_array = array();
 
-	//array counter
-	protected $_counter;
-
 	//array that store return data
 	protected $_availability_array = array();
 	protected $_alert_history_array = array();
@@ -17,6 +14,13 @@ class Testing extends CI_Model
 	protected $_alert_histogram_array = array();
 	protected $_notification_array = array();
 	protected $_event_array = array();
+
+	//array that store file that are failed to open
+	protected $_problem_array = array();
+
+	//array counter
+	protected $_counter;
+	protected $_problem;
 
 	//constructor
 	public function __construct()
@@ -26,6 +30,7 @@ class Testing extends CI_Model
 		date_default_timezone_set('UTC');
 
 		$this->_counter = 0;
+		$this->_problem = 0;
 	}
 
 	//Written by Low Zhi Jian
@@ -102,7 +107,7 @@ class Testing extends CI_Model
 		}
 
 		//$return_type = 'TOP_PRODUCER'
-		if($this->_compare_string($return_type, 'TOP_PRODUCER'))
+		if($return_type === 1)
 		{
 			$producer_array = array();
 			$producer_obj = new StdClass();
@@ -143,7 +148,7 @@ class Testing extends CI_Model
 		}
 		//$return_type = 'ALERT_TOTAL_HOST'
 		//find alert totals for host
-		else if($this->_compare_string($return_type, 'ALERT_TOTAL_HOST'))
+		else if($return_type === 2)
 		{
 			$host_obj = new StdClass();
 
@@ -185,7 +190,7 @@ class Testing extends CI_Model
 		}
 		//$return_type = 'ALERT_TOTAL_HOSTGROUP'
 		//find alert totals for hostgroup
-		else if($this->_compare_string($return_type, 'ALERT_TOTAL_HOSTGROUP'))
+		else if($return_type === 3)
 		{
 			$host_obj = new StdCLass();
 			$hostgroup_obj =  new StdClass();
@@ -250,7 +255,7 @@ class Testing extends CI_Model
 		}
 		//$return_type = 'ALERT_TOTAL_SERVICE'
 		//find alert totals for service
-		else if($this->_compare_string($return_type, 'ALERT_TOTAL_SERVICE'))
+		else if($return_type === 4)
 		{
 			$unique_service_array = array();
 			$unique_service_obj = new StdClass();
@@ -300,7 +305,7 @@ class Testing extends CI_Model
 		}
 		//$return_type = 'ALERT_TOTAL_SERVICEGROUP'
 		//find alert total for servicegroup
-		else if($this->_compare_string($return_type, 'ALERT_TOTAL_SERVICEGROUP'))
+		else if($return_type === 5)
 		{
 			$unique_service_array = array();
 			$unique_service_obj = new StdClass();
@@ -386,21 +391,200 @@ class Testing extends CI_Model
 
 			return $servicegroup_obj;
 		}
-		//$return_type = 'NORMAL'
+		//$return_type = 'MOST RECENT ALERTS'
 		else
 		{	
-			foreach($this->_alert_summary_array as $items)
+			//reverse the array order
+			$reverse_array = array_reverse($this->_alert_summary_array);
+
+			foreach($reverse_array as $items)
 			{
 				$items = json_encode($items);
 			}
 
-			return $this->_alert_summary_array;
+			return $reverse_array;
 		}
 	}
 
-	public function get_alert_histogram()
+	public function get_alert_histogram($return_type, $input_host, $input_service = 'ALL', $input_period, $input_date, $statistic_breakdown, $event_graph, $state_type_graph, $assume_state_retention = NULL, $initial_state_logged = NULL, $ignore_repeated_state = NULL)
 	{
+		$this->_get_data($input_date, $input_period);
+		$this->_insert_data();
 
+		$temp_array = array();
+		$temp_array = $this->_parse_log($this->_host_service_alert_array, 'alert');
+
+		//filter the data into $this->_alert_summary_array based on request
+		$this->_alert_histogram_array = $this->_get_alert_histogram_host_service($temp_array, $input_host, $input_service, $event_graph, $state_type_graph);
+
+		$return_obj = new StdClass();
+
+		//$return_type = 'HOST'
+		if($return_type === 1)
+		{
+			//$statistic_breakdown option : Month
+			if($statistic_breakdown === 1)
+			{
+				$return_obj->up_count = $this->_get_alert_month($this->_alert_histogram_array, 'UP', false);
+				$return_obj->down_count = $this->_get_alert_month($this->_alert_histogram_array, 'DOWN', false);
+				$return_obj->unreachable_count = $this->_get_alert_month($this->_alert_histogram_array, 'UNREACHABLE', false);
+			}
+			//$statistic_breakdown option : Day of the Month
+			else if($statistic_breakdown === 2)
+			{
+				$return_obj->up_count = $this->_get_alert_day_of_month($this->_alert_histogram_array, 'UP', false);
+				$return_obj->down_count = $this->_get_alert_day_of_month($this->_alert_histogram_array, 'DOWN', false);
+				$return_obj->unreachable_count = $this->_get_alert_day_of_month($this->_alert_histogram_array, 'UNREACHABLE', false);
+			}
+			//$statistic_breakdown option : Day of the Week
+			else if($statistic_breakdown === 3)
+			{
+				$return_obj->up_count = $this->_get_alert_day_of_week($this->_alert_histogram_array, 'UP', false);
+				$return_obj->down_count = $this->_get_alert_day_of_week($this->_alert_histogram_array, 'DOWN', false);
+				$return_obj->unreachable_count = $this->_get_alert_day_of_week($this->_alert_histogram_array, 'UNREACHABLE', false);
+			}
+			//$statistic_breakdown option : Hour of the Day
+			else
+			{
+				$return_obj->up_count = $this->_get_alert_hour($this->_alert_histogram_array, 'UP', false);
+				$return_obj->down_count = $this->_get_alert_hour($this->_alert_histogram_array, 'DOWN', false);
+				$return_obj->unreachable_count = $this->_get_alert_hour($this->_alert_histogram_array, 'UNREACHABLE', false);
+			}
+		}
+		//$return_type = 'SERVICE'
+		else if($return_type === 2)
+		{
+			//$statistic_breakdown option : Month
+			if($statistic_breakdown === 1)
+			{
+				$return_obj->ok_count = $this->_get_alert_month($this->_alert_histogram_array, 'OK', false);
+				$return_obj->warning_count = $this->_get_alert_month($this->_alert_histogram_array, 'WARNING', false);
+				$return_obj->unknown_count = $this->_get_alert_month($this->_alert_histogram_array, 'UNKNOWN', false);
+				$return_obj->critical_count = $this->_get_alert_month($this->_alert_histogram_array, 'CRITICAL', false);
+			}
+			//$statistic_breakdown option : Day of the Month
+			else if($statistic_breakdown === 2)
+			{
+				$return_obj->ok_count = $this->_get_alert_day_of_month($this->_alert_histogram_array, 'OK', false);
+				$return_obj->warning_count = $this->_get_alert_day_of_month($this->_alert_histogram_array, 'WARNING', false);
+				$return_obj->unknown_count = $this->_get_alert_day_of_month($this->_alert_histogram_array, 'UNKNOWN', false);
+				$return_obj->critical_count = $this->_get_alert_day_of_month($this->_alert_histogram_array, 'CRITICAL', false);
+			}
+			//$statistic_breakdown option : Day of the Week
+			else if($statistic_breakdown === 3)
+			{
+				$return_obj->ok_count = $this->_get_alert_day_of_week($this->_alert_histogram_array, 'OK', false);
+				$return_obj->warning_count = $this->_get_alert_day_of_week($this->_alert_histogram_array, 'WARNING', false);
+				$return_obj->unknown_count = $this->_get_alert_day_of_week($this->_alert_histogram_array, 'UNKNOWN', false);
+				$return_obj->critical_count = $this->_get_alert_day_of_week($this->_alert_histogram_array, 'CRITICAL', false);
+			}
+			//$statistic_breakdown option : Hour of the Day
+			else
+			{
+				$return_obj->ok_count = $this->_get_alert_hour($this->_alert_histogram_array, 'OK', false);
+				$return_obj->warning_count = $this->_get_alert_hour($this->_alert_histogram_array, 'WARNING', false);
+				$return_obj->unknown_count = $this->_get_alert_hour($this->_alert_histogram_array, 'UNKNOWN', false);
+				$return_obj->critical_count = $this->_get_alert_hour($this->_alert_histogram_array, 'CRITICAL', false);
+			}
+		}
+		//$return_type= 'HOST RESOURCE'
+		else if($return_type === 3)
+		{
+			$host_resource_collection = $this->nagios_data->get_collection('hostresource');
+			$host_resource_array = array();
+
+			//array counter
+			$i = 0;
+
+			foreach($host_resource_collection as $resources)
+			{
+				$host_resource_array[$i] = $resources->service_description;
+
+				$i++;
+			}
+
+			$resource_array = array();
+			$resource_obj = new StdClass();
+
+			//array counter 
+			$j = 0;
+
+			foreach($this->_data_array as $data)
+			{
+				foreach($host_resource_array as $resources)
+				{
+					if(strpos($data, $resources))
+					{
+						list($input_time, $event_message) = explode(' ', $data, 2);
+
+						$resource_obj->datetime = trim($input_time, '[]');
+						$resource_obj->servicename = $resources;
+						
+						if(strpos($event_message, 'OK') !== false)
+						{
+							$resource_obj->state = 'OK';
+						}
+						else if(strpos($event_message, 'WARNING') !== false) 
+						{
+							$resource_obj->state = 'WARNING';
+						}
+						else if(strpos($event_message, 'UNKNOWN') !== false)
+						{
+							$resource_obj->state = 'UNKNOWN';
+						}
+						else if(strpos($event_message, 'CRITICAL') !== false)
+						{
+							$resource_obj->state = 'CRITICAL';
+						}
+				
+						$resource_array[$j] = $resource_obj;
+						$j++;
+
+						unset($input_time, $event_message, $resource_obj);
+					}
+				}
+			}
+
+			//$statistic_breakdown option : Month
+			if($statistic_breakdown === 1)
+			{
+				$return_obj->ok_count = $this->_get_alert_month($resource_array, 'OK', true);
+				$return_obj->warning_count = $this->_get_alert_month($resource_array, 'WARNING', true);
+				$return_obj->unknown_count = $this->_get_alert_month($resource_array, 'UNKNOWN', true);
+				$return_obj->critical_count = $this->_get_alert_month($resource_array, 'CRITICAL', true);
+			}
+			//$statistic_breakdown option : Day of the Month
+			else if($statistic_breakdown === 2)
+			{
+				$return_obj->ok_count = $this->_get_alert_day_of_month($resource_array, 'OK', true);
+				$return_obj->warning_count = $this->_get_alert_day_of_month($resource_array, 'WARNING', true);
+				$return_obj->unknown_count = $this->_get_alert_day_of_month($resource_array, 'UNKNOWN', true);
+				$return_obj->critical_count = $this->_get_alert_day_of_month($resource_array, 'CRITICAL', true);
+			}
+			//$statistic_breakdown option : Day of the Week
+			else if($statistic_breakdown === 3)
+			{
+				$return_obj->ok_count = $this->_get_alert_day_of_week($resource_array, 'OK', true);
+				$return_obj->warning_count = $this->_get_alert_day_of_week($resource_array, 'WARNING', true);
+				$return_obj->unknown_count = $this->_get_alert_day_of_week($resource_array, 'UNKNOWN', true);
+				$return_obj->critical_count = $this->_get_alert_day_of_week($resource_array, 'CRITICAL', true);
+			}
+			//$statistic_breakdown option : Hour of the Day
+			else
+			{
+				$return_obj->ok_count = $this->_get_alert_hour($resource_array, 'OK', true);
+				$return_obj->warning_count = $this->_get_alert_hour($resource_array, 'WARNING', true);
+				$return_obj->unknown_count = $this->_get_alert_hour($resource_array, 'UNKNOWN', true);
+				$return_obj->critical_count = $this->_get_alert_hour($resource_array, 'CRITICAL', true);
+			}
+		}
+
+		foreach($return_obj as $items)
+		{
+			$items = json_encode($items);
+		}
+
+		return $return_obj;
 	}
 
 	//Notifications section
@@ -496,7 +680,9 @@ class Testing extends CI_Model
 		}
 		else
 		{
-			echo 'File : nagios-'.$modify_date.'-00.log not found';
+			$this->_problem_array[$this->_problem] = 'File : nagios-'.$modify_date.'-00.log not found';
+
+			$this->_problem++;
 		}
 	}
 
@@ -733,15 +919,7 @@ class Testing extends CI_Model
 			return true;
 		}
 
-		//compare host state
-		if(strcmp($input_string, 'ALL HOST STATE') == 0)
-		{
-			if(strcmp($data_string, 'UP') == 0 or strcmp($data_string, 'DOWN') == 0 or strcmp($data_string, 'UNREACHABLE') == 0 or strcmp($data_string, 'PENDING') == 0)
-			{
-				return true;
-			}
-		}
-		
+		//compare host problem state		
 		if(strcmp($input_string, 'HOST PROBLEM STATE') == 0)
 		{
 			if(strcmp($data_string, 'DOWN') == 0 or strcmp($data_string, 'UNREACHABLE') == 0 or strcmp($data_string, 'PENDING') == 0)
@@ -750,15 +928,7 @@ class Testing extends CI_Model
 			}
 		}
 
-		//compare service state
-		if(strcmp($input_string, 'ALL SERVICE STATE') == 0)
-		{
-			if(strcmp($data_string, 'OK') == 0 or strcmp($data_string, 'WARNING') == 0 or strcmp($data_string, 'UNKNOWN') == 0 or strcmp($data_string, 'CRITICAL') == 0 or strcmp($data_string, 'PENDING') == 0)
-			{
-				return true;
-			}
-		}
-		
+		//compare service problem state
 		if(strcmp($input_string, 'SERVICE PROBLEM STATE') == 0)
 		{
 			if(strcmp($data_string, 'WARNING') == 0 or strcmp($data_string, 'UNKNOWN') == 0 or strcmp($data_string, 'CRITICAL') == 0 or strcmp($data_string, 'PENDING') == 0)
@@ -1760,6 +1930,258 @@ class Testing extends CI_Model
 		$alert_obj->alert_service_critical_hard = $alert_service_critical_hard;
 
 		return $alert_obj;
+	}
+
+	//Function used by alert histogram section
+	//Function used to filter data based on request
+	private function _get_alert_histogram_host_service($input_array, $input_host, $input_service, $input_state, $input_state_type)
+	{
+		//array counter
+		$i = 0;
+		$return_array = array();
+
+		//filter the array based on the request
+		foreach($input_array as $items)
+		{
+			//custom report option	
+			//compare host name
+			if($this->_compare_string($input_host, $items->hostname))
+			{
+				//compare service name
+				if($this->_compare_string($input_service, $items->servicename))
+				{
+					//compare state
+					if($this->_compare_string($input_state, $items->state))
+					{
+						//compare state_type
+						if($this->_compare_string($input_state_type, $items->state_type))
+						{
+							$return_array[$i] = $items;
+
+							$i++;
+						}
+					}
+				}
+			}
+		}
+
+		return $return_array;
+	}
+
+	//Function used to check whether the service is host resource or service running state
+	private function _is_host_resource($services)
+	{
+		$host_resource_collection = $this->nagios_data->get_collection('hostresource');
+		$host_resource_array = array();
+
+		//array counter
+		$i = 0;
+
+		foreach($host_resource_collection as $resources)
+		{
+			$host_resource_array[$i] = $resources->service_description;
+
+			$i++;
+		}
+
+		foreach($host_resource_array as $host_resource)
+		{
+			if($this->_compare_string($services, $host_resource))
+			{
+				return true;
+			}
+		}
+
+		if(strpos($services, '_running_state') !== false)
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	//Function used to get number of alerts categorized by month
+	private function _get_alert_month($input_array, $input_state, $host)
+	{
+		$return_array = array();
+
+		//populate the array
+		for($i = 0; $i < 13; $i ++)
+		{
+			$return_array[$i] = 0;
+		}
+
+		if($host)
+		{
+			foreach($input_array as $alerts)
+			{
+				$month = (int)date('m', (int)$alerts->datetime);
+
+				if($this->_compare_string($alerts->state, $input_state))
+				{			
+					$return_array[$month] += 1;			
+				}
+			}
+		}
+		else
+		{
+			foreach($input_array as $alerts)
+			{
+				$month = (int)date('m', (int)$alerts->datetime);
+
+				if($this->_compare_string($alerts->state, $input_state))
+				{
+					if( !$this->_is_host_resource($alerts->servicename) )
+					{
+						$return_array[$month] += 1;
+					}
+				}
+			}
+		}
+
+		//code used to remove the first element of the array 
+		//$throw = array_shift($return_array);
+
+		return $return_array;
+	}
+
+	//Function used to get the number of alerts categorized by day of month
+	private function _get_alert_day_of_month($input_array, $input_state, $host)
+	{
+		$return_array = array();
+
+		//populate the array
+		for($i = 0; $i < 32; $i ++)
+		{
+			$return_array[$i] = 0;
+		}
+
+		if($host)
+		{
+			foreach($input_array as $alerts)
+			{
+				$day = (int)date('j', (int)$alerts->datetime);
+
+				if($this->_compare_string($alerts->state, $input_state))
+				{			
+					$return_array[$day] += 1;		
+				}
+			}
+		}
+		else
+		{
+			foreach($input_array as $alerts)
+			{
+				$day = (int)date('j', (int)$alerts->datetime);
+
+				if($this->_compare_string($alerts->state, $input_state))
+				{
+					if( !$this->_is_host_resource($alerts->servicename) )
+					{
+						$return_array[$day] += 1;
+					}
+				}
+			}
+		}
+
+		//code used to remove the first element of the array 
+		//$throw = array_shift($return_array);
+
+		return $return_array;
+	}
+
+	//Function used to get the number of alerts categorized by day of week
+	private function _get_alert_day_of_week($input_array, $input_state, $host)
+	{
+		$return_array = array();
+
+		//populate the array
+		for($i = 0; $i < 8; $i ++)
+		{
+			$return_array[$i] = 0;
+		}
+
+		if($host)
+		{
+			foreach($input_array as $alerts)
+			{
+				//1 for Monday -> 7 for Sunday
+				$day = (int)date('N', (int)$alerts->datetime);
+
+				if($this->_compare_string($alerts->state, $input_state))
+				{			
+					$return_array[$day] += 1;		
+				}
+			}
+		}
+		else
+		{
+			foreach($input_array as $alerts)
+			{
+				//1 for Monday -> 7 for Sunday
+				$day = (int)date('N', (int)$alerts->datetime);
+
+				if($this->_compare_string($alerts->state, $input_state))
+				{
+					if( !$this->_is_host_resource($alerts->servicename) )
+					{
+						$return_array[$day] += 1;
+					}
+				}
+			}
+		}
+
+		//code used to remove the first element of the array 
+		//$throw = array_shift($return_array);
+
+		return $return_array;
+	}
+
+	//Function used to get the number of alerts categorized by hour of the day
+	private function _get_alert_hour($input_array, $input_state, $host)
+	{
+		$return_array = array();
+
+		//populate the array
+		for($i = 0; $i < 25; $i ++)
+		{
+			$return_array[$i] = 0;
+		}
+
+		if($host)
+		{
+			foreach($input_array as $alerts)
+			{
+				//1 for Monday -> 7 for Sunday
+				$hour = (int)date('G', (int)$alerts->datetime);
+
+				if($this->_compare_string($alerts->state, $input_state))
+				{			
+					$return_array[$hour] += 1;			
+				}
+			}
+		}
+		else
+		{
+			foreach($input_array as $alerts)
+			{
+				//1 for Monday -> 7 for Sunday
+				$hour = (int)date('G', (int)$alerts->datetime);
+
+				if($this->_compare_string($alerts->state, $input_state))
+				{
+					if( !$this->_is_host_resource($alerts->servicename) )
+					{
+						$return_array[$hour] += 1;
+					}
+				}
+			}
+		}
+
+		//code used to remove the first element of the array 
+		$throw = array_shift($return_array);
+
+		return $return_array;
 	}
 
 
