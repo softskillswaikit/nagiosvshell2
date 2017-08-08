@@ -31,10 +31,10 @@
             <thead>
                 <tr>
                     <th>Host</th>
-                    <th>Time Up (%)</th>
-                    <th>Time Down (%)</th>
-                    <th>Time Unreachable (%)</th>
-                    <th>Time Pending (%)</th>
+                    <th class="active hosts-up">Time Up (%)</th>
+                    <th class="active hosts-down">Time Down (%)</th>
+                    <th class="active hosts-unreachable">Time Unreachable (%)</th>
+                    <th class="active hosts-pending">Time Pending (%)</th>
                 </tr>
             </thead>
             <tfoot>
@@ -77,10 +77,10 @@
 							<thead>
 									<tr>
 											<th>Host</th>
-											<th>Time Up (%)</th>
-											<th>Time Down (%)</th>
-											<th>Time Unreachable (%)</th>
-											<th>Time Pending (%)</th>
+											<th class="active hosts-up">Time Up (%)</th>
+	                    <th class="active hosts-down">Time Down (%)</th>
+	                    <th class="active hosts-unreachable">Time Unreachable (%)</th>
+	                    <th class="active hosts-pending">Time Pending (%)</th>
 									</tr>
 							</thead>
 							<tfoot>
@@ -104,7 +104,7 @@
 
 	<!--(servicegroup-one/all)-->
 	<div ng-if="reportType=='Servicegroup(s)'">
-		<div ng-repeat="servicegroup in report5" class="table-container full-width nopadding">
+		<div ng-repeat="servicegroup in report5" class="table-container full-width">
 
         <h3>Service State Breakdowns For {{reportType}} '{{servicegroup.servicegroup}}'</h3>
 
@@ -124,16 +124,17 @@
                 <tr>
                     <th>Host</th>
 										<th>Service</th>
-                    <th>Time Up (%)</th>
-                    <th>Time Down (%)</th>
-                    <th>Time Unreachable (%)</th>
-                    <th>Time Pending (%)</th>
+										<th class="active services-ok">Time OK (%)</th>
+                    <th class="active services-warning">Time Warning (%)</th>
+                    <th class="active services-unknown">Time Unknown (%)</th>
+                    <th class="active services-critical">Time Critical (%)</th>
+										<th class="active services-pending">Time Pending (%)</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
                     <td colspan="7">
-                        <div class="results-count">{{}} Result{{  }}</div>
+                        <div class="results-count">{{}} Result{{}}</div>
                         <div class="footable-pagination pagination" id="footable-pagination"></div>
                     </td>
                 </tr>
@@ -188,8 +189,8 @@
                 <tr ng-if="(reports1 | count) == 0">
                     <td colspan="5">{{ is_loading ? 'Loading...' : 'No data is defined' }}</td>
                 </tr>
-                <tr footabledata>
-                    <th rowspan="{{val.data.length}}">{{val.state}}</th>
+                <tr class="state-{{val.state | lowercase}}" footabledata>
+                    <td rowspan="{{val.data.length}}" class="status">{{val.state}}</td>
 										<td ng-repeat="v in val.data[0]">{{v}}</td>
                 </tr>
 								<tr ng-repeat="val in val.data" ng-if="$index > 0" footabledata>
@@ -223,11 +224,11 @@
                 <tr>
 										<th>Host</th>
                     <th>Service</th>
-                    <th>Time OK (%)</th>
-                    <th>Time Warning (%)</th>
-                    <th>Time Unknown (%)</th>
-                    <th>Time Critical (%)</th>
-										<th>Time Pending (%)</th>
+										<th class="active services-ok">Time OK (%)</th>
+                    <th class="active services-warning">Time Warning (%)</th>
+                    <th class="active services-unknown">Time Unknown (%)</th>
+                    <th class="active services-critical">Time Critical (%)</th>
+										<th class="active services-pending">Time Pending (%)</th>
                 </tr>
             </thead>
             <tfoot>
@@ -255,7 +256,7 @@
     </div>
 
 	<!--(host-one)-->
-	<div ng-repeat="report in report4" class="table-container full-width nopadding" ng-if="(reportType=='Host(s)'&&reportComponent!='ALL')||((reportType=='Service(s)'|| reportType=='Host Resource' || reportType=='Service Running State')&&reportComponent=='ALL')">
+	<div ng-repeat="report in report4" class="table-container full-width" ng-if="(reportType=='Host(s)'&&reportComponent!='ALL')||((reportType=='Service(s)'|| reportType=='Host Resource' || reportType=='Service Running State')&&reportComponent=='ALL')">
 
 	        <h3>State Breakdowns For Host {{report.type}}</h3>
 
@@ -274,11 +275,11 @@
 	            <thead>
 	                <tr>
 	                    <th>Service</th>
-	                    <th>Time OK (%)</th>
-	                    <th>Time Warning (%)</th>
-	                    <th>Time Unknown (%)</th>
-	                    <th>Time Critical (%)</th>
-											<th>Time Pending (%)</th>
+											<th class="active services-ok">Time OK (%)</th>
+	                    <th class="active services-warning">Time Warning (%)</th>
+	                    <th class="active services-unknown">Time Unknown (%)</th>
+	                    <th class="active services-critical">Time Critical (%)</th>
+											<th class="active services-pending">Time Pending (%)</th>
 	                </tr>
 	            </thead>
 	            <tfoot>

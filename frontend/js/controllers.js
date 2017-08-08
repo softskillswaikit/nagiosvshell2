@@ -157,55 +157,56 @@ angular.module('vshell.controllers', [])
           };
 
           $scope.resetModal = function(){
-            $scope.hostName = $routeParams.host;
-            $scope.service = ' ';
-            $scope.persistent = true;
-            $timeout(function(){$scope.author = $scope.status.username}, 500);
-            $scope.comment = '';
-            if($scope.addHostComment)
-              $scope.addHostComment.$setPristine();
+              $scope.hostName = $routeParams.host;
+              $scope.service = ' ';
+              $scope.persistent = true;
+              $timeout(function(){$scope.author = $scope.status.username}, 500);
+              $scope.comment = '';
+              if($scope.addHostComment)
+                $scope.addHostComment.$setPristine();
 
-            console.log("comment");
-            console.log($scope.comment);
+              console.log("comment");
+              console.log($scope.comment);
           };
 
         $scope.toggle = function(action, is_enabled){
-
-          $scope.toggleAction = function(){
-            console.log('toggle');
-            $scope.reset();
-          };
+            $scope.toggleAction = function(){
+              console.log('toggle');
+              $scope.reset();
+            };
         };
 
         $scope.addComment = function(type){
-          $scope.resetModal();
+            $scope.resetModal();
 
-          $scope.add = function(persistent, comment){
-            console.log("addComment");
-            console.log("type="+type);
-            console.log("host="+$scope.hostName);
-            console.log("service="+$scope.service);
-            console.log("persistent="+persistent);
-            console.log("author="+$scope.status.username);
-            console.log("comment="+comment);
+            $scope.add = function(persistent, comment){
+                console.log("addComment");
+                console.log("type="+type);
+                console.log("host="+$scope.hostName);
+                console.log("service="+$scope.service);
+                console.log("persistent="+persistent);
+                console.log("author="+$scope.status.username);
+                console.log("comment="+comment);
 
-            var options = {
-                name: 'success',
-                url: 'addcomments/'+ type + '/' + $routeParams.host + '/' + ' '
-                  + '/' + persistent + '/' + $scope.status.username + '/' + comment,
-                queue: 'main'
-            };
-            async.api($scope, options);
+                var options = {
+                    name: 'success',
+                    url: 'addcomments/'+ type + '/' + $routeParams.host + '/' + ' '
+                      + '/' + persistent + '/' + $scope.status.username + '/' + comment,
+                    queue: 'main'
+                };
+                async.api($scope, options);
 
-            $scope.callback = function(data, status, headers, config) {
-
-              if(data)
-                ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
-              else
-                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
-            };
-
-          };
+                $scope.callback = function(data, status, headers, config) {
+                    if(config != null){
+                        if(config.url.includes("addcomments")){
+                            if(data == 'true')
+                              ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
+                            else
+                              ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
+                };
+              };
         };
 
       $scope.deleteComment = function(id, type){
@@ -221,11 +222,14 @@ angular.module('vshell.controllers', [])
             async.api($scope, options);
 
             $scope.callback = function(data, status, headers, config) {
-
-              if(data)
-                ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
-              else
-                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                if(config != null){
+                    if(config.url.includes("deletecomments")){
+                        if(data == 'true')
+                          ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
+                        else
+                          ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                    }
+                }
             };
           }
         };
@@ -454,10 +458,14 @@ angular.module('vshell.controllers', [])
             async.api($scope, options);
 
             $scope.callback = function(data, status, headers, config) {
-              if(data)
-                ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
-              else
-                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                if(config != null){
+                    if(config.url.includes("addcomments")){
+                        if(data == 'true')
+                          ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
+                        else
+                          ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                    }
+                }
             };
           };
         };
@@ -474,10 +482,14 @@ angular.module('vshell.controllers', [])
               async.api($scope, options);
 
               $scope.callback = function(data, status, headers, config) {
-                if(data)
-                  ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
-                else
-                  ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                  if(config != null){
+                      if(config.url.includes("deletecomments")){
+                          if(data == 'true')
+                            ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
+                          else
+                            ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                      }
+                  }
               };
 
             };
@@ -856,7 +868,7 @@ angular.module('vshell.controllers', [])
           {
             hostgroup:"linux_servers",
             data:[
-              {0:"localhost",1:"0.00",2:"0.00",3:"0.00",4:"0.00"}
+              {0:"localhost",1:"100.00",2:"0.00",3:"0.00",4:"0.00"}
             ]
           },
           {
@@ -1435,10 +1447,12 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('SysCommentsCtrl', ['$scope', 'async', '$timeout', '$window', 'ngToast',
-    function($scope, async, $timeout, $window, ngToast) {
+.controller('SysCommentsCtrl', ['$scope', 'async', '$timeout', '$window', 'ngToast', '$interval',
+    function($scope, async, $timeout, $window, ngToast, $interval) {
 
       $scope.init = function() {
+
+        $interval(function(){$window.location.reload()}, 60000);
         //get comments data
         var optionshost = {
             name: 'hostcomments',
@@ -1470,7 +1484,7 @@ angular.module('vshell.controllers', [])
         $scope.hostName = '';
         $scope.service = ' ';
         $scope.persistent = true;
-        $timeout(function(){$scope.author = $scope.status.username;}, 1000);
+        $timeout(function(){$scope.author = $scope.status.username;}, 500);
         $scope.comment = '';
         if($scope.addHostComment)
           $scope.addHostComment.$setPristine();
@@ -1483,13 +1497,6 @@ angular.module('vshell.controllers', [])
         $scope.resetModal();
 
         $scope.add = function(hostName, service, persistent, comment){
-          console.log("addComment");
-          console.log("type="+type);
-          console.log("host="+hostName);
-          console.log("service="+service);
-          console.log("persistent="+persistent);
-          console.log("author="+$scope.status.username);
-          console.log("comment="+comment);
 
           var options = {
               name: 'success',
@@ -1497,14 +1504,17 @@ angular.module('vshell.controllers', [])
                 + '/' + persistent + '/' + $scope.status.username + '/' + comment,
               queue: 'main'
           };
-
           async.api($scope, options);
 
           $scope.callback = function(data, status, headers, config) {
-            if(data)
-              ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
-            else
-              ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+            if(config != null){
+                if(config.url.includes("addcomments")){
+                    if(data == 'true')
+                      ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
+                    else
+                      ngToast.create({className: 'alert alert-danger',content:'Fail! Check your host or service name.',timeout:3000});
+                }
+            }
           };
         };
       };
@@ -1521,12 +1531,15 @@ angular.module('vshell.controllers', [])
           async.api($scope, options);
 
           $scope.callback = function(data, status, headers, config) {
-            if(data)
-              ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
-            else
-              ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+              if(config != null){
+                if(config.url.includes("deletecomments")){
+                  if(data == 'true')
+                    ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
+                  else
+                    ngToast.create({className: 'alert alert-danger',content:'Fail! ',timeout:3000});
+                }
+              }
           };
-
         };
       };
     }
