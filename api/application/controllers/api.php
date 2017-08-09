@@ -265,52 +265,22 @@ class API extends VS_Controller
     /**
      * Fetch availability
      * 
-     * @param int $reportType, 1:hostgroup , 2:host, 3:servicegroup, 4:service
-     * @param string $name
+     * @param String $type
+     * @param string $period
      * @param string $start
      * @param string $end
+     * @param String $hostservice
      * @param bool $initialState
      * @param bool $stateRetention
      * @param bool $assumeState
      * @param bool $includeSoftState
      * @param String $firstAssumedHost
      * @param String $firstAssumedService
-     * @param int $backTrack
+     * @param String $backTrack
      */
-     public function availability($reportType, $name='', $start, $end, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost='', $firstAssumedService='', $backTrack)
+     public function availability($type, $repiod, $start, $end, $hostservice, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost='', $firstAssumedService='', $backTrack)
     {
-        $Availability = array();
-
-        //check empty input
-        if(!empty($reportType) && !empty($name) && !empty($start) && !empty($end) && !empty($initialState) && !empty($stateRetention) && !empty($assumeState) && !empty($includeSoftState) && !empty($firstAssumedHost) && !empty($firstAssumedService) && !empty($backTrack))
-        {
-            //hostgroup
-            if($reportType == 1)
-            {
-                $Availability = $this->availability_data->get_availability_hostgroup($name, $start, $end, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $firstAssumedService, $backTrack);
-            }
-
-            //host
-            else if($reportType == 2)
-            {
-                $Availability = $this->availability_data->get_availability_host($name, $start, $end, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $firstAssumedService, $backTrack);
-            }
-
-            //service group
-            else if($reportType == 3)
-            {
-                $Availability = $this->availability_data->get_availability_servicegroup($name, $start, $end, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $firstAssumedService, $backTrack);
-            }
-
-            //service
-            else if($reportType == 4)
-            {
-                $Availability = $this->availability_data->get_availability_service($name, $start, $end, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $firstAssumedService, $backTrack);
-            }
-        }
-
-
-        $this->output($Availability);
+        
     }
 
     /**
@@ -354,9 +324,9 @@ class API extends VS_Controller
      *
      * @param String $date
      */
-    public function alerthistory()
+    public function alerthistory($date)
     {
-        $AlertHistory = $this->alert_history_data->get_history_data();
+        $AlertHistory = $this->reports_data->get_history_data($date);
 
         $this->output($AlertHistory);
     }
@@ -508,7 +478,7 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $host = $this->nagios_data->get_collection('hoststatus');
+        $host = $this->system_commands->get_return_array('PERFORMANCE');
 
         $this->output($host);
     }
@@ -559,6 +529,26 @@ class API extends VS_Controller
         }
         
         $this->output($success);
+    }
+
+    /**
+     * Return performance info of nagios
+     */
+    public function performanceInfo()
+    {
+        $performanceInfo = $this->system_commands->get_return_array('PERFORMANCE');
+
+        $this->output($performanceInfo);
+    }
+
+    /**
+     * Return process info of nagios
+     */
+    public function processInfo()
+    {
+        $processInfo = $this->system_commands->get_return_array('PROCESS');
+
+        $this->output($processInfo);
     }
 
     /**

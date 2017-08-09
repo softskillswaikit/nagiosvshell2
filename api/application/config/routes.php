@@ -57,6 +57,8 @@ $route["testing"] = "api/testing";
 $route["comments/(:any)"] = "api/comments/$1";
 $route["comments"] = "api/comments";
 $route["scheduledowntime/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/scheduleDowntime/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10";
+$route["performanceinfo"] = "api/performanceInfo";
+$route["processinfo"] = "api/processInfo";
 $route["schedulequeue"] = "api/scheduleQueue";
 
 //System commands
