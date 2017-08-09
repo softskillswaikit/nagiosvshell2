@@ -97,6 +97,10 @@ class Nagios_data extends CI_Model
     protected $_ContactstatusCollection;
     protected $_Info;
 
+    //Added by Soon Wei Liang
+    protected $_HostdowntimeCollection;
+    protected $_ServicedowntimeCollection;
+
 
  //   protected $_DetailsCollection; // ?? What is this??
     protected $_PermissionsCollection;
@@ -135,6 +139,10 @@ class Nagios_data extends CI_Model
         'services',
         'comments',
         'info',
+
+        //Added by Soon Wei Liang
+        'downtimes',
+
        // 'details',
         'permissions',
 
@@ -445,6 +453,9 @@ class Nagios_data extends CI_Model
             $this->properties['servicecomments'] = apc_fetch('servicecomments');
             $this->properties['program'] = apc_fetch('program');
             $this->properties['info'] = apc_fetch('info');
+            //Added by Soon Wei Liang
+            $this->properties['hostdowntimes'] = apc_fetch('hostdowntimes');
+            $this->properties['servicedowntimes'] = apc_fetch('servicedowntimes');
         }
 
         if ($type == 'permissions') {
@@ -495,6 +506,9 @@ class Nagios_data extends CI_Model
             apc_store('program',$this->properties['program'],TTL);
             apc_store('info',$this->properties['info'],TTL);
             apc_store('status_data_exists',true,TTL);
+            //Added by Soon Wei Liang
+            apc_store('hostdowntimes', $this->properties['hostdowntimes'], TLL);
+            apc_store('servicedowntimes', $this->properties['servicedowntimes'], TLL);
         }
 
         if ($type == 'permissions') {
@@ -612,6 +626,9 @@ class Nagios_data extends CI_Model
         define('HOSTCOMMENT','hostcomment');
         define('SERVICECOMMENT','servicecomment');
         define('CONTACT', 'contactstatus');
+        //Added by Soon Wei Liang
+        define('HOSTDOWNTIME', 'hostdowntime');
+        define('SERVICEDOWNTIME', 'servicedowntime');
 
         //counters for iteration through file
         $case = OUTOFBLOCK;
@@ -625,6 +642,9 @@ class Nagios_data extends CI_Model
         $infostring = 'info {';
         $contactstring = 'contactstatus {';
         $currenthost = '';
+        //Added by Soon Wei Liang
+        $hostdowntimestring = 'hostdowntime {';
+        $servicedowntimestring = 'servicedowntime {';
 
         $HostStatus = null;
 
@@ -666,6 +686,20 @@ class Nagios_data extends CI_Model
                     $case = SERVICECOMMENT;
                     continue;
                 }
+
+                //Added by Soon Wei Liang
+                //hostdowntime
+                if (strpos($line, $hostdowntimestring) !== false) {
+                    $case = HOSTDOWNTIME;
+                    continue;
+                }
+
+                //servicedowntime
+                if (strpos($line, $servicedowntimestring) !== false) {
+                    $case = SERVICEDOWNTIME;
+                    continue;
+                }
+
 
                 //contactstatus
                 if (strpos($line, $contactstring) !== false) {
@@ -933,6 +967,10 @@ class Nagios_data extends CI_Model
             'contactstatus' => &$this->_ContactstatusCollection,
            // 'programstatus' => &$this->_Programstatus,
            // 'info'  => &$this->_Info,
+
+            //Added by Soon Wei Liang
+            'hostdowntime' => $this->_HostdowntimeCollection,
+            'servicedowntime' => $this->_ServicedowntimeCollection,
 
         );
 

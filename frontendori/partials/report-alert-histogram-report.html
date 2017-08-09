@@ -1,0 +1,173 @@
+<div ng-include="'frontend/partials/_header.html'"></div>
+
+<div ng-include="'frontend/partials/_status.html'"></div>
+
+<div ng-include="'frontend/partials/_browser.html'"></div>
+
+<div ng-include="'frontend/partials/_messages.html'"></div>
+
+<div id="content" class="clearfix" ng-controller="AlertHistogramCtrl" ng-init="createReport()">
+
+    <h1>Alert Histogram Report</h1>
+
+		<div class="table-container full-width" ng-if="report.reportType=='Host'">
+
+ 			<h3>Host Alert Histogram</h3>
+
+      <div class="table-container partial-width chart">
+          <div fusioncharts
+            width="600"
+            height="400"
+            type="msline"
+            datasource="{{hostdata}}">
+          </div>
+     </div>
+
+       <div class="table-container partial-width">
+           <table cellspacing="0" cellpadding="0">
+             <thead>
+                 <tr>
+                     <th>EVENT TYPE</th>
+                     <th>MIN</th>
+                     <th>MAX</th>
+                     <th>SUM</th>
+                     <th>AVG</th>
+                 </tr>
+             </thead>
+             <tbody>
+                 <tr>
+                   <td class="active hosts-up">Recovery(Up):</td>
+                   <td class="active hosts-up">0</td>
+                   <td class="active hosts-up">0</td>
+                   <td class="active hosts-up">0</td>
+                   <td class="active hosts-up">0.00</td>
+                 </tr>
+                 <tr>
+                   <td class="active hosts-down">Down:</td>
+                   <td class="active hosts-down">0</td>
+                   <td class="active hosts-down">0</td>
+                   <td class="active hosts-down">0</td>
+                   <td class="active hosts-down">0.00</td>
+                 </tr>
+                 <tr>
+                   <td class="active hosts-unreachable">Unreachable:</td>
+                   <td class="active hosts-unreachable">0</td>
+                   <td class="active hosts-unreachable">0</td>
+                   <td class="active hosts-unreachable">0</td>
+                   <td class="active hosts-unreachable">0.00</td>
+                 </tr>
+             </tbody>
+         </table>
+       </div>
+
+    </div>
+
+    <div class="table-container full-width" ng-if="true">
+
+    	<h3>Service Alert Histogram</h3>
+
+     <div class="table-container partial-width chart">
+
+       <div fusioncharts
+         width="600"
+         height="400"
+         type="msline"
+         datasource="{{servicedata}}">
+       </div>
+     </div>
+
+    <div class="table-container partial-width">
+          <table cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th>EVENT TYPE</th>
+                    <th>MIN</th>
+                    <th>MAX</th>
+                    <th>SUM</th>
+                    <th>AVG</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td class="active services-ok">Recovery(Ok):</td>
+                  <td class="active services-ok">0</td>
+                  <td class="active services-ok">0</td>
+                  <td class="active services-ok">0</td>
+                  <td class="active services-ok">0.00</td>
+                </tr>
+                <tr>
+                  <td class="active services-warning">Warning:</td>
+                  <td class="active services-warning">0</td>
+                  <td class="active services-warning">0</td>
+                  <td class="active services-warning">0</td>
+                  <td class="active services-warning">0.00</td>
+                </tr>
+                <tr>
+                  <td class="active services-unknown">Unknown:</td>
+                  <td class="active services-unknown">0</td>
+                  <td class="active services-unknown">0</td>
+                  <td class="active services-unknown">0</td>
+                  <td class="active services-unknown">0.00</td>
+                </tr>
+                <tr>
+                  <td class="active services-critical">Critical:</td>
+                  <td class="active servicescritical">0</td>
+                  <td class="active services-critical">0</td>
+                  <td class="active services-critical">0</td>
+                  <td class="active services-critical">0.00</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+
+		</div>
+
+	<div class="table-container partial-width full">
+		<div class="commands">
+
+    <h3>View</h3>
+
+			<!--show if a single host is selected-->
+            <table cellspacing="0" cellpadding="0" ng-if="report.reportType=='Host'">
+                <tbody>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Trends For This Host</a></td>
+                    </tr>
+                    <tr class="footable-even">
+                      <td><a target="nagios" ng-href="{{}}">View Availability Report For This Service</a></td>
+                    </tr>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Status Detail For This Host</a></td>
+                    </tr>
+                    <tr class="footable-even">
+                        <td><a target="nagios" ng-href="{{}}">View History For This Host</a></td>
+                    </tr>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Notifications For This Host</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+			<!--show if a single service is selected-->
+      <table cellspacing="0" cellpadding="0" ng-if="report.reportType=='Service'">
+                <tbody>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Trends For This Service</a></td>
+                    </tr>
+                    <tr class="footable-even">
+                        <td><a target="nagios" ng-href="{{}}">View Availability Report For This Service</a></td>
+                    </tr>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View History For This Service</a></td>
+                    </tr>
+                    <tr class="footable-even">
+                        <td><a target="nagios" ng-href="{{}}">View Notifications For This Service</a></td>
+                    </tr>
+                </tbody>
+        </table>
+      </div>
+    </div>
+
+</div>
+
+<div ng-include="'frontend/partials/_footer.html'"></div>

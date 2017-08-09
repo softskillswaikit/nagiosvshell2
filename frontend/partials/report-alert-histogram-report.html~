@@ -1,0 +1,174 @@
+<div ng-include="'frontend/partials/_header.html'"></div>
+
+<div ng-include="'frontend/partials/_status.html'"></div>
+
+<div ng-include="'frontend/partials/_browser.html'"></div>
+
+<div ng-include="'frontend/partials/_messages.html'"></div>
+
+<div id="content" class="clearfix" ng-controller="AlertHistogramCtrl" ng-init="createReport()">
+
+    <h1>Alert Histogram Report</h1>
+
+		<div class="table-container full-width" ng-if="report.reportType=='Host'">
+
+ 			<h3>Host Alert Histogram</h3>
+
+      <div class="table-container partial-width chart">
+          <div fusioncharts
+            width="600"
+            height="400"
+            type="msline"
+            datasource="{{hostdata}}">
+          </div>
+     </div>
+
+       <div class="table-container partial-width">
+           <table cellspacing="0" cellpadding="0">
+             <thead>
+                 <tr>
+                     <th>EVENT TYPE</th>
+                     <th>MIN</th>
+                     <th>MAX</th>
+                     <th>SUM</th>
+                     <th>AVG</th>
+                 </tr>
+             </thead>
+             <tbody>
+                 <tr>
+                   <td>Recovery(Up):</td>
+                   <td>0</td>
+                   <td>0</td>
+                   <td>0</td>
+                   <td>0.00</td>
+                 </tr>
+                 <tr>
+                   <td>Down:</td>
+                   <td>0</td>
+                   <td>0</td>
+                   <td>0</td>
+                   <td>0.00</td>
+                 </tr>
+                 <tr>
+                   <td>Unreachable:</td>
+                   <td>0</td>
+                   <td>0</td>
+                   <td>0</td>
+                   <td>0.00</td>
+                 </tr>
+             </tbody>
+         </table>
+       </div>
+
+    </div>
+
+    <div class="table-container full-width" ng-if="true">
+
+    	<h3>Service Alert Histogram</h3>
+
+     <div class="table-container partial-width chart">
+
+       <div fusioncharts
+         width="600"
+         height="400"
+         type="msline"
+         datasource="{{servicedata}}">
+       </div>
+     </div>
+
+    <div class="table-container partial-width">
+          <table cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th>EVENT TYPE</th>
+                    <th>MIN</th>
+                    <th>MAX</th>
+                    <th>SUM</th>
+                    <th>AVG</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td>Recovery(Ok):</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0.00</td>
+                </tr>
+                <tr>
+                  <td>Warning:</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0.00</td>
+                </tr>
+                <tr>
+                  <td>Unknown:</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0.00</td>
+                </tr>
+                <tr>
+                  <td>Critical:</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0.00</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+
+		</div>
+
+	<div class="table-container partial-width full">
+		<div class="commands">
+
+    <h3>View</h3>
+
+			<!--show if a single host is selected-->
+            <table cellspacing="0" cellpadding="0" ng-if="report.reportType=='Host'">
+                <tbody>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Trends For This Host</a></td>
+                    </tr>
+                    <tr class="footable-even">
+                      <td><a target="nagios" ng-href="{{}}">View Availability Report For This Service</a></td>
+                    </tr>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Status Detail For This Host</a></td>
+                    </tr>
+                    <tr class="footable-even">
+                        <td><a target="nagios" ng-href="{{}}">View History For This Host</a></td>
+                    </tr>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Notifications For This Host</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+			<!--show if a single service is selected-->
+      <table cellspacing="0" cellpadding="0" ng-if="report.reportType=='Service'">
+                <tbody>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Trends For This Service</a></td>
+                    </tr>
+                    <tr class="footable-even">
+                        <td><a target="nagios" ng-href="{{}}">View Availability Report For This Service</a></td>
+                    </tr>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View History For This Service</a></td>
+                    </tr>
+                    <tr class="footable-even">
+                        <td><a target="nagios" ng-href="{{}}">View Notifications For This Service</a></td>
+                    </tr>
+                </tbody>
+        </table>
+      </div>
+    </div>
+
+</div>
+
+<div ng-include="'frontend/partials/_footer.html'"></div>
+

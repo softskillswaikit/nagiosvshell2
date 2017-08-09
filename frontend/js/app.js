@@ -102,12 +102,6 @@ angular.module('vshell', [
 		    $routeProvider.when('/system/performanceinfo', {
             templateUrl: 'frontend/partials/system-performance-info.html'
         });
-        $routeProvider.when('/modal/comments', {
-            templateUrl: 'frontend/partials/modal-comments.html'
-        });
-        $routeProvider.when('/modal/confirm', {
-            templateUrl: 'frontend/partials/modal-confirm.html'
-        });
         $routeProvider.when('/options', {
             templateUrl: 'frontend/partials/options.html'
         });
@@ -125,3 +119,4 @@ angular.module('vshell', [
 .config(['$compileProvider', function ($compileProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|blob|ftp):/);
 }]);;
+

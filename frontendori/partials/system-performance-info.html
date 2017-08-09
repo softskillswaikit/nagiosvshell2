@@ -1,0 +1,359 @@
+<div ng-include="'frontend/partials/_header.html'"></div>
+
+<div ng-include="'frontend/partials/_status.html'"></div>
+
+<div ng-include="'frontend/partials/_browser.html'"></div>
+
+<div ng-include="'frontend/partials/_messages.html'"></div>
+
+<div id="content" class="clearfix" ng-controller="PerformanceInfoCtrl" ng-init="init()">
+
+	<h1>Performance Information</h1>
+
+	<div class="table-container partial-width half">
+
+			<div class="status-overview-tables">
+
+				<h3>Hosts Actively Checked</h3>
+
+				<table cellspacing="0" cellpadding="0">
+									<thead>
+											<tr>
+													<th>Time Frame</th>
+													<th colspan=2>Hosts Checked</th>
+													<th></th>
+											</tr>
+									</thead>
+									<tbody>
+											<tr class="footable-odd">
+													<th><= 1 Min</th>
+													<td></td>
+													<td>{{	}}({{	}}%)</td>
+													<td></td>
+											</tr>
+											<tr class="footable-even">
+													<th><= 5 Min</th>
+													<td></td>
+													<td>{{	}}({{	}}%)</td>
+													<td></td>
+											</tr>
+											<tr class="footable-odd">
+													<th><= 15 Min</th>
+													<td></td>
+													<td>{{	}}({{	}}%)</td>
+													<td></td>
+											</tr>
+											<tr class="footable-even">
+													<th><= 1 Hr</th>
+													<td></td>
+													<td>{{	}}({{	}}%)</td>
+													<td></td>
+											</tr>
+											<tr class="footable-odd">
+													<th>Since program start</th>
+													<td></td>
+													<td>{{	}}({{	}}%)</td>
+													<td></td>
+											</tr>
+									</tbody>
+							</table>
+
+							<table cellspacing="0" cellpadding="0">
+									<thead>
+											<tr>
+													<th>Metric</th>
+													<th>Min.</th>
+													<th>Max.</th>
+													<th>Average</th>
+											</tr>
+									</thead>
+									<tbody>
+											<tr class="footable-odd">
+												<th>Check Execution Time</th>
+												<td>{{}} sec</td>
+												<td>{{}} sec</td>
+												<td>{{}} sec</td>
+											</tr>
+											<tr class="footable-even">
+												<th>Check Latency</th>
+												<td>{{}} sec</td>
+												<td>{{}} sec</td>
+												<td>{{}} sec</td>
+											</tr>
+											<tr class="footable-odd">
+												<th>Percent State Change</th>
+												<td>{{}} %</td>
+												<td>{{}} %</td>
+												<td>{{}} %</td>
+											</tr>
+									</tbody>
+							</table>
+					</div>
+	</div>
+
+	<div class="table-container partial-width half">
+
+			<div class="status-overview-tables">
+
+				<h3>Services Actively Checked</h3>
+
+				<table cellspacing="0" cellpadding="0">
+									<thead>
+											<tr>
+													<th>Time Frame</th>
+													<th colspan=2>Services Checked</th>
+													<th></th>
+											</tr>
+									</thead>
+									<tbody>
+											<tr class="footable-odd">
+													<th><= 1 Min</th>
+													<td></td>
+													<td>{{	}}({{	}}%)</td>
+													<td></td>
+											</tr>
+											<tr class="footable-even">
+													<th><= 5 Min</th>
+													<td></td>
+													<td>{{	}}({{	}}%)</td>
+													<td></td>
+											</tr>
+											<tr class="footable-odd">
+													<th><= 15 Min</th>
+													<td></td>
+													<td>{{	}}({{	}}%)</td>
+													<td></td>
+											</tr>
+											<tr class="footable-even">
+													<th><= 1 Hr</th>
+													<td></td>
+													<td>{{	}}({{	}}%)</td>
+													<td></td>
+											</tr>
+											<tr class="footable-odd">
+													<th>Since program start</th>
+													<td></td>
+													<td>{{	}}({{	}}%)</td>
+													<td></td>
+											</tr>
+									</tbody>
+							</table>
+
+							<table cellspacing="0" cellpadding="0">
+									<thead>
+											<tr>
+													<th>Metric</th>
+													<th>Min.</th>
+													<th>Max.</th>
+													<th>Average</th>
+											</tr>
+									</thead>
+									<tbody>
+											<tr class="footable-odd">
+												<th>Check Execution Time</th>
+												<td>{{}} sec</td>
+												<td>{{}} sec</td>
+												<td>{{}} sec</td>
+											</tr>
+											<tr class="footable-even">
+												<th>Check Latency</th>
+												<td>{{}} sec</td>
+												<td>{{}} sec</td>
+												<td>{{}} sec</td>
+											</tr>
+											<tr class="footable-odd">
+												<th>Percent State Change</th>
+												<td>{{}} %</td>
+												<td>{{}} %</td>
+												<td>{{}} %</td>
+											</tr>
+									</tbody>
+							</table>
+					</div>
+	</div>
+
+
+	<div class="table-container partial-width half">
+
+			<div class="status-overview-tables">
+
+				<h3>Services Passively Checked</h3>
+
+				<table cellspacing="0" cellpadding="0">
+									<thead>
+											<tr>
+													<th>Time Frame</th>
+													<th colspan=2>Services Checked</th>
+													<th></th>
+											</tr>
+									</thead>
+									<tbody>
+											<tr class="footable-odd">
+													<th><= 1 Min</th>
+													<td></td>
+													<td>{{	}}({{	}}%)</td>
+													<td></td>
+											</tr>
+											<tr class="footable-even">
+													<th><= 5 Min</th>
+													<td></td>
+													<td>{{	}}({{	}}%)</td>
+													<td></td>
+											</tr>
+											<tr class="footable-odd">
+													<th><= 15 Min</th>
+													<td></td>
+													<td>{{	}}({{	}}%)</td>
+													<td></td>
+											</tr>
+											<tr class="footable-even">
+													<th><= 1 Hr</th>
+													<td></td>
+													<td>{{	}}({{	}}%)</td>
+													<td></td>
+											</tr>
+											<tr class="footable-odd">
+													<th>Since program start</th>
+													<td></td>
+													<td>{{	}}({{	}}%)</td>
+													<td></td>
+											</tr>
+									</tbody>
+						</table>
+
+							<table cellspacing="0" cellpadding="0">
+									<thead>
+											<tr>
+													<th>Metric</th>
+													<th>Min.</th>
+													<th>Max.</th>
+													<th>Average</th>
+											</tr>
+									</thead>
+									<tbody>
+											<tr class="footable-odd">
+												<th>Percent State Change</th>
+												<td>{{}} %</td>
+												<td>{{}} %</td>
+												<td>{{}} %</td>
+											</tr>
+									</tbody>
+							</table>
+					</div>
+	</div>
+
+	<div class="table-container partial-width half">
+
+			<div class="status-overview-tables">
+
+				<h3>Check Statistics</h3>
+							<table cellspacing="0" cellpadding="0">
+									<thead>
+											<tr>
+													<th>Type</th>
+													<th>Last 1 min</th>
+													<th>Last 5 min</th>
+													<th>Last 15 min</th>
+											</tr>
+									</thead>
+									<tbody>
+											<tr class="footable-odd">
+												<th>Active Scheduled Host Checks</th>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr class="footable-even">
+												<th>Active On-Demand Host Checks</th>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr class="footable-odd">
+												<th>Parallel Host Checks</th>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr class="footable-even">
+												<th>Serial Host Checks</th>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr class="footable-odd">
+												<th>Cached Host Checks</th>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr class="footable-even">
+												<th>Passive Host Checks</th>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr class="footable-odd">
+												<th>Active Scheduled Service Checks</th>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr class="footable-even">
+												<th>Active On Demand Service Checks</th>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr class="footable-odd">
+												<th>Cached Service Checks</th>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr class="footable-even">
+												<th>Passive Service Checks</th>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr class="footable-odd">
+												<th>External Commands</th>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+									</tbody>
+							</table>
+					</div>
+	</div>
+
+	<div class="table-container partial-width half">
+
+			<div class="status-overview-tables">
+
+				<h3>Buffer Usage</h3>
+
+							<table cellspacing="0" cellpadding="0">
+									<thead>
+											<tr>
+													<th>Type</th>
+													<th>In Use</th>
+													<th>Max Used</th>
+													<th>Total Available</th>
+											</tr>
+									</thead>
+									<tbody>
+											<tr class="footable-odd">
+												<th>External Commands</th>
+												<td>{{}}</td>
+												<td>{{}}</td>
+												<td>{{}}</td>
+											</tr>
+									</tbody>
+							</table>
+					</div>
+			</div>
+</div>
+
+<div ng-include="'frontend/partials/_footer.html'"></div>

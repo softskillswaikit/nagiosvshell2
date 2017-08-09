@@ -1,3 +1,37 @@
+<div ng-controller="ConfigurationsCtrl">
+
+  <!--Confirm delete name-->
+  <div class="modal fade" id="delete-name" data-backdrop="false" >
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-body no-padding">
+          <p>Confirm delete?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-primary btn-ok" data-dismiss="modal" ng-click="delete('name')">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Confirm delete keyvalue-->
+  <div class="modal fade" id="delete-keyvalue" data-backdrop="false" >
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-body no-padding">
+          <p>Confirm delete?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-primary btn-ok" data-dismiss="modal" ng-click="delete('keyvalue')">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
 <div ng-controller="SysCommentsCtrl">
 
     <!-- Add Host Comment -->
@@ -59,7 +93,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="resetModal()">Close</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="add(hostName, ' ', persistent, comment)" title="Please complete the form" ng-disabled="addHostComment.$invalid">Add</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="add(hostName, ' ', persistent, author, comment)" title="Please complete the form" ng-disabled="addHostComment.$invalid">Add</button>
           </div>
         </div>
       </div>
@@ -92,7 +126,7 @@
                     <option ng-repeat="name in name.service | filter:{host:hostName}:true" value="{{name.service}}"
                       >{{name.service}}</option>
   								</select>
-                  <span style="color:red" ng-show="addServiceComment.service.$dirty && addServiceComment.service.$invalid">
+                  <span style="color:red" ng-show="addServiceComment.service.$invalid">
                   <span ng-show="addServiceComment.service.$error.required">This field is required.</span></span>
                 </div>
               </div>
@@ -136,14 +170,14 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="resetModal()">Close</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="add(hostName, service, persistent, comment)" ng-disabled="addServiceComment.$invalid" title="Please complete the form">Add</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="add(hostName, service, persistent, author, comment)" ng-disabled="addServiceComment.$invalid" title="Please complete the form">Add</button>
           </div>
         </div>
       </div>
     </div>
 
     <!--Confirm Delete Comment-->
-    <div class="modal fade" id="confirm" role="dialog" data-backdrop="false" >
+    <div class="modal fade" id="delete-comment" role="dialog" data-backdrop="false" >
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-body no-padding">
@@ -213,7 +247,7 @@
               <label for="serviceName" class="col-md-4 control-label">Service:</label>
               <div class="col-md-6">
                 <input ng-model="serviceName" ng-disabled="true" type="text" class="form-control input-md" name="service" required></input>
-                <span style="color:red" ng-show="addServiceComment.service.$dirty && addServiceComment.service.$invalid">
+                <span style="color:red" ng-show="addServiceComment.service.$invalid">
                 <span ng-show="addServiceComment.service.$error.required">This field is required.</span></span>
               </div>
             </div>
@@ -257,7 +291,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reset()">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="add(persistent, comment)" ng-disabled="addServiceComment.$invalid" title="Please complete the form">Add</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="add(persistent, author, comment)" ng-disabled="addServiceComment.$invalid" title="Please complete the form">Add</button>
         </div>
       </div>
     </div>
@@ -352,7 +386,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reset()">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="add(persistent, comment)" title="Please complete the form" ng-disabled="addHostComment.$invalid">Add</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="add(persistent, author, comment)" title="Please complete the form" ng-disabled="addHostComment.$invalid">Add</button>
         </div>
       </div>
     </div>
@@ -531,7 +565,7 @@
                <select ng-model="service" ng-change="service = ''" name="service" class="form-control" required>
                   <option ng-repeat="name in name.service | filter:{host:hostName}:true" value="{{name.service}}">{{name.service}}</option>
                </select>
-               <span style="color:red" ng-show="scdsvcdowntime.service.$dirty && scdsvcdowntime.service.$invalid">
+               <span style="color:red" ng-show="scdsvcdowntime.service.$invalid">
                <span ng-show="scdsvcdowntime.service.$error.required">This field is required.</span></span>
              </div>
            </div>
@@ -648,3 +682,4 @@
     </div>
   </div>
 </div>
+

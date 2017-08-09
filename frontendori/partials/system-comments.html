@@ -1,0 +1,130 @@
+<div ng-include="'frontend/partials/_header.html'"></div>
+
+<div ng-include="'frontend/partials/_status.html'"></div>
+
+<div ng-include="'frontend/partials/_browser.html'"></div>
+
+<div ng-include="'frontend/partials/_messages.html'"></div>
+
+<div id="content" class="clearfix" ng-controller="SysCommentsCtrl" ng-init="init()">
+
+	<h1>Comments</h1>
+
+	<div class="details table-container full-width">
+
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs">
+		  <li class="active">
+		    <a role="button" data-toggle="tab" data-target="#hostcomments">Host Comments</a>
+		  </li>
+		  <li>
+		    <a role="button" data-toggle="tab" data-target="#servicecomments">Service Comments</a>
+		  </li>
+		</ul>
+
+		<!-- Tab panes -->
+		<div class="tab-content">
+		  <div class="tab-pane active" id="hostcomments">
+
+					<!--Table-->
+					<div class="table-container full-width">
+
+						<table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+	            <thead>
+	                <tr>
+	                    <th>Host Name</th>
+	                    <th>Entry Time</th>
+	                    <th>Author</th>
+											<th>Comment</th>
+											<th>Comment ID</th>
+											<th>Persistent</th>
+											<th>Type</th>
+											<th>Expires</th>
+											<th>Actions</th>
+	                </tr>
+	            </thead>
+							<tfoot>
+	                <tr>
+	                    <td colspan="9">
+												<a class="add-comment no-margin" role="button" data-toggle="modal" data-target="#hostComment" ng-click="addComment('host')">Add Comment</a>
+											</td>
+	                </tr>
+	            </tfoot>
+	            <tbody>
+	                <tr ng-if="(hostcomments | count) == 0">
+	                    <td colspan="9">{{ is_loading ? 'Loading...' : 'No comments for host' }}</td>
+	                </tr>
+	                <tr ng-repeat="comment in hostcomments" ng-class-odd="'footable-odd'" ng-class-even="'footable-even'">
+	                    <td>{{ comment.host_name }}</td>
+	                    <td>{{ comment.entry_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
+											<td>{{ comment.author }}</td>
+	                    <td>{{ comment.comment_data }}</td>
+											<td>{{ comment.comment_id }}</td>
+											<td>{{ comment.persistent }}</td>
+											<td>{{ comment.entry_type }}</td>
+											<td>{{ comment.expires }}</td>
+	                    <td><a role="button" data-toggle="modal" data-target="#delete-comment" ng-click="deleteComment(comment.comment_id, 'host')">Delete Comment</a></td>
+	                </tr>
+	            </tbody>
+			      </table>
+					</div>
+
+			</div>
+
+		  <div class="tab-pane" id="servicecomments">
+
+					<!--Table-->
+					<div class="table-container full-width">
+						<table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+	            <thead>
+	                <tr>
+	                    <th>Host Name</th>
+											<th>Service</th>
+	                    <th>Entry Time</th>
+	                    <th>Author</th>
+											<th>Comment</th>
+											<th>Comment ID</th>
+											<th>Persistent</th>
+											<th>Type</th>
+											<th>Expires</th>
+											<th>Actions</th>
+	                </tr>
+	            </thead>
+							<tfoot>
+									<tr>
+											<td colspan="10">
+												<a class="add-comment no-margin" role="button" data-toggle="modal" data-target="#serviceComment" ng-click="addComment('svc')">Add Comment</a>
+											</td>
+									</tr>
+							</tfoot>
+							<tbody>
+	                <tr ng-if="(servicecomments | count) == 0">
+	                    <td colspan="9">{{ is_loading ? 'Loading...' : 'No comments for service' }}</td>
+	                </tr>
+	                <tr ng-repeat="comment in servicecomments" ng-class-odd="'footable-odd'" ng-class-even="'footable-even'">
+	                    <td>{{ comment.host_name }}</td>
+											<td>{{ comment.service_description}}</td>
+	                    <td>{{ comment.entry_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
+											<td>{{ comment.author }}</td>
+	                    <td>{{ comment.comment_data }}</td>
+											<td>{{ comment.comment_id }}</td>
+											<td>{{ comment.persistent }}</td>
+											<td>{{ comment.entry_type }}</td>
+											<td>{{ comment.expires }}</td>
+											<td><a role="button" data-toggle="modal" data-target="#delete-comment" ng-click="deleteComment(comment.comment_id, 'svc')">Delete Comment</a></td>
+	                </tr>
+	            </tbody>
+		        </table>
+
+
+					</div>
+			</div>
+		</div>
+
+
+	</div>
+
+	<div ng-include="'frontend/partials/modals.html'"></div>
+</div>
+
+<div ng-include="'frontend/partials/_footer.html'"></div>

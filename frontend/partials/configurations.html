@@ -27,14 +27,18 @@
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
-                    <td>
+                    <td colspan="2">
                         <div class="results-count">{{ configurations.items | count }} Result{{ configurations.items | plural }}</div>
                         <div class="footable-pagination pagination" id="footable-pagination"></div>
                     </td>
+                </tr>
+                <tr>
+                  <td colspan="2"><a class="add-comment no-margin" role="button" data-toggle="modal" data-target="#" ng-click="">Add</a></td>
                 </tr>
             </tfoot>
             <tbody>
@@ -48,12 +52,17 @@
                             <span ng-if="configurations.name != 'services'">{{ item[( configurations.name | configuration_display_key )] }}</span>
                         </a>
                     </td>
+                    <td>
+                      <a role="button" data-toggle="modal" data-target="#edit-name" ng-click="editConfig()">Edit</a> |
+                      <a role="button" data-toggle="modal" data-target="#delete-name" ng-click="deleteConfig()">Delete</a>
+                    </td>
                 </tr>
             </tbody>
         </table>
 
     </div>
-
+    <div ng-include="'frontend/partials/modals.html'"></div>
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>
+

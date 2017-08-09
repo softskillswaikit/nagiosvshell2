@@ -98,6 +98,26 @@ angular.module('vshell.directives', [])
 
 })
 
+/*.directive('modal', function () {
+    return {
+        restrict: 'A',
+        scope: {
+            title: '=modalTitle',
+            header: '=modalHeader',
+            body: '=modalBody',
+            footer: '=modalFooter',
+            callbackbuttonleft: '&ngClickLeftButton',
+            callbackbuttonright: '&ngClickRightButton',
+            handler: '=lolo'
+        },
+        templateUrl: 'modal-confirm.html',
+        transclude: true,
+        controller: function ($scope) {
+            $scope.handler = 'pop';
+        }
+    };
+})*/
+
 .directive('hostEntry', function() {
 
     // Accepts both host and service iterables.
@@ -138,3 +158,7 @@ angular.module('vshell.directives', [])
     };
 
 });
+
+
+
+

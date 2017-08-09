@@ -1920,6 +1920,7 @@ class System_commands extends CI_Model
 
 			return $process_obj;
 		}
+		
 		//$return_type = 'PERFORMANCE'
 		else
 		{

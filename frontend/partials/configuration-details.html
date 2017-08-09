@@ -31,14 +31,18 @@
                 <tr>
                     <th>Key</th>
                     <th>Value</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
-                    <td colspan="2">
+                    <td colspan="3">
                         <div class="results-count">{{ configuration | count }} Result{{ configuration | plural }}</div>
                         <div class="footable-pagination pagination" id="footable-pagination"></div>
                     </td>
+                </tr>
+                <tr>
+                  <td colspan="3"><a class="add-comment no-margin" role="button" data-toggle="modal" data-target="#" ng-click="">Add</a></td>
                 </tr>
             </tfoot>
             <tbody>
@@ -48,12 +52,17 @@
                 <tr ng-repeat="(key, value) in configuration" ng-class-odd="'footable-odd'" ng-class-even="'footable-even'" footabledata>
                     <td>{{ key }}</td>
                     <td>{{ value }}</td>
+                    <td>
+                      <a role="button" data-toggle="modal" data-target="#edit-keyvalue" ng-click="editConfig()">Edit</a> |
+                      <a role="button" data-toggle="modal" data-target="#delete-keyvalue" ng-click="deleteConfig()">Delete</a>
+                    </td>
                 </tr>
             </tbody>
         </table>
 
     </div>
-
+    <div ng-include="'frontend/partials/modals.html'"></div>
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>
+

@@ -183,19 +183,19 @@ angular.module('vshell.controllers', [])
         $scope.addComment = function(type){
             $scope.reset();
 
-            $scope.add = function(persistent, comment){
+            $scope.add = function(persistent, author, comment){
                 console.log("addComment");
                 console.log("type="+type);
                 console.log("host="+$scope.hostName);
                 console.log("service="+$scope.service);
                 console.log("persistent="+persistent);
-                console.log("author="+$scope.status.username);
+                console.log("author="+author);
                 console.log("comment="+comment);
 
                 var options = {
                     name: 'success',
                     url: 'addcomments/'+ type + '/' + $routeParams.host + '/' + ' '
-                      + '/' + persistent + '/' + $scope.status.username + '/' + comment,
+                      + '/' + persistent + '/' + author + '/' + comment,
                     queue: 'main'
                 };
                 async.api($scope, options);
@@ -448,19 +448,19 @@ angular.module('vshell.controllers', [])
 
           $scope.reset();
 
-          $scope.add = function(persistent, comment){
+          $scope.add = function(persistent, author, comment){
             console.log("addComment");
             console.log("type="+type);
             console.log("host="+$routeParams.host);
             console.log("service="+$routeParams.service);
             console.log("persistent="+persistent);
-            console.log("author="+$scope.status.username);
+            console.log("author="+author);
             console.log("comment="+comment);
 
             var options = {
                 name: 'success',
                 url: 'addcomments/'+ type + '/' + $routeParams.host + '/' + $routeParams.service
-                  + '/' + persistent + '/' + $scope.status.username + '/' + comment,
+                  + '/' + persistent + '/' + author + '/' + comment,
                 queue: 'main'
             };
             async.api($scope, options);
@@ -926,8 +926,8 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('TrendsCtrl', ['$scope', '$routeParams', '$filter', 'async', '$timeout',
-    function($scope, $routeParams, $filter, async, $timeout) {
+.controller('TrendsCtrl', ['$scope', '$routeParams', '$filter', 'async', '$timeout', '$window',
+    function($scope, $routeParams, $filter, async, $timeout, $window) {
 
         $scope.init = function() {
           //get component name
@@ -966,7 +966,7 @@ angular.module('vshell.controllers', [])
 
         $scope.createReport = function(){
 
-          //$window.location.href="#/report/trends/report";
+          $window.location.href="#/report/trends/report";
 
           var startUnix = parseInt((new Date($scope.startDate).getTime() / 1000).toFixed(0));
           var endUnix = parseInt((new Date($scope.endDate).getTime() / 1000).toFixed(0));
@@ -1343,8 +1343,8 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('AlertHistogramCtrl', ['$scope', '$routeParams', '$filter', 'async', '$timeout',
-    function($scope, $routeParams, $filter, async, $timeout) {
+.controller('AlertHistogramCtrl', ['$scope', '$routeParams', '$filter', 'async', '$timeout', '$window',
+    function($scope, $routeParams, $filter, async, $timeout, $window) {
 
 		$scope.init = function(){
       //get component name
@@ -1382,7 +1382,7 @@ angular.module('vshell.controllers', [])
        };
 
        $scope.createReport = function(){
-         //$window.location.href="#/report/availability/report";
+         $window.location.href="#/report/alerthistogram/report";
 
          var startUnix = parseInt((new Date($scope.startDate).getTime() / 1000).toFixed(0));
          var endUnix = parseInt((new Date($scope.endDate).getTime() / 1000).toFixed(0));
@@ -1566,15 +1566,18 @@ angular.module('vshell.controllers', [])
       };
 
       $scope.addComment = function(type){
-
+        console.log("addComment");
+        console.log(type);
         $scope.reset();
 
-        $scope.add = function(hostName, service, persistent, comment){
-
+        $scope.add = function(hostName, service, persistent, author, comment){
+          console.log("add");
+          console.log(comment);
+          
           var options = {
               name: 'success',
               url: 'addcomments/'+ type + '/' + hostName + '/' + service
-                + '/' + persistent + '/' + $scope.status.username + '/' + comment,
+                + '/' + persistent + '/' + author + '/' + comment,
               queue: 'main'
           };
 
@@ -1587,7 +1590,7 @@ angular.module('vshell.controllers', [])
                       ngToast.create({className: 'alert alert-success',content:'Success! Update may take some time.',timeout:3000});
                     else
                       ngToast.create({className: 'alert alert-danger',content:'Fail! Please check your host or service name.',timeout:3000});
-                    $timeout(function(){$window.location.reload()}, 2000);
+                    //$timeout(function(){$window.location.reload()}, 2000);
                 }
             }
           };
@@ -1595,8 +1598,9 @@ angular.module('vshell.controllers', [])
       };
 
       $scope.deleteComment = function(id, type){
-
+        
         $scope.delete = function(){
+          
           var options = {
               name: 'success',
               url: 'deletecomments/' + id + '/' + type,
@@ -1612,7 +1616,7 @@ angular.module('vshell.controllers', [])
                     ngToast.create({className: 'alert alert-success',content:'Success! Update may take some time.',timeout:3000});
                   else
                     ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
-                  $timeout(function(){$window.location.reload()}, 2000);
+                  //$timeout(function(){$window.location.reload()}, 2000);
                 }
               }
           };
@@ -1792,3 +1796,4 @@ angular.module('vshell.controllers', [])
     }
 ])
 ;
+

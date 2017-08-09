@@ -63,7 +63,7 @@
 											<td>{{ comment.persistent }}</td>
 											<td>{{ comment.entry_type }}</td>
 											<td>{{ comment.expires }}</td>
-	                    <td><a role="button" data-toggle="modal" data-target="#confirm" ng-click="deleteComment(comment.comment_id, 'host')">Delete Comment</a></td>
+	                    <td><a role="button" data-toggle="modal" data-target="#delete-comment" ng-click="deleteComment(comment.comment_id, 'host')">Delete Comment</a></td>
 	                </tr>
 	            </tbody>
 			      </table>
@@ -111,7 +111,7 @@
 											<td>{{ comment.persistent }}</td>
 											<td>{{ comment.entry_type }}</td>
 											<td>{{ comment.expires }}</td>
-											<td><a role="button" data-toggle="modal" data-target="#confirm" ng-click="deleteComment(comment.comment_id, 'svc')">Delete Comment</a></td>
+											<td><a role="button" data-toggle="modal" data-target="#delete-comment" ng-click="deleteComment(comment.comment_id, 'svc')">Delete Comment</a></td>
 	                </tr>
 	            </tbody>
 		        </table>
@@ -124,7 +124,8 @@
 
 	</div>
 
-	<div ng-include="'frontend/partials/modals.html'"</div>
+	<div ng-include="'frontend/partials/modals.html'"></div>
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>
+
