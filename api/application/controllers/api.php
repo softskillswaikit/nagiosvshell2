@@ -478,37 +478,37 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $Downtime = array();
+        $result = false;
+        $type = 'svc';
+        $host = 'localhost';
+        $service = 'HTTP';
+        $persistent = false;
+        $author = 'Nagios Admin';
+        $comments = 'Testing to add service comments';
 
         $allowed_types = array(
             'host',
             'svc'
         );
 
-        if(in_array($type, $allowed_types))
+        //check for empty input
+        if(!empty($type) && !empty($host) && !empty($author) && !empty($comments))
         {
-            if($type == 'host')
+            //compare types with allowed types
+            if(in_array($type, $allowed_types))
             {
-                $Datahostdowntime = $this->nagios_data->get_collection('hostdowntime');
-                
-                foreach ($Datahostdowntime as $hostdowntime) 
+                if($type == 'host')
                 {
-                    $Downtime[] = array('host' => $hostdowntime->host_name, 'entry_time'=> $hostdowntime->entry_time, 'author' => $hostdowntime->author, 'comment'=> $hostdowntime->comment, 'start_time'=> $hostdowntime->start_time, 'end_time' => $hostdowntime->end_time, 'fixed' => $hostdowntime->fixed, 'duration' => $hostdowntime->duration, 'downtime_id' => $hostdowntime->downtime_id, 'trigged_id' => $hostdowntime->triggered_by);
+                    $result = $this->system_commands->add_host_comment($host, $persistent, $author, $comments);
                 }
-            }
-            else
-            {
-                $Dataservicedowntime = $this->nagios_data->get_collection('servicedowntime');
-
-                foreach ($Dataservicedowntime as $servicedowntime) 
+                else
                 {
-                    $Downtime[] = array('host' => $servicedowntime->host_name, 'service'=> $servicedowntime->service_description, 'entry_time'=> $servicedowntime->entry_time, 'author' => $servicedowntime->author, 'comment'=> $servicedowntime->comment, 'start_time'=> $servicedowntime->start_time, 'end_time' => $servicedowntime->end_time, 'fixed' => $servicedowntime->fixed, 'duration' => $servicedowntime->duration, 'downtime_id' => $servicedowntime->downtime_id, 'trigged_id' => $servicedowntime->triggered_by);
+                    $result = $this->system_commands->add_svc_comment($host, $service, $persistent, $author, $comments);
                 }
-
             }
         }
 
-        $this->output($Downtime);
+        $this->output($result);
     }
 
     /**
@@ -703,13 +703,13 @@ class API extends VS_Controller
      * Add comments
      *
      * @param String $type, host : host, svc : service
-     * @param String $name
+     * @param String $host
      * @param String $service
      * @param bool $persistent 
      * @param String $author
      * @param String $comments
      */
-    public function addComments($type, $name, $service='', $persistent, $author, $comments)
+    public function addComments($type, $host, $service='', $persistent, $author, $comments)
     {
         $result = false;
 
@@ -719,18 +719,18 @@ class API extends VS_Controller
         );
 
         //check for empty input
-        if(!empty($type) && !empty($name) && !empty($persistent) && !empty($author) && !empty($comments))
+        if(!empty($type) && !empty($host) && !empty($author) && !empty($comments))
         {
             //compare types with allowed types
             if(in_array($type, $allowed_types))
             {
                 if($type == 'host')
                 {
-                    $result = $this->system_commands->add_host_comment($name, $persistent, $author, $comments);
+                    $result = $this->system_commands->add_host_comment($host, $persistent, $author, $comments);
                 }
                 else
                 {
-                    $result = $this->system_commands->add_svc_comment($name, $service, $persistent, $author, $comments);
+                    $result = $this->system_commands->add_svc_comment($host, $service, $persistent, $author, $comments);
                 }
             }
         }
@@ -778,7 +778,7 @@ class API extends VS_Controller
     /**
      * Enable or disable service check
      *
-     * @param String $type , 'enable' ,'disable'
+     * @param Bool $type , true - 'enable' ,false - 'disable'
      * @param String $hostname
      * @param String $service
      */
@@ -786,13 +786,13 @@ class API extends VS_Controller
     {
         $result = false;
 
-        if($type == 'enable')
+        if($type)
         {
-            $result = $this->system_commands->enable_svc_check();
+            $result = $this->system_commands->enable_svc_check($hostname, $service);
         }
-        else if($type == 'disable')
+        else
         {
-            $result = $this->system_commands->disable_svc_check();
+            $result = $this->system_commands->disable_svc_check($hostname, $service);
         }
 
         $this->output($result);
