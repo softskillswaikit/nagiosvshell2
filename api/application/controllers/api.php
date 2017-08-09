@@ -478,34 +478,25 @@ class API extends VS_Controller
 
     public function testing()
     {
+    }
+
+    /**
+     * Delete host or service downtime
+     *
+     * @param String $type, 'host' : host, 'svc' : service
+     * @param String $downtimeID
+     */
+    public function deleteDowntime($type, $downtimeID)
+    {
         $result = false;
-        $type = 'svc';
-        $host = 'localhost';
-        $service = 'HTTP';
-        $persistent = false;
-        $author = 'Nagios Admin';
-        $comments = 'Testing to add service comments';
 
-        $allowed_types = array(
-            'host',
-            'svc'
-        );
-
-        //check for empty input
-        if(!empty($type) && !empty($host) && !empty($author) && !empty($comments))
+        if($type == 'host')
         {
-            //compare types with allowed types
-            if(in_array($type, $allowed_types))
-            {
-                if($type == 'host')
-                {
-                    $result = $this->system_commands->add_host_comment($host, $persistent, $author, $comments);
-                }
-                else
-                {
-                    $result = $this->system_commands->add_svc_comment($host, $service, $persistent, $author, $comments);
-                }
-            }
+            $result = $this->system_commands->delete_host_downtime($downtimeID);
+        }
+        else if($type == 'svc')
+        {
+            $result = $this->system_commands->delete_svc_downtime($downtimeID);
         }
 
         $this->output($result);
@@ -598,6 +589,8 @@ class API extends VS_Controller
         
         $this->output($success);
     }
+
+
 
     /**
      * Return performance info of nagios
@@ -2189,4 +2182,3 @@ class API extends VS_Controller
 
 /* End of file api.php */
 /* Location: ./application/controllers/api.php */
-
