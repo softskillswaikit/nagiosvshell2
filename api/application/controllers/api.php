@@ -198,7 +198,7 @@ class API extends VS_Controller
 
         foreach($hosts as $host)
         {
-            $hostname[] = array($host->host_name);
+            $hostname[] = $host->host_name;
         }
 
         $allName['host'] = $hostname;
@@ -209,7 +209,7 @@ class API extends VS_Controller
 
         foreach($hostgroups as $hostgroup)
         {
-            $hostgroupname[] = array($hostgroup->alias);
+            $hostgroupname[] = $hostgroup->alias;
         }
 
         $allName['hostgroup'] = $hostgroupname;     
@@ -220,7 +220,7 @@ class API extends VS_Controller
 
         foreach ($services as $service)
         {
-            $servicename[] = array('service'=> $service->service_description, 'host' =>$service->host_name);
+            $servicename[] = array('host' =>$service->host_name, 'service'=> $service->service_description);
         }
 
         $allName['service'] = $servicename;
@@ -231,7 +231,7 @@ class API extends VS_Controller
 
         foreach($servicegroups as $servicegroup)
         {
-            $servicegroupname[] = array($servicegroup->alias);
+            $servicegroupname[] = $servicegroup->alias;
         }
 
         $allName['servicegroup'] = $servicegroupname;
@@ -242,7 +242,7 @@ class API extends VS_Controller
 
         foreach ($hostresources as $hostresource) 
         {
-            $hostresourcename[] = array('host'=> $hostresource->host_name, 'hostresource'=> $hostresource->service_description);
+            $hostresourcename[] = array('host'=> $hostresource->host_name, 'service'=> $hostresource->service_description);
         }
 
         $allName['hostresource'] = $hostresourcename;
@@ -252,7 +252,7 @@ class API extends VS_Controller
 
         foreach ($runningstates as $runningstate)
         {
-            $runningstatename[] = array('host'=> $runningstate->host_name, 'runningstate' => $runningstate->service_description);
+            $runningstatename[] = array('host'=> $runningstate->host_name, 'service' => $runningstate->service_description);
         }
 
         $allName['runningstate'] = $runningstatename;
@@ -508,9 +508,9 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $hoststatus = $this->nagios_data->get_collection('host');
-        
-        $this->output($hoststatus); 
+        $host = $this->nagios_data->get_collection('hoststatus');
+
+        $this->output($host);
     }
 
     /**
