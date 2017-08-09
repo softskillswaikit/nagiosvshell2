@@ -46,31 +46,11 @@ angular.module('vshell.filters', [])
     };
 })
 
-.filter('select', function() {
-    return function(values, compare) {
-      console.log(values, compare);
-      
-      var arrayToReturn = [];
-        // Loops through the values in the list
-        for (var i = 0; i < values.length; i++) {
-            
-            // Now loops through the selected items array to see if it matches
-            for (var l = 0; l < compare.length; l++) {
-                 if (values[i].id === compare[l].id) {
-                    arrayToReturn.push(values[i]);
-                }
-            }
-        }
-
-        return arrayToReturn;
-    };
-})
-
 .filter('percent', function(numberFilter) {
     return function(input, total, precision) {
         if(total == 0 )
             return '0%';
-            
+
         var fraction = parseInt(input, 10) / parseInt(total, 10),
             percent = fraction * 100,
             places = (precision !== 0 && !precision) ? 1 : precision;
@@ -498,4 +478,3 @@ angular.module('vshell.filters', [])
         return input;
     };
 });
-

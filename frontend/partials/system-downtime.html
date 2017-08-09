@@ -51,19 +51,20 @@
 		                </tr>
 		            </tfoot>
 		            <tbody>
-		                <tr ng-if="(hostdowntimes | count) == 0">
+		                <tr ng-if="(hostdowntime | count) == 0">
 		                    <td colspan="11">{{ is_loading ? 'Loading...' : 'No scheduled host are defined' }}</td>
 		                </tr>
-										<tr ng-repeat="downtime in hostdowntimes" ng-class-odd="'footable-odd'" ng-class-even="'footable-even'">
-		                    <td>{{ downtime.host_name }}</td>
+										<tr ng-repeat="downtime in hostdowntime" ng-class-odd="'footable-odd'" ng-class-even="'footable-even'">
+		                    <td>{{ downtime.host }}</td>
 		                    <td>{{ downtime.entry_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
 												<td>{{ downtime.author }}</td>
-		                    <td>{{ comment.comment_data }}</td>
-												<td>{{ comment.start_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}}}</td>
-												<td>{{ comment.end_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }} }}</td>
-												<td>{{ comment.entry_type }}</td>
-												<td>{{ comment.downtime_id }}</td>
-												<td>{{ comment.trigger_id }}</td>
+		                    <td>{{ downtime.comment }}</td>
+												<td>{{ downtime.start_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
+												<td>{{ downtime.end_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
+												<td>{{ downtime.entry_type }}</td>
+												<td>{{ downtime.duration / 60 }}h {{ downtime.duration % 60 }}m</td>
+												<td>{{ downtime.downtime_id }}</td>
+												<td>{{ downtime.trigger_id }}</td>
 												<td><a role="button" data-toggle="modal" data-target="#confirm" ng-click="deleteDowntime(downtime.downtime_id, 'host')">Delete Comment</a></td>
 		                </tr>
 		            </tbody>
@@ -99,20 +100,21 @@
 									</tr>
 							</tfoot>
 							<tbody>
-									<tr ng-if="(servicedowntimes | count) == 0">
+									<tr ng-if="(svcdowntime | count) == 0">
 											<td colspan="11">{{ is_loading ? 'Loading...' : 'No scheduled host are defined' }}</td>
 									</tr>
-									<tr ng-repeat="downtime in servicedowntimes" ng-class-odd="'footable-odd'" ng-class-even="'footable-even'">
-											<td>{{ downtime.host_name }}</td>
-											<td>{{ downtime.service_description }}</td>
+									<tr ng-repeat="downtime in svcdowntime" ng-class-odd="'footable-odd'" ng-class-even="'footable-even'">
+											<td>{{ downtime.host }}</td>
+											<td>{{ downtime.service }}</td>
 											<td>{{ downtime.entry_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
 											<td>{{ downtime.author }}</td>
-											<td>{{ comment.comment_data }}</td>
-											<td>{{ comment.start_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}}}</td>
-											<td>{{ comment.end_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }} }}</td>
-											<td>{{ comment.entry_type }}</td>
-											<td>{{ comment.downtime_id }}</td>
-											<td>{{ comment.trigger_id }}</td>
+											<td>{{ downtime.comment }}</td>
+											<td>{{ downtime.start_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
+											<td>{{ downtime.end_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
+											<td>{{ downtime.entry_type }}</td>
+											<td>{{ downtime.duration / 60 }}h{{ downtime.duration % 60 }}m</td>
+											<td>{{ downtime.downtime_id }}</td>
+											<td>{{ downtime.trigger_id }}</td>
 											<td><a role="button" data-toggle="modal" data-target="#confirm" ng-click="deleteDowntime(downtime.downtime_id, 'svc')">Delete Comment</a></td>
 									</tr>
 							</tbody>
@@ -126,4 +128,3 @@
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>
-

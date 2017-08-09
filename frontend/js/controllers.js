@@ -204,7 +204,7 @@ angular.module('vshell.controllers', [])
                     if(config != null){
                         if(config.url.includes("addcomments")){
                             if(data == 'true')
-                              ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
+                              ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                             else
                               ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                         }
@@ -229,7 +229,7 @@ angular.module('vshell.controllers', [])
                 if(config != null){
                     if(config.url.includes("deletecomments")){
                         if(data == 'true')
-                          ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
+                          ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                         else
                           ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                     }
@@ -469,7 +469,7 @@ angular.module('vshell.controllers', [])
                 if(config != null){
                     if(config.url.includes("addcomments")){
                         if(data == 'true')
-                          ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
+                          ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                         else
                           ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                     }
@@ -493,7 +493,7 @@ angular.module('vshell.controllers', [])
                   if(config != null){
                       if(config.url.includes("deletecomments")){
                           if(data == 'true')
-                            ngToast.create({className: 'alert alert-success',content:'Success!',timeout:3000});
+                            ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                           else
                             ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                       }
@@ -1566,14 +1566,10 @@ angular.module('vshell.controllers', [])
       };
 
       $scope.addComment = function(type){
-        console.log("addComment");
-        console.log(type);
         $scope.reset();
 
         $scope.add = function(hostName, service, persistent, author, comment){
-          console.log("add");
-          console.log(comment);
-          
+
           var options = {
               name: 'success',
               url: 'addcomments/'+ type + '/' + hostName + '/' + service
@@ -1587,7 +1583,7 @@ angular.module('vshell.controllers', [])
             if(config != null){
                 if(config.url.includes("addcomments")){
                     if(data == 'true')
-                      ngToast.create({className: 'alert alert-success',content:'Success! Update may take some time.',timeout:3000});
+                      ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                     else
                       ngToast.create({className: 'alert alert-danger',content:'Fail! Please check your host or service name.',timeout:3000});
                     //$timeout(function(){$window.location.reload()}, 2000);
@@ -1598,9 +1594,9 @@ angular.module('vshell.controllers', [])
       };
 
       $scope.deleteComment = function(id, type){
-        
+
         $scope.delete = function(){
-          
+
           var options = {
               name: 'success',
               url: 'deletecomments/' + id + '/' + type,
@@ -1613,7 +1609,7 @@ angular.module('vshell.controllers', [])
               if(config != null){
                 if(config.url.includes("deletecomments")){
                   if(data == 'true')
-                    ngToast.create({className: 'alert alert-success',content:'Success! Update may take some time.',timeout:3000});
+                    ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                   else
                     ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                   //$timeout(function(){$window.location.reload()}, 2000);
@@ -1625,10 +1621,24 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('SysDowntimeCtrl', ['$scope', '$filter', 'async', '$timeout',
-    function($scope, $filter, async, $timeout) {
+.controller('SysDowntimeCtrl', ['$scope', '$filter', 'async', '$timeout', 'ngToast', '$window',
+    function($scope, $filter, async, $timeout, ngToast, $window) {
 
         $scope.init = function() {
+
+          var optionshost = {
+              name: 'hostdowntime',
+              url: 'downtime/' + 'host',
+              queue: 'main'
+          };
+          async.api($scope, optionshost);
+
+          var optionsservice = {
+              name: 'svcdowntime',
+              url: 'downtime/' + 'svc',
+              queue: 'main'
+          };
+          async.api($scope, optionsservice);
 
             //get host and service name
             var options = {
@@ -1639,14 +1649,6 @@ angular.module('vshell.controllers', [])
 
             async.api($scope, options);
 
-            //get author
-            var options1 = {
-                name: 'status',
-                url: 'status',
-                queue: 'status-' + '',
-                cache: true
-            };
-            async.api($scope, options1);
         };
 
         $scope.reset = function(){
@@ -1665,7 +1667,6 @@ angular.module('vshell.controllers', [])
           $scope.nowString = $filter('date')(Date.now(), 'yyyy-MM-ddTHH:mm');
 
           $scope.hostName = $scope.name.host[0];
-          //$scope.service = $scope.name.service[0].service;
           $scope.comment = '';
           $scope.triggeredBy = 'N/A';
           $scope.startDate = $scope.nowString;
@@ -1690,7 +1691,7 @@ angular.module('vshell.controllers', [])
 
         };
 
-        $scope.scheduleDowntime = function(type){
+        $scope.scheduleDowntime = function(scheduletype){
 
           $scope.reset();
 
@@ -1710,23 +1711,24 @@ angular.module('vshell.controllers', [])
             console.log("duration=" + duration);
             console.log("author=" + author);
             console.log("comment=" + comment);
-            /*var options = {
+
+            var options = {
                 name: 'success',
-                url: 'scheduledowntime/'+ type + '/' + hostName + '/' + service + '/'+ start
-                  + '/' + end + '/' + fixed + '/' + triggerID + '/' + duration
-                  + '/' + $scope.status.username + '/' + comment,
+                url: 'scheduledowntime/'+ scheduletype + '/' + hostName + '/' + service + '/'+ startUnix
+                  + '/' + endUnix + '/' + type + '/' + triggerID + '/' + duration
+                  + '/' + author + '/' + comment,
                 queue: 'main'
             };
             async.api($scope, options);
-            */
+
             $scope.callback = function(data, status, headers, config) {
               if(config != null){
                   if(config.url.includes("scheduledowntime")){
                       if(data == 'true')
-                        ngToast.create({className: 'alert alert-success',content:'Success! Update may take some time.',timeout:3000});
+                        ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                       else
                         ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
-                      $timeout(function(){$window.location.reload()}, 2000);
+                      //$timeout(function(){$window.location.reload()}, 2000);
                   }
               }
             };
@@ -1738,7 +1740,7 @@ angular.module('vshell.controllers', [])
           $scope.delete = function(){
             var options = {
                 name: 'success',
-                url: 'deletedowntimes/' + id + '/' + type,
+                url: 'deletedowntime/' + id + '/' + type,
                 queue: 'main'
             };
 
@@ -1746,12 +1748,12 @@ angular.module('vshell.controllers', [])
 
             $scope.callback = function(data, status, headers, config) {
                 if(config != null){
-                  if(config.url.includes("deletedowntimes")){
+                  if(config.url.includes("deletedowntime")){
                     if(data == 'true')
-                      ngToast.create({className: 'alert alert-success',content:'Success! Update may take some time.',timeout:3000});
+                      ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                     else
                       ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
-                    $timeout(function(){$window.location.reload()}, 2000);
+                    //$timeout(function(){$window.location.reload()}, 2000);
                   }
                 }
             };
@@ -1796,4 +1798,3 @@ angular.module('vshell.controllers', [])
     }
 ])
 ;
-
