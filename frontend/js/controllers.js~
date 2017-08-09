@@ -294,10 +294,10 @@ angular.module('vshell.controllers', [])
 
 	$scope.notification_check = function (type, hostname) {
 
-		var status = false;
+		
 		var options = {
 			name: 'hostServiceNotification',
-			url: 'hostservicenotification/' + status + '/' + hostname,
+			url: 'hostservicenotification/' + type + '/' + hostname,
 			queue: 'main'
 		};
 
@@ -1380,10 +1380,19 @@ angular.module('vshell.controllers', [])
 
     }
 ])
-.controller('ServiceDetailsCtrl', ['$scope', '$routeParams', 'async',
-    function($scope, $routeParams, async) {
+.controller('ServiceDetailsCtrl', ['$scope', '$filter', '$routeParams', 'async',
+    function($scope, $filter, $routeParams, async) {
     
         $scope.init = function() {
+
+	    var value = {
+            	name: 'status',
+            	url: 'status',
+            	queue: 'status-' + '',
+            	cache: true
+            };
+
+            async.api($scope, value);
 
             var options = {
                 name: 'service',
@@ -1395,7 +1404,154 @@ angular.module('vshell.controllers', [])
     
         };
 
+	$scope.passcustom = function (service, host, author) {
+		$scope.custom_host = host;
+		$scope.custom_service = service;
+		$scope.author = author;
+		$scope.force = false;
+		$scope.broadcast = false;
+		var type = "service";
+
+		$scope.forcechange = function (status){
+                if (status == false){
+                    $scope.force = status;
+                }else if (status == true){
+                    $scope.force = status;
+                }
+            };
+
+            $scope.broadcastchange = function (status){
+                if (status == false){
+                    $scope.broadcast = status;
+                
+                }else if (status == true){
+                    $scope.broadcast = status;
+                }
+            };
         
+            $scope.custom = function(comment) {
+                var options = {
+                        name: 'CustomNotification',
+                        url: 'sendcustomnotification/' + type + '/' + $scope.custom_host + '/' + $scope.custom_service + '/' + $scope.force + '/'
+                        + $scope.broadcast + '/' + $scope.author + '/' + comment,
+                        queue: 'main'
+                };
+                async.api($scope, options);
+            };
+	};
+
+        $scope.passdowntime = function(service, host, author) {
+		$scope.hostName = host;
+		$scope.serviceName = service;
+		$scope.author = author;
+		$scope.serviceTriggeredBy = "N/A";
+		$scope.serviceType = "Fixed";
+		var type = "service";
+
+		$scope.schedule = function (hour, minute, comment, startdate, enddate, triggerby, type) {
+			var duration = hour * minute;
+			var start_date = new Date(startdate);
+			var start_timestamp = (start_date.getTime() / 1000).toString();
+			var end_date = new Date(enddate);
+			var end_timestamp = (end_date.getTime() / 1000).toString();
+			var fixed = true;
+			
+			if (type = '"Flexible"'){
+				fixed = false;
+			}
+			else{
+				fixed = true;
+			}
+
+			var options = {
+				name: 'servicedowntime',
+				url: 'scheduleDowntime/' + type + '/' + $scope.hostName + '/' + $scope.serviceName + '/' + start_timestamp + '/' + end_timestamp + '/'
+					+ fixed + '/' + TriggerBy + '/' + duration + '/' + $scope.author + '/' + comment,
+				queue: 'main'
+			};
+
+			async.api($scope, options);
+		};
+	};
+
+	$scope.passreschedule = function (service, host, next_check) {
+		$scope.hostName = host;
+		$scope.serviceName = service;
+		$scope.check_time = $filter('date')(next_check * 1000, "yyyy-MM-dd HH:mm:ss");
+		$scope.input_check_time = $scope.check_time;
+		$scope.force_check = true;
+		var type = "service";
+		
+		$scope.forcecheck = function (status){
+			if (status == false){
+				$scope.force_check = status;
+			}else if (status == true){
+				$scope.force_check = status;
+			}
+		};
+
+		$scope.schedule = function(time) {
+			var date = new Date(time);
+			var next_check = (date.getTime() / 1000).toString();
+			
+			var options = {
+				name: 'schedulecheck',
+				url: 'schedulecheck/' + type + '/' + $scope.hostName + '/' + $scope.serviceName + '/' + next_check + '/' + $scope.force_check,
+				queue: 'main'
+			};
+
+			async.api($scope, options);
+		};
+	};
+
+	$scope.passack = function (service, host, next_check){
+		$scope.ack_host = host;
+		$scope.ack_service = service;
+		$scope.stickyack = true;
+		$scope.sendnotify = true;
+		$scope.persistent = false;
+		$scope.comment = null;
+		var type = 'service';
+
+            $scope.sticky = function (status){
+                if (status == false){
+                    $scope.stickyack = status;
+                }else if (status == true){
+                    $scope.stickyack = status;
+                }
+            };
+
+            $scope.notify = function (status){
+                if (status == false){
+                    $scope.sendnotify = status;
+                
+                }else if (status == true){
+                    $scope.sendnotify = status;
+                }
+            };
+
+            $scope.persist = function (status){
+                if (status == false){
+                    $scope.persistent = status;
+                
+                }else if (status == true){
+                    $scope.persistent = status;
+                }
+            };
+
+            $scope.acknowledge = function (comment) {
+                $scope.comment = comment;
+                var options = {
+                    name: 'acknowledge',
+                    url: 'acknowledgeproblem/' + type + '/' + $scope.ack_host + '/' + service + '/'
+                    + $scope.stickyack + '/' + $scope.sendnotify + '/' + $scope.persistent + '/'
+                    + $scope.author + '/' + $scope.comment,
+                    queue: 'main'
+                };
+
+                async.api($scope, options);
+            };
+	};
        
     }
 ])
