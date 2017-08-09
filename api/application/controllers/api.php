@@ -478,24 +478,76 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $Dataservicedowntime = $this->nagios_data->get_collection('servicedowntime');
-        $Datahostdowntime = $this->nagios_data->get_collection('hostdowntime');
         $Downtime = array();
-        
-        foreach ($Datahostdowntime as $hostdowntime) 
+
+        $allowed_types = array(
+            'host',
+            'svc'
+        );
+
+        if(in_array($type, $allowed_types))
         {
-            $Hostdowntime[] = array('host' => $hostdowntime->host_name, 'entry_time'=> $hostdowntime->entry_time, 'author' => $hostdowntime->author, 'comment'=> $hostdowntime->comment, 'start_time'=> $hostdowntime->start_time, 'end_time' => $hostdowntime->end_time, 'fixed' => $hostdowntime->fixed, 'duration' => $hostdowntime->duration, 'downtime_id' => $hostdowntime->downtime_id, 'trigged_id' => $hostdowntime->triggered_by);
+            if($type == 'host')
+            {
+                $Datahostdowntime = $this->nagios_data->get_collection('hostdowntime');
+                
+                foreach ($Datahostdowntime as $hostdowntime) 
+                {
+                    $Downtime[] = array('host' => $hostdowntime->host_name, 'entry_time'=> $hostdowntime->entry_time, 'author' => $hostdowntime->author, 'comment'=> $hostdowntime->comment, 'start_time'=> $hostdowntime->start_time, 'end_time' => $hostdowntime->end_time, 'fixed' => $hostdowntime->fixed, 'duration' => $hostdowntime->duration, 'downtime_id' => $hostdowntime->downtime_id, 'trigged_id' => $hostdowntime->triggered_by);
+                }
+            }
+            else
+            {
+                $Dataservicedowntime = $this->nagios_data->get_collection('servicedowntime');
+
+                foreach ($Dataservicedowntime as $servicedowntime) 
+                {
+                    $Downtime[] = array('host' => $servicedowntime->host_name, 'service'=> $servicedowntime->service_description, 'entry_time'=> $servicedowntime->entry_time, 'author' => $servicedowntime->author, 'comment'=> $servicedowntime->comment, 'start_time'=> $servicedowntime->start_time, 'end_time' => $servicedowntime->end_time, 'fixed' => $servicedowntime->fixed, 'duration' => $servicedowntime->duration, 'downtime_id' => $servicedowntime->downtime_id, 'trigged_id' => $servicedowntime->triggered_by);
+                }
+
+            }
         }
 
-        $Downtime['host'] = $Hostdowntime;
-   
-        foreach ($Dataservicedowntime as $servicedowntime) 
+        $this->output($Downtime);
+    }
+
+    /**
+     * Fetch host or service downtime
+     *
+     * @param String $type, host : host, svc: service
+     */
+    public function downtime($type)
+    {
+        $Downtime = array();
+
+        $allowed_types = array(
+            'host',
+            'svc'
+        );
+
+        if(in_array($type, $allowed_types))
         {
-            $Servicedowntime[] = array('host' => $servicedowntime->host_name, 'service'=> $servicedowntime->service_description, 'entry_time'=> $servicedowntime->entry_time, 'author' => $servicedowntime->author, 'comment'=> $servicedowntime->comment, 'start_time'=> $servicedowntime->start_time, 'end_time' => $servicedowntime->end_time, 'fixed' => $servicedowntime->fixed, 'duration' => $servicedowntime->duration, 'downtime_id' => $servicedowntime->downtime_id, 'trigged_id' => $servicedowntime->triggered_by);
+            if($type == 'host')
+            {
+                $Datahostdowntime = $this->nagios_data->get_collection('hostdowntime');
+                
+                foreach ($Datahostdowntime as $hostdowntime) 
+                {
+                    $Downtime[] = array('host' => $hostdowntime->host_name, 'entry_time'=> $hostdowntime->entry_time, 'author' => $hostdowntime->author, 'comment'=> $hostdowntime->comment, 'start_time'=> $hostdowntime->start_time, 'end_time' => $hostdowntime->end_time, 'fixed' => $hostdowntime->fixed, 'duration' => $hostdowntime->duration, 'downtime_id' => $hostdowntime->downtime_id, 'trigged_id' => $hostdowntime->triggered_by);
+                }
+            }
+            else
+            {
+                $Dataservicedowntime = $this->nagios_data->get_collection('servicedowntime');
+
+                foreach ($Dataservicedowntime as $servicedowntime) 
+                {
+                    $Downtime[] = array('host' => $servicedowntime->host_name, 'service'=> $servicedowntime->service_description, 'entry_time'=> $servicedowntime->entry_time, 'author' => $servicedowntime->author, 'comment'=> $servicedowntime->comment, 'start_time'=> $servicedowntime->start_time, 'end_time' => $servicedowntime->end_time, 'fixed' => $servicedowntime->fixed, 'duration' => $servicedowntime->duration, 'downtime_id' => $servicedowntime->downtime_id, 'trigged_id' => $servicedowntime->triggered_by);
+                }
+
+            }
         }
 
-        $Downtime['service'] = $Servicedowntime;
-       
         $this->output($Downtime);
     }
 
