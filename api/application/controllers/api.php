@@ -280,7 +280,8 @@ class API extends VS_Controller
      */
      public function availability($type, $repiod, $start, $end, $hostservice, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost='', $firstAssumedService='', $backTrack)
     {
-        
+        $validate = $this->validate_data($type, $repiod, $start, $end, $hostservice, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $firstAssumedService, $backTrack);
+
     }
 
     /**
@@ -301,22 +302,7 @@ class API extends VS_Controller
      */
     public function trend($reportType, $name='', $start='', $end='', $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $backTrack, $suppressImage, $suppressPopups)
     {
-        $Trend = array();
-        
-
-        //host
-        if($reportType == 1)
-        {
-            $Trend = $this->trend_data->get_trend_host();
-        }
-
-        //service
-        else if($reportType == 2)
-        {
-            $Trend = $this->trend_data->get_trend_service();
-        }
-
-        $this->output($Trend);
+        $validate = $this->validate_data($reportType, $name, $start, $end, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $backTrack, $suppressImage, $suppressPopups);
     }
 
     /**
@@ -380,6 +366,10 @@ class API extends VS_Controller
             'SOFT',
             'ALL STATE TYPE'
         );
+
+        $logtype = urldecode($logtype);
+        $period = urldecode($period);
+        $statetype = urldecode($statetype);
 
         //check empty inputs
         if(!empty($type) && !empty($period) && !empty($date) && !empty($service) && !empty($logtype) && !empty($statetype) && !empty($state))
@@ -478,6 +468,11 @@ class API extends VS_Controller
 
     public function testing()
     {
+        $Data = array('car','motor',true);
+
+        $validate = $this->validate_data($Data);
+
+        $this->output($validate);
     }
 
     /**
@@ -565,6 +560,8 @@ class API extends VS_Controller
             'svc',
             'hostsvc'
         );
+
+        $comments = urldecode($comments);
 
         //check empty input
         if(!empty($type) && !empty($name) && !empty($author) && !empty($comment) && !empty($start) && !empty($end) && !empty($fixed))
@@ -988,6 +985,9 @@ class API extends VS_Controller
      {
         $result = false;
 
+        $author = urldecode($author);
+        $comment = urldecode($comment);
+
         if($type == 'host')
         {
             $result = $this->system_commands->acknowledge_host_problem($host, $sticky, $notify, $persistent, $author, $comment);
@@ -1377,6 +1377,9 @@ class API extends VS_Controller
      public function sendCustomNotification($type, $host, $service, $force, $broadcast, $author, $comment)
      {
         $result = false;
+
+        $author = urldecode($author);
+        $comment = urldecode($comment);
 
         if($type == 'host')
         {
@@ -2178,6 +2181,29 @@ class API extends VS_Controller
         $first = $this->comments_flatten($first);
         $second = $this->comments_flatten($second);
         return array_merge($first, $second);
+    }
+
+    //check and validate data
+    private function validate_data($data)
+    {
+        $dataLength = count($data);
+        $validate = false;
+        $true = 0;
+        
+        for($i=0; $i<$dataLength; $i++)
+        {
+            if(!empty($data[$i]))
+            {
+                $true ++;
+            }
+        }
+
+        if($true == $dataLength)
+        {
+            $validate = true;
+        }
+
+        return $validate;
     }
 
 }
