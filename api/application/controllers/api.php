@@ -478,9 +478,25 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $host = $this->system_commands->get_return_array('PERFORMANCE');
+        $Dataservicedowntime = $this->nagios_data->get_collection('servicedowntime');
+        $Datahostdowntime = $this->nagios_data->get_collection('hostdowntime');
+        $Downtime = array();
+        
+        foreach ($Datahostdowntime as $hostdowntime) 
+        {
+            $Hostdowntime[] = array('host' => $hostdowntime->host_name, 'entry_time'=> $hostdowntime->entry_time, 'author' => $hostdowntime->author, 'comment'=> $hostdowntime->comment, 'start_time'=> $hostdowntime->start_time, 'end_time' => $hostdowntime->end_time, 'fixed' => $hostdowntime->fixed, 'duration' => $hostdowntime->duration, 'downtime_id' => $hostdowntime->downtime_id, 'trigged_id' => $hostdowntime->triggered_by);
+        }
 
-        $this->output($host);
+        $Downtime['host'] = $Hostdowntime;
+   
+        foreach ($Dataservicedowntime as $servicedowntime) 
+        {
+            $Servicedowntime[] = array('host' => $servicedowntime->host_name, 'service'=> $servicedowntime->service_description, 'entry_time'=> $servicedowntime->entry_time, 'author' => $servicedowntime->author, 'comment'=> $servicedowntime->comment, 'start_time'=> $servicedowntime->start_time, 'end_time' => $servicedowntime->end_time, 'fixed' => $servicedowntime->fixed, 'duration' => $servicedowntime->duration, 'downtime_id' => $servicedowntime->downtime_id, 'trigged_id' => $servicedowntime->triggered_by);
+        }
+
+        $Downtime['service'] = $Servicedowntime;
+       
+        $this->output($Downtime);
     }
 
     /**
