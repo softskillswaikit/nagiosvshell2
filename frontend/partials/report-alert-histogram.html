@@ -91,7 +91,7 @@
 						<div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'" ng-model="startDate">
 							<label for="startdate" class="col-md-4 control-label">Start Date:</label>
 							<div class="col-md-6">
-								<input type="date" ng-model="startDate" max="{{today | date: 'MM/dd/yyyy'}}" name="startdate" class="form-control" ng-required="reportPeriod=='*Custom Report Period*'"></input>
+								<input type="date" ng-model="startDate" max="{{today | date: 'yyyy-MM-dd'}}" name="startdate" class="form-control" ng-required="reportPeriod=='*Custom Report Period*'"></input>
 								<span style="color:red" ng-show="inputForm.startdate.$invalid">
 								<span ng-show="inputForm.startdate.$error.required">This field is required.</span></span>
 							</div>
@@ -100,7 +100,7 @@
 						<div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'" ng-model="endDate">
 							<label for="enddate" class="col-md-4 control-label">End Date:</label>
 							<div class="col-md-6">
-								<input type="date" ng-model="endDate" max="{{today | date: 'MM/dd/yyyy'}}" name="enddate" class="form-control" ng-required="reportPeriod=='*Custom Report Period*'"></input>
+								<input type="date" ng-model="endDate" max="{{today | date: 'yyyy-MM-dd'}}" name="enddate" class="form-control" ng-required="reportPeriod=='*Custom Report Period*'"></input>
 								<span style="color:red" ng-show="inputForm.enddate.$invalid">
 								<span ng-show="inputForm.enddate.$error.required">This field is required.</span></span>
 							</div>

@@ -694,14 +694,18 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('AvailabilityCtrl', ['$scope', '$routeParams', '$filter', 'async', '$rootScope',
-    function($scope, $routeParams, $filter, async, $rootScope) {
+.controller('AvailabilityCtrl', ['$scope', '$routeParams', '$filter', 'async', '$window',
+    function($scope, $routeParams, $filter, async, $window) {
 
       $scope.init = function() {
-        $scope.componentName =   [
-          {name : "localhost"},
-          {name : "testserver"}
-        ];
+        //get component name
+        var options = {
+            name: 'name',
+            url: 'name',
+            queue: 'main'
+        };
+
+        async.api($scope, options);
 
         $scope.reset();
       };
@@ -729,14 +733,25 @@ angular.module('vshell.controllers', [])
       $scope.reportType = $scope.savedRT;
       $scope.savedRC = localStorage.getItem('reportComponent');
       $scope.reportComponent = $scope.savedRC;
-      console.log("reportType");
-      console.log($scope.reportType);
-      console.log("reportComponent");
-      console.log($scope.reportComponent);
 
       $scope.createReport = function(){
+        $window.location.href="#/report/availability/report";
+
         localStorage.setItem('reportType', $scope.reportType);
         localStorage.setItem('reportComponent', $scope.reportComponent);
+
+        console.log("reportType");
+        console.log($scope.reportType);
+        console.log("reportComponent");
+        console.log($scope.reportComponent);
+        console.log("startDate");
+        console.log($scope.startDate);
+        console.log("endDate");
+        console.log($scope.endDate);
+        console.log("reportPeriod");
+        console.log($scope.reportPeriod);
+        console.log("backtrackedArchives");
+        console.log($scope.backtrackedArchives);
 
         //data for test
         $scope.testdata=[
@@ -911,22 +926,20 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('TrendsCtrl', ['$scope', '$routeParams', '$filter', 'async',
-    function($scope, $routeParams, $filter, async) {
+.controller('TrendsCtrl', ['$scope', '$routeParams', '$filter', 'async', '$timeout',
+    function($scope, $routeParams, $filter, async, $timeout) {
 
         $scope.init = function() {
-          $scope.componentName =   [
-            {name : "localhost"},
-            {name : "testserver"}
-          ];
-            /*var options = {
-                name: 'trends',
-                url: 'trends/',
-                queue: 'main'
-            };
+          //get component name
+          var options = {
+              name: 'name',
+              url: 'name',
+              queue: 'main'
+          };
 
-            async.api($scope, options);*/
-            $scope.reset();
+          async.api($scope, options);
+
+          $scope.reset();
         };
 
         $scope.reset = function(){
@@ -934,10 +947,10 @@ angular.module('vshell.controllers', [])
           $scope.todayString = $filter('date')(Date.now(), 'yyyy-MM-dd');
 
           $scope.reportType = 'Host';
-    			$scope.serviceType = 'Normal Service';
-          $scope.reportHost = 'ALL';
-          $scope.reportService = 'ALL';
-          $scope.reportHostResource = 'ALL';
+    			$timeout(function(){
+            $scope.reportHost = $scope.name.host[0];
+            $scope.reportService = $scope.name.service[0].service;
+          }, 1000);
           $scope.startDate =  $scope.todayString;
           $scope.endDate =  $scope.todayString;
     			$scope.reportPeriod = 'Last 7 Days';
@@ -952,6 +965,26 @@ angular.module('vshell.controllers', [])
         };
 
         $scope.createReport = function(){
+
+          //$window.location.href="#/report/trends/report";
+
+          var startUnix = parseInt((new Date($scope.startDate).getTime() / 1000).toFixed(0));
+          var endUnix = parseInt((new Date($scope.endDate).getTime() / 1000).toFixed(0));
+          console.log("reportType");
+          console.log($scope.reportType);
+          console.log("reportHost");
+          console.log($scope.reportHost);
+          console.log("reportService");
+          console.log($scope.reportService);
+          console.log("hostresource");
+          console.log($scope.reportHostResource);
+          console.log("reportPeriod");
+          console.log($scope.reportPeriod);
+          console.log("startdate");
+          console.log($scope.startDate);
+          console.log("backtrackedArchives");
+          console.log($scope.backtrackedArchives);
+
           $scope.report =
             {
               host : "app_server",
@@ -1310,37 +1343,33 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('AlertHistogramCtrl', ['$scope', '$routeParams', '$filter', 'async',
-    function($scope, $routeParams, $filter, async) {
+.controller('AlertHistogramCtrl', ['$scope', '$routeParams', '$filter', 'async', '$timeout',
+    function($scope, $routeParams, $filter, async, $timeout) {
 
 		$scope.init = function(){
-      $scope.componentName =   [
-        {name : "localhost"},
-        {name : "testserver"}
-      ];
+      //get component name
+      var options = {
+          name: 'name',
+          url: 'name',
+          queue: 'main'
+      };
 
-            /*
-			var options = {
-                name: 'alerthistogram',
-                url: 'alerthistogram/',
-                queue: 'main'
-            };
+      async.api($scope, options);
 
-            async.api($scope, options);
-			*/
-            $scope.reset();
+      $scope.reset();
 
-	     };
+	  };
 
        $scope.reset = function(){
           $scope.today = new Date();
           $scope.todayString = $filter('date')(Date.now(), 'yyyy-MM-dd');
 
-     			$scope.reportType = 'Host';
-     			$scope.serviceType = 'Normal Service';
-          $scope.reportHost = 'ALL';
-          $scope.reportService = 'ALL';
-          $scope.reportHostResource = 'ALL';
+          $scope.reportType = 'Host';
+          $timeout(function(){
+            $scope.reportHost = $scope.name.host[0];
+            $scope.reportService = $scope.name.service[0].service;
+          }, 1000);
+
           $scope.startDate =  $scope.todayString;
           $scope.endDate =  $scope.todayString;
      			$scope.reportPeriod = 'Last 7 Days';
@@ -1353,6 +1382,24 @@ angular.module('vshell.controllers', [])
        };
 
        $scope.createReport = function(){
+         //$window.location.href="#/report/availability/report";
+
+         var startUnix = parseInt((new Date($scope.startDate).getTime() / 1000).toFixed(0));
+         var endUnix = parseInt((new Date($scope.endDate).getTime() / 1000).toFixed(0));
+         console.log("reportType");
+         console.log($scope.reportType);
+         console.log("reportHost");
+         console.log($scope.reportHost);
+         console.log("reportService");
+         console.log($scope.reportService);
+         console.log("hostresource");
+         console.log($scope.reportHostResource);
+         console.log("reportPeriod");
+         console.log($scope.reportPeriod);
+         console.log("startdate");
+         console.log($scope.startDate);
+         console.log("backtrackedArchives");
+         console.log($scope.backtrackedArchives);
 
          $scope.report = {
            host : "app_server",
@@ -1504,6 +1551,11 @@ angular.module('vshell.controllers', [])
         $scope.persistent = true;
         $scope.comment = '';
 
+        if($scope.addHostComment)
+          $scope.addHostComment.$setPristine();
+        if($scope.addServiceComment)
+          $scope.addServiceComment.$setPristine();
+
         $scope.callback = function(data, status, headers, config) {
           if(config != null){
             if(config.url.includes("status")){
@@ -1511,11 +1563,6 @@ angular.module('vshell.controllers', [])
             }
           }
         };
-
-        if($scope.addHostComment)
-          $scope.addHostComment.$setPristine();
-        if($scope.addServiceComment)
-          $scope.addServiceComment.$setPristine();
       };
 
       $scope.addComment = function(type){
@@ -1588,7 +1635,14 @@ angular.module('vshell.controllers', [])
 
             async.api($scope, options);
 
-            $timeout(function(){$scope.reset();}, 1000);
+            //get author
+            var options1 = {
+                name: 'status',
+                url: 'status',
+                queue: 'status-' + '',
+                cache: true
+            };
+            async.api($scope, options1);
         };
 
         $scope.reset = function(){
@@ -1617,6 +1671,11 @@ angular.module('vshell.controllers', [])
           $scope.durationMin = 0;
           $scope.childHost = 'doNothing';
 
+          if($scope.scdhostdowntime)
+            $scope.scdhostdowntime.$setPristine();
+          if($scope.scdsvcdowntime)
+            $scope.scdsvcdowntime.$setPristine();
+
           $scope.callback = function(data, status, headers, config) {
             if(config != null){
               if(config.url.includes("status")){
@@ -1625,18 +1684,14 @@ angular.module('vshell.controllers', [])
             }
           };
 
-          if($scope.addHostComment)
-            $scope.addHostComment.$setPristine();
-          if($scope.addServiceComment)
-            $scope.addServiceComment.$setPristine();
         };
 
         $scope.scheduleDowntime = function(type){
 
           $scope.reset();
 
-          $scope.schedule = function(hostName, service, start, end, type, triggerID, durationHour, durationMin, comment){
-            var author = $scope.status.username;
+          $scope.schedule = function(hostName, service, start, end, type, triggerID, durationHour, durationMin, author, comment){
+
             var duration  = durationHour * 60 + durationMin;
             var startUnix = parseInt((new Date(start).getTime() / 1000).toFixed(0));
             var endUnix = parseInt((new Date(end).getTime() / 1000).toFixed(0));
