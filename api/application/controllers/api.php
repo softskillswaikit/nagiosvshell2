@@ -705,6 +705,8 @@ class API extends VS_Controller
     public function addComments($type, $host, $service='', $persistent, $author, $comments)
     {
         $result = false;
+        $author = urldecode($author);
+        $comments = urldecode($comments);
 
         $allowed_types = array(
             'host',
