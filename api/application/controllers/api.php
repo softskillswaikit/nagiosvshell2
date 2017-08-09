@@ -853,11 +853,11 @@ class API extends VS_Controller
 
         if($type)
         {
-            $result = $this->system_commands->enable_svc_notification();
+            $result = $this->system_commands->enable_svc_notification($host, $service);
         }
         else
         {
-            $result = $this->system_commands->disable_svc_notification();
+            $result = $this->system_commands->disable_svc_notification($host, $service);
         }
 
         $this->output($result);
