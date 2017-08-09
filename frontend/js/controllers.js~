@@ -132,19 +132,19 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('HostDetailsCtrl', ['$scope', '$routeParams', 'async',
-    function($scope, $routeParams, async) {
-	
+.controller('HostDetailsCtrl', ['$scope', '$routeParams', '$filter', 'async',
+    function($scope, $routeParams, $filter, async) {
+    
         $scope.init = function() {
 
-	    var value = {
-		name: 'status',
-		url: 'status',
-		queue: 'status-' + '',
-		cache: true
-	    };
+            var value = {
+            name: 'status',
+            url: 'status',
+            queue: 'status-' + '',
+            cache: true
+            };
 
-	    async.api($scope, value);
+            async.api($scope, value);
 
             var options = {
                 name: 'host',
@@ -156,87 +156,71 @@ angular.module('vshell.controllers', [])
             
         };
 
-	$scope.passcustom = function(host, parameter) {
-		
-		$scope.custom_host = host;
-		$scope.author = parameter;
-		$scope.force = false;
-		$scope.broadcast = false;
-		var type = 'host';
+        $scope.passcustom = function(host, parameter) {
+        
+            $scope.custom_host = host;
+            $scope.author = parameter;
+            $scope.force = false;
+            $scope.broadcast = false;
+            var type = 'host';
+            var service = null;
+        
+            $scope.forcechange = function (status){
+                if (status == false){
+                    $scope.force = status;
+                }else if (status == true){
+                    $scope.force = status;
+                }
+            };
+
+            $scope.broadcastchange = function (status){
+                if (status == false){
+                    $scope.broadcast = status;
+                
+                }else if (status == true){
+                    $scope.broadcast = status;
+                }
+            };
+        
+            $scope.custom = function(comment) {
+                var options = {
+                        name: 'CustomNotification',
+                        url: 'sendcustomnotification/' + type + '/' + $scope.custom_host + '/' + service + '/' + $scope.force + '/'
+                        + $scope.broadcast + '/' + $scope.author + '/' + comment,
+                        queue: 'main'
+                };
+                async.api($scope, options);
+            };
+        };
+
+	$scope.passhostdowntime = function(host, author) {
+		$scope.hostHostName = host;
+		$scope.hostAuthor = author;
+		$scope.hostTriggeredBy = "N/A";
+		$scope.hostType = "Fixed";
+		$scope.hostChildHost = "doNothing";
+		var type = "host";
 		var service = null;
 		
-		$scope.forcechange = function (status){
-			if (status == false){
-				$scope.force = status;
-			}else if (status == true){
-				$scope.force = status;
+		$scope.schedule = function (hour, minute, comment, startdate, enddate, triggerby, fixed, childhost) {
+			var duration = hour * minute;
+			var start_date = new Date(startdate);
+			var start_timestamp = (start_date.getTime() / 1000).toString();
+			var end_date = new Date(enddate);
+			var end_timestamp = (end_date.getTime() / 1000).toString();
+			var fixed = true;
+			
+			if (type = '"Flexible"'){
+				fixed = false;
 			}
-		};
+			else{
+				fixed = true;
+			}
 
-		$scope.broadcastchange = function (status){
-			if (status == false){
-				$scope.broadcast = status;
-				
-			}else if (status == true){
-				$scope.broadcast = status;
-			}
-		};
-		
-		$scope.custom = function(comment) {
 			var options = {
-		    		name: 'CustomNotification',
-		    		url: 'sendcustomnotification/' + type + '/' + $scope.custom_host + '/' + service + '/' + $scope.force + '/'
-					+ $scope.broadcast + '/' + $scope.author + '/' + comment,
-		    		queue: 'main'
-			};
-			async.api($scope, options);
-		};
-	};
-
-	$scope.passack = function (host, parameter) {
-	
-		$scope.ack_host = host;
-		$scope.author = parameter;
-		$scope.stickyack = true;
-		$scope.sendnotify = true;
-		$scope.persistent = false;
-		$scope.comment = null;
-		var type = 'host';
-		var service = null;
-
-		$scope.sticky = function (status){
-			if (status == false){
-				$scope.stickyack = status;
-			}else if (status == true){
-				$scope.stickyack = status;
-			}
-		};
-
-		$scope.notify = function (status){
-			if (status == false){
-				$scope.sendnotify = status;
-				
-			}else if (status == true){
-				$scope.sendnotify = status;
-			}
-		};
-
-		$scope.persist = function (status){
-			if (status == false){
-				$scope.persistent = status;
-				
-			}else if (status == true){
-				$scope.persistent = status;
-			}
-		};
-
-		$scope.acknowledge = function (comment) {
-			$scope.comment = comment;
-			var options = {
-				name: 'acknowledge',
-				url: 'acknowledgeproblem/' + type + '/' + $scope.ack_host + '/' + service + '/'
-				+ $scope.stickyack + '/' + $scope.sendnotify + '/' + $scope.persistent + '/'
-				+ $scope.author + '/' + $scope.comment,
+				name: 'hostdowntime',
+				url: 'downtime/' + type + '/' + $scope.hostHostName + '/' + service + '/' + start_timestamp + '/' + end_timestamp + '/'
+					+ fixed + '/' + triggerby + '/' + duration + '/' + $scope.hostAuthor + '/' + comment,
 				queue: 'main'
 			};
 
@@ -245,16 +229,137 @@ angular.module('vshell.controllers', [])
 		};
 	};
 
-	$scope.service_check = function (type, hostname) {
-		
+        $scope.passack = function (host, parameter) {
+    
+            $scope.ack_host = host;
+            $scope.author = parameter;
+            $scope.stickyack = true;
+            $scope.sendnotify = true;
+            $scope.persistent = false;
+            $scope.comment = null;
+            var type = 'host';
+            var service = null;
+
+            $scope.sticky = function (status){
+                if (status == false){
+                    $scope.stickyack = status;
+                }else if (status == true){
+                    $scope.stickyack = status;
+                }
+            };
+
+            $scope.notify = function (status){
+                if (status == false){
+                    $scope.sendnotify = status;
+                
+                }else if (status == true){
+                    $scope.sendnotify = status;
+                }
+            };
+
+            $scope.persist = function (status){
+                if (status == false){
+                    $scope.persistent = status;
+                
+                }else if (status == true){
+                    $scope.persistent = status;
+                }
+            };
+
+            $scope.acknowledge = function (comment) {
+                $scope.comment = comment;
+                var options = {
+                    name: 'acknowledge',
+                    url: 'acknowledgeproblem/' + type + '/' + $scope.ack_host + '/' + service + '/'
+                    + $scope.stickyack + '/' + $scope.sendnotify + '/' + $scope.persistent + '/'
+                    + $scope.author + '/' + $scope.comment,
+                    queue: 'main'
+                };
+
+                async.api($scope, options);
+            };
+        };
+
+        $scope.service_check = function (type, hostname) {
+
+	    
+            var options = {
+                name: 'hostServiceCheck',
+                url: 'hostservicecheck/' + type + '/' + hostname,
+                queue: 'main'
+            };
+
+            async.api($scope, options);
+        };
+
+	$scope.notification_check = function (type, hostname) {
+
+		var status = false;
 		var options = {
-			name: 'EnableServiceCheck',
-			url: 'hostservicecheck/' + type + '/' + hostname,
+			name: 'hostServiceNotification',
+			url: 'hostservicenotification/' + status + '/' + hostname,
 			queue: 'main'
 		};
 
 		async.api($scope, options);
 	};
+
+        $scope.all_service_schedule = function (host, time) {
+            $scope.schedule_host = host;
+	    $scope.check_time = $filter('date')(time * 1000, "yyyy-MM-dd HH:mm:ss");
+	    $scope.input_check_time = $scope.check_time;
+	    $scope.force_check = false;
+	    var type = "host";
+	    var service = null;
+
+	    $scope.forcecheck = function (status) {
+		if (status == false)
+			$scope.force_check = false;
+		else
+			$scope.force_check = true;
+	    };
+
+	    $scope.schedule = function (time) {
+		var date = new Date(time);
+		var next_check = date.getTime() / 1000;
+		
+		var options = {
+			name: 'schedulecheck',
+			url: 'schedulecheck/' + type + '/' + $scope.schedule_host + '/' + service + '/' + next_check + '/' + $scope.force_check,
+			queue: 'main'
+		};
+
+		async.api($scope, options);
+	    };
+        };
+
+	$scope.host_schedule = function (host, time) {
+            $scope.schedule_host = host;
+	    $scope.check_time = $filter('date')(time * 1000, "yyyy-MM-dd HH:mm:ss");
+	    $scope.input_check_time = $scope.check_time;
+	    $scope.force_check = false;
+
+	    $scope.forcecheck = function (status) {
+		if (status == false)
+			$scope.force_check = false;
+		else
+			$scope.force_check = true;
+	    };
+
+	    $scope.schedule = function (time) {
+		var date = new Date(time);
+		var next_check = date.getTime() / 1000;
+		
+		var options = {
+			name: 'schedulehostcheck',
+			url: 'schedulehostcheck/' + $scope.schedule_host + '/' + next_check + '/' + $scope.force_check,
+			queue: 'main'
+		};
+
+		async.api($scope, options);
+	    };
+        };
+
     }
 ])
 
@@ -286,7 +391,7 @@ angular.module('vshell.controllers', [])
         var utcdate = new Date();
         var timestamp = (utcdate.getTime() - 86400000) / 1000;
         var date = timestamp.toString();
-	date = date.substring(0, 10);
+    date = date.substring(0, 10);
 
         $scope.previousday = function() {
             
@@ -295,7 +400,7 @@ angular.module('vshell.controllers', [])
             var previoustimestamp = predate - (86400 * cnt);
             console.log(previoustimestamp);
             var previousdate = previoustimestamp.toString();
-	    cnt++;
+        cnt++;
 
             $scope.nextday = function() {
                 
@@ -304,7 +409,7 @@ angular.module('vshell.controllers', [])
                 var nexttimestamp = ntdate + (86400 * next);
                 console.log(nexttimestamp);
                 var nextdate = nexttimestamp.toString();
-		next++;
+        next++;
         
     
                         var options = {
@@ -341,8 +446,8 @@ angular.module('vshell.controllers', [])
 .controller('AlertSummaryCtrl', ['$scope', '$attrs', 'async',
     function($scope, $attrs, async) {
 
-	
-	
+    
+    
 
         $scope.reset = function(){
             $scope.StandardReportType = '25 Most Recent Hard Alerts';
@@ -369,20 +474,20 @@ angular.module('vshell.controllers', [])
 
             async.api($scope, options);
 
-	    var result = {
+        var result = {
                 name: 'status',
                 url: 'status',
                 queue: 'status-' + '',
                 cache: true
             };
 
-	    async.api($scope, result);
-	    
+        async.api($scope, result);
+        
         };
 
         $scope.create = function() {
 
-	    var date = '1500796724';
+        var date = '1500796724';
             
             var options = {
                 name: 'alersummary',
@@ -411,7 +516,7 @@ angular.module('vshell.controllers', [])
         var utcdate = new Date();
         var timestamp = (utcdate.getTime()) / 1000;
         var date = timestamp.toString();
-	date = date.substring(0, 10);
+    date = date.substring(0, 10);
 
         $scope.previousday = function() {
             
@@ -420,7 +525,7 @@ angular.module('vshell.controllers', [])
             var predate = parseInt(timestamp);
             var previoustimestamp = predate - (86400 * cnt);
             var previousdate = previoustimestamp.toString();
-	    cnt++;
+        cnt++;
 
             $scope.nextday = function() {
                 
@@ -429,12 +534,12 @@ angular.module('vshell.controllers', [])
                 var ntdate = parseInt(previousdate);
                 var nexttimestamp = ntdate + (86400 * next);
                 var nextdate = nexttimestamp.toString();
-		next++;
+        next++;
         
     
                         var options = {
                             name: 'notifications',
-                            url: 'notifications/' + nextdate,
+                            url: 'notification/' + nextdate,
                             queue: 'main'
                         };
 
@@ -444,7 +549,7 @@ angular.module('vshell.controllers', [])
     
                     var options = {
                         name: 'notifications',
-                        url: 'notifications/' + previousdate,
+                        url: 'notification/' + previousdate,
                         queue: 'main'
                     };
 
@@ -453,7 +558,7 @@ angular.module('vshell.controllers', [])
 
                 var options = {
                     name: 'notifications',
-                    url: 'notifications/' + date,
+                    url: 'notification/' + date,
                     queue: 'main'
                 };
 
@@ -473,7 +578,7 @@ angular.module('vshell.controllers', [])
         var utcdate = new Date();
         var timestamp = (utcdate.getTime()) / 1000;
         var date = timestamp.toString();
-	date = date.substring(0, 10);
+    date = date.substring(0, 10);
 
         $scope.previousday = function() {
             
@@ -481,7 +586,7 @@ angular.module('vshell.controllers', [])
             var predate = parseInt(timestamp);
             var previoustimestamp = predate - (86400 * cnt);
             var previousdate = previoustimestamp.toString();
-	    cnt++;
+        cnt++;
 
             $scope.nextday = function() {
                 
@@ -489,12 +594,12 @@ angular.module('vshell.controllers', [])
                 var ntdate = parseInt(previousdate);
                 var nexttimestamp = ntdate + (86400 * next);
                 var nextdate = nexttimestamp.toString();
-		next++;
+        next++;
         
     
                         var options = {
                             name: 'eventlog',
-                            url: 'eventlogs/' + nextdate,
+                            url: 'eventlog/' + nextdate,
                             queue: 'main'
                         };
 
@@ -504,606 +609,640 @@ angular.module('vshell.controllers', [])
     
                     var options = {
                         name: 'eventlog',
-                        url: 'eventlogs/' + previousdate,
+                        url: 'eventlog/' + previousdate,
                         queue: 'main'
                     };
 
                     async.api($scope, options);
             };
 
-		var options = {
+        var options = {
                         name: 'eventlog',
-                        url: 'eventlogs/' + date,
+                        url: 'eventlog/' + date,
                         queue: 'main'
                     };
 
                     async.api($scope, options);
-		
+        
         };
     }
 ])
 
-.controller('ProcessInfoCtrl', ['$scope', '$interval', '$timeout', 'async',
-    function($scope, $interval, $timeout, async) {
+.controller('ProcessInfoCtrl', ['$scope', '$interval', '$location', '$timeout', 'async',
+    function($scope, $interval, $location, $timeout, async) {
 
-	$scope.showModal = function(modal_id){
+    var url = "";
+    url = $location.path();
+
+    $scope.showModal = function(modal_id){
           $(modal_id).modal('show');
         };
 
-	$scope.closeModal = function(modal_id){
+    $scope.closeModal = function(modal_id){
           $(modal_id).modal('hide');
         };
+
+    
 
         $scope.init = function() {
 
             var options = {
-                	name: 'processinfo',
-                	url: 'processinfo',
-                	queue: 'main'
-            	};
-	
+                    name: 'processinfo',
+                    url: 'processinfo',
+                    queue: 'main'
+                };
+    
 
-	    async.api($scope, options);
+        async.api($scope, options);
+        
 
-	    $interval(function(){
+        $interval(function(){
 
-		var options = {
-                	name: 'processinfo',
-                	url: 'processinfo',
-                	queue: 'main'
-            	};
+        var options = {
+                    name: 'processinfo',
+                    url: 'processinfo',
+                    queue: 'main'
+                };
 
-		async.api($scope, options);
-	    }, 3000);
-            
+        async.api($scope, options);
+        }, 3000, 20);   
 
         };
-	
-	$scope.open = function(operation) {
-
-		if (operation == 'shutdown'){
-
-			var result = {
-				name: 'nagiosoperation',
-				url: 'nagiosOperation/' + operation,
-				queue: 'main'
-			};
-
-			async.api($scope, result);
-
-		}else if (operation == 'restart'){
-
-			var result = {
-				name: 'nagiosoperation',
-				url: 'nagiosOperation/' + operation,
-				queue: 'main'
-			};
-
-			async.api($scope, result);
-		}
-				
-	};
-
-	$scope.notification = function(operation){
-		
-		if (operation == "YES"){
-
-			var type = "disable";
-
-			var result = {
-				name: 'allnotifications',
-				url: 'allnotifications/' + type,
-				queue: 'main'
-			};
-			
-			async.api($scope, result);
-			
-		}else if (operation == 'NO'){
-
-			var type = "enable";
-
-			var result = {
-				name: 'allnotifications',
-				url: 'allnotifications/' + type,
-				queue: 'main'
-			};
-
-			async.api($scope, result);
-		}
-		
-		$timeout(function(){
-			if ($scope.allnotifications == '"The command run successfully !"'){
-				$scope.showModal('#success');
-				$timeout(function(){
-					$scope.closeModal('#success');
-				}, 2000)
-			}
-			else{
-				$scope.showModal('#fail');
-				$timeout(function(){
-					$scope.closeModal('#fail');
-				}, 2000)
-			}
-		}, 1000);
-
-		
-
-	};
-
-	$scope.activeservice = function(operation){
-		
-		if (operation == "YES"){
-
-			var type = "stop";
-
-			var result = {
-				name: 'allservicecheck',
-				url: 'allServiceCheck/' + type,
-				queue: 'main'
-			};
-
-			async.api($scope, result);
-
-		}else if (operation == 'NO'){
-
-			var type = "start";
-
-			var result = {
-				name: 'allservicecheck',
-				url: 'allServiceCheck/' + type,
-				queue: 'main'
-			};
-
-			async.api($scope, result);
-		}
-
-		$timeout(function(){
-			if ($scope.allservicecheck == '"The command run successfully !"'){
-				$scope.showModal('#success');
-				$timeout(function(){
-					$scope.closeModal('#success');
-				}, 2000)
-			}
-			else{
-				$scope.showModal('#fail');
-				$timeout(function(){
-					$scope.closeModal('#fail');
-				}, 2000)
-			}
-		}, 1000);
-	};
-
-	$scope.passiveservice = function(operation){
-		
-		if (operation == "YES"){
-
-			var type = "stop";
-
-			var result = {
-				name: 'allpassiveservicecheck',
-				url: 'allPassiveServiceCheck/' + type,
-				queue: 'main'
-			};
-
-			async.api($scope, result);
-
-		}else if (operation == 'NO'){
-
-			var type = "start";
-
-			var result = {
-				name: 'allpassiveservicecheck',
-				url: 'allPassiveServiceCheck/' + type,
-				queue: 'main'
-			};
-
-			async.api($scope, result);
-		}
-
-		$timeout(function(){
-			if ($scope.allpassiveservicecheck == '"The command run successfully !"'){
-				$scope.showModal('#success');
-				$timeout(function(){
-					$scope.closeModal('#success');
-				}, 2000)
-			}
-			else{
-				$scope.showModal('#fail');
-				$timeout(function(){
-					$scope.closeModal('#fail');
-				}, 2000)
-			}
-		}, 1000);
-	};
-
-	$scope.activehost = function(operation){
-		
-		if (operation == "YES"){
-
-			var type = "stop";
-
-			var result = {
-				name: 'allhostcheck',
-				url: 'allHostCheck/' + type,
-				queue: 'main'
-			};
-
-			async.api($scope, result);
-
-		}else if (operation == 'NO'){
-
-			var type = "start";
-
-			var result = {
-				name: 'allhostcheck',
-				url: 'allHostCheck/' + type,
-				queue: 'main'
-			};
-
-			async.api($scope, result);
-		}
-
-		$timeout(function(){
-			if ($scope.allhostcheck == '"The command run successfully !"'){
-				$scope.showModal('#success');
-				$timeout(function(){
-					$scope.closeModal('#success');
-				}, 2000)
-			}
-			else{
-				$scope.showModal('#fail');
-				$timeout(function(){
-					$scope.closeModal('#fail');
-				}, 2000)
-			}
-		}, 1000);
-	};
-
-	$scope.passivehost = function(operation){
-		
-		if (operation == "YES"){
-
-			var type = "stop";
-
-			var result = {
-				name: 'allpassivehostcheck',
-				url: 'allPassiveHostCheck/' + type,
-				queue: 'main'
-			};
-
-			async.api($scope, result);
-
-		}else if (operation == 'NO'){
-
-			var type = "start";
-
-			var result = {
-				name: 'allpassivehostcheck',
-				url: 'allPassiveHostCheck/' + type,
-				queue: 'main'
-			};
-
-			async.api($scope, result);
-		}
-
-		$timeout(function(){
-			if ($scope.allpassivehostcheck == '"The command run successfully !"'){
-				$scope.showModal('#success');
-				$timeout(function(){
-					$scope.closeModal('#success');
-				}, 2000)
-			}
-			else{
-				$scope.showModal('#fail');
-				$timeout(function(){
-					$scope.closeModal('#fail');
-				}, 2000)
-			}
-		}, 1000);
-	};
-
-	$scope.event = function(operation){
-		
-		if (operation == "YES"){
-
-			var type = "disable";
-
-			var result = {
-				name: 'eventhandler',
-				url: 'eventHandler/' + type,
-				queue: 'main'
-			};
-
-			async.api($scope, result);
-
-		}else if (operation == 'NO'){
-
-			var type = "enable";
-
-			var result = {
-				name: 'eventhandler',
-				url: 'eventHandler/' + type,
-				queue: 'main'
-			};
-
-			async.api($scope, result);
-		}
-
-		$timeout(function(){
-			if ($scope.alleventhandler == '"The command run successfully !"'){
-				$scope.showModal('#success');
-				$timeout(function(){
-					$scope.closeModal('#success');
-				}, 2000)
-			}
-			else{
-				$scope.showModal('#fail');
-				$timeout(function(){
-					$scope.closeModal('#fail');
-				}, 2000)
-			}
-		}, 1000);
-	};
-
-	$scope.obsessservice = function(operation){
-		
-		if (operation == "YES"){
-
-			var type = "stop";
-
-			var result = {
-				name: 'obsessservice',
-				url: 'obsessOverServiceCheck/' + type,
-				queue: 'main'
-			};
-
-			async.api($scope, result);
-
-		}else if (operation == 'NO'){
-
-			var type = "start";
-
-			var result = {
-				name: 'obsessservice',
-				url: 'obsessOverServiceCheck/' + type,
-				queue: 'main'
-			};
-
-			async.api($scope, result);
-		}
-
-		$timeout(function(){
-			if ($scope.obsessservice == '"The command run successfully !"'){
-				$scope.showModal('#success');
-				$timeout(function(){
-					$scope.closeModal('#success');
-				}, 2000)
-			}
-			else{
-				$scope.showModal('#fail');
-				$timeout(function(){
-					$scope.closeModal('#fail');
-				}, 2000)
-			}
-		}, 1000);
-	};
-	
-	$scope.obsesshost = function(operation){
-		
-		if (operation == "YES"){
-
-			var type = "stop";
-
-			var result = {
-				name: 'obsesshost',
-				url: 'obsessOverHostCheck/' + type,
-				queue: 'main'
-			};
-
-			async.api($scope, result);
-
-		}else if (operation == 'NO'){
-
-			var type = "start";
-
-			var result = {
-				name: 'obsesshost',
-				url: 'obsessOverHostCheck/' + type,
-				queue: 'main'
-			};
-
-			async.api($scope, result);
-		}
-
-		$timeout(function(){
-			if ($scope.obsesshost == '"The command run successfully !"'){
-				$scope.showModal('#success');
-				$timeout(function(){
-					$scope.closeModal('#success');
-				}, 2000)
-			}
-			else{
-				$scope.showModal('#fail');
-				$timeout(function(){
-					$scope.closeModal('#fail');
-				}, 2000)
-			}
-		}, 1000);
-	};
-	
-	$scope.flap = function(operation){
-		
-		if (operation == "YES"){
-
-			var type = "disable";
-
-			var result = {
-				name: 'flapdetection',
-				url: 'allFlapDetection/' + type,
-				queue: 'main'
-			};
-
-			async.api($scope, result);
-
-		}else if (operation == 'NO'){
-
-			var type = "enable";
-
-			var result = {
-				name: 'flapdetection',
-				url: 'allFlapDetection/' + type,
-				queue: 'main'
-			};
-
-			async.api($scope, result);
-		}
-
-		$timeout(function(){
-			if ($scope.flapdetection == '"The command run successfully !"'){
-				$scope.showModal('#success');
-				$timeout(function(){
-					$scope.closeModal('#success');
-				}, 2000)
-			}
-			else{
-				$scope.showModal('#fail');
-				$timeout(function(){
-					$scope.closeModal('#fail');
-				}, 2000)
-			}
-		}, 1000);
-	};
-	
-	$scope.perform = function(operation){
-		
-		if (operation == "YES"){
-
-			var type = "disable";
-
-			var result = {
-				name: 'performancedata',
-				url: 'performanceData/' + type,
-				queue: 'main'
-			};
-
-			async.api($scope, result);
-
-		}else if (operation == 'NO'){
-
-			var type = "enable";
-
-			var result = {
-				name: 'performancedata',
-				url: 'performanceData/' + type,
-				queue: 'main'
-			};
-
-			async.api($scope, result);
-		}
-
-		$timeout(function(){
-			if ($scope.performancedata == '"The command run successfully !"'){
-				$scope.showModal('#success');
-				$timeout(function(){
-					$scope.closeModal('#success');
-				}, 2000)
-			}
-			else{
-				$scope.showModal('#fail');
-				$timeout(function(){
-					$scope.closeModal('#fail');
-				}, 2000)
-			}
-		}, 1000);
-	};
+    
+    $scope.open = function(operation) {
+
+        if (operation == 'shutdown'){
+
+            var result = {
+                name: 'nagiosoperation',
+                url: 'nagiosOperation/' + operation,
+                queue: 'main'
+            };
+
+            async.api($scope, result);
+
+        }else if (operation == 'restart'){
+
+            var result = {
+                name: 'nagiosoperation',
+                url: 'nagiosOperation/' + operation,
+                queue: 'main'
+            };
+
+            async.api($scope, result);
+        }
+                
+    };
+
+    $scope.notification = function(operation){
+        
+        if (operation == "YES"){
+
+            var type = "disable";
+
+            var result = {
+                name: 'allnotifications',
+                url: 'allnotifications/' + type,
+                queue: 'main'
+            };
+            
+            async.api($scope, result);
+            
+        }else if (operation == 'NO'){
+
+            var type = "enable";
+
+            var result = {
+                name: 'allnotifications',
+                url: 'allnotifications/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, result);
+        }
+        
+        $timeout(function(){
+            if ($scope.allnotifications == '"The command run successfully !"'){
+                $scope.showModal('#success');
+                $timeout(function(){
+                    $scope.closeModal('#success');
+                }, 2000)
+            }
+            else{
+                $scope.showModal('#fail');
+                $timeout(function(){
+                    $scope.closeModal('#fail');
+                }, 2000)
+            }
+        }, 1000);
+
+        
+
+    };
+
+    $scope.activeservice = function(operation){
+        
+        if (operation == "YES"){
+
+            var type = "stop";
+
+            var result = {
+                name: 'allservicecheck',
+                url: 'allServiceCheck/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, result);
+
+        }else if (operation == 'NO'){
+
+            var type = "start";
+
+            var result = {
+                name: 'allservicecheck',
+                url: 'allServiceCheck/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, result);
+        }
+
+        $timeout(function(){
+            if ($scope.allservicecheck == '"The command run successfully !"'){
+                $scope.showModal('#success');
+                $timeout(function(){
+                    $scope.closeModal('#success');
+                }, 2000)
+            }
+            else{
+                $scope.showModal('#fail');
+                $timeout(function(){
+                    $scope.closeModal('#fail');
+                }, 2000)
+            }
+        }, 1000);
+    };
+
+    $scope.passiveservice = function(operation){
+        
+        if (operation == "YES"){
+
+            var type = "stop";
+
+            var result = {
+                name: 'allpassiveservicecheck',
+                url: 'allPassiveServiceCheck/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, result);
+
+        }else if (operation == 'NO'){
+
+            var type = "start";
+
+            var result = {
+                name: 'allpassiveservicecheck',
+                url: 'allPassiveServiceCheck/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, result);
+        }
+
+        $timeout(function(){
+            if ($scope.allpassiveservicecheck == '"The command run successfully !"'){
+                $scope.showModal('#success');
+                $timeout(function(){
+                    $scope.closeModal('#success');
+                }, 2000)
+            }
+            else{
+                $scope.showModal('#fail');
+                $timeout(function(){
+                    $scope.closeModal('#fail');
+                }, 2000)
+            }
+        }, 1000);
+    };
+
+    $scope.activehost = function(operation){
+        
+        if (operation == "YES"){
+
+            var type = "stop";
+
+            var result = {
+                name: 'allhostcheck',
+                url: 'allHostCheck/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, result);
+
+        }else if (operation == 'NO'){
+
+            var type = "start";
+
+            var result = {
+                name: 'allhostcheck',
+                url: 'allHostCheck/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, result);
+        }
+
+        $timeout(function(){
+            if ($scope.allhostcheck == '"The command run successfully !"'){
+                $scope.showModal('#success');
+                $timeout(function(){
+                    $scope.closeModal('#success');
+                }, 2000)
+            }
+            else{
+                $scope.showModal('#fail');
+                $timeout(function(){
+                    $scope.closeModal('#fail');
+                }, 2000)
+            }
+        }, 1000);
+    };
+
+    $scope.passivehost = function(operation){
+        
+        if (operation == "YES"){
+
+            var type = "stop";
+
+            var result = {
+                name: 'allpassivehostcheck',
+                url: 'allPassiveHostCheck/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, result);
+
+        }else if (operation == 'NO'){
+
+            var type = "start";
+
+            var result = {
+                name: 'allpassivehostcheck',
+                url: 'allPassiveHostCheck/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, result);
+        }
+
+        $timeout(function(){
+            if ($scope.allpassivehostcheck == '"The command run successfully !"'){
+                $scope.showModal('#success');
+                $timeout(function(){
+                    $scope.closeModal('#success');
+                }, 2000)
+            }
+            else{
+                $scope.showModal('#fail');
+                $timeout(function(){
+                    $scope.closeModal('#fail');
+                }, 2000)
+            }
+        }, 1000);
+    };
+
+    $scope.event = function(operation){
+        
+        if (operation == "YES"){
+
+            var type = "disable";
+
+            var result = {
+                name: 'eventhandler',
+                url: 'eventHandler/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, result);
+
+        }else if (operation == 'NO'){
+
+            var type = "enable";
+
+            var result = {
+                name: 'eventhandler',
+                url: 'eventHandler/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, result);
+        }
+
+        $timeout(function(){
+            if ($scope.alleventhandler == '"The command run successfully !"'){
+                $scope.showModal('#success');
+                $timeout(function(){
+                    $scope.closeModal('#success');
+                }, 2000)
+            }
+            else{
+                $scope.showModal('#fail');
+                $timeout(function(){
+                    $scope.closeModal('#fail');
+                }, 2000)
+            }
+        }, 1000);
+    };
+
+    $scope.obsessservice = function(operation){
+        
+        if (operation == "YES"){
+
+            var type = "stop";
+
+            var result = {
+                name: 'obsessservice',
+                url: 'obsessOverServiceCheck/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, result);
+
+        }else if (operation == 'NO'){
+
+            var type = "start";
+
+            var result = {
+                name: 'obsessservice',
+                url: 'obsessOverServiceCheck/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, result);
+        }
+
+        $timeout(function(){
+            if ($scope.obsessservice == '"The command run successfully !"'){
+                $scope.showModal('#success');
+                $timeout(function(){
+                    $scope.closeModal('#success');
+                }, 2000)
+            }
+            else{
+                $scope.showModal('#fail');
+                $timeout(function(){
+                    $scope.closeModal('#fail');
+                }, 2000)
+            }
+        }, 1000);
+    };
+    
+    $scope.obsesshost = function(operation){
+        
+        if (operation == "YES"){
+
+            var type = "stop";
+
+            var result = {
+                name: 'obsesshost',
+                url: 'obsessOverHostCheck/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, result);
+
+        }else if (operation == 'NO'){
+
+            var type = "start";
+
+            var result = {
+                name: 'obsesshost',
+                url: 'obsessOverHostCheck/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, result);
+        }
+
+        $timeout(function(){
+            if ($scope.obsesshost == '"The command run successfully !"'){
+                $scope.showModal('#success');
+                $timeout(function(){
+                    $scope.closeModal('#success');
+                }, 2000)
+            }
+            else{
+                $scope.showModal('#fail');
+                $timeout(function(){
+                    $scope.closeModal('#fail');
+                }, 2000)
+            }
+        }, 1000);
+    };
+    
+    $scope.flap = function(operation){
+        
+        if (operation == "YES"){
+
+            var type = "disable";
+
+            var result = {
+                name: 'flapdetection',
+                url: 'allFlapDetection/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, result);
+
+        }else if (operation == 'NO'){
+
+            var type = "enable";
+
+            var result = {
+                name: 'flapdetection',
+                url: 'allFlapDetection/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, result);
+        }
+
+        $timeout(function(){
+            if ($scope.flapdetection == '"The command run successfully !"'){
+                $scope.showModal('#success');
+                $timeout(function(){
+                    $scope.closeModal('#success');
+                }, 2000)
+            }
+            else{
+                $scope.showModal('#fail');
+                $timeout(function(){
+                    $scope.closeModal('#fail');
+                }, 2000)
+            }
+        }, 1000);
+    };
+    
+    $scope.perform = function(operation){
+        
+        if (operation == "YES"){
+
+            var type = "disable";
+
+            var result = {
+                name: 'performancedata',
+                url: 'performanceData/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, result);
+
+        }else if (operation == 'NO'){
+
+            var type = "enable";
+
+            var result = {
+                name: 'performancedata',
+                url: 'performanceData/' + type,
+                queue: 'main'
+            };
+
+            async.api($scope, result);
+        }
+
+        $timeout(function(){
+            if ($scope.performancedata == '"The command run successfully !"'){
+                $scope.showModal('#success');
+                $timeout(function(){
+                    $scope.closeModal('#success');
+                }, 2000)
+            }
+            else{
+                $scope.showModal('#fail');
+                $timeout(function(){
+                    $scope.closeModal('#fail');
+                }, 2000)
+            }
+        }, 1000);
+    };
 
     }
 ])
 
-.controller('SchedulingQueueCtrl', ['$scope', 'async',
-    function($scope, async) {
+.controller('SchedulingQueueCtrl', ['$scope', '$filter', 'async',
+    function($scope, $filter, async) {
 
-	$('[data-toggle="tooltip"]').tooltip();
-
+    $('[data-toggle="tooltip"]').tooltip();
+    
 
         $scope.init = function() {
 
-		$scope.testdata = [
-		{
-			host: "localhost",
-			service: "Uptime",
-			last_check: "1501427329",
-			next_check: "1501427329",
-			type: "NORMAL",
-			active_check: "ENABLED",
-		},
-		{
-			host: "testserver",
-			service: "Uptime",
-			last_check: "1501427329",
-			next_check: "1501427329",
-			type: "NORMAL",
-			active_check: "OK",
-		},
-		{
-			host: "testserver",
-			service: null,
-			last_check: "1501427329",
-			next_check: "1501427329",
-			type: "NORMAL",
-			active_check: "OK",
-		},
-	];
+        var options = {
+            name: 'scheduleQueue',
+            url: 'schedulequeue',
+            queue: 'main'
+        };
+
+        async.api($scope, options);
 
         };
 
-	
+    
 
-	$scope.parameterdisable = function(host, service, type){
-		
-		$scope.host = host;
-		$scope.service = service;
-		
-		if ($scope.service != null){
-			$scope.Disableshow = false;
-		}else{
-			$scope.Disableshow = true;
-		}
+    $scope.parameterdisable = function(host, service){
+        
+        $scope.host = host;
+        $scope.service = service;
+        var type = false;
 
-		$scope.disable = function(){
-			if ($scope.Disableshow = false){
-				
-			}
-			else{
-				
-			}
-			
-		};
-	};
+        
+        if ($scope.service != null){
+            $scope.Disableshow = false;
+        }else{
+            $scope.Disableshow = true;
+        }
 
-	$scope.parameterschedule = function(host, service, check_time){
+        $scope.disable = function(){
+            if ($scope.Disableshow == false){
+                
+                var options = {
+                    name: 'servicecheck',
+                    url: 'servicecheck/' + type + '/' + $scope.host + '/' + $scope.service,
+                    queue: 'main'
+                };
 
-		$scope.check_time = check_time;
-		$scope.host = host;
-		$scope.service = service;
-		
-		if ($scope.service != null){
-			$scope.Scheduleshow = false;
-		}else{
-			$scope.Scheduleshow = true;
-		}
+                async.api($scope, options);
+            }
+            else{
 
-		$scope.schedule = function(){
-			if ($scope.Scheduleshow = false){
-				
-				
-			}
-			else{
-				
-			}
-			
-		};
-	};
+                var options = {
+                    name: 'hostcheck',
+                    url: 'hostcheck/' + type + '/' + $scope.host,
+                    queue: 'main'
+                };
+
+                async.api($scope, options);
+            }
+            
+        };
+    };
+
+    $scope.parameterschedule = function(host, service, check_time){
+
+        $scope.check_time = $filter('date')(check_time * 1000, "yyyy-MM-dd HH:mm:ss");
+        $scope.input_check_time = $scope.check_time;
+        console.log($scope.input_check_time);
+        $scope.host = host;
+        $scope.service = service;
+        $scope.force_check = true;
+        var type = "";
+
+        $scope.forcecheck = function (status){
+            if (status == false){
+                $scope.force_check = status;
+                
+            }else if (status == true){
+                $scope.force_check = status;
+                
+            }
+        };
+        
+        if ($scope.service != null){
+            $scope.Scheduleshow = false;
+        }else{
+            $scope.Scheduleshow = true;
+        }
+
+        
+
+        $scope.schedule = function(time){
+            var date = new Date(time);
+            var next_check = date.getTime() / 1000;
+            console.log(next_check);
+            if ($scope.Scheduleshow == false){
+                type = "service";
+                var options = {
+                    name: 'schedulecheck',
+                    url: 'schedulecheck/' + type + '/' + $scope.host + '/' + $scope.service + '/' + next_check + '/' + $scope.force_check,
+                    queue: 'main'
+                };
+
+                async.api($scope, options);
+            }
+            else{
+                type = "host";
+                var options = {
+                    name: 'schedulecheck',
+                    url: 'schedulecheck/' + type + '/' + $scope.host + '/' + $scope.service + '/' + next_check + '/' + $scope.force_check,
+                    queue: 'main'
+                };
+
+                async.api($scope, options);
+            }
+        };
+        
+    };
 
     }
 ])

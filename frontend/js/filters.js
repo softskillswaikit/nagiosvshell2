@@ -241,6 +241,21 @@ angular.module('vshell.filters', [])
     };
 })
 
+.filter('processstate', function() {
+    return function(input, reverse) {
+        var lookup = {
+            'true': 'YES',
+            'false': 'NO'
+        };
+
+        if (reverse) {
+            lookup = _.invert(lookup);
+        }
+
+        return lookup[input] || 'Undefined';
+    };
+})
+
 .filter('hostcommand', function(paths) {
     return function(input, type) {
         var commands = {

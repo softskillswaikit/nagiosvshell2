@@ -1,3 +1,4 @@
+
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class API extends VS_Controller
@@ -383,7 +384,7 @@ class API extends VS_Controller
         $this->output($Trend);
     }
 
-    /**
+   /**
      * Fetch alert history
      *
      * @param String $date
@@ -549,158 +550,61 @@ class API extends VS_Controller
 
         $this->output($Notifications);
     }
-    /**
-     * Modify process information
-     *
-     * @param String $type
-     */
-    public function processinfo()
-    {
-	
-	$processinfo = array();
-        $Data = $this->system_commands->get_return_array('PROCESS');
-        
-	foreach ($Data as $array) 
-            {
-                $processinfo[] = $array;
-            }
-
-        $this->output($processinfo);
-    }
 
     public function testing()
     {
-        $Data = array();
-        $hostname = array();
-        $hostgroupname = array();
-        $servicename = array();
-        $servicegroupname = array();
-        $runningstatename = array();
-        $hostresourcename = array();
-        $allName;
+        $result = false;
 
-        
-        //all host name
-        $hosts = $this->nagios_data->get_collection('hoststatus');
+        $type = 'svc';
+        $id = '3';
 
-        foreach($hosts as $host)
+        $allowed_types = array(
+            'host',
+            'svc'
+        );
+
+        //check for empty input
+        if(!empty($id) && !empty($type))
         {
-            $DataHost[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
+            //compare type with allowed types
+            if(in_array($type, $allowed_types))
+            {
+                if($type == 'host')
+                {
+                    $result = $this->system_commands->delete_host_comment($id);
+                }
+                else
+                {
+                    $result = $this->system_commands->delete_svc_comment($id);
+                }
+            }
         }
 
-        foreach($DataHost as $host)
-        {
-            $hostname[] = $host['name'];
-        }
-
-        $allName['host'] = $hostname;
-    
-
-        //all hostgroup name    
-        $hostgroups = $this->nagios_data->get_collection('hostgroup');
-
-        foreach($hostgroups as $hostgroup)
-        {
-            $DataHostgroup[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
-        }
-
-        foreach ($DataHostgroup as $hostgroup) 
-        {
-            $hostgroupname[] = $hostgroup['name'];
-        } 
-
-        $allName['hostgroup'] = $hostgroupname;     
-    
-
-        //all service name
-        $services = $this->nagios_data->get_collection('servicestatus');
-
-        foreach ($services as $service)
-        {
-            $DataService[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
-        }
-
-        foreach ($DataService as $service) 
-        {
-            $servicename[] = $service['name'];
-
-        }
-
-        $allName['service'] = $servicename;
-    
-
-        //all service group name
-        $servicegroups = $this->nagios_data->get_collection('servicegroup');
-
-        foreach($servicegroups as $servicegroup)
-        {
-            $DataServicegroup[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
-        }
-
-        foreach ($DataServicegroup as $servicegroup) 
-        {
-            $servicegroupname[] = $servicegroup['name'];
-        }
-
-        $allName['servicegroup'] = $servicegroupname;
-
-
-        //all host resource
-        $hostresources = $this->nagios_data->get_collection('hostresource');
-
-        foreach ($hostresources as $hostresource) 
-        {
-            $DataHostresource[] = $this->quicksearch_item('hostresource', $hostresource->host_name, $hostresource->service_description);
-        }
-
-        foreach ($DataHostresource as $hostresource) 
-        {
-            $hostresourcename[] = array('hostname' => $hostresource['name'], 'servicename' => $hostresource['uri']);
-        }
-
-        $allName['hostresource'] = $hostresourcename;
-
-        //all service running state
-        $runningstates = $this->nagios_data->get_collection('runningstate');
-
-        foreach ($runningstates as $runningstate)
-        {
-            $DataRunningstate[] = $this->quicksearch_item('runningstate', $runningstate->host_name, $runningstate->service_description);
-        }
-
-        foreach ($DataRunningstate as $runningstate) 
-        {
-            $runningstatename[] = array('hostname' => $runningstate['name'], 'servicename' => $servicestate['uri']);
-
-        }
-
-        $allName['runningstate'] = $runningstatename;
-        
-
-        $this->output($allName); 
+        $this->output($result);
     }
 
     /**
      * Schedule downtime
      *
-     * @param String $type, host : host, svc : service
-     * @param String $name
-     * @param String $author
-     * @param String $comment
+     * @param String $type, host : host, svc : service, hostsvc : hostservice
+     * @param String $host
+     * @param String $service, [if type is host or hostsvc, $service = '']
      * @param String $start
      * @param String $end
-     * @param String $fixed - true = fixed , false = flexible
-     * @param int $triggerID
-     * @param int $duration , in minutes
-     * @param String $child
+     * @param Bool $fixed
+     * @param String $triggerID
+     * @param String $duration , in minutes
+     * @param String $author
+     * @param String $comments
      */
-    public function downtime($type='', $name='', $author='', $comment='', $start='', $end='', $fixed='', $triggerID, $duration, $child='')
+    public function downtime($type='', $host='', $service='', $start, $end, $fixed, $triggerID='0', $duration, $author, $comments='')
     {
         $success = false;
 
         $allowed_types = array(
             'host',
-            'svc'
+            'svc',
+            'hostsvc'
         );
 
         //check empty input
@@ -709,12 +613,84 @@ class API extends VS_Controller
             //compare type with allowed types
             if(in_array($type, $allowed_types))
             {
-                $success = $this->system_commands->schedule_downtime($name, $start, $end, $fixed, $triggerID, $duration, $author, $comment, $type);
+                if($type == 'host')
+                {
+                    $success = $this->system_commands->schedule_host_downtime($host, $start, $end, $fixed, $triggerID, $duration, $author, $comments);
+                }
+                else if($type == 'svc')
+                {
+                    $success = $this->system_commands->schedule_svc_downtime($host, $service, $start, $end, $fixed, $triggerID, $duration, $author, $comments);
+                }
+                else
+                {
+                    $success = $this->system_commands->schedule_host_svc_downtime($host, $start, $end, $fixed, $triggerID, $duration, $author, $comments);
+                }
             }
         }
         
         $this->output($success);
     }
+
+    /**
+     * Modify process information
+     *
+     * @param String $type
+     */
+    public function processinfo()
+    {
+
+        $processinfo = $this->system_commands->get_return_array('PROCESS');
+        
+
+        $this->output($processinfo);
+    }
+
+    /**
+     * Return schedule queue of host and service
+     *
+     */
+    public function scheduleQueue()
+    {
+        $DataHost = $this->nagios_data->get_collection("hoststatus");
+        $DataService = $this->nagios_data->get_collection("servicestatus");
+        $DataHostresource = $this->nagios_data->get_collection("hostresourcestatus");
+        $DataRunningstate = $this->nagios_data->get_collection("runningstatestatus");
+
+        $Host = array();
+        $Service = array();
+        $Hostresource = array();
+        $Runningstate = array();
+        
+
+        foreach ($DataHost as $host) 
+        {
+            $Schedule[] = array('type'=>"host", 'hostname'=> $host->host_name, 'lastcheck'=>$host->last_check, 'nextcheck'=> $host->next_check, 'activecheck'=>$host->active_checks_enabled);
+        }
+
+        foreach ($DataService as $service) 
+        {
+            $Schedule[] = array('type'=>"service", 'hostname'=> $service->host_name, 'servicename'=> $service->service_description, 'lastcheck'=> $service->last_check, 'nextcheck'=>$service->next_check,'activecheck'=>$service->active_checks_enabled);
+        }
+
+        foreach ($DataHostresource as $hostresource) 
+        {
+            $Schedule[] = array('type'=> "hostresource", 'hostname'=> $hostresource->host_name, 'servicename'=> $hostresource->service_description, 'lastcheck'=> $hostresource->last_check, 'nextcheck'=>$hostresource->next_check, 'activecheck'=>$hostresource->active_checks_enabled);
+        }
+
+        foreach ($DataRunningstate as $runningstate) 
+        {
+            $Schedule[] = array('type'=> "runningstate", 'hostname'=> $runningstate->host_name, 'servicename'=> $runningstate->service_description, 'lastcheck'=> $runningstate->last_check, 'nextcheck'=>$runningstate->next_check, 'activecheck'=>$runningstate->active_checks_enabled);
+        }
+
+        usort($Schedule, function($a, $b)
+        {
+            return strcmp($a->nextcheck, $b->nextcheck);
+        });
+        
+        $this->output($Schedule);
+    }
+
+    
 
     /**
      * Fetch all comments or only those of a certain type.
@@ -731,7 +707,7 @@ class API extends VS_Controller
 
         if( $type != '' )
         {
-            if( ! in_array($type, $allowed_types) )
+            if(! in_array($type, $allowed_types))
             {
                 return $this->output(array());
             }
@@ -761,7 +737,7 @@ class API extends VS_Controller
      */
     public function addComments($type='', $name='', $serviceDescription='', $persistent, $author='', $comments='')
     {
-        $result = '';
+        $result = false;
 
         $allowed_types = array(
             'host',
@@ -796,7 +772,7 @@ class API extends VS_Controller
      */
     public function deleteComments($id, $type='')
     {
-        $result = '';
+        $result = false;
 
         $allowed_types = array(
             'host',
@@ -815,7 +791,7 @@ class API extends VS_Controller
                 }
                 else
                 {
-                    $result = $this->system_commands->delete_service_comment($id);
+                    $result = $this->system_commands->delete_svc_comment($id);
                 }
             }
         }
@@ -834,7 +810,7 @@ class API extends VS_Controller
      */
     public function servicecheck($type, $hostname, $service)
     {
-        $result ='';
+        $result = false;
 
         if($type == 'enable')
         {
@@ -851,17 +827,17 @@ class API extends VS_Controller
     /**
      * Enable or disable all notifications
      *
-     * @param String $type, 'enable', 'disable'
+     * @param Bool $type, true = 'enable', false = 'disable'
      */
     public function allnotifications($type)
     {
-        $result = '';
+        $result = false;
 
-        if($type == 'enable')
+        if($type)
         {
             $result = $this->system_commands->enable_all_notification();
         }
-        else if($type == 'disable')
+        else
         {
             $result = $this->system_commands->disable_all_notification();
         }
@@ -876,7 +852,7 @@ class API extends VS_Controller
      */
     public function nagiosOperation($type)
     {
-        $result = '';
+        $result = false;
 
         if($type == 'restart')
         {
@@ -893,19 +869,19 @@ class API extends VS_Controller
     /**
      * Enable or disable service notification
      *
-     * @param String $type, 'enable', 'disable'
+     * @param Bool $type, true = 'enable', false ='disable'
      * @param String $host
      * @param String $service
      */
     public function serviceNotification($type, $host, $service)
     {
-        $result = '';
+        $result = false;
 
-        if($type == 'enable')
+        if($type)
         {
             $result = $this->system_commands->enable_svc_notification();
         }
-        else if($type == 'disable')
+        else
         {
             $result = $this->system_commands->disable_svc_notification();
         }
@@ -922,7 +898,7 @@ class API extends VS_Controller
      */
     public function deleteAllComment($type, $host, $service='')
     {
-        $result = '';
+        $result = false;
 
         if($type == 'host')
         {
@@ -939,18 +915,18 @@ class API extends VS_Controller
     /**
      * Enable or disable host notification
      *
-     * @param String $type, 'enable', 'disable'
+     * @param Bool $type, true = 'enable', false ='disable'
      * @param String $host
      */
-    public function hostNotification($type,$host)
+    public function hostNotification($type, $host)
     {
-        $result = '';
+        $result = false;
 
-        if($type == 'enable')
+        if($type)
         {
             $result = $this->system_commands->enable_host_notification($host);
         }
-        else if($type == 'disable')
+        else
         {
             $result =  $this->system_commands->disable_host_notification($host);
         }
@@ -969,7 +945,7 @@ class API extends VS_Controller
      */
     public function scheduleCheck($type, $host, $service='', $checktime, $forceCheck)
     {
-        $result = '';
+        $result = false;
 
         if($type == 'host')
         {
@@ -986,18 +962,18 @@ class API extends VS_Controller
     /**
      * Enable or disable host service check
      *
-     * @param String $type, 'enable', 'disable'
+     * @param Bool $type, true = 'enable', false ='disable'
      * @param String $host
      */
      public function hostServiceCheck($type, $host)
      {
-        $result = '';
+        $result = false;
 
-        if($type == 'enable')
+        if($type == true)
         {
             $result = $this->system_commands->enable_host_svc_check($host);
         }
-        else if($type == 'disable')
+        else
         {
             $result = $this->system_commands->disable_host_svc_check($host);
         }
@@ -1008,18 +984,18 @@ class API extends VS_Controller
      /**
       * Enable or disable host service notification
       *
-      * @param String $type, 'enable', 'disable'
+      * @param Bool $type, true = 'enable', false ='disable'
       * @param String $host
       */
      public function hostServiceNotification($type, $host)
      {
-        $result = '';
+        $result = false;
 
-        if($type == 'enable')
+        if($type == true)
         {
             $result = $this->system_commands->enable_host_svc_notification($host);
         }
-        else if($type == 'disable')
+        else
         {
             $result = $this->system_commands->disable_host_svc_notification($host);
         }
@@ -1041,7 +1017,7 @@ class API extends VS_Controller
       */
      public function acknowledgeProblem($type, $host, $service='', $sticky, $notify, $persistent, $author, $comment)
      {
-        $result = '';
+        $result = false;
 
         if($type == 'host')
         {
@@ -1058,17 +1034,17 @@ class API extends VS_Controller
      /**
       * Start or stop all service check
       *
-      * @param String $type, 'start', 'stop'
+      * @param Bool $type, true = 'start', false = 'stop'
       */
      public function allServiceCheck($type)
      {
-        $result = '';
+        $result = false;
 
-        if($type == 'start')
+        if($type)
         {
             $result = $this->system_commands->start_svc_check();
         }
-        else if($type == 'stop')
+        else
         {
             $result = $this->system_commands->stop_svc_check();
         }
@@ -1079,17 +1055,17 @@ class API extends VS_Controller
      /**
       * Start or stop all passive service check
       *
-      * @param String $type, 'start', 'stop'
+      * @param Bool $type, true = 'start', false = 'stop'
       */
      public function allPassiveServiceCheck($type)
      {
-        $result = '';
+        $result = false;
 
-        if($type == 'start')
+        if($type)
         {
             $result = $this->system_commands->start_passive_svc_check();
         }
-        else if($type == 'stop')
+        else
         {
             $result = $this->system_commands->stop_passive_svc_check();
         }
@@ -1098,19 +1074,42 @@ class API extends VS_Controller
      }
 
      /**
+      * Enable or disable passive service check
+      *
+      * @param Bool $type, true - start, false - disable
+      * @param String $host
+      * @param String $service
+      */
+     public function passiveServiceCheck($type, $host, $service)
+     {
+        $result = false;
+
+        if($type)
+        {
+            $result = $this->system_commands->enable_passive_svc_check($host, $service);
+        }
+        else
+        {
+            $result = $this->system_commands->disable_passive_svc_check($host, $service);
+        }
+
+        $this->output($result);
+     }
+
+     /**
       * Enable or disable event handler
       *
-      * @param String $type, 'enable', 'disable'
+      * @param Bool $type, true = 'enable', false ='disable'
       */
      public function eventHandler($type)
      {
-        $result = '';
+        $result = false;
 
-        if($type == 'enable')
+        if($type)
         {
             $result = $this->system_commands->enable_event_handler();
         }
-        else if ($type == 'disable')
+        else
         {
             $result = $this->system_commands->disable_event_handler();
         }
@@ -1121,18 +1120,18 @@ class API extends VS_Controller
      /**
       * Enable or disable host check
       *
-      * @param String $type, 'enable', 'disable'
+      * @param Bool $type, true = 'enable', false ='disable'
       * @param String $host
       */
      public function hostCheck($type, $host)
      {
-        $result = '';
+        $result = false;
 
-        if($type == 'enable')
+        if($type)
         {
             $result = $this->system_commands->enable_host_check($host);
         }
-        else if($type == 'disable')
+        else
         {
             $result = $this->system_commands->disable_host_check($host);
         }
@@ -1143,17 +1142,17 @@ class API extends VS_Controller
      /**
       * Start or stop obsess over service check
       *
-      * @param String $type, 'start', 'host'
+      * @param Bool $type, true - start, false - disable
       */
      public function obsessOverServiceCheck($type)
      {
-        $result = '';
+        $result = false;
 
-        if($type == 'start')
+        if($type)
         {
             $result = $this->system_commands->start_obsess_over_svc_check();
         }
-        else if($type == 'stop')
+        else
         {
             $result = $this->system_commands->stop_obsess_over_svc_check();
         }
@@ -1164,17 +1163,17 @@ class API extends VS_Controller
      /**
       * Start or stop obsess over host check
       *
-      * @param String $type, 'start', 'stop'
+      * @param Bool $type, true - start, false - stop
       */
      public function obsessOverHostCheck($type)
      {
-        $result = '';
+        $result = false;
 
-        if($type == 'start')
+        if($type)
         {
             $result = $this->system_commands->start_obsess_over_host_check();
         }
-        else if($type == 'stop')
+        else
         {
             $result = $this->system_commands->stop_obsess_over_host_check();
         }
@@ -1185,18 +1184,18 @@ class API extends VS_Controller
      /**
       * Start or stop obsess over host
       *
-      * @param String $type, 'start', 'stop'
+      * @param Bool $type, true - start, false - stop
       * @param String $host
       */
      public function obsessOverHost($type, $host)
      {
-        $result = '';
+        $result = false;
 
-        if($type == 'start')
+        if($type)
         {
             $result = $this->system_commands->start_obsess_over_host($host);
         }
-        else if($type == 'stop')
+        else
         {
             $result = $this->system_commands->stop_obsess_over_host($host);
         }
@@ -1207,19 +1206,19 @@ class API extends VS_Controller
      /**
       * Start or stop obsess over service
       *
-      * @param String $type, 'start', 'stop'
+      * @param Bool $type, true - start, false - stop
       * @param String $host
       * @param String $service
       */
      public function obsessOverService($type, $host, $service)
      {
-        $result = '';
+        $result = false;
 
-        if($type == 'start')
+        if($type)
         {
             $result = $this->system_commands->start_obsess_over_svc($host, $service);
         }
-        else if($type == 'stop')
+        else
         {
             $result = $this->system_commands->stop_obsess_over_svc($host, $service);
         }
@@ -1230,17 +1229,17 @@ class API extends VS_Controller
      /**
       * Enable or disable performance data
       *
-      * @param String $type, 'enable', 'disable'
+      * @param Bool $type, true = 'enable', false ='disable'
       */
      public function performanceData($type)
      {
-        $result = '';
+        $result = false;
 
-        if($type == 'enable')
+        if($type)
         {
             $result = $this->system_commands->enable_performance_data();
         }
-        else if($type == 'disable')
+        else
         {
             $result = $this->system_commands->disable_performance_data();
         }
@@ -1251,17 +1250,17 @@ class API extends VS_Controller
      /**
       * Start or stop all host check
       *
-      * @param String $type , 'start', 'stop'
+      * @param Bool $type, true - start, false - stop
       */
      public function allHostCheck($type)
      {
-        $result = '';
+        $result = false;
 
-        if($type == 'start')
+        if($type)
         {
             $result = $this->system_commands->start_host_check();
         }
-        else if($type == 'stop')
+        else
         {
             $result = $this->system_commands->stop_host_check();
         }
@@ -1272,17 +1271,17 @@ class API extends VS_Controller
      /**
       * Start or stop all passive host check
       *
-      * @param String $type, 'start', 'stop'
+      * @param Bool $type, true - start, false - stop
       */
      public function allPassiveHostCheck($type)
      {
-        $result = '';
+        $result = false;
 
-        if($type == 'start')
+        if($type)
         {
             $result = $this->system_commands->start_passive_host_check();
         }
-        else if($type == 'stop')
+        else
         {
             $result = $this->system_commands->stop_passive_host_check();
         }
@@ -1293,18 +1292,18 @@ class API extends VS_Controller
      /**
       * Enable or disable passive host check
       *
-      * @param String $type, 'enable', 'disable'
+      * @param Bool $type, true = 'enable', false ='disable'
       * @param String $host
       */
      public function passiveHostCheck($type, $host)
      {
-        $result = '';
+        $result = false;
 
-        if($type == 'enable')
+        if($type)
         {
             $result = $this->system_commands->enable_passive_host_check($host);
         }
-        else if($type == 'disable')
+        else
         {
             $result = $this->system_commands->disable_passive_host_check($host);
         }
@@ -1315,17 +1314,17 @@ class API extends VS_Controller
      /**
       * Enable or disable all flap detection
       *
-      * @param String $type , 'enable', 'disable
+      * @param Bool $type, true = 'enable', false ='disable'
       */
      public function allFlapDetection($type)
      {
-        $result = '';
+        $result = false;
 
-        if($type == 'enable')
+        if($type)
         {
             $result = $this->system_commands->enable_flap_detection();
         }
-        else if($type == 'disable')
+        else
         {
             $result = $this->system_commands->disable_flap_detection();
         }
@@ -1336,18 +1335,18 @@ class API extends VS_Controller
      /**
       * Enable or disable host flap detection
       *
-      * @param String $type, 'enable', 'disable'
+      * @param Bool $type, true = 'enable', false ='disable'
       * @param String $host
       */
      public function hostFlapDetection($type, $host)
      {
-        $result = '';
+        $result = false;
 
-        if($type == 'enable')
+        if($type)
         {
             $result = $this->system_commands->enable_host_flap_detection($host);
         }
-        else if($type == 'disable')
+        else
         {
             $result = $this->system_commands->disable_host_flap_detection($host);
         }
@@ -1358,19 +1357,19 @@ class API extends VS_Controller
      /**
       * Enable or disable service flap detection
       *
-      * @param String $type, 'enable', 'disable'
+      * @param Bool $type, true = 'enable', false ='disable'
       * @param String $host
       * @param String $service
       */
      public function serviceFlapDetection($type, $host, $service)
      {
-        $result = '';
+        $result = false;
 
-        if($type == 'enable')
+        if($type)
         {
             $result = $this->system_commands->enable_svc_flap_detection($host, $service);
         }
-        else if($type == 'disable')
+        else
         {
             $result = $this->system_commands->disable_svc_flap_detection($host, $service);
         }
@@ -1392,7 +1391,7 @@ class API extends VS_Controller
       */
      public function scheduleHostServiceDowntime($host, $start, $end, $fixed, $trigger, $duration, $author, $comment)
      {
-        $result = '';
+        $result = false;
 
         $result = $this->system_commands->schedule_host_svc_downtime($host, $start, $end, $fixed, $trigger, $duration, $author, $comment);
 
@@ -1408,7 +1407,7 @@ class API extends VS_Controller
       */
      public function scheduleHostCheck($host, $checktime, $forceCheck)
      {
-        $result = '';
+        $result = false;
 
         $result = $this->system_commands->schedule_host_check($host, $checktime, $forceCheck);
 
@@ -1428,7 +1427,7 @@ class API extends VS_Controller
       */
      public function sendCustomNotification($type, $host, $service, $force, $broadcast, $author, $comment)
      {
-        $result = '';
+        $result = false;
 
         if($type == 'host')
         {
@@ -2236,4 +2235,5 @@ class API extends VS_Controller
 
 /* End of file api.php */
 /* Location: ./application/controllers/api.php */
+
 

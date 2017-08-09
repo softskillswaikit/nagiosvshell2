@@ -42,45 +42,45 @@
 				<td>Nagios PID</td>
 				<td>{{ processinfo.nagios_pid }}</td>
 			</tr>
-			<tr class="state-{{ processinfo.enable_notifications | lowercase }}">
+			<tr class="state-{{ processinfo.enable_notifications | processstate | lowercase }}">
 				<td>Notifications Enabled?</td>
-				<td class="status">{{ processinfo.enable_notifications }}</td>
+				<td class="status">{{ processinfo.enable_notifications | processstate }}</td>
 			</tr>
-			<tr class="state-{{ processinfo.active_service_checks_enabled | lowercase }}">
+			<tr class="state-{{ processinfo.active_service_checks_enabled | processstate | lowercase }}">
 				<td>Service Checks Being Executed?</td>
-				<td class="status">{{ processinfo.active_service_checks_enabled }}</td>
+				<td class="status">{{ processinfo.active_service_checks_enabled | processstate }}</td>
 			</tr>
-			<tr class="state-{{ processinfo.passive_service_checks_enabled | lowercase }}">
+			<tr class="state-{{ processinfo.passive_service_checks_enabled | processstate | lowercase }}">
 				<td>Passive Service Checks Being Accepted?</td>
-				<td class="status">{{ processinfo.passive_service_checks_enabled }}</td>
+				<td class="status">{{ processinfo.passive_service_checks_enabled | processstate }}</td>
 			</tr>
-			<tr  class="state-{{ processinfo.active_host_checks_enabled | lowercase }}">
+			<tr  class="state-{{ processinfo.active_host_checks_enabled | processstate | lowercase }}">
 				<td>Host Checks Being Executed?</td>
-				<td class="status">{{ processinfo.active_host_checks_enabled }}</td>
+				<td class="status">{{ processinfo.active_host_checks_enabled | processstate }}</td>
 			</tr>
-			<tr class="state-{{ processinfo.passive_host_checks_enabled | lowercase }}">
+			<tr class="state-{{ processinfo.passive_host_checks_enabled | processstate | lowercase }}">
 				<td>Passive Host Checks Being Accepted?</td>
-				<td class="status">{{ processinfo.passive_host_checks_enabled }}</td>
+				<td class="status">{{ processinfo.passive_host_checks_enabled | processstate }}</td>
 			</tr>
-			<tr class="state-{{ processinfo.enable_event_handlers | lowercase }}">
+			<tr class="state-{{ processinfo.enable_event_handlers | processstate | lowercase }}">
 				<td>Event Handlers Enabled?</td>
-				<td class="status">{{ processinfo.enable_event_handlers }}</td>
+				<td class="status">{{ processinfo.enable_event_handlers | processstate }}</td>
 			</tr>
-			<tr class="state-{{ processinfo.obsess_over_services | lowercase }}">
+			<tr class="state-{{ processinfo.obsess_over_services | processstate | lowercase }}">
 				<td>Obsessing Over Services?</td>
-				<td class="status">{{ processinfo.obsess_over_services }}</td>
+				<td class="status">{{ processinfo.obsess_over_services | processstate }}</td>
 			</tr>
-			<tr class="state-{{ processinfo.obsess_over_hosts | lowercase }}">
+			<tr class="state-{{ processinfo.obsess_over_hosts | processstate | lowercase }}">
 				<td>Obsessing Over Hosts?</td>
-				<td class="status">{{ processinfo.obsess_over_hosts }}</td>
+				<td class="status">{{ processinfo.obsess_over_hosts | processstate }}</td>
 			</tr>
-			<tr class="state-{{ processinfo.enable_flap_detection | lowercase }}">
+			<tr class="state-{{ processinfo.enable_flap_detection | processstate | lowercase }}">
 				<td>Flap Detection Enabled?</td>
-				<td class="status">{{ processinfo.enable_flap_detection }}</td>
+				<td class="status">{{ processinfo.enable_flap_detection | processstate }}</td>
 			</tr>
-			<tr class="state-{{ processinfo.process_performance_data | lowercase }}">
+			<tr class="state-{{ processinfo.process_performance_data | processstate | lowercase }}">
 				<td>Performance Data Being Processed?</td>
-				<td class="status">{{ processinfo.process_performance_data }}</td>
+				<td class="status">{{ processinfo.process_performance_data | processstate }}</td>
 			</tr>
 		</tbody>
 	</table>
@@ -104,54 +104,54 @@
 				<td>Restart the Nagios Process</td>
 				<td><a data-toggle="modal" data-target="#RestartModal">Toggle</a></td>
 			</tr>
-			<tr class="state-{{ processinfo.enable_notifications | lowercase }}">
-				<td class="status" ng-if="processinfo.enable_notifications == 'NO'">Enable Notifications</td>
-				<td class="status" ng-if="processinfo.enable_notifications == 'YES'">Disable Notifications</td>
+			<tr class="state-{{ processinfo.enable_notifications | processstate | lowercase }}">
+				<td class="status" ng-if="processinfo.enable_notifications == false">Enable Notifications</td>
+				<td class="status" ng-if="processinfo.enable_notifications == true">Disable Notifications</td>
 				<td class="status"><a data-toggle="modal" data-target="#NotificationsModal">Toggle</a></td>
 			</tr>
-			<tr class="state-{{ processinfo.active_service_checks_enabled | lowercase }}">
-				<td class="status" ng-if="processinfo.active_service_checks_enabled == 'NO'">Start executing service checks</td>
-				<td class="status" ng-if="processinfo.active_service_checks_enabled == 'YES'">Stop executing service checks</td>
+			<tr class="state-{{ processinfo.active_service_checks_enabled | processstate | lowercase }}">
+				<td class="status" ng-if="processinfo.active_service_checks_enabled == false">Start executing service checks</td>
+				<td class="status" ng-if="processinfo.active_service_checks_enabled == true">Stop executing service checks</td>
 				<td class="status"><a data-toggle="modal" data-target="#ServiceCheckModal">Toggle</a></td>
 			</tr>
-			<tr class="state-{{ processinfo.passive_service_checks_enabled | lowercase }}">
-				<td class="status" ng-if="processinfo.passive_service_checks_enabled == 'NO'">Start accepting passive service checks</td>
-				<td class="status" ng-if="processinfo.passive_service_checks_enabled == 'YES'">Stop accepting passive service checks</td>
+			<tr class="state-{{ processinfo.passive_service_checks_enabled | processstate | lowercase }}">
+				<td class="status" ng-if="processinfo.passive_service_checks_enabled == false">Start accepting passive service checks</td>
+				<td class="status" ng-if="processinfo.passive_service_checks_enabled == true">Stop accepting passive service checks</td>
 				<td class="status"><a data-toggle="modal" data-target="#PassiveServiceModal">Toggle</a></td>
 			</tr>
-			<tr class="state-{{ processinfo.active_host_checks_enabled | lowercase }}">
-				<td class="status" ng-if="processinfo.active_host_checks_enabled == 'NO'">Start executing host checks</td>
-				<td class="status" ng-if="processinfo.active_host_checks_enabled == 'YES'">Stop executing host checks</td>
+			<tr class="state-{{ processinfo.active_host_checks_enabled | processstate | lowercase }}">
+				<td class="status" ng-if="processinfo.active_host_checks_enabled == false">Start executing host checks</td>
+				<td class="status" ng-if="processinfo.active_host_checks_enabled == true">Stop executing host checks</td>
 				<td class="status"><a data-toggle="modal" data-target="#HostCheckModal">Toggle</a></td>
 			</tr>
-			<tr class="state-{{ processinfo.passive_host_checks_enabled | lowercase }}">
-				<td class="status" ng-if="processinfo.passive_host_checks_enabled == 'NO'">Start accepting passive host checks</td>
-				<td class="status" ng-if="processinfo.passive_host_checks_enabled == 'YES'">Stop accepting passive host checks</td>
+			<tr class="state-{{ processinfo.passive_host_checks_enabled | processstate | lowercase }}">
+				<td class="status" ng-if="processinfo.passive_host_checks_enabled == false">Start accepting passive host checks</td>
+				<td class="status" ng-if="processinfo.passive_host_checks_enabled == true">Stop accepting passive host checks</td>
 				<td class="status"><a data-toggle="modal" data-target="#PassiveHostModal">Toggle</a></td>
 			</tr>
-			<tr class="state-{{ processinfo.enable_event_handlers | lowercase }}">
-				<td class="status" ng-if="processinfo.enable_event_handlers == 'NO'">Enable event handlers</td>
-				<td class="status" ng-if="processinfo.enable_event_handlers == 'YES'">Disable event handlers</td>
+			<tr class="state-{{ processinfo.enable_event_handlers | processstate | lowercase }}">
+				<td class="status" ng-if="processinfo.enable_event_handlers == false">Enable event handlers</td>
+				<td class="status" ng-if="processinfo.enable_event_handlers == true">Disable event handlers</td>
 				<td class="status"><a data-toggle="modal" data-target="#EventHandlerModal">Toggle</a></td>
 			</tr>
-			<tr class="state-{{ processinfo.obsess_over_services | lowercase }}">
-				<td class="status" ng-if="processinfo.obsess_over_services == 'NO'">Start obsessing over services</td>
-				<td class="status" ng-if="processinfo.obsess_over_services == 'YES'">Stop obsessing over services</td>
+			<tr class="state-{{ processinfo.obsess_over_services | processstate | lowercase }}">
+				<td class="status" ng-if="processinfo.obsess_over_services == false">Start obsessing over services</td>
+				<td class="status" ng-if="processinfo.obsess_over_services == true">Stop obsessing over services</td>
 				<td class="status"><a data-toggle="modal" data-target="#ObsessingServiceModal">Toggle</a></td>
 			</tr>
-			<tr class="state-{{ processinfo.obsess_over_hosts | lowercase }}">
-				<td class="status" ng-if="processinfo.obsess_over_hosts == 'NO'">Start obsessing over hosts</td>
-				<td class="status" ng-if="processinfo.obsess_over_hosts == 'YES'">Stop obsessing over hosts</td>
+			<tr class="state-{{ processinfo.obsess_over_hosts | processstate | lowercase }}">
+				<td class="status" ng-if="processinfo.obsess_over_hosts == false">Start obsessing over hosts</td>
+				<td class="status" ng-if="processinfo.obsess_over_hosts == true">Stop obsessing over hosts</td>
 				<td class="status"><a data-toggle="modal" data-target="#ObsessingHostModal">Toggle</a></td>
 			</tr>
-			<tr class="state-{{ processinfo.enable_flap_detection | lowercase }}">
-				<td class="status" ng-if="processinfo.enable_flap_detection == 'NO'">Enable flap detection</td>
-				<td class="status" ng-if="processinfo.enable_flap_detection == 'YES'">Disable flap detection</td>
+			<tr class="state-{{ processinfo.enable_flap_detection | processstate | lowercase }}">
+				<td class="status" ng-if="processinfo.enable_flap_detection == false">Enable flap detection</td>
+				<td class="status" ng-if="processinfo.enable_flap_detection == true">Disable flap detection</td>
 				<td class="status"><a data-toggle="modal" data-target="#FlapDetectModal">Toggle</a></td>
 			</tr>
-			<tr class="state-{{ processinfo.process_performance_data | lowercase }}">
-				<td class="status" ng-if="processinfo.process_performance_data == 'NO'">Enable performance data</td>
-				<td class="status" ng-if="processinfo.process_performance_data == 'YES'">Disable performance data</td>
+			<tr class="state-{{ processinfo.process_performance_data | processstate | lowercase }}">
+				<td class="status" ng-if="processinfo.process_performance_data == false">Enable performance data</td>
+				<td class="status" ng-if="processinfo.process_performance_data == true">Disable performance data</td>
 				<td class="status"><a data-toggle="modal" data-target="#PerformanceModal">Toggle</a></td>
 			</tr>
 		</tbody>

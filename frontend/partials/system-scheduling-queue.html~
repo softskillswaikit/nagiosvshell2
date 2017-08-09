@@ -37,25 +37,25 @@
             <tfoot>
                 <tr>
                     <td colspan="8">
-                        <div class="results-count">{{ testdata | count }} Result{{ testdata | plural }}</div>
+                        <div class="results-count">{{ scheduleQueue | count }} Result{{ scheduleQueue | plural }}</div>
                         <div class="footable-pagination pagination" id="footable-pagination"></div>
                     </td>
                 </tr>
             </tfoot>
             <tbody>
-                <tr ng-if="(testdata | count) == 0">
+                <tr ng-if="(scheduleQueue | count) == 0">
                     <td colspan="5">{{ is_loading ? 'Loading...' : 'No hosts are defined' }}</td>
                 </tr>
-                <tr ng-repeat="x in testdata" footabledata class="state-{{ x.active_check | lowercase }}">
-                    <td>{{ x.host }}</td>
-                    <td>{{ x.service }}</td>
-                    <td>{{ x.last_check * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
-                    <td>{{ x.next_check * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
-                    <td>{{ x.type}}</td>
-                    <td class="status">{{ x.active_check }}</td>
+                <tr ng-repeat="queue in scheduleQueue" class="state-{{ queue.activecheck | is_enabled }}" footabledata>
+                    <td>{{ queue.hostname }}</td>
+                    <td>{{ queue.servicename }}</td>
+                    <td>{{ queue.lastcheck * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
+                    <td>{{ queue.nextcheck * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
+                    <td>{{ queue.type}}</td>
+                    <td class="status">{{ queue.activecheck | is_enabled | uppercase }}</td>
 		    <td>
-			<a data-toggle="modal" data-target="#DisableModal" ng-click="parameterdisable(x.host, x.service, x.active_check)">Disable</a>
-			<a><a data-toggle="modal tooltip" title="This command is used to schedule the next check of a particular service. Nagios will re-queue the service to be checked at the time you specify. If you select the force check option, Nagios will force a check of the service regardless of both what time the scheduled check occurs and whether or not checks are enabled for the service." data-target="#ScheduleModal" ng-click="parameterschedule(x.host, x.service, x.next_check)">Schedule</a></a>
+			<a data-toggle="modal" data-target="#DisableModal" ng-click="parameterdisable(queue.hostname, queue.servicename)">Disable</a>
+			<a><a data-toggle="modal" data-target="#ScheduleModal" ng-click="parameterschedule(queue.hostname, queue.servicename, queue.nextcheck)">Schedule</a></a>
 		   </td>
                 </tr>
             </tbody>

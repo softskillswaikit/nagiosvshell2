@@ -127,25 +127,25 @@
             <table cellspacing="0" cellpadding="0">
                 <tbody>
 		    <tr class="footable-even">
-                        <td><a target="nagios" ng-href="{{ host.host_name | hostcommand: 'custom_notification' }}">Disable Notification for all services on this Host</a></td>
+                        <td><a data-toggle="modal" data-target="#DisableAllNotification">Disable Notification for all services on this Host</a></td>
                     </tr>
 		    <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{ host.host_name | hostcommand: 'custom_notification' }}">Enable Notification for all services on this Host</a></td>
+                        <td><a data-toggle="modal" data-target="#EnableAllNotification">Enable Notification for all services on this Host</a></td>
                     </tr>
                     <tr class="footable-even">
                         <td><a data-toggle="modal" data-target="#CustomNotification" ng-click="passcustom(host.host_name, status.username)">Send custom notification</a></td>
                     </tr>
                     <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{ host.host_name | hostcommand: 'schedule_downtime' }}">Schedule downtime</a></td>
+                        <td><a data-toggle="modal" data-target="#hostDowntime" ng-click="passhostdowntime(host.host_name, status.username)">Schedule downtime</a></td>
                     </tr>
                     <tr class="footable-even">
-                        <td><a target="nagios" ng-href="{{ host.host_name | hostcommand: 'schedule_downtime_for_all' }}">Schedule downtime for this host and all services</a></td>
+                        <td><a data-toggle="modal" data-target="#serviceDowntime" ng-click="passservicedowntime(host.host_name, status.username)">Schedule downtime for this host and all services</a></td>
                     </tr>
 		    <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{ host.host_name | hostcommand: 'custom_notification' }}">Schedule next Check for this host</a></td>
+                        <td><a data-toggle="modal" data-target="#ScheduleHostDetail" ng-click="host_schedule(host.host_name, host.next_check)">Schedule next Check for this host</a></td>
                     </tr>
                     <tr class="footable-even">
-                        <td><a target="nagios" ng-href="{{ host.host_name | hostcommand: 'schedule_check_for_all' }}">Schedule a check for all services of this host</a></td>
+                        <td><a data-toggle="modal" data-target="#ScheduleHostServiceDetail" ng-click="all_service_schedule(host.host_name, host.next_check)">Schedule a check for all services of this host</a></td>
                     </tr>
 		    <tr class="footable-odd">
                         <td><a data-toggle="modal" data-target="#DisableAllService">Disable checks of all services on this host</a></td>

@@ -1138,8 +1138,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
 
         .table-container tr.enabled td,
         .table-container tr.state-ok td.status,
-	.table-container tr.state-'custom (up)' td.status,
-	.table-container tr.state-'enabled' td.status,
+	.table-container tr.state-enabled td.status,
 	.table-container tr.state-yes td.status,
         .table-container tr.state-up td.status {
             background-color: #e9ffd6;
