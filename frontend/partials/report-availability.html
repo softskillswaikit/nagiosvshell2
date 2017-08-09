@@ -46,7 +46,12 @@
 							<div class="col-md-6">
 								<select ng-model="reportComponent" name="reportComponent" class="form-control" required>
 									 <option value="ALL">-- ALL --</option>
-									 <option ng-repeat="option in componentName" value="{{option.name}}">{{option.name}}</option>
+									 <option ng-if="reportType == 'Hostgroup(s)'" ng-repeat="name in name.hostgroup" value="{{name}}">{{name}}</option>
+									 <option ng-if="reportType == 'Host(s)'" ng-repeat="name in name.host" value="{{name}}">{{name}}</option>
+									 <option ng-if="reportType == 'Servicegroup(s)'" ng-repeat="name in name.servicegroup" value="{{name}}">{{name}}</option>
+									 <option ng-if="reportType == 'Service(s)'" ng-repeat="name in name.service" value="{{name.service}}">{{name.service}}</option>
+									 <option ng-if="reportType == 'Host Resource'" ng-repeat="name in name.hostresource" value="{{name.service}}">{{name.service}}</option>
+									 <option ng-if="reportType == 'Service Running State'" ng-repeat="name in name.runningstate" value="{{name.service}}">{{name.service}}</option>
 								</select>
 								<span style="color:red" ng-show="inputForm.reportComponent.$invalid">
 								<span ng-show="inputForm.reportComponent.$error.required">This field is required.</span></span>
@@ -200,7 +205,7 @@
 						<div class="form-group">
 							<div class="col-md-6 pull-right">
 								<button class="btn btn-primary" ng-click="reset()">Reset</button>
-		            <a ng-href="#/report/availability/report">
+		            <a>
 									<button ng-click="createReport()" ng-disabled="inputForm.$invalid" class="btn btn-primary">Create Report</button>
 								</a>
 							</div>

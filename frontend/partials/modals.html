@@ -1,4 +1,5 @@
 <div ng-controller="SysCommentsCtrl">
+
     <!-- Add Host Comment -->
     <div class="modal fade" id="hostComment" data-backdrop="false">
       <div class="modal-dialog">
@@ -77,7 +78,7 @@
               <div class="form-group">
                 <label for="hostName" class="col-md-4 control-label">Host Name:</label>
                 <div class="col-md-6">
-                  <select ng-model="hostName" name="hostName" class="form-control" required>
+                  <select ng-model="hostName" ng-change="service = ''" name="hostName" class="form-control" required>
   									 <option ng-repeat="name in name.host" value="{{name}}">{{name}}</option>
   								</select>
                   <span style="color:red" ng-show="addServiceComment.hostName.$dirty && addServiceComment.hostName.$invalid">
@@ -88,7 +89,8 @@
                 <label for="service" class="col-md-4 control-label">Service:</label>
                 <div class="col-md-6">
                   <select ng-model="service" name="service" class="form-control" required>
-  									 <option ng-repeat="name in name.service" value="{{name}}">{{name}}</option>
+                    <option ng-repeat="name in name.service | filter:{host:hostName}:true" value="{{name.service}}"
+                      >{{name.service}}</option>
   								</select>
                   <span style="color:red" ng-show="addServiceComment.service.$dirty && addServiceComment.service.$invalid">
                   <span ng-show="addServiceComment.service.$error.required">This field is required.</span></span>
@@ -202,15 +204,15 @@
             <div class="form-group">
               <label for="hostName" class="col-md-4 control-label">Host Name:</label>
               <div class="col-md-6">
-                <input ng-model="hostName" type="text" class="form-control input-md" name="hostName" required></input>
+                <input ng-model="hostName" ng-disabled="true" type="text" class="form-control input-md" name="hostName" required></input>
                 <span style="color:red" ng-show="addServiceComment.hostName.$dirty && addServiceComment.hostName.$invalid">
                 <span ng-show="addServiceComment.hostName.$error.required">This field is required.</span></span>
               </div>
             </div>
             <div class="form-group">
-              <label for="service" class="col-md-4 control-label">Service:</label>
+              <label for="serviceName" class="col-md-4 control-label">Service:</label>
               <div class="col-md-6">
-                <input ng-model="service" type="text" class="form-control input-md" name="service" required></input>
+                <input ng-model="serviceName" ng-disabled="true" type="text" class="form-control input-md" name="service" required></input>
                 <span style="color:red" ng-show="addServiceComment.service.$dirty && addServiceComment.service.$invalid">
                 <span ng-show="addServiceComment.service.$error.required">This field is required.</span></span>
               </div>
@@ -320,7 +322,7 @@
             <div class="form-group">
               <label for="author" class="col-md-4 control-label">Author(Your Name):</label>
               <div class="col-md-6">
-                <input value="{{status.username}}" ng-disabled="true" type="text" class="form-control input-md" name="author"></input>
+                <input ng-model="author" ng-disabled="true" type="text" class="form-control input-md" name="author"></input>
               </div>
             </div>
             <div class="form-group">
@@ -385,7 +387,7 @@
             <div class="form-group">
               <label for="author" class="col-md-4 control-label">Author(Your Name):</label>
               <div class="col-md-6">
-                <input ng-model="author" ng-disabled="true" type="text" class="form-control" name="author"></input>
+                <input ng-model="author" ng-disabled="true" type="text" class="form-control" name="author" required></input>
                 <span style="color:red" ng-show="scdhostdowntime.author.$dirty && scdhostdowntime.author.$invalid">
                 <span ng-show="scdhostdowntime.author.$error.required">This field is required.</span></span>
               </div>
@@ -394,7 +396,7 @@
             <div class="form-group">
               <label for="comment" class="col-md-4 control-label">Comment:</label>
               <div class="col-md-6">
-                <textarea ng-model="comment" class="form-control" name="comment"></textarea>
+                <textarea ng-model="comment" class="form-control" name="comment" required></textarea>
                 <span style="color:red" ng-show="scdhostdowntime.comment.$dirty && scdhostdowntime.comment.$invalid">
                 <span ng-show="scdhostdowntime.comment.$error.required">This field is required.</span></span>
               </div>
@@ -403,7 +405,7 @@
             <div class="form-group">
               <label for="triggeredBy" class="col-md-4 control-label">Triggered By:</label>
               <div class="col-md-6">
-                <select ng-model="triggeredBy" name="triggeredBy" class="form-control">
+                <select ng-model="triggeredBy" name="triggeredBy" class="form-control" required>
                   <option value="N/A">N/A</option>
                   <span style="color:red" ng-show="scdhostdowntime.triggeredBy.$dirty && scdhostdowntime.triggeredBy.$invalid">
                   <span ng-show="scdhostdowntime.triggeredBy.$error.required">This field is required.</span></span>
@@ -415,7 +417,7 @@
               <label for="startdate" class="col-md-4 control-label">Start Date:</label>
               <div class="col-md-6">
                 <input ng-model="startDate" type="datetime-local" min="{{now | date:'yyyy-MM-ddTHH:mm'}}"
-                  name="startdate" value="" class="form-control"></input>
+                  name="startdate" value="" class="form-control" required></input>
                   <span style="color:red" ng-show="scdhostdowntime.startDate.$dirty && scdhostdowntime.startDate.$invalid">
                   <span ng-show="scdhostdowntime.startDate.$error.required">This field is required.</span></span>
               </div>
@@ -425,7 +427,7 @@
               <label for="enddate" class="col-md-4 control-label">End Date:</label>
               <div class="col-md-6">
                 <input ng-model="endDate" type="datetime-local" min="{{now | date:'yyyy-MM-ddTHH:mm'}}"
-                  name="enddate" value="" class="form-control"></input>
+                  name="enddate" value="" class="form-control" required></input>
                   <span style="color:red" ng-show="scdhostdowntime.endDate.$dirty && scdhostdowntime.endDate.$invalid">
                   <span ng-show="scdhostdowntime.endDate.$error.required">This field is required.</span></span>
               </div>
@@ -434,7 +436,7 @@
             <div class="form-group">
               <label for="type" class="col-md-4 control-label">Type:</label>
               <div class="col-md-6">
-                <select ng-model="type" name="type" class="form-control">
+                <select ng-model="type" name="type" class="form-control" required>
                   <option value="Fixed">Fixed</option>
                   <option value="Flexible">Flexible</option>
                 </select>
@@ -446,12 +448,12 @@
             <div class="form-group" ng-show="hostType=='Flexible'">
               <label for="durationHour" class="col-md-4 control-label">Duration:</label>
               <div class="col-md-3">
-                <input ng-model="durationHour" type="number" name="durationHour" class="form-control">Hour</input>
+                <input ng-model="durationHour" type="number" name="durationHour" class="form-control" required>Hour</input>
                 <span style="color:red" ng-show="scdhostdowntime.durationHour.$dirty && scdhostdowntime.durationHour.$invalid">
                 <span ng-show="scdhostdowntime.durationHour.$error.required">This field is required.</span></span>
               </div>
               <div class="col-md-3">
-                <input ng-model="durationMin" type="number" name="durationMin" class="form-control">Minute</input>
+                <input ng-model="durationMin" type="number" name="durationMin" class="form-control" required>Minute</input>
                 <span style="color:red" ng-show="scdhostdowntime.durationMin.$dirty && scdhostdowntime.durationMin.$invalid">
                 <span ng-show="scdhostdowntime.durationMin.$error.required">This field is required.</span></span>
               </div>
@@ -460,7 +462,7 @@
             <div class="form-group">
               <label for="childHost" class="col-md-4 control-label">Child Hosts:</label>
               <div class="col-md-6">
-                <select ng-model="childHost" name="childHost" class="form-control">
+                <select ng-model="childHost" name="childHost" class="form-control" required>
                   <option value="doNothing">Do nothing with child hosts</option>
                   <option value="scheduleTriggeredDowntime">Schedule triggered downtime to all child hosts</option>
                   <option value="scheduleNonTriggeredDowntime">Schedule non-triggered downtime to all child hosts</option>
@@ -494,7 +496,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reset()">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="scedule()" ng-disabled="scdhostdowntime.$invalid" title="Please complete the form">Schedule</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="schedule(hostName, ' ', startDate, endDate, type, triggerBy, durationHour, durationMin, author, comment)"
+            ng-disabled="scdhostdowntime.$invalid" title="Please complete the form">Schedule</button>
         </div>
       </div>
 
@@ -518,86 +521,86 @@
                <select ng-model="hostName" name="hostName" class="form-control" required>
                   <option ng-repeat="name in name.host" value="{{name}}">{{name}}</option>
                </select>
-               <span style="color:red" ng-show="scdhostdowntime.hostName.$dirty && scdhostdowntime.hostName.$invalid">
-               <span ng-show="scdhostdowntime.hostName.$error.required">This field is required.</span></span>
+               <span style="color:red" ng-show="scdsvcdowntime.hostName.$dirty && scdsvcdowntime.hostName.$invalid">
+               <span ng-show="scdsvcdowntime.hostName.$error.required">This field is required.</span></span>
              </div>
            </div>
            <div class="form-group">
              <label for="service" class="col-md-4 control-label">Service:</label>
              <div class="col-md-6">
-               <select ng-model="service" name="service" class="form-control" required>
-                  <option ng-repeat="name in name.service" value="{{name}}">{{name}}</option>
+               <select ng-model="service" ng-change="service = ''" name="service" class="form-control" required>
+                  <option ng-repeat="name in name.service | filter:{host:hostName}:true" value="{{name.service}}">{{name.service}}</option>
                </select>
-               <span style="color:red" ng-show="scdhostdowntime.service.$dirty && scdhostdowntime.service.$invalid">
-               <span ng-show="scdhostdowntime.service.$error.required">This field is required.</span></span>
+               <span style="color:red" ng-show="scdsvcdowntime.service.$dirty && scdsvcdowntime.service.$invalid">
+               <span ng-show="scdsvcdowntime.service.$error.required">This field is required.</span></span>
              </div>
            </div>
            <div class="form-group">
              <label for="author" class="col-md-4 control-label">Author(Your Name):</label>
              <div class="col-md-6">
-               <input ng-model="author" ng-disabled="true" type="text" class="form-control" name="author"></input>
-               <span style="color:red" ng-show="scdhostdowntime.author.$dirty && scdhostdowntime.author.$invalid">
-               <span ng-show="scdhostdowntime.author.$error.required">This field is required.</span></span>
+               <input ng-model="author" ng-disabled="true" type="text" class="form-control" name="author" required></input>
+               <span style="color:red" ng-show="scdsvcdowntime.author.$dirty && scdsvcdowntime.author.$invalid">
+               <span ng-show="scdsvcdowntime.author.$error.required">This field is required.</span></span>
              </div>
            </div>
            <div class="form-group">
              <label for="comment" class="col-md-4 control-label">Comment:</label>
              <div class="col-md-6">
-               <textarea ng-model="comment" class="form-control" name="comment"></textarea>
-               <span style="color:red" ng-show="scdhostdowntime.comment.$dirty && scdhostdowntime.comment.$invalid">
-               <span ng-show="scdhostdowntime.comment.$error.required">This field is required.</span></span>
+               <textarea ng-model="comment" class="form-control" name="comment" required></textarea>
+               <span style="color:red" ng-show="scdsvcdowntime.comment.$dirty && scdsvcdowntime.comment.$invalid">
+               <span ng-show="scdsvcdowntime.comment.$error.required">This field is required.</span></span>
              </div>
            </div>
            <div class="form-group">
              <label for="triggeredBy" class="col-md-4 control-label">Triggered By:</label>
              <div class="col-md-6">
-               <select ng-model="triggeredBy" name="triggeredBy" class="form-control">
+               <select ng-model="triggeredBy" name="triggeredBy" class="form-control" required>
                  <option value="N/A">N/A</option>
                </select>
-               <span style="color:red" ng-show="scdhostdowntime.red.$dirty && scdhostdowntime.red.$invalid">
-               <span ng-show="scdhostdowntime.red.$error.required">This field is required.</span></span>
+               <span style="color:red" ng-show="scdsvcdowntime.red.$dirty && scdsvcdowntime.red.$invalid">
+               <span ng-show="scdsvcdowntime.red.$error.required">This field is required.</span></span>
              </div>
            </div>
            <div class="form-group">
              <label for="startdate" class="col-md-4 control-label">Start Date:</label>
              <div class="col-md-6">
                <input ng-model="startDate" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}"
-                name="startdate" value="" class="form-control"></input>
-                <span style="color:red" ng-show="scdhostdowntime.startDate.$dirty && scdhostdowntime.startDate.$invalid">
-                <span ng-show="scdhostdowntime.startDate.$error.required">This field is required.</span></span>
+                name="startdate" value="" class="form-control" required></input>
+                <span style="color:red" ng-show="scdsvcdowntime.startDate.$dirty && scdsvcdowntime.startDate.$invalid">
+                <span ng-show="scdsvcdowntime.startDate.$error.required">This field is required.</span></span>
              </div>
            </div>
            <div class="form-group">
              <label for="enddate" class="col-md-4 control-label">End Date:</label>
              <div class="col-md-6">
                <input ng-model="endDate" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}"
-                name="enddate" value="" class="form-control"></input>
-                <span style="color:red" ng-show="scdhostdowntime.endDate.$dirty && scdhostdowntime.endDate.$invalid">
-                <span ng-show="scdhostdowntime.endDate.$error.required">This field is required.</span></span>
+                name="enddate" value="" class="form-control" required></input>
+                <span style="color:red" ng-show="scdsvcdowntime.endDate.$dirty && scdsvcdowntime.endDate.$invalid">
+                <span ng-show="scdsvcdowntime.endDate.$error.required">This field is required.</span></span>
              </div>
            </div>
            <div class="form-group">
              <label for="type" class="col-md-4 control-label">Type:</label>
              <div class="col-md-6">
-               <select ng-model="type" name="type" class="form-control">
+               <select ng-model="type" name="type" class="form-control" required>
                  <option value="Fixed">Fixed</option>
                  <option value="Flexible">Flexible</option>
                </select>
-               <span style="color:red" ng-show="scdhostdowntime.type.$dirty && scdhostdowntime.type.$invalid">
-               <span ng-show="scdhostdowntime.type.$error.required">This field is required.</span></span>
+               <span style="color:red" ng-show="scdsvcdowntime.type.$dirty && scdsvcdowntime.type.$invalid">
+               <span ng-show="scdsvcdowntime.type.$error.required">This field is required.</span></span>
              </div>
            </div>
            <div class="form-group" ng-show="serviceType=='Flexible'">
              <label for="durationHour" class="col-md-4 control-label">Duration:</label>
              <div class="col-md-3">
-               <input ng-model="durationHour" type="number" name="durationHour" class="form-control">Hour</input>
-               <span style="color:red" ng-show="scdhostdowntime.durationHour.$dirty && scdhostdowntime.durationHour.$invalid">
-               <span ng-show="scdhostdowntime.durationHour.$error.required">This field is required.</span></span>
+               <input ng-model="durationHour" type="number" name="durationHour" class="form-control" required>Hour</input>
+               <span style="color:red" ng-show="scdsvcdowntime.durationHour.$dirty && scdsvcdowntime.durationHour.$invalid">
+               <span ng-show="scdsvcdowntime.durationHour.$error.required">This field is required.</span></span>
              </div>
              <div class="col-md-3">
-               <input ng-model="durationMin" type="number" name="durationMin" class="form-control">Minute</input>
-               <span style="color:red" ng-show="scdhostdowntime.durationMin.$dirty && scdhostdowntime.durationMin.$invalid">
-               <span ng-show="scdhostdowntime.durationMin.$error.required">This field is required.</span></span>
+               <input ng-model="durationMin" type="number" name="durationMin" class="form-control" required>Minute</input>
+               <span style="color:red" ng-show="scdsvcdowntime.durationMin.$dirty && scdsvcdowntime.durationMin.$invalid">
+               <span ng-show="scdsvcdowntime.durationMin.$error.required">This field is required.</span></span>
              </div>
            </div>
            <div class="form-group">
@@ -623,7 +626,8 @@
        </div>
        <div class="modal-footer">
          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reset()">Close</button>
-         <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="scedule()" ng-disabled="scdsvcdowntime.$invalid" title="Please complete the form">Schedule</button>
+         <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="schedule(hostName, service, startDate, endDate, type, triggerBy, durationHour, durationMin, author, comment)"
+            ng-disabled="scdsvcdowntime.$invalid" title="Please complete the form">Schedule</button>
        </div>
      </div>
     </div>

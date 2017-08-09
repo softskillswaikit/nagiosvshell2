@@ -28,7 +28,7 @@
 									<option value="Host Resource">Host Resource</option>
 									<option value="Service Running State">Service Running State</option>
 								</select>
-								<span style="color:red" ng-show="inputForm.reportType.$invalid">
+								<span style="color:red" ng-show="inputForm.reportHostResource.$dirty && inputForm.reportType.$invalid">
 								<span ng-show="inputForm.reportType.$error.required">This field is required.</span></span>
 							</div>
 						</div>
@@ -37,10 +37,9 @@
 							<label for="reportHost" class="col-md-4 control-label">Select Host:</label>
 							<div class="col-md-6">
 								<select ng-model="reportHost" name="reportHost" class="form-control" ng-required="reportType!='Service'">
-									 <option value="ALL">-- ALL --</option>
-									 <option ng-repeat="option in componentName" value="{{option.name}}">{{option.name}}</option>
+									 <option ng-repeat="name in name.host" value="{{name}}">{{name}}</option>
 								</select>
-								<span style="color:red" ng-show="inputForm.reportHost.$invalid">
+								<span style="color:red" ng-show="inputForm.reportHost.$dirty && inputForm.reportHost.$invalid">
 								<span ng-show="inputForm.reportHost.$error.required">This field is required.</span></span>
 							</div>
 						</div>
@@ -49,10 +48,9 @@
 							<label for="reportService" class="col-md-4 control-label">Select Service:</label>
 							<div class="col-md-6">
 								<select ng-model="reportService" name="reportService" class="form-control" ng-required="reportType=='Service' || reportType=='Service Running State'">
-									 <option value="ALL">-- ALL --</option>
-									 <option ng-repeat="option in componentName" value="{{option.name}}">{{option.name}}</option>
+									 <option ng-repeat="name in name.service" value="{{name.service}}">{{name.service}}</option>
 								</select>
-								<span style="color:red" ng-show="inputForm.reportService.$invalid">
+								<span style="color:red" ng-show="inputForm.reportService.$dirty && inputForm.reportService.$invalid">
 								<span ng-show="inputForm.reportService.$error.required">This field is required.</span></span>
 							</div>
 						</div>
@@ -61,8 +59,7 @@
 							<label for="reportHostResource" class="col-md-4 control-label">Select Host Resource:</label>
 							<div class="col-md-6">
 								<select ng-model="reportHostResource" name="reportHostResource" class="form-control" ng-required="reportType=='Host Resource'">
-									 <option value="ALL">-- ALL --</option>
-									 <option ng-repeat="option in componentName" value="{{option.name}}">{{option.name}}</option>
+									 <option ng-repeat="name in name.hostresource | filter:{host:reportHost}:true" value="{{name.service}}">{{name.service}}</option>
 								</select>
 								<span style="color:red" ng-show="inputForm.reportHostResource.$invalid">
 								<span ng-show="inputForm.reportHostResource.$error.required">This field is required.</span></span>
@@ -188,7 +185,7 @@
 						<div class="form-group">
 							<div class="col-md-6 pull-right">
 								<button class="btn btn-primary" ng-click="reset()">Reset</button>
-								<a ng-href="#/report/alerthistogram/report">
+								<a>
 									<button ng-disabled="inputForm.$invalid" class="btn btn-primary" ng-click="createReport()">Create Report</button>
 								</a>
 							</div>

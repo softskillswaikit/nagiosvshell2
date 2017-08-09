@@ -143,30 +143,34 @@ angular.module('vshell.controllers', [])
           };
 
           async.api($scope, options);
-
-          //get author
-          var optionsstatus = {
-              name: 'status',
-              url: 'status',
-              queue: 'status-' + '',
-              cache: true
-          };
-
-          async.api($scope, optionsstatus);
-
-          };
+        };
 
           $scope.reset = function(){
+            //get author
+            var optionsstatus = {
+                name: 'status',
+                url: 'status',
+                queue: 'status-' + '',
+                cache: true
+            };
+            async.api($scope, optionsstatus);
+
               $scope.hostName = $routeParams.host;
               $scope.service = ' ';
               $scope.persistent = true;
-              $timeout(function(){$scope.author = $scope.status.username}, 500);
               $scope.comment = '';
               if($scope.addHostComment)
                 $scope.addHostComment.$setPristine();
 
-              console.log("comment");
-              console.log($scope.comment);
+              $scope.callback = function(data, status, headers, config) {
+                if(config != null){
+                  console.log("callback");
+                  if(config.url.includes("status")){
+                    $scope.author = data.username;
+                    console.log($scope.author);
+                  }
+                }
+              };
           };
 
         $scope.toggle = function(action, is_enabled){
@@ -402,32 +406,35 @@ angular.module('vshell.controllers', [])
 
             async.api($scope, options);
 
-            //get author
-            var optionsstatus = {
-                name: 'status',
-                url: 'status',
-                queue: 'status-' + '',
-                cache: true
-            };
-
-            async.api($scope, optionsstatus);
-
             //reset modal
-            $scope.reset();
         };
 
         $scope.reset = function(){
+          //get author
+          var optionsstatus = {
+              name: 'status',
+              url: 'status',
+              queue: 'status-' + '',
+              cache: true
+          };
+
+          async.api($scope, optionsstatus);
+
           //initialize scope
           $scope.hostName = $routeParams.host;
-          $scope.service = 'routeParams.service';
+          $scope.serviceName = $routeParams.service;
           $scope.persistent = true;
-          $timeout(function(){$scope.author = $scope.status.username;}, 1000);
           $scope.comment = '';
           if($scope.addServiceComment)
             $scope.addServiceComment.$setPristine();
 
-            console.log("scope service");
-            console.log($scope.status.username);
+            $scope.callback = function(data, status, headers, config) {
+              if(config != null){
+                if(config.url.includes("status")){
+                  $scope.author = data.username;
+                }
+              }
+            };
         };
 
         $scope.toggle = function(action, is_enabled){
@@ -439,7 +446,8 @@ angular.module('vshell.controllers', [])
 
         $scope.addComment = function(type){
 
-          console.log("add comment");
+          $scope.reset();
+
           $scope.add = function(persistent, comment){
             console.log("addComment");
             console.log("type="+type);
@@ -1470,12 +1478,18 @@ angular.module('vshell.controllers', [])
         //get host and service name
         var options = {
             name: 'name',
-            url: 'name' + '/' + 'all',
+            url: 'name',
             queue: 'main'
         };
 
         async.api($scope, options);
 
+
+
+        //$scope.reset();
+      };
+
+      $scope.reset = function(){
         //get author
         var options1 = {
             name: 'status',
@@ -1485,15 +1499,19 @@ angular.module('vshell.controllers', [])
         };
         async.api($scope, options1);
 
-        //$scope.reset();
-      };
-
-      $scope.reset = function(){
         $scope.hostName = $scope.name.host[0];
-        $scope.service = $scope.name.service[0];
+        //$scope.service = $scope.name.service[0].service;
         $scope.persistent = true;
-        $timeout(function(){$scope.author = $scope.status.username;}, 500);
         $scope.comment = '';
+
+        $scope.callback = function(data, status, headers, config) {
+          if(config != null){
+            if(config.url.includes("status")){
+              $scope.author = data.username;
+            }
+          }
+        };
+
         if($scope.addHostComment)
           $scope.addHostComment.$setPristine();
         if($scope.addServiceComment)
@@ -1564,33 +1582,33 @@ angular.module('vshell.controllers', [])
             //get host and service name
             var options = {
                 name: 'name',
-                url: 'name' + '/' + 'all',
+                url: 'name',
                 queue: 'main'
             };
 
             async.api($scope, options);
 
-            //get author
-            var options1 = {
-                name: 'status',
-                url: 'status',
-                queue: 'status-' + '',
-                cache: true
-            };
-            async.api($scope, options1);
-
-            $timeout(function(){$scope.reset();}, 500);
+            $timeout(function(){$scope.reset();}, 1000);
         };
 
         $scope.reset = function(){
           console.log("reset");
+
+          //get author
+          var options1 = {
+              name: 'status',
+              url: 'status',
+              queue: 'status-' + '',
+              cache: true
+          };
+          async.api($scope, options1);
+
           $scope.now = new Date();
           $scope.nowString = $filter('date')(Date.now(), 'yyyy-MM-ddTHH:mm');
 
           $scope.hostName = $scope.name.host[0];
-          $scope.service = $scope.name.service[0];
-          $timeout(function(){$scope.author = $scope.status.username;}, 500);
-          $scope.comment = ' ';
+          //$scope.service = $scope.name.service[0].service;
+          $scope.comment = '';
           $scope.triggeredBy = 'N/A';
           $scope.startDate = $scope.nowString;
           $scope.endDate = $scope.nowString;
@@ -1599,22 +1617,41 @@ angular.module('vshell.controllers', [])
           $scope.durationMin = 0;
           $scope.childHost = 'doNothing';
 
+          $scope.callback = function(data, status, headers, config) {
+            if(config != null){
+              if(config.url.includes("status")){
+                $scope.author = data.username;
+              }
+            }
+          };
+
           if($scope.addHostComment)
             $scope.addHostComment.$setPristine();
           if($scope.addServiceComment)
             $scope.addServiceComment.$setPristine();
-
-          $scope.startDateUnix = parseInt((new Date($scope.startDate).getTime() / 1000).toFixed(0));
-          $scope.endDateUnix = parseInt((new Date($scope.endDate).getTime() / 1000).toFixed(0));
         };
 
         $scope.scheduleDowntime = function(type){
 
           $scope.reset();
 
-          $scope.schedule = function(hostName, service, start, end, fixed, triggerID, duration, comment){
-
-            var options = {
+          $scope.schedule = function(hostName, service, start, end, type, triggerID, durationHour, durationMin, comment){
+            var author = $scope.status.username;
+            var duration  = durationHour * 60 + durationMin;
+            var startUnix = parseInt((new Date(start).getTime() / 1000).toFixed(0));
+            var endUnix = parseInt((new Date(end).getTime() / 1000).toFixed(0));
+            console.log("host=" + hostName);
+            console.log("service=" + service);
+            console.log("start=" + startUnix);
+            console.log("end=" + endUnix);
+            console.log("type=" + type);
+            console.log("triggerID=" + triggerID);
+            console.log("durationHour=" + durationHour);
+            console.log("durationMin=" + durationMin);
+            console.log("duration=" + duration);
+            console.log("author=" + author);
+            console.log("comment=" + comment);
+            /*var options = {
                 name: 'success',
                 url: 'scheduledowntime/'+ type + '/' + hostName + '/' + service + '/'+ start
                   + '/' + end + '/' + fixed + '/' + triggerID + '/' + duration
@@ -1622,7 +1659,7 @@ angular.module('vshell.controllers', [])
                 queue: 'main'
             };
             async.api($scope, options);
-
+            */
             $scope.callback = function(data, status, headers, config) {
               if(config != null){
                   if(config.url.includes("scheduledowntime")){

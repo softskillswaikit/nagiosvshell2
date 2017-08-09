@@ -45,11 +45,7 @@ $route["status"] = "api";
 /*
 * Create by Soon Wei Liang
 */
-$route["name/(:any)"] = "api/name/$1";
-$route["hostname"] = "api/hostname";
-$route["servicename"] = "api/servicename";
-$route["hostgroupname"] = "api/hostgroupname";
-$route["servicegroupname"] = "api/servicegroupname";
+$route["name"] = "api/name";
 $route["availability/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/availability/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10/$11";
 $route["trend/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/trend/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10/$11/$12";
 $route["alerthistory"] = "api/alerthistory";
@@ -60,7 +56,7 @@ $route["notification/(:any)"] = "api/notifications/$1";
 $route["testing"] = "api/testing";
 $route["comments/(:any)"] = "api/comments/$1";
 $route["comments"] = "api/comments";
-$route["downtime/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/downtime/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10";
+$route["scheduledowntime/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/scheduleDowntime/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10";
 $route["schedulequeue"] = "api/scheduleQueue";
 
 //System commands
@@ -90,10 +86,9 @@ $route["allhostcheck/(:any)"] = "api/allHostCheck/$1";
 $route["allpassivehostcheck/(:any)"] = "api/allPassiveHostCheck/$1";
 $route["passivehostcheck/(:any)/(:any)"] = "api/passiveHostCheck/$1/$2";
 $route["allflapdetection/(:any)"] = "api/allFlapDetection/$1";
-$route["hostflapdetection/(:any)/(:any)"] = "api/hostFlapDetection/$1/$2"; 
+$route["hostflapdetection/(:any)/(:any)"] = "api/hostFlapDetection/$1/$2";
 $route["serviceflapdetection/(:any)/(:any)/(:any)"] = "api/serviceFlapDetection/$1/$2/$3";
-$route["schedulehostservicedowntime/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/scheduleHostServiceDowntime/$1/$2/$3/$4/$5/$6/$7/$8";
-$route["schedulehostcheck/(:any)/(:any)/(:any)"] = "api/scheduleHostCheck/$1/$2/$3"; 
+$route["schedulehostcheck/(:any)/(:any)/(:any)"] = "api/scheduleHostCheck/$1/$2/$3";
 $route["sendcustomnotification/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/sendCustomNotification/$1/$2/$3/$4/$5/$6/$7";
 
 $route["configurations/(:any)"] = "api/configurations/$1";
