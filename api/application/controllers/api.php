@@ -2,7 +2,6 @@
 
 class API extends VS_Controller
 {
-
     private $domain;
     private $user;
     private $user_domain;
@@ -184,24 +183,15 @@ class API extends VS_Controller
      */
     public function name()
     {
-        $hostname = array();
-        $hostgroupname = array();
-        $servicename = array();
-        $servicegroupname = array();
-        $runningstatename = array();
-        $hostresourcename = array();
-        $allName;
-
-        
         //all host name
         $hosts = $this->nagios_data->get_collection('hoststatus');
 
         foreach($hosts as $host)
         {
-            $hostname[] = $host->host_name;
+            $host_name[] = $host->host_name;
         }
 
-        $allName['host'] = $hostname;
+        $allName['host'] = $host_name;
     
 
         //all hostgroup name    
@@ -209,10 +199,10 @@ class API extends VS_Controller
 
         foreach($hostgroups as $hostgroup)
         {
-            $hostgroupname[] = $hostgroup->alias;
+            $hostgroup_name[] = $hostgroup->alias;
         }
 
-        $allName['hostgroup'] = $hostgroupname;     
+        $allName['hostgroup'] = $hostgroup_name;     
     
 
         //all service name
@@ -220,10 +210,10 @@ class API extends VS_Controller
 
         foreach ($services as $service)
         {
-            $servicename[] = array('host' =>$service->host_name, 'service'=> $service->service_description);
+            $service_name[] = array('host' =>$service->host_name, 'service'=> $service->service_description);
         }
 
-        $allName['service'] = $servicename;
+        $allName['service'] = $service_name;
     
 
         //all service group name
@@ -231,10 +221,10 @@ class API extends VS_Controller
 
         foreach($servicegroups as $servicegroup)
         {
-            $servicegroupname[] = $servicegroup->alias;
+            $servicegroup_name[] = $servicegroup->alias;
         }
 
-        $allName['servicegroup'] = $servicegroupname;
+        $allName['servicegroup'] = $servicegroup_name;
 
 
         //all host resource
@@ -242,20 +232,20 @@ class API extends VS_Controller
 
         foreach ($hostresources as $hostresource) 
         {
-            $hostresourcename[] = array('host'=> $hostresource->host_name, 'service'=> $hostresource->service_description);
+            $hostresource_name[] = array('host'=> $hostresource->host_name, 'service'=> $hostresource->service_description);
         }
 
-        $allName['hostresource'] = $hostresourcename;
+        $allName['hostresource'] = $hostresource_name;
 
         //all service running state
         $runningstates = $this->nagios_data->get_collection('runningstate');
 
         foreach ($runningstates as $runningstate)
         {
-            $runningstatename[] = array('host'=> $runningstate->host_name, 'service' => $runningstate->service_description);
+            $runningstate_name[] = array('host'=> $runningstate->host_name, 'service' => $runningstate->service_description);
         }
 
-        $allName['runningstate'] = $runningstatename;
+        $allName['runningstate'] = $runningstate_name;
         
         $this->output($allName); 
     }
@@ -468,11 +458,71 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $Data = array('car','motor',true);
+        //all host name
+        $hosts = $this->nagios_data->get_collection('hoststatus');
 
-        $validate = $this->validate_data($Data);
+        foreach($hosts as $host)
+        {
+            $host_name[] = $host->host_name;
+        }
 
-        $this->output($validate);
+        $allName['host'] = $host_name;
+    
+
+        //all hostgroup name    
+        $hostgroups = $this->nagios_data->get_collection('hostgroup');
+
+        foreach($hostgroups as $hostgroup)
+        {
+            $hostgroup_name[] = $hostgroup->alias;
+        }
+
+        $allName['hostgroup'] = $hostgroup_name;     
+    
+
+        //all service name
+        $services = $this->nagios_data->get_collection('servicestatus');
+
+        foreach ($services as $service)
+        {
+            $service_name[] = array('host' =>$service->host_name, 'service'=> $service->service_description);
+        }
+
+        $allName['service'] = $service_name;
+    
+
+        //all service group name
+        $servicegroups = $this->nagios_data->get_collection('servicegroup');
+
+        foreach($servicegroups as $servicegroup)
+        {
+            $servicegroup_name[] = $servicegroup->alias;
+        }
+
+        $allName['servicegroup'] = $servicegroup_name;
+
+
+        //all host resource
+        $hostresources = $this->nagios_data->get_collection('hostresource');
+
+        foreach ($hostresources as $hostresource) 
+        {
+            $hostresource_name[] = array('host'=> $hostresource->host_name, 'service'=> $hostresource->service_description);
+        }
+
+        $allName['hostresource'] = $hostresource_name;
+
+        //all service running state
+        $runningstates = $this->nagios_data->get_collection('runningstate');
+
+        foreach ($runningstates as $runningstate)
+        {
+            $runningstate_name[] = array('host'=> $runningstate->host_name, 'service' => $runningstate->service_description);
+        }
+
+        $allName['runningstate'] = $runningstate_name;
+        
+        $this->output($allName); 
     }
 
     /**
@@ -519,7 +569,7 @@ class API extends VS_Controller
                 
                 foreach ($Datahostdowntime as $hostdowntime) 
                 {
-                    $Downtime[] = array('host' => $hostdowntime->host_name, 'entry_time'=> $hostdowntime->entry_time, 'author' => $hostdowntime->author, 'comment'=> $hostdowntime->comment, 'start_time'=> $hostdowntime->start_time, 'end_time' => $hostdowntime->end_time, 'fixed' => $hostdowntime->fixed, 'duration' => $hostdowntime->duration, 'downtime_id' => $hostdowntime->downtime_id, 'trigged_id' => $hostdowntime->triggered_by);
+                    $Downtime[] = array('host' => $hostdowntime->host_name, 'entry_time'=> $hostdowntime->entry_time, 'author' => $hostdowntime->author, 'comment'=> $hostdowntime->comment, 'start_time'=> $hostdowntime->start_time, 'end_time' => $hostdowntime->end_time, 'fixed' => $hostdowntime->fixed, 'duration' => $hostdowntime->duration, 'downtime_id' => $hostdowntime->downtime_id, 'triggered_id' => $hostdowntime->triggered_by, 'entry_time' => $hostdowntime->entry_time);
                 }
             }
             else
@@ -528,7 +578,7 @@ class API extends VS_Controller
 
                 foreach ($Dataservicedowntime as $servicedowntime) 
                 {
-                    $Downtime[] = array('host' => $servicedowntime->host_name, 'service'=> $servicedowntime->service_description, 'entry_time'=> $servicedowntime->entry_time, 'author' => $servicedowntime->author, 'comment'=> $servicedowntime->comment, 'start_time'=> $servicedowntime->start_time, 'end_time' => $servicedowntime->end_time, 'fixed' => $servicedowntime->fixed, 'duration' => $servicedowntime->duration, 'downtime_id' => $servicedowntime->downtime_id, 'trigged_id' => $servicedowntime->triggered_by);
+                    $Downtime[] = array('host' => $servicedowntime->host_name, 'service'=> $servicedowntime->service_description, 'entry_time'=> $servicedowntime->entry_time, 'author' => $servicedowntime->author, 'comment'=> $servicedowntime->comment, 'start_time'=> $servicedowntime->start_time, 'end_time' => $servicedowntime->end_time, 'fixed' => $servicedowntime->fixed, 'duration' => $servicedowntime->duration, 'downtime_id' => $servicedowntime->downtime_id, 'triggered_id' => $servicedowntime->triggered_by, 'entry_time' => $servicedowntime->entry_time);
                 }
 
             }
@@ -561,6 +611,7 @@ class API extends VS_Controller
             'hostsvc'
         );
 
+        $author = urldecode($author);
         $comments = urldecode($comments);
 
         //check empty input
@@ -699,9 +750,11 @@ class API extends VS_Controller
      * @param String $author
      * @param String $comments
      */
-    public function addComments($type, $host, $service='', $persistent, $author, $comments)
+    public function addComments($type, $host, $service, $persistent, $author, $comments)
     {
         $result = false;
+        $host = urldecode($host);
+        $service = urldecode($service);
         $author = urldecode($author);
         $comments = urldecode($comments);
 
@@ -711,7 +764,9 @@ class API extends VS_Controller
         );
 
         //check for empty input
-        if(!empty($type) && !empty($host) && !empty($author) && !empty($comments))
+        $validate = $this->validate_data(array($type, $host, $author, $comments));
+        
+        if($validate)
         {
             //compare types with allowed types
             if(in_array($type, $allowed_types))
@@ -777,6 +832,8 @@ class API extends VS_Controller
     public function servicecheck($type, $hostname, $service)
     {
         $result = false;
+        $hostname = urldecode($hostname);
+        $service = urldecode($service);
 
         if($type)
         {
@@ -859,20 +916,20 @@ class API extends VS_Controller
      * Delete all host or service comment
      *
      * @param String $type, 'host', 'service'
-     * @param String $host
-     * @param String $service , [if delete all host name, $service should be '']
+     * @param String $host_name
+     * @param String $service_description , [if delete all host name, $service_description should be '']
      */
-    public function deleteAllComment($type, $host, $service='')
+    public function deleteAllComment($type, $host_name, $service_description)
     {
         $result = false;
 
         if($type == 'host')
         {
-           $result =  $this->system_commands->delete_all_host_comments($host);
+           $result =  $this->system_commands->delete_all_host_comment($host);
         }
         else if($type == 'service')
         {
-            $result = $this->system_commands->delete_all_service_comments($host, $service);
+            $result = $this->system_commands->delete_all_svc_comment($host, $service_description);
         }
 
         $this->output($result);
@@ -1305,19 +1362,19 @@ class API extends VS_Controller
       * Enable or disable host flap detection
       *
       * @param Bool $type, true = 'enable', false ='disable'
-      * @param String $host
+      * @param String $host_name
       */
-     public function hostFlapDetection($type, $host)
+     public function hostFlapDetection($type, $host_name)
      {
         $result = false;
 
         if($type)
         {
-            $result = $this->system_commands->enable_host_flap_detection($host);
+            $result = $this->system_commands->enable_host_flap_detection($host_name);
         }
         else
         {
-            $result = $this->system_commands->disable_host_flap_detection($host);
+            $result = $this->system_commands->disable_host_flap_detection($host_name);
         }
 
         $this->output($result);
@@ -1327,20 +1384,20 @@ class API extends VS_Controller
       * Enable or disable service flap detection
       *
       * @param Bool $type, true = 'enable', false ='disable'
-      * @param String $host
-      * @param String $service
+      * @param String $host_name
+      * @param String $service_description
       */
-     public function serviceFlapDetection($type, $host, $service)
+     public function serviceFlapDetection($type, $host_name, $service_description)
      {
         $result = false;
 
         if($type)
         {
-            $result = $this->system_commands->enable_svc_flap_detection($host, $service);
+            $result = $this->system_commands->enable_svc_flap_detection($host_name, $service_description);
         }
         else
         {
-            $result = $this->system_commands->disable_svc_flap_detection($host, $service);
+            $result = $this->system_commands->disable_svc_flap_detection($host_name, $service_description);
         }
 
         $this->output($result);
@@ -1350,15 +1407,15 @@ class API extends VS_Controller
      /**
       * Schedule host check
       *
-      * @param String $host
-      * @param String $checktime
-      * @param bool $forceCheck
+      * @param String $host_name
+      * @param String $check_time
+      * @param bool $force_check
       */
-     public function scheduleHostCheck($host, $checktime, $forceCheck)
+     public function scheduleHostCheck($host_name, $check_time, $force_check)
      {
         $result = false;
 
-        $result = $this->system_commands->schedule_host_check($host, $checktime, $forceCheck);
+        $result = $this->system_commands->schedule_host_check($host_name, $check_time, $force_check);
 
         $this->output($result);
      }
@@ -1367,14 +1424,14 @@ class API extends VS_Controller
       * Send custom host or service notifications
       *
       * @param String $type , 'host', 'service'
-      * @param String $host
-      * @param String $service
+      * @param String $host_name
+      * @param String $service_description
       * @param bool $force
       * @param bool $broadcast
       * @param String $author
       * @param String $comment
       */
-     public function sendCustomNotification($type, $host, $service, $force, $broadcast, $author, $comment)
+     public function sendCustomNotification($type, $host_name, $service, $force, $broadcast, $author, $comment)
      {
         $result = false;
 
@@ -1383,11 +1440,11 @@ class API extends VS_Controller
 
         if($type == 'host')
         {
-            $result = $this->system_commands->send_custom_host_notification($host, $force, $broadcast, $author, $comment);
+            $result = $this->system_commands->send_custom_host_notification($host_name, $force, $broadcast, $author, $comment);
         }
         else if($type == 'service')
         {
-            $result = $this->system_commands->send_custom_svc_notification($host, $service, $force, $broadcast, $author, $comment);
+            $result = $this->system_commands->send_custom_svc_notification($host_name, $service, $force, $broadcast, $author, $comment);
         }
 
         $this->output($result);
