@@ -2163,6 +2163,14 @@ class System_commands extends CI_Model
 				{
 					$return_value = false;
 				}
+				else if(strpos($data, 'External command error') !== false)
+				{
+					$return_value = false;
+				}
+				else if(strpos($data, 'Warning: Unrecognized external command'))
+				{
+					$return_value = false;
+				}
 			}
 		}
 
