@@ -15,7 +15,9 @@ angular.module('vshell.filters', [])
 
 .filter('entry_type', function() {
     return function(input) {
-        if(input == 1)
+        if(input ==0)
+          return 'Acknowledgement';
+        else if(input == 1)
           return 'User';
         else if(input ==2)
           return 'Scheduled Downtime';
@@ -80,6 +82,7 @@ angular.module('vshell.filters', [])
 
 .filter('percent', function(numberFilter) {
     return function(input, total, precision) {
+
         if(total == 0 )
             return '0%';
 

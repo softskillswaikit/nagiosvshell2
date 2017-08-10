@@ -239,6 +239,34 @@ angular.module('vshell.controllers', [])
             };
           }
         };
+
+        $scope.deleteAllComment = function(type){
+
+            $scope.deleteAll = function(){
+
+              if(type == 'host'){
+
+                var options = {
+                    name: 'success',
+                    url: 'deleteallcomment/' + type + '/' +  $routeParams.host + '/' + ' ' + '/',
+                    queue: 'main'
+                };
+
+                async.api($scope, options);
+
+                $scope.callback = function(data, status, headers, config) {
+                    if(config != null){
+                        if(config.url.includes("deleteallcomment")){
+                            if(data == 'true')
+                              ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                            else
+                              ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
+                };
+              }
+            }
+          };
     }
 ])
 
@@ -506,6 +534,34 @@ angular.module('vshell.controllers', [])
 
             };
           };
+
+          $scope.deleteAllComment = function(type){
+
+              $scope.deleteAll = function(){
+
+                if(type == 'service'){
+
+                  var options = {
+                      name: 'success',
+                      url: 'deleteallcomment/' + type + '/' +  $routeParams.host + '/' + $routeParams.service,
+                      queue: 'main'
+                  };
+
+                  async.api($scope, options);
+
+                  $scope.callback = function(data, status, headers, config) {
+                      if(config != null){
+                          if(config.url.includes("deleteallcomment")){
+                              if(data == 'true')
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                              else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                          }
+                      }
+                  };
+                }
+              };
+            };
       }
 ])
 
@@ -1589,7 +1645,7 @@ angular.module('vshell.controllers', [])
                       $('.modal').modal('hide');
                     }
                     else
-                      ngToast.create({className: 'alert alert-danger',content:'Fail! Please check your host or service name.',timeout:3000});
+                      ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                     //$timeout(function(){$window.location.reload()}, 2000);
                 }
             }
@@ -1728,8 +1784,10 @@ angular.module('vshell.controllers', [])
             $scope.callback = function(data, status, headers, config) {
               if(config != null){
                   if(config.url.includes("scheduledowntime")){
-                      if(data == 'true')
+                      if(data == 'true'){
                         ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                        $('.modal').modal('hide');
+                      }
                       else
                         ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                       //$timeout(function(){$window.location.reload()}, 2000);
@@ -1768,20 +1826,20 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('PerformanceInfoCtrl', ['$scope', 'async',
-    function($scope, async) {
+.controller('PerformanceInfoCtrl', ['$scope', 'async', '$timeout', '$window',
+    function($scope, async, $timeout, $window) {
 
         $scope.init = function() {
-/*
             var options = {
-                name: 'performanceinfo',
+                name: 'pinfo',
                 url: 'performanceinfo',
                 queue: 'main'
             };
 
             async.api($scope, options);
-*/
+
         };
+        $timeout(function(){console.log(typeof $scope.pinfo.active_host_checked_since_program_start)}, 1000);
 
     }
 ])
