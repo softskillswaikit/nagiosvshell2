@@ -83,7 +83,7 @@ class API extends VS_Controller
     /**
      * Retrieve program status
      */
-    public function programstatus()
+    public function programStatus()
     {
         $Program = $this->nagios_data->get_collection('programstatus');
         $this->output($Program);
@@ -149,7 +149,7 @@ class API extends VS_Controller
     /**
      * Retrieve tactical overview data
      */
-    public function tacticaloverview() 
+    public function tacticalOverview() 
     {
         $Data = $this->tac_data->get_tac_data();
         $this->output($Data);
@@ -176,7 +176,6 @@ class API extends VS_Controller
     }
 
 
-    //Written by Soon Wei Liang
     /**
      * Fetch name based on type : host, hostgroup, service, servicegroup
      *
@@ -191,7 +190,7 @@ class API extends VS_Controller
             $host_name[] = $host->host_name;
         }
 
-        $allName['host'] = $host_name;
+        $Name['host'] = $host_name;
     
 
         //all hostgroup name    
@@ -202,7 +201,7 @@ class API extends VS_Controller
             $hostgroup_name[] = $hostgroup->alias;
         }
 
-        $allName['hostgroup'] = $hostgroup_name;     
+        $Name['hostgroup'] = $hostgroup_name;     
     
 
         //all service name
@@ -213,7 +212,7 @@ class API extends VS_Controller
             $service_name[] = array('host' =>$service->host_name, 'service'=> $service->service_description);
         }
 
-        $allName['service'] = $service_name;
+        $Name['service'] = $service_name;
     
 
         //all service group name
@@ -224,7 +223,7 @@ class API extends VS_Controller
             $servicegroup_name[] = $servicegroup->alias;
         }
 
-        $allName['servicegroup'] = $servicegroup_name;
+        $Name['servicegroup'] = $servicegroup_name;
 
 
         //all host resource
@@ -235,7 +234,7 @@ class API extends VS_Controller
             $hostresource_name[] = array('host'=> $hostresource->host_name, 'service'=> $hostresource->service_description);
         }
 
-        $allName['hostresource'] = $hostresource_name;
+        $Name['hostresource'] = $hostresource_name;
 
         //all service running state
         $runningstates = $this->nagios_data->get_collection('runningstate');
@@ -245,9 +244,9 @@ class API extends VS_Controller
             $runningstate_name[] = array('host'=> $runningstate->host_name, 'service' => $runningstate->service_description);
         }
 
-        $allName['runningstate'] = $runningstate_name;
+        $Name['runningstate'] = $runningstate_name;
         
-        $this->output($allName); 
+        $this->output($Name); 
     }
 
     
@@ -268,9 +267,9 @@ class API extends VS_Controller
      * @param String $firstAssumedService
      * @param String $backTrack
      */
-     public function availability($type, $repiod, $start, $end, $hostservice, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost='', $firstAssumedService='', $backTrack)
+     public function availability($type, $period, $start, $end, $hostservice, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost='', $firstAssumedService='', $backTrack)
     {
-        $validate = $this->validate_data($type, $repiod, $start, $end, $hostservice, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $firstAssumedService, $backTrack);
+        $validate = $this->validate_data($type, $period, $start, $end, $hostservice, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $firstAssumedService, $backTrack);
 
     }
 
@@ -292,7 +291,6 @@ class API extends VS_Controller
      */
     public function trend($reportType, $name='', $start='', $end='', $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $backTrack, $suppressImage, $suppressPopups)
     {
-        $validate = $this->validate_data($reportType, $name, $start, $end, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $backTrack, $suppressImage, $suppressPopups);
     }
 
     /**
@@ -300,11 +298,17 @@ class API extends VS_Controller
      *
      * @param String $date
      */
-    public function alerthistory($date)
+    public function alertHistory($date)
     {
-        $AlertHistory = $this->reports_data->get_history_data($date);
+        //check empty inputs
+        $validate = $this->validate_data(array($date));
 
-        $this->output($AlertHistory);
+        if($validate)
+        {
+            $Alert_history = $this->reports_data->get_history_data($date);
+        }
+
+        $this->output($Alert_history);
     }
 
     /**
@@ -313,12 +317,12 @@ class API extends VS_Controller
      * @param string $type
      * @param string $period 
      * @param string $date , for custom period : date in array (start date, end date)
-     * @param string $service
+     * @param string $service_description
      * @param string $logtype
      * @param string $statetype
      * @param string $state
      */
-    public function alertsummary($type, $period, $date, $service, $logtype, $statetype, $state)
+    public function alertSummary($type, $period, $date, $service_description='', $logtype, $statetype, $state)
     {
         //allowed type of alert
         $allowed_types = array(
@@ -357,21 +361,25 @@ class API extends VS_Controller
             'ALL STATE TYPE'
         );
 
-        $logtype = urldecode($logtype);
+        //decode inputs with spaces
+        $service_description = urldecode($service_description);
         $period = urldecode($period);
+        $logtype = urldecode($logtype);
         $statetype = urldecode($statetype);
 
         //check empty inputs
-        if(!empty($type) && !empty($period) && !empty($date) && !empty($service) && !empty($logtype) && !empty($statetype) && !empty($state))
+        $validate = $this->validate_data(array($type, $period, $date, $service_description, $logtype, $statetype, $state));
+
+        if($validate)
         {
             //verify inputs
             if(in_array($type, $allowed_types) && in_array($period, $allowed_periods) && in_array($logtype, $allowed_logtypes) && in_array($statetype, $allowed_statetypes))
             {
-                $AlertSummary = $this->reports_data->get_alert_summary($type, $period, $date, $service, $logtype, $statetype, $state);
+                $Alert_summary = $this->reports_data->get_alert_summary($type, $period, $date, $service_description, $logtype, $statetype, $state);
             }
         }
 
-        $this->output($AlertSummary);
+        $this->output($Alert_summary);
     }
 
     /**
@@ -388,9 +396,9 @@ class API extends VS_Controller
      * @param bool $ignoreRepeated
      *
      */
-    public function alerthistogram($reportType, $name='', $period, $breakdown='', $eventsToGraph='', $typesToGraph='', $stateRention, $initialStateLogged, $ignoreRepeated)
+    public function alertHistogram($reportType, $name='', $period, $breakdown='', $eventsToGraph='', $typesToGraph='', $stateRention, $initialStateLogged, $ignoreRepeated)
     {
-        $AlertHistogram = $this->alert_histogram_data->get_alert_histogram();
+        $Alert_Histogram = $this->alert_histogram_data->get_alert_histogram();
 
         //Host
         if($reportType == 1)
@@ -413,22 +421,17 @@ class API extends VS_Controller
      *
      * @param  String $date
      */
-    public function eventlogs($date)
+    public function eventlog($date)
     {
-        $Eventlogs = array();
-        //$date = "1490279712";
-
-        $Data = $this->reports_data->get_event_log($date);
-
-        if(!empty($date) && strlen($date) == 10)
+        //check empty inputs
+        $validate = $this->validate_data(array($date));
+        
+        if($validate)
         {
-            foreach ($Data as $Eventlog) 
-            {
-                $Eventlogs[] = $Eventlog;
-            }
+            $Event_logs = $this->reports_data->get_event_log($date);
         }
 
-        $this->output($Eventlogs);
+        $this->output($Event_logs);
     }
 
     /**
@@ -436,21 +439,14 @@ class API extends VS_Controller
      *
      * @param String $date
      */
-    public function notifications($date)
+    public function notification($date)
     {
-        $Notificaions = array();
-        //$date = "1490279712";
+        //check empty inputs
+        $validate = $this->validate_data(array($date));
 
-        $Data = $this->reports_data->get_notification($date);
-
-        if(!empty($date) && strlen($date) == 10)
+        if($validate)
         {
-            $Data = $this->reports_data->get_notification($date);
-
-            foreach ($Data as $Notification) 
-            {
-                $Notifications[] = $Notification;
-            }
+            $Notifications = $this->reports_data->get_notification($date);  
         }
 
         $this->output($Notifications);
@@ -458,93 +454,40 @@ class API extends VS_Controller
 
     public function testing()
     {
-        //all host name
-        $hosts = $this->nagios_data->get_collection('hoststatus');
-
-        foreach($hosts as $host)
-        {
-            $host_name[] = $host->host_name;
-        }
-
-        $allName['host'] = $host_name;
-    
-
-        //all hostgroup name    
-        $hostgroups = $this->nagios_data->get_collection('hostgroup');
-
-        foreach($hostgroups as $hostgroup)
-        {
-            $hostgroup_name[] = $hostgroup->alias;
-        }
-
-        $allName['hostgroup'] = $hostgroup_name;     
-    
-
-        //all service name
-        $services = $this->nagios_data->get_collection('servicestatus');
-
-        foreach ($services as $service)
-        {
-            $service_name[] = array('host' =>$service->host_name, 'service'=> $service->service_description);
-        }
-
-        $allName['service'] = $service_name;
-    
-
-        //all service group name
-        $servicegroups = $this->nagios_data->get_collection('servicegroup');
-
-        foreach($servicegroups as $servicegroup)
-        {
-            $servicegroup_name[] = $servicegroup->alias;
-        }
-
-        $allName['servicegroup'] = $servicegroup_name;
-
-
-        //all host resource
-        $hostresources = $this->nagios_data->get_collection('hostresource');
-
-        foreach ($hostresources as $hostresource) 
-        {
-            $hostresource_name[] = array('host'=> $hostresource->host_name, 'service'=> $hostresource->service_description);
-        }
-
-        $allName['hostresource'] = $hostresource_name;
-
-        //all service running state
-        $runningstates = $this->nagios_data->get_collection('runningstate');
-
-        foreach ($runningstates as $runningstate)
-        {
-            $runningstate_name[] = array('host'=> $runningstate->host_name, 'service' => $runningstate->service_description);
-        }
-
-        $allName['runningstate'] = $runningstate_name;
         
-        $this->output($allName); 
+        
+        
     }
 
     /**
      * Delete host or service downtime
      *
      * @param String $type, 'host' : host, 'svc' : service
-     * @param String $downtimeID
+     * @param String $downtime_id
      */
-    public function deleteDowntime($type, $downtimeID)
+    public function deleteDowntime($type, $downtime_id)
     {
-        $result = false;
+        $Result = false;
 
-        if($type == 'host')
+        //check empty inputs
+        $validate = $this->validate_data(array($type, $downtime_id));
+
+        if($validate)
         {
-            $result = $this->system_commands->delete_host_downtime($downtimeID);
-        }
-        else if($type == 'svc')
-        {
-            $result = $this->system_commands->delete_svc_downtime($downtimeID);
+            //delete host downtime
+            if($type == 'host')
+            {
+                $Result = $this->system_commands->delete_host_downtime($downtime_id);
+            }
+
+            //delete service downtime
+            else if($type == 'svc')
+            {
+                $Result = $this->system_commands->delete_svc_downtime($downtime_id);
+            }
         }
 
-        $this->output($result);
+        $this->output($Result);
     }
 
     /**
@@ -923,10 +866,13 @@ class API extends VS_Controller
     {
         $result = false;
 
+        //delete all host comment
         if($type == 'host')
         {
            $result =  $this->system_commands->delete_all_host_comment($host_name);
         }
+
+        //delete all service comment
         else if($type == 'service')
         {
             $result = $this->system_commands->delete_all_svc_comment($host_name, $service_description);
@@ -960,7 +906,7 @@ class API extends VS_Controller
     /**
      * Schedule host or service check
      *
-     * @param String $type, 'host', 'service'
+     * @param String $type, 'host', 'service', 'hostsvc'
      * @param String $host
      * @param String $service , [if type is host, service should be '']
      * @param String $checktime
@@ -971,6 +917,10 @@ class API extends VS_Controller
         $result = false;
 
         if($type == 'host')
+        {
+            $result = $this->system_commands->schedule_host_check($host, $checktime, $forceCheck);
+        }
+        else if($type == 'hostsvc')
         {
             $result = $this->system_commands->schedule_host_svc_check($host, $checktime, $forceCheck);
         }
