@@ -35,6 +35,12 @@ class Testing extends CI_Model
 
 	//Written by Low Zhi Jian
 	//Functions to be called by web service
+	//Trends section
+	public function get_trend()
+	{
+		
+	}
+
 	//Alert history section
 	public function get_alert_history($input_date)
 	{
