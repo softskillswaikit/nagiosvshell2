@@ -925,11 +925,11 @@ class API extends VS_Controller
 
         if($type == 'host')
         {
-           $result =  $this->system_commands->delete_all_host_comment($host);
+           $result =  $this->system_commands->delete_all_host_comment($host_name);
         }
         else if($type == 'service')
         {
-            $result = $this->system_commands->delete_all_svc_comment($host, $service_description);
+            $result = $this->system_commands->delete_all_svc_comment($host_name, $service_description);
         }
 
         $this->output($result);
