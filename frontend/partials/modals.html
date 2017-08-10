@@ -1,7 +1,7 @@
 <div ng-controller="ConfigurationsCtrl">
 
     <!--Confirm delete name-->
-    <div class="modal fade" id="delete-name" data-backdrop="false" >
+    <div class="modal fade" id="delete-name" ng-controller="ConfigurationsCtrl" data-backdrop="false" >
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-body no-padding">
@@ -16,7 +16,7 @@
     </div>
 
     <!--Confirm delete keyvalue-->
-    <div class="modal fade" id="delete-keyvalue" data-backdrop="false" >
+    <div class="modal fade" id="delete-keyvalue" ng-controller="ConfigurationsCtrl" data-backdrop="false" >
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-body no-padding">
@@ -38,7 +38,7 @@
 <div ng-controller="SysCommentsCtrl">
 
       <!-- Add Host Comment -->
-      <div class="modal fade" id="hostComment" data-backdrop="false">
+      <div class="modal fade" id="hostComment" ng-controller="SysCommentsCtrl" ng-init="init()" data-backdrop="false">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -95,15 +95,15 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="resetModal()">Close</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="add(hostName, ' ', persistent, author, comment)" title="Please complete the form" ng-disabled="addHostComment.$invalid">Add</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reset()">Close</button>
+              <button type="button" class="btn btn-primary" ng-click="add(hostName, ' ', persistent, author, comment); reset()" title="Please complete the form" ng-disabled="addHostComment.$invalid">Add</button>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Add Service Comment -->
-      <div class="modal fade" id="serviceComment" data-backdrop="false" >
+      <div class="modal fade" id="serviceComment" ng-controller="SysCommentsCtrl" ng-init="init()" data-backdrop="false" >
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -172,15 +172,15 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="resetModal()">Close</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="add(hostName, service, persistent, author, comment)" ng-disabled="addServiceComment.$invalid" title="Please complete the form">Add</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reset()">Close</button>
+              <button type="button" class="btn btn-primary" ng-click="add(hostName, service, persistent, author, comment); reset()" ng-disabled="addServiceComment.$invalid" title="Please complete the form">Add</button>
             </div>
           </div>
         </div>
       </div>
 
       <!--Confirm Delete Comment-->
-      <div class="modal fade" id="delete-comment" role="dialog" data-backdrop="false" >
+      <div class="modal fade" id="delete-comment" ng-controller="SysCommentsCtrl" role="dialog" data-backdrop="false" >
         <div class="modal-dialog modal-sm">
           <div class="modal-content">
             <div class="modal-body no-padding">
@@ -199,7 +199,7 @@
 <div ng-controller="ServiceDetailsCtrl">
 
   <!--Confirm toggle-->
-  <div class="modal fade" id="confirm-toggle" data-backdrop="false" >
+  <div class="modal fade" id="confirm-toggle" ng-controller="ServiceDetailsCtrl" data-backdrop="false" >
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-body no-padding">
@@ -214,7 +214,7 @@
   </div>
 
   <!--Confirm delete service comment-->
-  <div class="modal fade" id="confirm" data-backdrop="false" >
+  <div class="modal fade" id="confirm" ng-controller="ServiceDetailsCtrl" data-backdrop="false" >
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-body no-padding">
@@ -229,7 +229,7 @@
   </div>
 
   <!--Add service comment-->
-  <div class="modal fade" id="serviceComment1" data-backdrop="false" >
+  <div class="modal fade" id="serviceComment1" ng-controller="ServiceDetailsCtrl" ng-init="init()" data-backdrop="false" >
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -294,7 +294,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reset()">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="add(persistent, author, comment)" ng-disabled="addServiceComment.$invalid" title="Please complete the form">Add</button>
+          <button type="button" class="btn btn-primary" ng-click="add(persistent, author, comment); reset()" ng-disabled="addServiceComment.$invalid" title="Please complete the form">Add</button>
         </div>
       </div>
     </div>
@@ -305,7 +305,7 @@
 <div ng-controller="HostDetailsCtrl">
 
   <!--Confirm toggle-->
-  <div class="modal fade" id="confirm-toggle" data-backdrop="false" >
+  <div class="modal fade" id="confirm-toggle" ng-controller="HostDetailsCtrl" data-backdrop="false" >
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-body no-padding">
@@ -320,7 +320,7 @@
   </div>
 
   <!--Confirm delete host comment-->
-  <div class="modal fade" id="confirm-delete" data-backdrop="false" >
+  <div class="modal fade" id="confirm-delete" ng-controller="HostDetailsCtrl" data-backdrop="false" >
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-body no-padding">
@@ -335,7 +335,7 @@
   </div>
 
   <!--Add host comment-->
-  <div class="modal fade" id="hostComment1" data-backdrop="false">
+  <div class="modal fade" id="hostComment1" ng-controller="HostDetailsCtrl" data-backdrop="false">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -389,7 +389,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reset()">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="add(persistent, author, comment)" title="Please complete the form" ng-disabled="addHostComment.$invalid">Add</button>
+          <button type="button" class="btn btn-primary" ng-click="add(persistent, author, comment); reset()" title="Please complete the form" ng-disabled="addHostComment.$invalid">Add</button>
         </div>
       </div>
     </div>
@@ -402,7 +402,7 @@
 <div ng-controller="SysDowntimeCtrl">
 
       <!-- Schedule Host Downtime -->
-      <div class="modal fade" id="hostDowntime" data-backdrop="false">
+      <div class="modal fade" id="hostDowntime" ng-controller="SysDowntimeCtrl" data-backdrop="false">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -535,7 +535,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reset()">Close</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="schedule(hostName, ' ', startDate, endDate, type, triggeredBy, durationHour, durationMin, author, comment)"
+              <button type="button" class="btn btn-primary" ng-click="schedule(hostName, ' ', startDate, endDate, type, triggeredBy, durationHour, durationMin, author, comment); reset()"
                 ng-disabled="scdhostdowntime.$invalid" title="Please complete the form">Schedule</button>
             </div>
           </div>
@@ -544,7 +544,7 @@
       </div>
 
       <!-- Schedule Service Downtime -->
-      <div class="modal fade" id="serviceDowntime" data-backdrop="false">
+      <div class="modal fade" id="serviceDowntime" ng-controller="SysDowntimeCtrl" data-backdrop="false">
         <div class="modal-dialog">
           <div class="modal-content">
            <div class="modal-header">
@@ -665,7 +665,7 @@
            </div>
            <div class="modal-footer">
              <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reset()">Close</button>
-             <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="schedule(hostName, service, startDate, endDate, type, triggeredBy, durationHour, durationMin, author, comment)"
+             <button type="button" class="btn btn-primary" ng-click="schedule(hostName, service, startDate, endDate, type, triggeredBy, durationHour, durationMin, author, comment); reset()"
                 ng-disabled="scdsvcdowntime.$invalid" title="Please complete the form">Schedule</button>
            </div>
          </div>
@@ -673,7 +673,7 @@
       </div>
 
       <!--Confirm Delete Downtime-->
-      <div class="modal fade" id="confirm" role="dialog" data-backdrop="false" >
+      <div class="modal fade" id="confirm" ng-controller="SysDowntimeCtrl" role="dialog" data-backdrop="false" >
         <div class="modal-dialog modal-sm">
           <div class="modal-content">
             <div class="modal-body no-padding">

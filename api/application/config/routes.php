@@ -90,9 +90,9 @@ $route["allhostcheck/(:any)"] = "api/allHostCheck/$1";
 $route["allpassivehostcheck/(:any)"] = "api/allPassiveHostCheck/$1";
 $route["passivehostcheck/(:any)/(:any)"] = "api/passiveHostCheck/$1/$2";
 $route["allflapdetection/(:any)"] = "api/allFlapDetection/$1";
-$route["hostflapdetection/(:any)/(:any)"] = "api/hostFlapDetection/$1/$2";
+$route["hostflapdetection/(:any)/(:any)"] = "api/hostFlapDetection/$1/$2"; 
 $route["serviceflapdetection/(:any)/(:any)/(:any)"] = "api/serviceFlapDetection/$1/$2/$3";
-$route["schedulehostcheck/(:any)/(:any)/(:any)"] = "api/scheduleHostCheck/$1/$2/$3";
+$route["schedulehostcheck/(:any)/(:any)/(:any)"] = "api/scheduleHostCheck/$1/$2/$3"; 
 $route["sendcustomnotification/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/sendCustomNotification/$1/$2/$3/$4/$5/$6/$7";
 
 $route["configurations/(:any)"] = "api/configurations/$1";

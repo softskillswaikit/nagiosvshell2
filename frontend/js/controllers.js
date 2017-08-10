@@ -203,8 +203,10 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config) {
                     if(config != null){
                         if(config.url.includes("addcomments")){
-                            if(data == 'true')
+                            if(data == 'true'){
                               ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                              $('.modal').modal('hide');
+                            }
                             else
                               ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                         }
@@ -468,10 +470,12 @@ angular.module('vshell.controllers', [])
             $scope.callback = function(data, status, headers, config) {
                 if(config != null){
                     if(config.url.includes("addcomments")){
-                        if(data == 'true')
-                          ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
-                        else
-                          ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                      if(data == 'true'){
+                        ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                        $('.modal').modal('hide');
+                      }
+                      else
+                        ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                     }
                 }
             };
@@ -1531,9 +1535,6 @@ angular.module('vshell.controllers', [])
 
         async.api($scope, options);
 
-
-
-        //$scope.reset();
       };
 
       $scope.reset = function(){
@@ -1566,6 +1567,7 @@ angular.module('vshell.controllers', [])
       };
 
       $scope.addComment = function(type){
+
         $scope.reset();
 
         $scope.add = function(hostName, service, persistent, author, comment){
@@ -1582,8 +1584,10 @@ angular.module('vshell.controllers', [])
           $scope.callback = function(data, status, headers, config) {
             if(config != null){
                 if(config.url.includes("addcomments")){
-                    if(data == 'true')
+                    if(data == 'true'){
                       ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                      $('.modal').modal('hide');
+                    }
                     else
                       ngToast.create({className: 'alert alert-danger',content:'Fail! Please check your host or service name.',timeout:3000});
                     //$timeout(function(){$window.location.reload()}, 2000);

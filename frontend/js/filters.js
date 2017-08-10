@@ -2,6 +2,37 @@
 
 angular.module('vshell.filters', [])
 
+.filter('persistent', function() {
+    return function(input) {
+        if(input == 0)
+          return 'No';
+        else if(input == 1)
+          return 'Yes';
+        else
+          return 'Unknown';
+    };
+})
+
+.filter('entry_type', function() {
+    return function(input) {
+        if(input == 1)
+          return 'User';
+        else if(input ==2)
+          return 'Scheduled Downtime';
+        else
+          return input;
+    };
+})
+
+.filter('expires', function() {
+    return function(input) {
+        if(input == '1970-01-01 8:00:00')
+          return 'N/A';
+        else
+          return input;
+    };
+})
+
 .filter('capitalize', function() {
     return function(input, strict) {
         var first,
@@ -27,6 +58,7 @@ angular.module('vshell.filters', [])
         return _.size(input);
     };
 })
+
 .filter('formatSizeUnits', function(){
     return function formatSizeUnits(bytes){
         if      (bytes>=1000000000) {bytes=(bytes/1000000000).toFixed(2)+' GB';}
