@@ -105,7 +105,6 @@ class API extends VS_Controller
      */
     public function quicksearch()
     {
-
         $Data = array();
 
         $hosts = $this->nagios_data->get_collection('hoststatus');
@@ -182,6 +181,8 @@ class API extends VS_Controller
      */
     public function name()
     {
+        $Name = array();
+
         //all host name
         $hosts = $this->nagios_data->get_collection('hoststatus');
 
@@ -385,34 +386,62 @@ class API extends VS_Controller
     /**
      * Fetch alert histogram
      *
-     * @param string $returnType,   'TOP_PRODUCER', 'ALERT_TOTAL', 'NORMAL'
-     * @param string $period,       
-     * @param Date $period
-     * @param String $breakdown
-     * @param String $eventsToGraph
-     * @param String $typesToGraph
-     * @param bool $stateRetention
-     * @param bool $initialStateLogged
-     * @param bool $ignoreRepeated
-     *
+     * @param string $return_type, '1' - host, '2' - service, '3' - 'hostresource', '4' - 'runningstate'
+     * @param string $host_name, for more than one host , store hosts in array, 'ALL' for all host
+     * @param string $service_description, for more than one service, store services, in array, 'ALL' for all the services
+     * @param string $period, 'TODAY', 'LAST 24 HOURS', 'YESTERDAY', 'THIS WEEK', 'LAST 7 DAYS', 'LAST WEEK', 'THIS MONTH', 'LAST 31 DAYS', 'LAST MONTH', 'THIS YEAR', 'LAST YEAR', 'CUSTOM'     
+     * @param string $date, for custom report, store date in array
+     * @param String $statistic_breakdown, '1' - month, '2' - day of the month, '3' - day of the week, '4' - hour of the day
+     * @param String $event_graph, 'UP', 'DOWN', 'UNREACHABLE', 'HOST PROBLEM STATE', 'OK', 'WARNING', 'UNKNOWN', 'CRITICAL', 'PENDING', 'ALL', 'SERVICE PROBLEM STATE'
+     * @param String $state_type_graph, 'HARD', 'SOFT', 'ALL'
+     * @param string $assume_state_retention, 'true', 'false'
+     * @param string $initial_state_logged, 'true', 'false'
+     * @param string $ignore_repeated_state, 'true', 'false'
      */
-    public function alertHistogram($reportType, $name='', $period, $breakdown='', $eventsToGraph='', $typesToGraph='', $stateRention, $initialStateLogged, $ignoreRepeated)
+    public function alertHistogram($return_type, $host_name, $service_description, $period, $date, $statistic_breakdown, $event_graph, $state_type_graph, $assume_state_retention, $initial_state_logged, $ignore_repeated_state)
     {
-        $Alert_Histogram = $this->alert_histogram_data->get_alert_histogram();
+        //test hardcode data
+        /*
+        $return_type = '1';
+        $host_name = 'ALL';
+        $service_description = 'ALL';
+        $period = 'THIS YEAR';
+        $date = '';
+        $statistic_breakdown = '1';
+        $event_graph = 'ALL';
+        $state_type_graph = 'ALL';
+        $assume_state_retention = 'false';
+        $initial_state_logged = 'false';
+        $ignore_repeated_state = 'false';
+        */
 
-        //Host
-        if($reportType == 1)
-        {
+        $return_type = (int)$return_type;
+        $statistic_breakdown = (int)$statistic_breakdown;
 
-        }
+        //convert inputs to boolean
+        if($assume_state_retention == 'true')
+            $assume_state_retention = true;
+        else if($assume_state_retention == 'false')
+            $assume_state_retention = false;
 
-        //Service
-        else if($reportType == 2)
-        {
+        if($initial_state_logged == 'true')
+            $initial_state_logged = true;
+        else if($initial_state_logged == 'false')
+            $initial_state_logged = false;
 
-        }
+        if($ignore_repeated_state == 'true')
+            $ignore_repeated_state = true;
+        else if($ignore_repeated_state == 'false')
+            $ignore_repeated_state = false;
 
-        $this->output($AlertHistogram);
+
+        $Alert_histogram = array();
+
+        $Alert_histogram = $this->reports_data->get_alert_histogram($return_type, $host_name, $service_description, $period, $date, $statistic_breakdown, $event_graph, $state_type_graph, $assume_state_retention, $initial_state_logged, $ignore_repeated_state);
+
+
+
+        $this->output($Alert_histogram);
     }
 
 
@@ -423,6 +452,8 @@ class API extends VS_Controller
      */
     public function eventlog($date)
     {
+        $Event_logs = array();
+
         //check empty inputs
         $validate = $this->validate_data(array($date));
         
@@ -441,6 +472,8 @@ class API extends VS_Controller
      */
     public function notification($date)
     {
+        $Notifications = array();
+
         //check empty inputs
         $validate = $this->validate_data(array($date));
 
@@ -454,9 +487,124 @@ class API extends VS_Controller
 
     public function testing()
     {
-        
-        
-        
+        //test hardcode data
+        $return_type = '1';
+        $host_name = 'ALL';
+        $service_description = 'ALL';
+        $period = 'THIS YEAR';
+        $date = '';
+        $statistic_breakdown = '1';
+        $event_graph = 'ALL';
+        $state_type_graph = 'ALL';
+        $assume_state_retention = 'false';
+        $initial_state_logged = 'false';
+        $ignore_repeated_state = 'false';
+
+
+
+
+        $return_type = (int)$return_type;
+        $statistic_breakdown = (int)$statistic_breakdown;
+
+        //convert inputs to boolean
+        if($assume_state_retention == 'true')
+            $assume_state_retention = true;
+        else if($assume_state_retention == 'false')
+            $assume_state_retention = false;
+
+        if($initial_state_logged == 'true')
+            $initial_state_logged = true;
+        else if($initial_state_logged == 'false')
+            $initial_state_logged = false;
+
+        if($ignore_repeated_state == 'true')
+            $ignore_repeated_state = true;
+        else if($ignore_repeated_state == 'false')
+            $ignore_repeated_state = false;
+
+
+        $Alert_histogram = array();
+
+        $Alert_histogram = $this->reports_data->get_alert_histogram($return_type, $host_name, $service_description, $period, $date, $statistic_breakdown, $event_graph, $state_type_graph, $assume_state_retention, $initial_state_logged, $ignore_repeated_state);
+
+
+
+        $this->output($Alert_histogram);
+    }
+
+    /**
+     * Fetch host or service downtime
+     *
+     * @param String $type, host : host, svc: service
+     */
+    public function downtime($type)
+    {
+        $Downtime = array();
+
+        $type = 'svc';
+
+        $allowed_types = array(
+            'host',
+            'svc'
+        );
+
+        //check empty inputs
+        $validate = $this->validate_data(array($type));
+
+        if($validate)
+        {
+            if(in_array($type, $allowed_types))
+            {
+                //get host downtime
+                if($type == 'host')
+                {
+                    $host_downtimes = $this->nagios_data->get_collection('hostdowntime');
+                    
+                    foreach ($host_downtimes as $host_downtime) 
+                    {
+                        $Downtime[] = array(
+                            'host'          => $host_downtime->host_name, 
+                            'entry_time'    => $host_downtime->entry_time, 
+                            'author'        => $host_downtime->author, 
+                            'comment'       => $host_downtime->comment, 
+                            'start_time'    => $host_downtime->start_time, 
+                            'end_time'      => $host_downtime->end_time, 
+                            'fixed'         => $host_downtime->fixed, 
+                            'duration'      => $host_downtime->duration, 
+                            'downtime_id'   => $host_downtime->downtime_id, 
+                            'triggered_id'  => $host_downtime->triggered_by, 
+                            'entry_time'    => $host_downtime->entry_time
+                        );
+                    }
+                }
+
+                //get service downtime
+                else
+                {
+                    $service_downtimes = $this->nagios_data->get_collection('servicedowntime');
+
+                    foreach ($service_downtimes as $service_downtime) 
+                    {
+                        $Downtime[] = array(
+                            'host'          => $service_downtime->host_name, 
+                            'service'       => $service_downtime->service_description, 
+                            'entry_time'    => $service_downtime->entry_time, 
+                            'author'        => $service_downtime->author, 
+                            'comment'       => $service_downtime->comment, 
+                            'start_time'    => $service_downtime->start_time, 
+                            'end_time'      => $service_downtime->end_time, 
+                            'fixed'         => $service_downtime->fixed, 
+                            'duration'      => $service_downtime->duration, 
+                            'downtime_id'   => $service_downtime->downtime_id, 
+                            'triggered_id'  => $service_downtime->triggered_by, 
+                            'entry_time'    => $service_downtime->entry_time
+                        );
+                    }
+                }
+            }
+        }
+
+        $this->output($Downtime);
     }
 
     /**
@@ -490,63 +638,25 @@ class API extends VS_Controller
         $this->output($Result);
     }
 
-    /**
-     * Fetch host or service downtime
-     *
-     * @param String $type, host : host, svc: service
-     */
-    public function downtime($type)
-    {
-        $Downtime = array();
-
-        $allowed_types = array(
-            'host',
-            'svc'
-        );
-
-        if(in_array($type, $allowed_types))
-        {
-            if($type == 'host')
-            {
-                $Datahostdowntime = $this->nagios_data->get_collection('hostdowntime');
-                
-                foreach ($Datahostdowntime as $hostdowntime) 
-                {
-                    $Downtime[] = array('host' => $hostdowntime->host_name, 'entry_time'=> $hostdowntime->entry_time, 'author' => $hostdowntime->author, 'comment'=> $hostdowntime->comment, 'start_time'=> $hostdowntime->start_time, 'end_time' => $hostdowntime->end_time, 'fixed' => $hostdowntime->fixed, 'duration' => $hostdowntime->duration, 'downtime_id' => $hostdowntime->downtime_id, 'triggered_id' => $hostdowntime->triggered_by, 'entry_time' => $hostdowntime->entry_time);
-                }
-            }
-            else
-            {
-                $Dataservicedowntime = $this->nagios_data->get_collection('servicedowntime');
-
-                foreach ($Dataservicedowntime as $servicedowntime) 
-                {
-                    $Downtime[] = array('host' => $servicedowntime->host_name, 'service'=> $servicedowntime->service_description, 'entry_time'=> $servicedowntime->entry_time, 'author' => $servicedowntime->author, 'comment'=> $servicedowntime->comment, 'start_time'=> $servicedowntime->start_time, 'end_time' => $servicedowntime->end_time, 'fixed' => $servicedowntime->fixed, 'duration' => $servicedowntime->duration, 'downtime_id' => $servicedowntime->downtime_id, 'triggered_id' => $servicedowntime->triggered_by, 'entry_time' => $servicedowntime->entry_time);
-                }
-
-            }
-        }
-
-        $this->output($Downtime);
-    }
+    
 
     /**
      * Schedule downtime
      *
      * @param String $type, host : host, svc : service, hostsvc : hostservice
-     * @param String $host
-     * @param String $service, [if type is host or hostsvc, $service = '']
-     * @param String $start
-     * @param String $end
-     * @param Bool $fixed
-     * @param String $triggerID
+     * @param String $host_name
+     * @param String $service_description, [if type is host or hostsvc, $service = '']
+     * @param String $start_time
+     * @param String $end_time
+     * @param String $fixed, "true", "false"
+     * @param String $trigger_id
      * @param String $duration , in minutes
      * @param String $author
      * @param String $comments
      */
-    public function scheduleDowntime($type='', $host='', $service='', $start, $end, $fixed, $triggerID, $duration, $author, $comments='')
+    public function scheduleDowntime($type, $host_name, $service_description='', $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments='')
     {
-        $success = false;
+        $Result = false;
 
         $allowed_types = array(
             'host',
@@ -554,31 +664,47 @@ class API extends VS_Controller
             'hostsvc'
         );
 
+        //decode inputs with space
+        $host_name = urldecode($host_name);
+        $service_description = urldecode($service_description); 
         $author = urldecode($author);
         $comments = urldecode($comments);
 
-        //check empty input
-        if(!empty($type) && !empty($name) && !empty($author) && !empty($comment) && !empty($start) && !empty($end) && !empty($fixed))
+        //convert fixed to boolean
+        if($fixed == 'true')
+            $fixed = true;
+        else if($fixed == 'false')
+            $fixed = false;
+
+        //check empty inputs
+        $validate = $this->validate_data(array($type, $host_name, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments));
+
+        if($validate)
         {
             //compare type with allowed types
             if(in_array($type, $allowed_types))
             {
+                //schedule host downtime
                 if($type == 'host')
                 {
-                    $success = $this->system_commands->schedule_host_downtime($host, $start, $end, $fixed, $triggerID, $duration, $author, $comments);
+                    $Result = $this->system_commands->schedule_host_downtime($host_name, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments);
                 }
+
+                //schedule service downtime
                 else if($type == 'svc')
                 {
-                    $success = $this->system_commands->schedule_svc_downtime($host, $service, $start, $end, $fixed, $triggerID, $duration, $author, $comments);
+                    $Result = $this->system_commands->schedule_svc_downtime($host_name, $service_description, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments);
                 }
+
+                //schedule host service downtime
                 else
                 {
-                    $success = $this->system_commands->schedule_host_svc_downtime($host, $start, $end, $fixed, $triggerID, $duration, $author, $comments);
+                    $Result = $this->system_commands->schedule_host_svc_downtime($host_name, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments);
                 }
             }
         }
         
-        $this->output($success);
+        $this->output($Result);
     }
 
 
@@ -588,9 +714,9 @@ class API extends VS_Controller
      */
     public function performanceInfo()
     {
-        $performanceInfo = $this->system_commands->get_return_array('PERFORMANCE');
+        $PerformanceInfo = $this->system_commands->get_return_array('PERFORMANCE');
 
-        $this->output($performanceInfo);
+        $this->output($PerformanceInfo);
     }
 
     /**
@@ -605,41 +731,64 @@ class API extends VS_Controller
 
     /**
      * Return schedule queue of host and service
-     *
      */
     public function scheduleQueue()
     {
-        $DataHost = $this->nagios_data->get_collection("hoststatus");
-        $DataService = $this->nagios_data->get_collection("servicestatus");
-        $DataHostresource = $this->nagios_data->get_collection("hostresourcestatus");
-        $DataRunningstate = $this->nagios_data->get_collection("runningstatestatus");
+        $Schedule = array();
 
-        $Host = array();
-        $Service = array();
-        $Hostresource = array();
-        $Runningstate = array();
+        $hosts = $this->nagios_data->get_collection("hoststatus");
+        $services = $this->nagios_data->get_collection("servicestatus");
+        $hostresources = $this->nagios_data->get_collection("hostresourcestatus");
+        $runningstates = $this->nagios_data->get_collection("runningstatestatus");
         
-
-        foreach ($DataHost as $host) 
+        foreach ($hosts as $host) 
         {
-            $Schedule[] = array('type'=>"host", 'hostname'=> $host->host_name, 'lastcheck'=>$host->last_check, 'nextcheck'=> $host->next_check, 'activecheck'=>$host->active_checks_enabled);
+            $Schedule[] = array(
+                'type'          => "host", 
+                'hostname'      => $host->host_name, 
+                'lastcheck'     => $host->last_check, 
+                'nextcheck'     => $host->next_check, 
+                'activecheck'   => $host->active_checks_enabled
+            );
         }
 
-        foreach ($DataService as $service) 
+        foreach ($services as $service) 
         {
-            $Schedule[] = array('type'=>"service", 'hostname'=> $service->host_name, 'servicename'=> $service->service_description, 'lastcheck'=> $service->last_check, 'nextcheck'=>$service->next_check,'activecheck'=>$service->active_checks_enabled);
+            $Schedule[] = array(
+                'type'          =>"service", 
+                'hostname'      => $service->host_name, 
+                'servicename'   => $service->service_description, 
+                'lastcheck'     => $service->last_check, 
+                'nextcheck'     => $service->next_check,
+                'activecheck'   => $service->active_checks_enabled
+            );
         }
 
-        foreach ($DataHostresource as $hostresource) 
+        foreach ($hostresources as $hostresource) 
         {
-            $Schedule[] = array('type'=> "hostresource", 'hostname'=> $hostresource->host_name, 'servicename'=> $hostresource->service_description, 'lastcheck'=> $hostresource->last_check, 'nextcheck'=>$hostresource->next_check, 'activecheck'=>$hostresource->active_checks_enabled);
+            $Schedule[] = array(
+                'type'          => "hostresource", 
+                'hostname'      => $hostresource->host_name, 
+                'servicename'   => $hostresource->service_description, 
+                'lastcheck'     => $hostresource->last_check, 
+                'nextcheck'     => $hostresource->next_check, 
+                'activecheck'   => $hostresource->active_checks_enabled
+            );
         }
 
-        foreach ($DataRunningstate as $runningstate) 
+        foreach ($runningstates as $runningstate) 
         {
-            $Schedule[] = array('type'=> "runningstate", 'hostname'=> $runningstate->host_name, 'servicename'=> $runningstate->service_description, 'lastcheck'=> $runningstate->last_check, 'nextcheck'=>$runningstate->next_check, 'activecheck'=>$runningstate->active_checks_enabled);
+            $Schedule[] = array(
+                'type'          => "runningstate", 
+                'hostname'      => $runningstate->host_name, 
+                'servicename'   => $runningstate->service_description, 
+                'lastcheck'     => $runningstate->last_check, 
+                'nextcheck'     => $runningstate->next_check, 
+                'activecheck'   => $runningstate->active_checks_enabled
+            );
         }
 
+        //sort schedule according to the next check time
         usort($Schedule, function($a, $b)
         {
             return strcmp($a->nextcheck, $b->nextcheck);
