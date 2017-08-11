@@ -9,6 +9,7 @@ class Testing extends CI_Model
 
 	//array that store return data
 	protected $_availability_array = array();
+	protected $_trend_array = array();
 	protected $_alert_history_array = array();
 	protected $_alert_summary_array = array();
 	protected $_alert_histogram_array = array();
@@ -36,9 +37,83 @@ class Testing extends CI_Model
 	//Written by Low Zhi Jian
 	//Functions to be called by web service
 	//Trends section
-	public function get_trend()
+	public function get_trend($return_type, $input_period, $input_date, $input_host, $input_service, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_service, $backtrack_archive)
 	{
-		
+		$this->_get_data($input_date, $input_period);
+		$this->_insert_data();
+
+		$temp_array = array();
+		$temp_array = $this->_parse_log($this->_host_service_alert_array, 'alert');
+
+		//filter the data into $this->_trend_array based on request
+		$this->_trend_array = array_reverse( $this->_get_trend_host_service($temp_array, $input_host, $input_service, $input_period, $input_date) );
+
+		$return_array = array();
+
+		//$return_type = 'HOST'
+		if($return_type === 1)
+		{		
+			$return_array[0] = $this->_get_return_data($this->_trend_array, $input_date);
+			$return_array[1] = $this->_get_state_total($return_array[0]);
+		}
+
+		//encode the data into JSON format
+		foreach($return_array as $items)
+		{
+			$items = json_encode($items);
+		}
+
+		//return $this->_trend_array;
+		return $return_array;
+	}
+
+	//Function used to get return data
+	private function _get_return_data($input_array, $input_date)
+	{
+		$now = (int)$input_date;
+
+		$return_obj = new StdClass();
+		$return_array = array();
+
+		//array counter 
+		$i = 0;
+
+		foreach($input_array as $alerts)
+		{
+			$duration = $now - (int)$alerts->datetime;
+			$return_obj->datetime = $alerts->datetime;
+			$return_obj->duration = $duration;
+			$return_obj->start_time = $alerts->datetime;
+			$return_obj->end_time = $now;
+			$return_obj->state = $alerts->state;
+
+			$return_array[$i] = $return_obj;
+			$i++;
+
+			$now = $now - $duration;
+			
+			unset($return_obj);
+		}
+
+		return $return_array;
+	}
+
+	//Function used to get total duration for each state
+	private function _get_state_total($input_array)
+	{
+		$up_total = 0;
+		$down_total = 0;
+		$unreachable_total = 0;
+		$ok_total = 0;
+		$warning_total = 0;
+		$unknown_total = 0;
+		$critical_total = 0;
+		$indeterminate_total = 0;
+
+		foreach($input_array as $alerts)
+		{
+
+		}
 	}
 
 	//Alert history section
@@ -54,7 +129,6 @@ class Testing extends CI_Model
 		$this->_alert_history_array = $this->_parse_log($this->_host_service_alert_array, 'alert');
 
 		//encode the data into JSON format
-		//also filter the data by date
 		foreach($this->_alert_history_array as $items)
 		{
 			$temp_array[$i] = $items;
@@ -69,7 +143,7 @@ class Testing extends CI_Model
 	}
 
 	//Alert summary section
-	public function get_alert_summary($return_type, $input_period, $input_date, $input_host, $input_service = 'ALL', $input_logtype, $input_state_type, $input_state)
+	public function get_alert_summary($return_type, $input_period, $input_date, $input_host, $input_service, $input_logtype, $input_state_type, $input_state)
 	{
 		$this->_get_data($input_date, $input_period);
 		$this->_insert_data();
@@ -412,7 +486,7 @@ class Testing extends CI_Model
 		}
 	}
 
-	public function get_alert_histogram($return_type, $input_host, $input_service = 'ALL', $input_period, $input_date, $statistic_breakdown, $event_graph, $state_type_graph, $assume_state_retention = NULL, $initial_state_logged = NULL, $ignore_repeated_state = NULL)
+	public function get_alert_histogram($return_type, $input_host, $input_service, $input_period, $input_date, $statistic_breakdown, $event_graph, $state_type_graph, $assume_state_retention, $initial_state_logged, $ignore_repeated_state)
 	{
 		$this->_get_data($input_date, $input_period);
 		$this->_insert_data();
@@ -1579,6 +1653,34 @@ class Testing extends CI_Model
 		return $sorted_array;
 	}
 
+	//Functions used by trend section
+	//Function used to filter data
+	private function _get_trend_host_service($input_array, $input_host, $input_service, $input_period, $input_date)
+	{
+		//array counter
+		$i = 0;
+		$return_array = array();
+
+		//filter the array based on the request
+		foreach($input_array as $items)
+		{
+			//custom report option	
+			//compare host name
+			if($this->_compare_string($input_host, $items->hostname))
+			{
+				//compare service name
+				if($this->_compare_string($input_service, $items->servicename))
+				{		
+					$return_array[$i] = $items;
+
+					$i++;				
+				}
+			}
+		}
+
+		return $return_array;
+	}
+
 	//Functions used by alert summary section
 	//Function used to filter data 
 	private function _get_alert_summary_host_service($input_array, $input_host, $input_service, $input_logtype, $input_state_type, $input_state)
@@ -2120,7 +2222,7 @@ class Testing extends CI_Model
 		}
 
 		//code used to remove the first element of the array 
-		//$throw = array_shift($return_array);
+		$throw = array_shift($return_array);
 
 		return $return_array;
 	}
@@ -2165,7 +2267,7 @@ class Testing extends CI_Model
 		}
 
 		//code used to remove the first element of the array 
-		//$throw = array_shift($return_array);
+		$throw = array_shift($return_array);
 
 		return $return_array;
 	}
@@ -2212,7 +2314,7 @@ class Testing extends CI_Model
 		}
 
 		//code used to remove the first element of the array 
-		//$throw = array_shift($return_array);
+		$throw = array_shift($return_array);
 
 		return $return_array;
 	}

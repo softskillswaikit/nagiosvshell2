@@ -251,30 +251,25 @@ class System_commands extends CI_Model
 	//command id = 9
 	public function restart_nagios()
 	{
-		$check = $this->shutdown_nagios();
+		$commands = 'RESTART_PROGRAM';
 
-		if($check)
+		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
+
+		//check that the command runs successfully
+		if((int)$this->return_value)
 		{
-			$commands = 'RESTART_PROGRAM';
-
-			$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
-
-			//check that the command runs successfully
-			if((int)$this->return_value)
+			if($this->_verify_success())
 			{
-				if($this->_verify_success())
-				{
-					return true;
-				}
-				else
-				{
-					return false;
-				}
+				return true;
 			}
 			else
 			{
 				return false;
 			}
+		}
+		else
+		{
+			return false;
 		}
 	}
 
