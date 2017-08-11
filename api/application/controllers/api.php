@@ -838,7 +838,7 @@ class API extends VS_Controller
      * @param String $type, host : host, svc : service
      * @param String $host
      * @param String $service
-     * @param bool $persistent 
+     * @param String $persistent 
      * @param String $author
      * @param String $comments
      */
@@ -854,6 +854,12 @@ class API extends VS_Controller
             'host',
             'svc'
         );
+
+        //convert persistent to bool
+        if($persistent == 'true')
+            $persistent = true;
+        else if($persistent = 'false')
+            $persistent = false;
 
         //check for empty input
         $validate = $this->validate_data(array($type, $host, $author, $comments));
@@ -917,7 +923,7 @@ class API extends VS_Controller
     /**
      * Enable or disable service check
      *
-     * @param Bool $type , true - 'enable' ,false - 'disable'
+     * @param String $type , true - 'enable' ,false - 'disable'
      * @param String $hostname
      * @param String $service
      */
@@ -927,11 +933,11 @@ class API extends VS_Controller
         $hostname = urldecode($hostname);
         $service = urldecode($service);
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->enable_svc_check($hostname, $service);
         }
-        else
+        else if ($type == 'false')
         {
             $result = $this->system_commands->disable_svc_check($hostname, $service);
         }
@@ -942,17 +948,17 @@ class API extends VS_Controller
     /**
      * Enable or disable all notifications
      *
-     * @param Bool $type, true = 'enable', false = 'disable'
+     * @param String $type, true = 'enable', false = 'disable'
      */
     public function allnotifications($type)
     {
         $result = false;
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->enable_all_notification();
         }
-        else
+        else if($type == 'false')
         {
             $result = $this->system_commands->disable_all_notification();
         }
@@ -984,7 +990,7 @@ class API extends VS_Controller
     /**
      * Enable or disable service notification
      *
-     * @param Bool $type, true = 'enable', false ='disable'
+     * @param String $type, true = 'enable', false ='disable'
      * @param String $host
      * @param String $service
      */
@@ -992,11 +998,11 @@ class API extends VS_Controller
     {
         $result = false;
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->enable_svc_notification($host, $service);
         }
-        else
+        else if($type == 'false')
         {
             $result = $this->system_commands->disable_svc_notification($host, $service);
         }
@@ -1040,11 +1046,11 @@ class API extends VS_Controller
     {
         $result = false;
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->enable_host_notification($host);
         }
-        else
+        else if($type == 'false')
         {
             $result =  $this->system_commands->disable_host_notification($host);
         }
@@ -1059,11 +1065,17 @@ class API extends VS_Controller
      * @param String $host
      * @param String $service , [if type is host, service should be '']
      * @param String $checktime
-     * @param bool $forceCheck 
+     * @param String $forceCheck 
      */
     public function scheduleCheck($type, $host, $service='', $checktime, $forceCheck)
     {
         $result = false;
+
+        //convert force check to bool
+        if($forceCheck == 'true')
+            $forceCheck = true;
+        else if($forceCheck == 'false')
+            $forceCheck = false;
 
         if($type == 'host')
         {
@@ -1084,18 +1096,18 @@ class API extends VS_Controller
     /**
      * Enable or disable host service check
      *
-     * @param Bool $type, true = 'enable', false ='disable'
+     * @param String $type, true = 'enable', false ='disable'
      * @param String $host
      */
      public function hostServiceCheck($type, $host)
      {
         $result = false;
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->enable_host_svc_check($host);
         }
-        else
+        else if($type == 'false')
         {
             $result = $this->system_commands->disable_host_svc_check($host);
         }
@@ -1106,18 +1118,18 @@ class API extends VS_Controller
      /**
       * Enable or disable host service notification
       *
-      * @param Bool $type, true = 'enable', false ='disable'
+      * @param String $type, true = 'enable', false ='disable'
       * @param String $host
       */
      public function hostServiceNotification($type, $host)
      {
         $result = false;
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->enable_host_svc_notification($host);
         }
-        else
+        else if($type == 'false')
         {
             $result = $this->system_commands->disable_host_svc_notification($host);
         }
@@ -1141,6 +1153,22 @@ class API extends VS_Controller
      {
         $result = false;
 
+        //convert input to bool
+        if($sticky == 'true')
+            $sticky = true;
+        else if($sticky == 'false')
+            $sticky = false;
+
+        if($notify == 'true')
+            $notify = true;
+        else if($notify == 'false')
+            $notify = false;
+
+        if($persistent == 'true')
+            $persistent = true;
+        else if($persistent == 'false')
+            $persistent = false;
+
         $author = urldecode($author);
         $comment = urldecode($comment);
 
@@ -1159,17 +1187,17 @@ class API extends VS_Controller
      /**
       * Start or stop all service check
       *
-      * @param Bool $type, true = 'start', false = 'stop'
+      * @param String $type, true = 'start', false = 'stop'
       */
      public function allServiceCheck($type)
      {
         $result = false;
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->start_svc_check();
         }
-        else
+        else if($type == 'false')
         {
             $result = $this->system_commands->stop_svc_check();
         }
@@ -1180,17 +1208,17 @@ class API extends VS_Controller
      /**
       * Start or stop all passive service check
       *
-      * @param Bool $type, true = 'start', false = 'stop'
+      * @param String $type, true = 'start', false = 'stop'
       */
      public function allPassiveServiceCheck($type)
      {
         $result = false;
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->start_passive_svc_check();
         }
-        else
+        else if($type == 'false')
         {
             $result = $this->system_commands->stop_passive_svc_check();
         }
@@ -1201,7 +1229,7 @@ class API extends VS_Controller
      /**
       * Enable or disable passive service check
       *
-      * @param Bool $type, true - start, false - disable
+      * @param String $type, true - start, false - disable
       * @param String $host
       * @param String $service
       */
@@ -1209,11 +1237,11 @@ class API extends VS_Controller
      {
         $result = false;
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->enable_passive_svc_check($host, $service);
         }
-        else
+        else if($type == 'false')
         {
             $result = $this->system_commands->disable_passive_svc_check($host, $service);
         }
@@ -1224,17 +1252,17 @@ class API extends VS_Controller
      /**
       * Enable or disable event handler
       *
-      * @param Bool $type, true = 'enable', false ='disable'
+      * @param String $type, true = 'enable', false ='disable'
       */
      public function eventHandler($type)
      {
         $result = false;
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->enable_event_handler();
         }
-        else
+        else if($type == 'false')
         {
             $result = $this->system_commands->disable_event_handler();
         }
@@ -1245,18 +1273,18 @@ class API extends VS_Controller
      /**
       * Enable or disable host check
       *
-      * @param Bool $type, true = 'enable', false ='disable'
+      * @param String $type, true = 'enable', false ='disable'
       * @param String $host
       */
      public function hostCheck($type, $host)
      {
         $result = false;
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->enable_host_check($host);
         }
-        else
+        else if($type == 'false')
         {
             $result = $this->system_commands->disable_host_check($host);
         }
@@ -1267,17 +1295,17 @@ class API extends VS_Controller
      /**
       * Start or stop obsess over service check
       *
-      * @param Bool $type, true - start, false - disable
+      * @param String $type, true - start, false - disable
       */
      public function obsessOverServiceCheck($type)
      {
         $result = false;
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->start_obsess_over_svc_check();
         }
-        else
+        else if($type == 'false')
         {
             $result = $this->system_commands->stop_obsess_over_svc_check();
         }
@@ -1288,17 +1316,17 @@ class API extends VS_Controller
      /**
       * Start or stop obsess over host check
       *
-      * @param Bool $type, true - start, false - stop
+      * @param String $type, true - start, false - stop
       */
      public function obsessOverHostCheck($type)
      {
         $result = false;
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->start_obsess_over_host_check();
         }
-        else
+        else if($type == 'false')
         {
             $result = $this->system_commands->stop_obsess_over_host_check();
         }
@@ -1316,11 +1344,11 @@ class API extends VS_Controller
      {
         $result = false;
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->start_obsess_over_host($host);
         }
-        else
+        else if($type == 'false')
         {
             $result = $this->system_commands->stop_obsess_over_host($host);
         }
@@ -1339,11 +1367,11 @@ class API extends VS_Controller
      {
         $result = false;
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->start_obsess_over_svc($host, $service);
         }
-        else
+        else if ($type == 'false')
         {
             $result = $this->system_commands->stop_obsess_over_svc($host, $service);
         }
@@ -1360,11 +1388,11 @@ class API extends VS_Controller
      {
         $result = false;
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->enable_performance_data();
         }
-        else
+        else if($type == 'false')
         {
             $result = $this->system_commands->disable_performance_data();
         }
@@ -1381,11 +1409,11 @@ class API extends VS_Controller
      {
         $result = false;
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->start_host_check();
         }
-        else
+        else if($type == 'false')
         {
             $result = $this->system_commands->stop_host_check();
         }
@@ -1402,11 +1430,11 @@ class API extends VS_Controller
      {
         $result = false;
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->start_passive_host_check();
         }
-        else
+        else if($type == 'false')
         {
             $result = $this->system_commands->stop_passive_host_check();
         }
@@ -1424,11 +1452,11 @@ class API extends VS_Controller
      {
         $result = false;
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->enable_passive_host_check($host);
         }
-        else
+        else if($type == 'false')
         {
             $result = $this->system_commands->disable_passive_host_check($host);
         }
@@ -1445,11 +1473,11 @@ class API extends VS_Controller
      {
         $result = false;
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->enable_flap_detection();
         }
-        else
+        else if($type == 'false')
         {
             $result = $this->system_commands->disable_flap_detection();
         }
@@ -1467,11 +1495,11 @@ class API extends VS_Controller
      {
         $result = false;
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->enable_host_flap_detection($host_name);
         }
-        else
+        else if($type == 'false')
         {
             $result = $this->system_commands->disable_host_flap_detection($host_name);
         }
@@ -1490,11 +1518,11 @@ class API extends VS_Controller
      {
         $result = false;
 
-        if($type)
+        if($type == 'true')
         {
             $result = $this->system_commands->enable_svc_flap_detection($host_name, $service_description);
         }
-        else
+        else if($type == 'false')
         {
             $result = $this->system_commands->disable_svc_flap_detection($host_name, $service_description);
         }
@@ -1504,35 +1532,30 @@ class API extends VS_Controller
 
 
      /**
-      * Schedule host check
-      *
-      * @param String $host_name
-      * @param String $check_time
-      * @param bool $force_check
-      */
-     public function scheduleHostCheck($host_name, $check_time, $force_check)
-     {
-        $result = false;
-
-        $result = $this->system_commands->schedule_host_check($host_name, $check_time, $force_check);
-
-        $this->output($result);
-     }
-
-     /**
       * Send custom host or service notifications
       *
       * @param String $type , 'host', 'service'
       * @param String $host_name
       * @param String $service_description
-      * @param bool $force
-      * @param bool $broadcast
+      * @param String $force
+      * @param String $broadcast
       * @param String $author
       * @param String $comment
       */
      public function sendCustomNotification($type, $host_name, $service, $force, $broadcast, $author, $comment)
      {
         $result = false;
+
+        //convert input to bool
+        if($force == 'true')
+            $force == true;
+        else
+            $force == false;
+
+        if($broadcast == 'true')
+            $broadcast == true;
+        else
+            $broadcast = false;
 
         $author = urldecode($author);
         $comment = urldecode($comment);
