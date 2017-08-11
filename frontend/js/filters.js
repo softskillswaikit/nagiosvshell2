@@ -2,6 +2,58 @@
 
 angular.module('vshell.filters', [])
 
+/* Yi Zhen added filter style for persistent */
+.filter('persistent', function() {
+    return function(input) {
+        if(input == 0)
+          return 'No';
+        else if(input == 1)
+          return 'Yes';
+        else
+          return 'Unknown';
+    };
+})
+
+/* Yi Zhen added filter style for entry type */
+.filter('entry_type', function() {
+    return function(input) {
+        if(input ==0)
+          return 'Acknowledgement';
+        else if(input == 1)
+          return 'User';
+        else if(input ==2)
+          return 'Scheduled Downtime';
+        else
+          return input;
+    };
+})
+
+/* Yi Zhen added filter style for expires */
+.filter('expires', function() {
+    return function(input) {
+        if(input == '1970-01-01 8:00:00')
+          return 'N/A';
+        else
+          return input;
+    };
+})
+
+/* Choon Yean added filter style for processstate */
+.filter('processstate', function() {
+    return function(input, reverse) {
+        var lookup = {
+            'true': 'YES',
+            'false': 'NO'
+        };
+
+        if (reverse) {
+            lookup = _.invert(lookup);
+        }
+
+        return lookup[input] || 'Undefined';
+    };
+})
+
 .filter('capitalize', function() {
     return function(input, strict) {
         var first,
@@ -231,21 +283,6 @@ angular.module('vshell.filters', [])
             '4': 'Problems',
             '5': 'Unhandled',
             '6': 'Acknowledged'
-        };
-
-        if (reverse) {
-            lookup = _.invert(lookup);
-        }
-
-        return lookup[input] || 'Undefined';
-    };
-})
-
-.filter('processstate', function() {
-    return function(input, reverse) {
-        var lookup = {
-            'true': 'YES',
-            'false': 'NO'
         };
 
         if (reverse) {

@@ -68,7 +68,7 @@
                             <li><a ng-href="#/report/trends" active-when="/report/trends">Trends</a></li>
                             <li><a ng-href="#/reports/alert-history" active-when="/reports/alert-history">Alert History</a></li>
                             <li><a ng-href="#/reports/alert-summary" active-when="/reports/alert-summary">Alert Summary</a></li>
-   		    	    <li><a ng-href="#/report/alerthistogram" active-when="/report/alerthistogram">Alert Histogram</a></li>
+        		    	    <li><a ng-href="#/report/alerthistogram" active-when="/report/alerthistogram">Alert Histogram</a></li>
                             <li><a ng-href='#/reports/notifications' active-when='/reports/notifications'>Notifications</a></li>
                             <li><a ng-href="#/reports/event-log" active-when='reports/event-log'>Event Log</a></li>
                         </ul>
@@ -76,12 +76,11 @@
                     <li>
                         <a ng-href="{{ nagios_core }}">System<span class="icon external"></span></a>
                         <ul>
-                            <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/extinfo.cgi?type=3">Comments</a></li>
-                            <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/extinfo.cgi?type=6">Downtime</a></li>
-			    <li><a ng-href='#/system/process-info' active-when='/system/process-info'>Process Info</a></li>
-                            <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/extinfo.cgi?type=4">Performance Info</a></li>
-                            <li><a target="nagios" ng-href="{{ nagios_core }}cgi-bin/extinfo.cgi?type=7">Scheduling Queue</a></li>
-			    <li><a ng-href='#/system/scheduling-queue' active-when='/system/scheduling-queue'>Scheduling Queue</a></li>
+                            <li><a ng-href="#/system/comments" active-when="/system/comments">Comments</a></li>
+                            <li><a ng-href="#/system/downtime" active-when="/system/downtime">Downtime</a></li>
+                		    <li><a ng-href='#/system/process-info' active-when='/system/process-info'>Process Info</a></li>
+                            <li><a ng-href="#/system/performanceinfo" active-when="/system/performanceinfo">Performance Info</a></li>
+            			    <li><a ng-href='#/system/scheduling-queue' active-when='/system/scheduling-queue'>Scheduling Queue</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -132,6 +131,11 @@
     <script src="frontend/js/lib/ngToast.min.js"></script>
     <script src="frontend/js/lib/footable.all.min.js"></script>
     <script src="frontend/js/lib/bootstrap.min.js"></script>
+    <script src="frontend/js/lib/angular-fusioncharts.min.js"></script>
+    <script src="frontend/js/lib/fusioncharts.js"></script>
+    <script src="frontend/js/lib/fusioncharts.charts.js"></script>
+    <script src="frontend/js/lib/fusioncharts.theme.fint.js"></script>
+    <script src="frontend/js/lib/fusioncharts.theme.zune.js"></script>
     <script src="frontend/js/page.js"></script>
 
     <script src="frontend/js/app.js"></script>

@@ -49,7 +49,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -76,7 +83,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -94,7 +108,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -112,7 +133,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -130,7 +158,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -148,7 +183,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -166,7 +208,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -184,7 +233,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -202,7 +258,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -220,7 +283,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -238,7 +308,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -256,7 +333,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -274,7 +358,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -292,7 +383,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -310,7 +408,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -328,7 +433,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -354,7 +466,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -380,7 +499,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -398,7 +524,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -416,7 +549,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -434,7 +574,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -452,7 +599,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -497,7 +651,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -542,7 +703,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -560,7 +728,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -578,7 +753,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -596,7 +778,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -614,7 +803,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -632,7 +828,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -650,7 +853,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -668,7 +878,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -686,7 +903,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -704,7 +928,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -722,7 +953,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -740,7 +978,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -758,7 +1003,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -776,7 +1028,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -794,7 +1053,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -812,7 +1078,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -830,7 +1103,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -848,7 +1128,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -866,7 +1153,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -884,7 +1178,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -902,7 +1203,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -920,7 +1228,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -938,7 +1253,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -956,7 +1278,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -974,7 +1303,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -992,7 +1328,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -1010,7 +1353,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -1028,7 +1378,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -1046,7 +1403,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -1064,7 +1428,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -1082,7 +1453,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -1100,7 +1478,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -1127,7 +1512,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -1154,7 +1546,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -1181,7 +1580,65 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	//command id = 125
+	public function delete_host_downtime($input_downtime_id)
+	{
+		$commands = 'DEL_HOST_DOWNTIME;'.$input_downtime_id;
+
+		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
+
+		//check that the command runs successfully
+		if((int)$this->return_value)
+		{
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+
+	//command id = 126
+	public function delete_svc_downtime($input_downtime_id)
+	{
+		$commands = 'DEL_SVC_DOWNTIME;'.$input_downtime_id;
+
+		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
+
+		//check that the command runs successfully
+		if((int)$this->return_value)
+		{
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -1207,7 +1664,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -1242,7 +1706,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -1277,7 +1748,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -1295,7 +1773,14 @@ class System_commands extends CI_Model
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
-			return true;
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -1486,6 +1971,7 @@ class System_commands extends CI_Model
 
 			return $process_obj;
 		}
+		
 		//$return_type = 'PERFORMANCE'
 		else
 		{
@@ -1708,6 +2194,33 @@ class System_commands extends CI_Model
 
 			return $performance_obj;
 		}
+	}
+
+	private function _verify_success()
+	{
+		//get current time
+		$now = (string)time();
+		$return_value = true;
+
+		//opening the nagios log file
+		$logfile = fopen('/usr/local/nagios/var/nagios.log', 'r') or die('Unable to open file');
+
+		while(! feof($logfile) )
+		{
+			$data = trim(fgets($logfile));
+
+			if(strpos($data, $now))
+			{
+				if(strpos($data, 'Error: External command failed') !== false)
+				{
+					$return_value = false;
+				}
+			}
+		}
+
+		fclose($logfile);
+
+		return $return_value;
 	}
 
 

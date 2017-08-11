@@ -1,922 +1,1048 @@
-<div class="confirm_modal" ng-controller="ProcessInfoCtrl">
-	
-	<!--modal success-->
-	<div class="modal fade" id="success" data-backdrop="false" >
-		<div class="modal-dialog modal-sm">
-        <!-- Modal content-->
-        		<div class="modal-content">
-          			<div class="modal-body" style="margin:0px;padding:0px">
-            				<div class="alert alert-success fade in" id="success-alert">
-              					<strong>Success!</strong>
-            				</div>
-				</div>
-	        	</div>
-		</div>
-	</div>
 
-	<!--modal fail-->
-	<div class="modal fade" id="fail" data-backdrop="false" >
-		<div class="modal-dialog modal-sm">
-        <!-- Modal content-->
-        		<div class="modal-content">
-          			<div class="modal-header" hidden="true"></div>
-          			<div class="modal-body" style="margin:0px;padding:0px">
-            				<div class="alert alert-danger fade in" id="fail-alert">
-              					<strong>Fail!</strong>
-            				</div>
-            			<div class="modal-footer" hidden="true"></div>
-				</div>
-	        	</div>
-		</div>
-	</div>
-
-	<div class="modal fade" id="ShutDownModal" role="dialog">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Shut Down The Nagios</h4>
-				</div>
-				<div class="modal-body">
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" ng-click="open('shutdown')" data-dismiss="modal">Yes</button>
-				</div>
+<!-- =============================================Process Info modal=============================================== -->
+<!--modal success-->
+<div ng-controller="ProcessInfoCtrl" class="modal fade" id="success" data-backdrop="false" >
+	<div class="modal-dialog modal-sm">
+    <!-- Modal content-->
+    		<div class="modal-content">
+      			<div class="modal-body" style="margin:0px;padding:0px">
+        				<div class="alert alert-success fade in" id="success-alert">
+          					<strong>Success!</strong>
+        				</div>
 			</div>
-		</div>
+        	</div>
 	</div>
-
-	<div class="modal fade" id="RestartModal" role="dialog">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Restart the Nagios Process</h4>
-				</div>
-				<div class="modal-body">
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" ng-click="open('restart')" data-dismiss="modal">Yes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="modal fade" id="NotificationsModal" role="dialog">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Notifications Command</h4>
-				</div>
-				<div class="modal-body">
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" ng-click="notification(processinfo.enable_notifications)" data-dismiss="modal">Yes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="modal fade" id="ServiceCheckModal" role="dialog">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Service Check Command</h4>
-				</div>
-				<div class="modal-body">
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" ng-click="activeservice(processinfo.active_service_checks_enabled)" data-dismiss="modal">Yes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="modal fade" id="PassiveServiceModal" role="dialog">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Passive Service Check Command</h4>
-				</div>
-				<div class="modal-body">
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" ng-click="passiveservice(processinfo.passive_service_checks_enabled)" data-dismiss="modal">Yes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="modal fade" id="HostCheckModal" role="dialog">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Host Check Command</h4>
-				</div>
-				<div class="modal-body">
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" ng-click="activehost(processinfo.active_host_checks_enabled)" data-dismiss="modal">Yes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="modal fade" id="PassiveHostModal" role="dialog">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Passive Host Check Command</h4>
-				</div>
-				<div class="modal-body">
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" ng-click="passivehost(processinfo.passive_host_checks_enabled)" data-dismiss="modal">Yes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="modal fade" id="EventHandlerModal" role="dialog">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Event Handler Command</h4>
-				</div>
-				<div class="modal-body">
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" ng-click="event(processinfo.enable_event_handlers)" data-dismiss="modal">Yes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="modal fade" id="ObsessingServiceModal" role="dialog">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Obsessing Over Service Command</h4>
-				</div>
-				<div class="modal-body">
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" ng-click="obsessservice(processinfo.obsess_over_services)" data-dismiss="modal">Yes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="modal fade" id="ObsessingHostModal" role="dialog">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Obsessing Over Hosts Command</h4>
-				</div>
-				<div class="modal-body">
-					<button type="button" class="btn btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" ng-click="obsesshost(processinfo.obsess_over_hosts)" data-dismiss="modal">Yes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="modal fade" id="FlapDetectModal" role="dialog">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Flap Detection Model</h4>
-				</div>
-				<div class="modal-body">
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" ng-click="flap(processinfo.enable_flap_detection)" data-dismiss="modal">Yes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="modal fade" id="PerformanceModal" role="dialog">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Performance Data Command</h4>
-				</div>
-				<div class="modal-body">
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" ng-click="perform(processinfo.process_performance_data)" data-dismiss="modal">Yes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
 </div>
 
-<div ng-controller="SchedulingQueueCtrl">
-	
-	<div class="modal fade" id="DisableModal" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content modal-sm">
-				<div class="modal-header">
-					<h4 class="modal-title">Disable Active Check</h4>
-				</div>
-				<div class="modal-body">
-					<form>
-						<label for="Host Name:">
-							Host Name:
-							<input disabled type="text" ng-model="host" name="host">
-						</label>
-						<label for="Service:" ng-model="service_label" name="service_label" ng-hide="Disableshow">
-							Service Name:
-							<input disabled type="text" ng-model="service" name="service">
-						</label>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" ng-click="disable()" data-dismiss="modal">Yes</button>
-				</div>
+<!--modal fail-->
+<div ng-controller="ProcessInfoCtrl" class="modal fade" id="fail" data-backdrop="false" >
+	<div class="modal-dialog modal-sm">
+    <!-- Modal content-->
+    		<div class="modal-content">
+      			<div class="modal-header" hidden="true"></div>
+      			<div class="modal-body" style="margin:0px;padding:0px">
+        				<div class="alert alert-danger fade in" id="fail-alert">
+          					<strong>Fail!</strong>
+        				</div>
+        			<div class="modal-footer" hidden="true"></div>
 			</div>
-		</div>
+        	</div>
 	</div>
+</div>
 
-	<div class="modal fade" id="ScheduleModal" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content modal-sm">
-				<div class="modal-header">
-					<h4 class="modal-title">Schedule Check Time</h4>
-				</div>
-				<div class="modal-body"">
-					<form>
-						<label class="form-group" for="HostName">
-							Host Name:
-							<input disabled type="text" ng-model="host" name="host">
-						</label>
-						<label class="form-group" for="Service" ng-model="service_label" name="service_label" ng-hide="Scheduleshow">
-							Service Name:
-							<input disabled type="text" ng-model="service" name="service">
-						</label>
-						<label class="form-group" for="CheckTime">
-							Check Time:
-							<input disabled type="text" ng-model="check_time" name="check_time">
-						</label>
-						<label class="form-group" for="InputCheckTime">
-							Input Check Time:
-							<input type="text" ng-model="input_check_time" name="input_check_time">
-						</label>
-						<label class="form-group" for="ForceCheck">
-							Force Check:
-							<input type="checkbox"  ng-model="force_check" name="force_check" ng-checked="force_check" ng-change="forcecheck(force_check)">
-						</label>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<p class="btn btn-sm" data-toggle="tooltip" title="This command is used to schedule the next check of a particular service. Nagios will re-queue the service to be checked at the time you specify. If you select the force check option, Nagios will force a check of the service regardless of both what time the scheduled check occurs and whether or not checks are enabled for the service.">?</p>
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" ng-click="schedule(input_check_time)" data-dismiss="modal">Yes</button>
-				</div>
+<!--Shut Down Nagios modal in Process Info panel-->
+<div ng-controller="ProcessInfoCtrl" class="modal fade" id="ShutDownModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Shut Down The Nagios</h4>
+			</div>
+			<div class="modal-body">
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="open('shutdown')" data-dismiss="modal">Yes</button>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div ng-controller="HostDetailsCtrl">
-	<div class="modal fade" id="CustomNotification" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content modal-sm">
-				<div class="modal-header">
-					<h4 class="modal-title">Custom Host Notification</h4>
-				</div>
-				<div class="modal-body">
-					<form class="form-group">
-						<label for="HostName">
-							Host Name:
-							<input disabled type="text" ng-model="custom_host" name="custom_host">
-						</label>
-						<label  for="Force">
-							Force:
-							<input type="checkbox" ng-model="force" name="force" ng-checked="force" ng-change="forcechange(force);">
-						</label>
-						<label  for="CheckTime">
-							Broadcast:
-							<input type="checkbox" ng-model="broadcast" name="broadcast" ng-checked="broadcast" ng-change="broadcastchange(broadcast)">
-						</label>
-						<label  for="Author">
-							Author(Your Name):
-							<input disabled type="text" ng-model="author" name="author">
-						</label>
-						<label for="Comment">
-							Comment:
-							<input type="text" ng-model="comment" name="comment" value="comment">
-						</label>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" data-dismiss="modal" ng-click='custom(comment)'>Yes</button>
-				</div>
+<!--Restart Nagios modal in Process Info panel-->
+<div ng-controller="ProcessInfoCtrl" class="modal fade" id="RestartModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Restart the Nagios Process</h4>
+			</div>
+			<div class="modal-body">
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="open('restart')" data-dismiss="modal">Yes</button>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<div class="modal fade" id="Acknowledge" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content modal-sm">
-				<div class="modal-header">
-					<h4 class="modal-title">Acknowledge Problem</h4>
-				</div>
-				<div class="modal-body">
-					<form class="form-group">
-						<label for="HostName">
-							Host Name:
-							<input disabled type="text" ng-model="ack_host" name="ack_host">
-						</label>
-						<label  for="StickyAcknowledgement">
-							Sticky Acknowledgement:
-							<input type="checkbox" ng-model="stickyack" name="stickyack" ng-checked="stickyack" ng-change="sticky(stickyack);">
-						</label>
-						<label  for="SendNotification">
-							Send Notification:
-							<input type="checkbox" ng-model="sendnotify" name="sendnotify" ng-checked="sendnotify" ng-change="notify(sendnotify)">
-						</label>
-						<label  for="PersistentComment">
-							Persistent Comment:
-							<input type="checkbox" ng-model="persistent" name="persistent" ng-checked="persistent" ng-change="persist(persistent)">
-						</label>
-						<label  for="Author">
-							Author(Your Name):
-							<input disabled type="text" ng-model="author" name="author">
-						</label>
-						<label for="Comment">
-							Comment:
-							<input type="text" ng-model="comment" name="comment" value="comment">
-						</label>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" data-dismiss="modal" ng-click='acknowledge(comment)'>Yes</button>
-				</div>
+<!--Enable / Disable All Notification modal in Process Info panel-->
+<div ng-controller="ProcessInfoCtrl" class="modal fade" id="NotificationsModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Notifications Command</h4>
+			</div>
+			<div class="modal-body">
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="notification(processinfo.enable_notifications)" data-dismiss="modal">Yes</button>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<div class="modal fade" id="EnableAllService" role="dialog">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Enable All Service</h4>
-				</div>
-				<div class="modal-body">
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" ng-click="service_check(type = true, host.host_name)" data-dismiss="modal">Yes</button>
-				</div>
+<!--Start / Stop Executing Active Check of All Service modal in Process Info panel-->
+<div ng-controller="ProcessInfoCtrl" class="modal fade" id="ServiceCheckModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Service Check Command</h4>
+			</div>
+			<div class="modal-body">
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="activeservice(processinfo.active_service_checks_enabled)" data-dismiss="modal">Yes</button>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<div class="modal fade" id="DisableAllService" role="dialog">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Disable All Service</h4>
-				</div>
-				<div class="modal-body">
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" ng-click="service_check(type = false, host.host_name)" data-dismiss="modal">Yes</button>
-				</div>
+<!--Start / Stop Accepting Passive Check of All Service modal in Process Info panel-->
+<div ng-controller="ProcessInfoCtrl" class="modal fade" id="PassiveServiceModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Passive Service Check Command</h4>
+			</div>
+			<div class="modal-body">
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="passiveservice(processinfo.passive_service_checks_enabled)" data-dismiss="modal">Yes</button>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<div class="modal fade" id="ScheduleHostServiceDetail" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content modal-sm">
-				<div class="modal-header">
-					<h4 class="modal-title">Schedule Check Time For All Service of this host</h4>
-				</div>
-				<div class="modal-body">
-					<form>
-						<label class="form-group" for="HostName">
-							Host Name:
-							<input disabled type="text" ng-model="schedule_host" name="schedule_host">
-						</label>
-						<label class="form-group" for="CheckTime">
-							Check Time:
-							<input disabled type="text" ng-model="check_time" name="check_time">
-						</label>
-						<label class="form-group" for="InputCheckTime">
-							Input Check Time:
-							<input type="text" ng-model="input_check_time" name="input_check_time">
-						</label>
-						<label class="form-group" for="ForceCheck">
-							Force Check:
-							<input type="checkbox"  ng-model="force_check" name="force_check" ng-checked="force_check" ng-change="forcecheck(force_check)">
-						</label>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<p class="btn btn-sm" data-toggle="tooltip" title="This command is used to scheduled the next check of all services on the specified host. If you select the force check option, Nagios will force a check of all services on the host regardless of both what time the scheduled checks occur and whether or not checks are enabled for those services.">?</p>
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" ng-click="schedule(input_check_time)" data-dismiss="modal">Yes</button>
-				</div>
+<!--Start / Stop Executing Active Check of All Host modal in Process Info panel-->
+<div ng-controller="ProcessInfoCtrl" class="modal fade" id="HostCheckModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Host Check Command</h4>
+			</div>
+			<div class="modal-body">
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="activehost(processinfo.active_host_checks_enabled)" data-dismiss="modal">Yes</button>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<div class="modal fade" id="ScheduleHostDetail" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content modal-sm">
-				<div class="modal-header">
-					<h4 class="modal-title">Schedule next check for this host</h4>
-				</div>
-				<div class="modal-body">
-					<form>
-						<label class="form-group" for="HostName">
-							Host Name:
-							<input disabled type="text" ng-model="schedule_host" name="schedule_host">
-						</label>
-						<label class="form-group" for="CheckTime">
-							Check Time:
-							<input disabled type="text" ng-model="check_time" name="check_time">
-						</label>
-						<label class="form-group" for="InputCheckTime">
-							Input Check Time:
-							<input type="text" ng-model="input_check_time" name="input_check_time">
-						</label>
-						<label class="form-group" for="ForceCheck">
-							Force Check:
-							<input type="checkbox"  ng-model="force_check" name="force_check" ng-checked="force_check" ng-change="forcecheck(force_check)">
-						</label>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<p class="btn btn-sm" data-toggle="tooltip" title="This command is used to scheduled the next check of all services on the specified host. If you select the force check option, Nagios will force a check of all services on the host regardless of both what time the scheduled checks occur and whether or not checks are enabled for those services.">?</p>
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" ng-click="schedule(input_check_time)" data-dismiss="modal">Yes</button>
-				</div>
+<!--Start / Stop Accepting Passive Check of All Host modal in Process Info panel-->
+<div ng-controller="ProcessInfoCtrl" class="modal fade" id="PassiveHostModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Passive Host Check Command</h4>
+			</div>
+			<div class="modal-body">
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="passivehost(processinfo.passive_host_checks_enabled)" data-dismiss="modal">Yes</button>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<div class="modal fade" id="EnableAllNotification" role="dialog">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Enable All Notification</h4>
-				</div>
-				<div class="modal-body">
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" ng-click="notification_check(type = true, host.host_name)" data-dismiss="modal">Yes</button>
-				</div>
+<!--Enable / Disable Event Handler modal in Process Info panel-->
+<div ng-controller="ProcessInfoCtrl" class="modal fade" id="EventHandlerModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Event Handler Command</h4>
+			</div>
+			<div class="modal-body">
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="event(processinfo.enable_event_handlers)" data-dismiss="modal">Yes</button>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<div class="modal fade" id="DisableAllNotification" role="dialog">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Disable All Notification</h4>
-				</div>
-				<div class="modal-body">
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" ng-click="notification_check(type = false, host.host_name)" data-dismiss="modal">Yes</button>
-				</div>
+<!--Start / Stop Obsessing Over Service modal in Process Info panel-->
+<div ng-controller="ProcessInfoCtrl" class="modal fade" id="ObsessingServiceModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Obsessing Over Service Command</h4>
+			</div>
+			<div class="modal-body">
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="obsessservice(processinfo.obsess_over_services)" data-dismiss="modal">Yes</button>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<div class="modal fade" id="hostDowntime">
-		<div class="modal-dialog">
-		<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Schedule Host Downtime</h4>
-				</div>
-				<div class="modal-body">
-					<form action="" class="form-horizontal" name="inputForm" method="post" novalidate>
-						<div class="form-group">
-							<label for="hostName" class="col-md-4 control-label">Host Name:</label>
-								<div class="col-md-6">
-									<input ng-model="hostHostName" ng-disabled="true" type="text" class="form-control" name="hostName"></input>
-								</div>
-						</div>
+<!--Start / Stop Obsessing Over Host modal in Process Info panel-->
+<div ng-controller="ProcessInfoCtrl" class="modal fade" id="ObsessingHostModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Obsessing Over Hosts Command</h4>
+			</div>
+			<div class="modal-body">
+				<button type="button" class="btn btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="obsesshost(processinfo.obsess_over_hosts)" data-dismiss="modal">Yes</button>
+			</div>
+		</div>
+	</div>
+</div>
 
-						<div class="form-group">
-							<label for="author" class="col-md-4 control-label">Author(Your Name):</label>
-								<div class="col-md-6">
-									<input ng-model="hostAuthor" ng-disabled="true" type="text" class="form-control" name="author"></input>
-								</div>
-						</div>
+<!--Enable / Disable Flap Detection modal in Process Info panel-->
+<div ng-controller="ProcessInfoCtrl" class="modal fade" id="FlapDetectModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Flap Detection Model</h4>
+			</div>
+			<div class="modal-body">
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="flap(processinfo.enable_flap_detection)" data-dismiss="modal">Yes</button>
+			</div>
+		</div>
+	</div>
+</div>
 
-						<div class="form-group">
-							<label for="comment" class="col-md-4 control-label">Comment:</label>
-								<div class="col-md-6">
-									<textarea ng-model="hostComment" class="form-control" name="comment"></textarea>
-								</div>
-						</div>
+<!--Enable / Disable Performance Data modal in Process Info panel-->
+<div ng-controller="ProcessInfoCtrl" class="modal fade" id="PerformanceModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Performance Data Command</h4>
+			</div>
+			<div class="modal-body">
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="perform(processinfo.process_performance_data)" data-dismiss="modal">Yes</button>
+			</div>
+		</div>
+	</div>
+</div>
 
-						<div class="form-group">
-							<label for="triggeredBy" class="col-md-4 control-label">Triggered By:</label>
-								<div class="col-md-6">
-									<select ng-model="hostTriggeredBy" name="triggeredBy" class="form-control">
-										<option value="N/A">N/A</option>
-									</select>
-								</div>
-						</div>
+<!-- =============================================Process Info modal=============================================== -->
 
-						<div class="form-group">
-							<label for="startdate" class="col-md-4 control-label">Start Date:</label>
-								<div class="col-md-6">
-									<input ng-model="hostStartDateTime" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}" name="startdate" value="" class="form-control"></input>
-								</div>
-						</div>
 
-						<div class="form-group">
-							<label for="enddate" class="col-md-4 control-label">End Date:</label>
-								<div class="col-md-6">
-									<input ng-model="hostEndDateTime" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}" name="enddate" value="" class="form-control"></input>
-								</div>
-						</div>
 
-						<div class="form-group">
-							<label for="type" class="col-md-4 control-label">Type:</label>
-								<div class="col-md-6">
-									<select ng-model="hostType" name="type" class="form-control">
-										<option value="Fixed">Fixed</option>
-										<option value="Flexible">Flexible</option>
-									</select>
-								</div>
-						</div>
 
-						<div class="form-group" ng-show="hostType=='Flexible'">
-							<label for="durationHour" class="col-md-4 control-label">Duration:</label>
-								<div class="col-md-3">
-									<input ng-model="hostDurationHour" type="number" name="durationHour" class="form-control">Hour</input>
-								</div>
-								<div class="col-md-3">
-									<input ng-model="hostDurationMin" type="number" name="durationMin" class="form-control">Minute</input>
-								</div>
-						</div>
+<!-- =============================================Scheduling Queue modal=========================================== -->
+<!--modal success-->
+<div ng-controller="SchedulingQueueCtrl" class="modal fade" id="success" data-backdrop="false" >
+	<div class="modal-dialog modal-sm">
+    <!-- Modal content-->
+    		<div class="modal-content">
+      			<div class="modal-body" style="margin:0px;padding:0px">
+        				<div class="alert alert-success fade in" id="success-alert">
+          					<strong>Success!</strong>
+        				</div>
+			</div>
+        	</div>
+	</div>
+</div>
 
-						<div class="form-group">
-							<label for="childHost" class="col-md-4 control-label">Child Hosts:</label>
-								<div class="col-md-6">
-									<select ng-model="hostChildHost" name="childHost" class="form-control">
-										<option value="doNothing">Do nothing with child hosts</option>
-										<option value="scheduleTriggeredDowntime">Schedule triggered downtime to all child hosts</option>
-										<option value="scheduleNonTriggeredDowntime">Schedule non-triggered downtime to all child hosts</option>
-									</select>
-								</div>
-						</div>
+<!--modal fail-->
+<div ng-controller="SchedulingQueueCtrl" class="modal fade" id="fail" data-backdrop="false" >
+	<div class="modal-dialog modal-sm">
+    <!-- Modal content-->
+    		<div class="modal-content">
+      			<div class="modal-header" hidden="true"></div>
+      			<div class="modal-body" style="margin:0px;padding:0px">
+        				<div class="alert alert-danger fade in" id="fail-alert">
+          					<strong>Fail!</strong>
+        				</div>
+        			<div class="modal-footer" hidden="true"></div>
+			</div>
+        	</div>
+	</div>
+</div>
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-1">
-								<button type="button" class="btn btn-sm btn-info" data-target="#hostdesc" data-toggle="collapse">help</button>
+<!--Disable Active Check for host or service modal in Scheduling Queue panel-->
+<div ng-controller="SchedulingQueueCtrl" class="modal fade" id="DisableModal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content modal-sm">
+			<div class="modal-header">
+				<h4 class="modal-title">Disable Active Check</h4>
+			</div>
+			<div class="modal-body">
+				<form>
+					<label for="Host Name:">
+						Host Name:
+						<input disabled type="text" ng-model="host" name="host">
+					</label>
+					<label for="Service:" ng-model="service_label" name="service_label" ng-hide="Disableshow">
+						Service Name:
+						<input disabled type="text" ng-model="service" name="service">
+					</label>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="disable()" data-dismiss="modal">Yes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Schedule Next Check for host or service modal in Scheduling Queue panel-->
+<div ng-controller="SchedulingQueueCtrl" class="modal fade" id="ScheduleModal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content modal-sm">
+			<div class="modal-header">
+				<h4 class="modal-title">Schedule Check Time</h4>
+			</div>
+			<div class="modal-body"">
+				<form>
+					<label class="form-group" for="HostName">
+						Host Name:
+						<input disabled type="text" ng-model="host" name="host">
+					</label>
+					<label class="form-group" for="Service" ng-model="service_label" name="service_label" ng-hide="Scheduleshow">
+						Service Name:
+						<input disabled type="text" ng-model="service" name="service">
+					</label>
+					<label class="form-group" for="CheckTime">
+						Check Time:
+						<input disabled type="text" ng-model="check_time" name="check_time">
+					</label>
+					<label class="form-group" for="InputCheckTime">
+						Input Check Time:
+						<input type="text" ng-model="input_check_time" name="input_check_time">
+					</label>
+					<label class="form-group" for="ForceCheck">
+						Force Check:
+						<input type="checkbox"  ng-model="force_check" name="force_check" ng-checked="force_check" ng-change="forcecheck(force_check)">
+					</label>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<p class="btn btn-sm" data-toggle="tooltip" title="This command is used to schedule the next check of a particular service. Nagios will re-queue the service to be checked at the time you specify. If you select the force check option, Nagios will force a check of the service regardless of both what time the scheduled check occurs and whether or not checks are enabled for the service.">?</p>
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="schedule(input_check_time)" data-dismiss="modal">Yes</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- =============================================Scheduling Queue modal=========================================== -->
+
+
+
+
+<!-- =============================================Host Detail modal================================================ -->
+<!--modal success-->
+<div ng-controller="HostDetailsCtrl" class="modal fade" id="success" data-backdrop="false" >
+	<div class="modal-dialog modal-sm">
+    <!-- Modal content-->
+    		<div class="modal-content">
+      			<div class="modal-body" style="margin:0px;padding:0px">
+        				<div class="alert alert-success fade in" id="success-alert">
+          					<strong>Success!</strong>
+        				</div>
+			</div>
+        	</div>
+	</div>
+</div>
+
+<!--modal fail-->
+<div ng-controller="HostDetailsCtrl" class="modal fade" id="fail" data-backdrop="false" >
+	<div class="modal-dialog modal-sm">
+    <!-- Modal content-->
+    		<div class="modal-content">
+      			<div class="modal-header" hidden="true"></div>
+      			<div class="modal-body" style="margin:0px;padding:0px">
+        				<div class="alert alert-danger fade in" id="fail-alert">
+          					<strong>Fail!</strong>
+        				</div>
+        			<div class="modal-footer" hidden="true"></div>
+			</div>
+        	</div>
+	</div>
+</div>
+
+<!--Send Host Custom Notification modal in Host Details panel-->
+<div ng-controller="HostDetailsCtrl" class="modal fade" id="CustomNotification" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content modal-sm">
+			<div class="modal-header">
+				<h4 class="modal-title">Custom Host Notification</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-group">
+					<label for="HostName">
+						Host Name:
+						<input disabled type="text" ng-model="custom_host" name="custom_host">
+					</label>
+					<label  for="Force">
+						Force:
+						<input type="checkbox" ng-model="force" name="force" ng-checked="force" ng-change="forcechange(force);">
+					</label>
+					<label  for="CheckTime">
+						Broadcast:
+						<input type="checkbox" ng-model="broadcast" name="broadcast" ng-checked="broadcast" ng-change="broadcastchange(broadcast)">
+					</label>
+					<label  for="Author">
+						Author(Your Name):
+						<input disabled type="text" ng-model="author" name="author">
+					</label>
+					<label for="Comment">
+						Comment:
+						<input type="text" ng-model="comment" name="comment" value="comment">
+					</label>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" data-dismiss="modal" ng-click='custom(comment)'>Yes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Acknowledge Problem modal in Host Details panel-->
+<div ng-controller="HostDetailsCtrl" class="modal fade" id="Acknowledge" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content modal-sm">
+			<div class="modal-header">
+				<h4 class="modal-title">Acknowledge Problem</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-group">
+					<label for="HostName">
+						Host Name:
+						<input disabled type="text" ng-model="ack_host" name="ack_host">
+					</label>
+					<label  for="StickyAcknowledgement">
+						Sticky Acknowledgement:
+						<input type="checkbox" ng-model="stickyack" name="stickyack" ng-checked="stickyack" ng-change="sticky(stickyack);">
+					</label>
+					<label  for="SendNotification">
+						Send Notification:
+						<input type="checkbox" ng-model="sendnotify" name="sendnotify" ng-checked="sendnotify" ng-change="notify(sendnotify)">
+					</label>
+					<label  for="PersistentComment">
+						Persistent Comment:
+						<input type="checkbox" ng-model="persistent" name="persistent" ng-checked="persistent" ng-change="persist(persistent)">
+					</label>
+					<label  for="Author">
+						Author(Your Name):
+						<input disabled type="text" ng-model="author" name="author">
+					</label>
+					<label for="Comment">
+						Comment:
+						<input type="text" ng-model="comment" name="comment" value="comment">
+					</label>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" data-dismiss="modal" ng-click='acknowledge(comment)'>Yes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Enable checks of all service modal in Host Details panel-->
+<div ng-controller="HostDetailsCtrl" class="modal fade" id="EnableAllService" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Enable All Service</h4>
+			</div>
+			<div class="modal-body">
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="enable_service_check(host.host_name)" data-dismiss="modal">Yes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Disable checks of all service modal in Host Details panel-->
+<div ng-controller="HostDetailsCtrl" class="modal fade" id="DisableAllService" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Disable All Service</h4>
+			</div>
+			<div class="modal-body">
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" data-dismiss="modal" ng-click="disable_service_check(host.host_name)" >Yes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Schedule checks of all service modal of particular host in Host Details panel-->
+<div ng-controller="HostDetailsCtrl" class="modal fade" id="ScheduleHostServiceDetail" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content modal-sm">
+			<div class="modal-header">
+				<h4 class="modal-title">Schedule Check Time For All Service of this host</h4>
+			</div>
+			<div class="modal-body">
+				<form>
+					<label class="form-group" for="HostName">
+						Host Name:
+						<input disabled type="text" ng-model="schedule_host" name="schedule_host">
+					</label>
+					<label class="form-group" for="CheckTime">
+						Check Time:
+						<input disabled type="text" ng-model="check_time" name="check_time">
+					</label>
+					<label class="form-group" for="InputCheckTime">
+						Input Check Time:
+						<input type="text" ng-model="input_check_time" name="input_check_time">
+					</label>
+					<label class="form-group" for="ForceCheck">
+						Force Check:
+						<input type="checkbox"  ng-model="force_check" name="force_check" ng-checked="force_check" ng-change="forcecheck(force_check)">
+					</label>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<p class="btn btn-sm" data-toggle="tooltip" title="This command is used to scheduled the next check of all services on the specified host. If you select the force check option, Nagios will force a check of all services on the host regardless of both what time the scheduled checks occur and whether or not checks are enabled for those services.">?</p>
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="schedule(input_check_time)" data-dismiss="modal">Yes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Schedule checks for host modal in Host Details panel-->
+<div ng-controller="HostDetailsCtrl" class="modal fade" id="ScheduleHostDetail" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content modal-sm">
+			<div class="modal-header">
+				<h4 class="modal-title">Schedule next check for this host</h4>
+			</div>
+			<div class="modal-body">
+				<form>
+					<label class="form-group" for="HostName">
+						Host Name:
+						<input disabled type="text" ng-model="schedule_host" name="schedule_host">
+					</label>
+					<label class="form-group" for="CheckTime">
+						Check Time:
+						<input disabled type="text" ng-model="check_time" name="check_time">
+					</label>
+					<label class="form-group" for="InputCheckTime">
+						Input Check Time:
+						<input type="text" ng-model="input_check_time" name="input_check_time">
+					</label>
+					<label class="form-group" for="ForceCheck">
+						Force Check:
+						<input type="checkbox"  ng-model="force_check" name="force_check" ng-checked="force_check" ng-change="forcecheck(force_check)">
+					</label>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<p class="btn btn-sm" data-toggle="tooltip" title="This command is used to scheduled the next check of all services on the specified host. If you select the force check option, Nagios will force a check of all services on the host regardless of both what time the scheduled checks occur and whether or not checks are enabled for those services.">?</p>
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="schedule(input_check_time)" data-dismiss="modal">Yes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Enable notification of all service modal of particular host in Host Details panel-->
+<div ng-controller="HostDetailsCtrl" class="modal fade" id="EnableAllNotification" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Enable All Notification</h4>
+			</div>
+			<div class="modal-body">
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="notification_check(type = true, host.host_name)" data-dismiss="modal">Yes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Disable notification of all service modal of particular host in Host Details panel-->
+<div ng-controller="HostDetailsCtrl" class="modal fade" id="DisableAllNotification" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Disable All Notification</h4>
+			</div>
+			<div class="modal-body">
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="notification_check(type = false, host.host_name)" data-dismiss="modal">Yes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Schedule downtime for host in Host Details panel-->
+<div ng-controller="HostDetailsCtrl" class="modal fade" id="hostDowntime">
+	<div class="modal-dialog">
+	<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Schedule Host Downtime</h4>
+			</div>
+			<div class="modal-body">
+				<form action="" class="form-horizontal" name="inputForm" method="post" novalidate>
+					<div class="form-group">
+						<label for="hostName" class="col-md-4 control-label">Host Name:</label>
+							<div class="col-md-6">
+								<input ng-model="hostHostName" ng-disabled="true" type="text" class="form-control" name="hostName"></input>
 							</div>
-						</div>
+					</div>
 
-						<!-- collapse -->
-						<div class="collapse fade" id="hostdesc">
-							<p><small>This command is used to schedule downtime for a particular host. During the specified downtime, Nagios will not send notifications out about the host. When the scheduled downtime expires, Nagios will send out notifications for this host as it normally would. Scheduled downtimes are preserved across program shutdowns and restarts. If you select the fixed option, the downtime will be in effect between the start and end times you specify. If you do not select the fixed option, Nagios will treat this as "flexible" downtime. Flexible downtime starts when the host goes down or becomes unreachable (sometime between the start and end times you specified) and lasts as long as the duration of time you enter. The duration fields do not apply for fixed downtime.
-							</small></p>
-						</div>
-
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="init()">Close</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="schedule(hostDurationHour, hostDurationMin, hostComment, hostStartDateTime, hostEndDateTime, hostTriggeredBy, hostType, hostChildHost)">Schedule</button>
-				</div>
-			</div>
-
-		</div>
-	</div>
-
-	<div class="modal fade" id="serviceDowntime">
-		<div class="modal-dialog">
-		<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Schedule Service Downtime</h4>
-				</div>
-				<div class="modal-body">
-					<form action="" class="form-horizontal" name="inputForm" method="post" novalidate>
-						<div class="form-group">
-							<label for="hostName" class="col-md-4 control-label">Host Name:</label>
-								<div class="col-md-6">
-									<input ng-model="hostName" type="text" class="form-control" name="hostName"></input>
-								</div>
-						</div>
-
-						<div class="form-group">
- 							<label for="service" class="col-md-4 control-label">Service:</label>
- 								<div class="col-md-6">
- 									<input ng-model="service" type="text" class="form-control" name="service"></input>
- 								</div>
- 						</div>
-
-						<div class="form-group">
-							<label for="author" class="col-md-4 control-label">Author(Your Name):</label>
-								<div class="col-md-6">
-									<input ng-model="author" ng-disabled="true" type="text" class="form-control" name="author"></input>
-								</div>
-						</div>
-
-						<div class="form-group">
-							<label for="comment" class="col-md-4 control-label">Comment:</label>
-								<div class="col-md-6">
-									<textarea ng-model="comment" class="form-control" name="comment"></textarea>
-								</div>
-						</div>
-
-						<div class="form-group">
-							<label for="triggeredBy" class="col-md-4 control-label">Triggered By:</label>
-								<div class="col-md-6">
-									<select ng-model="triggeredBy" name="triggeredBy" class="form-control">
-										<option value="N/A">N/A</option>
-									</select>
-								</div>
-						</div>
-
-						<div class="form-group">
-							<label for="startdate" class="col-md-4 control-label">Start Date:</label>
-								<div class="col-md-6">
-									<input ng-model="StartDate" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}" name="startdate" value="" class="form-control"></input>
-								</div>
-						</div>
-
-						<div class="form-group">
-							<label for="enddate" class="col-md-4 control-label">End Date:</label>
-								<div class="col-md-6">
-									<input ng-model="endDate" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}" name="enddate" value="" class="form-control"></input>
-								</div>
-						</div>
-
-						<div class="form-group">
-							<label for="type" class="col-md-4 control-label">Type:</label>
-								<div class="col-md-6">
-									<select ng-model="type" name="type" class="form-control">
-										<option value="Fixed">Fixed</option>
-										<option value="Flexible">Flexible</option>
-									</select>
-								</div>
-						</div>
-
-						<div class="form-group" ng-show="type == 'Flexible'">
-							<label for="durationHour" class="col-md-4 control-label">Duration:</label>
-								<div class="col-md-3">
-									<input ng-model="durationHour" type="number" name="durationHour" class="form-control">Hour</input>
-								</div>
-								<div class="col-md-3">
-									<input ng-model="durationMin" type="number" name="durationMin" class="form-control">Minute</input>
-								</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-1">
-								<button type="button" class="btn btn-sm btn-info" data-target="#hostdesc" data-toggle="collapse">help</button>
+					<div class="form-group">
+						<label for="author" class="col-md-4 control-label">Author(Your Name):</label>
+							<div class="col-md-6">
+								<input ng-model="hostAuthor" ng-disabled="true" type="text" class="form-control" name="author"></input>
 							</div>
-						</div>
+					</div>
 
-						<!-- collapse -->
-						<div class="collapse fade" id="hostdesc">
-							<p><small>This command is used to schedule downtime for a particular service. During the specified downtime, Nagios will not send notifications out about the service. When the scheduled downtime expires, Nagios will send out notifications for this service as it normally would. Scheduled downtimes are preserved across program shutdowns and restarts. Both the start and end times should be specified in the following format: mm/dd/yyyy hh:mm:ss. If you select the fixed option, the downtime will be in effect between the start and end times you specify. If you do not select the fixed option, Nagios will treat this as "flexible" downtime. Flexible downtime starts when the service enters a non-OK state (sometime between the start and end times you specified) and lasts as long as the duration of time you enter. The duration fields do not apply for fixed downtime.
-							</small></p>
-						</div>
+					<div class="form-group">
+						<label for="comment" class="col-md-4 control-label">Comment:</label>
+							<div class="col-md-6">
+								<textarea ng-model="hostComment" class="form-control" name="comment"></textarea>
+							</div>
+					</div>
 
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="init()">Close</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="schedule(durationHour, durationMin, comment, startDate, endDate, triggeredBy, type, ChildHost)">Schedule</button>
-				</div>
+					<div class="form-group">
+						<label for="triggeredBy" class="col-md-4 control-label">Triggered By:</label>
+							<div class="col-md-6">
+								<select ng-model="hostTriggeredBy" name="triggeredBy" class="form-control">
+									<option value="N/A">N/A</option>
+								</select>
+							</div>
+					</div>
+
+					<div class="form-group">
+						<label for="startdate" class="col-md-4 control-label">Start Date:</label>
+							<div class="col-md-6">
+								<input ng-model="hostStartDateTime" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}" name="startdate" value="" class="form-control"></input>
+							</div>
+					</div>
+
+					<div class="form-group">
+						<label for="enddate" class="col-md-4 control-label">End Date:</label>
+							<div class="col-md-6">
+								<input ng-model="hostEndDateTime" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}" name="enddate" value="" class="form-control"></input>
+							</div>
+					</div>
+
+					<div class="form-group">
+						<label for="type" class="col-md-4 control-label">Type:</label>
+							<div class="col-md-6">
+								<select ng-model="hostType" name="type" class="form-control">
+									<option value="Fixed">Fixed</option>
+									<option value="Flexible">Flexible</option>
+								</select>
+							</div>
+					</div>
+
+					<div class="form-group" ng-show="hostType=='Flexible'">
+						<label for="durationHour" class="col-md-4 control-label">Duration:</label>
+							<div class="col-md-3">
+								<input ng-model="hostDurationHour" type="number" name="durationHour" class="form-control">Hour</input>
+							</div>
+							<div class="col-md-3">
+								<input ng-model="hostDurationMin" type="number" name="durationMin" class="form-control">Minute</input>
+							</div>
+					</div>
+
+					<div class="form-group">
+						<label for="childHost" class="col-md-4 control-label">Child Hosts:</label>
+							<div class="col-md-6">
+								<select ng-model="hostChildHost" name="childHost" class="form-control">
+									<option value="doNothing">Do nothing with child hosts</option>
+									<option value="scheduleTriggeredDowntime">Schedule triggered downtime to all child hosts</option>
+									<option value="scheduleNonTriggeredDowntime">Schedule non-triggered downtime to all child hosts</option>
+								</select>
+							</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-6 col-md-offset-1">
+							<button type="button" class="btn btn-sm btn-info" data-target="#hostdesc" data-toggle="collapse">help</button>
+						</div>
+					</div>
+
+					<!-- collapse -->
+					<div class="collapse fade" id="hostdesc">
+						<p><small>This command is used to schedule downtime for a particular host. During the specified downtime, Nagios will not send notifications out about the host. When the scheduled downtime expires, Nagios will send out notifications for this host as it normally would. Scheduled downtimes are preserved across program shutdowns and restarts. If you select the fixed option, the downtime will be in effect between the start and end times you specify. If you do not select the fixed option, Nagios will treat this as "flexible" downtime. Flexible downtime starts when the host goes down or becomes unreachable (sometime between the start and end times you specified) and lasts as long as the duration of time you enter. The duration fields do not apply for fixed downtime.
+						</small></p>
+					</div>
+
+				</form>
 			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="init()">Close</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="schedule(hostDurationHour, hostDurationMin, hostComment, hostStartDateTime, hostEndDateTime, hostTriggeredBy, hostType, hostChildHost)">Schedule</button>
+			</div>
+		</div>
 
+	</div>
+</div>
+
+<!--Schedule downtime for this host and all services in Host Details panel-->
+<div ng-controller="HostDetailsCtrl" class="modal fade" id="serviceDowntime">
+	<div class="modal-dialog">
+	<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Schedule Service Downtime</h4>
+			</div>
+			<div class="modal-body">
+				<form action="" class="form-horizontal" name="inputForm" method="post" novalidate>
+					<div class="form-group">
+						<label for="hostName" class="col-md-4 control-label">Host Name:</label>
+							<div class="col-md-6">
+								<input ng-model="hostName" type="text" class="form-control" name="hostName"></input>
+							</div>
+					</div>
+
+					<div class="form-group">
+							<label for="service" class="col-md-4 control-label">Service:</label>
+								<div class="col-md-6">
+									<input ng-model="service" type="text" class="form-control" name="service"></input>
+								</div>
+						</div>
+
+					<div class="form-group">
+						<label for="author" class="col-md-4 control-label">Author(Your Name):</label>
+							<div class="col-md-6">
+								<input ng-model="author" ng-disabled="true" type="text" class="form-control" name="author"></input>
+							</div>
+					</div>
+
+					<div class="form-group">
+						<label for="comment" class="col-md-4 control-label">Comment:</label>
+							<div class="col-md-6">
+								<textarea ng-model="comment" class="form-control" name="comment"></textarea>
+							</div>
+					</div>
+
+					<div class="form-group">
+						<label for="triggeredBy" class="col-md-4 control-label">Triggered By:</label>
+							<div class="col-md-6">
+								<select ng-model="triggeredBy" name="triggeredBy" class="form-control">
+									<option value="N/A">N/A</option>
+								</select>
+							</div>
+					</div>
+
+					<div class="form-group">
+						<label for="startdate" class="col-md-4 control-label">Start Date:</label>
+							<div class="col-md-6">
+								<input ng-model="StartDate" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}" name="startdate" value="" class="form-control"></input>
+							</div>
+					</div>
+
+					<div class="form-group">
+						<label for="enddate" class="col-md-4 control-label">End Date:</label>
+							<div class="col-md-6">
+								<input ng-model="endDate" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}" name="enddate" value="" class="form-control"></input>
+							</div>
+					</div>
+
+					<div class="form-group">
+						<label for="type" class="col-md-4 control-label">Type:</label>
+							<div class="col-md-6">
+								<select ng-model="type" name="type" class="form-control">
+									<option value="Fixed">Fixed</option>
+									<option value="Flexible">Flexible</option>
+								</select>
+							</div>
+					</div>
+
+					<div class="form-group" ng-show="type == 'Flexible'">
+						<label for="durationHour" class="col-md-4 control-label">Duration:</label>
+							<div class="col-md-3">
+								<input ng-model="durationHour" type="number" name="durationHour" class="form-control">Hour</input>
+							</div>
+							<div class="col-md-3">
+								<input ng-model="durationMin" type="number" name="durationMin" class="form-control">Minute</input>
+							</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-6 col-md-offset-1">
+							<button type="button" class="btn btn-sm btn-info" data-target="#hostdesc" data-toggle="collapse">help</button>
+						</div>
+					</div>
+
+					<!-- collapse -->
+					<div class="collapse fade" id="hostdesc">
+						<p><small>This command is used to schedule downtime for a particular service. During the specified downtime, Nagios will not send notifications out about the service. When the scheduled downtime expires, Nagios will send out notifications for this service as it normally would. Scheduled downtimes are preserved across program shutdowns and restarts. Both the start and end times should be specified in the following format: mm/dd/yyyy hh:mm:ss. If you select the fixed option, the downtime will be in effect between the start and end times you specify. If you do not select the fixed option, Nagios will treat this as "flexible" downtime. Flexible downtime starts when the service enters a non-OK state (sometime between the start and end times you specified) and lasts as long as the duration of time you enter. The duration fields do not apply for fixed downtime.
+						</small></p>
+					</div>
+
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="init()">Close</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="schedule(durationHour, durationMin, comment, startDate, endDate, triggeredBy, type, ChildHost)">Schedule</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!-- =============================================Host Detail modal================================================ -->
+
+
+
+
+<!-- =============================================Service Detail modal============================================= -->
+<!--modal success-->
+<div ng-controller="ServiceDetailsCtrl" class="modal fade" id="success" data-backdrop="false" >
+	<div class="modal-dialog modal-sm">
+    <!-- Modal content-->
+    		<div class="modal-content">
+      			<div class="modal-body" style="margin:0px;padding:0px">
+        				<div class="alert alert-success fade in" id="success-alert">
+          					<strong>Success!</strong>
+        				</div>
+			</div>
+        	</div>
+	</div>
+</div>
+
+<!--modal fail-->
+<div ng-controller="ServiceDetailsCtrl" class="modal fade" id="fail" data-backdrop="false" >
+	<div class="modal-dialog modal-sm">
+    <!-- Modal content-->
+    		<div class="modal-content">
+      			<div class="modal-header" hidden="true"></div>
+      			<div class="modal-body" style="margin:0px;padding:0px">
+        				<div class="alert alert-danger fade in" id="fail-alert">
+          					<strong>Fail!</strong>
+        				</div>
+        			<div class="modal-footer" hidden="true"></div>
+			</div>
+        	</div>
+	</div>
+</div>
+
+<!--Send Service Custom Notification modal in Host Details panel-->
+<div ng-controller="ServiceDetailsCtrl" class="modal fade" id="serviceCustomNotification" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content modal-sm">
+			<div class="modal-header">
+				<h4 class="modal-title">Custom Service Notification</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-group">
+					<label for="HostName">
+						Host Name:
+						<input disabled type="text" ng-model="custom_host" name="custom_host">
+					</label>
+					<label for="ServiceName">
+						Service Name:
+						<input disabled type="text" ng-model="custom_service" name="custom_service">
+					</label>
+					<label  for="Force">
+						Force:
+						<input type="checkbox" ng-model="force" name="force" ng-checked="force" ng-change="forcechange(force);">
+					</label>
+					<label  for="CheckTime">
+						Broadcast:
+						<input type="checkbox" ng-model="broadcast" name="broadcast" ng-checked="broadcast" ng-change="broadcastchange(broadcast)">
+					</label>
+					<label  for="Author">
+						Author(Your Name):
+						<input disabled type="text" ng-model="author" name="author">
+					</label>
+					<label for="Comment">
+						Comment:
+						<input type="text" ng-model="comment" name="comment" value="comment">
+					</label>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-lg" data-dismiss="modal" ng-click="reset()">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click='custom(comment)'>Yes</button>
+			</div>
 		</div>
 	</div>
 </div>
 
-<div ng-controller="ServiceDetailsCtrl">
-	<div class="modal fade" id="serviceCustomNotification" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content modal-sm">
-				<div class="modal-header">
-					<h4 class="modal-title">Custom Service Notification</h4>
-				</div>
-				<div class="modal-body">
-					<form class="form-group">
-						<label for="HostName">
-							Host Name:
-							<input disabled type="text" ng-model="custom_host" name="custom_host">
-						</label>
-						<label for="ServiceName">
-							Service Name:
-							<input disabled type="text" ng-model="custom_service" name="custom_service">
-						</label>
-						<label  for="Force">
-							Force:
-							<input type="checkbox" ng-model="force" name="force" ng-checked="force" ng-change="forcechange(force);">
-						</label>
-						<label  for="CheckTime">
-							Broadcast:
-							<input type="checkbox" ng-model="broadcast" name="broadcast" ng-checked="broadcast" ng-change="broadcastchange(broadcast)">
-						</label>
-						<label  for="Author">
-							Author(Your Name):
-							<input disabled type="text" ng-model="author" name="author">
-						</label>
-						<label for="Comment">
-							Comment:
-							<input type="text" ng-model="comment" name="comment" value="comment">
-						</label>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" data-dismiss="modal" ng-click='custom(comment)'>Yes</button>
-				</div>
+<!--Schedule downtime for service in Host Details panel-->
+<div ng-controller="ServiceDetailsCtrl" class="modal fade" id="serviceDetailsDowntime" role="dialog">
+	<div class="modal-dialog">
+	<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Schedule Service Downtime</h4>
 			</div>
-		</div>
-	</div>
-
-	<div class="modal fade" id="serviceDetailsDowntime">
-		<div class="modal-dialog">
-		<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Schedule Service Downtime</h4>
-				</div>
-				<div class="modal-body">
-					<form action="" class="form-horizontal" name="inputForm" method="post" novalidate>
-						<div class="form-group">
-							<label for="hostName" class="col-md-4 control-label">Host Name:</label>
-								<div class="col-md-6">
-									<input ng-model="hostName" type="text" class="form-control" name="hostName"></input>
-								</div>
-						</div>
-
-						<div class="form-group">
- 							<label for="serviceName" class="col-md-4 control-label">Service:</label>
- 								<div class="col-md-6">
- 									<input ng-model="serviceName" type="text" class="form-control" name="serviceName"></input>
- 								</div>
- 						</div>
-
-						<div class="form-group">
-							<label for="author" class="col-md-4 control-label">Author(Your Name):</label>
-								<div class="col-md-6">
-									<input ng-model="author" ng-disabled="true" type="text" class="form-control" name="author"></input>
-								</div>
-						</div>
-
-						<div class="form-group">
-							<label for="comment" class="col-md-4 control-label">Comment:</label>
-								<div class="col-md-6">
-									<textarea ng-model="comment" class="form-control" name="comment"></textarea>
-								</div>
-						</div>
-
-						<div class="form-group">
-							<label for="triggeredBy" class="col-md-4 control-label">Triggered By:</label>
-								<div class="col-md-6">
-									<select ng-model="serviceTriggeredBy" name="serviceTriggeredBy" class="form-control">
-										<option value="N/A">N/A</option>
-									</select>
-								</div>
-						</div>
-
-						<div class="form-group">
-							<label for="startdate" class="col-md-4 control-label">Start Date:</label>
-								<div class="col-md-6">
-									<input ng-model="StartDate" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}" name="startdate" value="" class="form-control"></input>
-								</div>
-						</div>
-
-						<div class="form-group">
-							<label for="enddate" class="col-md-4 control-label">End Date:</label>
-								<div class="col-md-6">
-									<input ng-model="endDate" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}" name="enddate" value="" class="form-control"></input>
-								</div>
-						</div>
-
-						<div class="form-group">
-							<label for="type" class="col-md-4 control-label">Type:</label>
-								<div class="col-md-6">
-									<select ng-model="serviceType" name="serviceType" class="form-control">
-										<option value="Fixed">Fixed</option>
-										<option value="Flexible">Flexible</option>
-									</select>
-								</div>
-						</div>
-
-						<div class="form-group" ng-show="serviceType == 'Flexible'">
-							<label for="durationHour" class="col-md-4 control-label">Duration:</label>
-								<div class="col-md-3">
-									<input ng-model="durationHour" type="number" name="durationHour" class="form-control">Hour</input>
-								</div>
-								<div class="col-md-3">
-									<input ng-model="durationMin" type="number" name="durationMin" class="form-control">Minute</input>
-								</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-1">
-								<button type="button" class="btn btn-sm btn-info" data-target="#hostdesc" data-toggle="collapse">help</button>
+			<div class="modal-body">
+				<form action="" class="form-horizontal" name="inputForm" method="post" novalidate>
+					<div class="form-group">
+						<label for="hostName" class="col-md-4 control-label">Host Name:</label>
+							<div class="col-md-6">
+								<input ng-model="hostName" type="text" class="form-control" name="hostName"></input>
 							</div>
+					</div>
+
+					<div class="form-group">
+							<label for="serviceName" class="col-md-4 control-label">Service:</label>
+								<div class="col-md-6">
+									<input ng-model="serviceName" type="text" class="form-control" name="serviceName"></input>
+								</div>
 						</div>
 
-						<!-- collapse -->
-						<div class="collapse fade" id="hostdesc">
-							<p><small>This command is used to schedule downtime for a particular service. During the specified downtime, Nagios will not send notifications out about the service. When the scheduled downtime expires, Nagios will send out notifications for this service as it normally would. Scheduled downtimes are preserved across program shutdowns and restarts. Both the start and end times should be specified in the following format: mm/dd/yyyy hh:mm:ss. If you select the fixed option, the downtime will be in effect between the start and end times you specify. If you do not select the fixed option, Nagios will treat this as "flexible" downtime. Flexible downtime starts when the service enters a non-OK state (sometime between the start and end times you specified) and lasts as long as the duration of time you enter. The duration fields do not apply for fixed downtime.
-							</small></p>
+					<div class="form-group">
+						<label for="author" class="col-md-4 control-label">Author(Your Name):</label>
+							<div class="col-md-6">
+								<input ng-model="author" ng-disabled="true" type="text" class="form-control" name="author"></input>
+							</div>
+					</div>
+
+					<div class="form-group">
+						<label for="comment" class="col-md-4 control-label">Comment:</label>
+							<div class="col-md-6">
+								<textarea ng-model="comment" class="form-control" name="comment"></textarea>
+							</div>
+					</div>
+
+					<div class="form-group">
+						<label for="triggeredBy" class="col-md-4 control-label">Triggered By:</label>
+							<div class="col-md-6">
+								<select ng-model="serviceTriggeredBy" name="serviceTriggeredBy" class="form-control">
+									<option value="N/A">N/A</option>
+								</select>
+							</div>
+					</div>
+
+					<div class="form-group">
+						<label for="startdate" class="col-md-4 control-label">Start Date:</label>
+							<div class="col-md-6">
+								<input ng-model="StartDate" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}" name="startdate" value="" class="form-control"></input>
+							</div>
+					</div>
+
+					<div class="form-group">
+						<label for="enddate" class="col-md-4 control-label">End Date:</label>
+							<div class="col-md-6">
+								<input ng-model="endDate" type="datetime-local" max="{{now | date: 'MM/dd/yyyy HH:mm:ss'}}" name="enddate" value="" class="form-control"></input>
+							</div>
+					</div>
+
+					<div class="form-group">
+						<label for="type" class="col-md-4 control-label">Type:</label>
+							<div class="col-md-6">
+								<select ng-model="serviceType" name="serviceType" class="form-control">
+									<option value="Fixed">Fixed</option>
+									<option value="Flexible">Flexible</option>
+								</select>
+							</div>
+					</div>
+
+					<div class="form-group" ng-show="serviceType == 'Flexible'">
+						<label for="durationHour" class="col-md-4 control-label">Duration:</label>
+							<div class="col-md-3">
+								<input ng-model="durationHour" type="number" name="durationHour" class="form-control">Hour</input>
+							</div>
+							<div class="col-md-3">
+								<input ng-model="durationMin" type="number" name="durationMin" class="form-control">Minute</input>
+							</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-6 col-md-offset-1">
+							<button type="button" class="btn btn-sm btn-info" data-target="#hostdesc" data-toggle="collapse">help</button>
 						</div>
+					</div>
 
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="init()">Close</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="schedule(durationHour, durationMin, comment, startDate, endDate, triggeredBy, type)">Schedule</button>
-				</div>
+					<!-- collapse -->
+					<div class="collapse fade" id="hostdesc">
+						<p><small>This command is used to schedule downtime for a particular service. During the specified downtime, Nagios will not send notifications out about the service. When the scheduled downtime expires, Nagios will send out notifications for this service as it normally would. Scheduled downtimes are preserved across program shutdowns and restarts. Both the start and end times should be specified in the following format: mm/dd/yyyy hh:mm:ss. If you select the fixed option, the downtime will be in effect between the start and end times you specify. If you do not select the fixed option, Nagios will treat this as "flexible" downtime. Flexible downtime starts when the service enters a non-OK state (sometime between the start and end times you specified) and lasts as long as the duration of time you enter. The duration fields do not apply for fixed downtime.
+						</small></p>
+					</div>
+
+				</form>
 			</div>
-
-		</div>
-	</div>
-
-	<div class="modal fade" id="ServiceDetailsRescheduleModal" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content modal-sm">
-				<div class="modal-header">
-					<h4 class="modal-title">Reschedule Next Check</h4>
-				</div>
-				<div class="modal-body"">
-					<form>
-						<label class="form-group" for="HostName">
-							Host Name:
-							<input disabled type="text" ng-model="hostName" name="hostName">
-						</label>
-						<label class="form-group" for="Service">
-							Service Name:
-							<input disabled type="text" ng-model="serviceName" name="serviceName">
-						</label>
-						<label class="form-group" for="CheckTime">
-							Check Time:
-							<input disabled type="text" ng-model="check_time" name="check_time">
-						</label>
-						<label class="form-group" for="InputCheckTime">
-							Input Check Time:
-							<input type="text" ng-model="input_check_time" name="input_check_time">
-						</label>
-						<label class="form-group" for="ForceCheck">
-							Force Check:
-							<input type="checkbox"  ng-model="force_check" name="force_check" ng-checked="force_check" ng-change="forcecheck(force_check)">
-						</label>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<p class="btn btn-sm" data-toggle="tooltip" title="This command is used to schedule the next check of a particular service. Nagios will re-queue the service to be checked at the time you specify. If you select the force check option, Nagios will force a check of the service regardless of both what time the scheduled check occurs and whether or not checks are enabled for the service.">?</p>
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" ng-click="schedule(input_check_time)" data-dismiss="modal">Yes</button>
-				</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="reset">Close</button>
+				<button type="button" class="btn btn-primary" ng-click="schedule(durationHour, durationMin, comment, startDate, endDate, triggeredBy, type)">Schedule</button>
 			</div>
 		</div>
-	</div>
 
-	<div class="modal fade" id="ServiceDetailsAcknowledge" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content modal-sm">
-				<div class="modal-header">
-					<h4 class="modal-title">Acknowledge Problem</h4>
-				</div>
-				<div class="modal-body">
-					<form class="form-group">
-						<label for="HostName">
-							Host Name:
-							<input disabled type="text" ng-model="ack_host" name="ack_host">
-						</label>
-						<label for="ServiceName">
-							Service Name:
-							<input disabled type="text" ng-model="ack_service" name="ack_service">
-						</label>
-						<label  for="StickyAcknowledgement">
-							Sticky Acknowledgement:
-							<input type="checkbox" ng-model="stickyack" name="stickyack" ng-checked="stickyack" ng-change="sticky(stickyack);">
-						</label>
-						<label  for="SendNotification">
-							Send Notification:
-							<input type="checkbox" ng-model="sendnotify" name="sendnotify" ng-checked="sendnotify" ng-change="notify(sendnotify)">
-						</label>
-						<label  for="PersistentComment">
-							Persistent Comment:
-							<input type="checkbox" ng-model="persistent" name="persistent" ng-checked="persistent" ng-change="persist(persistent)">
-						</label>
-						<label  for="Author">
-							Author(Your Name):
-							<input disabled type="text" ng-model="author" name="author">
-						</label>
-						<label for="Comment">
-							Comment:
-							<input type="text" ng-model="comment" name="comment" value="comment">
-						</label>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-primary btn-lg" data-dismiss="modal" ng-click='acknowledge(comment)'>Yes</button>
-				</div>
+	</div>
+</div>
+
+<!--Schedule checks for service modal in Host Details panel-->
+<div ng-controller="ServiceDetailsCtrl" class="modal fade" id="ServiceDetailsRescheduleModal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content modal-sm">
+			<div class="modal-header">
+				<h4 class="modal-title">Reschedule Next Check</h4>
+			</div>
+			<div class="modal-body"">
+				<form>
+					<label class="form-group" for="HostName">
+						Host Name:
+						<input disabled type="text" ng-model="hostName" name="hostName">
+					</label>
+					<label class="form-group" for="Service">
+						Service Name:
+						<input disabled type="text" ng-model="serviceName" name="serviceName">
+					</label>
+					<label class="form-group" for="CheckTime">
+						Check Time:
+						<input disabled type="text" ng-model="check_time" name="check_time">
+					</label>
+					<label class="form-group" for="InputCheckTime">
+						Input Check Time:
+						<input type="text" ng-model="input_check_time" name="input_check_time">
+					</label>
+					<label class="form-group" for="ForceCheck">
+						Force Check:
+						<input type="checkbox"  ng-model="force_check" name="force_check" ng-checked="force_check" ng-change="forcecheck(force_check)">
+					</label>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<p class="btn btn-sm" data-toggle="tooltip" title="This command is used to schedule the next check of a particular service. Nagios will re-queue the service to be checked at the time you specify. If you select the force check option, Nagios will force a check of the service regardless of both what time the scheduled check occurs and whether or not checks are enabled for the service.">?</p>
+				<button type="button" class="btn btn-lg" data-dismiss="modal" ng-click="reset()">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="schedule(input_check_time)">Yes</button>
 			</div>
 		</div>
 	</div>
 </div>
+
+<!--Acknowledge Problem modal in Host Details panel-->
+<div ng-controller="ServiceDetailsCtrl" class="modal fade" id="ServiceDetailsAcknowledge" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content modal-sm">
+			<div class="modal-header">
+				<h4 class="modal-title">Acknowledge Problem</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-group">
+					<label for="HostName">
+						Host Name:
+						<input disabled type="text" ng-model="ack_host" name="ack_host">
+					</label>
+					<label for="ServiceName">
+						Service Name:
+						<input disabled type="text" ng-model="ack_service" name="ack_service">
+					</label>
+					<label  for="StickyAcknowledgement">
+						Sticky Acknowledgement:
+						<input type="checkbox" ng-model="stickyack" name="stickyack" ng-checked="stickyack" ng-change="sticky(stickyack);">
+					</label>
+					<label  for="SendNotification">
+						Send Notification:
+						<input type="checkbox" ng-model="sendnotify" name="sendnotify" ng-checked="sendnotify" ng-change="notify(sendnotify)">
+					</label>
+					<label  for="PersistentComment">
+						Persistent Comment:
+						<input type="checkbox" ng-model="persistent" name="persistent" ng-checked="persistent" ng-change="persist(persistent)">
+					</label>
+					<label  for="Author">
+						Author(Your Name):
+						<input disabled type="text" ng-model="author" name="author">
+					</label>
+					<label for="Comment">
+						Comment:
+						<input type="text" ng-model="comment" name="comment" value="comment">
+					</label>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-lg" data-dismiss="modal" ng-click="reset()">No</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click='acknowledge(comment)'>Yes</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- =============================================Service Detail modal============================================= -->
