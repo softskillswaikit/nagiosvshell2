@@ -541,8 +541,6 @@ class API extends VS_Controller
     {
         $Downtime = array();
 
-        $type = 'svc';
-
         $allowed_types = array(
             'host',
             'svc'
@@ -613,7 +611,7 @@ class API extends VS_Controller
      * @param String $type, 'host' : host, 'svc' : service
      * @param String $downtime_id
      */
-    public function deleteDowntime($type, $downtime_id)
+    public function deleteDowntime($downtime_id, $type)
     {
         $Result = false;
 
