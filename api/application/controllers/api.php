@@ -471,62 +471,23 @@ class API extends VS_Controller
     public function testing()
     {
         $Result = false;
+        /*
         $type = 'host';
         $host_name = 'localhost';
         $service_description = '';
         $author = 'Nagios Admin';
-        $comments = 'jk';
-        $start_time = '1502551200';
-        $end_time ='1502551200';
+        $comments = 'try to add another time';
+        $start_time = '1502558650';
+        $end_time ='1502565850';
         $fixed = 'true';
         $duration = '120';
         $trigger_id = '0';
+        */
 
 
-        $allowed_types = array(
-            'host',
-            'svc',
-            'hostsvc'
-        );
-
-        //decode inputs with space
-        $host_name = urldecode($host_name);
-        $service_description = urldecode($service_description); 
-        $author = urldecode($author);
-        $comments = urldecode($comments);
-
-        //convert fixed to boolean
-        $fixed = $this->convert_data_bool($fixed);
-        
-        //check empty inputs
-        $validate = $this->validate_data(array($type, $host_name, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments));
-
-        if($validate)
-        {
-            //compare type with allowed types
-            if(in_array($type, $allowed_types))
-            {
-                //schedule host downtime
-                if($type == 'host')
-                {
-                    $Result = $this->system_commands->schedule_host_downtime($host_name, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments);
-                }
-
-                //schedule service downtime
-                else if($type == 'svc')
-                {
-                    $Result = $this->system_commands->schedule_svc_downtime($host_name, $service_description, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments);
-                }
-
-                //schedule host service downtime
-                else
-                {
-                    $Result = $this->system_commands->schedule_host_svc_downtime($host_name, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments);
-                }
-            }
-        }
-        
-        $this->output($Result);
+        $validate = $this->validate_data(array('1'));
+            
+        $this->output($validate);
     }
 
     /**
@@ -669,7 +630,7 @@ class API extends VS_Controller
         $fixed = $this->convert_data_bool($fixed);
         
         //check empty inputs
-        $validate = $this->validate_data(array($type, $host_name, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments));
+        $validate = $this->validate_data(array($type, $host_name, $start_time, $end_time, $fixed, $duration, $author, $comments));
 
         if($validate)
         {
