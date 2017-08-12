@@ -427,6 +427,7 @@ class API extends VS_Controller
         $service_description = urldecode($service_description);
         $period = urldecode($period);
         $event_graph = urldecode($event_graph);
+        $end_date = urldecode($end_date);
 
 
         //convert inputs to boolean
@@ -435,7 +436,7 @@ class API extends VS_Controller
         $ignore_repeated_state = $this->convert_data_bool($ignore_repeated_state);
 
         //convert date into array
-        if(!empty($end_date))
+        if($end_date != ' ')
         {
             $date = array($start_date, $end_date);
         }
@@ -496,9 +497,7 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $test_str = array(0,2,4,5,7,8);
-
-        $this->output($test_str);
+        
     }
 
     /**
