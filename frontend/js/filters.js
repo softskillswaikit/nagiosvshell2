@@ -54,6 +54,22 @@ angular.module('vshell.filters', [])
     };
 })
 
+/* Choon Yean added filter style for notification_state */
+.filter('notification_state', function() {
+    return function(input, reverse) {
+        var lookup = {
+            'CUSTOM (UP)': 'UP',
+            'CUSTOM (DOWN)': 'DOWN'
+        };
+
+        if (reverse) {
+            lookup = _.invert(lookup);
+        }
+
+        return lookup[input] || 'Undefined';
+    };
+})
+
 .filter('capitalize', function() {
     return function(input, strict) {
         var first,

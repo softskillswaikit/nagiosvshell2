@@ -135,16 +135,16 @@
                         <td><a data-toggle="modal" data-target="#CustomNotification" ng-click="passcustom()">Send custom notification</a></td>
                     </tr>
                     <tr class="footable-odd">
-                        <td><a data-toggle="modal" data-target="#hostDowntime" ng-click="passhostdowntime()">Schedule downtime</a></td>
+                        <td><a data-toggle="modal" data-target="#hostDowntime" ng-click="schedule_downtime('host')">Schedule downtime</a></td>
                     </tr>
                     <tr class="footable-even">
-                        <td><a data-toggle="modal" data-target="#serviceDowntime" ng-click="passservicedowntime(host.host_name, status.username)">Schedule downtime for this host and all services</a></td>
+                        <td><a data-toggle="modal" data-target="#serviceDowntime" ng-click="schedule_downtime('hostsvc')">Schedule downtime for this host and all services</a></td>
                     </tr>
 		    <tr class="footable-odd">
-                        <td><a data-toggle="modal" data-target="#ScheduleHostDetail" ng-click="host_schedule(host.host_name, host.next_check)">Schedule next Check for this host</a></td>
+                        <td><a data-toggle="modal" data-target="#ScheduleHostDetail" ng-click="schedule_check('host', host.next_check)">Schedule next Check for this host</a></td>
                     </tr>
                     <tr class="footable-even">
-                        <td><a data-toggle="modal" data-target="#ScheduleHostServiceDetail" ng-click="all_service_schedule(host.host_name, host.next_check)">Schedule a check for all services of this host</a></td>
+                        <td><a data-toggle="modal" data-target="#ScheduleHostServiceDetail" ng-click="schedule_check('hostsvc', host.next_check)">Schedule a check for all services of this host</a></td>
                     </tr>
 		    <tr class="footable-odd">
                         <td><a data-toggle="modal" data-target="#DisableAllService">Disable checks of all services on this host</a></td>
@@ -153,7 +153,7 @@
                         <td><a data-toggle="modal" data-target="#EnableAllService">Enable checks of all services on this host</a></td>
                     </tr>
 		    <tr class="footable-odd">
-                        <td><a data-toggle="modal" data-target="#Acknowledge" ng-click="passack(host.host_name, status.username)">Acknowledge Problem</a></td>
+                        <td><a data-toggle="modal" data-target="#Acknowledge" ng-click="passack()">Acknowledge Problem</a></td>
                     </tr>
                 </tbody>
             </table>

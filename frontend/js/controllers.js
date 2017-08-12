@@ -148,25 +148,17 @@ angular.module('vshell.controllers', [])
             };
 
             async.api($scope, optionsstatus);
-                
-            $scope.comment = '';
-            $scope.custom_host = $routeParams.host;
-            $scope.hostHostName = $routeParams.host;
+
+            //Reset the schedule downtime for host modal
             $scope.hostName = $routeParams.host;
-            $scope.ack_host = $routeParams.host;
-            $scope.schedule_host = $routeParams.host;
-            $scope.custom_service = $routeParams.service;
-            $scope.serviceName = $routeParams.service;
-            $scope.ack_service = $routeParams.service;
-            $scope.serviceTriggeredBy = "N/A";
+            $scope.hostComment = "";
             $scope.hostTriggeredBy = "N/A";
-            $scope.startDate = "";
-            $scope.endDate = "";
-            $scope.serviceType = "Fixed";
-            $scope.hostType = "Fixed";
+            $scope.hostStartDateTime = "";
+            $scope.hostEndDateTime = "";
+            $scope.hostType = 'Fixed';
+            $scope.hostDurationHour = 0;
+            $scope.hostDurationMin = 0;
             $scope.hostChildHost = "doNothing";
-            $scope.durationHour = 0;
-            $scope.durationMin = 0;
             $scope.force = false;
             $scope.broadcast = false;
             $scope.force_check = true;
@@ -177,7 +169,6 @@ angular.module('vshell.controllers', [])
             $scope.callback = function(data, status, headers, config){
                 if(config != null){
                     if(config.url.includes("status")){
-                        $scope.author = data.username;
                         $scope.hostAuthor = data.username;
                     }
                 }
@@ -389,12 +380,12 @@ angular.module('vshell.controllers', [])
                                             input from the form.
                                             time -> new input of next check (String)*/
 
-        $scope.notification_check = function (type, hostname) {
+        $scope.notification_check = function (type) {
 
         
             var options = {
-                name: 'hostServiceNotification',
-                url: 'hostservicenotification/' + type + '/' + hostname,
+                name: 'ToggleHostServiceNotification',
+                url: 'hostservicenotification/' + type + '/' + $routeParams.host,
                 queue: 'main'
             };
 
@@ -404,11 +395,11 @@ angular.module('vshell.controllers', [])
                     if(config != null){
                         if(config.url.includes("hostservicenotification")){
                             if(data == 'true'){
-                                console.log('success');
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
                             else
-                                console.log('failure');
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                         }
                     }
                 };
@@ -422,18 +413,18 @@ angular.module('vshell.controllers', [])
         
             $scope.forcechange = function (status){
                 if (status == false){
-                    $scope.force = status;
+                    $scope.force = "false";
                 }else if (status == true){
-                    $scope.force = status;
+                    $scope.force = "true";
                 }
             };
 
             $scope.broadcastchange = function (status){
                 if (status == false){
-                    $scope.broadcast = status;
+                    $scope.broadcast = "false";
                 
                 }else if (status == true){
-                    $scope.broadcast = status;
+                    $scope.broadcast = "true";
                 }
             };
         
@@ -450,41 +441,42 @@ angular.module('vshell.controllers', [])
                     if(config != null){
                         if(config.url.includes("sendcustomnotification")){
                             if(data == 'true'){
-                                console.log('success');
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
                             else
-                                console.log('failure');
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                         }
                     }
                 };
             };
         };
 
-        $scope.passhostdowntime = function() {
+        $scope.schedule_downtime = function(type) {
             $scope.resetWan();
-            var type = "host";
             var service = null;
         
-            $scope.schedule = function (hour, minute, comment, startdate, enddate, triggerby, fixed, childhost) {
-                var duration = hour * minute;
+            $scope.schedulehost = function (hour, minute, comment, startdate, enddate, triggerby, fixed, childhost) {
+                var duration = 0;
                 var start_date = new Date(startdate);
                 var start_timestamp = (start_date.getTime() / 1000).toString();
                 var end_date = new Date(enddate);
                 var end_timestamp = (end_date.getTime() / 1000).toString();
-                var fixed = true;
+                var fixed_type = "";
             
-                if (type = '"Flexible"'){
-                    fixed = false;
+                if (fixed == 'Flexible'){
+                    fixed_type = "false";
+                    duration = (hour * 60) + minute;
                 }
-                else{
-                    fixed = true;
+                else if (fixed == 'Fixed'){
+                    fixed_type = "true";
+                    duration = (end_date.getHours() * 60 + end_date.getMinutes()) - (start_date.getHours() * 60 + start_date.getMinutes());
                 }
 
                 var options = {
-                    name: 'hostdowntime',
-                    url: 'downtime/' + type + '/' + $scope.hostHostName + '/' + service + '/' + start_timestamp + '/' + end_timestamp + '/'
-                        + fixed + '/' + triggerby + '/' + duration + '/' + $scope.hostAuthor + '/' + comment,
+                    name: 'HostDownTime',
+                    url: 'scheduledowntime/' + type + '/' + $routeParams.host + '/' + service + '/' + start_timestamp + '/' + end_timestamp + '/'
+                        + fixed_type + '/' + triggerby + '/' + duration + '/' + $scope.hostAuthor + '/' + comment,
                     queue: 'main'
                 };
 
@@ -492,120 +484,81 @@ angular.module('vshell.controllers', [])
 
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
-                        if(config.url.includes("hostdowntime")){
+                        if(config.url.includes("scheduledowntime")){
                             if(data == 'true'){
-                                console.log('success');
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
                             else
-                                console.log('failure');
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
+                };
+            };
+
+            $scope.schedulehostsvc = function (hour, minute, comment, startdate, enddate, triggerby, fixed) {
+                var duration = 0;
+                var start_date = new Date(startdate);
+                var start_timestamp = (start_date.getTime() / 1000).toString();
+                var end_date = new Date(enddate);
+                var end_timestamp = (end_date.getTime() / 1000).toString();
+                var fixed_type = "";
+            
+                if (fixed == 'Flexible'){
+                    fixed_type = "false";
+                    duration = (hour * 60) + minute;
+                }
+                else if (fixed == 'Fixed'){
+                    fixed_type = "true";
+                    duration = (end_date.getHours() * 60 + end_date.getMinutes()) - (start_date.getHours() * 60 + start_date.getMinutes());
+                }
+
+                var options = {
+                    name: 'HostSvcDownTime',
+                    url: 'scheduledowntime/' + type + '/' + $routeParams.host + '/' + service + '/' + start_timestamp + '/' + end_timestamp + '/'
+                        + fixed_type + '/' + triggerby + '/' + duration + '/' + $scope.hostAuthor + '/' + comment,
+                    queue: 'main'
+                };
+
+                async.api($scope, options);
+
+                $scope.callback = function(data, status, headers, config){
+                    if(config != null){
+                        if(config.url.includes("scheduledowntime")){
+                            if(data == 'true'){
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                $('.modal').modal('hide');
+                            }
+                            else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                         }
                     }
                 };
             };
         };
 
-        $scope.host_schedule = function (host, time) {
+        $scope.schedule_check = function (type, check_time) {
             $scope.resetWan();
-            $scope.check_time = $filter('date')(time * 1000, "yyyy-MM-dd HH:mm:ss");
+            $scope.check_time = $filter('date')(check_time * 1000, "yyyy-MM-dd HH:mm:ss");
             $scope.input_check_time = $scope.check_time;
+            var service = null;
 
             $scope.forcecheck = function (status) {
             if (status == false)
-                $scope.force_check = false;
+                $scope.force_check = 'false';
             else
-                $scope.force_check = true;
+                $scope.force_check = 'true';
             };
 
             $scope.schedule = function (time) {
                 var date = new Date(time);
                 var next_check = date.getTime() / 1000;
-        
-                var options = {
-                    name: 'schedulehostcheck',
-                    url: 'schedulehostcheck/' + $scope.schedule_host + '/' + next_check + '/' + $scope.force_check,
-                    queue: 'main'
-                };
-
-                async.api($scope, options);
-
-                $scope.callback = function(data, status, headers, config){
-                    if(config != null){
-                        if(config.url.includes("schedulehostcheck")){
-                            if(data == 'true'){
-                                console.log('success');
-                                $('.modal').modal('hide');
-                            }
-                            else
-                                console.log('failure');
-                        }
-                    }
-                };
-            };
-        };
-
-        $scope.all_service_schedule = function (host, time) {
-            $scope.resetWan();
-            $scope.check_time = $filter('date')(time * 1000, "yyyy-MM-dd HH:mm:ss");
-            $scope.input_check_time = $scope.check_time;
-
-            $scope.forcecheck = function (status) {
-            if (status == false)
-                $scope.force_check = false;
-            else
-                $scope.force_check = true;
-            };
-
-            $scope.schedule = function (time) {
-                var date = new Date(time);
-                var next_check = date.getTime() / 1000;
+                var timestamp = next_check.toString();
         
                 var options = {
                     name: 'schedulecheck',
-                    url: 'schedulecheck/' + $scope.schedule_host + '/' + next_check + '/' + $scope.force_check,
-                    queue: 'main'
-                };
-
-                async.api($scope, options);
-
-                $scope.callback = function(data, status, headers, config){
-                    if(config != null){
-                        if(config.url.includes("schedulehostcheck")){
-                            if(data == 'true'){
-                                console.log('success');
-                                $('.modal').modal('hide');
-                            }
-                            else
-                                console.log('failure');
-                        }
-                    }
-                };
-            };
-        };
-
-        $scope.all_service_schedule = function (host, time) {
-           $scope.resetWan();
-           $scope.check_time = $filter('date')(time * 1000, "yyyy-MM-dd HH:mm:ss");
-           $scope.input_check_time = $scope.check_time;
-           var type = "host";
-           var service = null;
-
-           $scope.forcecheck = function (status){
-                if (status == false){
-                    $scope.force_check = false;
-                }
-                else{
-                    $scope.force_check = true;
-                }
-            };
-
-            $scope.schedule = function (time) {
-                var date = new Date(time);
-                var next_check = date.getTime() / 1000;
-        
-                var options = {
-                    name: 'schedulecheck',
-                    url: 'schedulecheck/' + type + '/' + $scope.schedule_host + '/' + service + '/' + next_check + '/' + $scope.force_check,
+                    url: 'schedulecheck/' + type + '/' + $routeParams.host + '/' + service + '/' + timestamp 
+                            + '/' + $scope.force_check,
                     queue: 'main'
                 };
 
@@ -615,24 +568,22 @@ angular.module('vshell.controllers', [])
                     if(config != null){
                         if(config.url.includes("schedulecheck")){
                             if(data == 'true'){
-                                console.log('success');
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
                             else
-                                console.log('failure');
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                         }
                     }
                 };
             };
         };
 
-        $scope.enable_service_check = function (hostname) {
+        $scope.host_service_check = function (type) {
 
-            var type = "enable";
-            console.log(type);
             var options = {
                 name: 'hostServiceCheck',
-                url: 'hostservicecheck/' + type + '/' + hostname,
+                url: 'hostservicecheck/' + type + '/' + $routeParams.host,
                 queue: 'main'
             };
 
@@ -642,37 +593,11 @@ angular.module('vshell.controllers', [])
                     if(config != null){
                         if(config.url.includes("hostservicecheck")){
                             if(data == 'true'){
-                                console.log('success');
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
                             else
-                                console.log('failure');
-                        }
-                    }
-                };
-        };
-
-        $scope.disable_service_check = function (hostname) {
-
-            var type = "disable";
-            console.log(type);
-            var options = {
-                name: 'hostServiceCheck',
-                url: 'hostservicecheck/' + type + '/' + hostname,
-                queue: 'main'
-            };
-
-            async.api($scope, options);
-
-            $scope.callback = function(data, status, headers, config){
-                    if(config != null){
-                        if(config.url.includes("hostservicecheck")){
-                            if(data == 'true'){
-                                console.log('success');
-                                $('.modal').modal('hide');
-                            }
-                            else
-                                console.log('failure');
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                         }
                     }
                 };
@@ -686,27 +611,27 @@ angular.module('vshell.controllers', [])
 
             $scope.sticky = function (status){
                 if (status == false){
-                    $scope.stickyack = status;
+                    $scope.stickyack = "false";
                 }else if (status == true){
-                    $scope.stickyack = status;
+                    $scope.stickyack = "true";
                 }
             };
 
             $scope.notify = function (status){
                 if (status == false){
-                    $scope.sendnotify = status;
+                    $scope.sendnotify = "false";
                 
                 }else if (status == true){
-                    $scope.sendnotify = status;
+                    $scope.sendnotify = "true";
                 }
             };
 
             $scope.persist = function (status){
                 if (status == false){
-                    $scope.persistent = status;
+                    $scope.persistent = "false";
                 
                 }else if (status == true){
-                    $scope.persistent = status;
+                    $scope.persistent = "true";
                 }
             };
 
@@ -714,7 +639,7 @@ angular.module('vshell.controllers', [])
                 $scope.comment = comment;
                 var options = {
                     name: 'acknowledge',
-                    url: 'acknowledgeproblem/' + type + '/' + $scope.ack_host + '/' + service + '/'
+                    url: 'acknowledgeproblem/' + type + '/' + $routeParams.host + '/' + service + '/'
                     + $scope.stickyack + '/' + $scope.sendnotify + '/' + $scope.persistent + '/'
                     + $scope.author + '/' + $scope.comment,
                     queue: 'main'
@@ -726,11 +651,11 @@ angular.module('vshell.controllers', [])
                     if(config != null){
                         if(config.url.includes("acknowledgeproblem")){
                             if(data == 'true'){
-                                console.log('success');
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
                             else
-                                console.log('failure');
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                         }
                     }
                 };
@@ -2113,8 +2038,8 @@ angular.module('vshell.controllers', [])
 ])
 
 // Process Info Controller created by Wan Choon Yean
-.controller('ProcessInfoCtrl', ['$scope', '$interval', '$location', '$timeout', 'async',
-    function($scope, $interval, $location, $timeout, async) {
+.controller('ProcessInfoCtrl', ['$scope', '$interval', '$location', '$timeout', 'async', 'ngToast',
+    function($scope, $interval, $location, $timeout, async, ngToast) {
 
 
         /*  function used to show the modal
@@ -2191,7 +2116,7 @@ angular.module('vshell.controllers', [])
 
             if (operation == true){
 
-                var type = false;
+                var type = "false";
 
                 var result = {
                     name: 'allnotifications',
@@ -2200,10 +2125,23 @@ angular.module('vshell.controllers', [])
                 };
 
                 async.api($scope, result);
+
+                $scope.callback = function(data, status, headers, config){
+                    if(config != null){
+                        if(config.url.includes("allnotifications")){
+                            if(data == 'true'){
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                $('.modal').modal('hide');
+                            }
+                            else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
+                };
 
             }else if (operation == false){
 
-                var type = true;
+                var type = "true";
 
                 var result = {
                     name: 'allnotifications',
@@ -2212,22 +2150,21 @@ angular.module('vshell.controllers', [])
                 };
 
                 async.api($scope, result);
+                console.log($scope.allnotifications);
+
+                $scope.callback = function(data, status, headers, config){
+                    if(config != null){
+                        if(config.url.includes("allnotifications")){
+                            if(data == 'true'){
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                $('.modal').modal('hide');
+                            }
+                            else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
+                };
             }
-        
-            $timeout(function(){
-                if ($scope.allnotifications == '"The command run successfully !"'){
-                    $scope.showModal('#success');
-                    $timeout(function(){
-                        $scope.closeModal('#success');
-                    }, 2000)
-                }
-                else{
-                    $scope.showModal('#fail');
-                    $timeout(function(){
-                        $scope.closeModal('#fail');
-                    }, 2000)
-                }
-            }, 1000);
         };
 
         /*  function used to start / stop executing active check of service
@@ -2235,21 +2172,9 @@ angular.module('vshell.controllers', [])
         */
         $scope.activeservice = function(operation){
         
-            if (operation == "YES"){
+            if (operation == true){
 
-                var type = "stop";
-
-                var result = {
-                    name: 'allservicecheck',
-                    url: 'allservicecheck/' + type,
-                    queue: 'main'
-                };
-
-                async.api($scope, result);
-
-            }else if (operation == 'NO'){
-
-                var type = "start";
+                var type = "false";
 
                 var result = {
                     name: 'allservicecheck',
@@ -2259,22 +2184,45 @@ angular.module('vshell.controllers', [])
 
                 async.api($scope, result);
 
-            }
+                $scope.callback = function(data, status, headers, config){
+                    if(config != null){
+                        if(config.url.includes("allservicecheck")){
+                            if(data == 'true'){
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                $('.modal').modal('hide');
+                            }
+                            else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
+                };
 
-            $timeout(function(){
-                if ($scope.allservicecheck == '"The command run successfully !"'){
-                    $scope.showModal('#success');
-                    $timeout(function(){
-                        $scope.closeModal('#success');
-                    }, 2000)
-                }
-                else{
-                    $scope.showModal('#fail');
-                    $timeout(function(){
-                        $scope.closeModal('#fail');
-                    }, 2000)
-                }
-            }, 1000);
+            }else if (operation == false){
+
+                var type = "true";
+
+                var result = {
+                    name: 'allservicecheck',
+                    url: 'allservicecheck/' + type,
+                    queue: 'main'
+                };
+
+                async.api($scope, result);
+
+                $scope.callback = function(data, status, headers, config){
+                    if(config != null){
+                        if(config.url.includes("allservicecheck")){
+                            if(data == 'true'){
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                $('.modal').modal('hide');
+                            }
+                            else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
+                };
+
+            }   
         };
 
         /*  function used to start / stop accepting passive check of service
@@ -2282,9 +2230,34 @@ angular.module('vshell.controllers', [])
         */
         $scope.passiveservice = function(operation){
         
-            if (operation == "YES"){
+            if (operation == true){
 
-                var type = "stop";
+                var type = "false";
+
+                var result = {
+                    name: 'allpassiveservicecheck',
+                    url: 'allpassiveservicecheck/' + type,
+                    queue: 'main'
+                };
+
+                async.api($scope, result);
+
+                $scope.callback = function(data, status, headers, config){
+                    if(config != null){
+                        if(config.url.includes("allpassiveservicecheck")){
+                            if(data == 'true'){
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                $('.modal').modal('hide');
+                            }
+                            else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
+                };
+
+            }else if (operation == false){
+
+                var type = "true";
 
                 var result = {
                     name: 'allpassiveservicecheck',
@@ -2294,32 +2267,19 @@ angular.module('vshell.controllers', [])
 
                 async.api($scope, result);
 
-            }else if (operation == 'NO'){
-
-                var type = "start";
-
-                var result = {
-                    name: 'allpassiveservicecheck',
-                    url: 'allpassiveservicecheck/' + type,
-                    queue: 'main'
+                $scope.callback = function(data, status, headers, config){
+                    if(config != null){
+                        if(config.url.includes("allpassiveservicecheck")){
+                            if(data == 'true'){
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                $('.modal').modal('hide');
+                            }
+                            else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
                 };
-
-                async.api($scope, result);
-            }
-
-            $timeout(function(){
-                if ($scope.allpassiveservicecheck == '"The command run successfully !"'){
-                    $scope.showModal('#success');
-                    $timeout(function(){
-                        $scope.closeModal('#success');
-                    }, 2000)
-                }else{
-                    $scope.showModal('#fail');
-                    $timeout(function(){
-                        $scope.closeModal('#fail');
-                    }, 2000)
-                }
-            }, 1000);
+            }            
         };
 
         /*  function used to start / stop executing active check of host
@@ -2327,9 +2287,34 @@ angular.module('vshell.controllers', [])
         */
         $scope.activehost = function(operation){
         
-            if (operation == "YES"){
+            if (operation == true){
 
-                var type = "stop";
+                var type = "false";
+
+                var result = {
+                    name: 'allhostcheck',
+                    url: 'allhostcheck/' + type,
+                    queue: 'main'
+                };
+
+                async.api($scope, result);
+
+                $scope.callback = function(data, status, headers, config){
+                    if(config != null){
+                        if(config.url.includes("allhostcheck")){
+                            if(data == 'true'){
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                $('.modal').modal('hide');
+                            }
+                            else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
+                };
+
+            }else if (operation == false){
+
+                var type = "true";
 
                 var result = {
                     name: 'allhostcheck',
@@ -2339,33 +2324,19 @@ angular.module('vshell.controllers', [])
 
                 async.api($scope, result);
 
-            }else if (operation == 'NO'){
-
-                var type = "start";
-
-                var result = {
-                    name: 'allhostcheck',
-                    url: 'allhostcheck/' + type,
-                    queue: 'main'
+                $scope.callback = function(data, status, headers, config){
+                    if(config != null){
+                        if(config.url.includes("allhostcheck")){
+                            if(data == 'true'){
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                $('.modal').modal('hide');
+                            }
+                            else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
                 };
-
-                async.api($scope, result);
             }
-
-            $timeout(function(){
-                if ($scope.allhostcheck == '"The command run successfully !"'){
-                    $scope.showModal('#success');
-                    $timeout(function(){
-                        $scope.closeModal('#success');
-                    }, 2000)
-                }
-                else{
-                    $scope.showModal('#fail');
-                    $timeout(function(){
-                        $scope.closeModal('#fail');
-                    }, 2000)
-                }
-            }, 1000);
         };
 
         /*  function used to start / stop accepting passive check of host
@@ -2373,9 +2344,34 @@ angular.module('vshell.controllers', [])
         */
         $scope.passivehost = function(operation){
         
-            if (operation == "YES"){
+            if (operation == true){
 
-                var type = "stop";
+                var type = "false";
+
+                var result = {
+                    name: 'allpassivehostcheck',
+                    url: 'allpassivehostcheck/' + type,
+                    queue: 'main'
+                };
+
+                async.api($scope, result);
+
+                $scope.callback = function(data, status, headers, config){
+                    if(config != null){
+                        if(config.url.includes("allpassivehostcheck")){
+                            if(data == 'true'){
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                $('.modal').modal('hide');
+                            }
+                            else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
+                };
+
+            }else if (operation == false){
+
+                var type = "true";
 
                 var result = {
                     name: 'allpassivehostcheck',
@@ -2385,33 +2381,19 @@ angular.module('vshell.controllers', [])
 
                 async.api($scope, result);
 
-            }else if (operation == 'NO'){
-
-                var type = "start";
-
-                var result = {
-                    name: 'allpassivehostcheck',
-                    url: 'allpassivehostcheck/' + type,
-                    queue: 'main'
+                $scope.callback = function(data, status, headers, config){
+                    if(config != null){
+                        if(config.url.includes("allpassivehostcheck")){
+                            if(data == 'true'){
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                $('.modal').modal('hide');
+                            }
+                            else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
                 };
-
-                async.api($scope, result);
             }
-
-            $timeout(function(){
-                if ($scope.allpassivehostcheck == '"The command run successfully !"'){
-                    $scope.showModal('#success');
-                    $timeout(function(){
-                        $scope.closeModal('#success');
-                    }, 2000)
-                }
-                else{
-                    $scope.showModal('#fail');
-                    $timeout(function(){
-                        $scope.closeModal('#fail');
-                    }, 2000)
-                }
-            }, 1000);
         };
 
         /*  function used to enable / disable event handler
@@ -2419,9 +2401,34 @@ angular.module('vshell.controllers', [])
         */
         $scope.event = function(operation){
         
-            if (operation == "YES"){
+            if (operation == true){
 
-                var type = "disable";
+                var type = "false";
+
+                var result = {
+                    name: 'eventhandler',
+                    url: 'eventhandler/' + type,
+                    queue: 'main'
+                };
+
+                async.api($scope, result);
+
+                $scope.callback = function(data, status, headers, config){
+                    if(config != null){
+                        if(config.url.includes("eventhandler")){
+                            if(data == 'true'){
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                $('.modal').modal('hide');
+                            }
+                            else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
+                };
+
+            }else if (operation == false){
+
+                var type = "true";
 
                 var result = {
                     name: 'eventhandler',
@@ -2431,33 +2438,19 @@ angular.module('vshell.controllers', [])
 
                 async.api($scope, result);
 
-            }else if (operation == 'NO'){
-
-                var type = "enable";
-
-                var result = {
-                    name: 'eventhandler',
-                    url: 'eventhandler/' + type,
-                    queue: 'main'
+                $scope.callback = function(data, status, headers, config){
+                    if(config != null){
+                        if(config.url.includes("eventhandler")){
+                            if(data == 'true'){
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                $('.modal').modal('hide');
+                            }
+                            else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
                 };
-
-                async.api($scope, result);
             }
-
-            $timeout(function(){
-                if ($scope.alleventhandler == '"The command run successfully !"'){
-                    $scope.showModal('#success');
-                    $timeout(function(){
-                        $scope.closeModal('#success');
-                    }, 2000)
-                }
-                else{
-                    $scope.showModal('#fail');
-                    $timeout(function(){
-                        $scope.closeModal('#fail');
-                    }, 2000)
-                }
-            }, 1000);
         };
 
         /*  function used to start / stop the obsess over service
@@ -2465,45 +2458,58 @@ angular.module('vshell.controllers', [])
         */
         $scope.obsessservice = function(operation){
         
-            if (operation == "YES"){
+            if (operation == true){
 
-                var type = "stop";
+                
+                var type = 'false';
 
                 var result = {
-                    name: 'obsessservice',
+                    name: 'ObsessService',
                     url: 'obsessoverservicecheck/' + type,
                     queue: 'main'
                 };
 
                 async.api($scope, result);
 
-            }else if (operation == 'NO'){
+                $scope.callback = function(data, status, headers, config){
+                    if(config != null){
+                        if(config.url.includes("obsessoverservicecheck")){
+                            if(data == 'true'){
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                $('.modal').modal('hide');
+                            }
+                            else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
+                };
 
-                var type = "start";
+            }else if (operation == false){
+
+                
+                var type = 'true';
 
                 var result = {
-                    name: 'obsessservice',
+                    name: 'ObsessService',
                     url: 'obsessoverservicecheck/' + type,
                     queue: 'main'
                 };
 
                 async.api($scope, result);
+
+                $scope.callback = function(data, status, headers, config){
+                    if(config != null){
+                        if(config.url.includes("obsessoverservicecheck")){
+                            if(data == 'true'){
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                $('.modal').modal('hide');
+                            }
+                            else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
+                };
             }
-
-            $timeout(function(){
-                if ($scope.obsessservice == '"The command run successfully !"'){
-                    $scope.showModal('#success');
-                    $timeout(function(){
-                        $scope.closeModal('#success');
-                    }, 2000)
-                }
-                else{
-                    $scope.showModal('#fail');
-                    $timeout(function(){
-                        $scope.closeModal('#fail');
-                    }, 2000)
-                }
-            }, 1000);
         };
 
         /*  function used to start / stop the obsess over host
@@ -2511,45 +2517,57 @@ angular.module('vshell.controllers', [])
         */
         $scope.obsesshost = function(operation){
         
-            if (operation == "YES"){
-
-                var type = "stop";
+            if (operation == true){
+                
+                var type = 'false';
 
                 var result = {
-                    name: 'obsesshost',
+                    name: 'ObsessHost',
                     url: 'obsessoverhostcheck/' + type,
                     queue: 'main'
                 };
 
                 async.api($scope, result);
 
-            }else if (operation == 'NO'){
+                $scope.callback = function(data, status, headers, config){
+                    if(config != null){
+                        if(config.url.includes("obsessoverhostcheck")){
+                            if(data == 'true'){
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                $('.modal').modal('hide');
+                            }
+                            else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
+                };
 
-                var type = "start";
+            }else if (operation == false){
+
+                
+                var type = 'true';
 
                 var result = {
-                    name: 'obsesshost',
+                    name: 'ObsessHost',
                     url: 'obsessoverhostcheck/' + type,
                     queue: 'main'
                 };
 
                 async.api($scope, result);
+
+                $scope.callback = function(data, status, headers, config){
+                    if(config != null){
+                        if(config.url.includes("obsessoverhostcheck")){
+                            if(data == 'true'){
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                $('.modal').modal('hide');
+                            }
+                            else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
+                };
             }
-
-            $timeout(function(){
-                if ($scope.obsesshost == '"The command run successfully !"'){
-                    $scope.showModal('#success');
-                    $timeout(function(){
-                        $scope.closeModal('#success');
-                    }, 2000)
-                }
-                else{
-                    $scope.showModal('#fail');
-                    $timeout(function(){
-                        $scope.closeModal('#fail');
-                    }, 2000)
-                }
-            }, 1000);
         };
 
         /*  function used to enable / disable the flap detection
@@ -2557,9 +2575,34 @@ angular.module('vshell.controllers', [])
         */
         $scope.flap = function(operation){
 
-            if (operation == "YES"){
+            if (operation == true){
 
-                var type = "disable";
+                var type = "false";
+
+                var result = {
+                    name: 'flapdetection',
+                    url: 'allflapdetection/' + type,
+                    queue: 'main'
+                };
+
+                async.api($scope, result);
+
+                $scope.callback = function(data, status, headers, config){
+                    if(config != null){
+                        if(config.url.includes("allflapdetection")){
+                            if(data == 'true'){
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                $('.modal').modal('hide');
+                            }
+                            else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
+                };
+
+            }else if (operation == false){
+
+                var type = "true";
 
                 var result = {
                     name: 'flapdetection',
@@ -2569,33 +2612,19 @@ angular.module('vshell.controllers', [])
 
                 async.api($scope, result);
 
-            }else if (operation == 'NO'){
-
-                var type = "enable";
-
-                var result = {
-                    name: 'flapdetection',
-                    url: 'allflapdetection/' + type,
-                    queue: 'main'
+                $scope.callback = function(data, status, headers, config){
+                    if(config != null){
+                        if(config.url.includes("allflapdetection")){
+                            if(data == 'true'){
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                $('.modal').modal('hide');
+                            }
+                            else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
                 };
-
-                async.api($scope, result);
             }
-
-            $timeout(function(){
-                if ($scope.flapdetection == '"The command run successfully !"'){
-                    $scope.showModal('#success');
-                    $timeout(function(){
-                        $scope.closeModal('#success');
-                    }, 2000)
-                }
-                else{
-                    $scope.showModal('#fail');
-                    $timeout(function(){
-                        $scope.closeModal('#fail');
-                    }, 2000)
-                }
-            }, 1000);
         };
 
         /*  function used to enable / disable the performance data
@@ -2603,9 +2632,34 @@ angular.module('vshell.controllers', [])
         */
         $scope.perform = function(operation){
         
-            if (operation == "YES"){
+            if (operation == true){
 
-                var type = "disable";
+                var type = "false";
+
+                var result = {
+                    name: 'performancedata',
+                    url: 'performancedata/' + type,
+                    queue: 'main'
+                };
+
+                async.api($scope, result);
+
+                $scope.callback = function(data, status, headers, config){
+                    if(config != null){
+                        if(config.url.includes("performancedata")){
+                            if(data == 'true'){
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                $('.modal').modal('hide');
+                            }
+                            else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
+                };
+
+            }else if (operation == false){
+
+                var type = "true";
 
                 var result = {
                     name: 'performancedata',
@@ -2615,33 +2669,19 @@ angular.module('vshell.controllers', [])
 
                 async.api($scope, result);
 
-            }else if (operation == 'NO'){
-
-                var type = "enable";
-
-                var result = {
-                    name: 'performancedata',
-                    url: 'performancedata/' + type,
-                    queue: 'main'
+                $scope.callback = function(data, status, headers, config){
+                    if(config != null){
+                        if(config.url.includes("performancedata")){
+                            if(data == 'true'){
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                $('.modal').modal('hide');
+                            }
+                            else
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        }
+                    }
                 };
-
-                async.api($scope, result);
             }
-
-            $timeout(function(){
-                if ($scope.performancedata == '"The command run successfully !"'){
-                    $scope.showModal('#success');
-                    $timeout(function(){
-                        $scope.closeModal('#success');
-                    }, 2000)
-                }
-                else{
-                    $scope.showModal('#fail');
-                    $timeout(function(){
-                        $scope.closeModal('#fail');
-                    }, 2000)
-                }
-            }, 1000);
         };
 
     }
@@ -2667,19 +2707,10 @@ angular.module('vshell.controllers', [])
 ])
 
 // Scheduling Queue Controller created by Wan Choon Yean
-.controller('SchedulingQueueCtrl', ['$scope', '$filter', 'async',
-    function($scope, $filter, async) {
+.controller('SchedulingQueueCtrl', ['$scope', '$filter', 'async', 'ngToast',
+    function($scope, $filter, async, ngToast) {
 
         $('[data-toggle="tooltip"]').tooltip();
-
-        // Fucntion used to reset the form field
-        $scope.reset = function() {
-
-            $scope.comment = '';
-            $scope.host = $routeParams.host;
-            $scope.service = $routeParams.service;
-            $scope.force_check = true;
-        };
 
         // Function uused to load the scheduling queue data
         $scope.init = function() {
@@ -2696,10 +2727,11 @@ angular.module('vshell.controllers', [])
         //function used to disable the active check of host or service in particular host
         $scope.parameterdisable = function(host, service){
         
-            $scope.reset();
+            $scope.hostName = host;
+            $scope.serviceName = service;
             var type = false;
 
-            if ($scope.service != null){
+            if ($scope.serviceName != null){
                 $scope.Disableshow = false;
             }else{
                 $scope.Disableshow = true;
@@ -2710,7 +2742,7 @@ angular.module('vshell.controllers', [])
                 
                     var options = {
                         name: 'servicecheck',
-                        url: 'servicecheck/' + type + '/' + $scope.host + '/' + $scope.service,
+                        url: 'servicecheck/' + type + '/' + $scope.hostName + '/' + $scope.serviceName,
                         queue: 'main'
                     };
 
@@ -2720,11 +2752,11 @@ angular.module('vshell.controllers', [])
                         if(config != null){
                             if(config.url.includes("servicecheck")){
                                 if(data == 'true'){
-                                    console.log('success');
+                                    ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                     $('.modal').modal('hide');
                                 }
                                 else
-                                    console.log('failure');
+                                    ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                             }
                         }
                     };
@@ -2733,7 +2765,7 @@ angular.module('vshell.controllers', [])
 
                     var options = {
                         name: 'hostcheck',
-                        url: 'hostcheck/' + type + '/' + $scope.host,
+                        url: 'hostcheck/' + type + '/' + $scope.hostName,
                         queue: 'main'
                     };
 
@@ -2743,11 +2775,11 @@ angular.module('vshell.controllers', [])
                         if(config != null){
                             if(config.url.includes("hostcheck")){
                                 if(data == 'true'){
-                                    console.log('success');
+                                    ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                     $('.modal').modal('hide');
                                 }
                                 else
-                                    console.log('failure');
+                                    ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                             }
                         }
                     };
@@ -2760,20 +2792,19 @@ angular.module('vshell.controllers', [])
 
             $scope.check_time = $filter('date')(check_time * 1000, "yyyy-MM-dd HH:mm:ss");
             $scope.input_check_time = $scope.check_time;
-            $scope.host = host;
-            $scope.service = service;
+            $scope.hostName = host;
+            $scope.serviceName = service;
             $scope.force_check = true;
-            var type = "";
 
             $scope.forcecheck = function (status){
                 if (status == false){
-                    $scope.force_check = status; 
+                    $scope.force_check = "false"; 
                 }else if (status == true){
-                    $scope.force_check = status; 
+                    $scope.force_check = "true"; 
                 }
             };
         
-            if ($scope.service != null){
+            if ($scope.serviceName != null){
                 $scope.Scheduleshow = false;
             }else{
                 $scope.Scheduleshow = true;
@@ -2782,40 +2813,54 @@ angular.module('vshell.controllers', [])
             $scope.schedule = function(time){
                 var date = new Date(time);
                 var next_check = date.getTime() / 1000;
-                console.log(next_check);
+                var timestamp = next_check.toString();
+
                 if ($scope.Scheduleshow == false){
-                    type = "service";
+                    var type = 'service';
                     var options = {
                         name: 'schedulecheck',
-                        url: 'schedulecheck/' + type + '/' + $scope.host + '/' + $scope.service + '/' + next_check + '/' + $scope.force_check,
+                        url: 'schedulecheck/' + type + '/' + $scope.hostName + '/' + $scope.serviceName + '/' + timestamp + '/' + $scope.force_check,
                         queue: 'main'
                     };
 
                     async.api($scope, options);
-                }
-                else{
-                    type = "host";
-                    var options = {
-                        name: 'schedulecheck',
-                        url: 'schedulecheck/' + type + '/' + $scope.host + '/' + $scope.service + '/' + next_check + '/' + $scope.force_check,
-                        queue: 'main'
-                    };
 
-                    async.api($scope, options);
-                }
-
-                $scope.callback = function(data, status, headers, config){
+                     $scope.callback = function(data, status, headers, config){
                         if(config != null){
                             if(config.url.includes("schedulecheck")){
                                 if(data == 'true'){
-                                    console.log('success');
+                                    ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                     $('.modal').modal('hide');
                                 }
                                 else
-                                    console.log('failure');
+                                    ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                             }
                         }
                     };
+                }
+                else{
+                    var type = 'host';
+                    var options = {
+                        name: 'schedulecheck',
+                        url: 'schedulecheck/' + type + '/' + $scope.hostName + '/' + $scope.serviceName + '/' + timestamp + '/' + $scope.force_check,
+                        queue: 'main'
+                    };
+
+                    async.api($scope, options);
+
+                     $scope.callback = function(data, status, headers, config){
+                        if(config != null){
+                            if(config.url.includes("schedulecheck")){
+                                if(data == 'true'){
+                                    ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                    $('.modal').modal('hide');
+                                }
+                                else
+                                    ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                            }
+                        }
+                    };
+                }
             };
         };
 

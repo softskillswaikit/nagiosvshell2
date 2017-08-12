@@ -866,11 +866,17 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
         width: 100%;
     }
 
-    
 	.alert{
 		width: auto;
 		margin: auto;
 	}
+
+    /* Choon Yean set up the picture for the disable action of scheduling queue */
+    .queue_action {
+        padding: 2px;
+        width: 30px;
+        height: 30px;
+    }
 
     /* Choon Yean set the z-index of modal-backdrop to -1 */
 	.modal-backdrop {
@@ -1132,9 +1138,10 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
 		color: blue;
 	}
 
-        /* Choon Yean added color styles for state yes */
+        /* Choon Yean added color styles for state yes and state enabled */
         .table-container tr.enabled td,
         .table-container tr.state-ok td.status,
+        .table-container tr.state-enabled td.status,
         .table-container tr.state-yes td.status,
         .table-container tr.state-up td.status {
             background-color: #e9ffd6;
@@ -1156,6 +1163,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
         /* Choon Yean added color styles for state no */
         .table-container tr.disabled td,
         .table-container tr.state-critical td.status,
+        .table-container tr.state-disabled td.status,
         .table-container tr.state-no td.status,
         .table-container tr.state-down td.status {
             background-color: #ffccd1;
