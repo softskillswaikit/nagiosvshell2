@@ -315,23 +315,17 @@ class API extends VS_Controller
     /**
      * Fetch alert summary
      *
-     * @param string $type
+     * @param string $return_type,   1 : Top producer, 2 : Alert total by host, 3 : Alert total by hostgroup,  4: Alert total by service, 5 : Alert total by servicegroup, 6 : Most recent alert
      * @param string $period 
-     * @param string $date , for custom period : date in array (start date, end date)
+     * @param string $start_date
+     * @param string $end_date
      * @param string $service_description
      * @param string $logtype
      * @param string $statetype
      * @param string $state
      */
-    public function alertSummary($type, $period, $date, $service_description='', $logtype, $statetype, $state)
+    public function alertSummary($return_type, $period, $start_date, $end_date, $host_name, $service_description='', $logtype, $statetype, $state)
     {
-        //allowed type of alert
-        $allowed_types = array(
-            'TOP_PRODUCER',
-            'ALERT_TOTAL',
-            'NORMAL'
-        );
-
         //allowed type of period
         $allowed_periods = array(
             'TODAY',
@@ -362,22 +356,31 @@ class API extends VS_Controller
             'ALL STATE TYPE'
         );
 
+        //convert inputs to int
+        $return_type = (int)$return_type;
+
+
         //decode inputs with spaces
         $service_description = urldecode($service_description);
         $period = urldecode($period);
         $logtype = urldecode($logtype);
         $statetype = urldecode($statetype);
 
+        if(!empty($end_date))
+        {
+            $date = array($start_date, $end_date);
+        }
+        else
+        {
+            $date = $start_date;
+        }
+
         //check empty inputs
-        $validate = $this->validate_data(array($type, $period, $date, $service_description, $logtype, $statetype, $state));
+        $validate = $this->validate_data(array($return_type, $period, $date, $service_description, $logtype, $statetype, $state));
 
         if($validate)
         {
-            //verify inputs
-            if(in_array($type, $allowed_types) && in_array($period, $allowed_periods) && in_array($logtype, $allowed_logtypes) && in_array($statetype, $allowed_statetypes))
-            {
-                $Alert_summary = $this->reports_data->get_alert_summary($type, $period, $date, $service_description, $logtype, $statetype, $state);
-            }
+            $Alert_summary = $this->reports_data->get_alert_summary($return_type, $period, $date, $host_name, $service_description, $logtype, $statetype, $state);
         }
 
         $this->output($Alert_summary);
@@ -432,8 +435,14 @@ class API extends VS_Controller
         $ignore_repeated_state = $this->convert_data_bool($ignore_repeated_state);
 
         //convert date into array
-        $date = array($start_date, $end_date);
-
+        if(!empty($end_date))
+        {
+            $date = array($start_date, $end_date);
+        }
+        else
+        {
+            $date = $start_date;
+        }
 
         $Alert_histogram = array();
 
