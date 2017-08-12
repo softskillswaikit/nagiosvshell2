@@ -506,8 +506,8 @@
                   <label for="type" class="col-md-4 control-label">Type:</label>
                   <div class="col-md-6">
                     <select ng-model="type" name="type" class="form-control" required>
-                      <option value="Fixed">Fixed</option>
-                      <option value="Flexible">Flexible</option>
+                      <option value="true">Fixed</option>
+                      <option value="false">Flexible</option>
                     </select>
                     <span style="color:red" ng-show="scdhostdowntime.type.$dirty && scdhostdowntime.type.$invalid">
                     <span ng-show="scdhostdowntime.type.$error.required">This field is required.</span></span>
@@ -652,8 +652,8 @@
                  <label for="type" class="col-md-4 control-label">Type:</label>
                  <div class="col-md-6">
                    <select ng-model="type" name="type" class="form-control" required>
-                     <option value="Fixed">Fixed</option>
-                     <option value="Flexible">Flexible</option>
+                     <option value="true">Fixed</option>
+                     <option value="false">Flexible</option>
                    </select>
                    <span style="color:red" ng-show="scdsvcdowntime.type.$dirty && scdsvcdowntime.type.$invalid">
                    <span ng-show="scdsvcdowntime.type.$error.required">This field is required.</span></span>

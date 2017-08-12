@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); 
 
 class System_commands extends CI_Model
 {
@@ -76,7 +76,7 @@ class System_commands extends CI_Model
 			$persistent = '0';
 		}
 
-		$commands = 'ADD_SVC_COMMENT;'.$input_host_name.';'.$input_service_description.';'.$persistent.';'.$input_author.';'.$input_comments;
+		$commands = 'ADD_SVC_COMMENT;'.$input_host_name.';'.$input_service_description.';'.$persistent.';'.$input_author.';'.$input_comments; 
 
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
 
@@ -125,7 +125,7 @@ class System_commands extends CI_Model
 
 	//command id = 4
 	public function delete_svc_comment($input_comment_id)
-	{
+	{	
 		$commands = 'DEL_SVC_COMMENT;'.$input_comment_id;
 
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
@@ -150,7 +150,7 @@ class System_commands extends CI_Model
 
 	//command id = 5
 	public function enable_svc_check($input_host_name, $input_service_description)
-	{
+	{	
 		$commands = 'ENABLE_SVC_CHECK;'.$input_host_name.';'.$input_service_description;
 
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
@@ -171,7 +171,7 @@ class System_commands extends CI_Model
 		{
 			return false;
 		}
-	}
+	}	
 
 	//command id = 6
 	public function disable_svc_check($input_host_name, $input_service_description)
@@ -251,30 +251,25 @@ class System_commands extends CI_Model
 	//command id = 9
 	public function restart_nagios()
 	{
-		$check = $this->shutdown_nagios();
+		$commands = 'RESTART_PROGRAM';
 
-		if($check)
+		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
+
+		//check that the command runs successfully
+		if((int)$this->return_value)
 		{
-			$commands = 'RESTART_PROGRAM';
-
-			$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
-
-			//check that the command runs successfully
-			if((int)$this->return_value)
+			if($this->_verify_success())
 			{
-				if($this->_verify_success())
-				{
-					return true;
-				}
-				else
-				{
-					return false;
-				}
+				return true;
 			}
 			else
 			{
 				return false;
 			}
+		}
+		else
+		{
+			return false;
 		}
 	}
 
@@ -1645,7 +1640,7 @@ class System_commands extends CI_Model
 			$option = '2';
 		}
 		else if($input_broadcast)
-		{
+		{	
 			$option = '1';
 		}
 		else
@@ -1687,7 +1682,7 @@ class System_commands extends CI_Model
 			$option = '2';
 		}
 		else if($input_broadcast)
-		{
+		{	
 			$option = '1';
 		}
 		else
@@ -1762,7 +1757,7 @@ class System_commands extends CI_Model
 			//opening and get data from status.dat file
 			$status_file = fopen("/usr/local/nagios/var/status.dat", "r") or die("Unable to open file!");
 
-			//array counter
+			//array counter 
 			$i = 0;
 
 			while(! feof($status_file) )
@@ -1788,7 +1783,7 @@ class System_commands extends CI_Model
 
 			//total running time
 			list($run_time, $program_run_time) = explode(':', $parse_array[11], 2);
-			$process_obj->total_run_time = trim($program_run_time);
+			$process_obj->total_run_time = trim($program_run_time); 
 
 			//last log rotation
 			list($last_log, $last_log_rotation) = explode('=', $process_array[22], 2);

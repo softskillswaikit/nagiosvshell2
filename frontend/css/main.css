@@ -1013,6 +1013,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
         .table-container.full-width td:first-child {
             padding-left: 40px;
         }
+        
         .table-container.full-width.nopadding td:first-child {
             padding-left: 9px;
         }
@@ -1509,4 +1510,3 @@ tr.selected{
     display: inline;
     margin: 0;
 }
-

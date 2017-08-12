@@ -6,11 +6,11 @@
 
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
-<div id="content" class="clearfix" ng-controller="AlertHistogramCtrl" ng-init="createReport()">
+<div id="content" class="clearfix" ng-controller="AlertHistogramCtrl" ng-init="showReport()">
 
     <h1>Alert Histogram Report</h1>
 
-		<div class="table-container full-width" ng-if="report.reportType=='Host'">
+		<div class="table-container full-width" ng-if="type == 1">
 
  			<h3>Host Alert Histogram</h3>
 
@@ -62,7 +62,7 @@
 
     </div>
 
-    <div class="table-container full-width" ng-if="true">
+    <div class="table-container full-width" ng-if="type != 1">
 
     	<h3>Service Alert Histogram</h3>
 
@@ -128,7 +128,7 @@
     <h3>View</h3>
 
 			<!--show if a single host is selected-->
-            <table cellspacing="0" cellpadding="0" ng-if="report.reportType=='Host'">
+            <table cellspacing="0" cellpadding="0" ng-if="type == 1">
                 <tbody>
                     <tr class="footable-odd">
                         <td><a target="nagios" ng-href="{{}}">View Trends For This Host</a></td>
@@ -149,7 +149,7 @@
             </table>
 
 			<!--show if a single service is selected-->
-      <table cellspacing="0" cellpadding="0" ng-if="report.reportType=='Service'">
+      <table cellspacing="0" cellpadding="0" ng-if="type != 1">
                 <tbody>
                     <tr class="footable-odd">
                         <td><a target="nagios" ng-href="{{}}">View Trends For This Service</a></td>
@@ -171,4 +171,3 @@
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>
-

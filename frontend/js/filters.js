@@ -2,6 +2,77 @@
 
 angular.module('vshell.filters', [])
 
+/*
+* x-axis, persistent, downtime_type, triggered_id, entry_type, expires
+* Create by Choy Yi Zhen
+*/
+.filter('alerthistogram-x', function() {
+    return function(input) {
+        if(input == 1)
+          return 'Month';
+        else if(input == 2)
+          return 'Day of the Month';
+        else if(input == 3)
+          return 'Day of the Week';
+        else if(input == 4)
+          return 'Hour of the Day';
+        else
+          return 'Unknown';
+    };
+})
+
+.filter('week', function() {
+    return function(input) {
+        if(input == 0)
+          return 'Sun';
+        else if(input == 1)
+          return 'Mon';
+        else if(input == 2)
+          return 'Tue';
+        else if(input == 3)
+          return 'Wed';
+        else if(input == 4)
+          return 'Thu';
+        else if(input == 5)
+          return 'Fri';
+        else if(input == 6)
+          return 'Sat';
+        else
+          return 'Unknown';
+    };
+})
+
+.filter('month', function() {
+    return function(input) {
+      if(input == 0)
+        return 'Jan';
+      else if(input == 1)
+        return 'Feb';
+      else if(input == 2)
+        return 'Mar';
+      else if(input == 3)
+        return 'Apr';
+      else if(input == 4)
+        return 'May';
+      else if(input == 5)
+        return 'Jun';
+      else if(input == 6)
+        return 'Jul';
+      else if(input == 7)
+        return 'Aug';
+      else if(input == 8)
+        return 'Sep';
+      else if(input == 9)
+        return 'Oct';
+      else if(input == 10)
+        return 'Nov';
+      else if(input == 11)
+        return 'Dec';
+      else
+        return 'Unknown';
+    };
+})
+
 .filter('persistent', function() {
     return function(input) {
         if(input == 0)
@@ -10,6 +81,26 @@ angular.module('vshell.filters', [])
           return 'Yes';
         else
           return 'Unknown';
+    };
+})
+
+.filter('downtime_type', function() {
+    return function(input) {
+        if(input == "0")
+          return 'Flexible';
+        else if(input == "1")
+          return 'Fixed';
+        else
+          return 'Unknown';
+    };
+})
+
+.filter('triggered_id', function() {
+    return function(input) {
+        if(input == "0")
+          return "N/A";
+        else
+          return input;
     };
 })
 

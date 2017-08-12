@@ -4,6 +4,7 @@ angular.module('vshell.services', [])
 
 .value('authors', 'Mike Guthrie and Chris Laskey')
 
+
 .factory('async', function($http, $timeout, $interval, paths) {
 
     var async = {};
@@ -246,4 +247,3 @@ angular.module('vshell.services', [])
     };
 
 });
-

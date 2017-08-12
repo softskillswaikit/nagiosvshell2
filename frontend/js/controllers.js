@@ -143,6 +143,7 @@ angular.module('vshell.controllers', [])
           };
 
           async.api($scope, options);
+
         };
 
           $scope.reset = function(){
@@ -174,9 +175,71 @@ angular.module('vshell.controllers', [])
           };
 
         $scope.toggle = function(action, is_enabled){
+
+          if(is_enabled == 0)
+            var todo = 'true';
+          else if(is_enabled == 1)
+            var todo = 'false';
+
+            console.log("is_enabled:");
+            console.log(is_enabled);
+            console.log("todo:");
+            console.log(todo);
+
             $scope.toggleAction = function(){
-              console.log('toggle');
-              $scope.reset();
+              if(action == 'active_checks'){
+                var options = {
+                    name: 'hostcheck',
+                    url: 'hostcheck/' + todo + '/' + $routeParams.host,
+                    queue: 'main'
+                };
+                async.api($scope, options);
+              }
+              else if(action == 'passive_checks'){
+                var options = {
+                    name: 'passivehostcheck',
+                    url: 'passivehostcheck/' + todo + '/' + $routeParams.host,
+                    queue: 'main'
+                };
+                async.api($scope, options);
+              }
+              else if(action == 'obsess'){
+                var options = {
+                    name: 'obsessoverhost',
+                    url: 'obsessoverhost/' + todo + '/' + $routeParams.host,
+                    queue: 'main'
+                };
+                async.api($scope, options);
+              }
+              else if(action == 'notifications'){
+                var options = {
+                    name: 'hostnotification',
+                    url: 'hostnotification/' + todo + '/' + $routeParams.host,
+                    queue: 'main'
+                };
+                async.api($scope, options);
+              }
+              else if(action == 'flap_detection'){
+                var options = {
+                    name: 'hostflapdetection',
+                    url: 'hostflapdetection/' + todo + '/' + $routeParams.host,
+                    queue: 'main'
+                };
+                async.api($scope, options);
+              }
+
+              $scope.callback = function(data, status, headers, config) {
+                  if(config != null){
+                      if(config.url.includes("check") || config.url.includes("obsessoverhost") || config.url.includes("hostflapdetection") || config.url.includes("hostnotification") ){
+                          if(data == 'true'){
+                            ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
+                            $('.modal').modal('hide');
+                          }
+                          else
+                            ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
+                      }
+                  }
+              };
             };
         };
 
@@ -193,7 +256,7 @@ angular.module('vshell.controllers', [])
                 console.log("comment="+comment);
 
                 var options = {
-                    name: 'success',
+                    name: 'addcomments',
                     url: 'addcomments/'+ type + '/' + $routeParams.host + '/' + ' '
                       + '/' + persistent + '/' + author + '/' + comment,
                     queue: 'main'
@@ -204,11 +267,11 @@ angular.module('vshell.controllers', [])
                     if(config != null){
                         if(config.url.includes("addcomments")){
                             if(data == 'true'){
-                              ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                              ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
                               $('.modal').modal('hide');
                             }
                             else
-                              ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                              ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
                         }
                     }
                 };
@@ -220,7 +283,7 @@ angular.module('vshell.controllers', [])
           $scope.delete = function(){
 
             var options = {
-                name: 'success',
+                name: 'deletecomments',
                 url: 'deletecomments/' + id + '/' + type,
                 queue: 'main'
             };
@@ -231,9 +294,9 @@ angular.module('vshell.controllers', [])
                 if(config != null){
                     if(config.url.includes("deletecomments")){
                         if(data == 'true')
-                          ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                          ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
                         else
-                          ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                          ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
                     }
                 }
             };
@@ -247,7 +310,7 @@ angular.module('vshell.controllers', [])
               if(type == 'host'){
 
                 var options = {
-                    name: 'success',
+                    name: 'deleteallcomment',
                     url: 'deleteallcomment/' + type + '/' +  $routeParams.host + '/' + ' ' + '/',
                     queue: 'main'
                 };
@@ -258,9 +321,9 @@ angular.module('vshell.controllers', [])
                     if(config != null){
                         if(config.url.includes("deleteallcomment")){
                             if(data == 'true')
-                              ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                              ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
                             else
-                              ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                              ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
                         }
                     }
                 };
@@ -436,6 +499,9 @@ angular.module('vshell.controllers', [])
 
             async.api($scope, options);
 
+            console.log('routeparam');
+            console.log($routeParams.host);
+
             //reset modal
         };
 
@@ -469,10 +535,73 @@ angular.module('vshell.controllers', [])
 
         $scope.toggle = function(action, is_enabled){
 
-          $scope.toggleAction = function(){
+          if(is_enabled == 0)
+            var todo = 'true';
+          else if(is_enabled == 1)
+            var todo = 'false';
 
-          };
+            console.log("is_enabled:");
+            console.log(is_enabled);
+            console.log("todo:");
+            console.log(todo);
+
+            $scope.toggleAction = function(){
+              if(action == 'active_checks'){
+                var options = {
+                    name: 'servicecheck',
+                    url: 'servicecheck/' + todo + '/' + $routeParams.host + '/' + $routeParams.service,
+                    queue: 'main'
+                };
+                async.api($scope, options);
+              }
+              else if(action == 'passive_checks'){
+                var options = {
+                    name: 'passiveservicecheck',
+                    url: 'passiveservicecheck/' + todo + '/' + $routeParams.host + '/' + $routeParams.service,
+                    queue: 'main'
+                };
+                async.api($scope, options);
+              }
+              else if(action == 'obsess'){
+                var options = {
+                    name: 'obsessoverservice',
+                    url: 'obsessoverservice/' + todo + '/' + $routeParams.host + '/' + $routeParams.service,
+                    queue: 'main'
+                };
+                async.api($scope, options);
+              }
+              else if(action == 'notifications'){
+                var options = {
+                    name: 'servicenotification',
+                    url: 'servicenotification/' + todo + '/' + $routeParams.host + '/' + $routeParams.service,
+                    queue: 'main'
+                };
+                async.api($scope, options);
+              }
+              else if(action == 'flap_detection'){
+                var options = {
+                    name: 'serviceflapdetection',
+                    url: 'serviceflapdetection/' + todo + '/' + $routeParams.host + '/' + $routeParams.service,
+                    queue: 'main'
+                };
+                async.api($scope, options);
+              }
+
+              $scope.callback = function(data, status, headers, config) {
+                  if(config != null){
+                      if(config.url.includes("check") || config.url.includes("obsessoverservice") || config.url.includes("serviceflapdetection") || config.url.includes("servicenotification") ){
+                          if(data == 'true'){
+                            ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
+                            $('.modal').modal('hide');
+                          }
+                          else
+                            ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
+                      }
+                  }
+              };
+            };
         };
+
 
         $scope.addComment = function(type){
 
@@ -488,7 +617,7 @@ angular.module('vshell.controllers', [])
             console.log("comment="+comment);
 
             var options = {
-                name: 'success',
+                name: 'addcomments',
                 url: 'addcomments/'+ type + '/' + $routeParams.host + '/' + $routeParams.service
                   + '/' + persistent + '/' + author + '/' + comment,
                 queue: 'main'
@@ -499,11 +628,11 @@ angular.module('vshell.controllers', [])
                 if(config != null){
                     if(config.url.includes("addcomments")){
                       if(data == 'true'){
-                        ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                        ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
                         $('.modal').modal('hide');
                       }
                       else
-                        ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
                     }
                 }
             };
@@ -514,7 +643,7 @@ angular.module('vshell.controllers', [])
             $scope.delete = function(){
 
               var options = {
-                  name: 'success',
+                  name: 'deletecomments',
                   url: 'deletecomments/' + id + '/' + type,
                   queue: 'main'
               };
@@ -525,9 +654,9 @@ angular.module('vshell.controllers', [])
                   if(config != null){
                       if(config.url.includes("deletecomments")){
                           if(data == 'true')
-                            ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                            ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
                           else
-                            ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                            ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
                       }
                   }
               };
@@ -542,7 +671,7 @@ angular.module('vshell.controllers', [])
                 if(type == 'service'){
 
                   var options = {
-                      name: 'success',
+                      name: 'deleteallcomment',
                       url: 'deleteallcomment/' + type + '/' +  $routeParams.host + '/' + $routeParams.service,
                       queue: 'main'
                   };
@@ -553,9 +682,9 @@ angular.module('vshell.controllers', [])
                       if(config != null){
                           if(config.url.includes("deleteallcomment")){
                               if(data == 'true')
-                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
                               else
-                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
                           }
                       }
                   };
@@ -577,7 +706,7 @@ angular.module('vshell.controllers', [])
                 if(log.size < 1000000000)
                     $scope.selectedLogs.push(log.name);
                 else
-                    ngToast.create({className: 'alert alert-danger',content:'File is more than 1 GB.',timeout:3000});
+                    ngToast.create({className: 'alert alert-danger',content:'File is more than 1 GB.',timeout:1500});
             }
         };
 
@@ -598,7 +727,7 @@ angular.module('vshell.controllers', [])
                 });
 
             } else {
-                ngToast.create({className: 'alert alert-danger',content:'No logs are selected.',timeout:3000});
+                ngToast.create({className: 'alert alert-danger',content:'No logs are selected.',timeout:1500});
             }
         }
 
@@ -1403,77 +1532,178 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('AlertHistogramCtrl', ['$scope', '$routeParams', '$filter', 'async', '$timeout', '$window',
-    function($scope, $routeParams, $filter, async, $timeout, $window) {
+.controller('AlertHistogramCtrl', ['$scope', '$routeParams', '$filter', 'async', '$timeout', '$window', '$rootScope',
+    function($scope, $routeParams, $filter, async, $timeout, $window, $rootScope) {
 
-		$scope.init = function(){
-      //get component name
-      var options = {
-          name: 'name',
-          url: 'name',
-          queue: 'main'
-      };
+    		$scope.init = function(){
+            //get component name
+            var options = {
+                name: 'name',
+                url: 'name',
+                queue: 'main'
+            };
 
-      async.api($scope, options);
+            async.api($scope, options);
 
-      $scope.reset();
+            $scope.reset();
+    	  };
 
-	  };
-
+        //reset form
        $scope.reset = function(){
+
           $scope.today = new Date();
           $scope.todayString = $filter('date')(Date.now(), 'yyyy-MM-dd');
 
-          $scope.reportType = 'Host';
-          $timeout(function(){
-            $scope.reportHost = $scope.name.host[0];
-            $scope.reportService = $scope.name.service[0].service;
-          }, 1000);
-
+          $scope.reportType = '1';
+          $timeout(function(){$scope.reportHost = $scope.name.host[0]}, 1000);
           $scope.startDate =  $scope.todayString;
           $scope.endDate =  $scope.todayString;
-     			$scope.reportPeriod = 'Last 7 Days';
-     			$scope.statisticsBreakdown = 'Day of the Month';
-     			$scope.eventsToGraph = 'All Hosts Events';
-     			$scope.stateTypesToGraph = 'Hard and Soft States';
-     			$scope.assumeStateRetention = 'Yes';
-     			$scope.initialStatesLogged = 'No';
-     			$scope.ignoreRepeatedStates = 'No';
+     			$scope.reportPeriod = 'LAST 7 DAYS';
+     			$scope.statisticsBreakdown = '2';
+     			$scope.eventsToGraph = 'ALL';
+     			$scope.stateTypesToGraph = 'ALL';
+     			$scope.assumeStateRetention = 'true';
+     			$scope.initialStatesLogged = 'false';
+     			$scope.ignoreRepeatedStates = 'false';
        };
 
+
        $scope.createReport = function(){
-         $window.location.href="#/report/alerthistogram/report";
 
          var startUnix = parseInt((new Date($scope.startDate).getTime() / 1000).toFixed(0));
          var endUnix = parseInt((new Date($scope.endDate).getTime() / 1000).toFixed(0));
-         console.log("reportType");
-         console.log($scope.reportType);
-         console.log("reportHost");
-         console.log($scope.reportHost);
-         console.log("reportService");
-         console.log($scope.reportService);
-         console.log("hostresource");
-         console.log($scope.reportHostResource);
-         console.log("reportPeriod");
-         console.log($scope.reportPeriod);
-         console.log("startdate");
-         console.log($scope.startDate);
-         console.log("backtrackedArchives");
-         console.log($scope.backtrackedArchives);
+         var host = $scope.reportHost;
+         var service = $scope.reportService;
 
-         $scope.report = {
-           host : "app_server",
-           reportType : "Host",
-           statisticsBreakdown:"Day of the Month"
+         if($scope.reportType == 1){
+            service = 'ALL';
+          }
+          if($scope.reportType == 2){
+             host = 'ALL';
+          }
+          if($scope.reportType == 3){
+             service = $scope.reportHostResource;
+          }
+
+          if($scope.reportPeriod != 'CUSTOM'){
+            endUnix = ' ';
+          }
+
+         //get component name
+         var options = {
+             name: 'alerthistogram',
+             url: 'alerthistogram' + '/' + $scope.reportType + '/' + host + '/' + service + '/'
+                      + $scope.reportPeriod + '/' + startUnix + '/' + endUnix + '/' + $scope.statisticsBreakdown + '/'
+                      + $scope.eventsToGraph + '/' + $scope.stateTypesToGraph + '/' + $scope.assumeStateRetention + '/'
+                      + $scope.initialStatesLogged + '/' + $scope.ignoreRepeatedStates,
+             queue: 'main'
          };
+
+         async.api($scope, options);
+
+         $scope.callback = function(data, status, headers, config) {
+           if(config != null){
+             if(config.url.includes("alerthistogram")){
+
+               $rootScope.data = data;
+               $rootScope.type = $scope.reportType;
+               $rootScope.host = $scope.reportHost;
+               $rootScope.service = service;
+               $rootScope.statisticsBreakdown = $filter('alerthistogram-x')($scope.statisticsBreakdown);
+
+               $window.location.href="#/report/alerthistogram/report";
+             }
+           }
+         };
+       };
+
+       $scope.showReport = function(){
+
+         //generate label for x-axis
+          if($rootScope.statisticsBreakdown == 'Month'){
+              var category = [];
+              var data;
+
+              if($rootScope.type == 1)
+                data = $rootScope.data.down_count;
+              else
+                data = $rootScope.data.ok_count;
+
+              for(var key in data)
+                category.push({"label" : $filter('month')(key)});
+          }
+
+          else if($rootScope.statisticsBreakdown == 'Day of the Month'){
+
+            var category = [];
+
+            for(var i = 1; i <= 31; i++)
+              category.push({"label" : i});
+          }
+
+          else if($rootScope.statisticsBreakdown == 'Day of the Week'){
+            var category = [];
+
+            for(var key in $rootScope.data.down_count){
+              category.push({"label" : $filter('week')(key)});
+            }
+          }
+
+          else if($rootScope.statisticsBreakdown == 'Hour of the Day'){
+            var category = [];
+
+            for(var i = 1; i <= 24; i++)
+              category.push({"label" : i});
+          }
+
+          //generate label for y-axis
+          if($rootScope.type == 1){
+            var data_up = [];
+            var data_down = [];
+            var data_unreachable = [];
+
+            $rootScope.data.up_count.forEach(function(data){
+              data_up.push({"value" : data});
+            })
+
+            $rootScope.data.down_count.forEach(function(data){
+              data_down.push({"value" : data});
+            })
+
+            $rootScope.data.unreachable_count.forEach(function(data){
+              data_unreachable.push({"value" : data});
+            })
+          }
+          else {
+            var data_ok = [];
+            var data_warning = [];
+            var data_unknown = [];
+            var data_critical = [];
+
+            $rootScope.data.ok_count.forEach(function(data){
+              data_ok.push({"value" : data});
+            })
+
+            $rootScope.data.warning_count.forEach(function(data){
+              data_warning.push({"value" : data});
+            })
+
+            $rootScope.data.unknown_count.forEach(function(data){
+              data_unknown.push({"value" : data});
+            })
+
+            $rootScope.data.critical_count.forEach(function(data){
+              data_critical.push({"value" : data});
+            })
+          }
 
          $scope.hostdata = {
            "chart": {
-               "caption": "State History For Host " + $scope.report['host'],
+               "caption": "State History For Host " + $rootScope.host,
                "captionfontsize": "16",
                "subCaption": "From " + " To ",
                "paletteColors": "#6cb22f,#d24555,#ee8425",
-               "xaxisname": $scope.report['statisticsBreakdown'],
+               "xaxisname": $rootScope.statisticsBreakdown,
                "yaxisname": "Number of Events",
                "showyaxisvalues": "1",
                "theme": "fint",
@@ -1486,34 +1716,32 @@ angular.module('vshell.controllers', [])
            },
            "categories": [
             {
-              "category": [
-                {"label": "Mon"},{"label": "Tue"},{"label": "Wed"},  {"label": "Thu"},{"label": "Fri"},{"label": "Sat"},{"label": "Sun"}
-              ]
+              "category": category
             }
           ],
            "dataset": [
                {
                    "seriesname": "Recovery(Up)",
-                   "data": [{"value": "6"},{"value": "7"},{"value": "4"},{"value": "13"},{ "value": "7"},{"value": "12"},{"value": "10"}]
+                   "data": data_up
                },
                {
                    "seriesname": "Down",
-                   "data": [{"value": "1"},{"value": "5"},{"value": "7"},{"value": "5"},{"value": "3"},{"value": "3"},{"value": "0"}]
+                   "data": data_down
                },
                {
                    "seriesname": "Unreachable",
-                   "data": [{"value": "0"},{"value": "0"},{"value": "2"},{"value": "1"},{"value": "0"},{"value": "2"},{"value": "0"}]
+                   "data": data_unreachable
                }
            ]
          }
 
          $scope.servicedata = {
            "chart": {
-               "caption": "State History For Service " + $scope.report['host'],
+               "caption": "State History For Service " + $rootScope.service + " On Host " + $rootScope.host,
                "captionfontsize": "16",
                "subCaption": "From " + " To ",
                "paletteColors": "#6cb22f,#dba102,#ee8425,#d24555",
-               "xaxisname": $scope.report['statisticsBreakdown'],
+               "xaxisname": $rootScope.statisticsBreakdown,
                "yaxisname": "Number of Events",
                "showyaxisvalues": "1",
                "theme": "fint",
@@ -1526,35 +1754,25 @@ angular.module('vshell.controllers', [])
            },
            "categories": [
             {
-              "category": [
-                {"label": "Mon"},{"label": "Tue"},{"label": "Wed"},{"label": "Thu"},{"label": "Fri"},{"label": "Sat"},{"label": "Sun"}
-              ]
+              "category": category
             }
           ],
            "dataset": [
                {
                    "seriesname": "Recovery(Up)",
-                   "data": [
-                       {"value": "6"},{"value": "7"},{"value": "4"},{"value": "13"}, {"value": "7"},{"value": "12"},{"value": "10"}
-                   ]
+                   "data": data_ok
                },
                {
                    "seriesname": "Warning",
-                   "data": [
-                       {"value": "1"},{"value": "5"},{"value": "7"},{"value": "5"},{"value": "7"},{"value": "3"},{"value": "0"}
-                   ]
+                   "data": data_warning
                },
                {
                    "seriesname": "Unknown",
-                   "data": [
-                       {"value": "0"},{"value": "0"},{"value": "2"},{"value": "1"},{"value": "0"},{"value": "2"},{"value": "0"}
-                   ]
+                   "data": data_unknown
                },
                {
                    "seriesname": "Critical",
-                   "data": [
-                       {"value": "0"},{"value": "0"},{"value": "0" },{"value": "3" },{"value": "0"},{"value": "3"},{"value": "0"}
-                   ]
+                   "data": data_critical
                }
            ]
          }
@@ -1629,7 +1847,7 @@ angular.module('vshell.controllers', [])
         $scope.add = function(hostName, service, persistent, author, comment){
 
           var options = {
-              name: 'success',
+              name: 'addcomments',
               url: 'addcomments/'+ type + '/' + hostName + '/' + service
                 + '/' + persistent + '/' + author + '/' + comment,
               queue: 'main'
@@ -1641,11 +1859,11 @@ angular.module('vshell.controllers', [])
             if(config != null){
                 if(config.url.includes("addcomments")){
                     if(data == 'true'){
-                      ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                      ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
                       $('.modal').modal('hide');
                     }
                     else
-                      ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                      ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
                     //$timeout(function(){$window.location.reload()}, 2000);
                 }
             }
@@ -1658,7 +1876,7 @@ angular.module('vshell.controllers', [])
         $scope.delete = function(){
 
           var options = {
-              name: 'success',
+              name: 'deletecomments',
               url: 'deletecomments/' + id + '/' + type,
               queue: 'main'
           };
@@ -1669,9 +1887,9 @@ angular.module('vshell.controllers', [])
               if(config != null){
                 if(config.url.includes("deletecomments")){
                   if(data == 'true')
-                    ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                    ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
                   else
-                    ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                    ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
                   //$timeout(function(){$window.location.reload()}, 2000);
                 }
               }
@@ -1699,6 +1917,7 @@ angular.module('vshell.controllers', [])
               queue: 'main'
           };
           async.api($scope, optionsservice);
+
 
             //get host and service name
             var options = {
@@ -1731,7 +1950,7 @@ angular.module('vshell.controllers', [])
           $scope.triggeredBy = 'N/A';
           $scope.startDate = $scope.nowString;
           $scope.endDate = $scope.nowString;
-          $scope.type = 'Fixed';
+          $scope.type = 'true';
           $scope.durationHour = 2;
           $scope.durationMin = 0;
           $scope.childHost = 'doNothing';
@@ -1771,11 +1990,12 @@ angular.module('vshell.controllers', [])
             console.log("duration=" + duration);
             console.log("author=" + author);
             console.log("comment=" + comment);
+            //encodeURIComponent(triggerID)
 
             var options = {
-                name: 'success',
+                name: 'scheduledowntime',
                 url: 'scheduledowntime/'+ scheduletype + '/' + hostName + '/' + service + '/'+ startUnix
-                  + '/' + endUnix + '/' + type + '/' + triggerID + '/' + duration
+                  + '/' + endUnix + '/' + type + '/' + encodeURIComponent(triggerID) + '/' + duration
                   + '/' + author + '/' + comment,
                 queue: 'main'
             };
@@ -1785,11 +2005,11 @@ angular.module('vshell.controllers', [])
               if(config != null){
                   if(config.url.includes("scheduledowntime")){
                       if(data == 'true'){
-                        ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                        ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
                         $('.modal').modal('hide');
                       }
                       else
-                        ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                        ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
                       //$timeout(function(){$window.location.reload()}, 2000);
                   }
               }
@@ -1801,7 +2021,7 @@ angular.module('vshell.controllers', [])
 
           $scope.delete = function(){
             var options = {
-                name: 'success',
+                name: 'deletedowntime',
                 url: 'deletedowntime/' + id + '/' + type,
                 queue: 'main'
             };
@@ -1812,9 +2032,9 @@ angular.module('vshell.controllers', [])
                 if(config != null){
                   if(config.url.includes("deletedowntime")){
                     if(data == 'true')
-                      ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
+                      ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
                     else
-                      ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
+                      ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
                     //$timeout(function(){$window.location.reload()}, 2000);
                   }
                 }
@@ -1839,7 +2059,6 @@ angular.module('vshell.controllers', [])
             async.api($scope, options);
 
         };
-        $timeout(function(){console.log(typeof $scope.pinfo.active_host_checked_since_program_start)}, 1000);
 
     }
 ])
