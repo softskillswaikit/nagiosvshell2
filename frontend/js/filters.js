@@ -546,3 +546,4 @@ angular.module('vshell.filters', [])
         return input;
     };
 });
+

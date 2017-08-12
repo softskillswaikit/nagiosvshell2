@@ -51,11 +51,11 @@
                     <td>{{ queue.servicename }}</td>
                     <td>{{ queue.lastcheck * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
                     <td>{{ queue.nextcheck * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
-                    <td>{{ queue.type}}</td>
+                    <td>NORMAL</td>
                     <td class="status">{{ queue.activecheck | is_enabled | uppercase }}</td>
 		    <td>
-			<a data-toggle="modal" data-target="#DisableModal" ng-click="parameterdisable(queue.hostname, queue.servicename)">Disable</a>
-			<a><a data-toggle="modal" data-target="#ScheduleModal" ng-click="parameterschedule(queue.hostname, queue.servicename, queue.nextcheck)">Schedule</a></a>
+			<a data-toggle="modal" data-target="#DisableModal" ng-click="parameterdisable(queue.hostname, queue.servicename)"><img class="queue_action" src="frontend/images/icon-disable.png"></a>
+			<a data-toggle="modal" data-target="#ScheduleModal" ng-click="parameterschedule(queue.hostname, queue.servicename, queue.nextcheck)"><img class="queue_action" src="frontend/images/icon-schedule.png"></a>
 		   </td>
                 </tr>
             </tbody>
@@ -65,3 +65,4 @@
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>
+

@@ -56,14 +56,14 @@
                 <tr ng-if="(notifications | count) == 0">
                     <td colspan="5">{{ is_loading ? 'Loading...' : 'No notification are defined' }}</td>
                 </tr>
-                <tr ng-repeat="notification in notifications" footabledata class="state-{{ notification.state | lowercase }}">
+                <tr ng-repeat="notification in notifications" footabledata class="state-{{ notification.state | notification_state | lowercase }}">
                     <td>{{ notification.host }}</td>
 		<div>
 		    <td ng-if="notification.service == null">N/A</td>
 		    <td ng-if="notification.service != null">{{ notification.service }}</td>
 		</div>
 		    <td>{{ notification.logtype }}</td>
-		    <td class="status">{{ notification.state | lowercase | limitTo : 2 : 8 }}</td>
+		    <td class="status">{{ notification.state | notification_state | lowercase}}</td>
 		    <td>{{ notification.datetime * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
 		    <td>{{ notification.contact }}</td>
 		    <td>{{ notification.notificationcommand }}</td>
@@ -77,4 +77,5 @@
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>
+
 

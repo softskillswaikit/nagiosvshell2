@@ -866,27 +866,29 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
         width: 100%;
     }
 
-	.form-control {
-	height: 45px;
-	border: groove;
-	border-radius: 5px;
-	background-color: #f1f1f1;
-	text-align-last: center;
-	font-size: 16px;
-    }
 	.alert{
 		width: auto;
 		margin: auto;
 	}
 
+    /* Choon Yean set up the picture for the disable action of scheduling queue */
+    .queue_action {
+        padding: 2px;
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Choon Yean set the z-index of modal-backdrop to -1 */
 	.modal-backdrop {
 	z-index: -1;
 	}
 
+    /* Choon Yean set the text-align of confirm modal to center */
 	.confirm_modal .modal-body{
 		text-align: center;
 	}
 
+    /* Choon Yean set the background colour of the hover action on table to white */
 	.table-hover tbody tr:hover td {
 	background-color: white;
     }
@@ -1136,10 +1138,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
 		color: blue;
 	}
 
+        /* Choon Yean added color styles for state yes and state enabled */
         .table-container tr.enabled td,
         .table-container tr.state-ok td.status,
-	.table-container tr.state-enabled td.status,
-	.table-container tr.state-yes td.status,
+        .table-container tr.state-enabled td.status,
+        .table-container tr.state-yes td.status,
         .table-container tr.state-up td.status {
             background-color: #e9ffd6;
             color: #6cb22f;
@@ -1157,9 +1160,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
 
     }
 
+        /* Choon Yean added color styles for state no */
         .table-container tr.disabled td,
         .table-container tr.state-critical td.status,
-	.table-container tr.state-no td.status,
+        .table-container tr.state-disabled td.status,
+        .table-container tr.state-no td.status,
         .table-container tr.state-down td.status {
             background-color: #ffccd1;
             color: #d24555;
@@ -1494,4 +1499,5 @@ tr.selected{
     display: inline;
     margin: 0;
 }
+
 

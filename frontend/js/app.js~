@@ -74,13 +74,23 @@ angular.module('vshell', [
         $routeProvider.when('/comments', {
             templateUrl: 'frontend/partials/comments.html'
         });
+
+        /*  Choon Yean added the route for:
+         *      1. Alert History
+         *      2. Alert Summary
+         *      3. Alert Summary Detail
+         *      4. Notifications
+         *      5. Event Log
+         *      6. Process Info
+         *      7. Scheduling Queue
+         */
         $routeProvider.when('/reports/alert-history', {
         templateUrl: 'frontend/partials/reports-alert-history.html'
         });
         $routeProvider.when('/reports/alert-summary', {
             templateUrl: 'frontend/partials/reports-alert-summary.html'
         });
-    $routeProvider.when('/reports/alert-summary-detail', {
+        $routeProvider.when('/reports/alert-summary-detail', {
             templateUrl: 'frontend/partials/reports-alert-summary-detail.html'
         });
         $routeProvider.when('/reports/notifications', {
@@ -89,18 +99,52 @@ angular.module('vshell', [
         $routeProvider.when('/reports/event-log', {
             templateUrl: 'frontend/partials/reports-event-log.html'
         });
-	$routeProvider.when('/system/process-info', {
+        $routeProvider.when('/system/process-info', {
             templateUrl: 'frontend/partials/system-process-info.html'
         });
+        $routeProvider.when('/system/scheduling-queue', {
+            templateUrl: 'frontend/partials/system-scheduling-queue.html'
+        });
+
+        /*  Yi Zhen added the route for:
+         *      1. Availability
+         *      2. Availability Report
+         *      3. Trends
+         *      4. Trends Report
+         *      5. Alert Histogram
+         *      6. Alert Histogram Report
+         *      7. Comment
+         *      8. Downtime
+         *      9. Performance Info
+         */
         $routeProvider.when('/report/availability', {
             templateUrl: 'frontend/partials/report-availability.html'
+        });
+        $routeProvider.when('/report/availability/report', {
+            templateUrl: 'frontend/partials/report-availability-report.html'
         });
         $routeProvider.when('/report/trends', {
             templateUrl: 'frontend/partials/report-trends.html'
         });
+        $routeProvider.when('/report/trends/report', {
+            templateUrl: 'frontend/partials/report-trends-report.html'
+        });
         $routeProvider.when('/report/alerthistogram', {
             templateUrl: 'frontend/partials/report-alert-histogram.html'
-        }); 
+        });
+        $routeProvider.when('/report/alerthistogram/report', {
+            templateUrl: 'frontend/partials/report-alert-histogram-report.html'
+        });
+        $routeProvider.when('/system/comments', {
+            templateUrl: 'frontend/partials/system-comments.html'
+        });
+        $routeProvider.when('/system/downtime', {
+            templateUrl: 'frontend/partials/system-downtime.html'
+        });
+        $routeProvider.when('/system/performanceinfo', {
+            templateUrl: 'frontend/partials/system-performance-info.html'
+        });
+
         $routeProvider.when('/options', {
             templateUrl: 'frontend/partials/options.html'
         });
