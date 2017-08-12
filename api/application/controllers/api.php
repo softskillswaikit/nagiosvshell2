@@ -390,7 +390,8 @@ class API extends VS_Controller
      * @param string $host_name, for more than one host , store hosts in array, 'ALL' for all host
      * @param string $service_description, for more than one service, store services, in array, 'ALL' for all the services
      * @param string $period, 'TODAY', 'LAST 24 HOURS', 'YESTERDAY', 'THIS WEEK', 'LAST 7 DAYS', 'LAST WEEK', 'THIS MONTH', 'LAST 31 DAYS', 'LAST MONTH', 'THIS YEAR', 'LAST YEAR', 'CUSTOM'     
-     * @param string $date, for custom report, store date in array
+     * @param string $start_date
+     * @param string $end_date
      * @param String $statistic_breakdown, '1' - month, '2' - day of the month, '3' - day of the week, '4' - hour of the day
      * @param String $event_graph, 'UP', 'DOWN', 'UNREACHABLE', 'HOST PROBLEM STATE', 'OK', 'WARNING', 'UNKNOWN', 'CRITICAL', 'PENDING', 'ALL', 'SERVICE PROBLEM STATE'
      * @param String $state_type_graph, 'HARD', 'SOFT', 'ALL'
@@ -398,7 +399,7 @@ class API extends VS_Controller
      * @param string $initial_state_logged, 'true', 'false'
      * @param string $ignore_repeated_state, 'true', 'false'
      */
-    public function alertHistogram($return_type, $host_name, $service_description, $period, $date, $statistic_breakdown, $event_graph, $state_type_graph, $assume_state_retention, $initial_state_logged, $ignore_repeated_state)
+    public function alertHistogram($return_type, $host_name, $service_description, $period, $start_date, $end_date, $statistic_breakdown, $event_graph, $state_type_graph, $assume_state_retention, $initial_state_logged, $ignore_repeated_state)
     {
         //test hardcode data
         /*
@@ -418,10 +419,20 @@ class API extends VS_Controller
         $return_type = (int)$return_type;
         $statistic_breakdown = (int)$statistic_breakdown;
 
+        //decode inputs with spacing
+        $host_name = urldecode($host_name);
+        $service_description = urldecode($service_description);
+        $period = urldecode($period);
+        $event_graph = urldecode($event_graph);
+
+
         //convert inputs to boolean
         $assume_state_retention = $this->convert_data_bool($assume_state_retention);
         $initial_state_logged = $this->convert_data_bool($initial_state_logged);
         $ignore_repeated_state = $this->convert_data_bool($ignore_repeated_state);
+
+        //convert date into array
+        $date = array($start_date, $end_date);
 
 
         $Alert_histogram = array();
@@ -476,12 +487,9 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $test_str = 'false';
-        $test_str = $this->convert_data_bool($test_str);
+        $test_str = array(0,2,4,5,7,8);
 
-
-
-        $this->output(var_dump($test_str));
+        $this->output($test_str);
     }
 
     /**
