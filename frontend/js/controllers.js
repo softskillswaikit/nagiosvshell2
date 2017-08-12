@@ -431,7 +431,7 @@ angular.module('vshell.controllers', [])
             $scope.custom = function(comment) {
                 var options = {
                         name: 'CustomNotification',
-                        url: 'sendcustomnotification/' + type + '/' + $scope.custom_host + '/' + service + '/' + $scope.force + '/'
+                        url: 'sendcustomnotification/' + type + '/' + $routeParams.host + '/' + service + '/' + $scope.force + '/'
                         + $scope.broadcast + '/' + $scope.author + '/' + comment,
                         queue: 'main'
                 };
@@ -1410,9 +1410,6 @@ angular.module('vshell.controllers', [])
 .controller('AlertSummaryCtrl', ['$scope', '$attrs', 'async',
     function($scope, $attrs, async) {
 
-    
-    
-
         $scope.reset = function(){
             $scope.StandardReportType = '25 Most Recent Hard Alerts';
             $scope.CustomReportType = 'Most Recent Alerts';
@@ -1438,7 +1435,7 @@ angular.module('vshell.controllers', [])
 
             async.api($scope, options);
 
-        var result = {
+            var result = {
                 name: 'status',
                 url: 'status',
                 queue: 'status-' + '',
@@ -1451,15 +1448,11 @@ angular.module('vshell.controllers', [])
 
         $scope.create = function() {
 
-        var date = '1500796724';
-            
-            var options = {
-                name: 'alersummary',
-                url: 'alertsummary/NORMAL/LAST 7 DAYS/' + date + '/testserver/ALL ALERT/ALL STATE TYPE/ALL SERVICE STATE',
-                queue: 'main'
-            };
+            console.log($scope.StandardReportType);
+            if ($scope.StandardReportType == '25 Most Recent Hard Alerts') {
+                var type = "Most recent alert";
 
-            async.api($scope, options);
+            }
         };
 
         $scope.reset();
@@ -3020,19 +3013,16 @@ angular.module('vshell.controllers', [])
 
             async.api($scope, optionsstatus);
 
-            $scope.comment = '';
-            $scope.custom_host = $routeParams.host;
+
             $scope.hostName = $routeParams.host;
-            $scope.ack_host = $routeParams.host;
-            $scope.custom_service = $routeParams.service;
             $scope.serviceName = $routeParams.service;
-            $scope.ack_service = $routeParams.service;
+            $scope.comment = '';
             $scope.serviceTriggeredBy = "N/A";
-            $scope.startDate = "";
-            $scope.endDate = "";
+            $scope.serviceStartDateTime = "";
+            $scope.serviceEndDateTime = "";
             $scope.serviceType = "Fixed";
-            $scope.durationHour = 0;
-            $scope.durationMin = 0;
+            $scope.serviceDurationHour = 0;
+            $scope.serviceDurationMin = 0;
             $scope.force = false;
             $scope.broadcast = false;
             $scope.force_check = true;
@@ -3228,7 +3218,7 @@ angular.module('vshell.controllers', [])
                                             for implementation.
                                             comment -> (string) value from the input field*/
 
-        $scope.passcustom = function (service, host, author) {
+        $scope.passcustom = function () {
 
             $scope.resetWan();
             var type = "service";
@@ -3236,18 +3226,18 @@ angular.module('vshell.controllers', [])
 	    
             $scope.forcechange = function (status){
                 if (status == false){
-                    $scope.force = status;
+                    $scope.force = 'false';
                 }else if (status == true){
-                    $scope.force = status;
+                    $scope.force = 'true';
                 }
             };
 
             $scope.broadcastchange = function (status){
                 if (status == false){
-                    $scope.broadcast = status;
+                    $scope.broadcast = 'false';
                 
                 }else if (status == true){
-                    $scope.broadcast = status;
+                    $scope.broadcast = 'true';
                 }
             };    
         
@@ -3256,7 +3246,7 @@ angular.module('vshell.controllers', [])
                 $scope.comment = comment;
                 var options = {
                         name: 'CustomNotification',
-                        url: 'sendcustomnotification/' + type + '/' + $scope.custom_host + '/' + $scope.custom_service + '/' + $scope.force + '/'
+                        url: 'sendcustomnotification/' + type + '/' + $routeParams.host + '/' + $routeParams.service + '/' + $scope.force + '/'
                         + $scope.broadcast + '/' + $scope.author + '/' + $scope.comment,
                         queue: 'main'
                 };
@@ -3266,40 +3256,41 @@ angular.module('vshell.controllers', [])
                     if(config != null){
                         if(config.url.includes("sendcustomnotification")){
                             if(data == 'true'){
-                                console.log('success');
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
                             else
-                                console.log('failure');
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                         }
                     }
                 }; 
             };
         };
 
-        $scope.passdowntime = function(service, host, author) {
+        $scope.schedule_downtime = function(type) {
             $scope.resetWan();
-            var type = "service";
 
-            $scope.schedule = function (hour, minute, comment, startdate, enddate, triggerby, type) {
-                var duration = hour * minute;
+            $scope.schedule = function (hour, minute, comment, startdate, enddate, triggerby, fixed) {
+                var duration = 0;
                 var start_date = new Date(startdate);
                 var start_timestamp = (start_date.getTime() / 1000).toString();
                 var end_date = new Date(enddate);
                 var end_timestamp = (end_date.getTime() / 1000).toString();
-                var fixed = true;
+                var fixed_type = "";
             
-                if (type = '"Flexible"'){
-                    fixed = false;
+                if (fixed == 'Flexible'){
+                    fixed_type = 'false';
+                    duration = (hour * 60) + minute;
                 }
-                else{
-                    fixed = true;
+                else if (fixed == 'Fixed'){
+                    fixed_type = 'true';
+                    duration = (end_date.getHours() * 60 + end_date.getMinutes()) - (start_date.getHours() * 60 + start_date.getMinutes());
                 }
 
                 var options = {
-                    name: 'servicedowntime',
-                    url: 'scheduledowntime/' + type + '/' + $scope.hostName + '/' + $scope.serviceName + '/' + start_timestamp + '/' + end_timestamp + '/'
-                        + fixed + '/' + TriggerBy + '/' + duration + '/' + $scope.author + '/' + comment,
+                    name: 'ServiceDownTime',
+                    url: 'scheduledowntime/' + type + '/' + $routeParams.host + '/' + $routeParams.service + '/' + start_timestamp + '/' + end_timestamp + '/'
+                        + fixed_type + '/' + triggerby + '/' + duration + '/' + $scope.author + '/' + comment,
                     queue: 'main'
                 };
 
@@ -3307,40 +3298,40 @@ angular.module('vshell.controllers', [])
 
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
-                        if(config.url.includes("scheduledowntime")){
+                       if(config.url.includes("scheduledowntime")){
                             if(data == 'true'){
-                                console.log('success');
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
                             else
-                                console.log('failure');
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                         }
                     }
                 };
             };
         };
 
-        $scope.passreschedule = function (service, host, next_check) {
+        $scope.schedule_check = function (type, next_check) {
             $scope.resetWan();
             $scope.check_time = $filter('date')(next_check * 1000, "yyyy-MM-dd HH:mm:ss");
             $scope.input_check_time = $scope.check_time;
-            var type = "service";
         
             $scope.forcecheck = function (status){
                 if (status == false){
-                    $scope.force_check = status;
+                    $scope.force_check = 'false';
                 }else if (status == true){
-                    $scope.force_check = status;
+                    $scope.force_check = 'true';
                 }
             };
 
             $scope.schedule = function(time) {
                 var date = new Date(time);
-                var next_check = (date.getTime() / 1000).toString();
-            
+                var next_check = date.getTime() / 1000
+                var timestamp = next_check.toString();
+
                 var options = {
                     name: 'schedulecheck',
-                    url: 'schedulecheck/' + type + '/' + $scope.hostName + '/' + $scope.serviceName + '/' + next_check + '/' + $scope.force_check,
+                    url: 'schedulecheck/' + type + '/' + $routeParams.host + '/' + $routeParams.service + '/' + timestamp + '/' + $scope.force_check,
                     queue: 'main'
                 };
 
@@ -3350,44 +3341,44 @@ angular.module('vshell.controllers', [])
                     if(config != null){
                         if(config.url.includes("schedulecheck")){
                             if(data == 'true'){
-                                console.log('success');
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
                             else
-                                console.log('failure');
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                         }
                     }
                 };
             };
         };
 
-        $scope.passack = function (service, host, next_check){
+        $scope.passack = function (){
             $scope.resetWan();
             var type = 'service';
 
             $scope.sticky = function (status){
                 if (status == false){
-                    $scope.stickyack = status;
+                    $scope.stickyack = 'false';
                 }else if (status == true){
-                    $scope.stickyack = status;
+                    $scope.stickyack = 'true';
                 }
             };
 
             $scope.notify = function (status){
                 if (status == false){
-                    $scope.sendnotify = status;
+                    $scope.sendnotify = 'false';
                 
                 }else if (status == true){
-                    $scope.sendnotify = status;
+                    $scope.sendnotify = 'true';
                 }
             };
 
             $scope.persist = function (status){
                 if (status == false){
-                    $scope.persistent = status;
+                    $scope.persistent = 'false';
                 
                 }else if (status == true){
-                    $scope.persistent = status;
+                    $scope.persistent = 'true';
                 }
             };
 
@@ -3395,7 +3386,7 @@ angular.module('vshell.controllers', [])
                 $scope.comment = comment;
                 var options = {
                     name: 'acknowledge',
-                    url: 'acknowledgeproblem/' + type + '/' + $scope.ack_host + '/' + $scope.ack_service + '/'
+                    url: 'acknowledgeproblem/' + type + '/' + $routeParams.host + '/' + $routeParams.service + '/'
                     + $scope.stickyack + '/' + $scope.sendnotify + '/' + $scope.persistent + '/'
                     + $scope.author + '/' + $scope.comment,
                     queue: 'main'
@@ -3407,11 +3398,11 @@ angular.module('vshell.controllers', [])
                     if(config != null){
                         if(config.url.includes("acknowledgeproblem")){
                             if(data == 'true'){
-                                console.log('success');
+                                ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
                             else
-                                console.log('failure');
+                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:3000});
                         }
                     }
                 };

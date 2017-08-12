@@ -76,14 +76,14 @@ $route["servicelogdownload/(:any)/(:any)/(((((?!%7C).)+)\..*)(%7C(((?!%7C).)+)\.
 //Hosts
 $route["hostcheck/(:any)/(:any)"] 			= "api/hostCheck/$1/$2";
 $route["passivehostcheck/(:any)/(:any)"] 	= "api/passiveHostCheck/$1/$2";
-$route["obsessoverhostcheck/(:any)"] 		= "api/obsessOverHostCheck/$1";
+$route["obsessoverhost/(:any)/(:any)"] 		= "api/obsessOverHost/$1/$2";
 $route["hostflapdetection/(:any)/(:any)"] 	= "api/hostFlapDetection/$1/$2"; 
 $route["hostnotification/(:any)/(:any)"] 	= "api/hostNotification/$1/$2";
 
 //Services
 $route["servicecheck/(:any)/(:any)/(:any)"] 		= "api/servicecheck/$1/$2/$3";
 $route["passiveservicecheck/(:any)/(:any)/(:any)"] 	= "api/passiveServiceCheck/$1/$2/$3";
-$route["obsessoverservicecheck/(:any)"] 			= "api/obsessOverServiceCheck/$1";
+$route["obsessoverservice/(:any)/(:any)/(:any)"]	= "api/obsessOverService/$1/$2/$3";
 $route["serviceflapdetection/(:any)/(:any)/(:any)"] = "api/serviceFlapDetection/$1/$2/$3";
 $route["servicenotification/(:any)/(:any)/(:any)"] 	= "api/serviceNotification/$1/$2/$3";
 
@@ -102,8 +102,8 @@ $route["sendcustomnotification/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"
 $route["availability/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/availability/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10/$11";
 $route["trend/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/trend/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10/$11/$12";
 $route["alerthistory/(:any)"] = "api/alertHistory/$1";
-$route["alertsummary/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/alertSummary/$1/$2/$3/$4/$5/$6/$7";
-$route["alerthistogram/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/alertHistogram/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10/$11";
+$route["alertsummary/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/alertSummary/$1/$2/$3/$4/$5/$6/$7/$8/$9";
+$route["alerthistogram/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/alertHistogram/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10/$11/$12";
 $route["eventlog/(:any)"] = "api/eventlog/$1";
 $route["notification/(:any)"] = "api/notification/$1";
 //REPORTS SECTION END
@@ -131,8 +131,8 @@ $route["allpassiveservicecheck/(:any)"] 		= "api/allPassiveServiceCheck/$1";
 $route["allhostcheck/(:any)"] 					= "api/allHostCheck/$1";
 $route["allpassivehostcheck/(:any)"] 			= "api/allPassiveHostCheck/$1";
 $route["eventhandler/(:any)"] 					= "api/eventHandler/$1";
-$route["obsessoverhost/(:any)/(:any)"] 			= "api/obsessOverHost/$1/$2";
-$route["obsessoverservice/(:any)/(:any)/(:any)"]= "api/obsessOverService/$1/$2/$3";
+$route["obsessoverhostcheck/(:any)"] 			= "api/obsessOverHostCheck/$1";
+$route["obsessoverservicecheck/(:any)"] 		= "api/obsessOverServiceCheck/$1";
 $route["allflapdetection/(:any)"] 				= "api/allFlapDetection/$1";
 $route["performancedata/(:any)"] 				= "api/performanceData/$1";
 
@@ -152,4 +152,3 @@ $route["testing"] = "api/testing";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
-
