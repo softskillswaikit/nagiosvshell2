@@ -317,56 +317,27 @@ class API extends VS_Controller
      *
      * @param string $return_type,   1 : Top producer, 2 : Alert total by host, 3 : Alert total by hostgroup,  4: Alert total by service, 5 : Alert total by servicegroup, 6 : Most recent alert
      * @param string $period 
-     * @param string $start_date
+     * @param string $start_date, for standard report, $start_data = current unix time
      * @param string $end_date
+     * @param string $host_name
      * @param string $service_description
-     * @param string $logtype
-     * @param string $statetype
+     * @param string $logtype, 'HOST ALERT' / 'SERVICE ALERT' / 'ALL'
+     * @param string $statetype, 'HARD', 'SOFT', 'ALL'
      * @param string $state
      */
-    public function alertSummary($return_type, $period, $start_date, $end_date, $host_name, $service_description='', $logtype, $statetype, $state)
+    public function alertSummary($return_type, $period, $start_date, $end_date, $host_name, $service_description, $logtype, $statetype, $state)
     {
-        //allowed type of period
-        $allowed_periods = array(
-            'TODAY',
-            'LAST 24 HOURS',
-            'YESTERDAY',
-            'THIS WEEK',
-            'LAST 7 DAYS',
-            'LAST WEEK',
-            'THIS MONTH',
-            'LAST 31 DAYS',
-            'LAST MONTH', 
-            'THIS YEAR', 
-            'LAST YEAR', 
-            'CUSTOM'
-        );
-
-        //allowed logtype
-        $allowed_logtypes = array(
-            'HOST ALERT',
-            'SERVICE ALERT',
-            'ALL ALERT'
-        );
-
-        //allowed statetype
-        $allowed_statetypes = array(
-            'HARD',
-            'SOFT',
-            'ALL STATE TYPE'
-        );
-
         //convert inputs to int
         $return_type = (int)$return_type;
-
 
         //decode inputs with spaces
         $service_description = urldecode($service_description);
         $period = urldecode($period);
         $logtype = urldecode($logtype);
         $statetype = urldecode($statetype);
+        $end_date = urldecode($end_date);
 
-        if(!empty($end_date))
+        if($end_date != ' ')
         {
             $date = array($start_date, $end_date);
         }
@@ -393,7 +364,7 @@ class API extends VS_Controller
      * @param string $host_name, for more than one host , store hosts in array, 'ALL' for all host
      * @param string $service_description, for more than one service, store services, in array, 'ALL' for all the services
      * @param string $period, 'TODAY', 'LAST 24 HOURS', 'YESTERDAY', 'THIS WEEK', 'LAST 7 DAYS', 'LAST WEEK', 'THIS MONTH', 'LAST 31 DAYS', 'LAST MONTH', 'THIS YEAR', 'LAST YEAR', 'CUSTOM'     
-     * @param string $start_date
+     * @param string $start_date, for standard report , $start_date = current_time
      * @param string $end_date
      * @param String $statistic_breakdown, '1' - month, '2' - day of the month, '3' - day of the week, '4' - hour of the day
      * @param String $event_graph, 'UP', 'DOWN', 'UNREACHABLE', 'HOST PROBLEM STATE', 'OK', 'WARNING', 'UNKNOWN', 'CRITICAL', 'PENDING', 'ALL', 'SERVICE PROBLEM STATE'
@@ -426,8 +397,10 @@ class API extends VS_Controller
         $host_name = urldecode($host_name);
         $service_description = urldecode($service_description);
         $period = urldecode($period);
-        $event_graph = urldecode($event_graph);
+        $start_date = urldecode($start_date);
         $end_date = urldecode($end_date);
+        $event_graph = urldecode($event_graph);
+
 
 
         //convert inputs to boolean
@@ -497,7 +470,63 @@ class API extends VS_Controller
 
     public function testing()
     {
+        $Result = false;
+        $type = 'host';
+        $host_name = 'localhost';
+        $service_description = '';
+        $author = 'Nagios Admin';
+        $comments = 'jk';
+        $start_time = '1502551200';
+        $end_time ='1502551200';
+        $fixed = 'true';
+        $duration = '120';
+        $trigger_id = '0';
+
+
+        $allowed_types = array(
+            'host',
+            'svc',
+            'hostsvc'
+        );
+
+        //decode inputs with space
+        $host_name = urldecode($host_name);
+        $service_description = urldecode($service_description); 
+        $author = urldecode($author);
+        $comments = urldecode($comments);
+
+        //convert fixed to boolean
+        $fixed = $this->convert_data_bool($fixed);
         
+        //check empty inputs
+        $validate = $this->validate_data(array($type, $host_name, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments));
+
+        if($validate)
+        {
+            //compare type with allowed types
+            if(in_array($type, $allowed_types))
+            {
+                //schedule host downtime
+                if($type == 'host')
+                {
+                    $Result = $this->system_commands->schedule_host_downtime($host_name, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments);
+                }
+
+                //schedule service downtime
+                else if($type == 'svc')
+                {
+                    $Result = $this->system_commands->schedule_svc_downtime($host_name, $service_description, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments);
+                }
+
+                //schedule host service downtime
+                else
+                {
+                    $Result = $this->system_commands->schedule_host_svc_downtime($host_name, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments);
+                }
+            }
+        }
+        
+        $this->output($Result);
     }
 
     /**
