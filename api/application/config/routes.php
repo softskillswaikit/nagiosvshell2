@@ -101,7 +101,7 @@ $route["sendcustomnotification/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"
 //REPORTS SECTION START
 $route["availability/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/availability/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10/$11";
 $route["trend/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/trend/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10/$11/$12";
-$route["alerthistory"] = "api/alertHistory";
+$route["alerthistory/(:any)"] = "api/alertHistory/$1";
 $route["alertsummary/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/alertSummary/$1/$2/$3/$4/$5/$6/$7/$8/$9";
 $route["alerthistogram/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/alertHistogram/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10/$11/$12";
 $route["eventlog/(:any)"] = "api/eventlog/$1";
