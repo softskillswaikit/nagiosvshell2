@@ -36,7 +36,7 @@
 						<div class="form-group">
 							<label for="reportHost" class="col-md-4 control-label">Select Host:</label>
 							<div class="col-md-6">
-								<select ng-model="reportHost" ng-change="reportService = '' && reportHostResource = ''" name="reportHost" class="form-control" ng-required="reportType!=2">
+								<select ng-model="reportHost" ng-change="reportService = '' ; reportHostResource = ''" name="reportHost" class="form-control" ng-required="reportType!=2">
 									 <option ng-repeat="name in name.host" value="{{name}}">{{name}}</option>
 								</select>
 								<span style="color:red" ng-show="inputForm.reportHost.$dirty && inputForm.reportHost.$invalid">
@@ -154,12 +154,12 @@
 							</div>
 						</div>
 
-						<div class="form-group" ng-if="assumeInitialStates == true && reportType == 1" class="firstAssumedState">
+						<div class="form-group" ng-show="assumeInitialStates == 'true' && reportType == 1" class="firstAssumedState">
 							<label for="firstAssumedHostState" class="col-md-4 control-label">First Assumed Host State:</label>
 							<div class="col-md-6">
 								<select ng-model="firstAssumedHostState" name="firstAssumedHostState" class="form-control" required>
-									<option value="UNSPECIFIED">Unspecified</option>
-									<option value="CURRENT">Current State</option>
+									<option value="PENDING">Pending</option>
+									<option value="HOST PROBLEM STATE">Current State</option>
 									<option value="UP">Host Up</option>
 									<option value="DOWN">Host Down</option>
 									<option value="UNREACHABLE">Host Unreachable</option>
@@ -169,12 +169,12 @@
 							</div>
 						</div>
 
-						<div class="form-group" ng-if="assumeInitialStates == true && reportType != 1" class="firstAssumedState">
+						<div class="form-group" ng-show="assumeInitialStates == 'true' && reportType != 1" class="firstAssumedState">
 							<label for="firstAssumedServiceState" class="col-md-4 control-label">First Assumed Service State:</label>
 							<div class="col-md-6">
 								<select ng-model="firstAssumedServiceState" name="firstAssumedServiceState" class="form-control" required>
-									<option value="UNSPECIFIED">Unspecified</option>
-									<option value="CURRENT">Current State</option>
+									<option value="PENDING">Pending</option>
+									<option value="SERVICE PROBLEM STATE">Current State</option>
 									<option value="OK">Service Ok</option>
 									<option value="WARNING">Service Warning</option>
 									<option value="UNKNOWN">Service Unknown</option>
@@ -211,4 +211,3 @@
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>
-

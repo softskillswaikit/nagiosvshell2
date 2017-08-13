@@ -276,21 +276,76 @@ class API extends VS_Controller
 
     /**
      * Fetch trend
-     * @param int $reportType
-     * @param string $name
-     * @param string $start
-     * @param string $end
-     * @param bool $initialState
-     * @param bool $stateRetention
-     * @param bool $assumeState
-     * @param bool $includeSoftState
-     * @param String $firstAssumedHost
-     * @param int $backTrack
-     * @param bool suppressImage
-     * @param bool suppressPopups
+     *
+     * @param string $return_type, 1 - 'host', 2 - 'service', 3- 'host resource', 4- 'running state'
+     * @param string $period, 'TODAY', 'LAST 24 HOURS', 'YESTERDAY', 'THIS WEEK', 'LAST 7 DAYS', 'LAST WEEK', 'THIS MONTH', 'LAST 31 DAYS', 'LAST MONTH', 'THIS YEAR', 'LAST YEAR', 'CUSTOM'
+     * @param string $start_date, for standard report, $start_date = current unix time
+     * @param string $end_date
+     * @param string $host_name
+     * @param string $service_description
+     * @param string $assume_initial_state, 'true', 'false'
+     * @param string $assume_state_retention, 'true', 'false'
+     * @param string $assume_state_downtime, 'true', 'false'
+     * @param string $include_soft, 'true', 'false'
+     * @param string $first_assume_host_service, possible value (host) = 'UP', 'DOWN', 'UNREACHABLE', 'PENDING', 'ALL', 'HOST PROBLEM STATE'; possible value (service) = 'OK', 'WARNING', 'UNKNOWN', 'CRITICAL', 'PENDING', 'ALL', 'SERVICE PROBLEM STATE'
+     * @param string $backtrack_archive, integer
      */
-    public function trend($reportType, $name='', $start='', $end='', $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $backTrack, $suppressImage, $suppressPopups)
+    public function trend($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $backtrack_archive, $first_assume_host_service)
     {
+
+        /* Test hardcoded data
+        $period = 'THIS YEAR';
+        $host_name = 'localhost';
+        $service_description = 'ALL';
+        $assume_state_retention = 'true';
+        $assume_state_downtime = 'true';
+        $assume_initial_state = 'true';
+        $include_soft = 'true';
+        $backtrack_archive = '4';
+        $return_type = '1';
+        $start_date = '1502619210';
+        $first_assume_host_service = 'UP';
+        */
+
+        $Trend = array();
+
+        //decode input with spacing
+        $period = urldecode($period);
+        $host_name = urldecode($host_name);
+        $service_description = urldecode($service_description);
+        $first_assume_host_service = urldecode($first_assume_host_service);
+
+        //convert input to int
+        $return_type = (int)$return_type;
+        $backtrack_archive = (int)$backtrack_archive;
+
+        //convert input to bool
+        $assume_initial_state = $this->convert_data_bool($assume_initial_state);
+        $assume_state_retention = $this->convert_data_bool($assume_state_retention);
+        $assume_state_downtime = $this->convert_data_bool($assume_state_downtime);
+        $include_soft = $this->convert_data_bool($include_soft);
+
+        //convert date for custom report
+        if($period == 'CUSTOM')
+        {
+            $date = array($start_date, $end_date);
+        }
+
+        //standard report date
+        else
+        {
+            $date = $start_date;
+        }
+
+        //check empty inputs
+        $validate = $this->validate_data(array($return_type, $period, $start_date, $host_name, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft));
+
+        if($validate)
+        {
+            $Trend = $this->reports_data->get_trend($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_service, $backtrack_archive);
+        }
+
+        $this->output($Trend);
     }
 
     /**
@@ -315,60 +370,36 @@ class API extends VS_Controller
      * Fetch alert summary
      *
      * @param string $return_type,   1 : Top producer, 2 : Alert total by host, 3 : Alert total by hostgroup,  4: Alert total by service, 5 : Alert total by servicegroup, 6 : Most recent alert
-     * @param string $period
-     * @param string $start_date
+     * @param string $period ,'TODAY', 'LAST 24 HOURS', 'YESTERDAY', 'THIS WEEK', 'LAST 7 DAYS', 'LAST WEEK', 'THIS MONTH', 'LAST 31 DAYS', 'LAST MONTH', 'THIS YEAR', 'LAST YEAR', 'CUSTOM'
+     * @param string $start_date, for standard report, $start_date = current unix time
      * @param string $end_date
+     * @param string $host_name
      * @param string $service_description
-     * @param string $logtype
-     * @param string $statetype
+     * @param string $logtype, 'HOST ALERT' / 'SERVICE ALERT' / 'ALL'
+     * @param string $statetype, 'HARD', 'SOFT', 'ALL'
      * @param string $state
      */
-    public function alertSummary($return_type, $period, $start_date, $end_date, $host_name, $service_description='', $logtype, $statetype, $state)
+    public function alertSummary($return_type, $period, $start_date, $end_date, $host_name, $service_description, $logtype, $statetype, $state)
     {
-        //allowed type of period
-        $allowed_periods = array(
-            'TODAY',
-            'LAST 24 HOURS',
-            'YESTERDAY',
-            'THIS WEEK',
-            'LAST 7 DAYS',
-            'LAST WEEK',
-            'THIS MONTH',
-            'LAST 31 DAYS',
-            'LAST MONTH',
-            'THIS YEAR',
-            'LAST YEAR',
-            'CUSTOM'
-        );
-
-        //allowed logtype
-        $allowed_logtypes = array(
-            'HOST ALERT',
-            'SERVICE ALERT',
-            'ALL ALERT'
-        );
-
-        //allowed statetype
-        $allowed_statetypes = array(
-            'HARD',
-            'SOFT',
-            'ALL STATE TYPE'
-        );
+        $Alert_summary = array();
 
         //convert inputs to int
         $return_type = (int)$return_type;
-
 
         //decode inputs with spaces
         $service_description = urldecode($service_description);
         $period = urldecode($period);
         $logtype = urldecode($logtype);
         $statetype = urldecode($statetype);
+        $end_date = urldecode($end_date);
 
-        if(!empty($end_date))
+        //custom report date
+        if($period == 'CUSTOM')
         {
             $date = array($start_date, $end_date);
         }
+
+        //standard report date
         else
         {
             $date = $start_date;
@@ -392,7 +423,7 @@ class API extends VS_Controller
      * @param string $host_name, for more than one host , store hosts in array, 'ALL' for all host
      * @param string $service_description, for more than one service, store services, in array, 'ALL' for all the services
      * @param string $period, 'TODAY', 'LAST 24 HOURS', 'YESTERDAY', 'THIS WEEK', 'LAST 7 DAYS', 'LAST WEEK', 'THIS MONTH', 'LAST 31 DAYS', 'LAST MONTH', 'THIS YEAR', 'LAST YEAR', 'CUSTOM'
-     * @param string $start_date
+     * @param string $start_date, for standard report , $start_date = current_time
      * @param string $end_date
      * @param String $statistic_breakdown, '1' - month, '2' - day of the month, '3' - day of the week, '4' - hour of the day
      * @param String $event_graph, 'UP', 'DOWN', 'UNREACHABLE', 'HOST PROBLEM STATE', 'OK', 'WARNING', 'UNKNOWN', 'CRITICAL', 'PENDING', 'ALL', 'SERVICE PROBLEM STATE'
@@ -425,8 +456,10 @@ class API extends VS_Controller
         $host_name = urldecode($host_name);
         $service_description = urldecode($service_description);
         $period = urldecode($period);
-        $event_graph = urldecode($event_graph);
+        $start_date = urldecode($start_date);
         $end_date = urldecode($end_date);
+        $event_graph = urldecode($event_graph);
+
 
 
         //convert inputs to boolean
@@ -496,7 +529,57 @@ class API extends VS_Controller
 
     public function testing()
     {
+        $period = 'THIS YEAR';
+        $host_name = 'localhost';
+        $service_description = 'ALL';
+        $assume_state_retention = 'true';
+        $assume_state_downtime = 'true';
+        $assume_initial_state = 'true';
+        $include_soft = 'true';
+        $backtrack_archive = '4';
+        $return_type = '1';
+        $first_assume_host_service = 'UP';
+        $start_date = '1502619210';
 
+
+        $Trend = array();
+
+        //decode input with spacing
+        $period = urldecode($period);
+        $host_name = urldecode($host_name);
+        $service_description = urldecode($service_description);
+
+        //convert input to int
+        $return_type = (int)$return_type;
+        $backtrack_archive = (int)$backtrack_archive;
+
+        //convert input to bool
+        $assume_initial_state = $this->convert_data_bool($assume_initial_state);
+        $assume_state_retention = $this->convert_data_bool($assume_state_retention);
+        $assume_state_downtime = $this->convert_data_bool($assume_state_downtime);
+        $include_soft = $this->convert_data_bool($include_soft);
+
+        //convert date for custom report
+        if($period == 'CUSTOM')
+        {
+            $date = array($start_date, $end_date);
+        }
+
+        //standard report date
+        else
+        {
+            $date = $start_date;
+        }
+
+        //check empty inputs
+        $validate = $this->validate_data(array($return_type, $period, $start_date, $host_name, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft));
+
+        if($validate)
+        {
+            $Trend = $this->reports_data->get_trend($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_service, $backtrack_archive);
+        }
+
+        $this->output($Trend);
     }
 
     /**
@@ -639,7 +722,7 @@ class API extends VS_Controller
         $fixed = $this->convert_data_bool($fixed);
 
         //check empty inputs
-        $validate = $this->validate_data(array($type, $host_name, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments));
+        $validate = $this->validate_data(array($type, $host_name, $start_time, $end_time, $fixed, $duration, $author, $comments));
 
         if($validate)
         {

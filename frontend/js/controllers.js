@@ -900,13 +900,14 @@ angular.module('vshell.controllers', [])
       };
 
       $scope.reset = function(){
-        $scope.today = new Date();
-        $scope.todayString = $filter('date')(Date.now(), 'yyyy-MM-dd');
+        var today = $filter('date')(Date.now(), 'yyyy-MM-dd');
+        var date = new Date();
+        var firstDayOfMonth = $filter('date')((new Date(date.getFullYear(), date.getMonth(), 1)), 'yyyy-MM-dd');
 
         $scope.reportType = 'Hostgroup(s)';
         $scope.reportComponent = 'ALL';
-        $scope.startDate =  $scope.todayString;
-        $scope.endDate =  $scope.todayString;
+        $scope.startDate =  firstDayOfMonth;
+        $scope.endDate =  today;
         $scope.reportPeriod = 'Last 7 Days';
         $scope.reportTimePeriod = 'None';
         $scope.assumeInitialStates = 'Yes';
@@ -1132,32 +1133,39 @@ angular.module('vshell.controllers', [])
         };
 
         $scope.reset = function(){
-          $scope.today = new Date();
-          $scope.todayString = $filter('date')(Date.now(), 'yyyy-MM-dd');
+          var today = $filter('date')(Date.now(), 'yyyy-MM-dd');
+          var date = new Date();
+          var firstDayOfMonth = $filter('date')((new Date(date.getFullYear(), date.getMonth(), 1)), 'yyyy-MM-dd');
 
           $scope.reportType = 1;
     			$timeout(function(){$scope.reportHost = $scope.name.host[0];}, 1000);
-          $scope.startDate =  $scope.todayString;
-          $scope.endDate =  $scope.todayString;
+          $scope.startDate =  firstDayOfMonth;
+          $scope.endDate =  today;
     			$scope.reportPeriod = 'LAST 7 DAYS';
     			$scope.assumeInitialStates = 'true';
     			$scope.assumeStateRetention = 'true';
     			$scope.assumeDowntimeStates = 'true';
     			$scope.includeSoftStates = 'false';
-    			$scope.firstAssumedHostState = 'UNSPECIFIED';
-    			$scope.firstAssumedServiceState = 'UNSPECIFIED';
+    			$scope.firstAssumedHostState = 'PENDING';
+    			$scope.firstAssumedServiceState = 'PENDING';
     			$scope.backtrackedArchives = 4;
         };
 
 
         $scope.createReport = function(){
+          console.log($scope.firstAssumedHostState);
 
           var startUnix = parseInt((new Date($scope.startDate).getTime() / 1000).toFixed(0));
           var endUnix = parseInt((new Date($scope.endDate).getTime() / 1000).toFixed(0));
           var service = $scope.reportService;
+          var firstAssumedState = $scope.firstAssumedHostState;
 
           if($scope.reportType == 1){
              service = 'ALL';
+             firstAssumedState = $scope.firstAssumedHostState;
+          }
+          if($scope.reportType != 1){
+             firstAssumedState = $scope.firstAssumedServiceState;
           }
           if($scope.reportType == 3){
               service = $scope.reportHostResource;
@@ -1170,10 +1178,10 @@ angular.module('vshell.controllers', [])
           //get component name
           var options = {
               name: 'trend',
-              url: 'trend' + '/' + $scope.reportType + '/' + $scope.reportHost + '/' + service + '/'
-                       + $scope.reportPeriod + '/' + startUnix + '/' + endUnix + '/' + $scope.assumeInitialStates + '/'
+              url: 'trend' + '/' + $scope.reportType + '/' + $scope.reportPeriod + '/' + startUnix + '/'
+                       + endUnix + '/' + $scope.reportHost + '/' + service + '/' + $scope.assumeInitialStates + '/'
                        + $scope.assumeStateRetention + '/' + $scope.assumeDowntimeStates + '/' + $scope.includeSoftStates + '/'
-                       + $scope.firstAssumedHostState + '/' + $scope.firstAssumedServiceState,
+                       + $scope.backtrackedArchives + '/' + firstAssumedState,
               queue: 'main'
           };
 
@@ -1184,6 +1192,8 @@ angular.module('vshell.controllers', [])
               if(config.url.includes("trend")){
 
                 $rootScope.data = data;
+                console.log("Trend data");
+                console.log(data);
                 $rootScope.type = $scope.reportType;
                 $rootScope.host = $scope.reportHost;
                 $rootScope.service = service;
@@ -1335,13 +1345,14 @@ angular.module('vshell.controllers', [])
         //reset form
        $scope.reset = function(){
 
-          $scope.today = new Date();
-          $scope.todayString = $filter('date')(Date.now(), 'yyyy-MM-dd');
+          var today = $filter('date')(Date.now(), 'yyyy-MM-dd');
+          var date = new Date();
+          var firstDayOfMonth = $filter('date')((new Date(date.getFullYear(), date.getMonth(), 1)), 'yyyy-MM-dd');
 
           $scope.reportType = '1';
           $timeout(function(){$scope.reportHost = $scope.name.host[0]}, 1000);
-          $scope.startDate =  $scope.todayString;
-          $scope.endDate =  $scope.todayString;
+          $scope.startDate =  firstDayOfMonth;
+          $scope.endDate =  today;
      			$scope.reportPeriod = 'LAST 7 DAYS';
      			$scope.statisticsBreakdown = '2';
      			$scope.eventsToGraph = 'ALL';
@@ -1722,14 +1733,15 @@ angular.module('vshell.controllers', [])
           };
           async.api($scope, options1);
 
-          $scope.now = new Date();
-          $scope.nowString = $filter('date')(Date.now(), 'yyyy-MM-ddTHH:mm');
+          var now = $filter('date')(Date.now(), 'yyyy-MM-ddTHH:mm');
+          var date = new Date();
+          var twohourslater = $filter('date')((new Date(date.getTime() + (2*60*60*1000))), 'yyyy-MM-ddTHH:mm');
 
           $scope.hostName = $scope.name.host[0];
           $scope.comment = null;
-          $scope.triggeredBy = 0;
-          $scope.startDate = $scope.nowString;
-          $scope.endDate = $scope.nowString;
+          $scope.triggeredBy = 'N/A';
+          $scope.startDate = now;
+          $scope.endDate = twohourslater;
           $scope.type = 'true';
           $scope.durationHour = 2;
           $scope.durationMin = 0;
@@ -1861,4 +1873,3 @@ angular.module('vshell.controllers', [])
     }
 ])
 ;
-
