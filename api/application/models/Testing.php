@@ -387,12 +387,274 @@ class Testing extends CI_Model
 		//$return_type = 'HOST RESOURCE'
 		else if($return_type === 5)
 		{
+			if($this->_compare_string($input_host, 'ALL'))
+			{
+				$host_resource_collection = $this->nagios_data->get_collection('hostresource');
+				$host_resource_array = array();
 
+				//array counter
+				$i = 0;
+
+				foreach($host_resource_collection as $resources)
+				{
+					$host_resource_array[$i] = $resources->service_description;
+
+					$i++;
+				}
+
+				$resource_array = array();
+				$resource_obj = new StdClass();
+
+				//array counter 
+				$j = 0;
+
+				foreach($this->_data_array as $data)
+				{
+					foreach($host_resource_array as $resources)
+					{
+						if(strpos($data, $resources))
+						{
+							list($input_time, $event_message) = explode(' ', $data, 2);
+							list($logtype, $information) = explode(':', $event_message, 2);
+							list($hostname, $servicename, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 6);
+				
+							$resource_obj->datetime = trim($input_time, '[]');
+							$resource_obj->logtype = 'SERVICE ALERT';
+							$resource_obj->hostname = trim($hostname);
+							$resource_obj->servicename = trim($servicename);
+							$resource_obj->state = trim($state);
+							$resource_obj->state_type = trim($state_type);
+							$resource_obj->retry_count = trim($retry_count);
+							$resource_obj->messages = trim($detail_message);
+					
+							$resource_array[$j] = $resource_obj;
+							$j++;
+
+							unset($input_time, $event_message, $logtype, $information, $hostname, $servicename, $state, $state_type, $retry_count, $detail_message, $resource_obj);
+						}
+					}
+				}
+
+				//get unique host and service pair
+				$key_obj = new StdClass();
+				$unique_service_obj = new StdClass();
+				$unique_service_array = array();
+
+				foreach($resource_array as $services)
+				{
+					$keys = $services->hostname.' '.$services->servicename;
+
+					$key_obj->$keys += 1;
+				}
+				
+				//array counter 
+				$j = 0;
+
+				foreach($key_obj as $key => $value)
+				{
+					list($hostname, $servicename) = explode(' ', $key, 2);
+
+					$unique_service_obj->hostname = $hostname;
+					$unique_service_obj->servicename = $servicename;
+
+					$unique_service_array[$j] = $unique_service_obj;
+					unset($unique_service_obj);
+
+					$j++;
+				}
+
+				//array counter 
+				$d = 0;
+
+				$resource_array = array_reverse($resource_array);
+
+				foreach($unique_service_array as $unique_services)
+				{
+					$output_array = $this->_get_return_service($assume_state_downtime, $resource_array, $unique_services->hostname, $unique_services->servicename, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_host_service);
+					$return_array[$d] = $this->_get_state_total_service_availability($output_array, $unique_services->hostname, $unique_services->servicename);
+
+					$d++;
+				}
+			}
+			else
+			{
+				$output_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $input_host, $input_service, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+
+				$return_array[$i] = $this->_get_state_total_service_availability($output_array, $input_host, $input_service);
+
+				$i++;
+
+				$service_log_array = array();
+				$service_log_obj = new StdClass();
+
+				//array_counter
+				$c = 0;
+
+				$now = (int)$pass_date;
+
+				$temp_array = array_reverse($temp_array);
+
+				foreach($temp_array as $alerts)
+				{
+					if($this->_compare_string($alerts->hostname, $input_host))
+					{
+						if($this->_compare_string($alerts->servicename, $input_service))
+						{
+							if($this->_compare_string($alerts->logtype, 'SERVICE ALERT'))
+							{
+								$duration = $now - (int)$alerts->datetime;
+								$service_log_obj->hostname = $alerts->hostname;
+								$service_log_obj->servicename = $alerts->servicename;
+								$service_log_obj->duration = abs($duration);
+								$service_log_obj->start_time = $now - $duration;
+								$service_log_obj->end_time = $now;
+								$service_log_obj->state = $alerts->state;
+								$service_log_obj->state_type = $alerts->state_type;
+								$service_log_obj->messages = $alerts->messages;
+
+								$service_log_array[$c] = $service_log_obj;
+								$c++;
+
+								$now = $now - $duration;
+													
+								unset($service_log_obj);
+							}
+						}
+					}
+				}
+
+				$return_array[$i] = $service_log_array;
+
+				$i++;
+			}
 		}
 		//$return_type = 'SERVICE RUNNING STATE'
 		else if($return_type === 6)
 		{
+			if($this->_compare_string($input_service, 'ALL'))
+			{
+				$running_state_array = array();
+				$running_state_obj = new StdClass();
 
+				//array counter 
+				$i = 0;
+
+				foreach($this->_data_array as $data)
+				{
+					if(strpos($data, '_running_state'))
+					{
+						list($input_time, $event_message) = explode(' ', $data, 2);
+						list($logtype, $information) = explode(':', $event_message, 2);
+						list($hostname, $servicename, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 6);
+
+						$running_state_obj->datetime = trim($input_time, '[]');
+						$running_state_obj->logtype = 'SERVICE ALERT';
+						$running_state_obj->hostname = trim($hostname);
+						$running_state_obj->servicename = trim($servicename);
+						$running_state_obj->state = trim($state);
+						$running_state_obj->state_type = trim($state_type);
+						$running_state_obj->retry_count = trim($retry_count);
+						$running_state_obj->messages = trim($detail_message);
+					
+						$running_state_array[$i] = $running_state_obj;
+						$i++;
+
+						unset($input_time, $event_message, $logtype, $information, $hostname, $servicename, $state, $state_type, $retry_count, $detail_message, $running_state_obj);
+					}
+				}
+
+				//get unique host and service pair
+				$key_obj = new StdClass();
+				$unique_service_obj = new StdClass();
+				$unique_service_array = array();
+
+				foreach($running_state_array as $services)
+				{
+					$keys = $services->hostname.' '.$services->servicename;
+
+					$key_obj->$keys += 1;
+				}
+				
+				//array counter 
+				$j = 0;
+
+				foreach($key_obj as $key => $value)
+				{
+					list($hostname, $servicename) = explode(' ', $key, 2);
+
+					$unique_service_obj->hostname = $hostname;
+					$unique_service_obj->servicename = $servicename;
+
+					$unique_service_array[$j] = $unique_service_obj;
+					unset($unique_service_obj);
+
+					$j++;
+				}
+
+				//array counter 
+				$r = 0;
+
+				$running_state_array = array_reverse($running_state_array);
+
+				foreach($unique_service_array as $unique_services)
+				{
+					$output_array = $this->_get_return_service($assume_state_downtime, $running_state_array, $unique_services->hostname, $unique_services->servicename, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_host_service);
+					$return_array[$r] = $this->_get_state_total_service_availability($output_array, $unique_services->hostname, $unique_services->servicename);
+
+					$r++;
+				}
+			}
+			else
+			{
+				$output_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $input_host, $input_service, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+
+				$return_array[$i] = $this->_get_state_total_service_availability($output_array, $input_host, $input_service);
+
+				$i++;
+
+				$service_log_array = array();
+				$service_log_obj = new StdClass();
+
+				//array_counter
+				$c = 0;
+
+				$now = (int)$pass_date;
+
+				$temp_array = array_reverse($temp_array);
+
+				foreach($temp_array as $alerts)
+				{
+					if($this->_compare_string($alerts->hostname, $input_host))
+					{
+						if($this->_compare_string($alerts->servicename, $input_service))
+						{
+							if($this->_compare_string($alerts->logtype, 'SERVICE ALERT'))
+							{
+								$duration = $now - (int)$alerts->datetime;
+								$service_log_obj->hostname = $alerts->hostname;
+								$service_log_obj->servicename = $alerts->servicename;
+								$service_log_obj->duration = abs($duration);
+								$service_log_obj->start_time = $now - $duration;
+								$service_log_obj->end_time = $now;
+								$service_log_obj->state = $alerts->state;
+								$service_log_obj->state_type = $alerts->state_type;
+								$service_log_obj->messages = $alerts->messages;
+
+								$service_log_array[$c] = $service_log_obj;
+								$c++;
+
+								$now = $now - $duration;
+													
+								unset($service_log_obj);
+							}
+						}
+					}
+				}
+
+				$return_array[$i] = $service_log_array;
+
+				$i++;
+			}
 		}
 
 		//encode the data into JSON format
@@ -495,6 +757,8 @@ class Testing extends CI_Model
 				}
 			}
 
+			$resource_array = array_reverse($resource_array);
+
 			$return_array[0] = $this->_get_return_service($assume_state_downtime, $resource_array, $input_host, $input_service, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_host_service);
 			$return_array[1] = $this->_get_state_total_service($return_array[0]);
 		}
@@ -530,6 +794,8 @@ class Testing extends CI_Model
 					unset($input_time, $event_message, $logtype, $information, $hostname, $servicename, $state, $state_type, $retry_count, $detail_message, $running_state_obj);
 				}
 			}
+
+			$running_state_array = array_reverse($running_state_array);
 
 			$return_array[0] = $this->_get_return_service($assume_state_downtime, $running_state_array, $input_host, $input_service, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_host_service);
 			$return_array[1] = $this->_get_state_total_service($return_array[0]);
@@ -2004,7 +2270,7 @@ class Testing extends CI_Model
 		return $sorted_array;
 	}
 
-		//Functions used by availability section
+	//Functions used by availability section
 	//Function used to filter data
 	private function _get_availability_host_service($input_array, $input_host, $input_service, $state_type)
 	{
