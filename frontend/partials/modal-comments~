@@ -1,0 +1,68 @@
+ <div class="modal fade" id="servicecommentmodal">
+					    <div class="modal-dialog">
+
+					      <!-- Modal content-->
+					      <div class="modal-content">
+					        <div class="modal-header">
+					          <button type="button" class="close" data-dismiss="modal">&times;</button>
+					          <h4 class="modal-title">Add Host Comment</h4>
+					        </div>
+					        <div class="modal-body">
+										<form action="" class="form-horizontal" name="inputForm" method="post" novalidate>
+
+											<div class="form-group">
+												<label for="hostName" class="col-md-4 control-label">Host Name:</label>
+												<div class="col-md-6">
+													<input ng-model="hostHostName" type="text" class="form-control input-sm" name="hostName"></input>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-xs-1 col-md-offset-3 input-sm">
+													<input ng-model="hostPersistent" type="checkbox" value="persistent" name="persistent"
+														class="form-control input-sm"></input>
+												</div>
+												<label for="persistent" class="control-label">Persistent</label>
+											</div>
+
+											<div class="form-group">
+												<label for="author" class="col-md-4 control-label">Author(Your Name):</label>
+												<div class="col-md-6">
+													<input ng-model="hostAuthor" ng-disabled="true" type="text" class="form-control input-sm" name="author"></input>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label for="comment" class="col-md-4 control-label">Comment:</label>
+												<div class="col-md-6">
+													<textarea ng-model="hostComment " class="form-control input-sm" name="comment"></textarea>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-md-6 col-md-offset-1">
+													<button type="button" class="btn btn-sm btn-info" data-target="#hostdesc" data-toggle="collapse">help</button>
+												</div>
+											</div>
+
+											<!-- collapse -->
+											<div class="collapse fade" id="hostdesc">
+												<p><small>
+													This command is used to add a comment for the specified host.
+													If you work with other administrators, you may find it useful to
+													share information about a host that is having problems if more than
+													one of you may be working on it. If you do not check the 'persistent'
+													option, the comment will be automatically be deleted the next time Nagios
+													is restarted.
+											 </small></p>
+											</div>
+										</form>
+					        </div>
+					        <div class="modal-footer">
+					          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="init()">Close</button>
+										<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="init()">Add</button>
+					        </div>
+					      </div>
+
+					    </div>
+					  </div>

@@ -247,3 +247,5 @@ angular.module('vshell.services', [])
     };
 
 });
+
+

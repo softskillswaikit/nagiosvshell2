@@ -123,26 +123,26 @@
 
             <table cellpadding="0" cellspacing="0">
               <tbody>
-                  <tr class="{{ service.active_checks_enabled | is_enabled }}">
-                      <td>Active Checks: {{ service.active_checks_enabled | is_enabled | capitalize }}</td>
-                      <td><a role="button" ng-click="toggle('active_checks', 'service.active_checks_enabled')">Toggle</a></td>
-                  </tr>
-                  <tr class="{{ service.passive_checks_enabled | is_enabled }}">
-                      <td>Passive Checks: {{ service.passive_checks_enabled | is_enabled | capitalize }}</td>
-                      <td><a role="button" ng-click="toggle('passive_checks', 'service.passive_checks_enabled')">Toggle</a></td>
-                  </tr>
-                  <tr class="{{ service.obsess_over_service | is_enabled }}">
-                      <td>Obsession: {{ service.obsess_over_service | is_enabled | capitalize }}</td>
-                      <td><a role="button" ng-click="toggle('obsess_over_service', 'service.obsess_over_service')">Toggle</a></td>
-                  </tr>
-                  <tr class="{{ service.notifications_enabled | is_enabled }}">
-                      <td>Notifications: {{ service.notifications_enabled | is_enabled | capitalize }}</td>
-                      <td><a role="button" ng-click="toggle('notifications', 'service.notifications_enabled')">Toggle</a></td>
-                  </tr>
-                  <tr class="{{ service.flap_detection_enabled | is_enabled }}">
-                      <td>Flap Detection: {{ service.flap_detection_enabled | is_enabled | capitalize }}</td>
-                      <td><a role="button" ng-click="toggle('flap_detection', 'service.flap_detection_enabled')">Toggle</a></td>
-                  </tr>
+                <tr class="{{ service.active_checks_enabled | is_enabled }}">
+                    <td>Active Checks: {{ service.active_checks_enabled | is_enabled | capitalize }}</td>
+                    <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('active_checks', service.active_checks_enabled)">Toggle</a></td>
+                </tr>
+                <tr class="{{ service.passive_checks_enabled | is_enabled }}">
+                    <td>Passive Checks: {{ service.passive_checks_enabled | is_enabled | capitalize }}</td>
+                    <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('passive_checks', service.passive_checks_enabled)">Toggle</a></td>
+                </tr>
+                <tr class="{{ service.obsess | is_enabled }}">
+                    <td>Obsession: {{ service.obsess | is_enabled | capitalize }}</td>
+                    <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('obsess', service.obsess)">Toggle</a></td>
+                </tr>
+                <tr class="{{ service.notifications_enabled | is_enabled }}">
+                    <td>Notifications: {{ service.notifications_enabled | is_enabled | capitalize }}</td>
+                    <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('notifications', service.notifications_enabled)">Toggle</a></td>
+                </tr>
+                <tr class="{{ service.flap_detection_enabled | is_enabled }}">
+                    <td>Flap Detection: {{ service.flap_detection_enabled | is_enabled | capitalize }}</td>
+                    <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('flap_detection', service.flap_detection_enabled)">Toggle</a></td>
+                </tr>
               </tbody>
             </table>
 
@@ -231,7 +231,9 @@
           <tfoot>
               <tr>
                   <td colspan="4">
-                    <a class="add-comment no-margin" role="button" data-toggle="modal" data-target="#serviceComment" ng-click="addComment('svc')">Add Comment</a>
+                    <a class="add-comment no-margin" role="button" data-toggle="modal" data-target="#serviceComment1" ng-click="addComment('svc')">Add Comment</a>
+                    <div class="add-comment no-margin"> | </div>
+                    <a class="add-comment no-margin" role="button" data-toggle="modal" data-target="#delete-all-comment" ng-click="deleteAllComment('service')">Delete All Comments</a>
                   </td>
               </tr>
           </tfoot>
@@ -249,7 +251,7 @@
         </table>
 
         </div>
-    
+
     <div ng-include="'frontend/partials/modals.html'"</div>
 </div>
 

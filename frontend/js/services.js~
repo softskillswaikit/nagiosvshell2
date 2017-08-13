@@ -4,44 +4,24 @@ angular.module('vshell.services', [])
 
 .value('authors', 'Mike Guthrie and Chris Laskey')
 
-.factory("sharedService",["$q", "$modal", function ($q, $modal)
-{
-    var _showConfirmDialog = function (title, message)
-    {
-        var defer = $q.defer();
+.factory('servicea', function($http, $timeout, $interval, paths) {
+});
+/*.factory('dataService', function(){
+      var savedData = {}
+      
+      function set(data) {
+        savedData = data;
+      }
 
-        var modalInstance = $modal.open({
-            animation: true,
-            size: "sm",
-            templateUrl: 'ConfirmationBox.html',
-            controller: function ($scope, $modalInstance)
-            {
-                $scope.title = title;
-                $scope.message = message;
+     function get() {
+       return savedData;
+     }
 
-                $scope.ok = function ()
-                {
-                    modalInstance.close();
-                    defer.resolve();
-                };
-
-                $scope.cancel = function ()
-                {
-                    $modalInstance.dismiss();
-                    defer.reject();
-                };
-            }
-        });
-
-        return defer.promise;
-    }
-
-    return {
-
-        showConfirmDialog: _showConfirmDialog
-    };
-
-}]);
+     return {
+        set: set,
+        get: get
+   }
+});*/
 
 .factory('async', function($http, $timeout, $interval, paths) {
 
@@ -285,4 +265,5 @@ angular.module('vshell.services', [])
     };
 
 });
+
 

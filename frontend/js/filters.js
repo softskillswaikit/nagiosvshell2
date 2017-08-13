@@ -37,7 +37,7 @@ angular.module('vshell.filters', [])
           return 'Fri';
         else if(input == 6)
           return 'Sat';
-        else
+        else 
           return 'Unknown';
     };
 })
@@ -68,7 +68,7 @@ angular.module('vshell.filters', [])
         return 'Nov';
       else if(input == 11)
         return 'Dec';
-      else
+      else 
         return 'Unknown';
     };
 })
@@ -604,3 +604,4 @@ angular.module('vshell.filters', [])
         return input;
     };
 });
+

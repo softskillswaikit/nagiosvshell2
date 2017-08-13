@@ -6,11 +6,11 @@
 
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
-<div id="content" class="clearfix" ng-controller="AlertHistogramCtrl" ng-init="createReport()">
+<div id="content" class="clearfix" ng-controller="AlertHistogramCtrl" ng-init="showReport()">
 
     <h1>Alert Histogram Report</h1>
 
-		<div class="table-container full-width" ng-if="report.reportType=='Host'">
+		<div class="table-container full-width" ng-if="type == 1">
 
  			<h3>Host Alert Histogram</h3>
 
@@ -36,25 +36,25 @@
              </thead>
              <tbody>
                  <tr>
-                   <td>Recovery(Up):</td>
-                   <td>0</td>
-                   <td>0</td>
-                   <td>0</td>
-                   <td>0.00</td>
+                   <td class="active hosts-up">Recovery(Up):</td>
+                   <td class="active hosts-up">0</td>
+                   <td class="active hosts-up">0</td>
+                   <td class="active hosts-up">0</td>
+                   <td class="active hosts-up">0.00</td>
                  </tr>
                  <tr>
-                   <td>Down:</td>
-                   <td>0</td>
-                   <td>0</td>
-                   <td>0</td>
-                   <td>0.00</td>
+                   <td class="active hosts-down">Down:</td>
+                   <td class="active hosts-down">0</td>
+                   <td class="active hosts-down">0</td>
+                   <td class="active hosts-down">0</td>
+                   <td class="active hosts-down">0.00</td>
                  </tr>
                  <tr>
-                   <td>Unreachable:</td>
-                   <td>0</td>
-                   <td>0</td>
-                   <td>0</td>
-                   <td>0.00</td>
+                   <td class="active hosts-unreachable">Unreachable:</td>
+                   <td class="active hosts-unreachable">0</td>
+                   <td class="active hosts-unreachable">0</td>
+                   <td class="active hosts-unreachable">0</td>
+                   <td class="active hosts-unreachable">0.00</td>
                  </tr>
              </tbody>
          </table>
@@ -62,7 +62,7 @@
 
     </div>
 
-    <div class="table-container full-width" ng-if="true">
+    <div class="table-container full-width" ng-if="type != 1">
 
     	<h3>Service Alert Histogram</h3>
 
@@ -89,32 +89,32 @@
             </thead>
             <tbody>
                 <tr>
-                  <td>Recovery(Ok):</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0.00</td>
+                  <td class="active services-ok">Recovery(Ok):</td>
+                  <td class="active services-ok">0</td>
+                  <td class="active services-ok">0</td>
+                  <td class="active services-ok">0</td>
+                  <td class="active services-ok">0.00</td>
                 </tr>
                 <tr>
-                  <td>Warning:</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0.00</td>
+                  <td class="active services-warning">Warning:</td>
+                  <td class="active services-warning">0</td>
+                  <td class="active services-warning">0</td>
+                  <td class="active services-warning">0</td>
+                  <td class="active services-warning">0.00</td>
                 </tr>
                 <tr>
-                  <td>Unknown:</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0.00</td>
+                  <td class="active services-unknown">Unknown:</td>
+                  <td class="active services-unknown">0</td>
+                  <td class="active services-unknown">0</td>
+                  <td class="active services-unknown">0</td>
+                  <td class="active services-unknown">0.00</td>
                 </tr>
                 <tr>
-                  <td>Critical:</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0.00</td>
+                  <td class="active services-critical">Critical:</td>
+                  <td class="active servicescritical">0</td>
+                  <td class="active services-critical">0</td>
+                  <td class="active services-critical">0</td>
+                  <td class="active services-critical">0.00</td>
                 </tr>
             </tbody>
         </table>
@@ -128,7 +128,7 @@
     <h3>View</h3>
 
 			<!--show if a single host is selected-->
-            <table cellspacing="0" cellpadding="0" ng-if="report.reportType=='Host'">
+            <table cellspacing="0" cellpadding="0" ng-if="yype == 1">
                 <tbody>
                     <tr class="footable-odd">
                         <td><a target="nagios" ng-href="{{}}">View Trends For This Host</a></td>
@@ -149,7 +149,7 @@
             </table>
 
 			<!--show if a single service is selected-->
-      <table cellspacing="0" cellpadding="0" ng-if="report.reportType=='Service'">
+      <table cellspacing="0" cellpadding="0" ng-if="type != 1">
                 <tbody>
                     <tr class="footable-odd">
                         <td><a target="nagios" ng-href="{{}}">View Trends For This Service</a></td>

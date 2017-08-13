@@ -1115,8 +1115,8 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('TrendsCtrl', ['$scope', '$routeParams', '$filter', 'async', '$timeout', '$window',
-    function($scope, $routeParams, $filter, async, $timeout, $window) {
+.controller('TrendsCtrl', ['$scope', '$routeParams', '$filter', 'async', '$timeout', '$window','$rootScope',
+    function($scope, $routeParams, $filter, async, $timeout, $window, $rootScope) {
 
         $scope.init = function() {
           //get component name
@@ -1135,58 +1135,72 @@ angular.module('vshell.controllers', [])
           $scope.today = new Date();
           $scope.todayString = $filter('date')(Date.now(), 'yyyy-MM-dd');
 
-          $scope.reportType = 'Host';
-    			$timeout(function(){
-            $scope.reportHost = $scope.name.host[0];
-            $scope.reportService = $scope.name.service[0].service;
-          }, 1000);
+          $scope.reportType = 1;
+    			$timeout(function(){$scope.reportHost = $scope.name.host[0];}, 1000);
           $scope.startDate =  $scope.todayString;
           $scope.endDate =  $scope.todayString;
-    			$scope.reportPeriod = 'Last 7 Days';
-    			$scope.reportTimePeriod = 'None';
-    			$scope.assumeInitialStates = 'Yes';
-    			$scope.assumeStateRetention = 'Yes';
-    			$scope.assumeDowntimeStates = 'Yes';
-    			$scope.includeSoftStates = 'No';
-    			$scope.firstAssumedHostState = 'Unspecified';
-    			$scope.firstAssumedServiceState = 'Unspecified';
+    			$scope.reportPeriod = 'LAST 7 DAYS';
+    			$scope.assumeInitialStates = 'true';
+    			$scope.assumeStateRetention = 'true';
+    			$scope.assumeDowntimeStates = 'true';
+    			$scope.includeSoftStates = 'false';
+    			$scope.firstAssumedHostState = 'UNSPECIFIED';
+    			$scope.firstAssumedServiceState = 'UNSPECIFIED';
     			$scope.backtrackedArchives = 4;
         };
 
-        $scope.createReport = function(){
 
-          $window.location.href="#/report/trends/report";
+        $scope.createReport = function(){
 
           var startUnix = parseInt((new Date($scope.startDate).getTime() / 1000).toFixed(0));
           var endUnix = parseInt((new Date($scope.endDate).getTime() / 1000).toFixed(0));
-          console.log("reportType");
-          console.log($scope.reportType);
-          console.log("reportHost");
-          console.log($scope.reportHost);
-          console.log("reportService");
-          console.log($scope.reportService);
-          console.log("hostresource");
-          console.log($scope.reportHostResource);
-          console.log("reportPeriod");
-          console.log($scope.reportPeriod);
-          console.log("startdate");
-          console.log($scope.startDate);
-          console.log("backtrackedArchives");
-          console.log($scope.backtrackedArchives);
+          var service = $scope.reportService;
 
-          $scope.report =
-            {
-              host : "app_server",
-              reportType : "Host",
+          if($scope.reportType == 1){
+             service = 'ALL';
+          }
+          if($scope.reportType == 3){
+              service = $scope.reportHostResource;
+          }
 
-                time : ["Mon", "Tue", "Wed", "Thu", "Fri"]
-            };
+          if($scope.reportPeriod != 'CUSTOM'){
+             endUnix = ' ';
+          }
+
+          //get component name
+          var options = {
+              name: 'trend',
+              url: 'trend' + '/' + $scope.reportType + '/' + $scope.reportHost + '/' + service + '/'
+                       + $scope.reportPeriod + '/' + startUnix + '/' + endUnix + '/' + $scope.assumeInitialStates + '/'
+                       + $scope.assumeStateRetention + '/' + $scope.assumeDowntimeStates + '/' + $scope.includeSoftStates + '/'
+                       + $scope.firstAssumedHostState + '/' + $scope.firstAssumedServiceState,
+              queue: 'main'
+          };
+
+          async.api($scope, options);
+
+          $scope.callback = function(data, status, headers, config) {
+            if(config != null){
+              if(config.url.includes("trend")){
+
+                $rootScope.data = data;
+                $rootScope.type = $scope.reportType;
+                $rootScope.host = $scope.reportHost;
+                $rootScope.service = service;
+
+                $window.location.href="#/report/trends/report";
+              }
+            }
+          };
+        };
+
+        $scope.showReport = function(){
 
           $scope.hostdata = {
             "chart": {
-                "caption": "State History For Host " + $scope.report['host'],
+                "caption": "State History For Host " + $rootScope.host,
                 "captionfontsize": "16",
-                "subCaption": "From " + $scope.report['time'][0] + " To " + $scope.report['time'][4],
+                "subCaption": "From " + " To ",
                 "xaxisname": "Time",
                 "yaxisname": " ",
                 "yaxisnamepadding": "80",
@@ -1204,124 +1218,19 @@ angular.module('vshell.controllers', [])
                     {
                         "id": "yaxisline",
                         "items": [
-                            {
-                                "id": "line",
-                                "type": "line",
-                                "color": "#1a1a1a",
-                                "x": "$canvasstartx - 5",
-                                "y": "$canvasstarty",
-                                "tox": "$canvasstartx - 5",
-                                "toy": "$canvasendy",
-                                "thickness": "1"
-                            },
-                            {
-                                "id": "pending-label-bg",
-                                "type": "rectangle",
-                                "fillcolor": "#858585",
-                                "x": "$canvasstartx - 85",
-                                "tox": "$canvasstartx - 15",
-                                "y": "$canvasendy - 10",
-                                "toy": "$canvasendy + 10",
-                                "radius": "3"
-                            },
-                            {
-                                "id": "pending-dot",
-                                "type": "circle",
-                                "radius": "5",
-                                "x": "$canvasstartx - 5",
-                                "y": "$canvasendy",
-                                "color": "#858585"
-                            },
-                            {
-                                "id": "pending-label",
-                                "type": "text",
-                                "fillcolor": "#ffffff",
-                                "text": "Pending",
-                                "x": "$canvasstartx - 50",
-                                "y": "$canvasendy",
-                                "fontsize": "13"
-                            },
-                            {
-                                "id": "unreachable-label-bg",
-                                "type": "rectangle",
-                                "fillcolor": "#ee8425",
-                                "x": "$canvasstartx - 102",
-                                "tox": "$canvasstartx - 15",
-                                "y": "$canvasendy - 69",
-                                "toy": "$canvasendy - 49",
-                                "radius": "3"
-                            },
-                            {
-                                "id": "unreachable-dot",
-                                "type": "circle",
-                                "radius": "5",
-                                "x": "$canvasstartx - 5",
-                                "y": "$canvasendy - 59",
-                                "color": "#ee8425"
-                            },
-                            {
-                                "id": "unreachable-label",
-                                "type": "text",
-                                "fillcolor": "#ffffff",
-                                "text": "Unreachable",
-                                "x": "$canvasstartx - 59",
-                                "y": "$canvasendy - 59",
-                                "fontsize": "13"
-                            },
-                            {
-                                "id": "down-label-bg",
-                                "type": "rectangle",
-                                "fillcolor": "#d24555",
-                                "x": "$canvasstartx - 85",
-                                "tox": "$canvasstartx - 15",
-                                "y": "$canvasendy - 127",
-                                "toy": "$canvasendy - 107",
-                                "radius": "3"
-                            },
-                            {
-                                "id": "down-dot",
-                                "type": "circle",
-                                "radius": "5",
-                                "x": "$canvasstartx - 5",
-                                "y": "$canvasendy - 117",
-                                "color": "#d24555"
-                            },
-                            {
-                                "id": "down-label",
-                                "type": "text",
-                                "fillcolor": "#ffffff",
-                                "text": "Down",
-                                "x": "$canvasstartx - 50",
-                                "y": "$canvasendy - 117",
-                                "fontsize": "13"
-                            },
-                            {
-                                "id": "up-label-bg",
-                                "type": "rectangle",
-                                "fillcolor": "#6cb22f",
-                                "x": "$canvasstartx - 88",
-                                "tox": "$canvasstartx - 15",
-                                "y": "$canvasendy - 185",
-                                "toy": "$canvasendy - 165",
-                                "radius": "3"
-                            },
-                            {
-                                "id": "up-dot",
-                                "type": "circle",
-                                "radius": "5",
-                                "x": "$canvasstartx - 5",
-                                "y": "$canvasendy - 175",
-                                "color": "#6cb22f"
-                            },
-                            {
-                                "id": "up-label",
-                                "type": "text",
-                                "fillcolor": "#ffffff",
-                                "text": "Up",
-                                "x": "$canvasstartx - 52",
-                                "y": "$canvasendy - 175",
-                                "fontsize": "13"
-                            }
+                            {"id": "line","type": "line","color": "#1a1a1a","x": "$canvasstartx - 5","y": "$canvasstarty","tox": "$canvasstartx - 5","toy": "$canvasendy","thickness": "1"},
+                            {"id": "pending-label-bg","type": "rectangle","fillcolor": "#858585","x": "$canvasstartx - 85","tox": "$canvasstartx - 15","y": "$canvasendy - 10","toy": "$canvasendy + 10","radius": "3"},
+                            {"id": "pending-dot","type": "circle","radius": "5","x": "$canvasstartx - 5","y": "$canvasendy","color": "#858585"},
+                            {"id": "pending-label","type": "text","fillcolor": "#ffffff","text": "Pending","x": "$canvasstartx - 50","y": "$canvasendy","fontsize": "13"},
+                            {"id": "unreachable-label-bg","type": "rectangle","fillcolor": "#ee8425","x": "$canvasstartx - 102","tox": "$canvasstartx - 15","y": "$canvasendy - 69","toy": "$canvasendy - 49","radius": "3"},
+                            {"id": "unreachable-dot","type": "circle","radius": "5","x": "$canvasstartx - 5","y": "$canvasendy - 59","color": "#ee8425"},
+                            {"id": "unreachable-label","type": "text","fillcolor": "#ffffff","text": "Unreachable","x": "$canvasstartx - 59","y": "$canvasendy - 59","fontsize": "13"},
+                            {"id": "down-label-bg","type": "rectangle","fillcolor": "#d24555","x": "$canvasstartx - 85","tox": "$canvasstartx - 15","y": "$canvasendy - 127","toy": "$canvasendy - 107","radius": "3"},
+                            {"id": "down-dot","type": "circle","radius": "5","x": "$canvasstartx - 5","y": "$canvasendy - 117","color": "#d24555"},
+                            {"id": "down-label","type": "text","fillcolor": "#ffffff","text": "Down","x": "$canvasstartx - 50","y": "$canvasendy - 117","fontsize": "13"},
+                            {"id": "up-label-bg","type": "rectangle","fillcolor": "#6cb22f","x": "$canvasstartx - 88","tox": "$canvasstartx - 15","y": "$canvasendy - 185","toy": "$canvasendy - 165","radius": "3"},
+                            {"id": "up-dot","type": "circle","radius": "5","x": "$canvasstartx - 5","y": "$canvasendy - 175","color": "#6cb22f"},
+                            {"id": "up-label","type": "text","fillcolor": "#ffffff","text": "Up","x": "$canvasstartx - 52","y": "$canvasendy - 175","fontsize": "13"}
                         ]
                     }
                 ]
@@ -1344,9 +1253,9 @@ angular.module('vshell.controllers', [])
 
           $scope.servicedata = {
             "chart": {
-                "caption": "State History For Service " + $scope.report['host'],
+                "caption": "State History For Service " + $rootScope.host,
                 "captionfontsize": "16",
-                "subCaption": "From " + $scope.report['time'][0] + " To " + $scope.report['time'][4],
+                "subCaption": "From " + " To ",
                 "xaxisname": "Time",
                 "yaxisname": " ",
                 "yaxisnamepadding": "80",
@@ -1364,158 +1273,29 @@ angular.module('vshell.controllers', [])
                     {
                         "id": "yaxisline",
                         "items": [
-                            {
-                                "id": "line",
-                                "type": "line",
-                                "color": "#1a1a1a",
-                                "x": "$canvasstartx - 5",
-                                "y": "$canvasstarty",
-                                "tox": "$canvasstartx - 5",
-                                "toy": "$canvasendy",
-                                "thickness": "1"
-                            },
-                            {
-                                "id": "pending-label-bg",
-                                "type": "rectangle",
-                                "fillcolor": "#858585",
-                                "x": "$canvasstartx - 88",
-                                "tox": "$canvasstartx - 15",
-                                "y": "$canvasendy - 10",
-                                "toy": "$canvasendy + 10",
-                                "radius": "3"
-                            },
-                            {
-                                "id": "pending-dot",
-                                "type": "circle",
-                                "radius": "5",
-                                "x": "$canvasstartx - 5",
-                                "y": "$canvasendy",
-                                "color": "#858585"
-                            },
-                            {
-                                "id": "pending-label",
-                                "type": "text",
-                                "fillcolor": "#ffffff",
-                                "text": "Pending",
-                                "x": "$canvasstartx - 50",
-                                "y": "$canvasendy",
-                                "fontsize": "13"
-                            },
-                            {
-                                "id": "critical-label-bg",
-                                "type": "rectangle",
-                                "fillcolor": "#d24555",
-                                "x": "$canvasstartx - 88",
-                                "tox": "$canvasstartx - 15",
-                                "y": "$canvasendy - 69",
-                                "toy": "$canvasendy - 49",
-                                "radius": "3"
-                            },
-                            {
-                                "id": "critical-dot",
-                                "type": "circle",
-                                "radius": "5",
-                                "x": "$canvasstartx - 5",
-                                "y": "$canvasendy - 59",
-                                "color": "#d24555"
-                            },
-                            {
-                                "id": "critical-label",
-                                "type": "text",
-                                "fillcolor": "#ffffff",
-                                "text": "Critical",
-                                "x": "$canvasstartx - 52",
-                                "y": "$canvasendy - 59",
-                                "fontsize": "13"
-                            },
-                            {
-                                "id": "unknown-label-bg",
-                                "type": "rectangle",
-                                "fillcolor": "#ee8425",
-                                "x": "$canvasstartx - 88",
-                                "tox": "$canvasstartx - 15",
-                                "y": "$canvasendy - 127",
-                                "toy": "$canvasendy - 107",
-                                "radius": "3"
-                            },
-                            {
-                                "id": "unknown-dot",
-                                "type": "circle",
-                                "radius": "5",
-                                "x": "$canvasstartx - 5",
-                                "y": "$canvasendy - 117",
-                                "color": "#ee8425"
-                            },
-                            {
-                                "id": "unknown-label",
-                                "type": "text",
-                                "fillcolor": "#ffffff",
-                                "text": "Unknown",
-                                "x": "$canvasstartx - 50",
-                                "y": "$canvasendy - 117",
-                                "fontsize": "13"
-                            },
-                            {
-                                "id": "warning-label-bg",
-                                "type": "rectangle",
-                                "fillcolor": "#dba102",
-                                "x": "$canvasstartx - 88",
-                                "tox": "$canvasstartx - 15",
-                                "y": "$canvasendy - 185",
-                                "toy": "$canvasendy - 165",
-                                "radius": "3"
-                            },
-                            {
-                                "id": "warning-dot",
-                                "type": "circle",
-                                "radius": "5",
-                                "x": "$canvasstartx - 5",
-                                "y": "$canvasendy - 175",
-                                "color": "#dba102"
-                            },
-                            {
-                                "id": "warning-label",
-                                "type": "text",
-                                "fillcolor": "#ffffff",
-                                "text": "Warning",
-                                "x": "$canvasstartx - 52",
-                                "y": "$canvasendy - 175",
-                                "fontsize": "13"
-                            },
-                            {
-                                "id": "ok-label-bg",
-                                "type": "rectangle",
-                                "fillcolor": "#6cb22f",
-                                "x": "$canvasstartx - 88",
-                                "tox": "$canvasstartx - 15",
-                                "y": "$canvasendy - 243",
-                                "toy": "$canvasendy - 223",
-                                "radius": "3"
-                            },
-                            {
-                                "id": "ok-dot",
-                                "type": "circle",
-                                "radius": "5",
-                                "x": "$canvasstartx - 5",
-                                "y": "$canvasendy - 233",
-                                "color": "#6cb22f"
-                            },
-                            {
-                                "id": "ok-label",
-                                "type": "text",
-                                "fillcolor": "#ffffff",
-                                "text": "Ok",
-                                "x": "$canvasstartx - 52",
-                                "y": "$canvasendy - 233",
-                                "fontsize": "13"
-                            }
+                            {"id": "line","type": "line","color": "#1a1a1a","x": "$canvasstartx - 5","y": "$canvasstarty","tox": "$canvasstartx - 5","toy": "$canvasendy","thickness": "1"},
+                            {"id": "pending-label-bg","type": "rectangle","fillcolor": "#858585","x": "$canvasstartx - 88","tox": "$canvasstartx - 15","y": "$canvasendy - 10","toy": "$canvasendy + 10","radius": "3"},
+                            {"id": "pending-dot","type": "circle","radius": "5","x": "$canvasstartx - 5","y": "$canvasendy","color": "#858585"},
+                            {"id": "pending-label","type": "text","fillcolor": "#ffffff","text": "Pending","x": "$canvasstartx - 50","y": "$canvasendy","fontsize": "13"},
+                            {"id": "critical-label-bg","type": "rectangle","fillcolor": "#d24555","x": "$canvasstartx - 88","tox": "$canvasstartx - 15","y": "$canvasendy - 69","toy": "$canvasendy - 49","radius": "3"},
+                            {"id": "critical-dot","type": "circle","radius": "5","x": "$canvasstartx - 5","y": "$canvasendy - 59","color": "#d24555"},
+                            {"id": "critical-label","type": "text","fillcolor": "#ffffff","text": "Critical","x": "$canvasstartx - 52","y": "$canvasendy - 59","fontsize": "13"},
+                            {"id": "unknown-label-bg","type": "rectangle","fillcolor": "#ee8425","x": "$canvasstartx - 88","tox": "$canvasstartx - 15","y": "$canvasendy - 127","toy": "$canvasendy - 107","radius": "3"},
+                            {"id": "unknown-dot","type": "circle","radius": "5","x": "$canvasstartx - 5","y": "$canvasendy - 117","color": "#ee8425"},
+                            {"id": "unknown-label","type": "text","fillcolor": "#ffffff","text": "Unknown","x": "$canvasstartx - 50","y": "$canvasendy - 117","fontsize": "13"},
+                            {"id": "warning-label-bg","type": "rectangle","fillcolor": "#dba102","x": "$canvasstartx - 88","tox": "$canvasstartx - 15","y": "$canvasendy - 185","toy": "$canvasendy - 165","radius": "3"},
+                            {"id": "warning-dot","type": "circle","radius": "5","x": "$canvasstartx - 5","y": "$canvasendy - 175","color": "#dba102"},
+                            {"id": "warning-label","type": "text","fillcolor": "#ffffff","text": "Warning","x": "$canvasstartx - 52","y": "$canvasendy - 175","fontsize": "13"},
+                            {"id": "ok-label-bg","type": "rectangle","fillcolor": "#6cb22f","x": "$canvasstartx - 88","tox": "$canvasstartx - 15","y": "$canvasendy - 243","toy": "$canvasendy - 223","radius": "3"},
+                            {"id": "ok-dot","type": "circle","radius": "5","x": "$canvasstartx - 5","y": "$canvasendy - 233","color": "#6cb22f"},
+                            {"id": "ok-label","type": "text","fillcolor": "#ffffff","text": "Ok","x": "$canvasstartx - 52","y": "$canvasendy - 233","fontsize": "13"}
                         ]
                     }
                 ]
             },
             "dataset": [
                 {
-                    "seriesname": "Host State Trends",
+                    "seriesname": "Service State Trends",
                     "data": [
                         {"label" : "Mon","value": "3"},
                         {"label" : "Tue","value": "3"},
@@ -1528,7 +1308,11 @@ angular.module('vshell.controllers', [])
                 }
             ]
           }
+
+
         };
+
+
     }
 ])
 
@@ -1572,14 +1356,10 @@ angular.module('vshell.controllers', [])
 
          var startUnix = parseInt((new Date($scope.startDate).getTime() / 1000).toFixed(0));
          var endUnix = parseInt((new Date($scope.endDate).getTime() / 1000).toFixed(0));
-         var host = $scope.reportHost;
          var service = $scope.reportService;
 
          if($scope.reportType == 1){
             service = 'ALL';
-          }
-          if($scope.reportType == 2){
-             host = 'ALL';
           }
           if($scope.reportType == 3){
              service = $scope.reportHostResource;
@@ -1592,7 +1372,7 @@ angular.module('vshell.controllers', [])
          //get component name
          var options = {
              name: 'alerthistogram',
-             url: 'alerthistogram' + '/' + $scope.reportType + '/' + host + '/' + service + '/'
+             url: 'alerthistogram' + '/' + $scope.reportType + '/' + $scope.reportHost + '/' + service + '/'
                       + $scope.reportPeriod + '/' + startUnix + '/' + endUnix + '/' + $scope.statisticsBreakdown + '/'
                       + $scope.eventsToGraph + '/' + $scope.stateTypesToGraph + '/' + $scope.assumeStateRetention + '/'
                       + $scope.initialStatesLogged + '/' + $scope.ignoreRepeatedStates,
@@ -1821,7 +1601,7 @@ angular.module('vshell.controllers', [])
         };
         async.api($scope, options1);
 
-        $scope.hostName = $scope.name.host[0];
+        $timeout(function(){$scope.hostName = $scope.name.host[0];}, 500);
         //$scope.service = $scope.name.service[0].service;
         $scope.persistent = true;
         $scope.comment = '';
@@ -1946,8 +1726,8 @@ angular.module('vshell.controllers', [])
           $scope.nowString = $filter('date')(Date.now(), 'yyyy-MM-ddTHH:mm');
 
           $scope.hostName = $scope.name.host[0];
-          $scope.comment = '';
-          $scope.triggeredBy = 'N/A';
+          $scope.comment = null;
+          $scope.triggeredBy = 0;
           $scope.startDate = $scope.nowString;
           $scope.endDate = $scope.nowString;
           $scope.type = 'true';
@@ -1974,28 +1754,30 @@ angular.module('vshell.controllers', [])
 
           $scope.reset();
 
-          $scope.schedule = function(hostName, service, start, end, type, triggerID, durationHour, durationMin, author, comment){
+          $scope.schedule = function(hostName, service, start, end, fixed, triggerID, durationHour, durationMin, author, comment){
+            if(service == '')
+              service = null;
 
-            var duration  = durationHour * 60 + durationMin;
             var startUnix = parseInt((new Date(start).getTime() / 1000).toFixed(0));
             var endUnix = parseInt((new Date(end).getTime() / 1000).toFixed(0));
-            console.log("host=" + hostName);
-            console.log("service=" + service);
-            console.log("start=" + startUnix);
-            console.log("end=" + endUnix);
-            console.log("type=" + type);
-            console.log("triggerID=" + triggerID);
-            console.log("durationHour=" + durationHour);
-            console.log("durationMin=" + durationMin);
-            console.log("duration=" + duration);
-            console.log("author=" + author);
-            console.log("comment=" + comment);
-            //encodeURIComponent(triggerID)
+
+            var duration;
+            if(fixed == "true"){
+                var difference  = endUnix - startUnix;
+                var minutesDifference = Math.floor(difference/60);
+                duration = minutesDifference;
+            }
+            else
+              duration  = durationHour * 60 + durationMin;
+
+
+            console.log("Start = " + start);
+            console.log("new start = " + new Date(startUnix * 1000));
 
             var options = {
                 name: 'scheduledowntime',
                 url: 'scheduledowntime/'+ scheduletype + '/' + hostName + '/' + service + '/'+ startUnix
-                  + '/' + endUnix + '/' + type + '/' + encodeURIComponent(triggerID) + '/' + duration
+                  + '/' + endUnix + '/' + fixed + '/' + triggerID + '/' + duration
                   + '/' + author + '/' + comment,
                 queue: 'main'
             };
@@ -2079,3 +1861,4 @@ angular.module('vshell.controllers', [])
     }
 ])
 ;
+

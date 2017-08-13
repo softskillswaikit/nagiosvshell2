@@ -6,7 +6,7 @@
 
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
-<div id="content" class="clearfix" ng-controller="TrendsCtrl" ng-init="init();">
+<div id="content" class="clearfix" ng-controller="TrendsCtrl" ng-init="init()">
 
 	<h1>Create State Trends Report</h1>
 
@@ -23,20 +23,20 @@
 							<label for="reportType" class="col-md-4 control-label">Report Type:</label>
 							<div class="col-md-6">
 								<select ng-model="reportType" name="reportType" class="form-control" required>
-									<option value="Host">Host</option>
-									<option value="Service">Service</option>
-									<option value="Host Resource">Host Resource</option>
-									<option value="Service Running State">Service Running State</option>
+									<option value=1>Host</option>
+									<option value=2>Service</option>
+									<option value=3>Host Resource</option>
+									<option value=4>Service Running State</option>
 								</select>
 								<span style="color:red" ng-show="inputForm.reportHostResource.$dirty && inputForm.reportType.$invalid">
 								<span ng-show="inputForm.reportType.$error.required">This field is required.</span></span>
 							</div>
 						</div>
 
-						<div class="form-group" ng-show="reportType!='Service'">
+						<div class="form-group">
 							<label for="reportHost" class="col-md-4 control-label">Select Host:</label>
 							<div class="col-md-6">
-								<select ng-model="reportHost" name="reportHost" class="form-control" ng-required="reportType!='Service'">
+								<select ng-model="reportHost" ng-change="reportService = '' && reportHostResource = ''" name="reportHost" class="form-control" ng-required="reportType!=2">
 									 <option ng-repeat="name in name.host" value="{{name}}">{{name}}</option>
 								</select>
 								<span style="color:red" ng-show="inputForm.reportHost.$dirty && inputForm.reportHost.$invalid">
@@ -44,21 +44,21 @@
 							</div>
 						</div>
 
-						<div class="form-group" ng-show="reportType=='Service' || reportType=='Service Running State'">
+						<div class="form-group" ng-show="reportType == 2 || reportType == 4">
 							<label for="reportService" class="col-md-4 control-label">Select Service:</label>
 							<div class="col-md-6">
-								<select ng-model="reportService" name="reportService" class="form-control" ng-required="reportType=='Service' || reportType=='Service Running State'">
-									 <option ng-repeat="name in name.service" value="{{name.service}}">{{name.service}}</option>
+								<select ng-model="reportService" name="reportService" class="form-control" ng-required="reportType == 2 || reportType == 4">
+									 <option ng-repeat="name in name.service | filter:{host:reportHost}:true" value="{{name.service}}">{{name.service}}</option>
 								</select>
-								<span style="color:red" ng-show="inputForm.reportService.$dirty && inputForm.reportService.$invalid">
+								<span style="color:red" ng-show="inputForm.reportService.$invalid">
 								<span ng-show="inputForm.reportService.$error.required">This field is required.</span></span>
 							</div>
 						</div>
 
-						<div class="form-group" ng-show="reportType=='Host Resource'">
+						<div class="form-group" ng-show="reportType == 3">
 							<label for="reportHostResource" class="col-md-4 control-label">Select Host Resource:</label>
 							<div class="col-md-6">
-								<select ng-model="reportHostResource" name="reportHostResource" class="form-control" ng-required="reportType=='Host Resource'">
+								<select ng-model="reportHostResource" name="reportHostResource" class="form-control" ng-required="reportType == 3">
 									 <option ng-repeat="name in name.hostresource | filter:{host:reportHost}:true" value="{{name.service}}">{{name.service}}</option>
 								</select>
 								<span style="color:red" ng-show="inputForm.reportHostResource.$invalid">
@@ -70,37 +70,37 @@
 							<label for="reportPeriod" class="col-md-4 control-label">Report Period:</label>
 							<div class="col-md-6">
 								<select ng-model="reportPeriod" name="reportPeriod" class="form-control" required>
-									<option value="Today">Today</option>
-									<option value="Last 24 Hours">Last 24 Hours</option>
-									<option value="Yesterday">Yesterday</option>
-									<option value="This Week">This Week</option>
-									<option value="Last 7 Days">Last 7 Days</option>
-									<option value="Last Week">Last Week</option>
-									<option value="This Month">This Month</option>
-									<option value="Last 31 Days">Last 31 Days</option>
-									<option value="Last Month">Last Month</option>
-									<option value="This Year">This Year</option>
-									<option value="Last Year">Last Year</option>
-									<option value="*Custom Report Period*">*Custom Report Period*</option>
+									<option value="TODAY">Today</option>
+									<option value="LAST 24 HOURS">Last 24 Hours</option>
+									<option value="YESTERDAY">Yesterday</option>
+									<option value="THIS WEEK">This Week</option>
+									<option value="LAST 7 DAYS">Last 7 Days</option>
+									<option value="LAST WEEK">Last Week</option>
+									<option value="THIS MONTH">This Month</option>
+									<option value="LAST 31 DAYS">Last 31 Days</option>
+									<option value="LAST MONTH">Last Month</option>
+									<option value="THIS YEAR">This Year</option>
+									<option value="LAST YEAR">Last Year</option>
+									<option value="CUSTOM">*Custom Report Period*</option>
 								</select>
 								<span style="color:red" ng-show="inputForm.reportPeriod.$invalid">
 								<span ng-show="inputForm.reportPeriod.$error.required">This field is required.</span></span>
 							</div>
 						</div>
 
-						<div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'">
+						<div class="form-group" ng-show="reportPeriod=='CUSTOM'">
 							<label for="startDate" class="col-md-4 control-label">Start Date:</label>
 							<div class="col-md-6">
-								<input type="date" ng-model="startDate" max="{{today | date: 'yyyy-MM-dd'}}" name="startDate" class="form-control" ng-required="reportPeriod=='*Custom Report Period*'"></input>
+								<input type="date" ng-model="startDate" max="{{today | date: 'yyyy-MM-dd'}}" name="startDate" class="form-control" ng-required="reportPeriod=='CUSTOM'"></input>
 								<span style="color:red" ng-show="inputForm.startDate.$invalid">
 								<span ng-show="inputForm.startDate.$error.required">This field is required.</span></span>
 							</div>
 						</div>
 
-						<div class="form-group" ng-show="reportPeriod=='*Custom Report Period*'">
+						<div class="form-group" ng-show="reportPeriod=='CUSTOM'" ng-model="endDate">
 							<label for="endDate" class="col-md-4 control-label">End Date:</label>
 							<div class="col-md-6">
-								<input type="date" ng-model="endDate" max="{{today | date: 'yyyy-MM-dd'}}" name="endDate" class="form-control" ng-required="reportPeriod=='*Custom Report Period*'"></input>
+								<input type="date" ng-model="endDate" max="{{today | date: 'yyyy-MM-dd'}}" name="endDate" class="form-control" ng-required="reportPeriod=='CUSTOM'"></input>
 								<span style="color:red" ng-show="inputForm.endDate.$invalid">
 								<span ng-show="inputForm.endDate.$error.required">This field is required.</span></span>
 							</div>
@@ -110,8 +110,8 @@
 							<label for="assumeInitialStates" class="col-md-4 control-label">Assume Initial States:</label>
 							<div class="col-md-6">
 								<select ng-model="assumeInitialStates" name="assumeInitialStates" class="form-control" required>
-									<option value="Yes">Yes</option>
-									<option value="No">No</option>
+									<option value=true>Yes</option>
+									<option value=false>No</option>
 								</select>
 								<span style="color:red" ng-show="inputForm.assumeInitialStates.$invalid">
 								<span ng-show="inputForm.assumeInitialStates.$error.required">This field is required.</span></span>
@@ -122,8 +122,8 @@
 							<label for="assumeStateRetention" class="col-md-4 control-label">Assume State Retention:</label>
 							<div class="col-md-6">
 								<select ng-model="assumeStateRetention" name="assumeStateRetention" class="form-control" required>
-									<option value="Yes">Yes</option>
-									<option value="No">No</option>
+									<option value=true>Yes</option>
+									<option value=false>No</option>
 								</select>
 								<span style="color:red" ng-show="inputForm.assumeStateRetention.$invalid">
 								<span ng-show="inputForm.assumeStateRetention.$error.required">This field is required.</span></span>
@@ -134,8 +134,8 @@
 							<label for="assumeDowntimeStates" class="col-md-4 control-label">Assume States During Program Downtime:</label>
 							<div class="col-md-6">
 								<select ng-model="assumeDowntimeStates" name="assumeDowntimeStates" class="form-control" required>
-									<option value="Yes">Yes</option>
-									<option value="No">No</option>
+									<option value=true>Yes</option>
+									<option value=false>No</option>
 								</select>
 								<span style="color:red" ng-show="inputForm.assumeDowntimeStates.$invalid">
 								<span ng-show="inputForm.assumeDowntimeStates.$error.required">This field is required.</span></span>
@@ -146,38 +146,39 @@
 							<label for="includeSoftStates" class="col-md-4 control-label">Include Soft States:</label>
 							<div class="col-md-6">
 								<select ng-model="includeSoftStates" name="includeSoftStates" class="form-control" required>
-									<option value="Yes">Yes</option>
-									<option value="No">No</option>
+									<option value=true>Yes</option>
+									<option value=false>No</option>
 								</select>
 								<span style="color:red" ng-show="inputForm.includeSoftStates.$invalid">
 								<span ng-show="inputForm.includeSoftStates.$error.required">This field is required.</span></span>
 							</div>
 						</div>
 
-						<div class="form-group" ng-if="assumeInitialStates=='Yes' && reportType=='Host'" class="firstAssumedState">
+						<div class="form-group" ng-if="assumeInitialStates == true && reportType == 1" class="firstAssumedState">
 							<label for="firstAssumedHostState" class="col-md-4 control-label">First Assumed Host State:</label>
 							<div class="col-md-6">
 								<select ng-model="firstAssumedHostState" name="firstAssumedHostState" class="form-control" required>
-									<option value="Unspecified">Unspecified</option>
-									<option value="Current State">Current State</option>
-									<option value="Host Up">Host Up</option>
-									<option value="Host Down">Host Down</option>
-									<option value="Host Unreachable">Host Unreachable</option>
+									<option value="UNSPECIFIED">Unspecified</option>
+									<option value="CURRENT">Current State</option>
+									<option value="UP">Host Up</option>
+									<option value="DOWN">Host Down</option>
+									<option value="UNREACHABLE">Host Unreachable</option>
 								</select>
 								<span style="color:red" ng-show="inputForm.firstAssumedHostState.$invalid">
 								<span ng-show="inputForm.firstAssumedHostState.$error.required">This field is required.</span></span>
 							</div>
 						</div>
 
-						<div class="form-group" ng-if="assumeInitialStates=='Yes' && reportType=='Service'" class="firstAssumedState">
+						<div class="form-group" ng-if="assumeInitialStates == true && reportType != 1" class="firstAssumedState">
 							<label for="firstAssumedServiceState" class="col-md-4 control-label">First Assumed Service State:</label>
 							<div class="col-md-6">
 								<select ng-model="firstAssumedServiceState" name="firstAssumedServiceState" class="form-control" required>
-									<option value="Unspecified">Unspecified</option>
-									<option value="Current State">Current State</option>
-									<option value="Host Up">Host Up</option>
-									<option value="Host Down">Host Down</option>
-									<option value="Host Unreachable">Host Unreachable</option>
+									<option value="UNSPECIFIED">Unspecified</option>
+									<option value="CURRENT">Current State</option>
+									<option value="OK">Service Ok</option>
+									<option value="WARNING">Service Warning</option>
+									<option value="UNKNOWN">Service Unknown</option>
+									<option value="CRITICAL">Service Critical</option>
 								</select>
 								<span style="color:red" ng-show="inputForm.firstAssumedServiceState.$invalid">
 								<span ng-show="inputForm.firstAssumedServiceState.$error.required">This field is required.</span></span>
@@ -197,7 +198,7 @@
 							<div class="col-md-6 pull-right">
 								<button class="btn btn-primary" ng-click="reset()">Reset</button>
 								<a>
-									<button ng-disabled="inputForm.$invalid" class="btn btn-primary" ng-click="createReport()" >Create Report</button>
+									<button ng-disabled="inputForm.$invalid" class="btn btn-primary" ng-click="createReport()">Create Report</button>
 								</a>
 							</div>
 						</div>

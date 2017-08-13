@@ -98,23 +98,23 @@
                 <tbody>
                     <tr class="{{ host.active_checks_enabled | is_enabled }}">
                         <td>Active Checks: {{ host.active_checks_enabled | is_enabled | capitalize }}</td>
-                        <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('active_checks', 'host.active_checks_enabled')">Toggle</a></td>
+                        <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('active_checks', host.active_checks_enabled)">Toggle</a></td>
                     </tr>
                     <tr class="{{ host.passive_checks_enabled | is_enabled }}">
                         <td>Passive Checks: {{ host.passive_checks_enabled | is_enabled | capitalize }}</td>
-                        <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('passive_checks', 'host.passive_checks_enabled')">Toggle</a></td>
+                        <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('passive_checks', host.passive_checks_enabled)">Toggle</a></td>
                     </tr>
-                    <tr class="{{ host.obsess_over_host | is_enabled }}">
-                        <td>Obsession: {{ host.obsess_over_host | is_enabled | capitalize }}</td>
-                        <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('obsess_over_host', 'host.obsess_over_host')">Toggle</a></td>
+                    <tr class="{{ host.obsess | is_enabled }}">
+                        <td>Obsession: {{ host.obsess | is_enabled | capitalize }}</td>
+                        <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('obsess', host.obsess)">Toggle</a></td>
                     </tr>
                     <tr class="{{ host.notifications_enabled | is_enabled }}">
                         <td>Notifications: {{ host.notifications_enabled | is_enabled | capitalize }}</td>
-                        <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('notifications', 'host.notifications_enabled')">Toggle</a></td>
+                        <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('notifications', host.notifications_enabled)">Toggle</a></td>
                     </tr>
                     <tr class="{{ host.flap_detection_enabled | is_enabled }}">
                         <td>Flap Detection: {{ host.flap_detection_enabled | is_enabled | capitalize }}</td>
-                        <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('flap_detection', 'host.flap_detection_enabled')">Toggle</a></td>
+                        <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('flap_detection', host.flap_detection_enabled)">Toggle</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -171,7 +171,9 @@
             <tfoot>
                 <tr>
                   <td colspan="4">
-                    <a class="add-comment no-margin" role="button" data-toggle="modal" data-target="#hostComment" ng-click="addComment('host')">Add Comment</a>
+                    <a class="add-comment no-margin" role="button" data-toggle="modal" data-target="#hostComment1" ng-click="addComment('host')">Add Comment</a>
+                    <div class="add-comment no-margin"> | </div>
+                    <a class="add-comment no-margin" role="button" data-toggle="modal" data-target="#delete-all-comment" ng-click="deleteAllComment('host')">Delete All Comments</a>
                   </td>
                 </tr>
             </tfoot>

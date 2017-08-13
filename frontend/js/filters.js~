@@ -2,6 +2,78 @@
 
 angular.module('vshell.filters', [])
 
+/*
+* x-axis, persistent, downtime_type, triggered_id, entry_type, expires
+* Create by Choy Yi Zhen
+*/
+.filter('x-axis', function() {
+    return function(input) {
+        if(input == 1)
+          return 'Month';
+        else if(input == 2)
+          return 'Day of the Month';
+        else if(input == 3)
+          return 'Day of the Week';
+        else if(input == 4)
+          return 'Hour of the Day';      
+        else
+          return 'Unknown';
+    };
+})
+
+.filter('persistent', function() {
+    return function(input) {
+        if(input == 0)
+          return 'No';
+        else if(input == 1)
+          return 'Yes';
+        else
+          return 'Unknown';
+    };
+})
+
+.filter('downtime_type', function() {
+    return function(input) {
+        if(input == "0")
+          return 'Flexible';
+        else if(input == "1")
+          return 'Fixed';
+        else
+          return 'Unknown';
+    };
+})
+
+.filter('triggered_id', function() {
+    return function(input) {
+        if(input == "0")
+          return "N/A";
+        else
+          return input;
+    };
+})
+
+.filter('entry_type', function() {
+    return function(input) {
+        if(input ==0)
+          return 'Acknowledgement';
+        else if(input == 1)
+          return 'User';
+        else if(input ==2)
+          return 'Scheduled Downtime';
+        else
+          return input;
+    };
+})
+
+.filter('expires', function() {
+    return function(input) {
+        if(input == '1970-01-01 8:00:00')
+          return 'N/A';
+        else
+          return input;
+    };
+})
+
 .filter('capitalize', function() {
     return function(input, strict) {
         var first,
@@ -27,6 +99,7 @@ angular.module('vshell.filters', [])
         return _.size(input);
     };
 })
+
 .filter('formatSizeUnits', function(){
     return function formatSizeUnits(bytes){
         if      (bytes>=1000000000) {bytes=(bytes/1000000000).toFixed(2)+' GB';}
@@ -48,9 +121,10 @@ angular.module('vshell.filters', [])
 
 .filter('percent', function(numberFilter) {
     return function(input, total, precision) {
+
         if(total == 0 )
             return '0%';
-            
+
         var fraction = parseInt(input, 10) / parseInt(total, 10),
             percent = fraction * 100,
             places = (precision !== 0 && !precision) ? 1 : precision;

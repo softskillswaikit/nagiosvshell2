@@ -6,10 +6,10 @@
 
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
-<div id="content" class="clearfix" ng-controller="TrendsCtrl" ng-init="createReport()">
+<div id="content" class="clearfix" ng-controller="TrendsCtrl" ng-init="showReport()">
 
   <h1>State Trends Report</h1>
-    <div class="table-container full-width" ng-if="report.reportType=='Host'">
+    <div class="table-container full-width" ng-if="type == 1">
     <h3>Host State Trends</h3>
 
     <div class="table-container partial-width chart">
@@ -49,7 +49,7 @@
         </div>
     </div>
 
-  <div class="table-container full-width" ng-if="true">
+  <div class="table-container full-width" ng-if="type != 1">
 
 	     <h3>Service State Trends</h3>
 

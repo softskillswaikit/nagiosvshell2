@@ -37,7 +37,7 @@
 						<div class="form-group">
 							<label for="reportHost" class="col-md-4 control-label">Select Host:</label>
 							<div class="col-md-6">
-								<select ng-model="reportHost" ng-change="reportService = ''" name="reportHost" class="form-control" ng-required="reportType!=2">
+								<select ng-model="reportHost" ng-change="reportService = '' && reportHostResource = ''" name="reportHost" class="form-control" ng-required="reportType!=2">
 									 <option ng-repeat="name in name.host" value="{{name}}">{{name}}</option>
 								</select>
 								<span style="color:red" ng-show="inputForm.reportHost.$dirty && inputForm.reportHost.$invalid">
@@ -89,23 +89,24 @@
 							</div>
 						</div>
 
-						<div class="form-group" ng-show="reportPeriod=='CUSTOM'" ng-model="startDate">
-							<label for="startdate" class="col-md-4 control-label">Start Date:</label>
+						<div class="form-group" ng-show="reportPeriod=='CUSTOM'">
+							<label for="startDate" class="col-md-4 control-label">Start Date:</label>
 							<div class="col-md-6">
-								<input type="date" ng-model="startDate" max="{{today | date: 'yyyy-MM-dd'}}" name="startdate" class="form-control" ng-required="reportPeriod=='CUSTOM'"></input>
-								<span style="color:red" ng-show="inputForm.startdate.$invalid">
-								<span ng-show="inputForm.startdate.$error.required">This field is required.</span></span>
+								<input type="date" ng-model="startDate" max="{{today | date: 'yyyy-MM-dd'}}" name="startDate" class="form-control" ng-required="reportPeriod=='CUSTOM'"></input>
+								<span style="color:red" ng-show="inputForm.startDate.$invalid">
+								<span ng-show="inputForm.startDate.$error.required">This field is required.</span></span>
 							</div>
 						</div>
 
 						<div class="form-group" ng-show="reportPeriod=='CUSTOM'" ng-model="endDate">
-							<label for="enddate" class="col-md-4 control-label">End Date:</label>
+							<label for="endDate" class="col-md-4 control-label">End Date:</label>
 							<div class="col-md-6">
-								<input type="date" ng-model="endDate" max="{{today | date: 'yyyy-MM-dd'}}" name="enddate" class="form-control" ng-required="reportPeriod=='CUSTOM'"></input>
-								<span style="color:red" ng-show="inputForm.enddate.$invalid">
-								<span ng-show="inputForm.enddate.$error.required">This field is required.</span></span>
+								<input type="date" ng-model="endDate" max="{{today | date: 'yyyy-MM-dd'}}" name="endDate" class="form-control" ng-required="reportPeriod=='CUSTOM'"></input>
+								<span style="color:red" ng-show="inputForm.endDate.$invalid">
+								<span ng-show="inputForm.endDate.$error.required">This field is required.</span></span>
 							</div>
 						</div>
+
 						<div class="form-group">
 							<label for="statisticsBreakdown" class="col-md-4 control-label">Statistics Breakdown:</label>
 							<div class="col-md-6">
@@ -208,3 +209,4 @@
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>
+

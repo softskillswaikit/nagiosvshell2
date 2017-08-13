@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); 
 
 class Reports_data extends CI_Model
 {
@@ -97,7 +97,7 @@ class Reports_data extends CI_Model
 			{
 				foreach($input_service as $services)
 				{
-					$this->_alert_summary_array = array_merge($this->_alert_summary_array, $this->_get_alert_summary_host_service($temp_array, $input_host, $services, $input_logtype, $input_state_type, $input_state));
+					$this->_alert_summary_array = array_merge($this->_alert_summary_array, $this->_get_alert_summary_host_service($temp_array, $input_host, $services, $input_logtype, $input_state_type, $input_state));	
 				}
 			}
 			else
@@ -124,7 +124,7 @@ class Reports_data extends CI_Model
 			//array counter
 			$i = 0;
 
-			foreach($key_obj as $key => $value)
+			foreach($key_obj as $key => $value) 
 			{
 				list($logtypes_1, $logtypes_2, $hostnames, $servicenames) = explode(' ', $key, 4);
 
@@ -273,7 +273,7 @@ class Reports_data extends CI_Model
 			//array counter
 			$i = 0;
 
-			foreach($key_obj as $key => $value)
+			foreach($key_obj as $key => $value) 
 			{
 				list($hostname, $servicename) = explode(' ', $key, 2);
 
@@ -325,7 +325,7 @@ class Reports_data extends CI_Model
 			//array counter
 			$i = 0;
 
-			foreach($key_obj as $key => $value)
+			foreach($key_obj as $key => $value) 
 			{
 				list($hostname, $servicename) = explode(' ', $key, 2);
 
@@ -393,7 +393,7 @@ class Reports_data extends CI_Model
 		}
 		//$return_type = 'MOST RECENT ALERTS'
 		else
-		{
+		{	
 			//reverse the array order
 			$reverse_array = array_reverse($this->_alert_summary_array);
 
@@ -506,7 +506,7 @@ class Reports_data extends CI_Model
 			$resource_array = array();
 			$resource_obj = new StdClass();
 
-			//array counter
+			//array counter 
 			$j = 0;
 
 			foreach($this->_data_array as $data)
@@ -519,12 +519,12 @@ class Reports_data extends CI_Model
 
 						$resource_obj->datetime = trim($input_time, '[]');
 						$resource_obj->servicename = $resources;
-
+						
 						if(strpos($event_message, 'OK') !== false)
 						{
 							$resource_obj->state = 'OK';
 						}
-						else if(strpos($event_message, 'WARNING') !== false)
+						else if(strpos($event_message, 'WARNING') !== false) 
 						{
 							$resource_obj->state = 'WARNING';
 						}
@@ -536,7 +536,7 @@ class Reports_data extends CI_Model
 						{
 							$resource_obj->state = 'CRITICAL';
 						}
-
+				
 						$resource_array[$j] = $resource_obj;
 						$j++;
 
@@ -578,14 +578,14 @@ class Reports_data extends CI_Model
 				$return_obj->critical_count = $this->_get_alert_hour($resource_array, 'CRITICAL', true);
 			}
 		}
-
+		
 		//$return_type= 'SERVICE RUNNING STATE'
 		else
 		{
 			$running_state_array = array();
 			$running_state_obj = new StdClass();
 
-			//array counter
+			//array counter 
 			$i = 0;
 
 			foreach($this->_data_array as $data)
@@ -595,12 +595,12 @@ class Reports_data extends CI_Model
 					list($input_time, $event_message) = explode(' ', $data, 2);
 
 					$running_state_obj->datetime = trim($input_time, '[]');
-
+						
 					if(strpos($event_message, 'OK') !== false)
 					{
 						$running_state_obj->state = 'OK';
 					}
-					else if(strpos($event_message, 'WARNING') !== false)
+					else if(strpos($event_message, 'WARNING') !== false) 
 					{
 						$running_state_obj->state = 'WARNING';
 					}
@@ -612,7 +612,7 @@ class Reports_data extends CI_Model
 					{
 						$running_state_obj->state = 'CRITICAL';
 					}
-
+				
 					$running_state_array[$i] = $running_state_obj;
 					$i++;
 
@@ -691,7 +691,7 @@ class Reports_data extends CI_Model
 
 	//Event log section
 	public function get_event_log($input_date)
-	{
+	{	
 		$this->_get_data($input_date, 'TODAY');
 		$this->_insert_data();
 
@@ -804,7 +804,7 @@ class Reports_data extends CI_Model
 				$this->_get_nagios_log();
 			}
 			else
-			{
+			{	
 				$this->_get_archive_log($input_date);
 			}
 		}
@@ -974,10 +974,10 @@ class Reports_data extends CI_Model
 		else if($this->_compare_string($input_period, 'THIS YEAR'))
 		{
 			$return_array[0] = strtotime('Jan 1');
-			$return_array[1] = strtotime('Dec 31 23:59:59');
+			$return_array[1] = strtotime('Dec 31 23:59:59');	
 		}
 		//$input_period = 'LAST YEAR'
-		else
+		else 
 		{
 			$return_array[0] = strtotime('Jan 1 last year');
 			$return_array[1] = strtotime('Dec 31 last year 23:59:59');
@@ -994,7 +994,7 @@ class Reports_data extends CI_Model
 			return true;
 		}
 
-		//compare host problem state
+		//compare host problem state		
 		if(strcmp($input_string, 'HOST PROBLEM STATE') == 0)
 		{
 			if(strcmp($data_string, 'DOWN') == 0 or strcmp($data_string, 'UNREACHABLE') == 0 or strcmp($data_string, 'PENDING') == 0)
@@ -1031,7 +1031,7 @@ class Reports_data extends CI_Model
 		{
 			$modify_input_date = date('Y-m-d', (int)$input_date);
 			$modify_data_date = date('Y-m-d', (int)$data_date);
-
+		
 			if($this->_compare_string($modify_input_date, $modify_data_date))
 			{
 				return true;
@@ -1262,11 +1262,11 @@ class Reports_data extends CI_Model
 		}
 	}
 
-	//Function to parse the log
+	//Function to parse the log 
 	private function _parse_log($input_array, $_type)
 	{
 		//array that store the $sorted_obj
-		$sorted_array = array();
+		$sorted_array = array();	
 
 		//counter for $this->_return_array;
 		$i = 0;
@@ -1316,7 +1316,7 @@ class Reports_data extends CI_Model
 					list($input_time, $event_message) = explode(' ', $logs, 2);
 					list($logtype, $information) = explode(':', $event_message, 2);
 					list($hostname, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 5);
-
+		
 					$sorted_obj->datetime = trim($input_time, '[]');
 					$sorted_obj->logtype = trim($logtype);
 					$sorted_obj->hostname = trim($hostname);
@@ -1331,7 +1331,7 @@ class Reports_data extends CI_Model
 					list($input_time, $event_message) = explode(' ', $logs, 2);
 					list($logtype, $information) = explode(':', $event_message, 2);
 					list($hostname, $servicename, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 6);
-
+		
 					$sorted_obj->datetime = trim($input_time, '[]');
 					$sorted_obj->logtype = trim($logtype);
 					$sorted_obj->hostname = trim($hostname);
@@ -1346,7 +1346,7 @@ class Reports_data extends CI_Model
 					list($input_time, $event_message) = explode(' ', $logs, 2);
 					list($logtype, $information) = explode(':', $event_message, 2);
 					list($hostname, $state, $detail_message) = explode(';', $information, 3);
-
+		
 					$sorted_obj->datetime = trim($input_time, '[]');
 					$sorted_obj->logtype = trim($logtype);
 					$sorted_obj->hostname = trim($hostname);
@@ -1361,7 +1361,7 @@ class Reports_data extends CI_Model
 					list($input_time, $event_message) = explode(' ', $logs, 2);
 					list($logtype, $information) = explode(':', $event_message, 2);
 					list($hostname, $servicename, $state, $detail_message) = explode(';', $information, 4);
-
+		
 					$sorted_obj->datetime = trim($input_time, '[]');
 					$sorted_obj->logtype = trim($logtype);
 					$sorted_obj->hostname = trim($hostname);
@@ -1404,7 +1404,7 @@ class Reports_data extends CI_Model
 				else if(strpos($logs, 'SERVICE NOTIFICATION') !== false)
 				{
 					list($logtype, $information) = explode(':', $event_message, 2);
-
+					
 					$sorted_obj->logtype = trim($logtype);
 				}
 				else if(strpos($logs, 'HOST ALERT') !== false)
@@ -1443,7 +1443,7 @@ class Reports_data extends CI_Model
 					list($input_time, $event_message) = explode(' ', $logs, 2);
 					list($logtype, $information) = explode(':', $event_message, 2);
 					list($hostname, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 5);
-
+		
 					$sorted_obj->datetime = trim($input_time, '[]');
 					$sorted_obj->logtype = trim($logtype);
 					$sorted_obj->hostname = trim($hostname);
@@ -1458,7 +1458,7 @@ class Reports_data extends CI_Model
 					list($input_time, $event_message) = explode(' ', $logs, 2);
 					list($logtype, $information) = explode(':', $event_message, 2);
 					list($hostname, $servicename, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 6);
-
+		
 					$sorted_obj->datetime = trim($input_time, '[]');
 					$sorted_obj->logtype = trim($logtype);
 					$sorted_obj->hostname = trim($hostname);
@@ -1473,7 +1473,7 @@ class Reports_data extends CI_Model
 					list($input_time, $event_message) = explode(' ', $logs, 2);
 					list($logtype, $information) = explode(':', $event_message, 2);
 					list($hostname, $state, $detail_message) = explode(';', $information, 3);
-
+		
 					$sorted_obj->datetime = trim($input_time, '[]');
 					$sorted_obj->logtype = trim($logtype);
 					$sorted_obj->hostname = trim($hostname);
@@ -1488,7 +1488,7 @@ class Reports_data extends CI_Model
 					list($input_time, $event_message) = explode(' ', $logs, 2);
 					list($logtype, $information) = explode(':', $event_message, 2);
 					list($hostname, $servicename, $state, $detail_message) = explode(';', $information, 4);
-
+		
 					$sorted_obj->datetime = trim($input_time, '[]');
 					$sorted_obj->logtype = trim($logtype);
 					$sorted_obj->hostname = trim($hostname);
@@ -1503,7 +1503,7 @@ class Reports_data extends CI_Model
 					list($input_time, $event_message) = explode(' ', $logs, 2);
 					list($logtype, $information) = explode(':', $event_message, 2);
 					list($hostname, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 5);
-
+		
 					$sorted_obj->datetime = trim($input_time, '[]');
 					$sorted_obj->logtype = trim($logtype);
 					$sorted_obj->hostname = trim($hostname);
@@ -1518,7 +1518,7 @@ class Reports_data extends CI_Model
 					list($input_time, $event_message) = explode(' ', $logs, 2);
 					list($logtype, $information) = explode(':', $event_message, 2);
 					list($hostname, $servicename, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 6);
-
+		
 					$sorted_obj->datetime = trim($input_time, '[]');
 					$sorted_obj->logtype = trim($logtype);
 					$sorted_obj->hostname = trim($hostname);
@@ -1575,7 +1575,7 @@ class Reports_data extends CI_Model
 	}
 
 	//Functions used by alert summary section
-	//Function used to filter data
+	//Function used to filter data 
 	private function _get_alert_summary_host_service($input_array, $input_host, $input_service, $input_logtype, $input_state_type, $input_state)
 	{
 		//array counter
@@ -1585,7 +1585,7 @@ class Reports_data extends CI_Model
 		//filter the array based on the request
 		foreach($input_array as $items)
 		{
-			//custom report option
+			//custom report option	
 			//compare host name
 			if($this->_compare_string($input_host, $items->hostname))
 			{
@@ -1760,7 +1760,7 @@ class Reports_data extends CI_Model
 						}
 						//$alert_producer->state = 'CRITICAL'
 						else
-						{
+						{	
 							$alert_service_critical_total++;
 							$alert_service_critical_hard++;
 						}
@@ -1956,7 +1956,7 @@ class Reports_data extends CI_Model
 						}
 						//$alert_producer->state = 'CRITICAL'
 						else
-						{
+						{	
 							$alert_service_critical_total++;
 							$alert_service_critical_hard++;
 						}
@@ -2018,7 +2018,7 @@ class Reports_data extends CI_Model
 		//filter the array based on the request
 		foreach($input_array as $items)
 		{
-			//custom report option
+			//custom report option	
 			//compare host name
 			if($this->_compare_string($input_host, $items->hostname))
 			{
@@ -2093,8 +2093,8 @@ class Reports_data extends CI_Model
 				$month = (int)date('m', (int)$alerts->datetime);
 
 				if($this->_compare_string($alerts->state, $input_state))
-				{
-					$return_array[$month] += 1;
+				{			
+					$return_array[$month] += 1;			
 				}
 			}
 		}
@@ -2114,8 +2114,8 @@ class Reports_data extends CI_Model
 			}
 		}
 
-		//code used to remove the first element of the array
-		$throw = array_shift($return_array);
+		//code used to remove the first element of the array 
+		//$throw = array_shift($return_array);
 
 		return $return_array;
 	}
@@ -2138,8 +2138,8 @@ class Reports_data extends CI_Model
 				$day = (int)date('j', (int)$alerts->datetime);
 
 				if($this->_compare_string($alerts->state, $input_state))
-				{
-					$return_array[$day] += 1;
+				{			
+					$return_array[$day] += 1;		
 				}
 			}
 		}
@@ -2159,8 +2159,8 @@ class Reports_data extends CI_Model
 			}
 		}
 
-		//code used to remove the first element of the array
-		$throw = array_shift($return_array);
+		//code used to remove the first element of the array 
+		//$throw = array_shift($return_array);
 
 		return $return_array;
 	}
@@ -2184,8 +2184,8 @@ class Reports_data extends CI_Model
 				$day = (int)date('N', (int)$alerts->datetime);
 
 				if($this->_compare_string($alerts->state, $input_state))
-				{
-					$return_array[$day] += 1;
+				{			
+					$return_array[$day] += 1;		
 				}
 			}
 		}
@@ -2206,8 +2206,8 @@ class Reports_data extends CI_Model
 			}
 		}
 
-		//code used to remove the first element of the array
-		$throw = array_shift($return_array);
+		//code used to remove the first element of the array 
+		//$throw = array_shift($return_array);
 
 		return $return_array;
 	}
@@ -2231,8 +2231,8 @@ class Reports_data extends CI_Model
 				$hour = (int)date('G', (int)$alerts->datetime);
 
 				if($this->_compare_string($alerts->state, $input_state))
-				{
-					$return_array[$hour] += 1;
+				{			
+					$return_array[$hour] += 1;			
 				}
 			}
 		}
@@ -2253,7 +2253,7 @@ class Reports_data extends CI_Model
 			}
 		}
 
-		//code used to remove the first element of the array
+		//code used to remove the first element of the array 
 		$throw = array_shift($return_array);
 
 		return $return_array;

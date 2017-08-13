@@ -233,7 +233,7 @@
                   <td colspan="4">
                     <a class="add-comment no-margin" role="button" data-toggle="modal" data-target="#serviceComment1" ng-click="addComment('svc')">Add Comment</a>
                     <div class="add-comment no-margin"> | </div>
-                    <a class="add-comment no-margin" role="button" data-toggle="modal" data-target="#delete-all-comment" ng-click="deleteAllComment('service')">Delete All Comments</a>
+                    <a class="add-comment no-margin" role="button" data-toggle="modal" data-target="#confirm-delete-all" ng-click="deleteAllComment('service')">Delete All Comments</a>
                   </td>
               </tr>
           </tfoot>
@@ -245,7 +245,7 @@
                   <td>{{ comment.author }}</td>
                   <td>{{ comment.entry_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
                   <td>{{ comment.comment_data }}</td>
-                  <td><a role="button" data-toggle="modal" data-target="#confirm" ng-click="deleteComment(comment.comment_id, 'svc')">Delete Comment</a></td>
+                  <td><a role="button" data-toggle="modal" data-target="#confirm-delete" ng-click="deleteComment(comment.comment_id, 'svc')">Delete Comment</a></td>
               </tr>
           </tbody>
         </table>
@@ -256,3 +256,4 @@
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>
+
