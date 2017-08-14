@@ -40,7 +40,7 @@
 								<select ng-model="reportHost" ng-change="reportService = '' && reportHostResource = ''" name="reportHost" class="form-control" ng-required="reportType!=2">
 									 <option ng-repeat="name in name.host" value="{{name}}">{{name}}</option>
 								</select>
-								<span style="color:red" ng-show="inputForm.reportHost.$dirty && inputForm.reportHost.$invalid">
+								<span style="color:red" ng-show="inputForm.reportHost.$invalid">
 								<span ng-show="inputForm.reportHost.$error.required">This field is required.</span></span>
 							</div>
 						</div>
@@ -209,4 +209,3 @@
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>
-

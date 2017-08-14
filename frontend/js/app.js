@@ -118,5 +118,4 @@ angular.module('vshell', [
 }])
 .config(['$compileProvider', function ($compileProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|blob|ftp):/);
-}]);;
-
+}])

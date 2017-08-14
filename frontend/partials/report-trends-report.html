@@ -9,12 +9,12 @@
 <div id="content" class="clearfix" ng-controller="TrendsCtrl" ng-init="showReport()">
 
   <h1>State Trends Report</h1>
-    <div class="table-container full-width" ng-if="type == 1">
+    <div class="table-container full-width" ng-if="param.type == 1">
     <h3>Host State Trends</h3>
 
     <div class="table-container partial-width chart">
         <div fusioncharts
-          width="600"
+          width="850"
           height="400"
           type="line"
           datasource="{{hostdata}}">
@@ -49,14 +49,14 @@
         </div>
     </div>
 
-  <div class="table-container full-width" ng-if="type != 1">
+  <div class="table-container full-width" ng-if="param.type != 1">
 
 	     <h3>Service State Trends</h3>
 
        <div class="table-container partial-width chart">
 
          <div fusioncharts
-           width="600"
+           width="850"
            height="400"
            type="line"
            datasource="{{servicedata}}">
@@ -69,12 +69,12 @@
                  <tr>
                    <th class="active services-ok">Ok:</th>
                    <th class="active services-ok">{{ data[1].ok_total | percent : data[1].all_total }}</th>
-                   <th class="active services-ok">{{ data[1].ok_total | expires }}</th>
+                   <th class="active services-ok">{{ data[1].ok_total | seconds_converter }}</th>
                  </tr>
                  <tr>
                    <th class="active services-warning">Warning:</th>
                    <th class="active services-warning">{{ data[1].warning_total | percent : data[1].all_total }}</th>
-                   <th class="active services-warning">{{ data[1].up_total | seconds_converter }}</th>
+                   <th class="active services-warning">{{ data[1].warning_total | seconds_converter }}</th>
                  </tr>
                  <tr>
                    <th class="active services-unknown">Unknown:</th>
@@ -103,40 +103,40 @@
             <h3>View</h3>
 
 			<!--show if a single host is selected-->
-            <table cellspacing="0" cellpadding="0" ng-if="report.reportType == 1">
+            <table cellspacing="0" cellpadding="0" ng-if="param.type == 1">
                 <tbody>
                     <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{}}">View Availability Report For This Host</a></td>
+                        <td><a role="button" ng-click="viewAvailability('host')">View Availability Report For This Host</a></td>
                     </tr>
                     <tr class="footable-even">
-                        <td><a target="nagios" ng-href="{{}}">View Status Detail For This Host</a></td>
+                        <td><a role="button" ng-href="#/hosts/{{ param.host }}">View Status Detail For This Host</a></td>
                     </tr>
                     <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{}}">View Alert History For This Host</a></td>
+                        <td><a role="button" ng-href="#/reports/alert-history/{{ param.host }}">View Alert History For This Host</a></td>
                     </tr>
 					          <tr class="footable-even">
-                        <td><a target="nagios" ng-href="{{}}">View Notifications For This Host</a></td>
+                        <td><a role="button" ng-href="#/reports/notifications/{{ param.host }}">View Notifications For This Host</a></td>
                     </tr>
                 </tbody>
             </table>
 
 			<!--show if a single service is selected-->
-			<table cellspacing="0" cellpadding="0" ng-if="report.reportType != 1">
+			<table cellspacing="0" cellpadding="0" ng-if="param.type != 1">
                 <tbody>
                     <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{}}">View Trends For This Host</a></td>
+                        <td><a role="button" ng-click="viewTrends('host')">View Trends For This Host</a></td>
                     </tr>
                     <tr class="footable-even">
-                        <td><a target="nagios" ng-href="{{}}">View Availability Report For This Service</a></td>
+                        <td><a role="button" ng-click="viewAvailability('svc')">View Availability Report For This Service</a></td>
                     </tr>
                     <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{}}">View Alert Histogram For This Service</a></td>
+                        <td><a role="button" ng-click="viewAlertHistogram('svc')">View Alert Histogram For This Service</a></td>
                     </tr>
                     <tr class="footable-even">
-                        <td><a target="nagios" ng-href="{{}}">View Alert History For This Service</a></td>
+                        <td><a role="button" ng-href="#/reports/alert-history/{{ param.service }}">View Alert History For This Service</a></td>
                     </tr>
                     <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{}}">View Notifications For This Service</a></td>
+                        <td><a role="button" ng-href="#/reports/notifications/{{ param.service }}">View Notifications For This Service</a></td>
                     </tr>
                 </tbody>
             </table>

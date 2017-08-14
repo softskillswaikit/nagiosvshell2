@@ -3,10 +3,19 @@
 angular.module('vshell.filters', [])
 
 /*
-* alerthistogram-x, week, month, persistent, downtime_type, triggered_id, entry_type, expires
+* decimal, alerthistogram-x, week, month, persistent,
+* downtime_type, triggered_id, entry_type, expires
 * Create by Choy Yi Zhen
 */
 
+/* fix decimal places */
+.filter('decimal', function() {
+    return function(num, dec) {
+      return num.toFixed(dec);
+    }
+})
+
+/* Convert seconds to x-days x-hours x-minutes x-seconds */
 .filter('seconds_converter', function() {
     return function(input) {
       var d = Math.floor(input / (3600*24));
@@ -21,15 +30,7 @@ angular.module('vshell.filters', [])
     };
 })
 
-.filter('test', function() {
-    return function(input) {
-        if(input == 0)
-          return 'N/A';
-        else
-          return input;
-    };
-})
-
+/* Get the X-axis label of alert histogram */
 .filter('alerthistogram-x', function() {
     return function(input) {
         if(input == 1)
@@ -45,6 +46,7 @@ angular.module('vshell.filters', [])
     };
 })
 
+/* Convert day of week from int to string */
 .filter('week', function() {
     return function(input) {
         if(input == 0)
@@ -66,6 +68,7 @@ angular.module('vshell.filters', [])
     };
 })
 
+/* Convert month from int to string */
 .filter('month', function() {
     return function(input) {
       if(input == 0)
@@ -97,6 +100,7 @@ angular.module('vshell.filters', [])
     };
 })
 
+/* Convert persistent from int to string */
 .filter('persistent', function() {
     return function(input) {
         if(input == 0)
@@ -108,6 +112,7 @@ angular.module('vshell.filters', [])
     };
 })
 
+/* Convert downtime from int to string */
 .filter('downtime_type', function() {
     return function(input) {
         if(input == "0")
@@ -119,6 +124,7 @@ angular.module('vshell.filters', [])
     };
 })
 
+/* Convert triggered_id from int to string */
 .filter('triggered_id', function() {
     return function(input) {
         if(input == "0")
@@ -128,6 +134,7 @@ angular.module('vshell.filters', [])
     };
 })
 
+/* Convert entry_type from int to string */
 .filter('entry_type', function() {
     return function(input) {
         if(input ==0)
@@ -141,6 +148,7 @@ angular.module('vshell.filters', [])
     };
 })
 
+/* Check expires */
 .filter('expires', function() {
     return function(input) {
         if(input == '1970-01-01 8:00:00')
