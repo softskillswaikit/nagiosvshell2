@@ -1588,6 +1588,12 @@ class Reports_data extends CI_Model
 			$return_obj->critical_avg = $critical_sum / ( count($return_obj->critical_count) );
 		}
 
+		$date_array = $this->_get_start_end_date($input_date, $input_period);
+		
+		$return_obj->start_date = $date_array[0];
+		$return_obj->end_date = $date_array[1];
+
+		//encode the data into JSON format
 		foreach($return_obj as $items)
 		{
 			$items = json_encode($items);
@@ -2429,6 +2435,39 @@ class Reports_data extends CI_Model
 		$i = 0;
 
 		return $sorted_array;
+	}
+
+	//Function used to get the number for each host state and service state
+	private function _get_state_num($input_state)
+	{
+		if($this->_compare_string($input_date, 'UP'))
+		{
+			return 2;
+		}
+		else if($this->_compare_string($input_date, 'DOWN'))
+		{	
+			return 1;
+		}
+		else if($this->_compare_string($input_date, 'UNREACHABLE'))
+		{
+			return 0;
+		}
+		else if($this->_compare_string($input_date, 'OK'))
+		{
+			return 3;
+		}
+		else if($this->_compare_string($input_date, 'WARNING'))
+		{
+			return 2;
+		}
+		else if($this->_compare_string($input_date, 'UNKNOWN'))
+		{
+			return 1;
+		}
+		else if($this->_compare_string($input_date, 'CRITICAL'))
+		{
+			return 0;
+		}
 	}
 
 	//Functions used by availability section
