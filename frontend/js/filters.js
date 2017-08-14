@@ -3,9 +3,33 @@
 angular.module('vshell.filters', [])
 
 /*
-* x-axis, persistent, downtime_type, triggered_id, entry_type, expires
+* alerthistogram-x, week, month, persistent, downtime_type, triggered_id, entry_type, expires
 * Create by Choy Yi Zhen
 */
+
+.filter('seconds_converter', function() {
+    return function(input) {
+      var d = Math.floor(input / (3600*24));
+      input %= (3600*24);
+      var h   = Math.floor(input / 3600);
+      input %= 3600 ;
+      var m = Math.floor(input / 60);
+      input %= 60;
+      var s = input;
+
+      return d + "d " + h + "h " + m + "m " + s + "s ";
+    };
+})
+
+.filter('test', function() {
+    return function(input) {
+        if(input == 0)
+          return 'N/A';
+        else
+          return input;
+    };
+})
+
 .filter('alerthistogram-x', function() {
     return function(input) {
         if(input == 1)
@@ -37,7 +61,7 @@ angular.module('vshell.filters', [])
           return 'Fri';
         else if(input == 6)
           return 'Sat';
-        else 
+        else
           return 'Unknown';
     };
 })
@@ -68,7 +92,7 @@ angular.module('vshell.filters', [])
         return 'Nov';
       else if(input == 11)
         return 'Dec';
-      else 
+      else
         return 'Unknown';
     };
 })
@@ -604,4 +628,3 @@ angular.module('vshell.filters', [])
         return input;
     };
 });
-

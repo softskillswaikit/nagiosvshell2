@@ -1116,8 +1116,8 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('TrendsCtrl', ['$scope', '$routeParams', '$filter', 'async', '$timeout', '$window','$rootScope',
-    function($scope, $routeParams, $filter, async, $timeout, $window, $rootScope) {
+.controller('TrendsCtrl', ['$scope', '$routeParams', '$filter', 'async', '$timeout', '$window','$rootScope', 'ngToast',
+    function($scope, $routeParams, $filter, async, $timeout, $window, $rootScope, ngToast) {
 
         $scope.init = function() {
           //get component name
@@ -1198,13 +1198,28 @@ angular.module('vshell.controllers', [])
                 $rootScope.host = $scope.reportHost;
                 $rootScope.service = service;
 
-                $window.location.href="#/report/trends/report";
+                if(data[0] != null)
+                  $window.location.href="#/report/trends/report";
+                else {
+                  ngToast.create({className: 'alert alert-danger',content:'There are no data to be displayed.',timeout:1500});
+                  $('.modal').modal('hide');
+                }
               }
             }
           };
         };
 
         $scope.showReport = function(){
+
+          var data = [];
+
+          $rootScope.data[0].forEach(function(d){
+            var date = new Date(d.start_time * 1000);
+            var datay = $filter('date')(date, 'EEE MMM d H:mm:ss yyyy');
+            var datax = d.state;
+            data.push({"label" : datay,"value": datax});
+
+          })
 
           $scope.hostdata = {
             "chart": {
@@ -1248,15 +1263,7 @@ angular.module('vshell.controllers', [])
             "dataset": [
                 {
                     "seriesname": "Host State Trends",
-                    "data": [
-                        {"label" : "Mon","value": "3"},
-                        {"label" : "Tue","value": "3"},
-                        {"label" : "Wed","value": "2"},
-                        {"label" : "Thu","value": "3"},
-                        {"label" : "Fri","value": "1"},
-                        {"label" : "Sat","value": "2"},
-                        {"label" : "Sun","value": "0"}
-                    ]
+                    "data": data
                 }
             ]
           }
@@ -1306,23 +1313,11 @@ angular.module('vshell.controllers', [])
             "dataset": [
                 {
                     "seriesname": "Service State Trends",
-                    "data": [
-                        {"label" : "Mon","value": "3"},
-                        {"label" : "Tue","value": "3"},
-                        {"label" : "Wed","value": "2"},
-                        {"label" : "Thu","value": "3"},
-                        {"label" : "Fri","value": "1"},
-                        {"label" : "Sat","value": "2"},
-                        {"label" : "Sun","value": "0"}
-                    ]
+                    "data": data
                 }
             ]
           }
-
-
         };
-
-
     }
 ])
 
