@@ -1852,12 +1852,7 @@ class Testing extends CI_Model
 			$monday->modify('Monday this week');
 
 			$return_array[0] = $monday->getTimestamp();
-
-			$sunday = new DateTime();
-			$sunday->setTimestamp( (int)$input_date );
-			$sunday->modify('Sunday this week');
-
-			$return_array[1] = $sunday->getTimestamp();
+			$return_array[1] = (int)$input_date;
 		}
 		else if($this->_compare_string($input_period, 'LAST 7 DAYS'))
 		{
@@ -1884,13 +1879,8 @@ class Testing extends CI_Model
 			$month_first->setTimestamp( (int)$input_date );
 			$month_first->modify('first day of this month');
 
-			$return_array[0] = $month_first->getTimestamp();
-
-			$month_last = new DateTime();
-			$month_last->setTimestamp( (int)$input_date );
-			$month_last->modify('last day of this month');
-
-			$return_array[1] = $month_last->getTimestamp();
+			$return_array[0] = $month_first->getTimestamp();		
+			$return_array[1] = (int)$input_date;
 		}
 		else if($this->_compare_string($input_period, 'LAST 31 DAYS'))
 		{
@@ -1914,13 +1904,19 @@ class Testing extends CI_Model
 		else if($this->_compare_string($input_period, 'THIS YEAR'))
 		{
 			$return_array[0] = strtotime('Jan 1');
-			$return_array[1] = strtotime('Dec 31 23:59:59');	
+			$return_array[1] = (int)$input_date;	
 		}
 		//$input_period = 'LAST YEAR'
 		else 
 		{
 			$return_array[0] = strtotime('Jan 1 last year');
-			$return_array[1] = strtotime('Dec 31 last year 23:59:59');
+			$return_array[1] = (strtotime('Dec 31 last year 23:59:59'));
+		}
+
+		if(is_array($input_date))
+		{
+			$return_array[0] = (int)$input_date[0];
+			$return_array[1] = (int)$input_date[1];
 		}
 
 		return $return_array;
