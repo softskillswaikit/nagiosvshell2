@@ -1427,6 +1427,167 @@ class Testing extends CI_Model
 			}
 		}
 
+		if($return_type === 1)
+		{
+			$up_min = $return_obj->up_count[0];
+			$up_max = 0;
+			$up_sum = 0;
+
+			$down_min = $return_obj->down_count[0];
+			$down_max = 0;
+			$down_sum = 0;
+
+			$unreachable_min = $return_obj->unreachable_count[0];
+			$unreachable_max = 0;
+			$unreachable_sum = 0;
+
+			foreach($return_obj->up_count as $items)
+			{
+				$up_sum += $items;
+
+				if($up_min > $items)
+				{
+					$up_min = $items;
+				}
+				else if($up_max < $items)
+				{
+					$up_max = $items;
+				}
+			}
+
+			foreach($return_obj->down_count as $items)
+			{
+				$down_sum += $items;
+
+				if($down_min > $items)
+				{
+					$down_min = $items;
+				}
+				else if($down_max < $items)
+				{
+					$down_max = $items;
+				}
+			}
+
+			foreach($return_obj->unreachable_count as $items)
+			{
+				$unreachable_sum += $items;
+
+				if($unreachable_min > $items)
+				{
+					$unreachable_min = $items;
+				}
+				else if($unreachable_max < $items)
+				{
+					$unreachable_max = $items;
+				}
+			}
+
+			$return_obj->up_min = $up_min;
+			$return_obj->up_max = $up_max;
+			$return_obj->up_sum = $up_sum;
+			$return_obj->up_avg = $up_sum / ( count($return_obj->up_count) );
+			$return_obj->down_min = $down_min;
+			$return_obj->down_max = $down_max;
+			$return_obj->down_sum = $down_sum;
+			$return_obj->down_avg = $down_sum / ( count($return_obj->down_count) );
+			$return_obj->unreachable_min = $unreachable_min;
+			$return_obj->unreachable_max = $unreachable_max;
+			$return_obj->unreachable_sum = $unreachable_sum;
+			$return_obj->unreachable_avg = $unreachable_sum / ( count($return_obj->unreachable_count) );
+		}
+		else
+		{
+			$ok_min = $return_obj->ok_count[0];
+			$ok_max = 0;
+			$ok_sum = 0;
+
+			$warning_min = $return_obj->warning_count[0];
+			$warning_max = 0;
+			$warning_sum = 0;
+
+			$unknown_min = $return_obj->unknown_count[0];
+			$unknown_max = 0;
+			$unknown_sum = 0;
+
+			$critical_min = $return_obj->critical_count[0];
+			$critical_max = 0;
+			$critical_sum = 0;
+
+			foreach($return_obj->ok_count as $items)
+			{
+				$ok_sum += $items;
+
+				if($ok_min > $items)
+				{
+					$ok_min = $items;
+				}
+				else if($ok_max < $items)
+				{
+					$ok_max = $items;
+				}
+			}
+
+			foreach($return_obj->warning_count as $items)
+			{
+				$warning_sum += $items;
+
+				if($warning_min > $items)
+				{
+					$warning_min = $items;
+				}
+				else if($warning_max < $items)
+				{
+					$warning_max = $items;
+				}
+			}
+
+			foreach($return_obj->unknown_count as $items)
+			{
+				$unknown_sum += $items;
+
+				if($unknown_min > $items)
+				{
+					$unknown_min = $items;
+				}
+				else if($unknown_max < $items)
+				{
+					$unknown_max = $items;
+				}
+			}
+
+			foreach($return_obj->critical_count as $items)
+			{
+				$critical_sum += $items;
+
+				if($critical_min > $items)
+				{
+					$critical_min = $items;
+				}
+				else if($critical_max < $items)
+				{
+					$critical_max = $items;
+				}
+			}
+
+			$return_obj->ok_min = $ok_min;
+			$return_obj->ok_max = $ok_max;
+			$return_obj->ok_sum = $ok_sum;
+			$return_obj->ok_avg = $ok_sum / ( count($return_obj->ok_count) );
+			$return_obj->warning_min = $warning_min;
+			$return_obj->warning_max = $warning_max;
+			$return_obj->warning_sum = $warning_sum;
+			$return_obj->warning_avg = $warning_sum / ( count($return_obj->warning_count) );
+			$return_obj->unknown_min = $unknown_min;
+			$return_obj->unknown_max = $unknown_max;
+			$return_obj->unknown_sum = $unknown_sum;
+			$return_obj->unknown_avg = $unknown_sum / ( count($return_obj->unknown_count) );
+			$return_obj->critical_min = $critical_min;
+			$return_obj->critical_max = $critical_max;
+			$return_obj->critical_sum = $critical_sum;
+			$return_obj->critical_avg = $critical_sum / ( count($return_obj->critical_count) );
+		}
+
 		foreach($return_obj as $items)
 		{
 			$items = json_encode($items);
