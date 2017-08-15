@@ -44,15 +44,15 @@ class Testing extends CI_Model
 		$this->_insert_data();
 
 		$temp_array = array();
-		$temp_array = $this->_parse_log($this->_host_service_alert_array, 'alert');
+		$temp_array = $this->_parse_log($this->_host_service_alert_array, 'trend');
 
 		if($include_soft)
 		{
-			$this->_availability_array = array_reverse( $this->_get_availability_host_service($temp_array, $input_host, $input_service, 'ALL') );
+			$this->_availability_array = $this->_get_availability_host_service($temp_array, $input_host, $input_service, 'ALL');
 		}
 		else
 		{
-			$this->_availability_array = array_reverse( $this->_get_availability_host_service($temp_array, $input_host, $input_service, 'HARD') );
+			$this->_availability_array = $this->_get_availability_host_service($temp_array, $input_host, $input_service, 'HARD');
 		}
 
 		$output_array = array();
@@ -61,15 +61,6 @@ class Testing extends CI_Model
 		//array counter
 		$i = 0;
 
-		if(is_array($input_date))
-		{
-			$pass_date = $input_date[1];
-		}
-		else
-		{
-			$pass_date = $input_date;
-		}
-
 		//$return_type = 'HOSTGROUP'
 		if($return_type === 1)
 		{
@@ -77,7 +68,7 @@ class Testing extends CI_Model
 			{
 				foreach($input_host as $hosts)
 				{
-					$output_array = $this->_get_return_host($assume_state_downtime, $this->_availability_array, $hosts, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_host_state);
+					$output_array = $this->_get_return_host($assume_state_downtime, $this->_availability_array, $hosts, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_host_state);
 					$return_array[$i] = $this->_get_state_total_host_availability($output_array, $hosts);
 
 					$i++;
@@ -85,7 +76,7 @@ class Testing extends CI_Model
 			}
 			else
 			{
-				$output_array = $this->_get_return_host($assume_state_downtime, $this->_availability_array, $input_host, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_host_state);
+				$output_array = $this->_get_return_host($assume_state_downtime, $this->_availability_array, $input_host, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_host_state);
 				$return_array[0] = $this->_get_state_total_host_availability($output_array, $input_host);
 			}
 		}
@@ -124,12 +115,12 @@ class Testing extends CI_Model
 			{
 				foreach($input_host as $hosts)
 				{
-					$output_array = $this->_get_return_host($assume_state_downtime, $this->_availability_array, $hosts, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+					$output_array = $this->_get_return_host($assume_state_downtime, $this->_availability_array, $hosts, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
 					$return_array[$i] = $this->_get_state_total_host_availability($output_array, $hosts);
 
 					$i++;	
 
-					$service_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $hosts, $input_service, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+					$service_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $hosts, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
 
 					foreach($unique_service_array as $unique_services)
 					{
@@ -141,13 +132,13 @@ class Testing extends CI_Model
 			}
 			else
 			{
-				$output_array = $this->_get_return_host($assume_state_downtime, $this->_availability_array, $input_host, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_host_state);
+				$output_array = $this->_get_return_host($assume_state_downtime, $this->_availability_array, $input_host, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_host_state);
 
 				$return_array[$i] = $this->_get_state_total_host_availability($output_array, $input_host);
 
 				$i++;
 
-				$service_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $input_host, $input_service, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+				$service_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $input_host, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
 
 				foreach($unique_service_array as $unique_services)
 				{
@@ -177,7 +168,7 @@ class Testing extends CI_Model
 
 				foreach($host_array as $hosts)
 				{
-					$output_array = $this->_get_return_host($assume_state_downtime, $this->_availability_array, $hosts, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_host_state);
+					$output_array = $this->_get_return_host($assume_state_downtime, $this->_availability_array, $hosts, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_host_state);
 					$return_array[$i] = $this->_get_state_total_host_availability($output_array, $hosts);
 
 					$i++;
@@ -185,7 +176,7 @@ class Testing extends CI_Model
 			}
 			else 
 			{
-				$output_array = $this->_get_return_host($assume_state_downtime, $this->_availability_array, $input_host, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_host_state);
+				$output_array = $this->_get_return_host($assume_state_downtime, $this->_availability_array, $input_host, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_host_state);
 				$return_array[$i] = $this->_get_state_total_host_availability($output_array, $input_host);
 
 				$i++;
@@ -223,7 +214,7 @@ class Testing extends CI_Model
 				//array counter
 				$s = 0;
 
-				$service_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $input_host, $input_service, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+				$service_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $input_host, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
 
 				foreach($unique_service_array as $unique_services)
 				{
@@ -242,7 +233,14 @@ class Testing extends CI_Model
 				//array_counter
 				$a = 0;
 
-				$now = (int)$pass_date;
+				if(is_array($input_date))
+				{
+					$now = (int)$input_date[1];
+				}
+				else
+				{
+					$now = (int)$input_date;
+				}
 
 				$temp_array = array_reverse($temp_array);
 
@@ -257,7 +255,7 @@ class Testing extends CI_Model
 							$host_log_obj->duration = abs($duration);
 							$host_log_obj->start_time = $now - $duration;
 							$host_log_obj->end_time = $now;
-							$host_log_obj->state = $alerts->state;
+							$host_log_obj->state = $this->_get_state_num($alerts->state);
 							$host_log_obj->state_type = $alerts->state_type;
 							$host_log_obj->messages = $alerts->messages;
 
@@ -325,7 +323,7 @@ class Testing extends CI_Model
 
 				foreach($unique_service_array as $unique_services)
 				{
-					$service_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $unique_services->hostname, $unique_services->servicename, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+					$service_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $unique_services->hostname, $unique_services->servicename, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
 
 					$return_array[$i] = $this->_get_state_total_service_availability($service_array, $unique_services->hostname, $unique_services->servicename);
 
@@ -334,7 +332,7 @@ class Testing extends CI_Model
 			}
 			else
 			{
-				$output_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $input_host, $input_service, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+				$output_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $input_host, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
 
 				$return_array[$i] = $this->_get_state_total_service_availability($output_array, $input_host, $input_service);
 
@@ -346,7 +344,14 @@ class Testing extends CI_Model
 				//array_counter
 				$c = 0;
 
-				$now = (int)$pass_date;
+				if(is_array($input_date))
+				{
+					$now = (int)$input_date[1];
+				}
+				else
+				{
+					$now = (int)$input_date;
+				}
 
 				$temp_array = array_reverse($temp_array);
 
@@ -364,7 +369,7 @@ class Testing extends CI_Model
 								$service_log_obj->duration = abs($duration);
 								$service_log_obj->start_time = $now - $duration;
 								$service_log_obj->end_time = $now;
-								$service_log_obj->state = $alerts->state;
+								$service_log_obj->state = $this->_get_state_num($alerts->state);
 								$service_log_obj->state_type = $alerts->state_type;
 								$service_log_obj->messages = $alerts->messages;
 
@@ -466,11 +471,9 @@ class Testing extends CI_Model
 				//array counter 
 				$d = 0;
 
-				$resource_array = array_reverse($resource_array);
-
 				foreach($unique_service_array as $unique_services)
 				{
-					$output_array = $this->_get_return_service($assume_state_downtime, $resource_array, $unique_services->hostname, $unique_services->servicename, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_host_service);
+					$output_array = $this->_get_return_service($assume_state_downtime, $resource_array, $unique_services->hostname, $unique_services->servicename, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
 					$return_array[$d] = $this->_get_state_total_service_availability($output_array, $unique_services->hostname, $unique_services->servicename);
 
 					$d++;
@@ -478,7 +481,7 @@ class Testing extends CI_Model
 			}
 			else
 			{
-				$output_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $input_host, $input_service, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+				$output_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $input_host, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
 
 				$return_array[$i] = $this->_get_state_total_service_availability($output_array, $input_host, $input_service);
 
@@ -490,7 +493,14 @@ class Testing extends CI_Model
 				//array_counter
 				$c = 0;
 
-				$now = (int)$pass_date;
+				if(is_array($input_date))
+				{
+					$now = (int)$input_date[1];
+				}
+				else
+				{
+					$now = (int)$input_date;
+				}
 
 				$temp_array = array_reverse($temp_array);
 
@@ -508,7 +518,7 @@ class Testing extends CI_Model
 								$service_log_obj->duration = abs($duration);
 								$service_log_obj->start_time = $now - $duration;
 								$service_log_obj->end_time = $now;
-								$service_log_obj->state = $alerts->state;
+								$service_log_obj->state = $this->_get_state_num($alerts->state);
 								$service_log_obj->state_type = $alerts->state_type;
 								$service_log_obj->messages = $alerts->messages;
 
@@ -594,11 +604,9 @@ class Testing extends CI_Model
 				//array counter 
 				$r = 0;
 
-				$running_state_array = array_reverse($running_state_array);
-
 				foreach($unique_service_array as $unique_services)
 				{
-					$output_array = $this->_get_return_service($assume_state_downtime, $running_state_array, $unique_services->hostname, $unique_services->servicename, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_host_service);
+					$output_array = $this->_get_return_service($assume_state_downtime, $running_state_array, $unique_services->hostname, $unique_services->servicename, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
 					$return_array[$r] = $this->_get_state_total_service_availability($output_array, $unique_services->hostname, $unique_services->servicename);
 
 					$r++;
@@ -606,7 +614,7 @@ class Testing extends CI_Model
 			}
 			else
 			{
-				$output_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $input_host, $input_service, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+				$output_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $input_host, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
 
 				$return_array[$i] = $this->_get_state_total_service_availability($output_array, $input_host, $input_service);
 
@@ -618,7 +626,14 @@ class Testing extends CI_Model
 				//array_counter
 				$c = 0;
 
-				$now = (int)$pass_date;
+				if(is_array($input_date))
+				{
+					$now = (int)$input_date[1];
+				}
+				else
+				{
+					$now = (int)$input_date;
+				}
 
 				$temp_array = array_reverse($temp_array);
 
@@ -636,7 +651,7 @@ class Testing extends CI_Model
 								$service_log_obj->duration = abs($duration);
 								$service_log_obj->start_time = $now - $duration;
 								$service_log_obj->end_time = $now;
-								$service_log_obj->state = $alerts->state;
+								$service_log_obj->state = $this->_get_state_num($alerts->state);
 								$service_log_obj->state_type = $alerts->state_type;
 								$service_log_obj->messages = $alerts->messages;
 
@@ -667,45 +682,36 @@ class Testing extends CI_Model
 	}
 
 	//Trends section
-	public function get_trend($return_type, $input_period, $input_date, $input_host, $input_service, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_service, $backtrack_archive)
+	public function get_trend($return_type, $input_period, $input_date, $input_host, $input_service, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_service_state, $backtrack_archive)
 	{
 		$this->_get_data($input_date, $input_period);
 		$this->_insert_data();
 
 		$temp_array = array();
-		$temp_array = $this->_parse_log($this->_host_service_alert_array, 'alert');
+		$temp_array = $this->_parse_log($this->_host_service_alert_array, 'trend');
 
 		//filter the data into $this->_trend_array based on request
 		if($include_soft)
 		{
-			$this->_trend_array = array_reverse( $this->_get_trend_host_service($temp_array, $input_host, $input_service, 'ALL') );
+			$this->_trend_array = $this->_get_trend_host_service($temp_array, $input_host, $input_service, 'ALL');
 		}
 		else
 		{
-			$this->_trend_array = array_reverse( $this->_get_trend_host_service($temp_array, $input_host, $input_service, 'HARD') );
+			$this->_trend_array = $this->_get_trend_host_service($temp_array, $input_host, $input_service, 'HARD');
 		}
 
 		$return_array = array();
 
-		if(is_array($input_date))
-		{
-			$pass_date = $input_date[1];
-		}
-		else
-		{
-			$pass_date = $input_date;
-		}
-
 		//$return_type = 'HOST'
 		if($return_type === 1)
 		{
-			$return_array[0] = $this->_get_return_host($assume_state_downtime, $this->_trend_array, $input_host, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_host_service);
+			$return_array[0] = $this->_get_return_host($assume_state_downtime, $this->_trend_array, $input_host, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
 			$return_array[1] = $this->_get_state_total_host($return_array[0]);
 		}
 		//$return_type = 'SERVICE'
 		else if($return_type === 2)
 		{
-			$return_array[0] = $this->_get_return_service($assume_state_downtime, $this->_trend_array, $input_host, $input_service, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_host_service);
+			$return_array[0] = $this->_get_return_service($assume_state_downtime, $this->_trend_array, $input_host, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
 			$return_array[1] = $this->_get_state_total_service($return_array[0]);
 		}
 		//$return_type = 'HOST RESOURCE'
@@ -757,9 +763,7 @@ class Testing extends CI_Model
 				}
 			}
 
-			$resource_array = array_reverse($resource_array);
-
-			$return_array[0] = $this->_get_return_service($assume_state_downtime, $resource_array, $input_host, $input_service, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_host_service);
+			$return_array[0] = $this->_get_return_service($assume_state_downtime, $resource_array, $input_host, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
 			$return_array[1] = $this->_get_state_total_service($return_array[0]);
 		}
 		//$return_type = 'SERVICE RUNNING STATE'
@@ -795,9 +799,7 @@ class Testing extends CI_Model
 				}
 			}
 
-			$running_state_array = array_reverse($running_state_array);
-
-			$return_array[0] = $this->_get_return_service($assume_state_downtime, $running_state_array, $input_host, $input_service, $input_period, $pass_date, $backtrack_archive, $assume_initial_state, $first_assume_host_service);
+			$return_array[0] = $this->_get_return_service($assume_state_downtime, $running_state_array, $input_host, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
 			$return_array[1] = $this->_get_state_total_service($return_array[0]);
 		}
 		
@@ -2228,8 +2230,7 @@ class Testing extends CI_Model
 					$sorted_obj->notification_command = trim($notificationcommand);
 					$sorted_obj->messages = trim($detail_message);
 				}
-				//strpos($logs, 'SERVICE NOTIFICATION:') !== false
-				else
+				else if(strpos($logs, 'SERVICE NOTIFICATION:') !== false)
 				{
 					list($input_time, $other_message) = explode(' ', $logs, 2);
 					list($logtype, $information) = explode(':', $other_message, 2);
@@ -2387,35 +2388,65 @@ class Testing extends CI_Model
 					$sorted_obj->retry_count = trim($retry_count);
 					$sorted_obj->messages = trim($detail_message);
 				}
-			}
-			//$_type = 'availability'
-			else if($this->_compare_string($_type, 'availability'))
-			{							
-				if(strpos($logs, 'Successfully shutdown...') !== false)
+				else if(strpos($logs, 'HOST ALERT:') !== false)
 				{
 					list($input_time, $event_message) = explode(' ', $logs, 2);
-
+					list($logtype, $information) = explode(':', $event_message, 2);
+					list($hostname, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 5);
+		
 					$sorted_obj->datetime = trim($input_time, '[]');
-					$sorted_obj->logtype = 'NAGIOS STATUS';
-					$sorted_obj->hostname = 'N/A';
+					$sorted_obj->logtype = trim($logtype);
+					$sorted_obj->hostname = trim($hostname);
 					$sorted_obj->servicename = 'N/A';
-					$sorted_obj->state = 'SHUTDOWN';
-					$sorted_obj->state_type = 'N/A';
-					$sorted_obj->retry_count = 'N/A';
-					$sorted_obj->messages = trim($event_message);
+					$sorted_obj->state = trim($state);
+					$sorted_obj->state_type = trim($state_type);
+					$sorted_obj->retry_count = trim($retry_count);
+					$sorted_obj->messages = trim($detail_message);
 				}
-				else if(strpos($logs, 'starting...') !== false)
+				else if(strpos($logs, 'SERVICE ALERT:') !== false)
 				{
 					list($input_time, $event_message) = explode(' ', $logs, 2);
-
+					list($logtype, $information) = explode(':', $event_message, 2);
+					list($hostname, $servicename, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 6);
+		
 					$sorted_obj->datetime = trim($input_time, '[]');
-					$sorted_obj->logtype = 'NAGIOS STATUS';
-					$sorted_obj->hostname = 'N/A';
+					$sorted_obj->logtype = trim($logtype);
+					$sorted_obj->hostname = trim($hostname);
+					$sorted_obj->servicename = trim($servicename);
+					$sorted_obj->state = trim($state);
+					$sorted_obj->state_type = trim($state_type);
+					$sorted_obj->retry_count = trim($retry_count);
+					$sorted_obj->messages = trim($detail_message);
+				}
+				else if(strpos($logs, 'HOST DOWNTIME ALERT:') !== false)
+				{
+					list($input_time, $event_message) = explode(' ', $logs, 2);
+					list($logtype, $information) = explode(':', $event_message, 2);
+					list($hostname, $state, $detail_message) = explode(';', $information, 3);
+		
+					$sorted_obj->datetime = trim($input_time, '[]');
+					$sorted_obj->logtype = trim($logtype);
+					$sorted_obj->hostname = trim($hostname);
 					$sorted_obj->servicename = 'N/A';
-					$sorted_obj->state = 'STARTUP';
+					$sorted_obj->state = trim($state);
 					$sorted_obj->state_type = 'N/A';
 					$sorted_obj->retry_count = 'N/A';
-					$sorted_obj->messages = trim($event_message);
+					$sorted_obj->messages = trim($detail_message);
+				}
+				else if(strpos($logs, 'SERVICE DOWNTIME ALERT:') !== false)
+				{
+					list($input_time, $event_message) = explode(' ', $logs, 2);
+					list($logtype, $information) = explode(':', $event_message, 2);
+					list($hostname, $servicename, $state, $detail_message) = explode(';', $information, 4);
+		
+					$sorted_obj->datetime = trim($input_time, '[]');
+					$sorted_obj->logtype = trim($logtype);
+					$sorted_obj->hostname = trim($hostname);
+					$sorted_obj->servicename = trim($servicename);
+					$sorted_obj->state = trim($state);
+					$sorted_obj->state_type = 'N/A';
+					$sorted_obj->retry_count = 'N/A';
+					$sorted_obj->messages = trim($detail_message);
 				}
 			}
 
@@ -2436,33 +2467,49 @@ class Testing extends CI_Model
 	//Function used to get the number for each host state and service state
 	private function _get_state_num($input_state)
 	{
-		if($this->_compare_string($input_date, 'UP'))
+		if($this->_compare_string($input_state, 'UP'))
 		{
 			return 2;
 		}
-		else if($this->_compare_string($input_date, 'DOWN'))
+		else if($this->_compare_string($input_state, 'DOWN'))
 		{	
 			return 1;
 		}
-		else if($this->_compare_string($input_date, 'UNREACHABLE'))
+		else if($this->_compare_string($input_state, 'UNREACHABLE'))
 		{
 			return 0;
 		}
-		else if($this->_compare_string($input_date, 'OK'))
+		else if($this->_compare_string($input_state, 'OK'))
 		{
 			return 3;
 		}
-		else if($this->_compare_string($input_date, 'WARNING'))
+		else if($this->_compare_string($input_state, 'WARNING'))
 		{
 			return 2;
 		}
-		else if($this->_compare_string($input_date, 'UNKNOWN'))
+		else if($this->_compare_string($input_state, 'UNKNOWN'))
 		{
 			return 1;
 		}
-		else if($this->_compare_string($input_date, 'CRITICAL'))
+		else if($this->_compare_string($input_state, 'CRITICAL'))
 		{
 			return 0;
+		}
+		else if($this->_compare_string($input_state, 'STARTUP'))
+		{
+			return 6;
+		}
+		else if($this->_compare_string($Input_state, 'SHUTDOWN'))
+		{
+			return 7;
+		}
+		else if($this->_compare_string($input_state, 'STARTED'))
+		{
+			return 8;
+		}
+		else if($this->_compare_string($Input_state, 'STOPPED'))
+		{
+			return 9;
 		}
 	}
 
@@ -2551,11 +2598,13 @@ class Testing extends CI_Model
 
 		foreach($check_array as $check)
 		{
-			if($this->_compare_string($check->state, 'STARTUP'))
+			//$check->state = 'STRATUP'
+			if($check->state === 6)
 			{
 				$start = $check->datetime;
 			}
-			else if($this->_compare_string($check->state, 'SHUTDOWN'))
+			//$check->state = 'SHUTDOWN'
+			else if($check->state === 7)
 			{
 				$end = $check->datetime;	
 			}
@@ -2579,7 +2628,8 @@ class Testing extends CI_Model
 			{
 				$all_total += $alerts->duration;
 
-				if($this->_compare_string($alerts->state, 'UP'))
+				//$alerts->state = 'UP'
+				if($alerts->state === 3)
 				{
 					$up_total += $alerts->duration;
 
@@ -2592,7 +2642,8 @@ class Testing extends CI_Model
 						$up_unschedule_total += $alerts->duration;
 					}
 				}
-				else if($this->_compare_string($alerts->state, 'DOWN'))
+				//$alerts->state = 'DOWN'
+				else if($alerts->state === 2)
 				{
 					$down_total += $alerts->duration;
 
@@ -2605,7 +2656,8 @@ class Testing extends CI_Model
 						$down_unschedule_total += $alerts->duration;
 					}
 				}
-				else if($this->_compare_string($alerts->state, 'UNREACHABLE'))
+				//$alerts->state = 'UNREACHABLE'
+				else if($alerts->state === 1)
 				{
 					$unreachable_total += $alerts->duration;
 
@@ -2618,7 +2670,8 @@ class Testing extends CI_Model
 						$unreachable_unschedule_total += $alerts->duration;
 					}
 				}
-				else if($this->_compare_string($alerts->state, 'UNDETERMINED'))
+				//$alerts->state = 'UNDETERMINED'
+				else if($alerts->state === 0)
 				{
 					$undetermined_total += $alerts->duration;
 
@@ -2671,11 +2724,13 @@ class Testing extends CI_Model
 
 		foreach($check_array as $check)
 		{
-			if($this->_compare_string($check->state, 'STARTUP'))
+			//$check->state = 'STARTUP'
+			if($check->state === 6)
 			{
 				$start = $check->datetime;
 			}
-			else if($this->_compare_string($check->state, 'SHUTDOWN'))
+			//$check->state = 'SHUTDOWN'
+			else if($check->state === 7)
 			{
 				$end = $check->datetime;	
 			}
@@ -2701,7 +2756,8 @@ class Testing extends CI_Model
 				{
 					$all_total += $alerts->duration;
 
-					if($this->_compare_string($alerts->state, 'OK'))
+					//$alerts->state = 'OK'
+					if($alerts->state === 4)
 					{
 						$ok_total += $alerts->duration;
 
@@ -2714,7 +2770,8 @@ class Testing extends CI_Model
 							$ok_unschedule_total += $alerts->duration;
 						}
 					}
-					else if($this->_compare_string($alerts->state, 'WARNING'))
+					//$alerts->state = 'WARNING'
+					else if($alerts->state === 3)
 					{
 						$warning_total += $alerts->duration;
 
@@ -2727,7 +2784,8 @@ class Testing extends CI_Model
 							$warning_unschedule_total += $alerts->duration;
 						}
 					}
-					else if($this->_compare_string($alerts->state, 'UNKNOWN'))
+					//$alerts->state = 'UNKNOWN'
+					else if($alerts->state === 2)
 					{
 						$unknown_total += $alerts->duration;
 
@@ -2740,7 +2798,8 @@ class Testing extends CI_Model
 							$unknown_unschedule_total += $alerts->duration;
 						}
 					}
-					else if($this->_compare_string($alerts->state, 'CRITICAL'))
+					//$alerts->state = 'CRITICAL'
+					else if($alerts->state === 1)
 					{
 						$critical_total += $alerts->duration;
 
@@ -2753,7 +2812,8 @@ class Testing extends CI_Model
 							$critical_unschedule_total += $alerts->duration;
 						}
 					}
-					else if($this->_compare_string($alerts->state, 'UNDETERMINED'))
+					//$alerts->state = 'UNDETERMINED'
+					else if($alerts->state === 0)
 					{
 						$undetermined_total += $alerts->duration;
 
@@ -2820,9 +2880,93 @@ class Testing extends CI_Model
 	}
 
 	//Function used to get return data for host
-	private function _get_return_host($assume_state_downtime, $input_array, $input_host, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_host_service)
+	private function _get_return_host($assume_state_downtime, $input_array, $input_host, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_host_state)
 	{
-		$now = (int)$input_date;
+		//$initial_state = 'UNDETERMINED'
+		$initial_state = 0;
+
+		if(is_array($input_date))
+		{
+			$start_time = $input_date[0];
+			$end_time = $input[1];
+		}
+		else
+		{
+			if($this->_is_today($input_date))
+			{
+				$start_time = strtotime('today midnight');
+			}
+			else
+			{
+				$date_array = array();
+				$date_array = $this->_get_start_end_date($input_date, $input_period);
+
+				$start_time = $date_array[0];
+				$end_time = (int)$input_date;
+			}
+		}
+
+		$initial_state = $this->_is_detected($input_array, $start_time, $input_host, 'ALL');
+
+		if($initial_state === 0)
+		{
+			//counter 
+			$num = 0;
+			$z = 0;
+
+			while($num < $backtrack_archive)
+			{
+				$backtrack_duration = 86400 * (++$num);
+				$temp_time = $start_time - $backtrack_duration;
+
+				$output = array();
+					
+				$modify_date = date('m-d-Y', (int)$temp_time);
+				$filepath = '/usr/local/nagios/var/archives/nagios-'.$modify_date.'-00.log';
+
+				if(file_exists($filepath))
+				{
+					//opening the nagios log file
+					$logfile = fopen($filepath, 'r') or die('File not found !');
+
+					while(! feof($logfile))
+					{
+						$output_array[$z] = trim(fgets($logfile));
+						$z++;
+					}
+
+					fclose($logfile);
+
+					$initial_state = $this->_is_detected($output_array, $temp_time, $input_host, 'ALL');
+				}
+				else
+				{
+					$initial_state = 0;
+				}
+
+				if($initial_state === 0)
+				{
+					$num++;
+				}
+				else
+				{
+					//end the loop
+					$num = $backtrack_archive++;
+				}
+			}
+		}
+
+		if($assume_initial_state)
+		{
+			$initial_state = $this->_get_state_num($first_assume_host_state);
+		}
+		else
+		{
+			$initial_state = 0;
+		}
+
+		$now = $end_time;
+		$input_array = array_reverse($input_array);
 
 		$return_obj = new StdClass();
 		$return_array = array();
@@ -2842,12 +2986,13 @@ class Testing extends CI_Model
 					$return_obj->duration = abs($duration);
 					$return_obj->start_time = $now - $duration;
 					$return_obj->end_time = $now;
-					$return_obj->state = $alerts->state;
+					$return_obj->state = $this->_get_state_num($alerts->state);
 					$return_obj->schedule = false;
 
 					if($this->_compare_string($alerts->logtype, 'HOST DOWNTIME ALERT'))
 					{
-						if($this->_compare_string($alerts->state, 'STARTED'))
+						//$alerts->state = 'STARTED'
+						if($alerts->state === 8)
 						{
 							$return_obj->schedule = true;
 						}
@@ -2874,17 +3019,20 @@ class Testing extends CI_Model
 					$return_obj->duration = abs($duration);
 					$return_obj->start_time = $now - $duration;
 					$return_obj->end_time = $now;
-					$return_obj->state = $alerts->state;
+					$return_obj->state = $this->_get_state_num($alerts->state);
 					$return_obj->schedule = false;
 
 					if($this->_compare_string($alerts->logtype, 'HOST DOWNTIME ALERT'))
 					{
-						if($this->_compare_string($alerts->state, 'STARTED'))
+						//$alerts->state = 'STARTED'
+						if($alerts->state === 8)
 						{
-							$return_obj->state = 'UNDETERMINED';
+							//$return_obj->state = 0;
+							$return_obj->state = 0;
 							$return_obj->schedule = true;
 						}
-						else if($this->_compare_string($alerts->state, 'STOPPED'))
+						//$alerts->state = 'STOPPED'
+						else if($alerts->state === 9)
 						{
 							$return_obj->state = 'NULL';
 						}
@@ -2921,34 +3069,65 @@ class Testing extends CI_Model
 			$return_array = array_reverse($reverse_array);
 		}
 
-		$start_end_array = $this->_get_start_end_date($input_date, $input_period);
-		$start_date = $start_end_array[0];
+		$duration = $now - (int)$start_time;
+		$return_obj->logtype = 'INITIAL STATE';
+		$return_obj->hostname = $input_host;
+		$return_obj->duration = abs($duration);
+		$return_obj->start_time = $start_time;
+		$return_obj->end_time = $now;
+		$return_obj->state = $initial_state;
 
-		$initial_state = NULL;
+		$return_array[$i] = $return_obj;
+		$i++;
 
-		//array counter
-		$b = 0;
+		$return_array = array_reverse($return_array);
 
-		if($this->_compare_string($input_period, 'TODAY'))
+		return $return_array;
+	}
+
+	//Function used to get return data for service
+	private function _get_return_service($assume_state_downtime, $input_array, $input_host, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state)
+	{
+		//$initial_state = 'UNDETERMINED'
+		$initial_state = 0;
+
+		if(is_array($input_date))
 		{
-			//the date entered is today
-			if($this->_is_today($start_date))
+			$start_time = $input_date[0];
+			$end_time = $input[1];
+		}
+		else
+		{
+			if($this->_is_today($input_date))
 			{
-				//opening the nagios log file
-				$logfile = fopen('/usr/local/nagios/var/nagios.log', 'r') or die('File not found !');
-
-				while(! feof($logfile) )
-				{
-					$this->_backtrack_array[$b] = trim(fgets($logfile));
-					$b++;
-				}
-
-				fclose($logfile);
+				$start_time = strtotime('today midnight');
 			}
 			else
-			{	
-				$modify_date = date('m-d-Y', (int)$start_date);
+			{
+				$date_array = array();
+				$date_array = $this->_get_start_end_date($input_date, $input_period);
 
+				$start_time = $date_array[0];
+				$end_time = (int)$input_date;
+			}
+		}
+
+		$initial_state = $this->_is_detected($input_array, $start_time, $input_host, $input_service);
+
+		if($initial_state === 0)
+		{
+			//counter 
+			$num = 0;
+			$z = 0;
+
+			while($num < $backtrack_archive)
+			{
+				$backtrack_duration = 86400 * (++$num);
+				$temp_time = $start_time - $backtrack_duration;
+
+				$output = array();
+					
+				$modify_date = date('m-d-Y', (int)$temp_time);
 				$filepath = '/usr/local/nagios/var/archives/nagios-'.$modify_date.'-00.log';
 
 				if(file_exists($filepath))
@@ -2958,117 +3137,42 @@ class Testing extends CI_Model
 
 					while(! feof($logfile))
 					{
-						$this->_backtrack_array[$b] = trim(fgets($logfile));
-						$b++;
+						$output_array[$z] = trim(fgets($logfile));
+						$z++;
 					}
 
 					fclose($logfile);
+
+					$initial_state = $this->_is_detected($output_array, $temp_time, $input_host, $input_service);
 				}
 				else
 				{
-					$this->_problem_array[$this->_problem] = 'File : nagios-'.$modify_date.'-00.log not found';
-
-					$this->_problem++;
+					$initial_state = 0;
 				}
-			}
-		}
 
-		$state_array = array();
-		$state_array = $this->_parse_log($this->_backtrack_array, 'trend');
-
-		if($backtrack_archive >= 1)
-		{
-			foreach($state_array as $temp)
-			{
-				if($this->_compare_string($input_host, $temp->hostname))
+				if($initial_state === 0)
 				{
-					if($this->_compare_string($input_service, $temp->servicename))
-					{										
-						$initial_state = $temp->state;	
-					}
+					$num++;
 				}
-			}
-		}
-
-		$alert_array = array();
-		$alert_array = $this->_parse_log($this->_backtrack_array, 'alert');
-
-		if(empty($initial_state))
-		{
-			if($backtrack_archive >= 2)
-			{
-				foreach($alert_array as $alerts)
+				else
 				{
-					if($this->_compare_string($input_host, $alerts->hostname))
-					{
-						if($this->_compare_string($input_service, $alerts->servicename))
-						{										
-							$initial_state = $alerts->state;	
-						}
-					}
+					//end the loop
+					$num = $backtrack_archive++;
 				}
 			}
 		}
 
-		if(empty($initial_state))
+		if($assume_initial_state)
 		{
-			if($backtrack_archive >= 3)
-			{
-				if($assume_initial_state)
-				{
-					foreach($alert_array as $alerts)
-					{
-						if($this->_compare_string($first_assume_host_service, 'UNSPECIFIED'))
-						{
-							$first_assume_host_service = 'ALL';
-						}
-
-						if($this->_compare_string($first_assume_host_service, 'CURRENT STATE'))
-						{
-							$first_assume_host_service = $current_state;
-						}
-
-						if($this->_compare_string($first_assume_host_service, $alerts->state))
-						{
-							if($this->_compare_string($input_host, $alerts->hostname))
-							{
-								if($this->_compare_string($input_service, $alerts->servicename))
-								{										
-									$initial_state = $alerts->state;	
-								}
-							}
-						}
-					}
-				}
-			}
+			$initial_state = $this->_get_state_num($first_assume_service_state);
+		}
+		else
+		{
+			$initial_state = 0;
 		}
 
-		if(empty($initial_state))
-		{
-			//$backtrack_archive === 4
-			$initial_state = 'UNDETERMINED';
-		}
-
-		$duration = $now - (int)$start_date;
-		$return_obj->logtype = 'INITIAL STATE';
-		$return_obj->duration = $duration;
-		$return_obj->start_time = (int)$start_date;
-		$return_obj->end_time = $start_date + $duration;
-		$return_obj->state = $initial_state;
-
-		$return_array[$i] = $return_obj;
-		$i++;
-
-		$now = $now - $duration;
-		unset($return_obj);
-
-		return $return_array;
-	}
-
-	//Function used to get return data for service
-	private function _get_return_service($assume_state_downtime, $input_array, $input_host, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_host_service)
-	{
-		$now = (int)$input_date;
+		$now = $end_time;
+		$input_array = array_reverse($input_array);
 
 		$return_obj = new StdClass();
 		$return_array = array();
@@ -3089,7 +3193,7 @@ class Testing extends CI_Model
 					$return_obj->duration = abs($duration);
 					$return_obj->start_time = $now - $duration;
 					$return_obj->end_time = $now;
-					$return_obj->state = $alerts->state;
+					$return_obj->state = $this->_get_state_num($alerts->state);
 					$return_obj->schedule = false;
 
 					if($this->_compare_string($alerts->logtype, 'SERVICE DOWNTIME ALERT'))
@@ -3122,14 +3226,14 @@ class Testing extends CI_Model
 					$return_obj->duration = abs($duration);
 					$return_obj->start_time = $now - $duration;
 					$return_obj->end_time = $now;
-					$return_obj->state = $alerts->state;
+					$return_obj->state = $this->_get_state_num($alerts->state);
 					$return_obj->schedule = false;
 
 					if($this->_compare_string($alerts->logtype, 'SERVICE DOWNTIME ALERT'))
 					{
 						if($this->_compare_string($alerts->state, 'STARTED'))
 						{
-							$return_obj->state = 'UNDETERMINED';
+							$return_obj->state = 0;
 							$return_obj->schedule = true;
 						}
 						else if($this->_compare_string($alerts->state, 'STOPPED'))
@@ -3169,121 +3273,91 @@ class Testing extends CI_Model
 			$return_array = array_reverse($reverse_array);
 		}
 
-		$start_end_array = $this->_get_start_end_date($input_date, $input_period);
-		$start_date = $start_end_array[0];
+		$duration = $now - (int)$start_time;
+		$return_obj->logtype = 'INITIAL STATE';
+		$return_obj->hostname = $input_host;
+		$return_obj->servicename = $input_service;
+		$return_obj->duration = abs($duration);
+		$return_obj->start_time = $start_time;
+		$return_obj->end_time = $now;
+		$return_obj->state = $initial_state;
 
-		$initial_state = NULL;
+		$return_array[$i] = $return_obj;
+		$i++;
 
-		//array counter
-		$b = 0;
+		$return_array = array_reverse($return_array);
 
-		if($this->_compare_string($input_period, 'TODAY'))
+		return $return_array;
+	}
+
+	//Function used to detect whether the initial state is detected
+	private function _is_detected($input_array, $start_time, $input_host, $input_service)
+	{
+		//$initial_state = 'UNDETERMINED'
+		$initial_state = 0;
+
+		$detect = false;
+
+		foreach($input_array as $items)
 		{
-			//the date entered is today
-			if($this->_is_today($start_date))
+			if($this->_compare_date('TODAY', $items->datetime, $start_time))
 			{
-				//opening the nagios log file
-				$logfile = fopen('/usr/local/nagios/var/nagios.log', 'r') or die('File not found !');
-
-				while(! feof($logfile) )
+				if($detect)
 				{
-					$this->_backtrack_array[$b] = trim(fgets($logfile));
-					$b++;
+					continue;
 				}
-
-				fclose($logfile);
-			}
-			else
-			{	
-				$modify_date = date('m-d-Y', (int)$start_date);
-
-				$filepath = '/usr/local/nagios/var/archives/nagios-'.$modify_date.'-00.log';
-
-				if(file_exists($filepath))
+				else 
 				{
-					//opening the nagios log file
-					$logfile = fopen($filepath, 'r') or die('File not found !');
-
-					while(! feof($logfile))
+					if($this->_compare_string($input_host, $items->hostname))
 					{
-						$this->_backtrack_array[$b] = trim(fgets($logfile));
-						$b++;
-					}
-
-					fclose($logfile);
-				}
-				else
-				{
-					$this->_problem_array[$this->_problem] = 'File : nagios-'.$modify_date.'-00.log not found';
-
-					$this->_problem++;
-				}
-			}
-		}
-
-		$state_array = array();
-		$state_array = $this->_parse_log($this->_backtrack_array, 'trend');
-
-		if($backtrack_archive >= 1)
-		{
-			foreach($state_array as $temp)
-			{
-				if($this->_compare_string($input_host, $temp->hostname))
-				{
-					if($this->_compare_string($input_service, $temp->servicename))
-					{										
-						$initial_state = $temp->state;	
-					}
-				}
-			}
-		}
-
-		$alert_array = array();
-		$alert_array = $this->_parse_log($this->_backtrack_array, 'alert');
-
-		if(empty($initial_state))
-		{
-			if($backtrack_archive >= 2)
-			{
-				foreach($alert_array as $alerts)
-				{
-					if($this->_compare_string($input_host, $alerts->hostname))
-					{
-						if($this->_compare_string($input_service, $alerts->servicename))
-						{										
-							$initial_state = $alerts->state;	
-						}
-					}
-				}
-			}
-		}
-
-		if(empty($initial_state))
-		{
-			if($backtrack_archive >= 3)
-			{
-				if($assume_initial_state)
-				{
-					foreach($alert_array as $alerts)
-					{
-						if($this->_compare_string($first_assume_host_service, 'UNSPECIFIED'))
+						if($this->_compare_string($input_service, $items->servicename))
 						{
-							$first_assume_host_service = 'ALL';
-						}
+							$detect = true;
 
-						if($this->_compare_string($first_assume_host_service, 'CURRENT STATE'))
-						{
-							$first_assume_host_service = $current_state;
-						}
-
-						if($this->_compare_string($first_assume_host_service, $alerts->state))
-						{
-							if($this->_compare_string($input_host, $alerts->hostname))
+							//$input_array[$count]->state = 'UP'
+							if($this->_compare_string($items->state, 'UP'))
 							{
-								if($this->_compare_string($input_service, $alerts->servicename))
-								{										
-									$initial_state = $alerts->state;	
-								}
+								$initial_state = 3;
+							}
+							//$input_array[$count]->state = 'DOWN'
+							else if($this->_compare_string($items->state, 'DOWN'))
+							{
+								$initial_state = 2;
+							}
+							//$input_array[$count]->state = 'UNREACHABLE'
+							else if($this->_compare_string($items->state, 'UNREACHABLE'))
+							{
+								$initial_state = 1;
+							}
+							//$input_array[$count]->state = 'OK'
+							else if($this->_compare_string($items->state, 'OK'))
+							{
+								$initial_state = 4;
+							}
+							//$input_array[$count]->state = 'WARNING'
+							else if($this->_compare_string($items->state, 'WARNING'))
+							{
+								$initial_state = 3;
+							}
+							//$input_array[$count]->state = 'UNKNOWN'
+							else if($this->_compare_string($items->state, 'UNKNOWN'))
+							{
+								$initial_state = 2;
+							}
+							//$input_array[$count]->state = 'CRITICAL'
+							else if($this->_compare_string($items->state, 'CRITICAL'))
+							{
+								$initial_state = 1;
+							}
+							//$input_array[$count]->state = 'STARTED'
+							else if($this->_compare_string($items->state, 'STARTED'))
+							{
+								$detect = false;
+							}
+							//$input_array[$count]->state = 'STOPPED'
+							else if($this->_compare_string($items->state, 'STOPPED'))
+							{
+								$detect = false;
 							}
 						}
 					}
@@ -3291,26 +3365,7 @@ class Testing extends CI_Model
 			}
 		}
 
-		if(empty($initial_state))
-		{
-			//$backtrack_archive === 4
-			$initial_state = 'UNDETERMINED';
-		}
-
-		$duration = $now - (int)$start_date;
-		$return_obj->logtype = 'INITIAL STATE';
-		$return_obj->duration = $duration;
-		$return_obj->start_time = (int)$start_date;
-		$return_obj->end_time = $start_date + $duration;
-		$return_obj->state = $initial_state;
-
-		$return_array[$i] = $return_obj;
-		$i++;
-
-		$now = $now - $duration;
-		unset($return_obj);
-
-		return $return_array;
+		return $initial_state;
 	}
 
 	//Function used to calculate total duration for each type of state for host
@@ -3326,19 +3381,23 @@ class Testing extends CI_Model
 		{
 			$all_total += $alerts->duration;
 
-			if($this->_compare_string($alerts->state, 'UP'))
+			//$alerts->state = 'UP'
+			if($alerts->state === 3)
 			{
 				$up_total += $alerts->duration;
 			}
-			else if($this->_compare_string($alerts->state, 'DOWN'))
+			//$alerts->state = 'DOWN'
+			else if($alerts->state === 2)
 			{
 				$down_total += $alerts->duration;
 			}
-			else if($this->_compare_string($alerts->state, 'UNREACHABLE'))
+			//$alerts->state = 'UNREACHABLE'
+			else if($alerts->state === 1)
 			{
 				$unreachable_total += $alerts->duration;
 			}
-			else if($this->_compare_string($alerts->state, 'UNDETERMINED'))
+			//$alerts->state = 'UNDETERMINED'
+			else if($alerts->state === 0)
 			{
 				$undetermined_total += $alerts->duration;
 			}
@@ -3368,24 +3427,28 @@ class Testing extends CI_Model
 		{
 			$all_total += $alerts->duration;
 
-			if($this->_compare_string($alerts->state, 'OK'))
+			//$alerts->state = 'OK'
+			if($alerts->state === 4)
 			{
 				$ok_total += $alerts->duration;
 			}
-			else if($this->_compare_string($alerts->state, 'WARNING'))
+			//$alerts->state = 'WARNING'
+			else if($alerts->state === 3)
 			{
 				$warning_total += $alerts->duration;
 			}
-			else if($this->_compare_string($alerts->state, 'UNKNOWN'))
+			//$alerts->state = 'UNKNOWN'
+			else if($alerts->state === 2)
 			{
 				$unknown_total += $alerts->duration;
 			}
-			else if($this->_compare_string($alerts->state, 'CRITICAL'))
+			//$alerts->state = 'CRITICAL'
+			else if($alerts->state === 1)
 			{
 				$critical_total += $alerts->duration;
 			}
 			//$alerts->state = 'UNDETERMINED'
-			else
+			else if($alerts->state === 0)
 			{
 				$undetermined_total += $alerts->duration;
 			}
