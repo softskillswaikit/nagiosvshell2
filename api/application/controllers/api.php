@@ -288,8 +288,8 @@ class API extends VS_Controller
      * @param string $assume_state_retention, 'true', 'false'
      * @param string $assume_state_downtime, 'true', 'false'
      * @param string $include_soft, 'true', 'false'
-     * @param string $first_assume_host_service, possible value (host) = 'UP', 'DOWN', 'UNREACHABLE', 'PENDING', 'ALL', 'HOST PROBLEM STATE'; possible value (service) = 'OK', 'WARNING', 'UNKNOWN', 'CRITICAL', 'PENDING', 'ALL', 'SERVICE PROBLEM STATE'
      * @param string $backtrack_archive, integer
+     * @param string $first_assume_host_service, possible value (host) = 'UP', 'DOWN', 'UNREACHABLE', 'PENDING', 'ALL', 'HOST PROBLEM STATE'; possible value (service) = 'OK', 'WARNING', 'UNKNOWN', 'CRITICAL', 'PENDING', 'ALL', 'SERVICE PROBLEM STATE'
      *
      * return code
      * 0 = success
@@ -410,6 +410,7 @@ class API extends VS_Controller
         $return_type = (int)$return_type;
 
         //decode inputs with spaces
+        $host_name = urldecode($host_name);
         $service_description = urldecode($service_description);
         $period = urldecode($period);
         $logtype = urldecode($logtype);
@@ -421,14 +422,25 @@ class API extends VS_Controller
         {
             $date = array($start_date, $end_date);
         }
-
         //standard report date
         else
         {
             $date = $start_date;
         }
 
-        //check empty inputs
+        //for hostgroup
+        if($return_type == 3)
+        {
+            $host_name = $this->get_hosts($host_name);
+        }
+
+        //for servicegroup
+        if($return_type == 5)
+        {
+            $service_description = $this->get_services($service_description);
+        }
+
+        //check empty and invalid inputs
         $validate = $this->validate_data(array($return_type, $period, $date, $service_description, $logtype, $statetype, $state));
 
         if($validate)
@@ -561,11 +573,10 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $Result = $this->system_commands->disable_all_notification();
+        $result = $this->validate_data(array('a', '1','abc123', 1));
         
-        $validate = $this->check_result($Result);
 
-        $this->output(var_dump($validate));
+        $this->output(var_dump($result));
     }
 
     /**
@@ -1833,6 +1844,8 @@ class API extends VS_Controller
      }
 
 
+
+
     /**
      * Fetch host status
      *
@@ -2625,24 +2638,36 @@ class API extends VS_Controller
     //check and validate data
     private function validate_data($data)
     {
-        $data_length = count($data);
-        $validate = false;
-        $true = 0;
+        $false = 0;
         
-        for($i=0; $i<$data_length; $i++)
+        foreach($data as $input)
         {
-            if(!empty($data[$i]))
+            //empty input
+            if(empty($input))
             {
-                $true ++;
+                $false ++;
+            }
+            else
+            {
+                if(is_string($input))
+                {
+                    //invalid input
+                    if(strpos($input, ';') != false)
+                    {
+                        $false ++;
+                    }
+                }
             }
         }
 
-        if($true == $data_length)
+        if($false != 0)
         {
-            $validate = true;
+            return false;
         }
-
-        return $validate;
+        else
+        {
+            return true;
+        }
     }
 
     //convert string data to boolean
@@ -2673,6 +2698,48 @@ class API extends VS_Controller
         {
             return 2; //command run failed
         }
+    }
+
+    //get hosts inside a host group
+    private function get_hosts($data)
+    {
+        $hostgroups = $this->nagios_data->get_collection('hostgroup');
+
+        foreach($hostgroups as $hostgroup)
+        {
+            $hostgroup_name[] = array('hostgroup_name'=> $hostgroup->alias, 'members'=> $hostgroup->members);
+        }
+
+        foreach ($hostgroup_name as $hostgroup) 
+        {
+            if($hostgroup['hostgroup_name'] == $data)
+            {
+                $host[] = $hostgroup['members'];
+            }
+        }
+
+        return $host;
+    }
+
+    //get services inside a service group
+    private function get_services($data)
+    {
+        $servicegroups = $this->nagios_data->get_collection('servicegroup');
+
+        foreach ($servicegroups as $servicegroup) 
+        {
+            $servicegroup_name = array('servicegroup_name'=> $servicegroup->alias, 'members' => $servicegroup->members);
+        }
+
+        foreach ($servicegroup_name as $servicegroup) 
+        {
+            if($servicegroup['servicegroup_name'] == $data)
+            {
+                $service[] = $servicegroup['members'];
+            }
+        }
+
+        return $service;
     }
 
 }
