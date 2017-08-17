@@ -37,7 +37,7 @@
 						<div class="form-group">
 							<label for="reportHost" class="col-md-4 control-label">Select Host:</label>
 							<div class="col-md-6">
-								<select ng-model="reportHost" ng-change="reportService = '' && reportHostResource = ''" name="reportHost" class="form-control" ng-required="reportType!=2">
+								<select ng-model="reportHost" ng-change="reportService = '';  reportHostResource = ''" name="reportHost" class="form-control" ng-required="reportType!=2">
 									 <option ng-repeat="name in name.host" value="{{name}}">{{name}}</option>
 								</select>
 								<span style="color:red" ng-show="inputForm.reportHost.$invalid">

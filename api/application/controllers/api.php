@@ -177,7 +177,6 @@ class API extends VS_Controller
 
     /**
      * Fetch name based on type : host, hostgroup, service, servicegroup
-     *
      */
     public function name()
     {
@@ -270,6 +269,8 @@ class API extends VS_Controller
      */
      public function availability($type, $period, $start, $end, $hostservice, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost='', $firstAssumedService='', $backTrack)
     {
+        //decode data with spacing
+
         $validate = $this->validate_data($type, $period, $start, $end, $hostservice, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $firstAssumedService, $backTrack);
 
     }
@@ -287,8 +288,12 @@ class API extends VS_Controller
      * @param string $assume_state_retention, 'true', 'false'
      * @param string $assume_state_downtime, 'true', 'false'
      * @param string $include_soft, 'true', 'false'
-     * @param string $first_assume_host_service, possible value (host) = 'UP', 'DOWN', 'UNREACHABLE', 'PENDING', 'ALL', 'HOST PROBLEM STATE'; possible value (service) = 'OK', 'WARNING', 'UNKNOWN', 'CRITICAL', 'PENDING', 'ALL', 'SERVICE PROBLEM STATE'
      * @param string $backtrack_archive, integer
+     * @param string $first_assume_host_service, possible value (host) = 'UP', 'DOWN', 'UNREACHABLE', 'PENDING', 'ALL', 'HOST PROBLEM STATE'; possible value (service) = 'OK', 'WARNING', 'UNKNOWN', 'CRITICAL', 'PENDING', 'ALL', 'SERVICE PROBLEM STATE'
+     *
+     * return code
+     * 0 = success
+     * 1 = fail
      */
     public function trend($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $backtrack_archive, $first_assume_host_service)
     {
@@ -325,12 +330,11 @@ class API extends VS_Controller
         $assume_state_downtime = $this->convert_data_bool($assume_state_downtime);
         $include_soft = $this->convert_data_bool($include_soft);
 
-        //convert date for custom report
+        //custom report date
         if($period == 'CUSTOM')
         {
             $date = array($start_date, $end_date);
         }
-
         //standard report date
         else
         {
@@ -342,7 +346,12 @@ class API extends VS_Controller
 
         if($validate)
         {
-            $Trend = $this->reports_data->get_trend($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_service, $backtrack_archive);
+            $Trend = $this->reports_data->get_trend($return_type, $period, $date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_service, $backtrack_archive);
+        }
+        //incorrect inputs
+        else
+        {
+            $Trend = 1;
         }
 
         $this->output($Trend);
@@ -355,12 +364,19 @@ class API extends VS_Controller
      */
     public function alertHistory($date)
     {
+        $Alert_history = array();
+
         //check empty inputs
         $validate = $this->validate_data(array($date));
 
         if($validate)
         {
             $Alert_history = $this->reports_data->get_history_data($date);
+        }
+        //incorrect inputs
+        else
+        {
+            $Alert_history = 1;
         }
 
         $this->output($Alert_history);
@@ -369,8 +385,15 @@ class API extends VS_Controller
     /**
      * Fetch alert summary
      *
-     * @param string $return_type,   1 : Top producer, 2 : Alert total by host, 3 : Alert total by hostgroup,  4: Alert total by service, 5 : Alert total by servicegroup, 6 : Most recent alert
-     * @param string $period ,'TODAY', 'LAST 24 HOURS', 'YESTERDAY', 'THIS WEEK', 'LAST 7 DAYS', 'LAST WEEK', 'THIS MONTH', 'LAST 31 DAYS', 'LAST MONTH', 'THIS YEAR', 'LAST YEAR', 'CUSTOM'
+     * @param string $return_type,
+     * 1 : Top producer,
+     * 2 : Alert total by host,
+     * 3 : Alert total by hostgroup,
+     * 4 : Alert total by service,
+     * 5 : Alert total by servicegroup,
+     * 6 : Most recent alert
+     * @param string $period,
+     * 'TODAY', 'LAST 24 HOURS', 'YESTERDAY', 'THIS WEEK', 'LAST 7 DAYS', 'LAST WEEK', 'THIS MONTH', 'LAST 31 DAYS', 'LAST MONTH', 'THIS YEAR', 'LAST YEAR', 'CUSTOM'
      * @param string $start_date, for standard report, $start_date = current unix time
      * @param string $end_date
      * @param string $host_name
@@ -387,6 +410,7 @@ class API extends VS_Controller
         $return_type = (int)$return_type;
 
         //decode inputs with spaces
+        $host_name = urldecode($host_name);
         $service_description = urldecode($service_description);
         $period = urldecode($period);
         $logtype = urldecode($logtype);
@@ -398,14 +422,25 @@ class API extends VS_Controller
         {
             $date = array($start_date, $end_date);
         }
-
         //standard report date
         else
         {
             $date = $start_date;
         }
 
-        //check empty inputs
+        //for hostgroup
+        if($return_type == 3)
+        {
+            $host_name = $this->get_hosts($host_name);
+        }
+
+        //for servicegroup
+        if($return_type == 5)
+        {
+            $service_description = $this->get_services($service_description);
+        }
+
+        //check empty and invalid inputs
         $validate = $this->validate_data(array($return_type, $period, $date, $service_description, $logtype, $statetype, $state));
 
         if($validate)
@@ -449,6 +484,7 @@ class API extends VS_Controller
         $ignore_repeated_state = 'false';
         */
 
+        //convert input to int
         $return_type = (int)$return_type;
         $statistic_breakdown = (int)$statistic_breakdown;
 
@@ -460,15 +496,13 @@ class API extends VS_Controller
         $end_date = urldecode($end_date);
         $event_graph = urldecode($event_graph);
 
-
-
         //convert inputs to boolean
         $assume_state_retention = $this->convert_data_bool($assume_state_retention);
         $initial_state_logged = $this->convert_data_bool($initial_state_logged);
         $ignore_repeated_state = $this->convert_data_bool($ignore_repeated_state);
 
         //convert date into array
-        if($end_date != ' ')
+        if($period == 'CUSTOM')
         {
             $date = array($start_date, $end_date);
         }
@@ -503,6 +537,11 @@ class API extends VS_Controller
         {
             $Event_logs = $this->reports_data->get_event_log($date);
         }
+        //invalid input
+        else
+        {
+            $Event_logs = 1;
+        }
 
         $this->output($Event_logs);
     }
@@ -523,63 +562,21 @@ class API extends VS_Controller
         {
             $Notifications = $this->reports_data->get_notification($date);
         }
+        //invalid input
+        else
+        {
+            $Notifications = 1;
+        }
 
         $this->output($Notifications);
     }
 
     public function testing()
     {
-        $period = 'THIS YEAR';
-        $host_name = 'localhost';
-        $service_description = 'ALL';
-        $assume_state_retention = 'true';
-        $assume_state_downtime = 'true';
-        $assume_initial_state = 'true';
-        $include_soft = 'true';
-        $backtrack_archive = '4';
-        $return_type = '1';
-        $first_assume_host_service = 'UP';
-        $start_date = '1502619210';
+        $result = $this->validate_data(array('a', '1','abc123', 1));
 
 
-        $Trend = array();
-
-        //decode input with spacing
-        $period = urldecode($period);
-        $host_name = urldecode($host_name);
-        $service_description = urldecode($service_description);
-
-        //convert input to int
-        $return_type = (int)$return_type;
-        $backtrack_archive = (int)$backtrack_archive;
-
-        //convert input to bool
-        $assume_initial_state = $this->convert_data_bool($assume_initial_state);
-        $assume_state_retention = $this->convert_data_bool($assume_state_retention);
-        $assume_state_downtime = $this->convert_data_bool($assume_state_downtime);
-        $include_soft = $this->convert_data_bool($include_soft);
-
-        //convert date for custom report
-        if($period == 'CUSTOM')
-        {
-            $date = array($start_date, $end_date);
-        }
-
-        //standard report date
-        else
-        {
-            $date = $start_date;
-        }
-
-        //check empty inputs
-        $validate = $this->validate_data(array($return_type, $period, $start_date, $host_name, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft));
-
-        if($validate)
-        {
-            $Trend = $this->reports_data->get_trend($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_service, $backtrack_archive);
-        }
-
-        $this->output($Trend);
+        $this->output(var_dump($result));
     }
 
     /**
@@ -650,6 +647,16 @@ class API extends VS_Controller
                     }
                 }
             }
+            //incorrect input
+            else
+            {
+                $Downtime = 1;
+            }
+        }
+        //invalid input
+        else
+        {
+            $Downtime = 1;
         }
 
         $this->output($Downtime);
@@ -674,13 +681,26 @@ class API extends VS_Controller
             if($type == 'host')
             {
                 $Result = $this->system_commands->delete_host_downtime($downtime_id);
+                $Result = $this->check_result($Result);
             }
 
             //delete service downtime
             else if($type == 'svc')
             {
                 $Result = $this->system_commands->delete_svc_downtime($downtime_id);
+                $Result = $this->check_result($Result);
             }
+
+            //incorrect input
+            else
+            {
+                $Result = 1;
+            }
+        }
+        //invalid input
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -733,20 +753,33 @@ class API extends VS_Controller
                 if($type == 'host')
                 {
                     $Result = $this->system_commands->schedule_host_downtime($host_name, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments);
+                    $Result = $this->check_result($Result);
                 }
 
                 //schedule service downtime
                 else if($type == 'svc')
                 {
                     $Result = $this->system_commands->schedule_svc_downtime($host_name, $service_description, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments);
+                    $Result = $this->check_result($Result);
                 }
 
                 //schedule host service downtime
                 else
                 {
                     $Result = $this->system_commands->schedule_host_svc_downtime($host_name, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments);
+                    $Result = $this->check_result($Result);
                 }
             }
+            //incorrect input
+            else
+            {
+                $Result = 1;
+            }
+        }
+        //invalid input
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -917,12 +950,24 @@ class API extends VS_Controller
                 if($type == 'host')
                 {
                     $Result = $this->system_commands->add_host_comment($host_name, $persistent, $author, $comments);
+                    $Result = $this->check_result($Result);
                 }
                 else
                 {
                     $Result = $this->system_commands->add_svc_comment($host_name, $service_description, $persistent, $author, $comments);
+                    $Result = $this->check_result($Result);
                 }
             }
+            //incorrect inputs
+            else
+            {
+                $Result = 1;
+            }
+        }
+        //invalid inputs
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -955,14 +1000,25 @@ class API extends VS_Controller
                 if($type == 'host')
                 {
                     $Result = $this->system_commands->delete_host_comment($id);
+                    $Result = $this->check_result($Result);
                 }
 
                 //delete service comment
                 else
                 {
                     $Result = $this->system_commands->delete_svc_comment($id);
+                    $Result = $this->check_result($Result);
                 }
             }
+            //incorrect input
+            else
+            {
+                $Result = 1;
+            }
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -985,13 +1041,30 @@ class API extends VS_Controller
         $host_name = urldecode($host_name);
         $service_description = urldecode($service_description);
 
-        if($type == 'true')
+        $validate = $this->validate_data($type, $host_name, $service_description);
+
+        if($validate)
         {
-            $Result = $this->system_commands->enable_svc_check($host_name, $service_description);
+            if($type == 'true')
+            {
+                $Result = $this->system_commands->enable_svc_check($host_name, $service_description);
+                $Result = $this->check_result($Result);
+            }
+            else if ($type == 'false')
+            {
+                $Result = $this->system_commands->disable_svc_check($host_name, $service_description);
+                $Result = $this->check_result($Result);
+            }
+            //incorrect inputs
+            else
+            {
+                $Result = 1;
+            }
         }
-        else if ($type == 'false')
+        //invalid inputs
+        else
         {
-            $Result = $this->system_commands->disable_svc_check($host_name, $service_description);
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1009,10 +1082,16 @@ class API extends VS_Controller
         if($type == 'true')
         {
             $Result = $this->system_commands->enable_all_notification();
+            $Result = $this->check_result($Result);
         }
         else if($type == 'false')
         {
             $Result = $this->system_commands->disable_all_notification();
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1030,10 +1109,16 @@ class API extends VS_Controller
         if($type == 'restart')
         {
             $Result = $this->system_commands->restart_nagios();
+            $Result = $this->check_result($Result);
         }
         else if($type == 'shutdown')
         {
             $Result = $this->system_commands->shutdown_nagios();
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1053,10 +1138,16 @@ class API extends VS_Controller
         if($type == 'true')
         {
             $Result = $this->system_commands->enable_svc_notification($host_name, $service_description);
+            $Result = $this->check_result($Result);
         }
         else if($type == 'false')
         {
             $Result = $this->system_commands->disable_svc_notification($host_name, $service_description);
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1077,12 +1168,19 @@ class API extends VS_Controller
         if($type == 'host')
         {
            $Result =  $this->system_commands->delete_all_host_comment($host_name);
+           $Result = $this->check_result($Result);
         }
 
         //delete all service comment
         else if($type == 'service')
         {
             $Result = $this->system_commands->delete_all_svc_comment($host_name, $service_description);
+            $Result = $this->check_result($Result);
+        }
+
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1101,10 +1199,16 @@ class API extends VS_Controller
         if($type == 'true')
         {
             $Result = $this->system_commands->enable_host_notification($host_name);
+            $Result = $this->check_result($Result);
         }
         else if($type == 'false')
         {
             $Result =  $this->system_commands->disable_host_notification($host_name);
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1129,14 +1233,21 @@ class API extends VS_Controller
         if($type == 'host')
         {
             $Result = $this->system_commands->schedule_host_check($host_name, $checktime, $force_check);
+            $Result = $this->check_result($Result);
         }
         else if($type == 'hostsvc')
         {
             $Result = $this->system_commands->schedule_host_svc_check($host_name, $checktime, $force_check);
+            $Result = $this->check_result($Result);
         }
         else if($type == 'service')
         {
             $Result = $this->system_commands->schedule_svc_check($host_name, $service_description, $checktime, $force_check);
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1155,10 +1266,16 @@ class API extends VS_Controller
         if($type == 'true')
         {
             $Result = $this->system_commands->enable_host_svc_check($host_name);
+            $Result = $this->check_result($Result);
         }
         else if($type == 'false')
         {
             $Result = $this->system_commands->disable_host_svc_check($host_name);
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1177,10 +1294,16 @@ class API extends VS_Controller
         if($type == 'true')
         {
             $Result = $this->system_commands->enable_host_svc_notification($host_name);
+            $Result = $this->check_result($Result);
         }
         else if($type == 'false')
         {
             $Result = $this->system_commands->disable_host_svc_notification($host_name);
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1214,10 +1337,16 @@ class API extends VS_Controller
         if($type == 'host')
         {
             $Result = $this->system_commands->acknowledge_host_problem($host_name, $sticky, $notify, $persistent, $author, $comment);
+            $Result = $this->check_result($Result);
         }
         else if($type == 'service')
         {
             $Result = $this->system_commands->acknowledge_svc_problem($host_name, $service_description, $sticky, $notify, $persistent, $author, $comment);
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1235,10 +1364,16 @@ class API extends VS_Controller
         if($type == 'true')
         {
             $Result = $this->system_commands->start_svc_check();
+            $Result = $this->check_result($Result);
         }
         else if($type == 'false')
         {
             $Result = $this->system_commands->stop_svc_check();
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1256,10 +1391,16 @@ class API extends VS_Controller
         if($type == 'true')
         {
             $Result = $this->system_commands->start_passive_svc_check();
+            $Result = $this->check_result($Result);
         }
         else if($type == 'false')
         {
             $Result = $this->system_commands->stop_passive_svc_check();
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1279,10 +1420,16 @@ class API extends VS_Controller
         if($type == 'true')
         {
             $Result = $this->system_commands->enable_passive_svc_check($host_name, $service_description);
+            $Result = $this->check_result($Result);
         }
         else if($type == 'false')
         {
             $Result = $this->system_commands->disable_passive_svc_check($host_name, $service_description);
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1300,10 +1447,16 @@ class API extends VS_Controller
         if($type == 'true')
         {
             $Result = $this->system_commands->enable_event_handler();
+            $Result = $this->check_result($Result);
         }
         else if($type == 'false')
         {
             $Result = $this->system_commands->disable_event_handler();
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1322,10 +1475,16 @@ class API extends VS_Controller
         if($type == 'true')
         {
             $Result = $this->system_commands->enable_host_check($host_name);
+            $Result = $this->check_result($Result);
         }
         else if($type == 'false')
         {
             $Result = $this->system_commands->disable_host_check($host_name);
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1343,10 +1502,16 @@ class API extends VS_Controller
         if($type == 'true')
         {
             $Result = $this->system_commands->start_obsess_over_svc_check();
+            $Result = $this->check_result($Result);
         }
         else if($type == 'false')
         {
             $Result = $this->system_commands->stop_obsess_over_svc_check();
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1364,10 +1529,16 @@ class API extends VS_Controller
         if($type == 'true')
         {
             $Result = $this->system_commands->start_obsess_over_host_check();
+            $Result = $this->check_result($Result);
         }
         else if($type == 'false')
         {
             $Result = $this->system_commands->stop_obsess_over_host_check();
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1386,10 +1557,16 @@ class API extends VS_Controller
         if($type == 'true')
         {
             $Result = $this->system_commands->start_obsess_over_host($host_name);
+            $Result = $this->check_result($Result);
         }
         else if($type == 'false')
         {
             $Result = $this->system_commands->stop_obsess_over_host($host_name);
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1409,10 +1586,16 @@ class API extends VS_Controller
         if($type == 'true')
         {
             $Result = $this->system_commands->start_obsess_over_svc($host_name, $service_description);
+            $Result = $this->check_result($Result);
         }
         else if ($type == 'false')
         {
             $Result = $this->system_commands->stop_obsess_over_svc($host_name, $service_description);
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1430,10 +1613,16 @@ class API extends VS_Controller
         if($type == 'true')
         {
             $Result = $this->system_commands->enable_performance_data();
+            $Result = $this->check_result($Result);
         }
         else if($type == 'false')
         {
             $Result = $this->system_commands->disable_performance_data();
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1451,10 +1640,16 @@ class API extends VS_Controller
         if($type == 'true')
         {
             $Result = $this->system_commands->start_host_check();
+            $Result = $this->check_result($Result);
         }
         else if($type == 'false')
         {
             $Result = $this->system_commands->stop_host_check();
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1472,10 +1667,16 @@ class API extends VS_Controller
         if($type == 'true')
         {
             $Result = $this->system_commands->start_passive_host_check();
+            $Result = $this->check_result($Result);
         }
         else if($type == 'false')
         {
             $Result = $this->system_commands->stop_passive_host_check();
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1494,10 +1695,16 @@ class API extends VS_Controller
         if($type == 'true')
         {
             $Result = $this->system_commands->enable_passive_host_check($host_name);
+            $Result = $this->check_result($Result);
         }
         else if($type == 'false')
         {
             $Result = $this->system_commands->disable_passive_host_check($host_name);
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1515,10 +1722,16 @@ class API extends VS_Controller
         if($type == 'true')
         {
             $Result = $this->system_commands->enable_flap_detection();
+            $Result = $this->check_result($Result);
         }
         else if($type == 'false')
         {
             $Result = $this->system_commands->disable_flap_detection();
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1537,10 +1750,16 @@ class API extends VS_Controller
         if($type == 'true')
         {
             $Result = $this->system_commands->enable_host_flap_detection($host_name);
+            $Result = $this->check_result($Result);
         }
         else if($type == 'false')
         {
             $Result = $this->system_commands->disable_host_flap_detection($host_name);
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1557,13 +1776,26 @@ class API extends VS_Controller
      {
         $Result = false;
 
-        if($type == 'true')
+        //check empty inputs
+        $validate = $this->validate_data($type, $host_name, $service_description);
+
+        if($validate)
         {
-            $Result = $this->system_commands->enable_svc_flap_detection($host_name, $service_description);
+            if($type == 'true')
+            {
+                $Result = $this->system_commands->enable_svc_flap_detection($host_name, $service_description);
+                $Result = $this->check_result($Result);
+            }
+            else if($type == 'false')
+            {
+                $Result = $this->system_commands->disable_svc_flap_detection($host_name, $service_description);
+                $Result = $this->check_result($Result);
+            }
         }
-        else if($type == 'false')
+        //invalid inputs
+        else
         {
-            $Result = $this->system_commands->disable_svc_flap_detection($host_name, $service_description);
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -1596,14 +1828,22 @@ class API extends VS_Controller
         if($type == 'host')
         {
             $Result = $this->system_commands->send_custom_host_notification($host_name, $force, $broadcast, $author, $comment);
+            $Result = $this->check_result($Result);
         }
         else if($type == 'service')
         {
             $Result = $this->system_commands->send_custom_svc_notification($host_name, $service_description, $force, $broadcast, $author, $comment);
+            $Result = $this->check_result($Result);
+        }
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
      }
+
+
 
 
     /**
@@ -2398,24 +2638,36 @@ class API extends VS_Controller
     //check and validate data
     private function validate_data($data)
     {
-        $data_length = count($data);
-        $validate = false;
-        $true = 0;
+        $false = 0;
 
-        for($i=0; $i<$data_length; $i++)
+        foreach($data as $input)
         {
-            if(!empty($data[$i]))
+            //empty input
+            if(empty($input))
             {
-                $true ++;
+                $false ++;
+            }
+            else
+            {
+                if(is_string($input))
+                {
+                    //invalid input
+                    if(strpos($input, ';') != false)
+                    {
+                        $false ++;
+                    }
+                }
             }
         }
 
-        if($true == $data_length)
+        if($false != 0)
         {
-            $validate = true;
+            return false;
         }
-
-        return $validate;
+        else
+        {
+            return true;
+        }
     }
 
     //convert string data to boolean
@@ -2433,6 +2685,61 @@ class API extends VS_Controller
         {
             return null;
         }
+    }
+
+    //convert result to result code
+    private function check_result($data)
+    {
+        if($data)
+        {
+            return 0; //command run successed
+        }
+        else
+        {
+            return 2; //command run failed
+        }
+    }
+
+    //get hosts inside a host group
+    private function get_hosts($data)
+    {
+        $hostgroups = $this->nagios_data->get_collection('hostgroup');
+
+        foreach($hostgroups as $hostgroup)
+        {
+            $hostgroup_name[] = array('hostgroup_name'=> $hostgroup->alias, 'members'=> $hostgroup->members);
+        }
+
+        foreach ($hostgroup_name as $hostgroup)
+        {
+            if($hostgroup['hostgroup_name'] == $data)
+            {
+                $host[] = $hostgroup['members'];
+            }
+        }
+
+        return $host;
+    }
+
+    //get services inside a service group
+    private function get_services($data)
+    {
+        $servicegroups = $this->nagios_data->get_collection('servicegroup');
+
+        foreach ($servicegroups as $servicegroup)
+        {
+            $servicegroup_name = array('servicegroup_name'=> $servicegroup->alias, 'members' => $servicegroup->members);
+        }
+
+        foreach ($servicegroup_name as $servicegroup)
+        {
+            if($servicegroup['servicegroup_name'] == $data)
+            {
+                $service[] = $servicegroup['members'];
+            }
+        }
+
+        return $service;
     }
 
 }
