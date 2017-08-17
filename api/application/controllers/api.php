@@ -346,7 +346,7 @@ class API extends VS_Controller
 
         if($validate)
         {
-            $Trend = $this->reports_data->get_trend($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_service, $backtrack_archive);
+            $Trend = $this->reports_data->get_trend($return_type, $period, $date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_service, $backtrack_archive);
         }
         //incorrect inputs
         else
