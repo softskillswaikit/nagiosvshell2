@@ -399,7 +399,7 @@ class API extends VS_Controller
 
         if($validate)
         {
-            $Trend = $this->reports_data->get_trend($return_type, $period, $start_date, $end_date, $host_name, $service_description, $first_assume_host_service, $backtrack_archive);
+            $Trend = $this->reports_data->get_trend($return_type, $period, $date, $host_name, $service_description, $first_assume_host_service, $backtrack_archive);
         }
         //incorrect inputs
         else
@@ -626,73 +626,52 @@ class API extends VS_Controller
 
     public function testing()
     {
-
-        $type = 'host';
+        $Alert_summary = array();
         $host_name = 'localhost';
-        $author = 'Nagios Admin';
-        $comments = "Testing comments to check";
-        $fixed = 'true';
-        $start_time = '1503069062';
-        $end_time = '1503076262';
-        $duration = '120';
 
-        $allowed_types = array(
-            'host',
-            'svc',
-            'hostsvc'
-        );
+        //convert inputs to int
+        $return_type = (int)$return_type;
 
-        //decode inputs with space
+        //decode inputs with spaces
         $host_name = urldecode($host_name);
-        $service_description = urldecode($service_description); 
-        $author = urldecode($author);
-        $comments = urldecode($comments);
+        $service_description = urldecode($service_description);
+        $period = urldecode($period);
+        $logtype = urldecode($logtype);
+        $statetype = urldecode($statetype);
+        $end_date = urldecode($end_date);
 
-        //convert fixed to boolean
-        $fixed = $this->convert_data_bool($fixed);
-        
-        //check empty inputs
-        $validate = $this->validate_data(array($type, $host_name, $start_time, $end_time, $duration, $author, $comments));
+        //custom report date
+        if($period == 'CUSTOM')
+        {
+            $date = array($start_date, $end_date);
+        }
+        //standard report date
+        else
+        {
+            $date = $start_date;
+        }
+
+        //for hostgroup
+        if($return_type == 3)
+        {
+            $host_name = $this->get_hosts($host_name);
+        }
+
+        //for servicegroup
+        if($return_type == 5)
+        {
+            $service_description = $this->get_services($service_description);
+        }
+
+        //check empty and invalid inputs
+        $validate = $this->validate_data(array($return_type, $period, $date, $service_description, $logtype, $statetype, $state));
 
         if($validate)
         {
-            //compare type with allowed types
-            if(in_array($type, $allowed_types))
-            {
-                //schedule host downtime
-                if($type == 'host')
-                {
-                    $Result = $this->system_commands->schedule_host_downtime($host_name, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments);
-                    $Result = $this->check_result($Result);
-                }
-
-                //schedule service downtime
-                else if($type == 'svc')
-                {
-                    $Result = $this->system_commands->schedule_svc_downtime($host_name, $service_description, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments);
-                    $Result = $this->check_result($Result);
-                }
-
-                //schedule host service downtime
-                else
-                {
-                    $Result = $this->system_commands->schedule_host_svc_downtime($host_name, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments);
-                    $Result = $this->check_result($Result);
-                }
-            }
-            //incorrect input
-            else
-            {
-                $Result = 1;
-            }
+            $Alert_summary = $this->reports_data->get_alert_summary($return_type, $period, $date, $host_name, $service_description, $logtype, $statetype, $state);
         }
-        //invalid input
-        else
-        {
-            $Result = 1;
-        }
-        
-        $this->output($Result);
+
+        $this->output($Alert_summary);
     }
 
     /**
