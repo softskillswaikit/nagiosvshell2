@@ -265,10 +265,10 @@ class API extends VS_Controller
      * @param String $assume_state_downtime, true, false
      * @param String $include_soft, true, false
      * @param String $first_assume_host_state
-     * @param String $first_assume_service_state
      * @param String $backtrack_archieve, integer
+     * @param String $first_assume_service_state
      */
-     public function availability($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_state, $first_assume_service_state, $backtrack_archive)
+     public function availability($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_state, $backtrack_archive, $first_assume_service_state)
     {
         $Availability = array();
 
@@ -316,7 +316,7 @@ class API extends VS_Controller
 
         if($validate)
         {
-            $Availability = $this->reports_data->get_availability($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_state, $first_assume_service_state, $backtrack_archive);
+            $Availability = $this->reports_data->get_availability($return_type, $period, $date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_state, $first_assume_service_state, $backtrack_archive);
         }
         //invalid input
         else
@@ -626,10 +626,73 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $result = $this->validate_data(array('a', '1','abc123', false));
-        
 
-        $this->output(var_dump($result));
+        $type = 'host';
+        $host_name = 'localhost';
+        $author = 'Nagios Admin';
+        $comments = "Testing comments to check";
+        $fixed = 'true';
+        $start_time = '1503069062';
+        $end_time = '1503076262';
+        $duration = '120';
+
+        $allowed_types = array(
+            'host',
+            'svc',
+            'hostsvc'
+        );
+
+        //decode inputs with space
+        $host_name = urldecode($host_name);
+        $service_description = urldecode($service_description); 
+        $author = urldecode($author);
+        $comments = urldecode($comments);
+
+        //convert fixed to boolean
+        $fixed = $this->convert_data_bool($fixed);
+        
+        //check empty inputs
+        $validate = $this->validate_data(array($type, $host_name, $start_time, $end_time, $duration, $author, $comments));
+
+        if($validate)
+        {
+            //compare type with allowed types
+            if(in_array($type, $allowed_types))
+            {
+                //schedule host downtime
+                if($type == 'host')
+                {
+                    $Result = $this->system_commands->schedule_host_downtime($host_name, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments);
+                    $Result = $this->check_result($Result);
+                }
+
+                //schedule service downtime
+                else if($type == 'svc')
+                {
+                    $Result = $this->system_commands->schedule_svc_downtime($host_name, $service_description, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments);
+                    $Result = $this->check_result($Result);
+                }
+
+                //schedule host service downtime
+                else
+                {
+                    $Result = $this->system_commands->schedule_host_svc_downtime($host_name, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments);
+                    $Result = $this->check_result($Result);
+                }
+            }
+            //incorrect input
+            else
+            {
+                $Result = 1;
+            }
+        }
+        //invalid input
+        else
+        {
+            $Result = 1;
+        }
+        
+        $this->output($Result);
     }
 
     /**
@@ -775,7 +838,7 @@ class API extends VS_Controller
      * @param String $author
      * @param String $comments
      */
-    public function scheduleDowntime($type, $host_name, $service_description='', $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments='')
+    public function scheduleDowntime($type, $host_name, $service_description, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments='')
     {
         $Result = false;
 
