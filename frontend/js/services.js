@@ -120,6 +120,8 @@ angular.module('vshell.services', [])
                 async.fetch(scope, options);
             }, async.interval_time);
 
+        }else{
+            console.log('success');
         }
     };
 

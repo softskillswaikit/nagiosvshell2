@@ -401,7 +401,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-lg" ng-click="resetWan()" data-dismiss="modal">No</button>
-				<button type="button" class="btn btn-primary btn-lg" ng-click='custom(comment)'>Yes</button>
+				<button type="button" class="btn btn-primary btn-lg" ng-click='custom(hostComment)'>Yes</button>
 			</div>
 		</div>
 	</div>
@@ -834,7 +834,7 @@
 	</div>
 </div>
 
-<!--Send Service Custom Notification modal in Host Details panel-->
+<!--Send Service Custom Notification modal in Service Details panel-->
 <div ng-controller="ServiceDetailsCtrl" class="modal fade" id="serviceCustomNotification" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content modal-sm">
@@ -877,7 +877,7 @@
 	</div>
 </div>
 
-<!--Schedule downtime for service in Host Details panel-->
+<!--Schedule downtime for service in Service Details panel-->
 <div ng-controller="ServiceDetailsCtrl" class="modal fade" id="serviceDetailsDowntime" role="dialog">
 	<div class="modal-dialog">
 	<!-- Modal content-->
@@ -982,7 +982,7 @@
 	</div>
 </div>
 
-<!--Schedule checks for service modal in Host Details panel-->
+<!--Schedule checks for service modal in Service Details panel-->
 <div ng-controller="ServiceDetailsCtrl" class="modal fade" id="ServiceDetailsRescheduleModal" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content modal-sm">
@@ -1022,7 +1022,7 @@
 	</div>
 </div>
 
-<!--Acknowledge Problem modal in Host Details panel-->
+<!--Acknowledge Problem modal in Service Details panel-->
 <div ng-controller="ServiceDetailsCtrl" class="modal fade" id="ServiceDetailsAcknowledge" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content modal-sm">
@@ -1069,3 +1069,68 @@
 	</div>
 </div>
 <!-- =============================================Service Detail modal============================================= -->
+
+<!-- =============================================Configurations modal============================================= -->
+<!--modal success-->
+<div ng-controller="ConfigurationsCtrl" class="modal fade" id="success" data-backdrop="false" >
+	<div class="modal-dialog modal-sm">
+    <!-- Modal content-->
+    		<div class="modal-content">
+      			<div class="modal-body" style="margin:0px;padding:0px">
+        				<div class="alert alert-success fade in" id="success-alert">
+          					<strong>Success!</strong>
+        				</div>
+				</div>
+        	</div>
+	</div>
+</div>
+
+<!--modal fail-->
+<div ng-controller="ConfigurationsCtrl" class="modal fade" id="fail" data-backdrop="false" >
+	<div class="modal-dialog modal-sm">
+    <!-- Modal content-->
+    		<div class="modal-content">
+      			<div class="modal-header" hidden="true"></div>
+      			<div class="modal-body" style="margin:0px;padding:0px">
+    				<div class="alert alert-danger fade in" id="fail-alert">
+      					<strong>Fail!</strong>
+    				</div>
+		    		<div class="modal-footer" hidden="true"></div>
+				</div>
+        	</div>
+	</div>
+</div>
+
+<div ng-controller="ConfigurationsCtrl" class="modal fade" id="add-name" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Add New Command</h4>
+			</div>
+			<div class="modal-body">
+				<form method="post" name="CommandForm" novalidate>
+					<div class="form-group">
+						<label for="commandName">Command Name:
+						<input class="form-control col-md-2" type="text" ng-model="commandName" name="commandName" required>
+						</label>
+					</div>
+					<span style="color:red" ng-show="CommandForm.commandName.$dirty && CommandForm.commandName.$invalid">
+								<span ng-show="CommandForm.commandName.$error.required">This field is required.</span></span>
+					<div class="form-group">
+						<label for="commandLine">Command Line:</label>
+						<textarea class="form-control" row="3" col="50" maxlength="100" ng-model="commandLine" name="commandLine" required></textarea> 
+					</div>
+					<span style="color:red" ng-show="CommandForm.commandLine.$dirty && CommandForm.commandLine.$invalid">
+								<span ng-show="CommandForm.commandLine.$error.required">This field is required.</span></span>
+					</div>
+					<div class="modal-footer">
+				<button type="button" class="btn btn-lg" data-dismiss="modal">No</button>
+				<button ng-disabled="CommandForm.$invalid" type="button" class="btn btn-primary btn-lg" data-dismiss="modal" ng-click='add()'>Yes</button>
+			</div>
+				</form>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<!-- =============================================Configurations modal============================================= -->

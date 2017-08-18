@@ -63,7 +63,7 @@
 		    <td ng-if="notification.service != null">{{ notification.service }}</td>
 		</div>
 		    <td>{{ notification.logtype }}</td>
-		    <td class="status">{{ notification.state | notification_state}}</td>
+		    <td class="status">{{ notification.state}}</td>
 		    <td>{{ notification.datetime * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
 		    <td>{{ notification.contact }}</td>
 		    <td>{{ notification.notificationcommand }}</td>

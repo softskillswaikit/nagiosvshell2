@@ -59,7 +59,21 @@ angular.module('vshell.filters', [])
     return function(input, reverse) {
         var lookup = {
             'CUSTOM (UP)': 'UP',
-            'CUSTOM (DOWN)': 'DOWN'
+            'CUSTOM (DOWN)': 'DOWN',
+            'CUSTOM (UNREACHABLE)': 'UNREACHABLE',
+            'CUSTOM (OK)': 'OK',
+            'CUSTOM (WARNING)': 'WARNING',
+            'CUSTOM (UNKNOWN)': 'UNKNOWN',
+            'CUSTOM (CRITICAL)': 'CRITICAL',
+            'CUSTOM (PENDING)': 'PENDING',
+            'UP': 'UP',
+            'DOWN': 'DOWN',
+            'UNREACHABLE': 'UNREACHABLE',
+            'OK': 'OK',
+            'DOWN': 'DOWN',
+            'UNREACHABLE': 'UNREACHABLE',
+            'CRITICAL': 'CRITICAL',
+            'PENDING': 'PENDING'
         };
 
         if (reverse) {

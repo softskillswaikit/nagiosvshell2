@@ -151,10 +151,10 @@ angular.module('vshell.controllers', [])
 
             //Reset the schedule downtime for host modal
             $scope.hostName = $routeParams.host;
-            $scope.hostComment = "";
+            $scope.hostComment = '';
             $scope.hostTriggeredBy = "N/A";
-            $scope.hostStartDateTime = "";
-            $scope.hostEndDateTime = "";
+            $scope.hostStartDateTime = '';
+            $scope.hostEndDateTime = '';
             $scope.hostType = 'Fixed';
             $scope.hostDurationHour = 0;
             $scope.hostDurationMin = 0;
@@ -429,11 +429,12 @@ angular.module('vshell.controllers', [])
             };
         
             $scope.custom = function(comment) {
+                $scope.hostComment = comment;
                 var options = {
                         name: 'CustomNotification',
                         url: 'sendcustomnotification/' + type + '/' + $routeParams.host + '/' + service + '/' + $scope.force + '/'
-                        + $scope.broadcast + '/' + $scope.author + '/' + comment,
-                        queue: 'main'
+                        + $scope.broadcast + '/' + $scope.hostAuthor + '/' + $scope.hostComment,
+                        queue: false
                 };
                 async.api($scope, options);
 
@@ -2072,7 +2073,7 @@ angular.module('vshell.controllers', [])
 
                 async.api($scope, options);
 
-            }, 3000, 20);   
+            }, 12000, 1);   
         };
 
         /*  function used to shutdown / restart the nagios process
@@ -3248,7 +3249,7 @@ angular.module('vshell.controllers', [])
                         name: 'CustomNotification',
                         url: 'sendcustomnotification/' + type + '/' + $routeParams.host + '/' + $routeParams.service + '/' + $scope.force + '/'
                         + $scope.broadcast + '/' + $scope.author + '/' + $scope.comment,
-                        queue: 'main'
+                        queue: false
                 };
                 async.api($scope, options);
 
