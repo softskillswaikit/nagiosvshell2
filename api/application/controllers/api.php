@@ -254,24 +254,77 @@ class API extends VS_Controller
     /**
      * Fetch availability
      * 
-     * @param String $type
-     * @param string $period
-     * @param string $start
-     * @param string $end
-     * @param String $hostservice
-     * @param bool $initialState
-     * @param bool $stateRetention
-     * @param bool $assumeState
-     * @param bool $includeSoftState
-     * @param String $firstAssumedHost
-     * @param String $firstAssumedService
-     * @param String $backTrack
+     * @param String $return_type, 1 - hostgroup, 2 - servicegroup, 3 - host, 4 - service, 5 - host resource, 6 - running state
+     * @param string $period, 'TODAY', 'LAST 24 HOURS', 'YESTERDAY', 'THIS WEEK', 'LAST 7 DAYS', 'LAST WEEK', 'THIS MONTH', 'LAST 31 DAYS', 'LAST MONTH', 'THIS YEAR', 'LAST YEAR', 'CUSTOM'
+     * @param string $start_date, for standard report, start_date = current unix timestamp
+     * @param string $end_date
+     * @param String $host_name
+     * @param String $service_description
+     * @param String $assume_initial_state, true, false
+     * @param String $assume_state_retention, true, false
+     * @param String $assume_state_downtime, true, false
+     * @param String $include_soft, true, false
+     * @param String $first_assume_host_state
+     * @param String $first_assume_service_state
+     * @param String $backtrack_archieve, integer
      */
-     public function availability($type, $period, $start, $end, $hostservice, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost='', $firstAssumedService='', $backTrack)
+     public function availability($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_state, $first_assume_service_state, $backtrack_archive)
     {
-        //decode data with spacing
+        $Availability = array();
 
-        $validate = $this->validate_data($type, $period, $start, $end, $hostservice, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $firstAssumedService, $backTrack);
+        //decode data with spacing
+        $period = urldecode($period);
+        $host_name = urldecode($host_name);
+        $service_description = urldecode($service_description);
+        $first_assume_host_state = urldecode($first_assume_host_state);
+        $first_assume_service_state = urldecode($first_assume_service_state);
+
+        //convert input to bool
+        $assume_initial_state = $this->convert_data_bool($assume_initial_state);
+        $assume_state_retention = $this->convert_data_bool($assume_state_retention);
+        $assume_state_downtime = $this->convert_data_bool($assume_state_downtime);
+        $include_soft = $this->convert_data_bool($include_soft);
+
+        //convert input to int
+        $return_type = (int)$return_type;
+        $backtrack_archive = (int)$backtrack_archive;
+
+        //custom report date
+        if($period == 'CUSTOM')
+        {
+            $date = array($start_date, $end_date);
+        }
+        //standard report date
+        else
+        {
+            $date = $start_date;
+        }
+
+        //for hostgroup
+        if($return_type == 1)
+        {
+            $host_name = $this->get_hosts($host_name);
+        }
+        //for servicegroup
+        else if($return_type == 2)
+        {
+            $service_description = $this->get_services($service_description);
+        }
+
+        //check empty inputs
+        $validate = $this->validate_data(array($return_type, $period, $date, $first_assume_host_state, $first_assume_service_state, $backtrack_archive));
+
+        if($validate)
+        {
+            $Availability = $this->reports_data->get_availability($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_state, $first_assume_service_state, $backtrack_archive);
+        }
+        //invalid input
+        else
+        {
+            $Availability = 1;
+        }
+
+        $this->output($Availability);
 
     }
 
@@ -342,11 +395,11 @@ class API extends VS_Controller
         }
 
         //check empty inputs
-        $validate = $this->validate_data(array($return_type, $period, $start_date, $host_name, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft));
+        $validate = $this->validate_data(array($return_type, $period, $start_date, $host_name));
 
         if($validate)
         {
-            $Trend = $this->reports_data->get_trend($return_type, $period, $date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_service, $backtrack_archive);
+            $Trend = $this->reports_data->get_trend($return_type, $period, $start_date, $end_date, $host_name, $service_description, $first_assume_host_service, $backtrack_archive);
         }
         //incorrect inputs
         else
@@ -513,7 +566,7 @@ class API extends VS_Controller
 
         $Alert_histogram = array();
 
-        $Alert_histogram = $this->reports_data->get_alert_histogram($return_type, $host_name, $service_description, $period, $date, $statistic_breakdown, $event_graph, $state_type_graph, $assume_state_retention, $initial_state_logged, $ignore_repeated_state);
+        $Alert_histogram = $this->reports_data->get_alert_histogram($return_type, $host_name, $service_description, $period, $date, $statistic_breakdown, $event_graph, $state_type_graph);
 
 
 
@@ -573,7 +626,7 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $result = $this->validate_data(array('a', '1','abc123', 1));
+        $result = $this->validate_data(array('a', '1','abc123', false));
         
 
         $this->output(var_dump($result));
@@ -742,7 +795,7 @@ class API extends VS_Controller
         $fixed = $this->convert_data_bool($fixed);
         
         //check empty inputs
-        $validate = $this->validate_data(array($type, $host_name, $start_time, $end_time, $fixed, $duration, $author, $comments));
+        $validate = $this->validate_data(array($type, $host_name, $start_time, $end_time, $duration, $author, $comments));
 
         if($validate)
         {
@@ -940,7 +993,7 @@ class API extends VS_Controller
         $persistent = $this->convert_data_bool($persistent);
 
         //check for empty input
-        $validate = $this->validate_data(array($type, $host_name, $persistent, $author, $comments));
+        $validate = $this->validate_data(array($type, $host_name, $author, $comments));
         
         if($validate)
         {
@@ -1164,6 +1217,10 @@ class API extends VS_Controller
     {
         $Result = false;
 
+        //decode input with spacing
+        $host_name = urldecode($host_name);
+        $service_description = urldecode($service_description);
+
         //delete all host comment
         if($type == 'host')
         {
@@ -1195,6 +1252,9 @@ class API extends VS_Controller
     public function hostNotification($type, $host_name)
     {
         $Result = false;
+
+        //decode input with spacing
+        $host_name = urldecode($host_name);
 
         if($type == 'true')
         {

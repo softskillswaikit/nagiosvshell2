@@ -68,7 +68,6 @@ $route["servicestatus/(:any)/(:any)"] 			= "api/servicestatus/$1/$2";
 $route["serviceremote/(:any)/(:any)/(:any)"] 	= "api/serviceremote/$1/$2/$3";
 $route["servicelogs/(:any)/(:any)"] 			= "api/servicelogs/$1/$2";
 $route["servicelogdownload/(:any)/(:any)/(((((?!%7C).)+)\..*)(%7C(((?!%7C).)+)\..*)*)"] = "api/servicelogdownload/$1/$2/$3";
-
 //NAGIOS INFO SECTION END
 
 
@@ -99,7 +98,7 @@ $route["sendcustomnotification/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"
 
 
 //REPORTS SECTION START
-$route["availability/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/availability/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10/$11";
+$route["availability/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/availability/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10/$11/$12/$13";
 $route["trend/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/trend/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10/$11/$12";
 $route["alerthistory/(:any)"] = "api/alertHistory/$1";
 $route["alertsummary/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/alertSummary/$1/$2/$3/$4/$5/$6/$7/$8/$9";
@@ -144,6 +143,10 @@ $route["schedulequeue"] = "api/scheduleQueue";
 $route["schedulehostcheck/(:any)/(:any)/(:any)"] = "api/scheduleHostCheck/$1/$2/$3"; 
 $route["schedulecheck/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/scheduleCheck/$1/$2/$3/$4/$5";
 //SYSTEM SECTION END
+
+
+//MAINTAINANCE SCREEN START
+//MAINTAINANCE SCREEN END
 
 
 //TESTING SECTION
