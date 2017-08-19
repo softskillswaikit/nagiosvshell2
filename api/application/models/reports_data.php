@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); 
 
-class Testing extends CI_Model
+class Reports_data extends CI_Model
 {
 	//array of data taken from nagios log file
 	protected $_data_array = array();
