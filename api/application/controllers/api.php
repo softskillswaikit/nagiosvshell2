@@ -399,7 +399,7 @@ class API extends VS_Controller
 
         if($validate)
         {
-            $Trend = $this->reports_data->get_trend($return_type, $period, $date, $host_name, $service_description, $first_assume_host_service, $backtrack_archive);
+            $Trend = $this->reports_data->get_trend($return_type, $period, $date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $first_assume_host_service, $backtrack_archive);
         }
         //incorrect inputs
         else
@@ -626,52 +626,7 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $Alert_summary = array();
-        $host_name = 'localhost';
-
-        //convert inputs to int
-        $return_type = (int)$return_type;
-
-        //decode inputs with spaces
-        $host_name = urldecode($host_name);
-        $service_description = urldecode($service_description);
-        $period = urldecode($period);
-        $logtype = urldecode($logtype);
-        $statetype = urldecode($statetype);
-        $end_date = urldecode($end_date);
-
-        //custom report date
-        if($period == 'CUSTOM')
-        {
-            $date = array($start_date, $end_date);
-        }
-        //standard report date
-        else
-        {
-            $date = $start_date;
-        }
-
-        //for hostgroup
-        if($return_type == 3)
-        {
-            $host_name = $this->get_hosts($host_name);
-        }
-
-        //for servicegroup
-        if($return_type == 5)
-        {
-            $service_description = $this->get_services($service_description);
-        }
-
-        //check empty and invalid inputs
-        $validate = $this->validate_data(array($return_type, $period, $date, $service_description, $logtype, $statetype, $state));
-
-        if($validate)
-        {
-            $Alert_summary = $this->reports_data->get_alert_summary($return_type, $period, $date, $host_name, $service_description, $logtype, $statetype, $state);
-        }
-
-        $this->output($Alert_summary);
+        
     }
 
     /**
