@@ -6,9 +6,11 @@ class Reports_data extends CI_Model
 	protected $_data_array = array();
 	protected $_host_service_notification_array = array();
 	protected $_host_service_alert_array = array();
+	protected $_backtrack_array = array();
 
 	//array that store return data
 	protected $_availability_array = array();
+	protected $_trend_array = array();
 	protected $_alert_history_array = array();
 	protected $_alert_summary_array = array();
 	protected $_alert_histogram_array = array();
@@ -35,6 +37,781 @@ class Reports_data extends CI_Model
 
 	//Written by Low Zhi Jian
 	//Functions to be called by web service
+	//Availability section
+	public function get_availability($return_type, $input_period, $input_date, $input_host, $input_service, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_state, $first_assume_service_state, $backtrack_archive)
+	{
+		$this->_get_data($input_date, $input_period);
+		$this->_insert_data();
+
+		$temp_array = array();
+		$temp_array = $this->_parse_log($this->_host_service_alert_array, 'trend');
+
+		if($include_soft)
+		{
+			$this->_availability_array = $this->_get_availability_host_service($temp_array, $input_host, $input_service, 'ALL');
+		}
+		else
+		{
+			$this->_availability_array = $this->_get_availability_host_service($temp_array, $input_host, $input_service, 'HARD');
+		}
+
+		$output_array = array();
+		$return_array = array();
+
+		//array counter
+		$i = 0;
+
+		//$return_type = 'HOSTGROUP'
+		if($return_type === 1)
+		{
+			if(is_array($input_host))
+			{
+				foreach($input_host as $hosts)
+				{
+					$output_array = $this->_get_return_host($assume_state_downtime, $this->_availability_array, $hosts, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_host_state);
+					$return_array[$i] = $this->_get_state_total_host_availability($output_array, $hosts);
+
+					$i++;
+				}
+			}
+			else
+			{
+				$output_array = $this->_get_return_host($assume_state_downtime, $this->_availability_array, $input_host, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_host_state);
+				$return_array[0] = $this->_get_state_total_host_availability($output_array, $input_host);
+			}
+		}
+		//$return_type = 'SERVICEGROUP'
+		else if($return_type === 2)
+		{
+			//get unique host and service pair
+			$key_obj = new StdClass();
+			$unique_service_obj = new StdClass();
+			$unique_service_array = array();
+
+			foreach($this->_availability_array as $services)
+			{
+				$keys = $services->hostname.' '.$services->servicename;
+
+				$key_obj->$keys += 1;
+			}
+			
+			//array counter 
+			$j = 0;
+
+			foreach($key_obj as $key => $value)
+			{
+				list($hostname, $servicename) = explode(' ', $key, 2);
+
+				$unique_service_obj->hostname = $hostname;
+				$unique_service_obj->servicename = $servicename;
+
+				$unique_service_array[$j] = $unique_service_obj;
+				unset($unique_service_obj);
+
+				$j++;
+			}
+
+			if(is_array($input_host))
+			{
+				foreach($input_host as $hosts)
+				{
+					$output_array = $this->_get_return_host($assume_state_downtime, $this->_availability_array, $hosts, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+					$return_array[$i] = $this->_get_state_total_host_availability($output_array, $hosts);
+
+					$i++;	
+
+					$service_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $hosts, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+
+					foreach($unique_service_array as $unique_services)
+					{
+						$return_array[$i] = $this->_get_state_total_service_availability($service_array, $hosts, $unique_services->servicename);
+
+						$i++;
+					}
+				}
+			}
+			else
+			{
+				$output_array = $this->_get_return_host($assume_state_downtime, $this->_availability_array, $input_host, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_host_state);
+
+				$return_array[$i] = $this->_get_state_total_host_availability($output_array, $input_host);
+
+				$i++;
+
+				$service_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $input_host, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+
+				foreach($unique_service_array as $unique_services)
+				{
+					$return_array[$i] = $this->_get_state_total_service_availability($service_array, $input_host, $unique_services->servicename);
+
+					$i++;
+				}
+			}
+		}
+		//$return_type = 'HOST'
+		else if($return_type === 3)
+		{
+			if($this->_compare_string($input_host, 'ALL'))
+			{
+				$host_collection = $this->nagios_data->get_collection('host');
+				$host_array = array();
+
+				//array counter
+				$h = 0;
+
+				foreach($host_collection as $host)
+				{
+					$host_array[$h] = $host->host_name;
+
+					$h++;
+				}
+
+				foreach($host_array as $hosts)
+				{
+					$output_array = $this->_get_return_host($assume_state_downtime, $this->_availability_array, $hosts, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_host_state);
+					$return_array[$i] = $this->_get_state_total_host_availability($output_array, $hosts);
+
+					$i++;
+				}
+			}
+			else 
+			{
+				$output_array = $this->_get_return_host($assume_state_downtime, $this->_availability_array, $input_host, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_host_state);
+				$return_array[$i] = $this->_get_state_total_host_availability($output_array, $input_host);
+
+				$i++;
+
+				//get unique host and service pair
+				$key_obj = new StdClass();
+				$unique_service_obj = new StdClass();
+				$unique_service_array = array();
+
+				foreach($this->_availability_array as $services)
+				{
+					$keys = $services->hostname.' '.$services->servicename;
+
+					$key_obj->$keys += 1;
+				}
+				
+				//array counter 
+				$j = 0;
+
+				foreach($key_obj as $key => $value)
+				{
+					list($hostname, $servicename) = explode(' ', $key, 2);
+
+					$unique_service_obj->hostname = $hostname;
+					$unique_service_obj->servicename = $servicename;
+
+					$unique_service_array[$j] = $unique_service_obj;
+					unset($unique_service_obj);
+
+					$j++;
+				}
+
+				$state_breakdown_array = array();
+
+				//array counter
+				$s = 0;
+
+				$service_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $input_host, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+
+				foreach($unique_service_array as $unique_services)
+				{
+					$state_breakdown_array[$s] = $this->_get_state_total_service_availability($service_array, $input_host, $unique_services->servicename);
+
+					$s++;
+				}
+
+				$return_array[$i] = $state_breakdown_array;
+
+				$i++;
+
+				$host_log_array = array();
+				$host_log_obj = new StdClass();
+
+				//array_counter
+				$a = 0;
+
+				if(is_array($input_date))
+				{
+					$now = (int)$input_date[1];
+				}
+				else
+				{
+					$now = (int)$input_date;
+				}
+
+				$temp_array = array_reverse($temp_array);
+
+				foreach($temp_array as $alerts)
+				{
+					if($this->_compare_string($alerts->hostname, $input_host))
+					{
+						if($this->_compare_string($alerts->logtype, 'HOST ALERT'))
+						{
+							$duration = $now - (int)$alerts->datetime;
+							$host_log_obj->hostname = $alerts->hostname;
+							$host_log_obj->duration = abs($duration);
+							$host_log_obj->start_time = $now - $duration;
+							$host_log_obj->end_time = $now;
+							$host_log_obj->state = $this->_get_state_num($alerts->state);
+							$host_log_obj->state_type = $alerts->state_type;
+							$host_log_obj->messages = $alerts->messages;
+
+							$host_log_array[$a] = $host_log_obj;
+							$a++;
+
+							$now = $now - $duration;
+												
+							unset($host_log_obj);
+						}
+					}
+				}
+
+				$return_array[$i] = $host_log_array;
+
+				$i++;
+			}
+		}
+		//$return_type = 'SERVICE'
+		else if($return_type === 4)
+		{
+			if($this->_compare_string($input_service, 'ALL'))
+			{
+				$host_collection = $this->nagios_data->get_collection('host');
+				$host_array = array();
+
+				//array counter
+				$i = 0;
+				$h = 0;
+
+				foreach($host_collection as $host)
+				{
+					$host_array[$h] = $host->host_name;
+
+					$h++;
+				}
+
+				//get unique host and service pair
+				$key_obj = new StdClass();
+				$unique_service_obj = new StdClass();
+				$unique_service_array = array();
+
+				foreach($this->_availability_array as $services)
+				{
+					$keys = $services->hostname.' '.$services->servicename;
+
+					$key_obj->$keys += 1;
+				}
+				
+				//array counter 
+				$j = 0;
+
+				foreach($key_obj as $key => $value)
+				{
+					list($hostname, $servicename) = explode(' ', $key, 2);
+
+					$unique_service_obj->hostname = $hostname;
+					$unique_service_obj->servicename = $servicename;
+
+					$unique_service_array[$j] = $unique_service_obj;
+					unset($unique_service_obj);
+
+					$j++;
+				}
+
+				foreach($unique_service_array as $unique_services)
+				{
+					$service_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $unique_services->hostname, $unique_services->servicename, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+
+					$return_array[$i] = $this->_get_state_total_service_availability($service_array, $unique_services->hostname, $unique_services->servicename);
+
+					$i++;
+				}
+			}
+			else
+			{
+				$output_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $input_host, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+
+				$return_array[$i] = $this->_get_state_total_service_availability($output_array, $input_host, $input_service);
+
+				$i++;
+
+				$service_log_array = array();
+				$service_log_obj = new StdClass();
+
+				//array_counter
+				$c = 0;
+
+				if(is_array($input_date))
+				{
+					$now = (int)$input_date[1];
+				}
+				else
+				{
+					$now = (int)$input_date;
+				}
+
+				$temp_array = array_reverse($temp_array);
+
+				foreach($temp_array as $alerts)
+				{
+					if($this->_compare_string($alerts->hostname, $input_host))
+					{
+						if($this->_compare_string($alerts->servicename, $input_service))
+						{
+							if($this->_compare_string($alerts->logtype, 'SERVICE ALERT'))
+							{
+								$duration = $now - (int)$alerts->datetime;
+								$service_log_obj->hostname = $alerts->hostname;
+								$service_log_obj->servicename = $alerts->servicename;
+								$service_log_obj->duration = abs($duration);
+								$service_log_obj->start_time = $now - $duration;
+								$service_log_obj->end_time = $now;
+								$service_log_obj->state = $this->_get_state_num($alerts->state);
+								$service_log_obj->state_type = $alerts->state_type;
+								$service_log_obj->messages = $alerts->messages;
+
+								$service_log_array[$c] = $service_log_obj;
+								$c++;
+
+								$now = $now - $duration;
+													
+								unset($service_log_obj);
+							}
+						}
+					}
+				}
+
+				$return_array[$i] = $service_log_array;
+
+				$i++;
+			}
+		}
+		//$return_type = 'HOST RESOURCE'
+		else if($return_type === 5)
+		{
+			if($this->_compare_string($input_host, 'ALL'))
+			{
+				$host_resource_collection = $this->nagios_data->get_collection('hostresource');
+				$host_resource_array = array();
+
+				//array counter
+				$i = 0;
+
+				foreach($host_resource_collection as $resources)
+				{
+					$host_resource_array[$i] = $resources->service_description;
+
+					$i++;
+				}
+
+				$resource_array = array();
+				$resource_obj = new StdClass();
+
+				//array counter 
+				$j = 0;
+
+				foreach($this->_data_array as $data)
+				{
+					foreach($host_resource_array as $resources)
+					{
+						if(strpos($data, $resources))
+						{
+							list($input_time, $event_message) = explode(' ', $data, 2);
+							list($logtype, $information) = explode(':', $event_message, 2);
+							list($hostname, $servicename, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 6);
+				
+							$resource_obj->datetime = trim($input_time, '[]');
+							$resource_obj->logtype = 'SERVICE ALERT';
+							$resource_obj->hostname = trim($hostname);
+							$resource_obj->servicename = trim($servicename);
+							$resource_obj->state = trim($state);
+							$resource_obj->state_type = trim($state_type);
+							$resource_obj->retry_count = trim($retry_count);
+							$resource_obj->messages = trim($detail_message);
+					
+							$resource_array[$j] = $resource_obj;
+							$j++;
+
+							unset($input_time, $event_message, $logtype, $information, $hostname, $servicename, $state, $state_type, $retry_count, $detail_message, $resource_obj);
+						}
+					}
+				}
+
+				//get unique host and service pair
+				$key_obj = new StdClass();
+				$unique_service_obj = new StdClass();
+				$unique_service_array = array();
+
+				foreach($resource_array as $services)
+				{
+					$keys = $services->hostname.' '.$services->servicename;
+
+					$key_obj->$keys += 1;
+				}
+				
+				//array counter 
+				$j = 0;
+
+				foreach($key_obj as $key => $value)
+				{
+					list($hostname, $servicename) = explode(' ', $key, 2);
+
+					$unique_service_obj->hostname = $hostname;
+					$unique_service_obj->servicename = $servicename;
+
+					$unique_service_array[$j] = $unique_service_obj;
+					unset($unique_service_obj);
+
+					$j++;
+				}
+
+				//array counter 
+				$d = 0;
+
+				foreach($unique_service_array as $unique_services)
+				{
+					$output_array = $this->_get_return_service($assume_state_downtime, $resource_array, $unique_services->hostname, $unique_services->servicename, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+					$return_array[$d] = $this->_get_state_total_service_availability($output_array, $unique_services->hostname, $unique_services->servicename);
+
+					$d++;
+				}
+			}
+			else
+			{
+				$output_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $input_host, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+
+				$return_array[$i] = $this->_get_state_total_service_availability($output_array, $input_host, $input_service);
+
+				$i++;
+
+				$service_log_array = array();
+				$service_log_obj = new StdClass();
+
+				//array_counter
+				$c = 0;
+
+				if(is_array($input_date))
+				{
+					$now = (int)$input_date[1];
+				}
+				else
+				{
+					$now = (int)$input_date;
+				}
+
+				$temp_array = array_reverse($temp_array);
+
+				foreach($temp_array as $alerts)
+				{
+					if($this->_compare_string($alerts->hostname, $input_host))
+					{
+						if($this->_compare_string($alerts->servicename, $input_service))
+						{
+							if($this->_compare_string($alerts->logtype, 'SERVICE ALERT'))
+							{
+								$duration = $now - (int)$alerts->datetime;
+								$service_log_obj->hostname = $alerts->hostname;
+								$service_log_obj->servicename = $alerts->servicename;
+								$service_log_obj->duration = abs($duration);
+								$service_log_obj->start_time = $now - $duration;
+								$service_log_obj->end_time = $now;
+								$service_log_obj->state = $this->_get_state_num($alerts->state);
+								$service_log_obj->state_type = $alerts->state_type;
+								$service_log_obj->messages = $alerts->messages;
+
+								$service_log_array[$c] = $service_log_obj;
+								$c++;
+
+								$now = $now - $duration;
+													
+								unset($service_log_obj);
+							}
+						}
+					}
+				}
+
+				$return_array[$i] = $service_log_array;
+
+				$i++;
+			}
+		}
+		//$return_type = 'SERVICE RUNNING STATE'
+		else if($return_type === 6)
+		{
+			if($this->_compare_string($input_service, 'ALL'))
+			{
+				$running_state_array = array();
+				$running_state_obj = new StdClass();
+
+				//array counter 
+				$i = 0;
+
+				foreach($this->_data_array as $data)
+				{
+					if(strpos($data, '_running_state'))
+					{
+						list($input_time, $event_message) = explode(' ', $data, 2);
+						list($logtype, $information) = explode(':', $event_message, 2);
+						list($hostname, $servicename, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 6);
+
+						$running_state_obj->datetime = trim($input_time, '[]');
+						$running_state_obj->logtype = 'SERVICE ALERT';
+						$running_state_obj->hostname = trim($hostname);
+						$running_state_obj->servicename = trim($servicename);
+						$running_state_obj->state = trim($state);
+						$running_state_obj->state_type = trim($state_type);
+						$running_state_obj->retry_count = trim($retry_count);
+						$running_state_obj->messages = trim($detail_message);
+					
+						$running_state_array[$i] = $running_state_obj;
+						$i++;
+
+						unset($input_time, $event_message, $logtype, $information, $hostname, $servicename, $state, $state_type, $retry_count, $detail_message, $running_state_obj);
+					}
+				}
+
+				//get unique host and service pair
+				$key_obj = new StdClass();
+				$unique_service_obj = new StdClass();
+				$unique_service_array = array();
+
+				foreach($running_state_array as $services)
+				{
+					$keys = $services->hostname.' '.$services->servicename;
+
+					$key_obj->$keys += 1;
+				}
+				
+				//array counter 
+				$j = 0;
+
+				foreach($key_obj as $key => $value)
+				{
+					list($hostname, $servicename) = explode(' ', $key, 2);
+
+					$unique_service_obj->hostname = $hostname;
+					$unique_service_obj->servicename = $servicename;
+
+					$unique_service_array[$j] = $unique_service_obj;
+					unset($unique_service_obj);
+
+					$j++;
+				}
+
+				//array counter 
+				$r = 0;
+
+				foreach($unique_service_array as $unique_services)
+				{
+					$output_array = $this->_get_return_service($assume_state_downtime, $running_state_array, $unique_services->hostname, $unique_services->servicename, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+					$return_array[$r] = $this->_get_state_total_service_availability($output_array, $unique_services->hostname, $unique_services->servicename);
+
+					$r++;
+				}
+			}
+			else
+			{
+				$output_array = $this->_get_return_service($assume_state_downtime, $this->_availability_array, $input_host, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+
+				$return_array[$i] = $this->_get_state_total_service_availability($output_array, $input_host, $input_service);
+
+				$i++;
+
+				$service_log_array = array();
+				$service_log_obj = new StdClass();
+
+				//array_counter
+				$c = 0;
+
+				if(is_array($input_date))
+				{
+					$now = (int)$input_date[1];
+				}
+				else
+				{
+					$now = (int)$input_date;
+				}
+
+				$temp_array = array_reverse($temp_array);
+
+				foreach($temp_array as $alerts)
+				{
+					if($this->_compare_string($alerts->hostname, $input_host))
+					{
+						if($this->_compare_string($alerts->servicename, $input_service))
+						{
+							if($this->_compare_string($alerts->logtype, 'SERVICE ALERT'))
+							{
+								$duration = $now - (int)$alerts->datetime;
+								$service_log_obj->hostname = $alerts->hostname;
+								$service_log_obj->servicename = $alerts->servicename;
+								$service_log_obj->duration = abs($duration);
+								$service_log_obj->start_time = $now - $duration;
+								$service_log_obj->end_time = $now;
+								$service_log_obj->state = $this->_get_state_num($alerts->state);
+								$service_log_obj->state_type = $alerts->state_type;
+								$service_log_obj->messages = $alerts->messages;
+
+								$service_log_array[$c] = $service_log_obj;
+								$c++;
+
+								$now = $now - $duration;
+													
+								unset($service_log_obj);
+							}
+						}
+					}
+				}
+
+				$return_array[$i] = $service_log_array;
+
+				$i++;
+			}
+		}
+
+		//encode the data into JSON format
+		foreach($return_array as $items)
+		{
+			$items = json_encode($items);
+		}
+
+		return $return_array;
+	}
+
+	//Trends section
+	public function get_trend($return_type, $input_period, $input_date, $input_host, $input_service, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_service_state, $backtrack_archive)
+	{
+		$this->_get_data($input_date, $input_period);
+		$this->_insert_data();
+
+		$temp_array = array();
+		$temp_array = $this->_parse_log($this->_host_service_alert_array, 'trend');
+
+		//filter the data into $this->_trend_array based on request
+		if($include_soft)
+		{
+			$this->_trend_array = $this->_get_trend_host_service($temp_array, $input_host, $input_service, 'ALL');
+		}
+		else
+		{
+			$this->_trend_array = $this->_get_trend_host_service($temp_array, $input_host, $input_service, 'HARD');
+		}
+
+		$return_array = array();
+
+		//$return_type = 'HOST'
+		if($return_type === 1)
+		{
+			$return_array[0] = $this->_get_return_host($assume_state_downtime, $this->_trend_array, $input_host, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+			$return_array[1] = $this->_get_state_total_host($return_array[0]);
+		}
+		//$return_type = 'SERVICE'
+		else if($return_type === 2)
+		{
+			$return_array[0] = $this->_get_return_service($assume_state_downtime, $this->_trend_array, $input_host, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+			$return_array[1] = $this->_get_state_total_service($return_array[0]);
+		}
+		//$return_type = 'HOST RESOURCE'
+		else if($return_type === 3)
+		{
+			$host_resource_collection = $this->nagios_data->get_collection('hostresource');
+			$host_resource_array = array();
+
+			//array counter
+			$i = 0;
+
+			foreach($host_resource_collection as $resources)
+			{
+				$host_resource_array[$i] = $resources->service_description;
+
+				$i++;
+			}
+
+			$resource_array = array();
+			$resource_obj = new StdClass();
+
+			//array counter 
+			$j = 0;
+
+			foreach($this->_data_array as $data)
+			{
+				foreach($host_resource_array as $resources)
+				{
+					if(strpos($data, $resources))
+					{
+						list($input_time, $event_message) = explode(' ', $data, 2);
+						list($logtype, $information) = explode(':', $event_message, 2);
+						list($hostname, $servicename, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 6);
+			
+						$resource_obj->datetime = trim($input_time, '[]');
+						$resource_obj->logtype = 'SERVICE ALERT';
+						$resource_obj->hostname = trim($hostname);
+						$resource_obj->servicename = trim($servicename);
+						$resource_obj->state = trim($state);
+						$resource_obj->state_type = trim($state_type);
+						$resource_obj->retry_count = trim($retry_count);
+						$resource_obj->messages = trim($detail_message);
+				
+						$resource_array[$j] = $resource_obj;
+						$j++;
+
+						unset($input_time, $event_message, $logtype, $information, $hostname, $servicename, $state, $state_type, $retry_count, $detail_message, $resource_obj);
+					}
+				}
+			}
+
+			$return_array[0] = $this->_get_return_service($assume_state_downtime, $resource_array, $input_host, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+			$return_array[1] = $this->_get_state_total_service($return_array[0]);
+		}
+		//$return_type = 'SERVICE RUNNING STATE'
+		else if($return_type === 4)
+		{	
+			$running_state_array = array();
+			$running_state_obj = new StdClass();
+
+			//array counter 
+			$i = 0;
+
+			foreach($this->_data_array as $data)
+			{
+				if(strpos($data, '_running_state'))
+				{
+					list($input_time, $event_message) = explode(' ', $data, 2);
+					list($logtype, $information) = explode(':', $event_message, 2);
+					list($hostname, $servicename, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 6);
+
+					$running_state_obj->datetime = trim($input_time, '[]');
+					$running_state_obj->logtype = 'SERVICE ALERT';
+					$running_state_obj->hostname = trim($hostname);
+					$running_state_obj->servicename = trim($servicename);
+					$running_state_obj->state = trim($state);
+					$running_state_obj->state_type = trim($state_type);
+					$running_state_obj->retry_count = trim($retry_count);
+					$running_state_obj->messages = trim($detail_message);
+				
+					$running_state_array[$i] = $running_state_obj;
+					$i++;
+
+					unset($input_time, $event_message, $logtype, $information, $hostname, $servicename, $state, $state_type, $retry_count, $detail_message, $running_state_obj);
+				}
+			}
+
+			$return_array[0] = $this->_get_return_service($assume_state_downtime, $running_state_array, $input_host, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
+			$return_array[1] = $this->_get_state_total_service($return_array[0]);
+		}
+		
+		//encode the data into JSON format
+		foreach($return_array as $items)
+		{
+			$items = json_encode($items);
+		}
+
+		return $return_array;
+	}
+
 	//Alert history section
 	public function get_alert_history($input_date)
 	{
@@ -48,7 +825,6 @@ class Reports_data extends CI_Model
 		$this->_alert_history_array = $this->_parse_log($this->_host_service_alert_array, 'alert');
 
 		//encode the data into JSON format
-		//also filter the data by date
 		foreach($this->_alert_history_array as $items)
 		{
 			$temp_array[$i] = $items;
@@ -63,7 +839,7 @@ class Reports_data extends CI_Model
 	}
 
 	//Alert summary section
-	public function get_alert_summary($return_type, $input_period, $input_date, $input_host, $input_service = 'ALL', $input_logtype, $input_state_type, $input_state)
+	public function get_alert_summary($return_type, $input_period, $input_date, $input_host, $input_service, $input_logtype, $input_state_type, $input_state)
 	{
 		$this->_get_data($input_date, $input_period);
 		$this->_insert_data();
@@ -406,7 +1182,7 @@ class Reports_data extends CI_Model
 		}
 	}
 
-	public function get_alert_histogram($return_type, $input_host, $input_service = 'ALL', $input_period, $input_date, $statistic_breakdown, $event_graph, $state_type_graph, $assume_state_retention = NULL, $initial_state_logged = NULL, $ignore_repeated_state = NULL)
+	public function get_alert_histogram($return_type, $input_host, $input_service, $input_period, $input_date, $statistic_breakdown, $event_graph, $state_type_graph, $assume_state_retention, $initial_state_logged, $ignore_repeated_state)
 	{
 		$this->_get_data($input_date, $input_period);
 		$this->_insert_data();
@@ -578,7 +1354,6 @@ class Reports_data extends CI_Model
 				$return_obj->critical_count = $this->_get_alert_hour($resource_array, 'CRITICAL', true);
 			}
 		}
-		
 		//$return_type= 'SERVICE RUNNING STATE'
 		else
 		{
@@ -654,6 +1429,173 @@ class Reports_data extends CI_Model
 			}
 		}
 
+		if($return_type === 1)
+		{
+			$up_min = $return_obj->up_count[0];
+			$up_max = 0;
+			$up_sum = 0;
+
+			$down_min = $return_obj->down_count[0];
+			$down_max = 0;
+			$down_sum = 0;
+
+			$unreachable_min = $return_obj->unreachable_count[0];
+			$unreachable_max = 0;
+			$unreachable_sum = 0;
+
+			foreach($return_obj->up_count as $items)
+			{
+				$up_sum += $items;
+
+				if($up_min > $items)
+				{
+					$up_min = $items;
+				}
+				else if($up_max < $items)
+				{
+					$up_max = $items;
+				}
+			}
+
+			foreach($return_obj->down_count as $items)
+			{
+				$down_sum += $items;
+
+				if($down_min > $items)
+				{
+					$down_min = $items;
+				}
+				else if($down_max < $items)
+				{
+					$down_max = $items;
+				}
+			}
+
+			foreach($return_obj->unreachable_count as $items)
+			{
+				$unreachable_sum += $items;
+
+				if($unreachable_min > $items)
+				{
+					$unreachable_min = $items;
+				}
+				else if($unreachable_max < $items)
+				{
+					$unreachable_max = $items;
+				}
+			}
+
+			$return_obj->up_min = $up_min;
+			$return_obj->up_max = $up_max;
+			$return_obj->up_sum = $up_sum;
+			$return_obj->up_avg = $up_sum / ( count($return_obj->up_count) );
+			$return_obj->down_min = $down_min;
+			$return_obj->down_max = $down_max;
+			$return_obj->down_sum = $down_sum;
+			$return_obj->down_avg = $down_sum / ( count($return_obj->down_count) );
+			$return_obj->unreachable_min = $unreachable_min;
+			$return_obj->unreachable_max = $unreachable_max;
+			$return_obj->unreachable_sum = $unreachable_sum;
+			$return_obj->unreachable_avg = $unreachable_sum / ( count($return_obj->unreachable_count) );
+		}
+		else
+		{
+			$ok_min = $return_obj->ok_count[0];
+			$ok_max = 0;
+			$ok_sum = 0;
+
+			$warning_min = $return_obj->warning_count[0];
+			$warning_max = 0;
+			$warning_sum = 0;
+
+			$unknown_min = $return_obj->unknown_count[0];
+			$unknown_max = 0;
+			$unknown_sum = 0;
+
+			$critical_min = $return_obj->critical_count[0];
+			$critical_max = 0;
+			$critical_sum = 0;
+
+			foreach($return_obj->ok_count as $items)
+			{
+				$ok_sum += $items;
+
+				if($ok_min > $items)
+				{
+					$ok_min = $items;
+				}
+				else if($ok_max < $items)
+				{
+					$ok_max = $items;
+				}
+			}
+
+			foreach($return_obj->warning_count as $items)
+			{
+				$warning_sum += $items;
+
+				if($warning_min > $items)
+				{
+					$warning_min = $items;
+				}
+				else if($warning_max < $items)
+				{
+					$warning_max = $items;
+				}
+			}
+
+			foreach($return_obj->unknown_count as $items)
+			{
+				$unknown_sum += $items;
+
+				if($unknown_min > $items)
+				{
+					$unknown_min = $items;
+				}
+				else if($unknown_max < $items)
+				{
+					$unknown_max = $items;
+				}
+			}
+
+			foreach($return_obj->critical_count as $items)
+			{
+				$critical_sum += $items;
+
+				if($critical_min > $items)
+				{
+					$critical_min = $items;
+				}
+				else if($critical_max < $items)
+				{
+					$critical_max = $items;
+				}
+			}
+
+			$return_obj->ok_min = $ok_min;
+			$return_obj->ok_max = $ok_max;
+			$return_obj->ok_sum = $ok_sum;
+			$return_obj->ok_avg = $ok_sum / ( count($return_obj->ok_count) );
+			$return_obj->warning_min = $warning_min;
+			$return_obj->warning_max = $warning_max;
+			$return_obj->warning_sum = $warning_sum;
+			$return_obj->warning_avg = $warning_sum / ( count($return_obj->warning_count) );
+			$return_obj->unknown_min = $unknown_min;
+			$return_obj->unknown_max = $unknown_max;
+			$return_obj->unknown_sum = $unknown_sum;
+			$return_obj->unknown_avg = $unknown_sum / ( count($return_obj->unknown_count) );
+			$return_obj->critical_min = $critical_min;
+			$return_obj->critical_max = $critical_max;
+			$return_obj->critical_sum = $critical_sum;
+			$return_obj->critical_avg = $critical_sum / ( count($return_obj->critical_count) );
+		}
+
+		$date_array = $this->_get_start_end_date($input_date, $input_period);
+		
+		$return_obj->start_date = $date_array[0];
+		$return_obj->end_date = $date_array[1];
+
+		//encode the data into JSON format
 		foreach($return_obj as $items)
 		{
 			$items = json_encode($items);
@@ -782,7 +1724,7 @@ class Reports_data extends CI_Model
 
 		foreach($this->_data_array as $alerts)
 		{
-			if(strpos($alerts, 'HOST ALERT:') !== false or strpos($alerts, 'SERVICE ALERT:') !== false or strpos($alerts, 'SERVICE FLAPPING ALERT:') !== false)
+			if(strpos($alerts, 'HOST ALERT:') !== false or strpos($alerts, 'SERVICE ALERT:') !== false or strpos($alerts, 'HOST DOWNTIME ALERT:') !== false or strpos($alerts, 'SERVICE DOWNTIME ALERT:') !== false)
 			{
 				$this->_host_service_alert_array[$j] = $alerts;
 
@@ -912,12 +1854,7 @@ class Reports_data extends CI_Model
 			$monday->modify('Monday this week');
 
 			$return_array[0] = $monday->getTimestamp();
-
-			$sunday = new DateTime();
-			$sunday->setTimestamp( (int)$input_date );
-			$sunday->modify('Sunday this week');
-
-			$return_array[1] = $sunday->getTimestamp();
+			$return_array[1] = (int)$input_date;
 		}
 		else if($this->_compare_string($input_period, 'LAST 7 DAYS'))
 		{
@@ -944,13 +1881,8 @@ class Reports_data extends CI_Model
 			$month_first->setTimestamp( (int)$input_date );
 			$month_first->modify('first day of this month');
 
-			$return_array[0] = $month_first->getTimestamp();
-
-			$month_last = new DateTime();
-			$month_last->setTimestamp( (int)$input_date );
-			$month_last->modify('last day of this month');
-
-			$return_array[1] = $month_last->getTimestamp();
+			$return_array[0] = $month_first->getTimestamp();		
+			$return_array[1] = (int)$input_date;
 		}
 		else if($this->_compare_string($input_period, 'LAST 31 DAYS'))
 		{
@@ -974,13 +1906,19 @@ class Reports_data extends CI_Model
 		else if($this->_compare_string($input_period, 'THIS YEAR'))
 		{
 			$return_array[0] = strtotime('Jan 1');
-			$return_array[1] = strtotime('Dec 31 23:59:59');	
+			$return_array[1] = (int)$input_date;	
 		}
 		//$input_period = 'LAST YEAR'
 		else 
 		{
 			$return_array[0] = strtotime('Jan 1 last year');
-			$return_array[1] = strtotime('Dec 31 last year 23:59:59');
+			$return_array[1] = (strtotime('Dec 31 last year 23:59:59'));
+		}
+
+		if(is_array($input_date))
+		{
+			$return_array[0] = (int)$input_date[0];
+			$return_array[1] = (int)$input_date[1];
 		}
 
 		return $return_array;
@@ -1292,8 +2230,7 @@ class Reports_data extends CI_Model
 					$sorted_obj->notification_command = trim($notificationcommand);
 					$sorted_obj->messages = trim($detail_message);
 				}
-				//strpos($logs, 'SERVICE NOTIFICATION:') !== false
-				else
+				else if(strpos($logs, 'SERVICE NOTIFICATION:') !== false)
 				{
 					list($input_time, $other_message) = explode(' ', $logs, 2);
 					list($logtype, $information) = explode(':', $other_message, 2);
@@ -1371,22 +2308,6 @@ class Reports_data extends CI_Model
 					$sorted_obj->retry_count = 'N/A';
 					$sorted_obj->messages = trim($detail_message);
 				}
-				//strpos($logs, 'SERVICE FLAPPING ALERT:') !== false
-				else
-				{
-					list($input_time, $event_message) = explode(' ', $logs, 2);
-					list($logtype, $information) = explode(':', $event_message, 2);
-					list($hostname, $servicename, $state, $detail_message) = explode(';', $information, 4);
-
-					$sorted_obj->datetime = trim($input_time, '[]');
-					$sorted_obj->logtype = trim($logtype);
-					$sorted_obj->hostname = trim($hostname);
-					$sorted_obj->servicename = trim($servicename);
-					$sorted_obj->state = trim($state);
-					$sorted_obj->state_type = 'N/A';
-					$sorted_obj->retry_count = 'N/A';
-					$sorted_obj->messages = trim($detail_message);
-				}
 			}
 			else if($this->_compare_string($_type, 'event'))
 			{
@@ -1435,10 +2356,39 @@ class Reports_data extends CI_Model
 					$sorted_obj->logtype = 'INFORMATION';
 				}
 			}
-			//$_type = 'availability'
-			else
+			else if($this->_compare_string($_type, 'trend'))
 			{
-				if(strpos($logs, 'HOST ALERT:') !== false)
+				if(strpos($logs, 'CURRENT HOST STATE:') !== false)
+				{
+					list($input_time, $event_message) = explode(' ', $logs, 2);
+					list($logtype, $information) = explode(':', $event_message, 2);
+					list($hostname, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 5);
+		
+					$sorted_obj->datetime = trim($input_time, '[]');
+					$sorted_obj->logtype = trim($logtype);
+					$sorted_obj->hostname = trim($hostname);
+					$sorted_obj->servicename = 'N/A';
+					$sorted_obj->state = trim($state);
+					$sorted_obj->state_type = trim($state_type);
+					$sorted_obj->retry_count = trim($retry_count);
+					$sorted_obj->messages = trim($detail_message);
+				}
+				else if(strpos($logs, 'CURRENT SERVICE STATE:') !== false)
+				{
+					list($input_time, $event_message) = explode(' ', $logs, 2);
+					list($logtype, $information) = explode(':', $event_message, 2);
+					list($hostname, $servicename, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 6);
+		
+					$sorted_obj->datetime = trim($input_time, '[]');
+					$sorted_obj->logtype = trim($logtype);
+					$sorted_obj->hostname = trim($hostname);
+					$sorted_obj->servicename = trim($servicename);
+					$sorted_obj->state = trim($state);
+					$sorted_obj->state_type = trim($state_type);
+					$sorted_obj->retry_count = trim($retry_count);
+					$sorted_obj->messages = trim($detail_message);
+				}
+				else if(strpos($logs, 'HOST ALERT:') !== false)
 				{
 					list($input_time, $event_message) = explode(' ', $logs, 2);
 					list($logtype, $information) = explode(':', $event_message, 2);
@@ -1498,66 +2448,6 @@ class Reports_data extends CI_Model
 					$sorted_obj->retry_count = 'N/A';
 					$sorted_obj->messages = trim($detail_message);
 				}
-				else if(strpos($logs, 'CURRENT HOST STATE:') !== false)
-				{
-					list($input_time, $event_message) = explode(' ', $logs, 2);
-					list($logtype, $information) = explode(':', $event_message, 2);
-					list($hostname, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 5);
-		
-					$sorted_obj->datetime = trim($input_time, '[]');
-					$sorted_obj->logtype = trim($logtype);
-					$sorted_obj->hostname = trim($hostname);
-					$sorted_obj->servicename = 'N/A';
-					$sorted_obj->state = trim($state);
-					$sorted_obj->state_type = trim($state_type);
-					$sorted_obj->retry_count = trim($retry_count);
-					$sorted_obj->messages = trim($detail_message);
-				}
-				else if(strpos($logs, 'CURRENT SERVICE STATE:') !== false)
-				{
-					list($input_time, $event_message) = explode(' ', $logs, 2);
-					list($logtype, $information) = explode(':', $event_message, 2);
-					list($hostname, $servicename, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 6);
-		
-					$sorted_obj->datetime = trim($input_time, '[]');
-					$sorted_obj->logtype = trim($logtype);
-					$sorted_obj->hostname = trim($hostname);
-					$sorted_obj->servicename = trim($servicename);
-					$sorted_obj->state = trim($state);
-					$sorted_obj->state_type = trim($state_type);
-					$sorted_obj->retry_count = trim($retry_count);
-					$sorted_obj->messages = trim($detail_message);
-				}
-				else if(strpos($logs, 'Successfully shutdown...') !== false)
-				{
-					list($input_time, $event_message) = explode(' ', $logs, 2);
-
-					$sorted_obj->datetime = trim($input_time, '[]');
-					$sorted_obj->logtype = 'NAGIOS STATUS';
-					$sorted_obj->hostname = 'N/A';
-					$sorted_obj->servicename = 'N/A';
-					$sorted_obj->state = 'SHUTDOWN';
-					$sorted_obj->state_type = 'N/A';
-					$sorted_obj->retry_count = 'N/A';
-					$sorted_obj->messages = trim($event_message);
-				}
-				else if(strpos($logs, 'starting...') !== false)
-				{
-					list($input_time, $event_message) = explode(' ', $logs, 2);
-
-					$sorted_obj->datetime = trim($input_time, '[]');
-					$sorted_obj->logtype = 'NAGIOS STATUS';
-					$sorted_obj->hostname = 'N/A';
-					$sorted_obj->servicename = 'N/A';
-					$sorted_obj->state = 'STARTUP';
-					$sorted_obj->state_type = 'N/A';
-					$sorted_obj->retry_count = 'N/A';
-					$sorted_obj->messages = trim($event_message);
-				}
-				else
-				{
-					continue;
-				}
 			}
 
 			$sorted_array[$i] = $sorted_obj;
@@ -1572,6 +2462,1007 @@ class Reports_data extends CI_Model
 		$i = 0;
 
 		return $sorted_array;
+	}
+
+	//Function used to get the number for each host state and service state
+	private function _get_state_num($input_state)
+	{
+		if($this->_compare_string($input_state, 'UP'))
+		{
+			return 2;
+		}
+		else if($this->_compare_string($input_state, 'DOWN'))
+		{	
+			return 1;
+		}
+		else if($this->_compare_string($input_state, 'UNREACHABLE'))
+		{
+			return 0;
+		}
+		else if($this->_compare_string($input_state, 'OK'))
+		{
+			return 3;
+		}
+		else if($this->_compare_string($input_state, 'WARNING'))
+		{
+			return 2;
+		}
+		else if($this->_compare_string($input_state, 'UNKNOWN'))
+		{
+			return 1;
+		}
+		else if($this->_compare_string($input_state, 'CRITICAL'))
+		{
+			return 0;
+		}
+		else if($this->_compare_string($input_state, 'STARTUP'))
+		{
+			return 6;
+		}
+		else if($this->_compare_string($Input_state, 'SHUTDOWN'))
+		{
+			return 7;
+		}
+		else if($this->_compare_string($input_state, 'STARTED'))
+		{
+			return 8;
+		}
+		else if($this->_compare_string($Input_state, 'STOPPED'))
+		{
+			return 9;
+		}
+	}
+
+	//Functions used by availability section
+	//Function used to filter data
+	private function _get_availability_host_service($input_array, $input_host, $input_service, $state_type)
+	{
+		//array counte
+		$i = 0;
+		$return_array = array();
+
+		//filter the array based on request
+		foreach($input_array as $items)
+		{
+			if(is_array($input_host))
+			{
+				foreach($input_host as $hosts)
+				{
+					//custom report option
+					//compare host name
+					if($this->_compare_string($hosts, $items->hostname))
+					{
+						//compare service name
+						if($this->_compare_string($input_service, $items->servicename))
+						{	
+							//compare state_type
+							if($this->_compare_string($state_type, $items->state_type))
+							{	
+								$return_array[$i] = $items;
+
+								$i++;	
+							}			
+						}
+					}
+				}
+			}
+			else
+			{
+				//custom report option
+				//compare host name
+				if($this->_compare_string($input_host, $items->hostname))
+				{
+					//compare service name
+					if($this->_compare_string($input_service, $items->servicename))
+					{	
+						//compare state_type
+						if($this->_compare_string($state_type, $items->state_type))
+						{	
+							$return_array[$i] = $items;
+
+							$i++;	
+						}			
+					}
+				}
+			}
+		}
+
+		return $return_array;
+	}
+
+	//Function used to calculate total duration for each type of state for host
+	private function _get_state_total_host_availability($input_array, $input_host)
+	{
+		$all_total = 0;
+		$up_total = 0;
+		$down_total = 0;
+		$unreachable_total = 0;
+		$undetermined_total = 0;
+
+		$up_schedule_total = 0;
+		$down_schedule_total = 0;
+		$unreachable_schedule_total = 0;
+		$undetermined_not_run_total = 0;
+
+		$up_unschedule_total = 0;
+		$down_unschedule_total = 0;
+		$unreachable_unschedule_total = 0;
+		$undetermined_insufficient_total = 0;
+
+		$check_array = array();
+		$check_array = $this->_parse_log($this->_data_array, 'availability');
+
+		$start = 0;
+		$end = 0;
+		$not_run_duration = 0;
+
+		foreach($check_array as $check)
+		{
+			//$check->state = 'STRATUP'
+			if($check->state === 6)
+			{
+				$start = $check->datetime;
+			}
+			//$check->state = 'SHUTDOWN'
+			else if($check->state === 7)
+			{
+				$end = $check->datetime;	
+			}
+
+			if( empty($start) && empty($end) )
+			{
+				continue;
+			}
+			else
+			{
+				$not_run_duration = $end - $start;
+
+				$start = 0;
+				$end = 0;
+			}
+		}
+
+		foreach($input_array as $alerts)
+		{
+			if($this->_compare_string($alerts->hostname, $input_host))
+			{
+				$all_total += $alerts->duration;
+
+				//$alerts->state = 'UP'
+				if($alerts->state === 3)
+				{
+					$up_total += $alerts->duration;
+
+					if($alerts->schedule)
+					{
+						$up_schedule_total += $alerts->duration;
+					}
+					else
+					{
+						$up_unschedule_total += $alerts->duration;
+					}
+				}
+				//$alerts->state = 'DOWN'
+				else if($alerts->state === 2)
+				{
+					$down_total += $alerts->duration;
+
+					if($alerts->schedule)
+					{
+						$down_schedule_total += $alerts->duration;
+					}
+					else
+					{
+						$down_unschedule_total += $alerts->duration;
+					}
+				}
+				//$alerts->state = 'UNREACHABLE'
+				else if($alerts->state === 1)
+				{
+					$unreachable_total += $alerts->duration;
+
+					if($alerts->schedule)
+					{
+						$unreachable_schedule_total += $alerts->duration;
+					}
+					else
+					{
+						$unreachable_unschedule_total += $alerts->duration;
+					}
+				}
+				//$alerts->state = 'UNDETERMINED'
+				else if($alerts->state === 0)
+				{
+					$undetermined_total += $alerts->duration;
+
+					$undetermined_not_run_total = $not_run_duration;
+					$undetermined_insufficient_total = $undetermined_total - $not_run_duration;
+				}
+			}
+		}
+
+		$return_obj = new StdClass();
+		$return_obj->hostname = $input_host;
+		$return_obj->all_total = $all_total;
+		$return_obj->up_total = $up_total;
+		$return_obj->down_total = $down_total;
+		$return_obj->unreachable_total = $unreachable_total;
+		$return_obj->undetermined_total = $undetermined_total;
+		$return_obj->up_schedule_total = $up_schedule_total;
+		$return_obj->down_schedule_total = $down_schedule_total;
+		$return_obj->unreachable_schedule_total = $unreachable_schedule_total;
+		$return_obj->undetermined_not_run_total = $undetermined_not_run_total;
+		$return_obj->up_unschedule_total = $up_unschedule_total;
+		$return_obj->down_unschedule_total = $down_unschedule_total;
+		$return_obj->unreachable_unschedule_total = $unreachable_unschedule_total;
+		$return_obj->undetermined_insufficient_total = $undetermined_insufficient_total;
+
+		return $return_obj;
+	}
+
+	//Function used to calculate total duration for each type of state for service
+	private function _get_state_total_service_availability($input_array, $input_host, $input_service)
+	{
+		$all_total = 0;
+		$ok_total = 0;
+		$warning_total = 0;
+		$unknown_total = 0;
+		$critical_total = 0;
+		$undetermined_total = 0;
+
+		$ok_schedule_total = 0;
+		$warning_schedule_total = 0;
+		$unknown_schedule_total = 0;
+		$critical_schedule_total = 0;
+		$undetermined_not_run_total = 0;
+
+		$ok_unschedule_total = 0;
+		$warning_unschedule_total = 0;
+		$unknown_unschedule_total = 0;
+		$critical_unschedule_total = 0;
+		$undetermined_insufficient_total = 0;
+
+		foreach($check_array as $check)
+		{
+			//$check->state = 'STARTUP'
+			if($check->state === 6)
+			{
+				$start = $check->datetime;
+			}
+			//$check->state = 'SHUTDOWN'
+			else if($check->state === 7)
+			{
+				$end = $check->datetime;	
+			}
+
+			if( empty($start) && empty($end) )
+			{
+				continue;
+			}
+			else
+			{
+				$not_run_duration = $end - $start;
+
+				$start = 0;
+				$end = 0;
+			}
+		}
+
+		foreach($input_array as $alerts)
+		{
+			if($this->_compare_string($alerts->hostname, $input_host))
+			{
+				if($this->_compare_string($alerts->servicename, $input_service))
+				{
+					$all_total += $alerts->duration;
+
+					//$alerts->state = 'OK'
+					if($alerts->state === 4)
+					{
+						$ok_total += $alerts->duration;
+
+						if($alerts->schedule)
+						{
+							$ok_schedule_total += $alerts->duration;
+						}
+						else
+						{
+							$ok_unschedule_total += $alerts->duration;
+						}
+					}
+					//$alerts->state = 'WARNING'
+					else if($alerts->state === 3)
+					{
+						$warning_total += $alerts->duration;
+
+						if($alerts->schedule)
+						{
+							$warning_schedule_total += $alerts->duration;
+						}
+						else
+						{
+							$warning_unschedule_total += $alerts->duration;
+						}
+					}
+					//$alerts->state = 'UNKNOWN'
+					else if($alerts->state === 2)
+					{
+						$unknown_total += $alerts->duration;
+
+						if($alerts->schedule)
+						{
+							$unknown_schedule_total += $alerts->duration;
+						}
+						else
+						{
+							$unknown_unschedule_total += $alerts->duration;
+						}
+					}
+					//$alerts->state = 'CRITICAL'
+					else if($alerts->state === 1)
+					{
+						$critical_total += $alerts->duration;
+
+						if($alerts->schedule)
+						{
+							$critical_schedule_total += $alerts->duration;
+						}
+						else
+						{
+							$critical_unschedule_total += $alerts->duration;
+						}
+					}
+					//$alerts->state = 'UNDETERMINED'
+					else if($alerts->state === 0)
+					{
+						$undetermined_total += $alerts->duration;
+
+						$undetermined_not_run_total = $not_run_duration;
+						$undetermined_insufficient_total = $undetermined_total - $not_run_duration;
+					}
+				}
+			}
+		}
+
+		$return_obj = new StdClass();
+		$return_obj->hostname = $input_host;
+		$return_obj->servicename = $input_service;
+		$return_obj->all_total = $all_total;
+		$return_obj->ok_total = $ok_total;
+		$return_obj->warning_total = $warning_total;
+		$return_obj->unknown_total = $unknown_total;
+		$return_obj->critical_total = $critical_total;
+		$return_obj->undetermined_total = $undetermined_total;
+		$return_obj->ok_schedule_total = $ok_schedule_total;
+		$return_obj->warning_schedule_total = $warning_schedule_total;
+		$return_obj->unknown_schedule_total = $unknown_schedule_total;
+		$return_obj->critical_schedule_total = $critical_schedule_total;
+		$return_obj->undetermined_not_run_total = $undetermined_not_run_total;
+		$return_obj->ok_unschedule_total = $ok_unschedule_total;
+		$return_obj->warning_unschedule_total = $warning_unschedule_total;
+		$return_obj->unknown_unschedule_total = $unknown_unschedule_total;
+		$return_obj->critical_unschedule_total = $critical_unschedule_total;
+		$return_obj->undetermined_insufficient_total = $undetermined_insufficient_total;
+
+		return $return_obj;
+	}
+
+	//Functions used by trend section
+	//Function used to filter data
+	private function _get_trend_host_service($input_array, $input_host, $input_service, $state_type)
+	{
+		//array counter
+		$i = 0;
+		$return_array = array();
+
+		//filter the array based on the request
+		foreach($input_array as $items)
+		{
+			//custom report option	
+			//compare host name
+			if($this->_compare_string($input_host, $items->hostname))
+			{
+				//compare service name
+				if($this->_compare_string($input_service, $items->servicename))
+				{	
+					//compare state_type
+					if($this->_compare_string($state_type, $items->state_type))
+					{	
+						$return_array[$i] = $items;
+
+						$i++;	
+					}			
+				}
+			}
+		}
+
+		return $return_array;
+	}
+
+	//Function used to get return data for host
+	private function _get_return_host($assume_state_downtime, $input_array, $input_host, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_host_state)
+	{
+		//$initial_state = 'UNDETERMINED'
+		$initial_state = 0;
+
+		if(is_array($input_date))
+		{
+			$start_time = $input_date[0];
+			$end_time = $input[1];
+		}
+		else
+		{
+			if($this->_is_today($input_date))
+			{
+				$start_time = strtotime('today midnight');
+			}
+			else
+			{
+				$date_array = array();
+				$date_array = $this->_get_start_end_date($input_date, $input_period);
+
+				$start_time = $date_array[0];
+				$end_time = (int)$input_date;
+			}
+		}
+
+		$initial_state = $this->_is_detected($input_array, $start_time, $input_host, 'ALL');
+
+		if($initial_state === 0)
+		{
+			//counter 
+			$num = 0;
+			$z = 0;
+
+			while($num < $backtrack_archive)
+			{
+				$backtrack_duration = 86400 * (++$num);
+				$temp_time = $start_time - $backtrack_duration;
+
+				$output = array();
+					
+				$modify_date = date('m-d-Y', (int)$temp_time);
+				$filepath = '/usr/local/nagios/var/archives/nagios-'.$modify_date.'-00.log';
+
+				if(file_exists($filepath))
+				{
+					//opening the nagios log file
+					$logfile = fopen($filepath, 'r') or die('File not found !');
+
+					while(! feof($logfile))
+					{
+						$output_array[$z] = trim(fgets($logfile));
+						$z++;
+					}
+
+					fclose($logfile);
+
+					$initial_state = $this->_is_detected($output_array, $temp_time, $input_host, 'ALL');
+				}
+				else
+				{
+					$initial_state = 0;
+				}
+
+				if($initial_state === 0)
+				{
+					$num++;
+				}
+				else
+				{
+					//end the loop
+					$num = $backtrack_archive++;
+				}
+			}
+		}
+
+		if($assume_initial_state)
+		{
+			$initial_state = $this->_get_state_num($first_assume_host_state);
+		}
+		else
+		{
+			$initial_state = 0;
+		}
+
+		$now = $end_time;
+		$input_array = array_reverse($input_array);
+
+		$return_obj = new StdClass();
+		$return_array = array();
+
+		//array counter 
+		$i = 0;
+
+		if($assume_state_downtime)
+		{
+			foreach($input_array as $alerts)
+			{
+				if($this->_compare_string($alerts->logtype, 'HOST ALERT'))
+				{
+					$duration = $now - (int)$alerts->datetime;
+					$return_obj->logtype = $alerts->logtype;
+					$return_obj->hostname = $alerts->hostname;
+					$return_obj->duration = abs($duration);
+					$return_obj->start_time = $now - $duration;
+					$return_obj->end_time = $now;
+					$return_obj->state = $this->_get_state_num($alerts->state);
+					$return_obj->schedule = false;
+
+					if($this->_compare_string($alerts->logtype, 'HOST DOWNTIME ALERT'))
+					{
+						//$alerts->state = 'STARTED'
+						if($alerts->state === 8)
+						{
+							$return_obj->schedule = true;
+						}
+					}
+
+					$return_array[$i] = $return_obj;
+					$i++;
+
+					$now = $now - $duration;
+										
+					unset($return_obj);
+				}
+			}
+		}
+		else
+		{
+			foreach($input_array as $alerts)
+			{
+				if($this->_compare_string($alerts->logtype, 'HOST ALERT') or $this->_compare_string($alerts->logtype, 'HOST DOWNTIME ALERT'))
+				{
+					$duration = $now - (int)$alerts->datetime;
+					$return_obj->logtype = $alerts->logtype;
+					$return_obj->hostname = $alerts->hostname;
+					$return_obj->duration = abs($duration);
+					$return_obj->start_time = $now - $duration;
+					$return_obj->end_time = $now;
+					$return_obj->state = $this->_get_state_num($alerts->state);
+					$return_obj->schedule = false;
+
+					if($this->_compare_string($alerts->logtype, 'HOST DOWNTIME ALERT'))
+					{
+						//$alerts->state = 'STARTED'
+						if($alerts->state === 8)
+						{
+							//$return_obj->state = 0;
+							$return_obj->state = 0;
+							$return_obj->schedule = true;
+						}
+						//$alerts->state = 'STOPPED'
+						else if($alerts->state === 9)
+						{
+							$return_obj->state = 'NULL';
+						}
+					}
+
+					$return_array[$i] = $return_obj;
+					$i++;
+
+					$now = $now - $duration;
+										
+					unset($return_obj);
+				}
+			}
+
+			$reverse_array = array_reverse($return_array);
+
+			foreach($reverse_array as $reverse)
+			{
+				if($this->_compare_string($reverse->logtype, 'HOST DOWNTIME ALERT'))
+				{
+					if($this->_compare_string($reverse->state, 'NULL'))
+					{
+						$reverse->state = $current_state;
+					}
+				}
+				else
+				{
+					$current_state = $reverse->state;
+				}
+			}
+
+			unset($return_array);
+
+			$return_array = array_reverse($reverse_array);
+		}
+
+		$duration = $now - (int)$start_time;
+		$return_obj->logtype = 'INITIAL STATE';
+		$return_obj->hostname = $input_host;
+		$return_obj->duration = abs($duration);
+		$return_obj->start_time = $start_time;
+		$return_obj->end_time = $now;
+		$return_obj->state = $initial_state;
+
+		$return_array[$i] = $return_obj;
+		$i++;
+
+		$return_array = array_reverse($return_array);
+
+		return $return_array;
+	}
+
+	//Function used to get return data for service
+	private function _get_return_service($assume_state_downtime, $input_array, $input_host, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state)
+	{
+		//$initial_state = 'UNDETERMINED'
+		$initial_state = 0;
+
+		if(is_array($input_date))
+		{
+			$start_time = $input_date[0];
+			$end_time = $input[1];
+		}
+		else
+		{
+			if($this->_is_today($input_date))
+			{
+				$start_time = strtotime('today midnight');
+			}
+			else
+			{
+				$date_array = array();
+				$date_array = $this->_get_start_end_date($input_date, $input_period);
+
+				$start_time = $date_array[0];
+				$end_time = (int)$input_date;
+			}
+		}
+
+		$initial_state = $this->_is_detected($input_array, $start_time, $input_host, $input_service);
+
+		if($initial_state === 0)
+		{
+			//counter 
+			$num = 0;
+			$z = 0;
+
+			while($num < $backtrack_archive)
+			{
+				$backtrack_duration = 86400 * (++$num);
+				$temp_time = $start_time - $backtrack_duration;
+
+				$output = array();
+					
+				$modify_date = date('m-d-Y', (int)$temp_time);
+				$filepath = '/usr/local/nagios/var/archives/nagios-'.$modify_date.'-00.log';
+
+				if(file_exists($filepath))
+				{
+					//opening the nagios log file
+					$logfile = fopen($filepath, 'r') or die('File not found !');
+
+					while(! feof($logfile))
+					{
+						$output_array[$z] = trim(fgets($logfile));
+						$z++;
+					}
+
+					fclose($logfile);
+
+					$initial_state = $this->_is_detected($output_array, $temp_time, $input_host, $input_service);
+				}
+				else
+				{
+					$initial_state = 0;
+				}
+
+				if($initial_state === 0)
+				{
+					$num++;
+				}
+				else
+				{
+					//end the loop
+					$num = $backtrack_archive++;
+				}
+			}
+		}
+
+		if($assume_initial_state)
+		{
+			$initial_state = $this->_get_state_num($first_assume_service_state);
+		}
+		else
+		{
+			$initial_state = 0;
+		}
+
+		$now = $end_time;
+		$input_array = array_reverse($input_array);
+
+		$return_obj = new StdClass();
+		$return_array = array();
+
+		//array counter 
+		$i = 0;
+
+		if($assume_state_downtime)
+		{
+			foreach($input_array as $alerts)
+			{
+				if($this->_compare_string($alerts->logtype, 'SERVICE ALERT'))
+				{
+					$duration = $now - (int)$alerts->datetime;
+					$return_obj->logtype = $alerts->logtype;
+					$return_obj->hostname = $alerts->hostname;
+					$return_obj->servicename = $alerts->servicename;
+					$return_obj->duration = abs($duration);
+					$return_obj->start_time = $now - $duration;
+					$return_obj->end_time = $now;
+					$return_obj->state = $this->_get_state_num($alerts->state);
+					$return_obj->schedule = false;
+
+					if($this->_compare_string($alerts->logtype, 'SERVICE DOWNTIME ALERT'))
+					{
+						if($this->_compare_string($alerts->state, 'STARTED'))
+						{
+							$return_obj->schedule = true;
+						}
+					}
+
+					$return_array[$i] = $return_obj;
+					$i++;
+
+					$now = $now - $duration;
+									
+					unset($return_obj);
+				}
+			}
+		}
+		else
+		{
+			foreach($input_array as $alerts)
+			{
+				if($this->_compare_string($alerts->logtype, 'SERVICE ALERT') or $this->_compare_string($alerts->logtype, 'SERVICE DOWNTIME ALERT'))
+				{
+					$duration = $now - (int)$alerts->datetime;
+					$return_obj->logtype = $alerts->logtype;
+					$return_obj->hostname = $alerts->hostname;
+					$return_obj->servicename = $alerts->servicename;
+					$return_obj->duration = abs($duration);
+					$return_obj->start_time = $now - $duration;
+					$return_obj->end_time = $now;
+					$return_obj->state = $this->_get_state_num($alerts->state);
+					$return_obj->schedule = false;
+
+					if($this->_compare_string($alerts->logtype, 'SERVICE DOWNTIME ALERT'))
+					{
+						if($this->_compare_string($alerts->state, 'STARTED'))
+						{
+							$return_obj->state = 0;
+							$return_obj->schedule = true;
+						}
+						else if($this->_compare_string($alerts->state, 'STOPPED'))
+						{
+							$return_obj->state = 'NULL';
+						}
+					}
+
+					$return_array[$i] = $return_obj;
+					$i++;
+
+					$now = $now - $duration;
+									
+					unset($return_obj);
+				}
+			}
+
+			$reverse_array = array_reverse($return_array);
+
+			foreach($reverse_array as $reverse)
+			{
+				if($this->_compare_string($reverse->logtype, 'SERVICE DOWNTIME ALERT'))
+				{
+					if($this->_compare_string($reverse->state, 'NULL'))
+					{
+						$reverse->state = $current_state;
+					}
+				}
+				else
+				{
+					$current_state = $reverse->state;
+				}
+			}
+
+			unset($return_array);
+
+			$return_array = array_reverse($reverse_array);
+		}
+
+		$duration = $now - (int)$start_time;
+		$return_obj->logtype = 'INITIAL STATE';
+		$return_obj->hostname = $input_host;
+		$return_obj->servicename = $input_service;
+		$return_obj->duration = abs($duration);
+		$return_obj->start_time = $start_time;
+		$return_obj->end_time = $now;
+		$return_obj->state = $initial_state;
+
+		$return_array[$i] = $return_obj;
+		$i++;
+
+		$return_array = array_reverse($return_array);
+
+		return $return_array;
+	}
+
+	//Function used to detect whether the initial state is detected
+	private function _is_detected($input_array, $start_time, $input_host, $input_service)
+	{
+		//$initial_state = 'UNDETERMINED'
+		$initial_state = 0;
+
+		$detect = false;
+
+		foreach($input_array as $items)
+		{
+			if($this->_compare_date('TODAY', $items->datetime, $start_time))
+			{
+				if($detect)
+				{
+					continue;
+				}
+				else 
+				{
+					if($this->_compare_string($input_host, $items->hostname))
+					{
+						if($this->_compare_string($input_service, $items->servicename))
+						{
+							$detect = true;
+
+							//$input_array[$count]->state = 'UP'
+							if($this->_compare_string($items->state, 'UP'))
+							{
+								$initial_state = 3;
+							}
+							//$input_array[$count]->state = 'DOWN'
+							else if($this->_compare_string($items->state, 'DOWN'))
+							{
+								$initial_state = 2;
+							}
+							//$input_array[$count]->state = 'UNREACHABLE'
+							else if($this->_compare_string($items->state, 'UNREACHABLE'))
+							{
+								$initial_state = 1;
+							}
+							//$input_array[$count]->state = 'OK'
+							else if($this->_compare_string($items->state, 'OK'))
+							{
+								$initial_state = 4;
+							}
+							//$input_array[$count]->state = 'WARNING'
+							else if($this->_compare_string($items->state, 'WARNING'))
+							{
+								$initial_state = 3;
+							}
+							//$input_array[$count]->state = 'UNKNOWN'
+							else if($this->_compare_string($items->state, 'UNKNOWN'))
+							{
+								$initial_state = 2;
+							}
+							//$input_array[$count]->state = 'CRITICAL'
+							else if($this->_compare_string($items->state, 'CRITICAL'))
+							{
+								$initial_state = 1;
+							}
+							//$input_array[$count]->state = 'STARTED'
+							else if($this->_compare_string($items->state, 'STARTED'))
+							{
+								$detect = false;
+							}
+							//$input_array[$count]->state = 'STOPPED'
+							else if($this->_compare_string($items->state, 'STOPPED'))
+							{
+								$detect = false;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		return $initial_state;
+	}
+
+	//Function used to calculate total duration for each type of state for host
+	private function _get_state_total_host($input_array)
+	{
+		$all_total = 0;
+		$up_total = 0;
+		$down_total = 0;
+		$unreachable_total = 0;
+		$undetermined_total = 0;
+
+		foreach($input_array as $alerts)
+		{
+			$all_total += $alerts->duration;
+
+			//$alerts->state = 'UP'
+			if($alerts->state === 3)
+			{
+				$up_total += $alerts->duration;
+			}
+			//$alerts->state = 'DOWN'
+			else if($alerts->state === 2)
+			{
+				$down_total += $alerts->duration;
+			}
+			//$alerts->state = 'UNREACHABLE'
+			else if($alerts->state === 1)
+			{
+				$unreachable_total += $alerts->duration;
+			}
+			//$alerts->state = 'UNDETERMINED'
+			else if($alerts->state === 0)
+			{
+				$undetermined_total += $alerts->duration;
+			}
+		}
+
+		$return_obj = new StdClass();
+		$return_obj->all_total = $all_total;
+		$return_obj->up_total = $up_total;
+		$return_obj->down_total = $down_total;
+		$return_obj->unreachable_total = $unreachable_total;
+		$return_obj->undetermined_total = $undetermined_total;
+
+		return $return_obj;
+	}
+
+	//Function used to calculate total duration for each type of state for service
+	private function _get_state_total_service($input_array)
+	{
+		$all_total = 0;
+		$ok_total = 0;
+		$warning_total = 0;
+		$unknown_total = 0;
+		$critical_total = 0;
+		$undetermined_total = 0;
+
+		foreach($input_array as $alerts)
+		{
+			$all_total += $alerts->duration;
+
+			//$alerts->state = 'OK'
+			if($alerts->state === 4)
+			{
+				$ok_total += $alerts->duration;
+			}
+			//$alerts->state = 'WARNING'
+			else if($alerts->state === 3)
+			{
+				$warning_total += $alerts->duration;
+			}
+			//$alerts->state = 'UNKNOWN'
+			else if($alerts->state === 2)
+			{
+				$unknown_total += $alerts->duration;
+			}
+			//$alerts->state = 'CRITICAL'
+			else if($alerts->state === 1)
+			{
+				$critical_total += $alerts->duration;
+			}
+			//$alerts->state = 'UNDETERMINED'
+			else if($alerts->state === 0)
+			{
+				$undetermined_total += $alerts->duration;
+			}
+		}
+
+		$return_obj = new StdClass();
+		$return_obj->all_total = $all_total;
+		$return_obj->ok_total = $ok_total;
+		$return_obj->warning_total = $warning_total;
+		$return_obj->unknown_total = $unknown_total;
+		$return_obj->critical_total = $critical_total;
+		$return_obj->undetermined_total = $undetermined_total;
+
+		return $return_obj;
 	}
 
 	//Functions used by alert summary section
@@ -2115,7 +4006,7 @@ class Reports_data extends CI_Model
 		}
 
 		//code used to remove the first element of the array 
-		//$throw = array_shift($return_array);
+		$throw = array_shift($return_array);
 
 		return $return_array;
 	}
@@ -2160,7 +4051,7 @@ class Reports_data extends CI_Model
 		}
 
 		//code used to remove the first element of the array 
-		//$throw = array_shift($return_array);
+		$throw = array_shift($return_array);
 
 		return $return_array;
 	}
@@ -2207,7 +4098,7 @@ class Reports_data extends CI_Model
 		}
 
 		//code used to remove the first element of the array 
-		//$throw = array_shift($return_array);
+		$throw = array_shift($return_array);
 
 		return $return_array;
 	}
@@ -2263,5 +4154,8 @@ class Reports_data extends CI_Model
 
 
 }
+
+
+
 
 ?>

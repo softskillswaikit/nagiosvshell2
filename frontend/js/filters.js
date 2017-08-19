@@ -222,6 +222,9 @@ angular.module('vshell.filters', [])
         if (input === 'configuration') {
             return 'configurations';
         }
+        if (input === 'alerthistory'){
+            return 'alerthistory';
+        }
         return 'overview';
     };
 })

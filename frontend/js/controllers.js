@@ -434,7 +434,6 @@ angular.module('vshell.controllers', [])
                         name: 'CustomNotification',
                         url: 'sendcustomnotification/' + type + '/' + $routeParams.host + '/' + service + '/' + $scope.force + '/'
                         + $scope.broadcast + '/' + $scope.hostAuthor + '/' + $scope.hostComment,
-                        queue: false
                 };
                 async.api($scope, options);
 
@@ -1449,11 +1448,22 @@ angular.module('vshell.controllers', [])
 
         $scope.create = function() {
 
-            console.log($scope.StandardReportType);
-            if ($scope.StandardReportType == '25 Most Recent Hard Alerts') {
-                var type = "Most recent alert";
-
+            console.log($scope.CustomReportType);
+            if ($scope.CustomReportType == 'Most Recent Alerts'){
+                $scope.CustomReportType = 'most recent alert';
             }
+            console.log($scope.reportPeriod);
+            console.log($scope.startDate);
+            console.log($scope.endDate);
+
+            var options = {
+                name: 'alertsummary',
+                url: 'alertsummary/' + $scope.CustomReportType + '/' + $scope.reportPeriod + '/' + $scope.startDate + '/'
+                        + $scope.endDate + '/ALL/ALL/ALL/ALL/ALL',
+                queue: 'main'
+            };
+
+            async.api($scope, options);
         };
 
         $scope.reset();
@@ -3249,7 +3259,6 @@ angular.module('vshell.controllers', [])
                         name: 'CustomNotification',
                         url: 'sendcustomnotification/' + type + '/' + $routeParams.host + '/' + $routeParams.service + '/' + $scope.force + '/'
                         + $scope.broadcast + '/' + $scope.author + '/' + $scope.comment,
-                        queue: false
                 };
                 async.api($scope, options);
 
