@@ -62,7 +62,7 @@ class Reports_data extends CI_Model
 		$i = 0;
 
 		//$return_type = 'HOSTGROUP'
-		if($return_type === 1)
+		if($return_type === 5)
 		{
 			if(is_array($input_host))
 			{
@@ -81,7 +81,7 @@ class Reports_data extends CI_Model
 			}
 		}
 		//$return_type = 'SERVICEGROUP'
-		else if($return_type === 2)
+		else if($return_type === 6)
 		{
 			//get unique host and service pair
 			$key_obj = new StdClass();
@@ -149,7 +149,7 @@ class Reports_data extends CI_Model
 			}
 		}
 		//$return_type = 'HOST'
-		else if($return_type === 3)
+		else if($return_type === 1)
 		{
 			if($this->_compare_string($input_host, 'ALL'))
 			{
@@ -275,7 +275,7 @@ class Reports_data extends CI_Model
 			}
 		}
 		//$return_type = 'SERVICE'
-		else if($return_type === 4)
+		else if($return_type === 2)
 		{
 			if($this->_compare_string($input_service, 'ALL'))
 			{
@@ -390,7 +390,7 @@ class Reports_data extends CI_Model
 			}
 		}
 		//$return_type = 'HOST RESOURCE'
-		else if($return_type === 5)
+		else if($return_type === 3)
 		{
 			if($this->_compare_string($input_host, 'ALL'))
 			{
@@ -539,7 +539,7 @@ class Reports_data extends CI_Model
 			}
 		}
 		//$return_type = 'SERVICE RUNNING STATE'
-		else if($return_type === 6)
+		else if($return_type === 4)
 		{
 			if($this->_compare_string($input_service, 'ALL'))
 			{
@@ -717,50 +717,17 @@ class Reports_data extends CI_Model
 		//$return_type = 'HOST RESOURCE'
 		else if($return_type === 3)
 		{
-			$host_resource_collection = $this->nagios_data->get_collection('hostresource');
 			$host_resource_array = array();
+			$host_resource_array = $this->_parse_log($this->_data_array, 'resource');
 
-			//array counter
-			$i = 0;
-
-			foreach($host_resource_collection as $resources)
+			//filter the data into $this->_trend_array based on request
+			if($include_soft)
 			{
-				$host_resource_array[$i] = $resources->service_description;
-
-				$i++;
+				$resource_array = $this->_get_trend_host_service($host_resource_array, $input_host, $input_service, 'ALL');
 			}
-
-			$resource_array = array();
-			$resource_obj = new StdClass();
-
-			//array counter 
-			$j = 0;
-
-			foreach($this->_data_array as $data)
+			else
 			{
-				foreach($host_resource_array as $resources)
-				{
-					if(strpos($data, $resources))
-					{
-						list($input_time, $event_message) = explode(' ', $data, 2);
-						list($logtype, $information) = explode(':', $event_message, 2);
-						list($hostname, $servicename, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 6);
-			
-						$resource_obj->datetime = trim($input_time, '[]');
-						$resource_obj->logtype = 'SERVICE ALERT';
-						$resource_obj->hostname = trim($hostname);
-						$resource_obj->servicename = trim($servicename);
-						$resource_obj->state = trim($state);
-						$resource_obj->state_type = trim($state_type);
-						$resource_obj->retry_count = trim($retry_count);
-						$resource_obj->messages = trim($detail_message);
-				
-						$resource_array[$j] = $resource_obj;
-						$j++;
-
-						unset($input_time, $event_message, $logtype, $information, $hostname, $servicename, $state, $state_type, $retry_count, $detail_message, $resource_obj);
-					}
-				}
+				$resource_array = $this->_get_trend_host_service($host_resource_array, $input_host, $input_service, 'HARD');
 			}
 
 			$return_array[0] = $this->_get_return_service($assume_state_downtime, $resource_array, $input_host, $input_service, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_service_state);
@@ -2431,6 +2398,54 @@ class Reports_data extends CI_Model
 					$sorted_obj->state = trim($state);
 					$sorted_obj->state_type = 'N/A';
 					$sorted_obj->retry_count = 'N/A';
+					$sorted_obj->messages = trim($detail_message);
+				}
+				else if(strpos($logs, 'SERVICE DOWNTIME ALERT:') !== false)
+				{
+					list($input_time, $event_message) = explode(' ', $logs, 2);
+					list($logtype, $information) = explode(':', $event_message, 2);
+					list($hostname, $servicename, $state, $detail_message) = explode(';', $information, 4);
+		
+					$sorted_obj->datetime = trim($input_time, '[]');
+					$sorted_obj->logtype = trim($logtype);
+					$sorted_obj->hostname = trim($hostname);
+					$sorted_obj->servicename = trim($servicename);
+					$sorted_obj->state = trim($state);
+					$sorted_obj->state_type = 'N/A';
+					$sorted_obj->retry_count = 'N/A';
+					$sorted_obj->messages = trim($detail_message);
+				}
+			}
+			else if($this->_compare_string($_type, 'resource'))
+			{
+				if(strpos($logs, 'CURRENT SERVICE STATE:') !== false)
+				{
+					list($input_time, $event_message) = explode(' ', $logs, 2);
+					list($logtype, $information) = explode(':', $event_message, 2);
+					list($hostname, $servicename, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 6);
+		
+					$sorted_obj->datetime = trim($input_time, '[]');
+					$sorted_obj->logtype = trim($logtype);
+					$sorted_obj->hostname = trim($hostname);
+					$sorted_obj->servicename = trim($servicename);
+					$sorted_obj->state = trim($state);
+					$sorted_obj->state_type = trim($state_type);
+					$sorted_obj->retry_count = trim($retry_count);
+					$sorted_obj->messages = trim($detail_message);
+				}
+				else if(strpos($logs, 'SERVICE ALERT:') !== false)
+				{
+					list($input_time, $event_message) = explode(' ', $logs, 2);
+					list($logtype, $information) = explode(':', $event_message, 2);
+					list($hostname, $servicename, $state, $state_type, $retry_count, $detail_message) = explode(';', $information, 6);
+		
+					$sorted_obj->datetime = trim($input_time, '[]');
+					$sorted_obj->logtype = trim($logtype);
+					$sorted_obj->hostname = trim($hostname);
+					$sorted_obj->servicename = trim($servicename);
+					$sorted_obj->state = trim($state);
+					$sorted_obj->state_type = trim($state_type);
+					$sorted_obj->retry_count = trim($retry_count);
 					$sorted_obj->messages = trim($detail_message);
 				}
 				else if(strpos($logs, 'SERVICE DOWNTIME ALERT:') !== false)
