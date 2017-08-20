@@ -27,19 +27,15 @@ class Maintenance_command extends CI_Model
 		define('TEMPLATE_SERVICEGROUPS', '/usr/local/nagios/etc/objects/template_servicegroups.cfg');
 	}
 	
+	//Function used to add new object
 	public function add($type, $input_array)
 	{
-		//$test_array = array(
-		//	'command_name' => 'test command 1', 
-		//	'command_line' => 'test command 2'
-		//);
-
 		//$type = 'commands'
 		if($type === 1)
 		{
 			//open the configuration file
 			//place the pointer at end of file
-			$conf_file = fopen(COMMANDS, 'ab') or die('File not found !');
+			$conf_file = fopen(COMMANDS, 'rab') or die('File not found !');
 
 			//write into the configuration file
 			fwrite($conf_file, "\ndefine command{");
@@ -417,6 +413,435 @@ class Maintenance_command extends CI_Model
 
 			$this->system_commands->restart_nagios();
 			return true;
+		}
+	}
+
+	//Function used to delete variable of existing object
+	public function delete_var($type, $input_items)
+	{
+		$temp_array = array();
+		$delete_array = array();
+
+		foreach($input_items as $key => $value)
+		{
+			$delete_array[] = $key."\t".$value;
+		}
+
+		//$type = 'commands'
+		if($type === 1)
+		{
+			//open the configuration file
+			$conf_file = fopen(COMMANDS, 'rwb') or die('File not found !');
+
+			while( !feof($conf_file) )
+			{
+				$line = trim(fgets($conf_file));
+
+				foreach($delete_array as $items)
+				{
+					if($line != $items)
+					{
+						$temp_array[] = $line;	
+					}
+				}
+			}	
+
+			foreach($temp_array as $data)
+			{
+				fwrite($conf_file, $line);
+			}	
+
+			fclose($conf_file);
+		}
+		//$type = 'contacts'
+		else if($type === 2)
+		{
+			//open the configuration file
+			$conf_file = fopen(CONTACTS, 'ab') or die('File not found !');
+
+			while( !feof($conf_file) )
+			{
+				$line = trim(fgets($conf_file));
+
+				foreach($delete_array as $items)
+				{
+					if($line != $items)
+					{
+						$temp_array[] = $line;	
+					}
+				}
+			}	
+
+			foreach($temp_array as $data)
+			{
+				fwrite($conf_file, $line);
+			}	
+
+			fclose($conf_file);
+		}
+		//$type = 'contactgroups'
+		else if($type === 3)
+		{
+			//open the configuration file
+			$conf_file = fopen(CONTACTGROUPS, 'ab') or die('File not found !');
+
+			while( !feof($conf_file) )
+			{
+				$line = trim(fgets($conf_file));
+
+				foreach($delete_array as $items)
+				{
+					if($line != $items)
+					{
+						$temp_array[] = $line;	
+					}
+				}
+			}	
+
+			foreach($temp_array as $data)
+			{
+				fwrite($conf_file, $line);
+			}	
+
+			fclose($conf_file);
+		}
+		//$type = 'hosts'
+		else if($type === 4)
+		{
+			//open the configuration file
+			$conf_file = fopen(HOSTS, 'ab') or die('File not found !');
+
+			while( !feof($conf_file) )
+			{
+				$line = trim(fgets($conf_file));
+
+				foreach($delete_array as $items)
+				{
+					if($line != $items)
+					{
+						$temp_array[] = $line;	
+					}
+				}
+			}	
+
+			foreach($temp_array as $data)
+			{
+				fwrite($conf_file, $line);
+			}	
+
+			fclose($conf_file);
+		}
+		//$type = 'hostgroups'
+		else if($type === 5)
+		{
+			//open the configuration file
+			$conf_file = fopen(HOSTGROUPS, 'ab') or die('File not found !');
+
+			while( !feof($conf_file) )
+			{
+				$line = trim(fgets($conf_file));
+
+				foreach($delete_array as $items)
+				{
+					if($line != $items)
+					{
+						$temp_array[] = $line;	
+					}
+				}
+			}	
+
+			foreach($temp_array as $data)
+			{
+				fwrite($conf_file, $line);
+			}	
+
+			fclose($conf_file);
+		}
+		//$type = 'timeperiods'
+		else if($type === 6)
+		{
+			//open the configuration file
+			$conf_file = fopen(TIMEPERIODS, 'ab') or die('File not found !');
+
+			while( !feof($conf_file) )
+			{
+				$line = trim(fgets($conf_file));
+
+				foreach($delete_array as $items)
+				{
+					if($line != $items)
+					{
+						$temp_array[] = $line;	
+					}
+				}
+			}	
+
+			foreach($temp_array as $data)
+			{
+				fwrite($conf_file, $line);
+			}	
+
+			fclose($conf_file);
+		}
+		//$type = 'services'
+		else if($type === 7)
+		{
+			//open the configuration file
+			$conf_file = fopen(SERVICES, 'ab') or die('File not found !');
+
+			while( !feof($conf_file) )
+			{
+				$line = trim(fgets($conf_file));
+
+				foreach($delete_array as $items)
+				{
+					if($line != $items)
+					{
+						$temp_array[] = $line;	
+					}
+				}
+			}	
+
+			foreach($temp_array as $data)
+			{
+				fwrite($conf_file, $line);
+			}	
+
+			fclose($conf_file);
+		}
+		//$type = 'servicegroups'
+		else if($type === 8)
+		{
+			//open the configuration file
+			$conf_file = fopen(SERVICEGROUPS, 'ab') or die('File not found !');
+
+			while( !feof($conf_file) )
+			{
+				$line = trim(fgets($conf_file));
+
+				foreach($delete_array as $items)
+				{
+					if($line != $items)
+					{
+						$temp_array[] = $line;	
+					}
+				}
+			}	
+
+			foreach($temp_array as $data)
+			{
+				fwrite($conf_file, $line);
+			}	
+
+			fclose($conf_file);
+		}
+		//$type = 'template_commands'
+		else if($type === 9)
+		{
+			//open the configuration file
+			$conf_file = fopen(TEMPLATE_COMMANDS, 'ab') or die('File not found !');
+
+			while( !feof($conf_file) )
+			{
+				$line = trim(fgets($conf_file));
+
+				foreach($delete_array as $items)
+				{
+					if($line != $items)
+					{
+						$temp_array[] = $line;	
+					}
+				}
+			}	
+
+			foreach($temp_array as $data)
+			{
+				fwrite($conf_file, $line);
+			}	
+
+			fclose($conf_file);
+		}
+		//$type = 'template_contacts'
+		else if($type === 10)
+		{
+			//open the configuration file
+			$conf_file = fopen(TEMPLATE_CONTACTS, 'ab') or die('File not found !');
+
+			while( !feof($conf_file) )
+			{
+				$line = trim(fgets($conf_file));
+
+				foreach($delete_array as $items)
+				{
+					if($line != $items)
+					{
+						$temp_array[] = $line;	
+					}
+				}
+			}	
+
+			foreach($temp_array as $data)
+			{
+				fwrite($conf_file, $line);
+			}	
+
+			fclose($conf_file);
+		}
+		//$type = 'template_contactgroups'
+		else if($type === 11)
+		{
+			//open the configuration file
+			$conf_file = fopen(TEMPLATE_CONTATCGROUPS, 'ab') or die('File not found !');
+
+			while( !feof($conf_file) )
+			{
+				$line = trim(fgets($conf_file));
+
+				foreach($delete_array as $items)
+				{
+					if($line != $items)
+					{
+						$temp_array[] = $line;	
+					}
+				}
+			}	
+
+			foreach($temp_array as $data)
+			{
+				fwrite($conf_file, $line);
+			}	
+
+			fclose($conf_file);
+		}
+		//$type = 'template_hosts'
+		else if($type === 12)
+		{
+			//open the configuration file
+			$conf_file = fopen(TEMPLATE_HOSTS, 'ab') or die('File not found !');
+
+			while( !feof($conf_file) )
+			{
+				$line = trim(fgets($conf_file));
+
+				foreach($delete_array as $items)
+				{
+					if($line != $items)
+					{
+						$temp_array[] = $line;	
+					}
+				}
+			}	
+
+			foreach($temp_array as $data)
+			{
+				fwrite($conf_file, $line);
+			}	
+
+			fclose($conf_file);
+		}
+		//$type = 'template_hostgroups'
+		else if($type === 13)
+		{
+			//open the configuration file
+			$conf_file = fopen(TEMPLATE_HOSTGROUPS, 'ab') or die('File not found !');
+
+			while( !feof($conf_file) )
+			{
+				$line = trim(fgets($conf_file));
+
+				foreach($delete_array as $items)
+				{
+					if($line != $items)
+					{
+						$temp_array[] = $line;	
+					}
+				}
+			}	
+
+			foreach($temp_array as $data)
+			{
+				fwrite($conf_file, $line);
+			}	
+
+			fclose($conf_file);
+		}
+		//$type = 'template_timeperiods'
+		else if($type === 14)
+		{
+			//open the configuration file
+			$conf_file = fopen(TEMPLATE_TIMEPERIODS, 'ab') or die('File not found !');
+
+			while( !feof($conf_file) )
+			{
+				$line = trim(fgets($conf_file));
+
+				foreach($delete_array as $items)
+				{
+					if($line != $items)
+					{
+						$temp_array[] = $line;	
+					}
+				}
+			}	
+
+			foreach($temp_array as $data)
+			{
+				fwrite($conf_file, $line);
+			}	
+
+			fclose($conf_file);
+		}
+		//$type = 'template_services'
+		else if($type === 15)
+		{
+			//open the configuration file
+			$conf_file = fopen(TEMPLATE_SERVICES, 'ab') or die('File not found !');
+
+			while( !feof($conf_file) )
+			{
+				$line = trim(fgets($conf_file));
+
+				foreach($delete_array as $items)
+				{
+					if($line != $items)
+					{
+						$temp_array[] = $line;	
+					}
+				}
+			}	
+
+			foreach($temp_array as $data)
+			{
+				fwrite($conf_file, $line);
+			}	
+
+			fclose($conf_file);
+		}
+		//$type = 'template_servicegroups'
+		else if($type === 16)
+		{
+			//open the configuration file
+			$conf_file = fopen(TEMPLATE_SERVICEGROUPS, 'ab') or die('File not found !');
+
+			while( !feof($conf_file) )
+			{
+				$line = trim(fgets($conf_file));
+
+				foreach($delete_array as $items)
+				{
+					if($line != $items)
+					{
+						$temp_array[] = $line;	
+					}
+				}
+			}	
+
+			foreach($temp_array as $data)
+			{
+				fwrite($conf_file, $line);
+			}	
+
+			fclose($conf_file);
 		}
 	}
 
