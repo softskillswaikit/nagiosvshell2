@@ -25,8 +25,7 @@
 // http://www.fsf.org.
 //
 //
-// CONTRIBUTION POLICY:
-//
+// CONTRIBUTION POLICY//
 // (The following paragraph is not intended to limit the rights granted
 // to you to modify and distribute this software under the terms of
 // licenses that may apply to the software.)
@@ -97,6 +96,10 @@ class Nagios_data extends CI_Model
     protected $_ContactstatusCollection;
     protected $_Info;
 
+    //Added by Soon Wei Liang
+    protected $_HostdowntimeCollection;
+    protected $_ServicedowntimeCollection;
+
 
  //   protected $_DetailsCollection; // ?? What is this??
     protected $_PermissionsCollection;
@@ -135,6 +138,10 @@ class Nagios_data extends CI_Model
         'services',
         'comments',
         'info',
+
+        //Added by Soon Wei Liang
+        'downtimes',
+
        // 'details',
         'permissions',
 
@@ -153,7 +160,7 @@ class Nagios_data extends CI_Model
         $this->_map_collections();
 
         $objects_are_cached = false;
-        $status_is_cached	= false;
+        $status_is_cached   = false;
         $perms_are_cached=false;
         $apc_exists = false;
 
@@ -297,7 +304,7 @@ class Nagios_data extends CI_Model
              * number instead
              */
             $id = str_replace('service', '', $arg);
-            $retval = $details[$id];	//call service details by array index
+            $retval = $details[$id];    //call service details by array index
         }
 
         //20170503 WaiKit
@@ -306,7 +313,7 @@ class Nagios_data extends CI_Model
              * number instead
              */
             $id = str_replace('hostresource', '', $arg);
-            $retval = $details[$id];	//call service details by array index
+            $retval = $details[$id];    //call service details by array index
         }
 
         if ($type == 'heartbeat') {
@@ -314,7 +321,7 @@ class Nagios_data extends CI_Model
              * number instead
              */
             $id = str_replace('heartbeat', '', $arg);
-            $retval = $details[$id];	//call service details by array index
+            $retval = $details[$id];    //call service details by array index
         }
         
         if ($type == 'runningstate') {
@@ -322,7 +329,7 @@ class Nagios_data extends CI_Model
              * number instead
              */
             $id = str_replace('runningstate', '', $arg);
-            $retval = $details[$id];	//call service details by array index
+            $retval = $details[$id];    //call service details by array index
         }
 
         if ($type == 'host') {
@@ -445,6 +452,9 @@ class Nagios_data extends CI_Model
             $this->properties['servicecomments'] = apc_fetch('servicecomments');
             $this->properties['program'] = apc_fetch('program');
             $this->properties['info'] = apc_fetch('info');
+            //Added by Soon Wei Liang
+            $this->properties['hostdowntimes'] = apc_fetch('hostdowntimes');
+            $this->properties['servicedowntimes'] = apc_fetch('servicedowntimes');
         }
 
         if ($type == 'permissions') {
@@ -495,6 +505,9 @@ class Nagios_data extends CI_Model
             apc_store('program',$this->properties['program'],TTL);
             apc_store('info',$this->properties['info'],TTL);
             apc_store('status_data_exists',true,TTL);
+            //Added by Soon Wei Liang
+            apc_store('hostdowntimes', $this->properties['hostdowntimes'], TLL);
+            apc_store('servicedowntimes', $this->properties['servicedowntimes'], TLL);
         }
 
         if ($type == 'permissions') {
@@ -587,9 +600,9 @@ class Nagios_data extends CI_Model
      * - create status arrays for hostgroups and servicegroups
      */
 
-    /*	Parse STATUSFILE for status information, nagios information, as well as
-     *	build the details array and collect comments
-     *	modified and stripped down to only capture raw data for authorized objects, process values later
+    /*  Parse STATUSFILE for status information, nagios information, as well as
+     *  build the details array and collect comments
+     *  modified and stripped down to only capture raw data for authorized objects, process values later
      */
     private function parse_status_file()
     {
@@ -612,6 +625,9 @@ class Nagios_data extends CI_Model
         define('HOSTCOMMENT','hostcomment');
         define('SERVICECOMMENT','servicecomment');
         define('CONTACT', 'contactstatus');
+        //Added by Soon Wei Liang
+        define('HOSTDOWNTIME', 'hostdowntime');
+        define('SERVICEDOWNTIME', 'servicedowntime');
 
         //counters for iteration through file
         $case = OUTOFBLOCK;
@@ -625,6 +641,9 @@ class Nagios_data extends CI_Model
         $infostring = 'info {';
         $contactstring = 'contactstatus {';
         $currenthost = '';
+        //Added by Soon Wei Liang
+        $hostdowntimestring = 'hostdowntime {';
+        $servicedowntimestring = 'servicedowntime {';
 
         $HostStatus = null;
 
@@ -666,6 +685,20 @@ class Nagios_data extends CI_Model
                     $case = SERVICECOMMENT;
                     continue;
                 }
+
+                //Added by Soon Wei Liang
+                //hostdowntime
+                if (strpos($line, $hostdowntimestring) !== false) {
+                    $case = HOSTDOWNTIME;
+                    continue;
+                }
+
+                //servicedowntime
+                if (strpos($line, $servicedowntimestring) !== false) {
+                    $case = SERVICEDOWNTIME;
+                    continue;
+                }
+
 
                 //contactstatus
                 if (strpos($line, $contactstring) !== false) {
@@ -861,7 +894,7 @@ class Nagios_data extends CI_Model
     //20170503 WaiKit
     //creates group array based on type
     //$objectarray - expecting an object group array -> $hostgroups_objs $servicegroups_objs $contactgroups
-    //				-these groups are read from objects.cache file
+    //              -these groups are read from objects.cache file
     //$type - expecting 'host' 'service' 'hostresource' 'heartbeat' 'runningstate' or 'contact'
     public function build_group_array($objectarray, $type)
     {
@@ -933,6 +966,10 @@ class Nagios_data extends CI_Model
             'contactstatus' => &$this->_ContactstatusCollection,
            // 'programstatus' => &$this->_Programstatus,
            // 'info'  => &$this->_Info,
+
+            //Added by Soon Wei Liang
+            'hostdowntime' => $this->_HostdowntimeCollection,
+            'servicedowntime' => $this->_ServicedowntimeCollection,
 
         );
 
