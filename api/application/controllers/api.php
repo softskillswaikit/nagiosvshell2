@@ -265,7 +265,7 @@ class API extends VS_Controller
      * @param String $assume_state_downtime, true, false
      * @param String $include_soft, true, false
      * @param String $first_assume_host_state
-     * @param String $backtrack_archieve, integer
+     * @param String $backtrack_archive, integer
      * @param String $first_assume_service_state
      */
      public function availability($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_state, $backtrack_archive, $first_assume_service_state)
@@ -300,16 +300,6 @@ class API extends VS_Controller
             $date = $start_date;
         }
 
-        //for hostgroup
-        if($return_type == 1)
-        {
-            $host_name = $this->get_hosts($host_name);
-        }
-        //for servicegroup
-        else if($return_type == 2)
-        {
-            $service_description = $this->get_services($service_description);
-        }
 
         //check empty inputs
         $validate = $this->validate_data(array($return_type, $period, $date, $first_assume_host_state, $first_assume_service_state, $backtrack_archive));
@@ -342,29 +332,13 @@ class API extends VS_Controller
      * @param string $assume_state_downtime, 'true', 'false'
      * @param string $include_soft, 'true', 'false'
      * @param string $backtrack_archive, integer
-     * @param string $first_assume_host_service, possible value (host) = 'UP', 'DOWN', 'UNREACHABLE', 'PENDING', 'ALL', 'HOST PROBLEM STATE'; possible value (service) = 'OK', 'WARNING', 'UNKNOWN', 'CRITICAL', 'PENDING', 'ALL', 'SERVICE PROBLEM STATE'
+     * @param string $first_assume_host_service, possible value (host) = 'UP', 'DOWN', 'UNREACHABLE', 'UNDETERMINED', 'ALL', 'HOST PROBLEM STATE'; possible value (service) = 'OK', 'WARNING', 'UNKNOWN', 'CRITICAL', 'UNDETERMINED', 'ALL', 'SERVICE PROBLEM STATE'
      *
      * return code
-     * 0 = success
      * 1 = fail
      */
     public function trend($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $backtrack_archive, $first_assume_host_service)
     {
-
-        /* Test hardcoded data
-        $period = 'THIS YEAR';
-        $host_name = 'localhost';
-        $service_description = 'ALL';
-        $assume_state_retention = 'true';
-        $assume_state_downtime = 'true';
-        $assume_initial_state = 'true';
-        $include_soft = 'true';
-        $backtrack_archive = '4';
-        $return_type = '1';
-        $start_date = '1502619210';
-        $first_assume_host_service = 'UP';
-        */
-
         $Trend = array();
 
         //decode input with spacing
@@ -481,17 +455,6 @@ class API extends VS_Controller
             $date = $start_date;
         }
 
-        //for hostgroup
-        if($return_type == 3)
-        {
-            $host_name = $this->get_hosts($host_name);
-        }
-
-        //for servicegroup
-        if($return_type == 5)
-        {
-            $service_description = $this->get_services($service_description);
-        }
 
         //check empty and invalid inputs
         $validate = $this->validate_data(array($return_type, $period, $date, $service_description, $logtype, $statetype, $state));
@@ -626,7 +589,60 @@ class API extends VS_Controller
 
     public function testing()
     {
-        
+        $Trend = array();
+        $host_name = 'localhost';
+        $service_description = '';
+        $first_assume_host_service = 'UNDETERMINED';
+        $return_type = '1';
+        $assume_initial_state = 'true';
+        $include_soft = 'true';
+        $assume_state_retention = 'true';
+        $assume_state_downtime = 'true';
+        $backtrack_archive = 'true';
+        $start_date = '1503187200';
+        $period = 'LAST 7 DAYS';
+
+        //decode input with spacing
+        $period = urldecode($period);
+        $host_name = urldecode($host_name);
+        $service_description = urldecode($service_description);
+        $first_assume_host_service = urldecode($first_assume_host_service);
+
+        //convert input to int
+        $return_type = (int)$return_type;
+        $backtrack_archive = (int)$backtrack_archive;
+
+        //convert input to bool
+        $assume_initial_state = $this->convert_data_bool($assume_initial_state);
+        $assume_state_retention = $this->convert_data_bool($assume_state_retention);
+        $assume_state_downtime = $this->convert_data_bool($assume_state_downtime);
+        $include_soft = $this->convert_data_bool($include_soft);
+
+        //custom report date
+        if($period == 'CUSTOM')
+        {
+            $date = array($start_date, $end_date);
+        }
+        //standard report date
+        else
+        {
+            $date = $start_date;
+        }
+
+        //check empty inputs
+        $validate = $this->validate_data(array($return_type, $period, $start_date, $host_name));
+
+        if($validate)
+        {
+            $Trend = $this->reports_data->get_trend($return_type, $period, $date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $first_assume_host_service, $backtrack_archive);
+        }
+        //incorrect inputs
+        else
+        {
+            $Trend = 1;
+        }
+
+        $this->output($Trend);
     }
 
     /**
