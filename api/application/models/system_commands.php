@@ -1595,6 +1595,51 @@ class System_commands extends CI_Model
 		}
 	}
 
+	//command id = 125
+	public function delete_host_downtime($input_downtime_id)
+	{
+		$commands = 'DEL_HOST_DOWNTIME;'.$input_downtime_id;
+		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
+		//check that the command runs successfully
+		if((int)$this->return_value)
+		{
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+	//command id = 126
+	public function delete_svc_downtime($input_downtime_id)
+	{
+		$commands = 'DEL_SVC_DOWNTIME;'.$input_downtime_id;
+		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
+		//check that the command runs successfully
+		if((int)$this->return_value)
+		{
+			if($this->_verify_success())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 	//command id = 127
 	//command id = 128 (force check)
 	public function schedule_host_check($input_host_name, $input_checktime, $input_force_check)

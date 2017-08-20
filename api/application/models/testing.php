@@ -1884,7 +1884,12 @@ class Testing extends CI_Model
 	{
 		$return_array = array();
 
-		if($this->_compare_string('LAST 24 HOURS'))
+		if($this->_compare_string($input_period, 'TODAY'))
+		{
+			$return_array[0] = strtotime('today midnight');
+			$return_array[1] = (int)$input_date;
+		}
+		else if($this->_compare_string($input_period, 'LAST 24 HOURS'))
 		{
 			$return_array[0] = (int)$input_date - 86400;
 			$return_array[1] = (int)$input_date;
@@ -1960,7 +1965,7 @@ class Testing extends CI_Model
 			$return_array[1] = (int)$input_date;	
 		}
 		//$input_period = 'LAST YEAR'
-		else 
+		else if($this->_compare_string($input_period, 'LAST YEAR'))
 		{
 			$return_array[0] = strtotime('Jan 1 last year');
 			$return_array[1] = (strtotime('Dec 31 last year 23:59:59'));
@@ -3009,22 +3014,15 @@ class Testing extends CI_Model
 		if(is_array($input_date))
 		{
 			$start_time = $input_date[0];
-			$end_time = $input[1];
+			$end_time = $input_date[1];
 		}
 		else
 		{
-			if($this->_is_today($input_date))
-			{
-				$start_time = strtotime('today midnight');
-			}
-			else
-			{
-				$date_array = array();
-				$date_array = $this->_get_start_end_date($input_date, $input_period);
+			$date_array = array();
+			$date_array = $this->_get_start_end_date($input_date, $input_period);
 
-				$start_time = $date_array[0];
-				$end_time = (int)$input_date;
-			}
+			$start_time = $date_array[0];
+			$end_time = (int)$input_date;
 		}
 
 		$initial_state = $this->_is_detected($input_array, $start_time, $input_host, 'ALL');
@@ -3219,18 +3217,11 @@ class Testing extends CI_Model
 		}
 		else
 		{
-			if($this->_is_today($input_date))
-			{
-				$start_time = strtotime('today midnight');
-			}
-			else
-			{
-				$date_array = array();
-				$date_array = $this->_get_start_end_date($input_date, $input_period);
+			$date_array = array();
+			$date_array = $this->_get_start_end_date($input_date, $input_period);
 
-				$start_time = $date_array[0];
-				$end_time = (int)$input_date;
-			}
+			$start_time = $date_array[0];
+			$end_time = (int)$input_date;
 		}
 
 		$initial_state = $this->_is_detected($input_array, $start_time, $input_host, $input_service);
