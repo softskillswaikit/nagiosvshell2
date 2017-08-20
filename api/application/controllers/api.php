@@ -589,60 +589,19 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $Trend = array();
-        $host_name = 'localhost';
-        $service_description = '';
-        $first_assume_host_service = 'UNDETERMINED';
-        $return_type = '1';
-        $assume_initial_state = 'true';
-        $include_soft = 'true';
-        $assume_state_retention = 'true';
-        $assume_state_downtime = 'true';
-        $backtrack_archive = 'true';
-        $start_date = '1503187200';
-        $period = 'LAST 7 DAYS';
+        $type = '1';
 
-        //decode input with spacing
-        $period = urldecode($period);
-        $host_name = urldecode($host_name);
-        $service_description = urldecode($service_description);
-        $first_assume_host_service = urldecode($first_assume_host_service);
+        $test_array = array(
+          'command_name' => 'test command 1', 
+          'command_line' => 'test command 2'
+        );
 
-        //convert input to int
-        $return_type = (int)$return_type;
-        $backtrack_archive = (int)$backtrack_archive;
-
-        //convert input to bool
-        $assume_initial_state = $this->convert_data_bool($assume_initial_state);
-        $assume_state_retention = $this->convert_data_bool($assume_state_retention);
-        $assume_state_downtime = $this->convert_data_bool($assume_state_downtime);
-        $include_soft = $this->convert_data_bool($include_soft);
-
-        //custom report date
-        if($period == 'CUSTOM')
+        if($type == '1')
         {
-            $date = array($start_date, $end_date);
-        }
-        //standard report date
-        else
-        {
-            $date = $start_date;
+            $Result = $this->maintenance_command->add(1, $test_array);
         }
 
-        //check empty inputs
-        $validate = $this->validate_data(array($return_type, $period, $start_date, $host_name));
-
-        if($validate)
-        {
-            $Trend = $this->reports_data->get_trend($return_type, $period, $date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $first_assume_host_service, $backtrack_archive);
-        }
-        //incorrect inputs
-        else
-        {
-            $Trend = 1;
-        }
-
-        $this->output($Trend);
+        $this->output($Result);
     }
 
     /**
@@ -2068,6 +2027,29 @@ class API extends VS_Controller
 
         $Result['code'] = -3;//Fail to get the service.
         return $this->output($Result);
+    }
+
+    /**
+     * Add configuration
+     *
+     * @param String $type, '1' - command
+     * @param array String $command_array, [$command_name, $command_line]
+     */
+    public function addConfiguration($type, $command_array)
+    {
+        $type = '1';
+
+        $test_array = array(
+          'command_name' => 'test command 1', 
+          'command_line' => 'test command 2'
+        );
+
+        if($type == '1')
+        {
+            $Result = $this->maintenance_command->add(1, $test_array);
+        }
+
+        $this->output($Result);
     }
 
 

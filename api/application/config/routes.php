@@ -146,6 +146,7 @@ $route["schedulecheck/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/scheduleCheck/
 
 
 //MAINTAINANCE SCREEN START
+$route["addconfiguration/(:any)/(:any)"] = "api/addConfiguration/$1/$2";
 //MAINTAINANCE SCREEN END
 
 
