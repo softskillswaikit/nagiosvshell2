@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); 
 
-class Testing extends CI_Model
+class Maintenance_command extends CI_Model
 {
 	//constructor
 	public function __construct()
@@ -29,6 +29,11 @@ class Testing extends CI_Model
 	
 	public function add($type, $input_array)
 	{
+		//$test_array = array(
+		//	'command_name' => 'test command 1', 
+		//	'command_line' => 'test command 2'
+		//);
+
 		//$type = 'commands'
 		if($type === 1)
 		{
