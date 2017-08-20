@@ -46,6 +46,67 @@ class Testing extends CI_Model
 		$temp_array = array();
 		$temp_array = $this->_parse_log($this->_host_service_alert_array, 'trend');
 
+		$hostgroup_collection = $this->nagios_data->get_collection('hostgroup');
+		$servicegroup_collection = $this->nagios_data->get_collection('servicegroup');
+
+		//$return_type = 'HOSTGROUP'
+		if($return_type === 5)
+		{
+			if($this->_compare_string($input_host, 'ALL'))
+			{
+				$input_host = array();
+
+				//array counter
+				$x = 0;
+
+				foreach($hostgroup_collection as $hostgroup)
+				{
+					$input_host[$x] = $hostgroup->members;
+					$x++;
+				}
+			}
+			else
+			{
+				foreach($hostgroup_collection as $hostgroup)
+				{
+					if($this->_compare_string($hostgroup->hostgroup_name, $input_host))
+					{
+						$input_host = array();
+						$input_host = $hostgroup->members;
+					}
+				}
+			}
+		}
+
+		//$return_type = 'SERVICEGROUP'
+		if($return_type === 6)
+		{
+			if($this->_compare_string($input_service, 'ALL'))
+			{
+				$input_service = array();
+
+				//array counter
+				$y = 0;
+
+				foreach($servicegroup_collection as $servicegroup)
+				{
+					$input_service[$y] = $servicegroup->members;
+					$y++;
+				}
+			}
+			else
+			{
+				foreach($servicegroup_collection as $servicegroup)
+				{
+					if($this->_compare_string($servicegroup->servicegroup_name, $input_service))
+					{
+						$input_service = array();
+						$input_service = $servicegroup->members;
+					}
+				}
+			}
+		}
+
 		if($include_soft)
 		{
 			$this->_availability_array = $this->_get_availability_host_service($temp_array, $input_host, $input_service, 'ALL');
@@ -57,6 +118,7 @@ class Testing extends CI_Model
 
 		$output_array = array();
 		$return_array = array();
+		$return_obj = new StdClass();
 
 		//array counter
 		$i = 0;
@@ -69,9 +131,10 @@ class Testing extends CI_Model
 				foreach($input_host as $hosts)
 				{
 					$output_array = $this->_get_return_host($assume_state_downtime, $this->_availability_array, $hosts, $input_period, $input_date, $backtrack_archive, $assume_initial_state, $first_assume_host_state);
-					$return_array[$i] = $this->_get_state_total_host_availability($output_array, $hosts);
+					$return_array[$i] = $this->_get_state_total_host_availability($output_array, $hosts);	
 
 					$i++;
+					unset($return_obj);
 				}
 			}
 			else
@@ -814,6 +877,27 @@ class Testing extends CI_Model
 		$temp_array = array();
 		$temp_array = $this->_parse_log($this->_host_service_alert_array, 'alert');
 
+		$hostgroup_collection = $this->nagios_data->get_collection('hostgroup');
+		$servicegroup_collection = $this->nagios_data->get_collection('servicegroup');
+
+		foreach($hostgroup_collection as $hostgroup)
+		{
+			if($this->_compare_string($hostgroup->hostgroup_name, $input_host))
+			{
+				$input_host = array();
+				$input_host = $hostgroup->members;
+			}
+		}
+
+		foreach($servicegroup_collection as $servicegroup)
+		{
+			if($this->_compare_string($servicegroup->servicegroup_name, $input_service))
+			{
+				$input_service = array();
+				$input_service = $servicegroup->members;
+			}
+		}
+
 		//filter the data into $this->_alert_summary_array based on request
 		//the hosts inside a hostgroup is passed in form of array
 		//the services inside a servicegroup is passed in form of array
@@ -1135,7 +1219,7 @@ class Testing extends CI_Model
 			return $servicegroup_obj;
 		}
 		//$return_type = 'MOST RECENT ALERTS'
-		else
+		else if($return_type === 6)
 		{	
 			//reverse the array order
 			$reverse_array = array_reverse($this->_alert_summary_array);
@@ -2549,6 +2633,28 @@ class Testing extends CI_Model
 					{
 						//compare service name
 						if($this->_compare_string($input_service, $items->servicename))
+						{	
+							//compare state_type
+							if($this->_compare_string($state_type, $items->state_type))
+							{	
+								$return_array[$i] = $items;
+
+								$i++;	
+							}			
+						}
+					}
+				}
+			}
+			else if(is_array($input_service))
+			{
+				foreach($input_service as $services)
+				{
+					//custom report option
+					//compare host name
+					if($this->_compare_string($input_host, $items->hostname))
+					{
+						//compare service name
+						if($this->_compare_string($services, $items->servicename))
 						{	
 							//compare state_type
 							if($this->_compare_string($state_type, $items->state_type))
