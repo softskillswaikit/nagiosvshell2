@@ -6,15 +6,20 @@
 
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
-<div id="content" class="clearfix" ng-controller="AvailabilityCtrl" ng-init="createReport()">
+<div id="content" class="clearfix" ng-controller="AvailabilityCtrl" ng-init="showReport()">
 
-	<h1>Availability Report</h1>
+	<h1>Availability Report
+		<div ng-if="((param.type == 1 || param.type == 5) && param.host == 'ALL') || (param.type != 1 && param.type != 5 && param.service == 'ALL')">All {{ param.type | report_type }}</div>
+		<div ng-if="((param.type == 1 || param.type == 5) && param.host != 'ALL')">{{ param.type | report_type }} '{{ param.host }}'</div>
+		<div ng-if="(param.type == 6 && param.service != 'ALL')">{{ param.type | report_type }} '{{ param.service }}'</div>
+		<div ng-if="((param.type == 2 || param.type == 3 || param.type == 4) && param.service != 'ALL')">{{ param.type | report_type }} '{{ param.service }}' on Host '{{ param.host }}'</div>
+	</h1>
 
 	<!--(hostgroup-one/all, servicegroup-one/all)-->
-	<div ng-if="reportType=='Hostgroup(s)' || reportType=='Servicegroup(s)'">
-		<div ng-repeat="hostgroup in reports" class="table-container full-width">
+	<div class="table-container full-width" ng-if="param.type == 5 || param.type == 6">
+		<div ng-repeat="group in data" class="table-container full-width">
 
-        <h3>Host State Breakdowns For {{reportType}} '{{hostgroup.hostgroup}}'</h3>
+        <h3>Host State Breakdowns For {{param.type | report_type}} '{{  }}'</h3>
 
         <div class="table-options">
             <form action="" class="filter-form" method="post">
@@ -40,17 +45,21 @@
             <tfoot>
                 <tr>
                     <td colspan="5">
-                        <div class="results-count">{{ hostgroup.data | count }} Result{{ hostgroup.data | plural }}</div>
+                        <div class="results-count">{{ group | count }} Result{{ group | plural }}</div>
                         <div class="footable-pagination pagination" id="footable-pagination"></div>
                     </td>
                 </tr>
             </tfoot>
 						<tbody>
-                <tr ng-if="(hostgroup | count) == 0">
-                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No data defined' }}</td>
+                <tr ng-if="( group | count) == 0">
+                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No data to display' }}</td>
                 </tr>
-                <tr ng-repeat="host in hostgroup.data | orderObjectBy: 0" footabledata>
-                    <td ng-repeat="data in host">{{data}}</td>
+                <tr ng-repeat="host in data | orderObjectBy: 0" footabledata>
+                    <td>{{ host.hostname }}</td>
+										<td>{{ host.up_total | percent : host.all_total }}</td>
+										<td>{{ host.down_total | percent : host.all_total }}</td>
+										<td>{{ host.unreachable_total | percent : host.all_total }}</td>
+										<td>{{ host.undetermined_total | percent : host.all_total }}</td>
                 </tr>
             </tbody>
         </table>
@@ -58,7 +67,7 @@
     </div>
 
 		<!--(host-all)-->
-		<div class="table-container full-width" ng-if="reportType=='Host(s)' && reportComponent=='ALL'">
+		<div class="table-container full-width" ng-if="param.type == 1 && param.host == 'ALL'">
 
 					<h3>Host State Breakdowns</h3>
 
@@ -86,27 +95,31 @@
 							<tfoot>
 									<tr>
 											<td colspan="5">
-													<div class="results-count">{{ hostall | count }} Result{{ hostall.data | plural }}</div>
+													<div class="results-count">{{ data | count }} Result{{ data | plural }}</div>
 													<div class="footable-pagination pagination" id="footable-pagination"></div>
 											</td>
 									</tr>
 							</tfoot>
 							<tbody>
-									<tr ng-if="(hostall | count) == 0">
+									<tr ng-if="( data | count) == 0">
 											<td colspan="5">{{ is_loading ? 'Loading...' : 'No data defined' }}</td>
 									</tr>
-									<tr ng-repeat="host in hostall" footabledata>
-											<td ng-repeat="data in host">{{data}}</td>
+									<tr ng-repeat="host in data" footabledata>
+										<td>{{ host.hostname }}</td>
+										<td>{{ host.up_total | percent : host.all_total }}</td>
+										<td>{{ host.down_total | percent : host.all_total }}</td>
+										<td>{{ host.unreachable_total |percent : host.all_total }}</td>
+										<td>{{ host.undetermined_total | percent : host.all_total }}</td>
 									</tr>
 							</tbody>
 					</table>
 			</div>
 
 	<!--(servicegroup-one/all)-->
-	<div class="table-container full-width nopadding" ng-if="reportType=='Servicegroup(s)'">
-		<div ng-repeat="servicegroup in report5" class="table-container full-width">
+	<div class="table-container full-width nopadding" ng-if="param.type == 6">
+		<div ng-repeat="group in data" class="table-container full-width">
 
-        <h3>Service State Breakdowns For {{reportType}} '{{servicegroup.servicegroup}}'</h3>
+        <h3>Service State Breakdowns For {{param.type | report_type}} '{{ group[0] }}'</h3>
 
 			  <div class="table-options">
             <form action="" class="filter-form" method="post">
@@ -134,21 +147,31 @@
             <tfoot>
                 <tr>
                     <td colspan="7">
-                        <div class="results-count">{{}} Result{{}}</div>
+                        <div class="results-count">{{ group[1] | count }} Result {{ group[1] | plural }}</div>
                         <div class="footable-pagination pagination" id="footable-pagination"></div>
                     </td>
                 </tr>
             </tfoot>
-						<tbody ng-repeat="host in report5">
-                <tr ng-if="(host | count) == 0">
+						<tbody ng-repeat="host in group">
+                <tr ng-if="( host[1] | count) == 0">
                     <td colspan="7">{{ is_loading ? 'Loading...' : 'No data defined' }}</td>
                 </tr>
 								<tr footabledata>
-                    <th rowspan="{{host.service.length}}">{{host.host}}</th>
-										<td ng-repeat="data in host.service[0]">{{data}}</td>
+                    <th rowspan="{{ host[1].length }}">{{ host[0].hostname }}</th>
+										<td>{{ host[1][0].service | percent : host[1][0].all_total }}</td>
+										<td>{{ host[1][0].ok_total | percent : host[1][0].all_total }}</td>
+										<td>{{ host[1][0].warning_total | percent : host[1][0].all_total }}</td>
+										<td>{{ host[1][0].unknown_total | percent : host[1][0].all_total }}</td>
+										<td>{{ host[1][0].critical_total | percent : host[1][0].all_total }}</td>
+										<td>{{ host[1][0].undetermined_total | percent : host[1][0].all_total }}</td>
                 </tr>
-								<tr ng-repeat="data in host.service" ng-if="$index > 0" footabledata>
-										<td ng-repeat="d in data">{{d}}</td>
+								<tr ng-repeat="service in host[1]" ng-if="$index > 0" footabledata>
+									<td>{{ service.service | percent : service.all_total }}</td>
+									<td>{{ service.ok_total | percent : service.all_total }}</td>
+									<td>{{ service.warning_total | percent : service.all_total }}</td>
+									<td>{{ service.unknown_total | percent : service.all_total }}</td>
+									<td>{{ service.critical_total | percent : service.all_total }}</td>
+									<td>{{ service.undetermined_total | percent : service.all_total }}</td>
 								</tr>
             </tbody>
         </table>
@@ -156,12 +179,12 @@
     </div>
 
 	<!--(host-one, service-one)-->
-	<div class="table-container full-width nopadding" ng-if="(reportType=='Host(s)' || reportType=='Service(s)' || reportType=='Host Resource' || reportType=='Service Running State') && reportComponent!='ALL'">
+	<div class="table-container full-width nopadding" ng-if="(param.type == 1 && param.host != 'ALL') || ((param.type == 2 || param.type == 3 || param.type == 4) && param.service != 'ALL')">
 
-        <h3 ng-if="reportType=='Host(s)'">Host State Breakdowns</h3>
-				<h3 ng-if="reportType=='Service(s)'">Service State Breakdowns</h3>
-				<h3 ng-if="reportType=='Host Resource'">Host Resource State Breakdowns</h3>
-				<h3 ng-if="reportType=='Service Running State'">Service Running State Breakdowns</h3>
+				<h3 ng-if="param.type == 1">Host State Breakdowns</h3>
+				<h3 ng-if="param.type == 2">Service State Breakdowns</h3>
+				<h3 ng-if="param.type == 3">Host Resource State Breakdowns</h3>
+				<h3 ng-if="param.type == 4">Service Running State Breakdowns</h3>
 
         <div class="table-options">
             <form action="" class="filter-form" method="post">
@@ -177,24 +200,28 @@
         <table cellspacing="0" cellpadding="0" class="righttd" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
             <thead>
                 <tr>
-                    <th ng-if="reportType=='Host(s)'">Host</th>
-										<th ng-if="reportType=='Service(s)'">State</th>
+										<th>State</th>
                     <th>Type / Reason</th>
                     <th>Time</th>
                     <th>Total Time (%)</th>
                     <th>Known Time (%)</th>
                 </tr>
             </thead>
-            <tbody ng-repeat="val in reports1">
-                <tr ng-if="(reports1 | count) == 0">
-                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No data is defined' }}</td>
+            <tbody>
+                <tr ng-if="(data[0] | count) == 0">
+                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No data to display' }}</td>
                 </tr>
-                <tr class="state-{{val.state | lowercase}}" footabledata>
-                    <td rowspan="{{val.data.length}}" class="status">{{val.state}}</td>
-										<td ng-repeat="v in val.data[0]">{{v}}</td>
+                <tr class="state-{{ up | lowercase }}" footabledata>
+                    <td rowspan=3 class="status">UP</td>
+										<td>Unscheduled</td>
                 </tr>
-								<tr ng-repeat="val in val.data" ng-if="$index > 0" footabledata>
-										<td ng-repeat="v in val">{{v}}</td>
+								<tr footabledata>
+									<td>Scheduled</td>
+									<td>{{ }}</td>
+								</tr>
+								<tr footabledata>
+									<td>Total</td>
+									<td>{{ }}</td>
 								</tr>
             </tbody>
         </table>
@@ -202,11 +229,11 @@
     </div>
 
 	<!--(service-all)-->
-	<div class="table-container full-width nopadding" ng-if="(reportType=='Service(s)'|| reportType=='Host Resource' || reportType=='Service Running State')&&reportComponent=='ALL'">
+	<div class="table-container full-width nopadding" ng-if="(param.type == 2 || param.type == 3 || param.type == 4) && param.service == 'ALL' ">
 
-        <h3 ng-if="reportType=='Service(s)'">Service State Breakdowns</h3>
-				<h3 ng-if="reportType=='Host Resource'">Host Resource State Breakdowns</h3>
-				<h3 ng-if="reportType=='Service Running State'">Service Running State Breakdowns</h3>
+        <h3 ng-if="param.type == 2">Service State Breakdowns</h3>
+				<h3 ng-if="param.type == 3">Host Resource State Breakdowns</h3>
+				<h3 ng-if="param.type == 4">Service Running State Breakdowns</h3>
 
         <div class="table-options">
             <form action="" class="filter-form" method="post">
@@ -234,18 +261,18 @@
             <tfoot>
                 <tr>
                     <td colspan="7">
-                        <div class="results-count">{{ report2 | count }} Result{{ report2 | plural }}</div>
+                        <div class="results-count">{{ data | count }} Result{{ report2 | plural }}</div>
                         <div class="footable-pagination pagination" id="footable-pagination"></div>
                     </td>
                 </tr>
             </tfoot>
-            <tbody ng-repeat="host in report2">
-                <tr ng-if="(testdata| count) == 0">
-                    <td colspan="7">{{ is_loading ? 'Loading...' : 'No data is defined' }}</td>
-                </tr>
+						<tbody ng-if="( data | count) == 0">
+                <tr><td colspan="7">{{ is_loading ? 'Loading...' : 'No data to display' }}</td></tr>
+						</tbody>
+            <tbody ng-repeat="service in data">
                 <tr footabledata>
-                    <th rowspan="{{host.data.length}}">{{host.host}}</td>
-                    <td ng-repeat="d in host.data[0]">{{d}}</td>
+                    <th rowspan="{{host.data.length}}">{{ }}</td>
+                    <td>{{d}}</td>
                 </tr>
 								<tr ng-repeat="data in host.data" ng-if="$index > 0">
 									<td ng-repeat="d in data">{{d}}</td>
@@ -256,9 +283,9 @@
     </div>
 
 	<!--(host-one)-->
-	<div ng-repeat="report in report4" class="table-container full-width" ng-if="(reportType=='Host(s)'&&reportComponent!='ALL')||((reportType=='Service(s)'|| reportType=='Host Resource' || reportType=='Service Running State')&&reportComponent=='ALL')">
+	<div class="table-container full-width" ng-if="(param.type == 1 && param.host != 'ALL')">
 
-	        <h3>State Breakdowns For Host {{report.type}}</h3>
+	        <h3>State Breakdowns For Host {{}}</h3>
 
 	        <div class="table-options">
 	            <form action="" class="filter-form" method="post">
@@ -274,6 +301,7 @@
 	        <table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
 	            <thead>
 	                <tr>
+
 	                    <th>Service</th>
 											<th class="active services-ok">Time OK (%)</th>
 	                    <th class="active services-warning">Time Warning (%)</th>
@@ -285,17 +313,22 @@
 	            <tfoot>
 	                <tr>
 	                    <td colspan="7">
-	                        <div class="results-count">{{ report.data | count }} Result{{ report.data | plural }}</div>
+	                        <div class="results-count">{{ data[1] | count }} Result{{ data[1] | plural }}</div>
 	                        <div class="footable-pagination pagination" id="footable-pagination"></div>
 	                    </td>
 	                </tr>
 	            </tfoot>
 	            <tbody>
-	                <tr ng-if="(report.data| count) == 0">
-	                    <td colspan="7">{{ is_loading ? 'Loading...' : 'No data is defined' }}</td>
+	                <tr ng-if="(data[1] | count) == 0">
+	                    <td colspan="7">{{ is_loading ? 'Loading...' : 'No data to display' }}</td>
 	                </tr>
-	                <tr ng-repeat="service in report.data" footabledata>
-	                    <td ng-repeat="data in service">{{data}}</td>
+	                <tr ng-repeat="service in data[1]" footabledata>
+	                    <td>{{ service.servicename }}</td>
+											<td>{{ service.ok_total }}</td>
+											<td>{{ service.warning_total }}</td>
+											<td>{{ service.unknown_total }}</td>
+											<td>{{ service.critical_total }}</td>
+											<td>{{ service.undetermined_total }}</td>
 	                </tr>
 	            </tbody>
 	        </table>
@@ -303,12 +336,12 @@
 	    </div>
 
 	<!--(host-one, service-one)-->
-	<div class="table-container full-width" ng-if="(reportType=='Host(s)'||reportType=='Service(s)'|| reportType=='Host Resource' || reportType=='Service Running State')&&reportComponent!='ALL'">
+	<div class="table-container full-width" ng-if="(param.type == 1 && param.host != 'ALL') || ((param.type == 2 || param.type == 3 || param.type == 4) && param.service != 'ALL')">
 
-        <h3 ng-if="reportType=='Host(s)'">Host Log Entries</h3>
-				<h3 ng-if="reportType=='Service(s)'">Service Log Entries</h3>
-				<h3 ng-if="reportType=='Host Resource'">Host Resource Log Entries</h3>
-				<h3 ng-if="reportType=='Service Running State'">Service Running State Log Entries</h3>
+        <h3 ng-if="param.type == 1">Host Log Entries</h3>
+				<h3 ng-if="param.type == 2">Service Log Entries</h3>
+				<h3 ng-if="param.type == 3">Host Resource Log Entries</h3>
+				<h3 ng-if="param.type == 4">Service Running State Log Entries</h3>
 
         <div class="table-options">
             <form action="" class="filter-form" method="post">
@@ -334,17 +367,22 @@
             <tfoot>
                 <tr>
                     <td colspan="5">
-                        <div class="results-count">{{ report3 | count }} Result{{ report3 | plural }}</div>
+                        <div class="results-count">{{ data[2] | count }} Result{{ data[2] | plural }}</div>
                         <div class="footable-pagination pagination" id="footable-pagination"></div>
                     </td>
                 </tr>
             </tfoot>
             <tbody>
-                <tr ng-if="(report3 | count) == 0">
-                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No hostgroup members are defined' }}</td>
+                <tr ng-if="(data[2] | count) == 0">
+                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No data to display' }}</td>
                 </tr>
-                <tr ng-repeat="event in report3" footabledata>
-                    <td ng-repeat="details in event">{{details}}</td>
+                <tr ng-repeat="log in data[2]" footabledata>
+                    <td>{{ log.start_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
+										<td>{{ log.end_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
+										<td>{{ log.duration | seconds_converter }}</td>
+										<td ng-if="param.type == 1">{{ log.state | hoststate }} ({{ log.state_type }})</td>
+										<td ng-if="param.type != 1">{{ log.state | servicestate }} ({{ log.state_type }})</td>
+										<td>{{ log.messages }}</td>
                 </tr>
             </tbody>
         </table>
@@ -352,49 +390,49 @@
     </div>
 
 	<!--view: service-one, host-one-->
-	<div class="table-container partial-width" ng-if="(reportType=='Host(s)'||reportType=='Service(s)'|| reportType=='Host Resource' || reportType=='Service Running State')&&reportComponent!='ALL'">
+	<div class="table-container partial-width" ng-if="(param.type == 1 && param.host != 'ALL') || ((param.type == 2 || param.type == 3 || param.type == 4) && param.service != 'ALL')">
 		<div class="commands">
 
             <h3>View</h3>
 
 			<!--show if a single host is selected-->
-            <table cellspacing="0" cellpadding="0" ng-if="reportType=='Host(s)'">
+            <table cellspacing="0" cellpadding="0" ng-if="param.type == 1 && param.host != 'ALL'">
                 <tbody>
                     <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{}}">View Trends For This Host</a></td>
+                        <td><a role="button"  ng-click="viewTrends('host')">View Trends For This Host</a></td>
                     </tr>
                     <tr class="footable-even">
-                        <td><a target="nagios" ng-href="{{}}">View Alert Histogram For This Host</a></td>
+                        <td><a role="button"  ng-click="viewAlertHistogram('host')">View Alert Histogram For This Host</a></td>
                     </tr>
                     <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{}}">View Status Detail For This Host</a></td>
+                        <td><a role="button"  ng-href="#/hosts/{{ param.host }}">View Status Detail For This Host</a></td>
                     </tr>
                     <tr class="footable-even">
-                        <td><a target="nagios" ng-href="{{}}">View Alert History For This Host</a></td>
+                        <td><a role="button"  ng-href="#/reports/alert-history/{{ param.host }}">View Alert History For This Host</a></td>
                     </tr>
 										<tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{}}">View Notifications For This Host</a></td>
+                        <td><a role="button"  ng-href="#/reports/notifications/{{ param.host }}">View Notifications For This Host</a></td>
                     </tr>
                 </tbody>
             </table>
 
 			<!--show if a single service is selected-->
-			<table cellspacing="0" cellpadding="0" ng-if="reportType=='Service(s)'|| reportType=='Host Resource' || reportType=='Service Running State'">
+			<table cellspacing="0" cellpadding="0" ng-if="(param.type == 2 || param.type == 3 || param.type == 4) && param.service != 'ALL'">
                 <tbody>
                     <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{}}">View Availability Report For This Host</a></td>
+                        <td><a role="button"  ng-click="viewAvailability('svc')">View Availability Report For This Host</a></td>
                     </tr>
                     <tr class="footable-even">
-                        <td><a target="nagios" ng-href="{{}}">View Trends For This Service</a></td>
+                        <td><a role="button"  ng-click="viewTrends('svc')">View Trends For This Service</a></td>
                     </tr>
                     <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{}}">View Alert Histogram For This Service</a></td>
+                        <td><a role="button" ng-click="viewAlertHistogram('svc')">View Alert Histogram For This Service</a></td>
                     </tr>
                     <tr class="footable-even">
-                        <td><a target="nagios" ng-href="{{}}">View Alert History For This Service</a></td>
+                        <td><a role="button"  ng-href="#/reports/alert-history/{{ param.service }}">View Alert History For This Service</a></td>
                     </tr>
 										<tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{}}">View Notifications For This Service</a></td>
+                        <td><a role="button"  ng-href="#/reports/notifications/{{ param.service }}">View Notifications For This Service</a></td>
                     </tr>
                 </tbody>
             </table>

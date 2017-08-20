@@ -26,13 +26,13 @@ class API extends VS_Controller
 
         $path = $this->zippath;
         $filelist = $this->session->userdata('files');
-        if ($handle = opendir($path))
+        if ($handle = opendir($path)) 
         {
             while (false !== ($file = readdir($handle)))
             {
                 if ((time()-filectime($path.$file)) > intval($this->zipexpire)) // expire time in seconds
                 {
-                    if (preg_match('/\.zip$/i', $file))
+                    if (preg_match('/\.zip$/i', $file)) 
                     {
                         if(unlink($path.$file))
                             log_message('debug', $file.' expired and deleted successfully.');
@@ -62,7 +62,7 @@ class API extends VS_Controller
             $this->session->set_userdata('files', $filelist);
             //log_message('debug', print_r($filelist, true));
         }
-        else
+        else 
         {
             log_message('error', 'Failed to access download directory.');
         }
@@ -148,7 +148,7 @@ class API extends VS_Controller
     /**
      * Retrieve tactical overview data
      */
-    public function tacticalOverview()
+    public function tacticalOverview() 
     {
         $Data = $this->tac_data->get_tac_data();
         $this->output($Data);
@@ -158,7 +158,7 @@ class API extends VS_Controller
     /**
      * Fetch /etc/vshell2.conf file values, as parsed by CodeIgniter
      */
-    function vshellconfig()
+    function vshellconfig() 
     {
         $config = array(
             'baseurl'        => BASEURL,
@@ -191,9 +191,9 @@ class API extends VS_Controller
         }
 
         $Name['host'] = $host_name;
+    
 
-
-        //all hostgroup name
+        //all hostgroup name    
         $hostgroups = $this->nagios_data->get_collection('hostgroup');
 
         foreach($hostgroups as $hostgroup)
@@ -201,8 +201,8 @@ class API extends VS_Controller
             $hostgroup_name[] = $hostgroup->alias;
         }
 
-        $Name['hostgroup'] = $hostgroup_name;
-
+        $Name['hostgroup'] = $hostgroup_name;     
+    
 
         //all service name
         $services = $this->nagios_data->get_collection('servicestatus');
@@ -213,7 +213,7 @@ class API extends VS_Controller
         }
 
         $Name['service'] = $service_name;
-
+    
 
         //all service group name
         $servicegroups = $this->nagios_data->get_collection('servicegroup');
@@ -229,7 +229,7 @@ class API extends VS_Controller
         //all host resource
         $hostresources = $this->nagios_data->get_collection('hostresource');
 
-        foreach ($hostresources as $hostresource)
+        foreach ($hostresources as $hostresource) 
         {
             $hostresource_name[] = array('host'=> $hostresource->host_name, 'service'=> $hostresource->service_description);
         }
@@ -245,33 +245,76 @@ class API extends VS_Controller
         }
 
         $Name['runningstate'] = $runningstate_name;
-
-        $this->output($Name);
+        
+        $this->output($Name); 
     }
 
-
-
+    
+    
     /**
      * Fetch availability
-     *
-     * @param String $type
-     * @param string $period
-     * @param string $start
-     * @param string $end
-     * @param String $hostservice
-     * @param bool $initialState
-     * @param bool $stateRetention
-     * @param bool $assumeState
-     * @param bool $includeSoftState
-     * @param String $firstAssumedHost
-     * @param String $firstAssumedService
-     * @param String $backTrack
+     * 
+     * @param String $return_type, 1 - hostgroup, 2 - servicegroup, 3 - host, 4 - service, 5 - host resource, 6 - running state
+     * @param string $period, 'TODAY', 'LAST 24 HOURS', 'YESTERDAY', 'THIS WEEK', 'LAST 7 DAYS', 'LAST WEEK', 'THIS MONTH', 'LAST 31 DAYS', 'LAST MONTH', 'THIS YEAR', 'LAST YEAR', 'CUSTOM'
+     * @param string $start_date, for standard report, start_date = current unix timestamp
+     * @param string $end_date
+     * @param String $host_name
+     * @param String $service_description
+     * @param String $assume_initial_state, true, false
+     * @param String $assume_state_retention, true, false
+     * @param String $assume_state_downtime, true, false
+     * @param String $include_soft, true, false
+     * @param String $first_assume_host_state
+     * @param String $backtrack_archive, integer
+     * @param String $first_assume_service_state
      */
-     public function availability($type, $period, $start, $end, $hostservice, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost='', $firstAssumedService='', $backTrack)
+     public function availability($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_state, $backtrack_archive, $first_assume_service_state)
     {
-        //decode data with spacing
+        $Availability = array();
 
-        $validate = $this->validate_data($type, $period, $start, $end, $hostservice, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $firstAssumedService, $backTrack);
+        //decode data with spacing
+        $period = urldecode($period);
+        $host_name = urldecode($host_name);
+        $service_description = urldecode($service_description);
+        $first_assume_host_state = urldecode($first_assume_host_state);
+        $first_assume_service_state = urldecode($first_assume_service_state);
+
+        //convert input to bool
+        $assume_initial_state = $this->convert_data_bool($assume_initial_state);
+        $assume_state_retention = $this->convert_data_bool($assume_state_retention);
+        $assume_state_downtime = $this->convert_data_bool($assume_state_downtime);
+        $include_soft = $this->convert_data_bool($include_soft);
+
+        //convert input to int
+        $return_type = (int)$return_type;
+        $backtrack_archive = (int)$backtrack_archive;
+
+        //custom report date
+        if($period == 'CUSTOM')
+        {
+            $date = array($start_date, $end_date);
+        }
+        //standard report date
+        else
+        {
+            $date = $start_date;
+        }
+
+
+        //check empty inputs
+        $validate = $this->validate_data(array($return_type, $period, $date, $first_assume_host_state, $first_assume_service_state, $backtrack_archive));
+
+        if($validate)
+        {
+            $Availability = $this->reports_data->get_availability($return_type, $period, $date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_state, $first_assume_service_state, $backtrack_archive);
+        }
+        //invalid input
+        else
+        {
+            $Availability = 1;
+        }
+
+        $this->output($Availability);
 
     }
 
@@ -289,29 +332,13 @@ class API extends VS_Controller
      * @param string $assume_state_downtime, 'true', 'false'
      * @param string $include_soft, 'true', 'false'
      * @param string $backtrack_archive, integer
-     * @param string $first_assume_host_service, possible value (host) = 'UP', 'DOWN', 'UNREACHABLE', 'PENDING', 'ALL', 'HOST PROBLEM STATE'; possible value (service) = 'OK', 'WARNING', 'UNKNOWN', 'CRITICAL', 'PENDING', 'ALL', 'SERVICE PROBLEM STATE'
+     * @param string $first_assume_host_service, possible value (host) = 'UP', 'DOWN', 'UNREACHABLE', 'UNDETERMINED', 'ALL', 'HOST PROBLEM STATE'; possible value (service) = 'OK', 'WARNING', 'UNKNOWN', 'CRITICAL', 'UNDETERMINED', 'ALL', 'SERVICE PROBLEM STATE'
      *
      * return code
-     * 0 = success
      * 1 = fail
      */
     public function trend($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $backtrack_archive, $first_assume_host_service)
     {
-
-        /* Test hardcoded data
-        $period = 'THIS YEAR';
-        $host_name = 'localhost';
-        $service_description = 'ALL';
-        $assume_state_retention = 'true';
-        $assume_state_downtime = 'true';
-        $assume_initial_state = 'true';
-        $include_soft = 'true';
-        $backtrack_archive = '4';
-        $return_type = '1';
-        $start_date = '1502619210';
-        $first_assume_host_service = 'UP';
-        */
-
         $Trend = array();
 
         //decode input with spacing
@@ -342,11 +369,11 @@ class API extends VS_Controller
         }
 
         //check empty inputs
-        $validate = $this->validate_data(array($return_type, $period, $start_date, $host_name, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft));
+        $validate = $this->validate_data(array($return_type, $period, $start_date, $host_name));
 
         if($validate)
         {
-            $Trend = $this->reports_data->get_trend($return_type, $period, $date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_service, $backtrack_archive);
+            $Trend = $this->reports_data->get_trend($return_type, $period, $date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $first_assume_host_service, $backtrack_archive);
         }
         //incorrect inputs
         else
@@ -385,15 +412,15 @@ class API extends VS_Controller
     /**
      * Fetch alert summary
      *
-     * @param string $return_type,
-     * 1 : Top producer,
-     * 2 : Alert total by host,
-     * 3 : Alert total by hostgroup,
-     * 4 : Alert total by service,
-     * 5 : Alert total by servicegroup,
+     * @param string $return_type,   
+     * 1 : Top producer, 
+     * 2 : Alert total by host, 
+     * 3 : Alert total by hostgroup,  
+     * 4 : Alert total by service, 
+     * 5 : Alert total by servicegroup, 
      * 6 : Most recent alert
      * @param string $period,
-     * 'TODAY', 'LAST 24 HOURS', 'YESTERDAY', 'THIS WEEK', 'LAST 7 DAYS', 'LAST WEEK', 'THIS MONTH', 'LAST 31 DAYS', 'LAST MONTH', 'THIS YEAR', 'LAST YEAR', 'CUSTOM'
+     * 'TODAY', 'LAST 24 HOURS', 'YESTERDAY', 'THIS WEEK', 'LAST 7 DAYS', 'LAST WEEK', 'THIS MONTH', 'LAST 31 DAYS', 'LAST MONTH', 'THIS YEAR', 'LAST YEAR', 'CUSTOM'  
      * @param string $start_date, for standard report, $start_date = current unix time
      * @param string $end_date
      * @param string $host_name
@@ -428,17 +455,6 @@ class API extends VS_Controller
             $date = $start_date;
         }
 
-        //for hostgroup
-        if($return_type == 3)
-        {
-            $host_name = $this->get_hosts($host_name);
-        }
-
-        //for servicegroup
-        if($return_type == 5)
-        {
-            $service_description = $this->get_services($service_description);
-        }
 
         //check empty and invalid inputs
         $validate = $this->validate_data(array($return_type, $period, $date, $service_description, $logtype, $statetype, $state));
@@ -457,7 +473,7 @@ class API extends VS_Controller
      * @param string $return_type, '1' - host, '2' - service, '3' - 'hostresource', '4' - 'runningstate'
      * @param string $host_name, for more than one host , store hosts in array, 'ALL' for all host
      * @param string $service_description, for more than one service, store services, in array, 'ALL' for all the services
-     * @param string $period, 'TODAY', 'LAST 24 HOURS', 'YESTERDAY', 'THIS WEEK', 'LAST 7 DAYS', 'LAST WEEK', 'THIS MONTH', 'LAST 31 DAYS', 'LAST MONTH', 'THIS YEAR', 'LAST YEAR', 'CUSTOM'
+     * @param string $period, 'TODAY', 'LAST 24 HOURS', 'YESTERDAY', 'THIS WEEK', 'LAST 7 DAYS', 'LAST WEEK', 'THIS MONTH', 'LAST 31 DAYS', 'LAST MONTH', 'THIS YEAR', 'LAST YEAR', 'CUSTOM'     
      * @param string $start_date, for standard report , $start_date = current_time
      * @param string $end_date
      * @param String $statistic_breakdown, '1' - month, '2' - day of the month, '3' - day of the week, '4' - hour of the day
@@ -513,7 +529,7 @@ class API extends VS_Controller
 
         $Alert_histogram = array();
 
-        $Alert_histogram = $this->reports_data->get_alert_histogram($return_type, $host_name, $service_description, $period, $date, $statistic_breakdown, $event_graph, $state_type_graph, $assume_state_retention, $initial_state_logged, $ignore_repeated_state);
+        $Alert_histogram = $this->reports_data->get_alert_histogram($return_type, $host_name, $service_description, $period, $date, $statistic_breakdown, $event_graph, $state_type_graph);
 
 
 
@@ -532,7 +548,7 @@ class API extends VS_Controller
 
         //check empty inputs
         $validate = $this->validate_data(array($date));
-
+        
         if($validate)
         {
             $Event_logs = $this->reports_data->get_event_log($date);
@@ -560,7 +576,7 @@ class API extends VS_Controller
 
         if($validate)
         {
-            $Notifications = $this->reports_data->get_notification($date);
+            $Notifications = $this->reports_data->get_notification($date);  
         }
         //invalid input
         else
@@ -573,10 +589,19 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $result = $this->validate_data(array('a', '1','abc123', 1));
+        $type = '1';
 
+        $test_array = array(
+          'command_name' => 'test command 1', 
+          'command_line' => 'test command 2'
+        );
 
-        $this->output(var_dump($result));
+        if($type == '1')
+        {
+            $Result = $this->maintenance_command->add(1, $test_array);
+        }
+
+        $this->output($Result);
     }
 
     /**
@@ -604,20 +629,20 @@ class API extends VS_Controller
                 if($type == 'host')
                 {
                     $host_downtimes = $this->nagios_data->get_collection('hostdowntime');
-
-                    foreach ($host_downtimes as $host_downtime)
+                    
+                    foreach ($host_downtimes as $host_downtime) 
                     {
                         $Downtime[] = array(
-                            'host'          => $host_downtime->host_name,
-                            'entry_time'    => $host_downtime->entry_time,
-                            'author'        => $host_downtime->author,
-                            'comment'       => $host_downtime->comment,
-                            'start_time'    => $host_downtime->start_time,
-                            'end_time'      => $host_downtime->end_time,
-                            'fixed'         => $host_downtime->fixed,
-                            'duration'      => $host_downtime->duration,
-                            'downtime_id'   => $host_downtime->downtime_id,
-                            'triggered_id'  => $host_downtime->triggered_by,
+                            'host'          => $host_downtime->host_name, 
+                            'entry_time'    => $host_downtime->entry_time, 
+                            'author'        => $host_downtime->author, 
+                            'comment'       => $host_downtime->comment, 
+                            'start_time'    => $host_downtime->start_time, 
+                            'end_time'      => $host_downtime->end_time, 
+                            'fixed'         => $host_downtime->fixed, 
+                            'duration'      => $host_downtime->duration, 
+                            'downtime_id'   => $host_downtime->downtime_id, 
+                            'triggered_id'  => $host_downtime->triggered_by, 
                             'entry_time'    => $host_downtime->entry_time
                         );
                     }
@@ -628,20 +653,20 @@ class API extends VS_Controller
                 {
                     $service_downtimes = $this->nagios_data->get_collection('servicedowntime');
 
-                    foreach ($service_downtimes as $service_downtime)
+                    foreach ($service_downtimes as $service_downtime) 
                     {
                         $Downtime[] = array(
-                            'host'          => $service_downtime->host_name,
-                            'service'       => $service_downtime->service_description,
-                            'entry_time'    => $service_downtime->entry_time,
-                            'author'        => $service_downtime->author,
-                            'comment'       => $service_downtime->comment,
-                            'start_time'    => $service_downtime->start_time,
-                            'end_time'      => $service_downtime->end_time,
-                            'fixed'         => $service_downtime->fixed,
-                            'duration'      => $service_downtime->duration,
-                            'downtime_id'   => $service_downtime->downtime_id,
-                            'triggered_id'  => $service_downtime->triggered_by,
+                            'host'          => $service_downtime->host_name, 
+                            'service'       => $service_downtime->service_description, 
+                            'entry_time'    => $service_downtime->entry_time, 
+                            'author'        => $service_downtime->author, 
+                            'comment'       => $service_downtime->comment, 
+                            'start_time'    => $service_downtime->start_time, 
+                            'end_time'      => $service_downtime->end_time, 
+                            'fixed'         => $service_downtime->fixed, 
+                            'duration'      => $service_downtime->duration, 
+                            'downtime_id'   => $service_downtime->downtime_id, 
+                            'triggered_id'  => $service_downtime->triggered_by, 
                             'entry_time'    => $service_downtime->entry_time
                         );
                     }
@@ -706,7 +731,7 @@ class API extends VS_Controller
         $this->output($Result);
     }
 
-
+    
 
     /**
      * Schedule downtime
@@ -722,7 +747,7 @@ class API extends VS_Controller
      * @param String $author
      * @param String $comments
      */
-    public function scheduleDowntime($type, $host_name, $service_description='', $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments='')
+    public function scheduleDowntime($type, $host_name, $service_description, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments='')
     {
         $Result = false;
 
@@ -734,15 +759,15 @@ class API extends VS_Controller
 
         //decode inputs with space
         $host_name = urldecode($host_name);
-        $service_description = urldecode($service_description);
+        $service_description = urldecode($service_description); 
         $author = urldecode($author);
         $comments = urldecode($comments);
 
         //convert fixed to boolean
         $fixed = $this->convert_data_bool($fixed);
-
+        
         //check empty inputs
-        $validate = $this->validate_data(array($type, $host_name, $start_time, $end_time, $fixed, $duration, $author, $comments));
+        $validate = $this->validate_data(array($type, $host_name, $start_time, $end_time, $duration, $author, $comments));
 
         if($validate)
         {
@@ -781,7 +806,7 @@ class API extends VS_Controller
         {
             $Result = 1;
         }
-
+        
         $this->output($Result);
     }
 
@@ -819,50 +844,50 @@ class API extends VS_Controller
         $services = $this->nagios_data->get_collection("servicestatus");
         $hostresources = $this->nagios_data->get_collection("hostresourcestatus");
         $runningstates = $this->nagios_data->get_collection("runningstatestatus");
-
-        foreach ($hosts as $host)
+        
+        foreach ($hosts as $host) 
         {
             $Schedule[] = array(
-                'type'          => "host",
-                'hostname'      => $host->host_name,
-                'lastcheck'     => $host->last_check,
-                'nextcheck'     => $host->next_check,
+                'type'          => "host", 
+                'hostname'      => $host->host_name, 
+                'lastcheck'     => $host->last_check, 
+                'nextcheck'     => $host->next_check, 
                 'activecheck'   => $host->active_checks_enabled
             );
         }
 
-        foreach ($services as $service)
+        foreach ($services as $service) 
         {
             $Schedule[] = array(
-                'type'          =>"service",
-                'hostname'      => $service->host_name,
-                'servicename'   => $service->service_description,
-                'lastcheck'     => $service->last_check,
+                'type'          =>"service", 
+                'hostname'      => $service->host_name, 
+                'servicename'   => $service->service_description, 
+                'lastcheck'     => $service->last_check, 
                 'nextcheck'     => $service->next_check,
                 'activecheck'   => $service->active_checks_enabled
             );
         }
 
-        foreach ($hostresources as $hostresource)
+        foreach ($hostresources as $hostresource) 
         {
             $Schedule[] = array(
-                'type'          => "hostresource",
-                'hostname'      => $hostresource->host_name,
-                'servicename'   => $hostresource->service_description,
-                'lastcheck'     => $hostresource->last_check,
-                'nextcheck'     => $hostresource->next_check,
+                'type'          => "hostresource", 
+                'hostname'      => $hostresource->host_name, 
+                'servicename'   => $hostresource->service_description, 
+                'lastcheck'     => $hostresource->last_check, 
+                'nextcheck'     => $hostresource->next_check, 
                 'activecheck'   => $hostresource->active_checks_enabled
             );
         }
 
-        foreach ($runningstates as $runningstate)
+        foreach ($runningstates as $runningstate) 
         {
             $Schedule[] = array(
-                'type'          => "runningstate",
-                'hostname'      => $runningstate->host_name,
-                'servicename'   => $runningstate->service_description,
-                'lastcheck'     => $runningstate->last_check,
-                'nextcheck'     => $runningstate->next_check,
+                'type'          => "runningstate", 
+                'hostname'      => $runningstate->host_name, 
+                'servicename'   => $runningstate->service_description, 
+                'lastcheck'     => $runningstate->last_check, 
+                'nextcheck'     => $runningstate->next_check, 
                 'activecheck'   => $runningstate->active_checks_enabled
             );
         }
@@ -872,19 +897,19 @@ class API extends VS_Controller
         {
             return strcmp($a->nextcheck, $b->nextcheck);
         });
-
+        
         $this->output($Schedule);
     }
 
-
+    
 
     /**
      * Fetch all comments or only those of a certain type.
      * Returns a flat array of comment objects.
      *
-     * @param  string $type, '' return all
+     * @param  string $type, '' return all 
      */
-    public function comments($type = '')
+    public function comments($type = '') 
     {
         $allowed_types = array(
             'hostcomment',
@@ -900,7 +925,7 @@ class API extends VS_Controller
 
             $specific_comments = $this->nagios_data->get_collection($type)->get_index('host_name');
             $comments = $this->comments_flatten($specific_comments);
-        }
+        } 
         else
         {
             $host_comments = $this->nagios_data->get_collection('hostcomment')->get_index('host_name');
@@ -917,7 +942,7 @@ class API extends VS_Controller
      * @param String $type, host : host, svc : service
      * @param String $host_name
      * @param String $service_description
-     * @param String $persistent
+     * @param String $persistent 
      * @param String $author
      * @param String $comments
      */
@@ -935,13 +960,13 @@ class API extends VS_Controller
         $service_description = urldecode($service_description);
         $author = urldecode($author);
         $comments = urldecode($comments);
-
+        
         //convert persistent to bool
         $persistent = $this->convert_data_bool($persistent);
 
         //check for empty input
-        $validate = $this->validate_data(array($type, $host_name, $persistent, $author, $comments));
-
+        $validate = $this->validate_data(array($type, $host_name, $author, $comments));
+        
         if($validate)
         {
             //compare types with allowed types
@@ -1024,7 +1049,7 @@ class API extends VS_Controller
         $this->output($Result);
     }
 
-
+    
 
     /**
      * Enable or disable service check
@@ -1164,6 +1189,10 @@ class API extends VS_Controller
     {
         $Result = false;
 
+        //decode input with spacing
+        $host_name = urldecode($host_name);
+        $service_description = urldecode($service_description);
+
         //delete all host comment
         if($type == 'host')
         {
@@ -1196,6 +1225,9 @@ class API extends VS_Controller
     {
         $Result = false;
 
+        //decode input with spacing
+        $host_name = urldecode($host_name);
+
         if($type == 'true')
         {
             $Result = $this->system_commands->enable_host_notification($host_name);
@@ -1221,7 +1253,7 @@ class API extends VS_Controller
      * @param String $host_name
      * @param String $service_description , [if type is host, service_description should be '']
      * @param String $checktime
-     * @param String $force_check
+     * @param String $force_check 
      */
     public function scheduleCheck($type, $host_name, $service_description='', $checktime, $force_check)
     {
@@ -1279,7 +1311,7 @@ class API extends VS_Controller
         }
 
         $this->output($Result);
-     }
+     } 
 
      /**
       * Enable or disable host service notification
@@ -1795,7 +1827,7 @@ class API extends VS_Controller
         //invalid inputs
         else
         {
-            $Result = 1;
+            $Result = 1; 
         }
 
         $this->output($Result);
@@ -1851,7 +1883,7 @@ class API extends VS_Controller
      *
      * @param  string $host_name
      */
-    public function hoststatus($host_name='')
+    public function hoststatus($host_name='') 
     {
 
         $Data = $this->nagios_data->get_collection('hoststatus');
@@ -1860,11 +1892,11 @@ class API extends VS_Controller
         if(!empty($host_name))
         {
             $Data = $Data->get_index_key('host_name', $host_name);
-
+            
             if( empty($Data) )
             {
                 return $this->output($Data);
-            }
+            } 
 
             $Data = $Data->first();
 
@@ -1884,7 +1916,7 @@ class API extends VS_Controller
 
     /**
      * Remote control service objects based on parameters
-     *
+     * 
      * @param  string $host_name host name filter
      * @param  string $service_description   service description (requires host name)
      * @param  string $operation operation
@@ -1904,17 +1936,17 @@ class API extends VS_Controller
             {
                 $Result['code'] = -1;//Please provide a service name.
                 return $this->output($Result);
-            }
-            else
+            } 
+            else 
             {
                 $Data = $Data->get_index_key('host_name',$host_name)->get_where('service_description',$service_description)->first();
-
+                
                 if( empty($Data) )
                 {
                     $Result['code'] = -2;//Unknown service name: '.$service_description
                     return $this->output($Result);
-                }
-
+                } 
+                
                 if(!$this->is_remote_enabled($Data))
                 {
                     $Result['code'] = -4;//Fail to remote the service.
@@ -1924,7 +1956,7 @@ class API extends VS_Controller
                 if($operation !== '')
                 {
                     $operation = strtolower($operation);
-                    switch ($operation)
+                    switch ($operation) 
                     {
                         case 'start':
                         case 'stop':
@@ -1949,7 +1981,7 @@ class API extends VS_Controller
 
     /**
      * Retrieve service status objects based on parameters
-     *
+     * 
      * @param  string $host_name host name filter
      * @param  string $service   service description (requires host name)
      */
@@ -1968,17 +2000,17 @@ class API extends VS_Controller
             {
                 $Result['code'] = -1;//Please provide a service name.
                 return $this->output($Result);
-            }
-            else
+            } 
+            else 
             {
                 $Data = $Data->get_index_key('host_name',$host_name)->get_where('service_description',$service_description)->first();
-
+                
                 if( empty($Data) )
                 {
                     $Result['code'] = -2;//Unknown service name: '.$service_description
                     return $this->output($Result);
-                }
-
+                } 
+                
                 if(!$this->is_remote_enabled($Data))
                 {
                     $Result['code'] = -4;//Remote service is disabled.
@@ -1997,10 +2029,33 @@ class API extends VS_Controller
         return $this->output($Result);
     }
 
+    /**
+     * Add configuration
+     *
+     * @param String $type, '1' - command
+     * @param array String $command_array, [$command_name, $command_line]
+     */
+    public function addConfiguration($type, $command_array)
+    {
+        $type = '1';
+
+        $test_array = array(
+          'command_name' => 'test command 1', 
+          'command_line' => 'test command 2'
+        );
+
+        if($type == '1')
+        {
+            $Result = $this->maintenance_command->add(1, $test_array);
+        }
+
+        $this->output($Result);
+    }
+
 
     /**
      * Retrieve service status objects based on parameters
-     *
+     * 
      * @param  string $host_name host name filter
      * @param  string $service   service description (requires host name)
      */
@@ -2017,15 +2072,15 @@ class API extends VS_Controller
             if(empty($service_description))
             {
                 $Data = $Data->get_index_key('host_name',$host_name);
-            }
-            else
+            } 
+            else 
             {
                 $Data = $Data->get_index_key('host_name',$host_name)->get_where('service_description',$service_description)->first();
 
                 if( empty($Data) )
                 {
                     return $this->output(array());
-                }
+                } 
 
                 //add comments
                 $all_comments = $this->nagios_data->get_collection('servicecomment');
@@ -2040,7 +2095,7 @@ class API extends VS_Controller
 
     /**
      * Retrieve service log files based on parameters
-     *
+     * 
      * @param  string $host_name host name filter
      * @param  string $service   service description (requires host name)
      */
@@ -2059,16 +2114,16 @@ class API extends VS_Controller
             {
                 $Result['code'] = -1;//Please provide a service name.
                 return $this->output($Result);
-            }
-            else
+            } 
+            else 
             {
                 $Data = $Data->get_index_key('host_name',$host_name)->get_where('service_description',$service_description)->first();
                 if( empty($Data) )
                 {
                     $Result['code'] = -2;//Unknown service name: '.$service_description
                     return $this->output($Result);
-                }
-
+                } 
+                
                 if($this->is_logfile_defined($Data))
                 {
                     $this->get_service_log_path($Data, $log_dir, $log_files);
@@ -2079,13 +2134,13 @@ class API extends VS_Controller
                     $Result['code'] = -6;//No log files for this service.
                     return $this->output($Result);
                 }
-
+                
                 $Data = array();
                 $connection;
 
                 //If the service is being monitored, get the log files list
                 $sftp = $this->sftp_connect($host_name.'.'.$this->domain.'.local', $this->user_domain.'\\'.$this->user, $this->passwd, $connection);
-
+                
                 if($sftp)
                 {
                     $Data['logs'] = array();
@@ -2095,7 +2150,7 @@ class API extends VS_Controller
                         {
                             //If not found '/', means it just a file name
                             $handle = opendir("ssh2.sftp://$sftp/".$log_dir."/");
-
+                            
                             $regex_log_file = $this->format_string_for_regex($log_file, $service_description);
 
                             if (! $handle)
@@ -2106,7 +2161,7 @@ class API extends VS_Controller
                                 return $this->output($Result);
                             }
 
-
+                            
                             while (false != ($entry = readdir($handle)))
                             {
                                 if (preg_match('/'.$regex_log_file.'/i', $entry) === 1)
@@ -2119,15 +2174,15 @@ class API extends VS_Controller
                                         $this->sftp_close($connection);
                                         return $this->output($Result);
                                     }
-
-                                    unset($tmp['0'], $tmp['1'], $tmp['2'], $tmp['3'], $tmp['4'],
+                                    
+                                    unset($tmp['0'], $tmp['1'], $tmp['2'], $tmp['3'], $tmp['4'], 
                                         $tmp['5'], $tmp['6'], $tmp['7'], $tmp['8'], $tmp['9'], $tmp['10'], $tmp['11'], $tmp['12']);
-
+                                        
                                     $tmp['name'] = $entry;
                                     $Data['logs'][] = $tmp;
                                 }
                             }
-
+                            
                             closedir($handle);
                         }
                         else
@@ -2135,10 +2190,10 @@ class API extends VS_Controller
                             //If found '/', means it contains subdirectory
                             $sub_dir = dirname($log_file);
                             $sub_log_file = basename($log_file);
-
+                            
                             $handle = opendir("ssh2.sftp://$sftp/".$log_dir."/".$sub_dir."/");
                             $regex_log_file = $this->format_string_for_regex($sub_log_file, $service_description);
-
+                            
                             if (! $handle)
                             {
                                 log_message('error', 'Logs directory cannot be accessed.');
@@ -2146,7 +2201,7 @@ class API extends VS_Controller
                                 $this->sftp_close($connection);
                                 return $this->output($Result);
                             }
-
+                            
                             while (false != ($entry = readdir($handle)))
                             {
                                 log_message('debug', 'Matching pattern on '.$entry.': '.$regex_log_file);
@@ -2160,15 +2215,15 @@ class API extends VS_Controller
                                         $this->sftp_close($connection);
                                         return $this->output($Result);
                                     }
-
-                                    unset($tmp['0'], $tmp['1'], $tmp['2'], $tmp['3'], $tmp['4'],
+                                    
+                                    unset($tmp['0'], $tmp['1'], $tmp['2'], $tmp['3'], $tmp['4'], 
                                         $tmp['5'], $tmp['6'], $tmp['7'], $tmp['8'], $tmp['9'], $tmp['10'], $tmp['11'], $tmp['12']);
 
                                     $tmp['name'] = $sub_dir."/".$entry;
                                     $Data['logs'][] = $tmp;
                                 }
                             }
-
+                            
                             closedir($handle);
                         }
                     }
@@ -2196,7 +2251,7 @@ class API extends VS_Controller
 
     /**
      * Prepare download service log file based on parameters
-     *
+     * 
      * @param  string $host_name host name filter
      * @param  string $service   service description (requires host name)
      * @param  string $filename  file name
@@ -2205,10 +2260,10 @@ class API extends VS_Controller
     {
         $service_description = urldecode($service_description);
         $filenames = urldecode($filenames);
-
+        
         $Data = $this->nagios_data->get_collection('servicestatus');
         $Result = array();
-
+        
         //fetch by host name
         if(!empty($host_name))
         {
@@ -2217,8 +2272,8 @@ class API extends VS_Controller
             {
                 $Result['code'] = -1;//Please provide a service name.
                 return $this->output($Result);
-            }
-            else
+            } 
+            else 
             {
                 $Data = $Data->get_index_key('host_name',$host_name)->get_where('service_description',$service_description)->first();
                 if( empty($Data) )
@@ -2226,7 +2281,7 @@ class API extends VS_Controller
                     $Result['code'] = -2;//Unknown service name: '.$service_description
                     return $this->output($Result);
                 }
-
+                
                 if($this->is_logfile_defined($Data))
                 {
                     $this->get_service_log_path($Data, $log_dir, $log_files);
@@ -2257,7 +2312,7 @@ class API extends VS_Controller
                 foreach($filenames as $filename)
                 {
                     $valid_file = false;
-
+                    
                     foreach($log_files as $log_file)
                     {
                         $regex_log_file = $this->format_string_for_regex($log_file, $service_description);
@@ -2266,7 +2321,7 @@ class API extends VS_Controller
                             $valid_file = true;
                         }
                     }
-
+                    
                     if($valid_file)
                     {
                         //filename can be subdir/filename or filename
@@ -2320,7 +2375,7 @@ class API extends VS_Controller
 
     /**
      * Download service log file based on key
-     *
+     * 
      * @param  string $key host name filter
      */
     public function download($key='')
@@ -2347,7 +2402,7 @@ class API extends VS_Controller
         header('Content-Disposition: attachment; filename="'.$filename.'"');
         return;
     }
-
+    
 
     /**
      * Fetch host group status
@@ -2359,11 +2414,11 @@ class API extends VS_Controller
 
         $HostgroupStatus = new HostStatusCollection();
         $Hostgroups = $this->nagios_data->get_collection('hostgroup');
-        $found = False;
+        $found = False; 
 
         foreach($Hostgroups as $Hostgroup)
         {
-            if( $hostgroup_name != '' )
+            if( $hostgroup_name != '' ) 
             {
                 if( $Hostgroup->hostgroup_name == $hostgroup_name )
                 {
@@ -2399,11 +2454,11 @@ class API extends VS_Controller
 
         $ServicegroupStatus = new ServiceStatusCollection();
         $Servicegroups = $this->nagios_data->get_collection('servicegroup');
-        $found = False;
+        $found = False; 
 
         foreach($Servicegroups as $Servicegroup)
         {
-            if( $servicegroup_name != '' )
+            if( $servicegroup_name != '' ) 
             {
                 if( $Servicegroup->servicegroup_name == $servicegroup_name )
                 {
@@ -2478,8 +2533,8 @@ class API extends VS_Controller
         $this->output($configurations);
     }
 
-
-
+    
+    
     /**
      * Check if the service is allowed to remote control.
      * Returns boolean to determine remote enable or not.
@@ -2506,7 +2561,7 @@ class API extends VS_Controller
             return false;
         }
     }
-
+    
     /**
      * Check if the service is available to monitor log files.
      * Returns boolean to determine log files available or not.
@@ -2527,7 +2582,7 @@ class API extends VS_Controller
             return false;
         }
     }
-
+    
     /**
      * Get the logfiles path as defined in _LOG_DIR and _LOG_FILE.
      * Returns array of string logfile path defined in Nagios.
@@ -2541,7 +2596,7 @@ class API extends VS_Controller
         log_message('debug', 'Retrieving log files path for '.$Data->service_description);
         $log_dir = substr($Data->_LOG_DIR, 2);
         $log_files = explode('|', substr($Data->_LOG_FILE, 2));
-
+        
         log_message('debug', 'Complete retrieve log files path for '.$Data->service_description);
     }
 
@@ -2584,7 +2639,7 @@ class API extends VS_Controller
             unset($connection);
         }
     }
-
+    
     /**
      * Format the string for regex operation.
      * return formatted string for regex
@@ -2604,7 +2659,7 @@ class API extends VS_Controller
         $output = str_replace('$SERVICEDESC$', $service_description, $input);
         $output = str_replace('$YYYYMMDD$', '[0-9]{8}', $output);
         $output = str_replace('$HHmmSS$', '[0-9]{6}', $output);
-
+        
         $output = str_replace('\\', '\\\\', $output);
         $output = str_replace('.', '\.', $output);
         $output = str_replace('*', '.*', $output);
@@ -2639,7 +2694,7 @@ class API extends VS_Controller
     private function validate_data($data)
     {
         $false = 0;
-
+        
         foreach($data as $input)
         {
             //empty input
@@ -2710,7 +2765,7 @@ class API extends VS_Controller
             $hostgroup_name[] = array('hostgroup_name'=> $hostgroup->alias, 'members'=> $hostgroup->members);
         }
 
-        foreach ($hostgroup_name as $hostgroup)
+        foreach ($hostgroup_name as $hostgroup) 
         {
             if($hostgroup['hostgroup_name'] == $data)
             {
@@ -2726,12 +2781,12 @@ class API extends VS_Controller
     {
         $servicegroups = $this->nagios_data->get_collection('servicegroup');
 
-        foreach ($servicegroups as $servicegroup)
+        foreach ($servicegroups as $servicegroup) 
         {
             $servicegroup_name = array('servicegroup_name'=> $servicegroup->alias, 'members' => $servicegroup->members);
         }
 
-        foreach ($servicegroup_name as $servicegroup)
+        foreach ($servicegroup_name as $servicegroup) 
         {
             if($servicegroup['servicegroup_name'] == $data)
             {

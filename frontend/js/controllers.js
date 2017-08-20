@@ -228,8 +228,10 @@ angular.module('vshell.controllers', [])
                             ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
                             $('.modal').modal('hide');
                           }
-                          else
-                            ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
+                          else if(data == 1)
+                            ngToast.create({className: 'alert alert-danger',content:'Fail! Wrong Data!',timeout:1500});
+                          else if(data == 2)
+                            ngToast.create({className: 'alert alert-danger',content:'Fail! Command Error!',timeout:1500});
                       }
                   }
               };
@@ -255,8 +257,10 @@ angular.module('vshell.controllers', [])
                               ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
                               $('.modal').modal('hide');
                             }
-                            else
-                              ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
+                            else if(data == 1)
+                              ngToast.create({className: 'alert alert-danger',content:'Fail! Wrong Data!',timeout:1500});
+                            else if(data == 2)
+                              ngToast.create({className: 'alert alert-danger',content:'Fail! Command Error!',timeout:1500});
                         }
                     }
                 };
@@ -279,8 +283,10 @@ angular.module('vshell.controllers', [])
                     if(config.url.includes("deletecomments")){
                         if(Object.getOwnPropertyNames(data).length == 0)
                           ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
-                        else
-                          ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
+                          else if(data == 1)
+                            ngToast.create({className: 'alert alert-danger',content:'Fail! Wrong Data!',timeout:1500});
+                          else if(data == 2)
+                            ngToast.create({className: 'alert alert-danger',content:'Fail! Command Error!',timeout:1500});
                     }
                 }
             };
@@ -295,8 +301,7 @@ angular.module('vshell.controllers', [])
 
                 var options = {
                     name: 'deleteallcomment',
-                    url: 'deleteallcomment/' + type + '/' +  $routeParams.host + '/' + ' ' + '/',
-                    queue: 'main'
+                    url: 'deleteallcomment/' + type + '/' +  $routeParams.host + '/' + ' ' + '/'
                 };
 
                 async.api($scope, options);
@@ -306,8 +311,10 @@ angular.module('vshell.controllers', [])
                         if(config.url.includes("deleteallcomment")){
                             if(Object.getOwnPropertyNames(data).length == 0)
                               ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
-                            else
-                              ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
+                              else if(data == 1)
+                                ngToast.create({className: 'alert alert-danger',content:'Fail! Wrong Data!',timeout:1500});
+                              else if(data == 2)
+                                ngToast.create({className: 'alert alert-danger',content:'Fail! Command Error!',timeout:1500});
                         }
                     }
                 };
@@ -524,40 +531,35 @@ angular.module('vshell.controllers', [])
               if(action == 'active_checks'){
                 var options = {
                     name: 'servicecheck',
-                    url: 'servicecheck/' + todo + '/' + $routeParams.host + '/' + $routeParams.service,
-                    queue: 'main'
+                    url: 'servicecheck/' + todo + '/' + $routeParams.host + '/' + $routeParams.service
                 };
                 async.api($scope, options);
               }
               else if(action == 'passive_checks'){
                 var options = {
                     name: 'passiveservicecheck',
-                    url: 'passiveservicecheck/' + todo + '/' + $routeParams.host + '/' + $routeParams.service,
-                    queue: 'main'
+                    url: 'passiveservicecheck/' + todo + '/' + $routeParams.host + '/' + $routeParams.service
                 };
                 async.api($scope, options);
               }
               else if(action == 'obsess'){
                 var options = {
                     name: 'obsessoverservice',
-                    url: 'obsessoverservice/' + todo + '/' + $routeParams.host + '/' + $routeParams.service,
-                    queue: 'main'
+                    url: 'obsessoverservice/' + todo + '/' + $routeParams.host + '/' + $routeParams.service
                 };
                 async.api($scope, options);
               }
               else if(action == 'notifications'){
                 var options = {
                     name: 'servicenotification',
-                    url: 'servicenotification/' + todo + '/' + $routeParams.host + '/' + $routeParams.service,
-                    queue: 'main'
+                    url: 'servicenotification/' + todo + '/' + $routeParams.host + '/' + $routeParams.service
                 };
                 async.api($scope, options);
               }
               else if(action == 'flap_detection'){
                 var options = {
                     name: 'serviceflapdetection',
-                    url: 'serviceflapdetection/' + todo + '/' + $routeParams.host + '/' + $routeParams.service,
-                    queue: 'main'
+                    url: 'serviceflapdetection/' + todo + '/' + $routeParams.host + '/' + $routeParams.service
                 };
                 async.api($scope, options);
               }
@@ -569,8 +571,10 @@ angular.module('vshell.controllers', [])
                             ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
                             $('.modal').modal('hide');
                           }
-                          else
-                            ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
+                          else if(data == 1)
+                            ngToast.create({className: 'alert alert-danger',content:'Fail! Wrong Data!',timeout:1500});
+                          else if(data == 2)
+                            ngToast.create({className: 'alert alert-danger',content:'Fail! Command Error!',timeout:1500});
                       }
                   }
               };
@@ -587,8 +591,7 @@ angular.module('vshell.controllers', [])
             var options = {
                 name: 'addcomments',
                 url: 'addcomments/'+ type + '/' + $routeParams.host + '/' + $routeParams.service
-                  + '/' + persistent + '/' + author + '/' + comment,
-                queue: 'main'
+                  + '/' + persistent + '/' + author + '/' + comment
             };
             async.api($scope, options);
 
@@ -599,8 +602,10 @@ angular.module('vshell.controllers', [])
                         ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
                         $('.modal').modal('hide');
                       }
-                      else
-                        ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
+                      else if(data == 1)
+                        ngToast.create({className: 'alert alert-danger',content:'Fail! Wrong Data!',timeout:1500});
+                      else if(data == 2)
+                        ngToast.create({className: 'alert alert-danger',content:'Fail! Command Error!',timeout:1500});
                     }
                 }
             };
@@ -612,8 +617,7 @@ angular.module('vshell.controllers', [])
 
               var options = {
                   name: 'deletecomments',
-                  url: 'deletecomments/' + id + '/' + type,
-                  queue: 'main'
+                  url: 'deletecomments/' + id + '/' + type
               };
 
               async.api($scope, options);
@@ -623,8 +627,10 @@ angular.module('vshell.controllers', [])
                       if(config.url.includes("deletecomments")){
                           if(Object.getOwnPropertyNames(data).length == 0)
                             ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
-                          else
-                            ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
+                            else if(data == 1)
+                              ngToast.create({className: 'alert alert-danger',content:'Fail! Wrong Data!',timeout:1500});
+                            else if(data == 2)
+                              ngToast.create({className: 'alert alert-danger',content:'Fail! Command Error!',timeout:1500});
                       }
                   }
               };
@@ -640,8 +646,7 @@ angular.module('vshell.controllers', [])
 
                   var options = {
                       name: 'deleteallcomment',
-                      url: 'deleteallcomment/' + type + '/' +  $routeParams.host + '/' + $routeParams.service,
-                      queue: 'main'
+                      url: 'deleteallcomment/' + type + '/' +  $routeParams.host + '/' + $routeParams.service
                   };
 
                   async.api($scope, options);
@@ -651,8 +656,10 @@ angular.module('vshell.controllers', [])
                           if(config.url.includes("deleteallcomment")){
                               if(Object.getOwnPropertyNames(data).length == 0)
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
-                              else
-                                ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
+                                else if(data == 1)
+                                  ngToast.create({className: 'alert alert-danger',content:'Fail! Wrong Data!',timeout:1500});
+                                else if(data == 2)
+                                  ngToast.create({className: 'alert alert-danger',content:'Fail! Command Error!',timeout:1500});
                           }
                       }
                   };
@@ -872,18 +879,18 @@ angular.module('vshell.controllers', [])
         var date = new Date();
         var firstDayOfMonth = $filter('date')((new Date(date.getFullYear(), date.getMonth(), 1)), 'yyyy-MM-dd');
 
-        $scope.reportType = 1;
-        $scope.reportComponent = 'ALL';
+        $scope.reportType = 5;
+        $scope.reportHost = 'ALL';
+        //$scope.reportService = 'ALL';
         $scope.startDate =  firstDayOfMonth;
         $scope.endDate =  today;
         $scope.reportPeriod = 'LAST 7 DAYS';
-        $scope.reportTimePeriod = 'NONE';
         $scope.assumeInitialStates = 'true';
         $scope.assumeStateRetention = 'true';
         $scope.assumeDowntimeStates = 'true';
         $scope.includeSoftStates = 'false';
-        $scope.firstAssumedHostState = 'PENDING';
-        $scope.firstAssumedServiceState = 'PENDING';
+        $scope.firstAssumedHostState = 'UNDETERMINED';
+        $scope.firstAssumedServiceState = 'UNDETERMINED';
         $scope.backtrackedArchives = 4;
 
         //if this page is called from other other view
@@ -916,7 +923,6 @@ angular.module('vshell.controllers', [])
 
         var startUnix = parseInt((new Date($scope.startDate).getTime() / 1000).toFixed(0));
         var endUnix = parseInt((new Date($scope.endDate).getTime() / 1000).toFixed(0));
-        var service = $scope.reportService;
 
         if($scope.reportPeriod != 'CUSTOM'){
           $scope.startDate = $scope.endDate;
@@ -925,14 +931,20 @@ angular.module('vshell.controllers', [])
             endUnix = ' ';
          }
 
+         if($scope.reportType == 1 || $scope.reportType == 5)
+            $scope.reportService = 'ALL';
+          if($scope.reportType == 6)
+             $scope.reportHost = 'ALL';
+          if(($scope.reportType == 2 || $scope.reportType == 3 || $scope.reportType == 4) && $scope.reportService == 'ALL')
+            $scope.reportHost = 'ALL';
+
         //get component name
         var options = {
             name: 'availability',
-            url: 'availability' + '/' + $scope.reportType + '/' + $scope.reportComponent + '/' + startUnix + '/'
-                     + endUnix + '/' + $scope.reportPeriod + '/' + $scope.reportTimePeriod + '/' + $scope.assumeInitialStates + '/'
-                     + $scope.assumeStateRetention + '/' + $scope.assumeDowntimeStates + '/' + $scope.includeSoftStates + '/'
-                     + $scope.backtrackedArchives + '/' + $scope.firstAssumedHostState + '/' + $scope.firstAssumedServiceState,
-            queue: 'main'
+            url: 'availability' + '/' + $scope.reportType + '/' + $scope.reportPeriod + '/' + startUnix + '/' + endUnix + '/'
+                      + $scope.reportHost + '/' + $scope.reportService + '/' + $scope.assumeInitialStates + '/' + $scope.assumeStateRetention + '/'
+                      + $scope.assumeDowntimeStates + '/' + $scope.includeSoftStates + '/'
+                      + $scope.firstAssumedHostState + '/' + $scope.backtrackedArchives + '/' + $scope.firstAssumedServiceState
         };
 
         async.api($scope, options);
@@ -944,8 +956,8 @@ angular.module('vshell.controllers', [])
               $rootScope.data = data;
               $rootScope.param = {
                 "type" : $scope.reportType,
-                "host" : $scope.reportComponent,
-                "service" : $scope.reportComponent,
+                "host" : $scope.reportHost,
+                "service" : $scope.reportService,
                 "period" : $scope.reportPeriod,
                 "start" : new Date($scope.startDate),
                 "end" : new Date($scope.endDate),
@@ -956,7 +968,12 @@ angular.module('vshell.controllers', [])
                 "backtrackedArchives" : $scope.backtrackedArchives
               };
 
-              $window.location.href="#/report/availability/report";
+              if(data == 1)
+                ngToast.create({className: 'alert alert-danger',content:'Fail! Wrong Data!',timeout:1500});
+              else if(data == 2)
+                ngToast.create({className: 'alert alert-danger',content:'Fail! Command Error!',timeout:1500});
+              else
+                $window.location.href="#/report/availability/report";
             }
           }
         };
@@ -966,165 +983,24 @@ angular.module('vshell.controllers', [])
 
       };
 
-      /*$scope.createReport = function(){
-
-        //data for test
-        $scope.testdata=[
-          {
-            host:"app_server",
-            data:[
-              {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
-              {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
-            ]
-          },
-          {
-            host:"localhost",
-            data:[
-              {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
-              {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
-            ]
-          }
-        ];
-        //data for event log(host-one service-one)
-        $scope.report3=[
-          {
-              0:"07-17-2017 00:00:00",
-              1:"07-18-2017 00:00:00",
-              2:"1d 0h 0m 0s",
-              3:"SERVICE OK (HARD)",
-              4:"c:\ - total: 23.66 Gb - used: 16.59 Gb (70%) - free 7.06 Gb (30%)"
-          },
-          {
-            0:"07-17-2017 00:00:00",
-            1:"07-18-2017 00:00:00",
-            2:"1d 0h 0m 0s",
-            3:"SERVICE OK (HARD)",
-            4:"c:\ - total: 23.66 Gb - used: 16.59 Gb (70%) - free 7.06 Gb (30%)"
-          },
-          {
-            0:"07-17-2017 00:00:00",
-            1:"07-18-2017 00:00:00",
-            2:"1d 0h 0m 0s",
-            3:"SERVICE OK (HARD)",
-            4:"c:\ - total: 23.66 Gb - used: 16.59 Gb (70%) - free 7.06 Gb (30%)"
-          }
-        ];
-        //data for host-one service-one
-        $scope.report2=[
-          {
-            host:"app_server",
-            data:[
-              {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
-              {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
-            ]
-          },
-          {
-            host:"localhost",
-            data:[
-              {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
-              {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
-            ]
-          }
-        ];
-        //data for host one
-        $scope.report4=[
-          {
-            type:"Service",
-            data:[
-              {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
-              {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
-            ]
-          },
-          {
-            type:"Resource",
-            data:[
-              {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
-              {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
-            ]
-          },
-          {
-            type:"Service Running State",
-            data:[
-              {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
-              {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
-            ]
-          }
-        ];
-        //data for servicegroup-all/one
-        $scope.report5=[
-          {
-            host:"app_server",
-            service:[
-              {0:"C: Drive Space",5:0,1:0,2:0,3:0,4:0},
-              {0:"CPEExtractor",5:0,1:0,2:0,3:0,4:0}
-            ]
-          }
-        ];
-        //data for one host/one service
-        $scope.reports1 = [
-          {
-            state:"OK",
-            data:[
-              {0:"Unscheduled", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"},
-              {0:"Scheduled", 1:"0d 0h 0m 0s", 2:"1.00", 3:"2.00"},
-              {0:"Total", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"}
-            ]
-          },
-          {
-            state: "WARNING",
-            data:[
-              {0:"Unscheduled", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"},
-              {0:"Scheduled", 1:"0d 0h 0m 0s", 2:"1.00", 3:"2.00"},
-              {0:"Total", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"}
-            ]
-          },
-          {
-            state:"UNKNOWN",
-            data:[
-              {0:"Unscheduled", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"},
-              {0:"Scheduled", 1:"0d 0h 0m 0s", 2:"1.00", 3:"2.00"},
-              {0:"Total", 1:"7d 0h 0m 0s", 2:"1.00", 3:"2.00"}
-            ]
-          },
-          {
-            state: "PENDING",
-            data:[
-              {0:"Nagios Not Running", 1: "0d 0h 0m 0s", 2: "0.00", 3: "0.00"},
-              {0:"insufficient Data", 1: "0d 0h 0m 0s", 2: "0.00", 3: "0.00"},
-              {0:"Total", 1: "7d 0h 0m 0s", 2: "100.00", 3: "100.00"}
-            ]
-          },
-          {
-            state:"ALL",
-            data:[
-              {0:"Total", 1: "7d 0h 0m 0s", 2: "100.00", 3: "100.00"}
-            ]
-          }
-        ];
-        //data for hostgroup/servicegroup
-        $scope.reports=[
-          {
-            hostgroup:"linux_servers",
-            data:[
-              {0:"localhost",1:"100.00",2:"0.00",3:"0.00",4:"0.00"}
-            ]
-          },
-          {
-            hostgroup:"windows-servers",
-            data:[
-              {0:"app_server",1:"0.00",2:"0.00",3:"0.00",4:"0.00"},
-              {0:"web_server",1:"0.00",2:"0.00",3:"0.00",4:"0.00"}
-            ]
-          }
-        ];
-        //data for host-all
-        $scope.hostall=[
-          {0:"localhost",1:"0.00",2:"0.00",3:"0.00",4:"0.00"},
-          {0:"app_server",1:"0.00",2:"0.00",3:"0.00",4:"0.00"},
-          {0:"web_server",1:"0.00",2:"0.00",3:"0.00",4:"0.00"}
-        ];
+      $scope.viewTrends = function(type){
+         if(type == 'host')
+            $rootScope.param.type = 1;
+         dataService.setInfo($rootScope.param);
+         $window.location.href="#/report/trends";
       };
-      */
+
+      $scope.viewAvailability = function(type){
+        if(type == 'host')
+           $rootScope.param.type = 1;
+          dataService.setInfo($rootScope.param);
+          $window.location.href="#/report/availability";
+      };
+
+      $scope.viewAlertHistogram = function(type){
+          dataService.setInfo($rootScope.param);
+          $window.location.href="#/report/alerthistogram";
+      };
     }
 ])
 
@@ -1160,8 +1036,8 @@ angular.module('vshell.controllers', [])
     			$scope.assumeStateRetention = 'true';
     			$scope.assumeDowntimeStates = 'true';
     			$scope.includeSoftStates = 'false';
-    			$scope.firstAssumedHostState = 'PENDING';
-    			$scope.firstAssumedServiceState = 'PENDING';
+    			$scope.firstAssumedHostState = 'UNDETERMINED';
+    			$scope.firstAssumedServiceState = 'UNDETERMINED';
     			$scope.backtrackedArchives = 4;
 
           //if this page is called from other other view
@@ -1173,10 +1049,12 @@ angular.module('vshell.controllers', [])
             $scope.reportService = $rootScope.param.service;
             $scope.reportPeriod = $rootScope.param.period;
             $scope.startDate = $rootScope.param.start;
-            $scope.endDate = $rootScope.param.end;
-            $scope.assumeStateRetention = $rootScope.param.assumeStateRetention;
+            if($rootScope.param.period != 'CUSTOM')
+              $scope.endDate = $rootScope.param.start;
+            else
+              $scope.endDate = $rootScope.param.end;
 
-                $scope.includeSoftStates = 'true';
+            $scope.assumeStateRetention = $rootScope.param.assumeStateRetention;
 
             if($rootScope.param.assumeInitialStates != null)
               $scope.assumeInitialStates = $rootScope.param.assumeInitialStates;
@@ -1208,9 +1086,6 @@ angular.module('vshell.controllers', [])
           if($scope.reportType != 1){
              firstAssumedState = $scope.firstAssumedServiceState;
           }
-          if($scope.reportType == 3){
-              service = $scope.reportHostResource;
-          }
 
           if($scope.reportPeriod != 'CUSTOM'){
             $scope.startDate = $scope.endDate;
@@ -1227,8 +1102,7 @@ angular.module('vshell.controllers', [])
               url: 'trend' + '/' + $scope.reportType + '/' + $scope.reportPeriod + '/' + startUnix + '/'
                        + endUnix + '/' + $scope.reportHost + '/' + service + '/' + $scope.assumeInitialStates + '/'
                        + $scope.assumeStateRetention + '/' + $scope.assumeDowntimeStates + '/' + $scope.includeSoftStates + '/'
-                       + $scope.backtrackedArchives + '/' + firstAssumedState,
-              queue: 'main'
+                       + $scope.backtrackedArchives + '/' + firstAssumedState
           };
 
           async.api($scope, options);
@@ -1251,9 +1125,12 @@ angular.module('vshell.controllers', [])
                   "includeSoftStates" : $scope.includeSoftStates,
                   "backtrackedArchives" : $scope.backtrackedArchives
                 };
-
-                $window.location.href="#/report/trends/report";
-
+                if(data == 1)
+                  ngToast.create({className: 'alert alert-danger',content:'Fail! Wrong Data!',timeout:1500});
+                else if(data == 2)
+                  ngToast.create({className: 'alert alert-danger',content:'Fail! Command Error!',timeout:1500});
+                else
+                  $window.location.href="#/report/trends/report";
               }
             }
           };
@@ -1263,12 +1140,15 @@ angular.module('vshell.controllers', [])
 
           var data = [];
 
+          // sort by date
+          var sorted_date = $rootScope.data[0]
+
           $rootScope.data[0].forEach(function(d){
             var date = new Date(d.start_time * 1000);
             var datay = $filter('date')(date, 'EEE MMM d H:mm:ss yyyy');
             var datax = d.state;
             data.push({"label" : datay,"value": datax});
-
+            console.log(d.state);
           })
 
           var start = $rootScope.data[0][0].start_time ;
@@ -1454,9 +1334,6 @@ angular.module('vshell.controllers', [])
          if($scope.reportType == 1){
             service = 'ALL';
           }
-          if($scope.reportType == 3){
-             service = $scope.reportHostResource;
-          }
 
           if($scope.reportPeriod != 'CUSTOM'){
             $scope.startDate = $scope.endDate;
@@ -1471,8 +1348,7 @@ angular.module('vshell.controllers', [])
              url: 'alerthistogram' + '/' + $scope.reportType + '/' + $scope.reportHost + '/' + service + '/'
                       + $scope.reportPeriod + '/' + startUnix + '/' + endUnix + '/' + $scope.statisticsBreakdown + '/'
                       + $scope.eventsToGraph + '/' + $scope.stateTypesToGraph + '/' + $scope.assumeStateRetention + '/'
-                      + $scope.initialStatesLogged + '/' + $scope.ignoreRepeatedStates,
-             queue: 'main'
+                      + $scope.initialStatesLogged + '/' + $scope.ignoreRepeatedStates
          };
 
          async.api($scope, options);
@@ -1493,7 +1369,14 @@ angular.module('vshell.controllers', [])
                  "statisticsBreakdown" : $filter('alerthistogram-x')($scope.statisticsBreakdown)
                };
 
-               $window.location.href="#/report/alerthistogram/report";
+               console.log($rootScope.param);
+
+               if(data == 1)
+                 ngToast.create({className: 'alert alert-danger',content:'Fail! Wrong Data!',timeout:1500});
+               else if(data == 2)
+                 ngToast.create({className: 'alert alert-danger',content:'Fail! Command Error!',timeout:1500});
+               else
+                 $window.location.href="#/report/alerthistogram/report";
              }
            }
          };
@@ -1671,6 +1554,7 @@ angular.module('vshell.controllers', [])
        };
 
       $scope.viewTrends = function(type){
+          console.log($rootScope.param);
            dataService.setInfo($rootScope.param);
            $window.location.href="#/report/trends";
       };
@@ -1682,8 +1566,8 @@ angular.module('vshell.controllers', [])
     }
 ])
 
-.controller('SysCommentsCtrl', ['$scope', 'async', '$timeout', '$window', 'ngToast', '$interval',
-    function($scope, async, $timeout, $window, ngToast, $interval) {
+.controller('SysCommentsCtrl', ['$scope', 'async', '$timeout', 'ngToast',
+    function($scope, async, $timeout, ngToast) {
 
       $scope.init = function() {
 
@@ -1723,8 +1607,8 @@ angular.module('vshell.controllers', [])
         };
         async.api($scope, options1);
 
-        $timeout(function(){$scope.hostName = $scope.name.host[0];}, 500);
-        //$scope.service = $scope.name.service[0].service;
+        $timeout(function(){$scope.hostName = $scope.name.host[0];}, 800);
+        $timeout(function(){$scope.service = $scope.name.service[0].service}, 800);
         $scope.persistent = true;
         $scope.comment = '';
 
@@ -1735,9 +1619,8 @@ angular.module('vshell.controllers', [])
 
         $scope.callback = function(data, status, headers, config) {
           if(config != null){
-            if(config.url.includes("status")){
+            if(config.url.includes("status"))
               $scope.author = data.username;
-            }
           }
         };
       };
@@ -1752,7 +1635,6 @@ angular.module('vshell.controllers', [])
               name: 'addcomments',
               url: 'addcomments/'+ type + '/' + hostName + '/' + service
                 + '/' + persistent + '/' + author + '/' + comment,
-              queue: 'main'
           };
 
           async.api($scope, options);
@@ -1760,14 +1642,14 @@ angular.module('vshell.controllers', [])
           $scope.callback = function(data, status, headers, config) {
             if(config != null){
                 if(config.url.includes("addcomments")){
-                    if(data != false){
-                      console.log(data);
+                    if(Object.getOwnPropertyNames(data).length == 0){
                       ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
                       $('.modal').modal('hide');
                     }
-                    else
-                      ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
-                    //$timeout(function(){$window.location.reload()}, 2000);
+                    else if(data == 1)
+                      ngToast.create({className: 'alert alert-danger',content:'Fail! Wrong Data!',timeout:1500});
+                    else if(data == 2)
+                      ngToast.create({className: 'alert alert-danger',content:'Fail! Command Error!',timeout:1500});
                 }
             }
           };
@@ -1780,8 +1662,7 @@ angular.module('vshell.controllers', [])
 
           var options = {
               name: 'deletecomments',
-              url: 'deletecomments/' + id + '/' + type,
-              queue: 'main'
+              url: 'deletecomments/' + id + '/' + type
           };
 
           async.api($scope, options);
@@ -1791,9 +1672,10 @@ angular.module('vshell.controllers', [])
                 if(config.url.includes("deletecomments")){
                   if(Object.getOwnPropertyNames(data).length == 0)
                     ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
-                  else
-                    ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
-                  //$timeout(function(){$window.location.reload()}, 2000);
+                    else if(data == 1)
+                      ngToast.create({className: 'alert alert-danger',content:'Fail! Wrong Data!',timeout:1500});
+                    else if(data == 2)
+                      ngToast.create({className: 'alert alert-danger',content:'Fail! Command Error!',timeout:1500});
                 }
               }
           };
@@ -1848,9 +1730,9 @@ angular.module('vshell.controllers', [])
           var date = new Date();
           var twohourslater = $filter('date')((new Date(date.getTime() + (2*60*60*1000))), 'yyyy-MM-ddTHH:mm');
 
-          $scope.hostName = $scope.name.host[0];
+          $timeout(function(){$scope.hostName = $scope.name.host[0];}, 800);
           $scope.comment = null;
-          $scope.triggeredBy = 'N/A';
+          $scope.triggeredBy = 0;
           $scope.startDate = now;
           $scope.endDate = twohourslater;
           $scope.type = 'true';
@@ -1897,8 +1779,7 @@ angular.module('vshell.controllers', [])
                 name: 'scheduledowntime',
                 url: 'scheduledowntime/'+ scheduletype + '/' + hostName + '/' + service + '/'+ startUnix
                   + '/' + endUnix + '/' + fixed + '/' + triggerID + '/' + duration
-                  + '/' + author + '/' + comment,
-                queue: 'main'
+                  + '/' + author + '/' + comment
             };
             async.api($scope, options);
 
@@ -1909,9 +1790,10 @@ angular.module('vshell.controllers', [])
                         ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
                         $('.modal').modal('hide');
                       }
-                      else
-                        ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
-                      //$timeout(function(){$window.location.reload()}, 2000);
+                      else if(data == 1)
+                        ngToast.create({className: 'alert alert-danger',content:'Fail! Wrong Data!',timeout:1500});
+                      else if(data == 2)
+                        ngToast.create({className: 'alert alert-danger',content:'Fail! Command Error!',timeout:1500});
                   }
               }
             };
@@ -1923,8 +1805,7 @@ angular.module('vshell.controllers', [])
           $scope.delete = function(){
             var options = {
                 name: 'deletedowntime',
-                url: 'deletedowntime/' + id + '/' + type,
-                queue: 'main'
+                url: 'deletedowntime/' + id + '/' + type
             };
 
             async.api($scope, options);
@@ -1934,9 +1815,10 @@ angular.module('vshell.controllers', [])
                   if(config.url.includes("deletedowntime")){
                     if(Object.getOwnPropertyNames(data).length == 0)
                       ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:1500});
-                    else
-                      ngToast.create({className: 'alert alert-danger',content:'Fail!',timeout:1500});
-                    //$timeout(function(){$window.location.reload()}, 2000);
+                      else if(data == 1)
+                        ngToast.create({className: 'alert alert-danger',content:'Fail! Wrong Data!',timeout:1500});
+                      else if(data == 2)
+                        ngToast.create({className: 'alert alert-danger',content:'Fail! Command Error!',timeout:1500});
                   }
                 }
             };

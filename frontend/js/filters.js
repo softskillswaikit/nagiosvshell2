@@ -3,12 +3,31 @@
 angular.module('vshell.filters', [])
 
 /*
-* decimal, alerthistogram-x, week, month, persistent,
+* report_type, decimal, alerthistogram-x, week, month, persistent,
 * downtime_type, triggered_id, entry_type, expires
 * Create by Choy Yi Zhen
 */
 
-/* fix decimal places */
+/* convert int to report type */
+.filter('report_type', function() {
+    return function(input) {
+      if(input == 1)
+        return 'Host';
+      else if(input == 2)
+        return 'Service';
+      else if(input == 3)
+        return 'Host Resource';
+      else if(input == 4)
+        return 'Service Running State';
+      else if(input == 5)
+        return 'Hostgroup';
+      else if(input == 6)
+        return 'Servicegroup';
+      else
+        return 'Unknown';
+    }
+})
+
 .filter('decimal', function() {
     return function(num, dec) {
       return num.toFixed(dec);

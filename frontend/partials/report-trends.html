@@ -36,7 +36,7 @@
 						<div class="form-group">
 							<label for="reportHost" class="col-md-4 control-label">Select Host:</label>
 							<div class="col-md-6">
-								<select ng-model="reportHost" ng-change="reportService = '' ; reportHostResource = ''" name="reportHost" class="form-control" ng-required="reportType!=2">
+								<select ng-model="reportHost" ng-change="reportService = ''" name="reportHost" class="form-control" ng-required="reportType!=2">
 									 <option ng-repeat="name in name.host" value="{{name}}">{{name}}</option>
 								</select>
 								<span style="color:red" ng-show="inputForm.reportHost.$invalid">
@@ -44,25 +44,18 @@
 							</div>
 						</div>
 
-						<div class="form-group" ng-show="reportType == 2 || reportType == 4">
-							<label for="reportService" class="col-md-4 control-label">Select Service:</label>
+						<div class="form-group" ng-show="reportType != 1">
+							<label for="reportService" ng-show="reportType == 2" class="col-md-4 control-label">Select Service:</label>
+							<label for="reportService" ng-show="reportType == 3" class="col-md-4 control-label">Select Host Resource:</label>
+							<label for="reportService" ng-show="reportType == 4" class="col-md-4 control-label">Select Service Running State:</label>
 							<div class="col-md-6">
-								<select ng-model="reportService" name="reportService" class="form-control" ng-required="reportType == 2 || reportType == 4">
-									 <option ng-repeat="name in name.service | filter:{host:reportHost}:true" value="{{name.service}}">{{name.service}}</option>
+								<select ng-model="reportService" name="reportService" class="form-control" ng-required="reportType != 1">
+									 <option ng-show="reportType == 2" ng-repeat="name in name.service | filter:{host:reportHost}:true" value="{{name.service}}">{{name.service}}</option>
+									 <option ng-show="reportType == 3" ng-repeat="name in name.hostresource | filter:{host:reportHost}:true" value="{{name.service}}">{{name.service}}</option>
+									 <option ng-show="reportType == 4" ng-repeat="name in name.runningstate | filter:{host:reportHost}:true" value="{{name.service}}">{{name.service}}</option>
 								</select>
 								<span style="color:red" ng-show="inputForm.reportService.$invalid">
 								<span ng-show="inputForm.reportService.$error.required">This field is required.</span></span>
-							</div>
-						</div>
-
-						<div class="form-group" ng-show="reportType == 3">
-							<label for="reportHostResource" class="col-md-4 control-label">Select Host Resource:</label>
-							<div class="col-md-6">
-								<select ng-model="reportHostResource" name="reportHostResource" class="form-control" ng-required="reportType == 3">
-									 <option ng-repeat="name in name.hostresource | filter:{host:reportHost}:true" value="{{name.service}}">{{name.service}}</option>
-								</select>
-								<span style="color:red" ng-show="inputForm.reportHostResource.$invalid">
-								<span ng-show="inputForm.reportHostResource.$error.required">This field is required.</span></span>
 							</div>
 						</div>
 
@@ -158,7 +151,7 @@
 							<label for="firstAssumedHostState" class="col-md-4 control-label">First Assumed Host State:</label>
 							<div class="col-md-6">
 								<select ng-model="firstAssumedHostState" name="firstAssumedHostState" class="form-control" required>
-									<option value="PENDING">Pending</option>
+									<option value="UNDETERMINED">Pending</option>
 									<option value="HOST PROBLEM STATE">Current State</option>
 									<option value="UP">Host Up</option>
 									<option value="DOWN">Host Down</option>
@@ -173,7 +166,7 @@
 							<label for="firstAssumedServiceState" class="col-md-4 control-label">First Assumed Service State:</label>
 							<div class="col-md-6">
 								<select ng-model="firstAssumedServiceState" name="firstAssumedServiceState" class="form-control" required>
-									<option value="PENDING">Pending</option>
+									<option value="UNDETERMINED">Pending</option>
 									<option value="SERVICE PROBLEM STATE">Current State</option>
 									<option value="OK">Service Ok</option>
 									<option value="WARNING">Service Warning</option>
