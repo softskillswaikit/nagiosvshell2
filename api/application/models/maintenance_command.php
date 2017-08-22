@@ -447,6 +447,8 @@ class Maintenance_command extends CI_Model
 		
 		fclose($conf_file);
 
+		$this->system_commands->restart_nagios();
+
 		return true;
 	}
 
@@ -623,6 +625,8 @@ class Maintenance_command extends CI_Model
 		}
 		
 		fclose($conf_file);
+
+		$this->system_commands->restart_nagios();
 
 		return true;
 	}
