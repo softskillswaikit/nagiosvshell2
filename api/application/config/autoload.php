@@ -124,9 +124,9 @@ $autoload['model'] = array(
 	'nagios_group',
 	'nagios_user',
 	'tac_data',
-	'testing',
 	'reports_data',
-	'system_commands'
+	'system_commands',
+	'maintenance_command'
 );
 
 /*
