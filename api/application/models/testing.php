@@ -26,8 +26,6 @@ class Testing extends CI_Model
 		define('TEMPLATE_SERVICES', '/usr/local/nagios/etc/objects/template_services.cfg');
 		define('TEMPLATE_SERVICEGROUPS', '/usr/local/nagios/etc/objects/template_servicegroups.cfg');
 	}
-
-	//******** add $this->system_commands->restart_nagios();
 	
 	//Function used to add new variable to existing object
 	public function add_var($type, $input_items)
@@ -214,92 +212,441 @@ class Testing extends CI_Model
 	//Function used to add new object
 	public function add($type, $input_items)
 	{
-		//open different object file based on request
-		switch($type)
+		//$type = 'commands'
+		if($type === 1)
 		{
-			//$type = 'commands'
-			case 1:
-				$conf_file = fopen(COMMANDS, 'rw') or die('File not found !');
-				$selected = 'command';
-				break;
-			//$type = 'contacts'
-			case 2:
-				$conf_file = fopen(CONTACTS, 'rw') or die('File not found !');
-				$selected = 'contact';
-				break;
-			//$type = 'contactgroups'
-			case 3:
-				$conf_file = fopen(CONTACTGROUPS, 'rw') or die('File not found !');
-				$selected = 'contactgroup';
-				break;
-			//$type = 'hosts'
-			case 4:
-				$conf_file = fopen(HOSTS, 'rw') or die('File not found !');
-				$selected = 'host';
-				break;
-			//$type = 'hostgroups'
-			case 5:
-				$conf_file = fopen(HOSTGROUPS, 'rw') or die('File not found !');
-				$selected = 'hostgroup';
-				break;
-			//$type = 'timeperiods'
-			case 6:
-				$conf_file = fopen(TIMEPERIODS, 'rw') or die('File not found !');
-				$selected = 'timeperiod';
-				break;
-			//$type = 'services'
-			case 7:
-				$conf_file = fopen(SERVICES, 'rw') or die('File not found !');
-				$selected = 'service';
-				break;
-			//$type = 'servicegroups'
-			case 8:
-				$conf_file = fopen(SERVICEGROUPS, 'rw') or die('File not found !');
-				$selected = 'servicegroup';
-				break;
-			//$type = 'template_commands'
-			case 9:
-				$conf_file = fopen(TEMPLATE_COMMANDS, 'rw') or die('File not found !');
-				$selected = 'template_command';
-				break;
-			//$type = 'template_contacts'
-			case 10:
-				$conf_file = fopen(TEMPLATE_CONTACTS, 'rw') or die('File not found !');
-				$selected = 'template_contact';
-				break;
-			//$type = 'template_contactgroups'
-			case 11:
-				$conf_file = fopen(TEMPLATE_CONTATCGROUPS, 'rw') or die('File not found !');
-				$selected = 'template_contactgroup';
-				break;
-			//$type = 'template_hosts'
-			case 12:
-				$conf_file = fopen(TEMPLATE_HOSTS, 'rw') or die('File not found !');
-				$selected = 'template_host';
-				break;
-			//$type = 'template_hostgroups'
-			case 13:
-				$conf_file = fopen(TEMPLATE_HOSTGROUPS, 'rw') or die('File not found !');
-				$selected = 'template_hostgroup';
-				break;
-			//$type = 'template_timeperiods'
-			case 14:
-				$conf_file = fopen(TEMPLATE_TIMEPERIODS, 'rw') or die('File not found !');
-				$selected = 'template_timeperiod';
-				break;
-			//$type = 'template_services'
-			case 15:
-				$conf_file = fopen(TEMPLATE_SERVICES, 'rw') or die('File not found !');
-				$selected = 'template_service';
-				break;
-			//$type = 'template_servicegroups'
-			case 16:
-				$conf_file = fopen(TEMPLATE_SERVICEGROUPS, 'rw') or die('File not found !');
-				$selected = 'template_servicegroup';
-				break;
+			//open the configuration file
+			//place the pointer at end of file
+			$conf_file = fopen(COMMANDS, 'ab') or die('File not found !');
+
+			//write into the configuration file
+			fwrite($conf_file, "\ndefine command {");
+
+			foreach($input_items as $items)
+			{
+				list($key, $value) = explode(',', $items, 2);
+
+				$line = "\n\t".$key."\t".$value;
+				fwrite($conf_file, $line);
+			}
+
+			fwrite($conf_file, "\n}");
+
+			//close the configuration file
+			fclose($conf_file);
+
+			$this->system_commands->restart_nagios();
+
+			return true;
+		}
+		//$type = 'contacts'
+		else if($type === 2)
+		{
+			//open the configuration file
+			//place the pointer at end of file
+			$conf_file = fopen(CONTACTS, 'ab') or die('File not found !');
+
+			//write into the configuration file
+			fwrite($conf_file, "\ndefine contact {");
+
+			foreach($input_items as $items)
+			{
+				list($key, $value) = explode(',', $items, 2);
+
+				$line = "\n\t".$key."\t".$value;
+				fwrite($conf_file, $line);
+			}
+
+			fwrite($conf_file, "\n}");
+
+			//close the configuration file
+			fclose($conf_file);
+
+			$this->system_commands->restart_nagios();
+
+			return true;
+		}
+		//$type = 'contactgroups'
+		else if($type === 3)
+		{
+			//open the configuration file
+			//place the pointer at end of file
+			$conf_file = fopen(CONTACTGROUPS, 'ab') or die('File not found !');
+
+			//write into the configuration file
+			fwrite($conf_file, "\ndefine contactgroup {");
+
+			foreach($input_items as $items)
+			{
+				list($key, $value) = explode(',', $items, 2);
+
+				$line = "\n\t".$key."\t".$value;
+				fwrite($conf_file, $line);
+			}
+
+			fwrite($conf_file, "\n}");
+
+			//close the configuration file
+			fclose($conf_file);
+
+			$this->system_commands->restart_nagios();
+
+			return true;
+		}
+		//$type = 'hosts'
+		else if($type === 4)
+		{
+			//open the configuration file
+			//place the pointer at end of file
+			$conf_file = fopen(HOSTS, 'ab') or die('File not found !');
+
+			//write into the configuration file
+			fwrite($conf_file, "\ndefine host {");
+
+			foreach($input_items as $items)
+			{
+				list($key, $value) = explode(',', $items, 2);
+
+				$line = "\n\t".$key."\t".$value;
+				fwrite($conf_file, $line);
+			}
+
+			fwrite($conf_file, "\n}");
+
+			//close the configuration file
+			fclose($conf_file);
+
+			$this->system_commands->restart_nagios();
+
+			return true;
+		}
+		//$type = 'hostgroups'
+		else if($type === 5)
+		{
+			//open the configuration file
+			//place the pointer at end of file
+			$conf_file = fopen(HOSTGROUPS, 'ab') or die('File not found !');
+
+			//write into the configuration file
+			fwrite($conf_file, "\ndefine hostgroup {");
+
+			foreach($input_items as $items)
+			{
+				list($key, $value) = explode(',', $items, 2);
+
+				$line = "\n\t".$key."\t".$value;
+				fwrite($conf_file, $line);
+			}
+
+			fwrite($conf_file, "\n}");
+
+			//close the configuration file
+
+			fclose($conf_file);
+
+			$this->system_commands->restart_nagios();
+
+			return true;
+		}
+		//$type = 'timeperiods'
+		else if($type === 6)
+		{
+			//open the configuration file
+			//place the pointer at end of file
+			$conf_file = fopen(TIMEPERIODS, 'ab') or die('File not found !');
+
+			//write into the configuration file
+			fwrite($conf_file, "\ndefine timeperiod {");
+
+			foreach($input_items as $items)
+			{
+				list($key, $value) = explode(',', $items, 2);
+
+				$line = "\n\t".$key."\t".$value;
+				fwrite($conf_file, $line);
+			}
+
+			fwrite($conf_file, "\n}");
+
+			//close the configuration file
+			fclose($conf_file);
+
+			$this->system_commands->restart_nagios();
+
+			return true;
+		}
+		//$type = 'services'
+		else if($type === 7)
+		{
+			//open the configuration file
+			//place the pointer at end of file
+			$conf_file = fopen(SERVICES, 'ab') or die('File not found !');
+
+			//write into the configuration file
+			fwrite($conf_file, "\ndefine service {");
+
+			foreach($input_items as $items)
+			{
+				list($key, $value) = explode(',', $items, 2);
+
+				$line = "\n\t".$key."\t".$value;
+				fwrite($conf_file, $line);
+			}
+
+			fwrite($conf_file, "\n}");
+
+			//close the configuration file
+			fclose($conf_file);
+
+			$this->system_commands->restart_nagios();
+
+			return true;
+		}
+		//$type = 'servicegroups'
+		else if($type === 8)
+		{
+			//open the configuration file
+			//place the pointer at end of file
+			$conf_file = fopen(SERVICEGROUPS, 'ab') or die('File not found !');
+
+			//write into the configuration file
+			fwrite($conf_file, "\ndefine servicegroup {");
+
+			foreach($input_items as $items)
+			{
+				list($key, $value) = explode(',', $items, 2);
+
+				$line = "\n\t".$key."\t".$value;
+				fwrite($conf_file, $line);
+			}
+
+			fwrite($conf_file, "\n}");
+
+			//close the configuration file
+			fclose($conf_file);
+
+			$this->system_commands->restart_nagios();
+
+			return true;
+		}
+		//$type = 'template_commands'
+		else if($type === 9)
+		{
+			//open the configuration file
+			//place the pointer at end of file
+			$conf_file = fopen(TEMPLATE_COMMANDS, 'ab') or die('File not found !');
+
+			//write into the configuration file
+			fwrite($conf_file, "\ndefine template_command {");
+
+			foreach($input_items as $items)
+			{
+				list($key, $value) = explode(',', $items, 2);
+
+				$line = "\n\t".$key."\t".$value;
+				fwrite($conf_file, $line);
+			}
+
+			fwrite($conf_file, "\n}");
+			//close the configuration file
+
+			fclose($conf_file);
+
+			$this->system_commands->restart_nagios();
+
+			return true;
+		}
+		//$type = 'template_contacts'
+		else if($type === 10)
+		{
+			//open the configuration file
+			//place the pointer at end of file
+			$conf_file = fopen(TEMPLATE_CONTACTS, 'ab') or die('File not found !');
+
+			//write into the configuration file
+			fwrite($conf_file, "\ndefine template_contact {");
+
+			foreach($input_items as $items)
+			{
+				list($key, $value) = explode(',', $items, 2);
+
+				$line = "\n\t".$key."\t".$value;
+				fwrite($conf_file, $line);
+			}
+
+			fwrite($conf_file, "\n}");
+
+			//close the configuration file
+			fclose($conf_file);
+
+			$this->system_commands->restart_nagios();
+
+			return true;
+		}
+		//$type = 'template_contactgroups'
+		else if($type === 11)
+		{
+			//open the configuration file
+			//place the pointer at end of file
+			$conf_file = fopen(TEMPLATE_CONTATCGROUPS, 'ab') or die('File not found !');
+
+			//write into the configuration file
+			fwrite($conf_file, "\ndefine template_contactgroup {");
+
+			foreach($input_items as $items)
+			{
+				list($key, $value) = explode(',', $items, 2);
+
+				$line = "\n\t".$key."\t".$value;
+				fwrite($conf_file, $line);
+			}
+
+			fwrite($conf_file, "\n}");
+
+			//close the configuration file
+			fclose($conf_file);
+
+			$this->system_commands->restart_nagios();
+
+			return true;
+		}
+		//$type = 'template_hosts'
+		else if($type === 12)
+		{
+			//open the configuration file
+			//place the pointer at end of file
+			$conf_file = fopen(TEMPLATE_HOSTS, 'ab') or die('File not found !');
+
+			//write into the configuration file
+			fwrite($conf_file, "\ndefine template_host {");
+
+			foreach($input_items as $items)
+			{
+				list($key, $value) = explode(',', $items, 2);
+
+				$line = "\n\t".$key."\t".$value;
+				fwrite($conf_file, $line);
+			}
+
+			fwrite($conf_file, "\n}");
+
+			//close the configuration file
+			fclose($conf_file);
+
+			$this->system_commands->restart_nagios();
+
+			return true;
+		}
+		//$type = 'template_hostgroups'
+		else if($type === 13)
+		{
+			//open the configuration file
+			//place the pointer at end of file
+			$conf_file = fopen(TEMPLATE_HOSTGROUPS, 'ab') or die('File not found !');
+
+			//write into the configuration file
+			fwrite($conf_file, "\ndefine template_hostgroup {");
+
+			foreach($input_items as $items)
+			{
+				list($key, $value) = explode(',', $items, 2);
+
+				$line = "\n\t".$key."\t".$value;
+				fwrite($conf_file, $line);
+			}
+
+			fwrite($conf_file, "\n}");
+
+			//close the configuration file
+			fclose($conf_file);
+
+			$this->system_commands->restart_nagios();
+
+			return true;
+		}
+		//$type = 'template_timeperiods'
+		else if($type === 14)
+		{
+			//open the configuration file
+			//place the pointer at end of file
+			$conf_file = fopen(TEMPLATE_TIMEPERIODS, 'ab') or die('File not found !');
+
+			//write into the configuration file
+			fwrite($conf_file, "\ndefine template_timeperiod {");
+
+			foreach($input_items as $items)
+			{
+				list($key, $value) = explode(',', $items, 2);
+
+				$line = "\n\t".$key."\t".$value;
+				fwrite($conf_file, $line);
+			}
+
+			fwrite($conf_file, "\n}");
+
+			//close the configuration file
+			fclose($conf_file);
+
+			$this->system_commands->restart_nagios();
+
+			return true;
+		}
+		//$type = 'template_services'
+		else if($type === 15)
+		{
+			//open the configuration file
+			//place the pointer at end of file
+			$conf_file = fopen(TEMPLATE_SERVICES, 'ab') or die('File not found !');
+
+			//write into the configuration file
+			fwrite($conf_file, "\ndefine template_service {");
+
+			foreach($input_items as $items)
+			{
+				list($key, $value) = explode(',', $items, 2);
+
+				$line = "\n\t".$key."\t".$value;
+				fwrite($conf_file, $line);
+			}
+
+			fwrite($conf_file, "\n}");
+
+			//close the configuration file
+			fclose($conf_file);
+
+			$this->system_commands->restart_nagios();
+
+			return true;
+		}
+		//$type = 'template_servicegroups'
+		else if($type === 16)
+		{
+			//open the configuration file
+			//place the pointer at end of file
+			$conf_file = fopen(TEMPLATE_SERVICEGROUPS, 'ab') or die('File not found !');
+
+			//write into the configuration file
+			fwrite($conf_file, "\ndefine template_servicegroup {");
+
+			foreach($input_items as $items)
+			{
+				list($key, $value) = explode(',', $items, 2);
+
+				$line = "\n\t".$key."\t".$value;
+				fwrite($conf_file, $line);
+			}
+
+			fwrite($conf_file, "\n}");
+
+			//close the configuration file
+			fclose($conf_file);
+
+			$this->system_commands->restart_nagios();
+
+			return true;
 		}
 	}
-
+	
 	//Function used to delete variable of existing object
 	public function delete($type, $input_items, $is_var)
 	{
@@ -525,7 +872,7 @@ class Testing extends CI_Model
 
 		return true;
 	}
-
+	
 	//Function used to edit variable of existing object
 	public function edit($type, $input_items)
 	{
