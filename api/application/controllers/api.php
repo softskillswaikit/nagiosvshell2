@@ -83,7 +83,11 @@ class API extends VS_Controller
     /**
      * Retrieve program status
      */
+<<<<<<< HEAD
     public function programStatus()
+=======
+    public function programstatus()
+>>>>>>> weiliang
     {
         $Program = $this->nagios_data->get_collection('programstatus');
         $this->output($Program);
@@ -1751,6 +1755,7 @@ class API extends VS_Controller
      {
         $Result = false;
 
+<<<<<<< HEAD
         if($type == 'true')
         {
             $Result = $this->system_commands->enable_flap_detection();
@@ -1807,6 +1812,30 @@ class API extends VS_Controller
      public function serviceFlapDetection($type, $host_name, $service_description)
      {
         $Result = false;
+=======
+        foreach($hosts as $host)
+        {
+            $Data[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
+        }
+
+        foreach($services as $service)
+        {
+            $Data[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
+        }
+
+        foreach($hostgroups as $hostgroup)
+        {
+            $Data[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
+        }
+
+        foreach($servicegroups as $servicegroup)
+        {
+            $Data[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
+        }
+
+        $this->output($Data);
+    }
+>>>>>>> weiliang
 
         //check empty inputs
         $validate = $this->validate_data($type, $host_name, $service_description);
@@ -1830,6 +1859,7 @@ class API extends VS_Controller
             $Result = 1; 
         }
 
+<<<<<<< HEAD
         $this->output($Result);
      }
 
@@ -1871,12 +1901,105 @@ class API extends VS_Controller
         {
             $Result = 1;
         }
+=======
+    /**
+     * Retrieve tactical overview data
+     */
+    public function tacticaloverview() 
+    {
+        $Data = $this->tac_data->get_tac_data();
+        $this->output($Data);
+    }
+>>>>>>> weiliang
 
         $this->output($Result);
      }
 
+<<<<<<< HEAD
+=======
+    /**
+     * Fetch /etc/vshell2.conf file values, as parsed by CodeIgniter
+     */
+    function vshellconfig() 
+    {
+        $config = array(
+            'baseurl'        => BASEURL,
+            'cgicfg'         => CGICFG,
+            'coreurl'        => COREURL,
+            'lang'           => LANG,
+            'objectsfile'    => OBJECTSFILE,
+            'statusfile'     => STATUSFILE,
+            'ttl'            => TTL,
+            'updateinterval' => UPDATEINTERVAL
+        );
+>>>>>>> weiliang
 
 
+
+    //Written by Soon Wei Liang
+    /*
+     * Fetch host name
+     */
+    public function hostname()
+    {
+        $Hosts = $this->nagios_data->get_collection('host');
+
+        foreach ($Hosts as $Host) 
+        {
+            $Host->hydrate();
+            $Hostname[] = $Hosts->host_name;
+        }
+
+        $this->output($Hostname);
+    }
+
+    /*
+     * Fetch service name
+     */
+    public function servicename()
+    {
+        $Services = $this->nagios_data->get_collection('service');
+
+        foreach ($Services as $Service)
+        {
+            $Service->hydrate();
+            $Servicename[] = $Service->service_name;
+        }
+
+        $this->output($Servicename);
+    }    
+
+    /*
+     * Fetch host group name 
+     */
+    public function hostgroupname()
+    {
+        $Hostgroups = $this->nagios_data->get_collection('hostgroup');
+
+        foreach($Hostgroups as $Hostgroup)
+        {
+            $Hostgroup->hydrate();
+            $Hostgroupname[] = $Hostgroup->hostgroup_name;
+        }
+
+        $this->output($Hostgroupname);
+    }
+
+    /*
+     * Fetch service group name
+     */
+    public function servicegroupname()
+    {
+        $Servicegroups = $this->nagios_data->get_collection('servicegroup');
+
+        foreach($Servicegroups as $Servicegroup)
+        {
+            $Servicegroup->hydrate();
+            $Servicegroupname[] = $Servicegroup->servicegroup_name;
+        }
+
+        $this->output($Servicegroupname);
+    }
 
     /**
      * Fetch host status
@@ -1934,8 +2057,13 @@ class API extends VS_Controller
 
             if(empty($service_description))
             {
+<<<<<<< HEAD
                 $Result['code'] = -1;//Please provide a service name.
                 return $this->output($Result);
+=======
+                $result['code'] = -1;//Please provide a service name.
+                return $this->output($result);
+>>>>>>> weiliang
             } 
             else 
             {
@@ -1943,8 +2071,13 @@ class API extends VS_Controller
                 
                 if( empty($Data) )
                 {
+<<<<<<< HEAD
                     $Result['code'] = -2;//Unknown service name: '.$service_description
                     return $this->output($Result);
+=======
+                    $result['code'] = -2;//Unknown service name: '.$service_description
+                    return $this->output($result);
+>>>>>>> weiliang
                 } 
                 
                 if(!$this->is_remote_enabled($Data))
@@ -1998,8 +2131,13 @@ class API extends VS_Controller
 
             if(empty($service_description))
             {
+<<<<<<< HEAD
                 $Result['code'] = -1;//Please provide a service name.
                 return $this->output($Result);
+=======
+                $result['code'] = -1;//Please provide a service name.
+                return $this->output($result);
+>>>>>>> weiliang
             } 
             else 
             {
@@ -2007,8 +2145,13 @@ class API extends VS_Controller
                 
                 if( empty($Data) )
                 {
+<<<<<<< HEAD
                     $Result['code'] = -2;//Unknown service name: '.$service_description
                     return $this->output($Result);
+=======
+                    $result['code'] = -2;//Unknown service name: '.$service_description
+                    return $this->output($result);
+>>>>>>> weiliang
                 } 
                 
                 if(!$this->is_remote_enabled($Data))
@@ -2112,16 +2255,26 @@ class API extends VS_Controller
 
             if(empty($service_description))
             {
+<<<<<<< HEAD
                 $Result['code'] = -1;//Please provide a service name.
                 return $this->output($Result);
+=======
+                $result['code'] = -1;//Please provide a service name.
+                return $this->output($result);
+>>>>>>> weiliang
             } 
             else 
             {
                 $Data = $Data->get_index_key('host_name',$host_name)->get_where('service_description',$service_description)->first();
                 if( empty($Data) )
                 {
+<<<<<<< HEAD
                     $Result['code'] = -2;//Unknown service name: '.$service_description
                     return $this->output($Result);
+=======
+                    $result['code'] = -2;//Unknown service name: '.$service_description
+                    return $this->output($result);
+>>>>>>> weiliang
                 } 
                 
                 if($this->is_logfile_defined($Data))
@@ -2270,16 +2423,26 @@ class API extends VS_Controller
 
             if(empty($service_description))
             {
+<<<<<<< HEAD
                 $Result['code'] = -1;//Please provide a service name.
                 return $this->output($Result);
+=======
+                $result['code'] = -1;//Please provide a service name.
+                return $this->output($result);
+>>>>>>> weiliang
             } 
             else 
             {
                 $Data = $Data->get_index_key('host_name',$host_name)->get_where('service_description',$service_description)->first();
                 if( empty($Data) )
                 {
+<<<<<<< HEAD
                     $Result['code'] = -2;//Unknown service name: '.$service_description
                     return $this->output($Result);
+=======
+                    $result['code'] = -2;//Unknown service name: '.$service_description
+                    return $this->output($result);
+>>>>>>> weiliang
                 }
                 
                 if($this->is_logfile_defined($Data))
@@ -2533,7 +2696,42 @@ class API extends VS_Controller
         $this->output($configurations);
     }
 
+<<<<<<< HEAD
     
+=======
+    /**
+     * Fetch all comments or only those of a certain type.
+     * Returns a flat array of comment objects.
+     *
+     * @param  string $type
+     */
+    public function comments($type = '') 
+    {
+        $allowed_types = array(
+            'hostcomment',
+            'servicecomment'
+        );
+
+        if( $type != '' )
+        {
+            if( ! in_array($type, $allowed_types) )
+            {
+                return $this->output(array());
+            }
+
+            $specific_comments = $this->nagios_data->get_collection($type)->get_index('host_name');
+            $comments = $this->comments_flatten($specific_comments);
+        } 
+        else
+        {
+            $host_comments = $this->nagios_data->get_collection('hostcomment')->get_index('host_name');
+            $service_comments = $this->nagios_data->get_collection('servicecomment')->get_index('host_name');
+            $comments = $this->comments_merge($host_comments, $service_comments);
+        }
+
+        $this->output($comments);
+    }
+>>>>>>> weiliang
     
     /**
      * Check if the service is allowed to remote control.

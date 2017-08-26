@@ -38,6 +38,7 @@
 |
 */
 
+<<<<<<< HEAD
 $route["default_controller"] 	= "api";
 $route["404_override"] 			= "";
 $route["status"] 				= "api";
@@ -56,6 +57,32 @@ $route["overview"] 					= "api/tacticalOverview";
 $route["nagiosinfo"] 				= "api/info";
 $route["nagiosstatus"] 				= "api/programStatus";
 $route["quicksearch"] 				= "api/quicksearch";
+=======
+$route["default_controller"] = "api";
+$route["404_override"] = "";
+
+$route["status"] = "api";
+/*
+* Create by Soon Wei Liang
+*/
+$route["hostnames"] = "api/hostname";
+$route["servicename"] = "api/servicename";
+$route["hostgroupname"] = "api/hostgroupname";
+$route["servicegroupname"] = "api/servicegroupname";
+
+$route["comments/(:any)"] = "api/comments/$1";
+$route["comments"] = "api/comments";
+$route["configurations/(:any)"] = "api/configurations/$1";
+$route["configurations"] = "api/configurations";
+$route["hostgroupstatus/(:any)"] = "api/hostgroupstatus/$1";
+$route["hostgroupstatus*"] = "api/hostgroupstatus";
+$route["hoststatus/(:any)"] = "api/hoststatus/$1";
+$route["hoststatus*"] = "api/hoststatus";
+$route["overview"] = "api/tacticaloverview";
+$route["nagiosinfo"] = "api/info";
+$route["nagiosstatus"] = "api/programstatus";
+$route["quicksearch"] = "api/quicksearch";
+>>>>>>> weiliang
 $route["servicegroupstatus/(:any)"] = "api/servicegroupstatus/$1";
 $route["servicegroupstatus*"] 		= "api/servicegroupstatus";
 $route["servicestate/(:any)/(:any)"]= "api/servicestate/$1/$2";
