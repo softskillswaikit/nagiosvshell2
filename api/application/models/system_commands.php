@@ -1599,9 +1599,7 @@ class System_commands extends CI_Model
 	public function delete_host_downtime($input_downtime_id)
 	{
 		$commands = 'DEL_HOST_DOWNTIME;'.$input_downtime_id;
-
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
-
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{
@@ -1619,15 +1617,11 @@ class System_commands extends CI_Model
 			return false;
 		}
 	}
-
-
 	//command id = 126
 	public function delete_svc_downtime($input_downtime_id)
 	{
 		$commands = 'DEL_SVC_DOWNTIME;'.$input_downtime_id;
-
 		$this->return_value = shell_exec("sh /usr/local/vshell2/api/application/scripts/system_command.sh ".escapeshellarg($commands));
-
 		//check that the command runs successfully
 		if((int)$this->return_value)
 		{

@@ -25,8 +25,7 @@
 // http://www.fsf.org.
 //
 //
-// CONTRIBUTION POLICY:
-//
+// CONTRIBUTION POLICY//
 // (The following paragraph is not intended to limit the rights granted
 // to you to modify and distribute this software under the terms of
 // licenses that may apply to the software.)

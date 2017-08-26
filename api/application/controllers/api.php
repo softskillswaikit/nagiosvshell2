@@ -265,10 +265,10 @@ class API extends VS_Controller
      * @param String $assume_state_downtime, true, false
      * @param String $include_soft, true, false
      * @param String $first_assume_host_state
+     * @param String $backtrack_archive, integer
      * @param String $first_assume_service_state
-     * @param String $backtrack_archieve, integer
      */
-     public function availability($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_state, $first_assume_service_state, $backtrack_archive)
+     public function availability($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_state, $backtrack_archive, $first_assume_service_state)
     {
         $Availability = array();
 
@@ -300,23 +300,13 @@ class API extends VS_Controller
             $date = $start_date;
         }
 
-        //for hostgroup
-        if($return_type == 1)
-        {
-            $host_name = $this->get_hosts($host_name);
-        }
-        //for servicegroup
-        else if($return_type == 2)
-        {
-            $service_description = $this->get_services($service_description);
-        }
 
         //check empty inputs
         $validate = $this->validate_data(array($return_type, $period, $date, $first_assume_host_state, $first_assume_service_state, $backtrack_archive));
 
         if($validate)
         {
-            $Availability = $this->reports_data->get_availability($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_state, $first_assume_service_state, $backtrack_archive);
+            $Availability = $this->reports_data->get_availability($return_type, $period, $date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_state, $first_assume_service_state, $backtrack_archive);
         }
         //invalid input
         else
@@ -342,29 +332,13 @@ class API extends VS_Controller
      * @param string $assume_state_downtime, 'true', 'false'
      * @param string $include_soft, 'true', 'false'
      * @param string $backtrack_archive, integer
-     * @param string $first_assume_host_service, possible value (host) = 'UP', 'DOWN', 'UNREACHABLE', 'PENDING', 'ALL', 'HOST PROBLEM STATE'; possible value (service) = 'OK', 'WARNING', 'UNKNOWN', 'CRITICAL', 'PENDING', 'ALL', 'SERVICE PROBLEM STATE'
+     * @param string $first_assume_host_service, possible value (host) = 'UP', 'DOWN', 'UNREACHABLE', 'UNDETERMINED', 'ALL', 'HOST PROBLEM STATE'; possible value (service) = 'OK', 'WARNING', 'UNKNOWN', 'CRITICAL', 'UNDETERMINED', 'ALL', 'SERVICE PROBLEM STATE'
      *
      * return code
-     * 0 = success
      * 1 = fail
      */
     public function trend($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $backtrack_archive, $first_assume_host_service)
     {
-
-        /* Test hardcoded data
-        $period = 'THIS YEAR';
-        $host_name = 'localhost';
-        $service_description = 'ALL';
-        $assume_state_retention = 'true';
-        $assume_state_downtime = 'true';
-        $assume_initial_state = 'true';
-        $include_soft = 'true';
-        $backtrack_archive = '4';
-        $return_type = '1';
-        $start_date = '1502619210';
-        $first_assume_host_service = 'UP';
-        */
-
         $Trend = array();
 
         //decode input with spacing
@@ -399,7 +373,7 @@ class API extends VS_Controller
 
         if($validate)
         {
-            $Trend = $this->reports_data->get_trend($return_type, $period, $start_date, $end_date, $host_name, $service_description, $first_assume_host_service, $backtrack_archive);
+            $Trend = $this->reports_data->get_trend($return_type, $period, $date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $first_assume_host_service, $backtrack_archive);
         }
         //incorrect inputs
         else
@@ -481,17 +455,6 @@ class API extends VS_Controller
             $date = $start_date;
         }
 
-        //for hostgroup
-        if($return_type == 3)
-        {
-            $host_name = $this->get_hosts($host_name);
-        }
-
-        //for servicegroup
-        if($return_type == 5)
-        {
-            $service_description = $this->get_services($service_description);
-        }
 
         //check empty and invalid inputs
         $validate = $this->validate_data(array($return_type, $period, $date, $service_description, $logtype, $statetype, $state));
@@ -626,10 +589,19 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $result = $this->validate_data(array('a', '1','abc123', false));
-        
+        $type = '1';
 
-        $this->output(var_dump($result));
+        $test_array = array(
+          'command_name' => 'test command 1', 
+          'command_line' => 'test command 2'
+        );
+
+        if($type == '1')
+        {
+            $Result = $this->maintenance_command->add(1, $test_array);
+        }
+
+        $this->output($Result);
     }
 
     /**
@@ -775,7 +747,7 @@ class API extends VS_Controller
      * @param String $author
      * @param String $comments
      */
-    public function scheduleDowntime($type, $host_name, $service_description='', $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments='')
+    public function scheduleDowntime($type, $host_name, $service_description, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments='')
     {
         $Result = false;
 
@@ -2055,6 +2027,29 @@ class API extends VS_Controller
 
         $Result['code'] = -3;//Fail to get the service.
         return $this->output($Result);
+    }
+
+    /**
+     * Add configuration
+     *
+     * @param String $type, '1' - command
+     * @param array String $command_array, [$command_name, $command_line]
+     */
+    public function addConfiguration($type, $command_array)
+    {
+        $type = '1';
+
+        $test_array = array(
+          'command_name' => 'test command 1', 
+          'command_line' => 'test command 2'
+        );
+
+        if($type == '1')
+        {
+            $Result = $this->maintenance_command->add(1, $test_array);
+        }
+
+        $this->output($Result);
     }
 
 

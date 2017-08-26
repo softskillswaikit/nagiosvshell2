@@ -394,7 +394,7 @@ angular.module('vshell.controllers', [])
             $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("hostservicenotification")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -440,7 +440,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("sendcustomnotification")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -485,7 +485,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("scheduledowntime")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -525,7 +525,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("scheduledowntime")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -567,7 +567,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("schedulecheck")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -592,7 +592,7 @@ angular.module('vshell.controllers', [])
             $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("hostservicecheck")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -650,7 +650,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("acknowledgeproblem")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -2133,7 +2133,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("allnotifications")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -2159,7 +2159,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("allnotifications")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -2191,7 +2191,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("allservicecheck")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -2216,7 +2216,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("allservicecheck")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -2249,7 +2249,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("allpassiveservicecheck")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -2274,7 +2274,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("allpassiveservicecheck")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -2306,7 +2306,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("allhostcheck")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -2331,7 +2331,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("allhostcheck")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -2363,7 +2363,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("allpassivehostcheck")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -2388,7 +2388,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("allpassivehostcheck")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -2420,7 +2420,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("eventhandler")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -2445,7 +2445,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("eventhandler")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -2478,7 +2478,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("obsessoverservicecheck")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -2504,7 +2504,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("obsessoverservicecheck")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -2536,7 +2536,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("obsessoverhostcheck")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -2562,7 +2562,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("obsessoverhostcheck")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -2594,7 +2594,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("allflapdetection")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -2619,7 +2619,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("allflapdetection")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -2651,7 +2651,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("performancedata")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -2676,7 +2676,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("performancedata")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -3265,7 +3265,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("sendcustomnotification")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -3309,7 +3309,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                        if(config.url.includes("scheduledowntime")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -3350,7 +3350,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("schedulecheck")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }
@@ -3407,7 +3407,7 @@ angular.module('vshell.controllers', [])
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
                         if(config.url.includes("acknowledgeproblem")){
-                            if(data == 'true'){
+                            if(Object.getOwnPropertyNames(data).length == 0){
                                 ngToast.create({className: 'alert alert-success',content:'Success! It may take some time to update.',timeout:3000});
                                 $('.modal').modal('hide');
                             }

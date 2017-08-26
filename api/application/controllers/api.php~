@@ -2,6 +2,7 @@
 
 class API extends VS_Controller
 {
+
     private $domain;
     private $user;
     private $user_domain;
@@ -83,7 +84,7 @@ class API extends VS_Controller
     /**
      * Retrieve program status
      */
-    public function programStatus()
+    public function programstatus()
     {
         $Program = $this->nagios_data->get_collection('programstatus');
         $this->output($Program);
@@ -105,6 +106,7 @@ class API extends VS_Controller
      */
     public function quicksearch()
     {
+
         $Data = array();
 
         $hosts = $this->nagios_data->get_collection('hoststatus');
@@ -148,7 +150,7 @@ class API extends VS_Controller
     /**
      * Retrieve tactical overview data
      */
-    public function tacticalOverview() 
+    public function tacticaloverview() 
     {
         $Data = $this->tac_data->get_tac_data();
         $this->output($Data);
@@ -175,112 +177,225 @@ class API extends VS_Controller
     }
 
 
-    /**
-     * Fetch name based on type : host, hostgroup, service, servicegroup
+    //Written by Soon Wei Liang
+    /*
+     * Fetch name based on type : Host, Hostgroup, Service, Servicegroup
      *
+     * @param String $type
      */
-    public function name()
+    public function name($type='')
     {
-        $Name = array();
+        $Data = array();
+        $name = array();
 
-        //all host name
+        //fetch all host name
+        if($type = 'host')
+        {
+            $hosts = $this->nagios_data->get_collection('hoststatus');
+
+            foreach($hosts as $host)
+            {
+                $Data[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
+            }
+
+            foreach($Data as $host)
+            {
+                $name[] = $host['name'];
+            }
+        }
+
+        //fetch all host group name
+        else if($type == 'hostgroup')
+        {
+            $hostgroups = $this->nagios_data->get_collection('hostgroup');
+
+            foreach($hostgroups as $hostgroup)
+            {
+                $Data[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
+            }
+
+            foreach ($Data as $hostgroup) 
+            {
+                $name[] = $hostgroup['name'];
+            }      
+        }
+
+        //fetch all service name
+        else if($type == 'service')
+        {
+            $services = $this->nagios_data->get_collection('servicestatus');
+
+            foreach ($services as $service)
+            {
+                $Data[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
+            }
+
+            foreach ($Data as $service) 
+            {
+                $name[] = $service['name'];
+
+            }
+        }
+
+        //fetch all service group name
+        else if($type == 'servicegroup')
+        {
+            $servicegroups = $this->nagios_data->get_collection('servicegroup');
+
+            foreach($servicegroups as $servicegroup)
+            {
+                $Data[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
+            }
+
+            foreach ($Data as $servicegroup) 
+            {
+                $name[] = $servicegroup['name'];
+            }
+        }
+
+        $this->output($name); 
+    }
+
+    /*
+     * Fetch host name
+     */
+    public function hostname()
+    {
+        $Data = array();
+        $hostname = array();
         $hosts = $this->nagios_data->get_collection('hoststatus');
 
         foreach($hosts as $host)
         {
-            $host_name[] = $host->host_name;
+            $Data[] = $this->quicksearch_item('host', $host->host_name, $host->host_name);
         }
 
-        $Name['host'] = $host_name;
-    
-
-        //all hostgroup name    
-        $hostgroups = $this->nagios_data->get_collection('hostgroup');
-
-        foreach($hostgroups as $hostgroup)
+        foreach($Data as $host)
         {
-            $hostgroup_name[] = $hostgroup->alias;
+            $hostname[] = $host['name'];
         }
-
-        $Name['hostgroup'] = $hostgroup_name;     
     
+        $this->output($hostname);
+    }
 
-        //all service name
+    /*
+     * Fetch service name
+     */
+    public function servicename()
+    {
+        $Data = array();
+        $servicename = array();
         $services = $this->nagios_data->get_collection('servicestatus');
 
         foreach ($services as $service)
         {
-            $service_name[] = array('host' =>$service->host_name, 'service'=> $service->service_description);
+            $Data[] = $this->quicksearch_item('service', $service->service_description.' on '.$service->host_name, $service->host_name.'/'.$service->service_description);
         }
 
-        $Name['service'] = $service_name;
-    
+        foreach ($Data as $service) 
+        {
+            $servicename[] = $service['name'];
+        }
 
-        //all service group name
+        $this->output($servicename);
+    }    
+
+    /*
+     * Fetch host group name 
+     */
+    public function hostgroupname()
+    {
+        $Data = array();
+        $hostgroupname = array();
+        $hostgroups = $this->nagios_data->get_collection('hostgroup');
+
+        foreach($hostgroups as $hostgroup)
+        {
+            $Data[] = $this->quicksearch_item('hostgroup', $hostgroup->alias, $hostgroup->hostgroup_name);
+        }
+
+        foreach ($Data as $hostgroup) 
+        {
+            $hostgroupname[] = $hostgroup['name'];
+        }
+
+        $this->output($hostgroupname);
+    }
+
+    /*
+     * Fetch service group name
+     */
+    public function servicegroupname()
+    {
+        $Data = array();
+        $servicegroupname = array();
         $servicegroups = $this->nagios_data->get_collection('servicegroup');
 
         foreach($servicegroups as $servicegroup)
         {
-            $servicegroup_name[] = $servicegroup->alias;
+            $Data[] = $this->quicksearch_item('servicegroup', $servicegroup->alias, $servicegroup->servicegroup_name);
         }
 
-        $Name['servicegroup'] = $servicegroup_name;
-
-
-        //all host resource
-        $hostresources = $this->nagios_data->get_collection('hostresource');
-
-        foreach ($hostresources as $hostresource) 
+        foreach ($Data as $servicegroup) 
         {
-            $hostresource_name[] = array('host'=> $hostresource->host_name, 'service'=> $hostresource->service_description);
+            $servicegroupname[] = $servicegroup['name'];
         }
 
-        $Name['hostresource'] = $hostresource_name;
-
-        //all service running state
-        $runningstates = $this->nagios_data->get_collection('runningstate');
-
-        foreach ($runningstates as $runningstate)
-        {
-            $runningstate_name[] = array('host'=> $runningstate->host_name, 'service' => $runningstate->service_description);
-        }
-
-        $Name['runningstate'] = $runningstate_name;
-        
-        $this->output($Name); 
+        $this->output($servicegroupname);
     }
 
-    
-    
-    /**
+    /*
      * Fetch availability
      * 
-     * @param String $type
-     * @param string $period
-     * @param string $start
-     * @param string $end
-     * @param String $hostservice
+     * @param int $reportType
+     * @param string $name
+     * @param Date $period
      * @param bool $initialState
      * @param bool $stateRetention
      * @param bool $assumeState
      * @param bool $includeSoftState
      * @param String $firstAssumedHost
      * @param String $firstAssumedService
-     * @param String $backTrack
+     * @param int $backTrack
      */
-     public function availability($type, $period, $start, $end, $hostservice, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost='', $firstAssumedService='', $backTrack)
+     public function availability($reportType, $name='', $period, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost='', $firstAssumedService='', $backTrack)
     {
-        $validate = $this->validate_data($type, $period, $start, $end, $hostservice, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $firstAssumedService, $backTrack);
+        $Availability = $this->availability_data->get_availability();
 
+        //hostgroup
+        if($reportType == 1)
+        {
+
+        }
+
+        //host
+        else if($reportType == 2)
+        {
+
+        }
+
+        //service group
+        else if($reportType == 3)
+        {
+
+        }
+
+        //service
+        else if($reportType == 4)
+        {
+
+        }
+
+
+        $this->output($Availability);
     }
 
-    /**
+    /*
      * Fetch trend
      *
      * @param int $reportType
      * @param string $name
-     * @param string $start
-     * @param string $end
+     * @param Date $period
      * @param bool $initialState
      * @param bool $stateRetention
      * @param bool $assumeState
@@ -290,1287 +405,198 @@ class API extends VS_Controller
      * @param bool suppressImage
      * @param bool suppressPopups
      */
-    public function trend($reportType, $name='', $start='', $end='', $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $backTrack, $suppressImage, $suppressPopups)
+    public function trend($reportType, $name='', $period, $initialState, $stateRetention, $assumeState, $includeSoftState, $firstAssumedHost, $backTrack, $suppressImage, $suppressPopups)
     {
-    }
+        $Trend = $this->trend_data->get_trend();
 
-    /**
-     * Fetch alert history
-     *
-     * @param String $date
-     */
-    public function alertHistory($date)
-    {
-        //check empty inputs
-        $validate = $this->validate_data(array($date));
-
-        if($validate)
+        //host
+        if($reportType == 1)
         {
-            $Alert_history = $this->reports_data->get_history_data($date);
+
         }
 
-        $this->output($Alert_history);
+        //service
+        else if($reportType == 2)
+        {
+
+        }
+
+        $this->output($Trend);
     }
 
-    /**
+    /*
+     * Fetch alert history
+     */
+    public function alerthistory()
+    {
+        $AlertHistory = $this->alert_history_data->get_history_data();
+
+        $this->output($AlertHistory);
+    }
+
+    /*
      * Fetch alert summary
      *
-     * @param string $type
-     * @param string $period 
-     * @param string $date , for custom period : date in array (start date, end date)
-     * @param string $service_description
-     * @param string $logtype
-     * @param string $statetype
-     * @param string $state
+     * @param int $reportLabel
+     * @param int $reportType
+     * @param int $reportPeriod
+     * @param Date $start
+     * @param Date $end
      */
-    public function alertSummary($type, $period, $date, $service_description='', $logtype, $statetype, $state)
+    public function alertsummary($reportLabel, $reportType, $reportPeriod, $start, $end)
     {
-        //allowed type of alert
-        $allowed_types = array(
-            'TOP_PRODUCER',
-            'ALERT_TOTAL',
-            'NORMAL'
-        );
+        $AlertSummary = $this->alert_summary_data->get_alert_summary();
 
-        //allowed type of period
-        $allowed_periods = array(
-            'TODAY',
-            'LAST 24 HOURS',
-            'YESTERDAY',
-            'THIS WEEK',
-            'LAST 7 DAYS',
-            'LAST WEEK',
-            'THIS MONTH',
-            'LAST 31 DAYS',
-            'LAST MONTH', 
-            'THIS YEAR', 
-            'LAST YEAR', 
-            'CUSTOM'
-        );
-
-        //allowed logtype
-        $allowed_logtypes = array(
-            'HOST ALERT',
-            'SERVICE ALERT',
-            'ALL ALERT'
-        );
-
-        //allowed statetype
-        $allowed_statetypes = array(
-            'HARD',
-            'SOFT',
-            'ALL STATE TYPE'
-        );
-
-        //decode inputs with spaces
-        $service_description = urldecode($service_description);
-        $period = urldecode($period);
-        $logtype = urldecode($logtype);
-        $statetype = urldecode($statetype);
-
-        //check empty inputs
-        $validate = $this->validate_data(array($type, $period, $date, $service_description, $logtype, $statetype, $state));
-
-        if($validate)
+        //standard report
+        if($reportLabel == 1)
         {
-            //verify inputs
-            if(in_array($type, $allowed_types) && in_array($period, $allowed_periods) && in_array($logtype, $allowed_logtypes) && in_array($statetype, $allowed_statetypes))
+            //25 most recent hard alert
+            if($reportType == 1)
             {
-                $Alert_summary = $this->reports_data->get_alert_summary($type, $period, $date, $service_description, $logtype, $statetype, $state);
+
+            }
+
+            //25 most recent hard host alert
+            else if ($reportType == 2)
+            {
+
+            }
+
+            //25 most recent hard service alert
+            else if ($reportType == 3)
+            {
+
+            }
+
+            //top 25 hard host alert producer
+            else if ($reportType == 4)
+            {
+
+            }
+
+            //top 25 hard service alert producer
+            else if ($reportType == 5)
+            {
+
             }
         }
 
-        $this->output($Alert_summary);
+        //custom report
+        else if ($reportLabel == 2)
+        {
+            //most recent alert
+            if ($reportType == 1)
+            {
+
+            }
+
+            //alert totals
+            else if ($reportType == 2)
+            {
+
+            }
+
+            //alert totals by hostgroup
+            else if ($reportType == 3)
+            {
+
+            }
+
+            //alert totals by host
+            else if ($reportType == 4)
+            {
+
+            }
+
+            //alert totals by servicegroup
+            else if ($reportType == 5)
+            {
+
+            }
+
+            //alert totals by service
+            else if ($reportType == 6)
+            {
+
+            }
+
+            //top alert producer
+            else if ($reportType == 7)
+            {
+
+            }
+        }
+
+        $this->output($AlertSummary);
     }
 
-    /**
+    /*
      * Fetch alert histogram
      *
-     * @param string $return_type, '1' - host, '2' - service, '3' - 'hostresource', '4' - 'runningstate'
-     * @param string $host_name, for more than one host , store hosts in array, 'ALL' for all host
-     * @param string $service_description, for more than one service, store services, in array, 'ALL' for all the services
-     * @param string $period, 'TODAY', 'LAST 24 HOURS', 'YESTERDAY', 'THIS WEEK', 'LAST 7 DAYS', 'LAST WEEK', 'THIS MONTH', 'LAST 31 DAYS', 'LAST MONTH', 'THIS YEAR', 'LAST YEAR', 'CUSTOM'     
-     * @param string $date, for custom report, store date in array
-     * @param String $statistic_breakdown, '1' - month, '2' - day of the month, '3' - day of the week, '4' - hour of the day
-     * @param String $event_graph, 'UP', 'DOWN', 'UNREACHABLE', 'HOST PROBLEM STATE', 'OK', 'WARNING', 'UNKNOWN', 'CRITICAL', 'PENDING', 'ALL', 'SERVICE PROBLEM STATE'
-     * @param String $state_type_graph, 'HARD', 'SOFT', 'ALL'
-     * @param string $assume_state_retention, 'true', 'false'
-     * @param string $initial_state_logged, 'true', 'false'
-     * @param string $ignore_repeated_state, 'true', 'false'
+     * @param int $reportType
+     * @param string $name
+     * @param Date $period
+     * @param String $breakdown
+     * @param String $eventsToGraph
+     * @param String $typesToGraph
+     * @param bool $stateRetention
+     * @param bool $initialStateLogged
+     * @param bool $ignoreRepeated
+     *
      */
-    public function alertHistogram($return_type, $host_name, $service_description, $period, $date, $statistic_breakdown, $event_graph, $state_type_graph, $assume_state_retention, $initial_state_logged, $ignore_repeated_state)
+    public function alerthistogram($reportType, $name='', $period, $breakdown='', $eventsToGraph='', $typesToGraph='', $stateRention, $initialStateLogged, $ignoreRepeated)
     {
-        //test hardcode data
-        /*
-        $return_type = '1';
-        $host_name = 'ALL';
-        $service_description = 'ALL';
-        $period = 'THIS YEAR';
-        $date = '';
-        $statistic_breakdown = '1';
-        $event_graph = 'ALL';
-        $state_type_graph = 'ALL';
-        $assume_state_retention = 'false';
-        $initial_state_logged = 'false';
-        $ignore_repeated_state = 'false';
-        */
+        $AlertHistogram = $this->alert_histogram_data->get_alert_histogram();
 
-        $return_type = (int)$return_type;
-        $statistic_breakdown = (int)$statistic_breakdown;
+        //Host
+        if($reportType == 1)
+        {
 
-        //convert inputs to boolean
-        if($assume_state_retention == 'true')
-            $assume_state_retention = true;
-        else if($assume_state_retention == 'false')
-            $assume_state_retention = false;
+        }
 
-        if($initial_state_logged == 'true')
-            $initial_state_logged = true;
-        else if($initial_state_logged == 'false')
-            $initial_state_logged = false;
+        //Service
+        else if($reportType == 2)
+        {
 
-        if($ignore_repeated_state == 'true')
-            $ignore_repeated_state = true;
-        else if($ignore_repeated_state == 'false')
-            $ignore_repeated_state = false;
+        }
 
-
-        $Alert_histogram = array();
-
-        $Alert_histogram = $this->reports_data->get_alert_histogram($return_type, $host_name, $service_description, $period, $date, $statistic_breakdown, $event_graph, $state_type_graph, $assume_state_retention, $initial_state_logged, $ignore_repeated_state);
-
-
-
-        $this->output($Alert_histogram);
+        $this->output($AlertHistogram);
     }
 
 
-    /**
+    /*
      * Fetch all event log
      *
-     * @param  String $date
+     * @param  Date $date
      */
     public function eventlog($date)
     {
-        $Event_logs = array();
+        $EventLog = $this->reports_data->get_events_log($date);
 
-        //check empty inputs
-        $validate = $this->validate_data(array($date));
-        
-        if($validate)
+        if(!empty($EventLog))
         {
-            $Event_logs = $this->reports_data->get_event_log($date);
+            $this->output($Eventlog);
         }
-
-        $this->output($Event_logs);
     }
 
-    /**
+    /*
      * Fetch all notifications
      *
-     * @param String $date
+     * @param Date $date
      */
-    public function notification($date)
+    public function notifications($date)
     {
-        $Notifications = array();
+        $Notificaions = $this->notifications_data->get_notification($date);
 
-        //check empty inputs
-        $validate = $this->validate_data(array($date));
-
-        if($validate)
-        {
-            $Notifications = $this->reports_data->get_notification($date);  
-        }
-
-        $this->output($Notifications);
+        $this->output($Notificaions);
     }
 
     public function testing()
     {
-        //test hardcode data
-        $return_type = '1';
-        $host_name = 'ALL';
-        $service_description = 'ALL';
-        $period = 'THIS YEAR';
-        $date = '';
-        $statistic_breakdown = '1';
-        $event_graph = 'ALL';
-        $state_type_graph = 'ALL';
-        $assume_state_retention = 'false';
-        $initial_state_logged = 'false';
-        $ignore_repeated_state = 'false';
-
-
-
-
-        $return_type = (int)$return_type;
-        $statistic_breakdown = (int)$statistic_breakdown;
-
-        //convert inputs to boolean
-        if($assume_state_retention == 'true')
-            $assume_state_retention = true;
-        else if($assume_state_retention == 'false')
-            $assume_state_retention = false;
-
-        if($initial_state_logged == 'true')
-            $initial_state_logged = true;
-        else if($initial_state_logged == 'false')
-            $initial_state_logged = false;
-
-        if($ignore_repeated_state == 'true')
-            $ignore_repeated_state = true;
-        else if($ignore_repeated_state == 'false')
-            $ignore_repeated_state = false;
-
-
-        $Alert_histogram = array();
-
-        $Alert_histogram = $this->reports_data->get_alert_histogram($return_type, $host_name, $service_description, $period, $date, $statistic_breakdown, $event_graph, $state_type_graph, $assume_state_retention, $initial_state_logged, $ignore_repeated_state);
-
-
-
-        $this->output($Alert_histogram);
+       $Data = 100;
+	$this->output(var_dump($Data));
     }
 
-    /**
-     * Fetch host or service downtime
-     *
-     * @param String $type, host : host, svc: service
-     */
-    public function downtime($type)
-    {
-        $Downtime = array();
-
-        $type = 'svc';
-
-        $allowed_types = array(
-            'host',
-            'svc'
-        );
-
-        //check empty inputs
-        $validate = $this->validate_data(array($type));
-
-        if($validate)
-        {
-            if(in_array($type, $allowed_types))
-            {
-                //get host downtime
-                if($type == 'host')
-                {
-                    $host_downtimes = $this->nagios_data->get_collection('hostdowntime');
-                    
-                    foreach ($host_downtimes as $host_downtime) 
-                    {
-                        $Downtime[] = array(
-                            'host'          => $host_downtime->host_name, 
-                            'entry_time'    => $host_downtime->entry_time, 
-                            'author'        => $host_downtime->author, 
-                            'comment'       => $host_downtime->comment, 
-                            'start_time'    => $host_downtime->start_time, 
-                            'end_time'      => $host_downtime->end_time, 
-                            'fixed'         => $host_downtime->fixed, 
-                            'duration'      => $host_downtime->duration, 
-                            'downtime_id'   => $host_downtime->downtime_id, 
-                            'triggered_id'  => $host_downtime->triggered_by, 
-                            'entry_time'    => $host_downtime->entry_time
-                        );
-                    }
-                }
-
-                //get service downtime
-                else
-                {
-                    $service_downtimes = $this->nagios_data->get_collection('servicedowntime');
-
-                    foreach ($service_downtimes as $service_downtime) 
-                    {
-                        $Downtime[] = array(
-                            'host'          => $service_downtime->host_name, 
-                            'service'       => $service_downtime->service_description, 
-                            'entry_time'    => $service_downtime->entry_time, 
-                            'author'        => $service_downtime->author, 
-                            'comment'       => $service_downtime->comment, 
-                            'start_time'    => $service_downtime->start_time, 
-                            'end_time'      => $service_downtime->end_time, 
-                            'fixed'         => $service_downtime->fixed, 
-                            'duration'      => $service_downtime->duration, 
-                            'downtime_id'   => $service_downtime->downtime_id, 
-                            'triggered_id'  => $service_downtime->triggered_by, 
-                            'entry_time'    => $service_downtime->entry_time
-                        );
-                    }
-                }
-            }
-        }
-
-        $this->output($Downtime);
-    }
-
-    /**
-     * Delete host or service downtime
-     *
-     * @param String $type, 'host' : host, 'svc' : service
-     * @param String $downtime_id
-     */
-    public function deleteDowntime($type, $downtime_id)
-    {
-        $Result = false;
-
-        //check empty inputs
-        $validate = $this->validate_data(array($type, $downtime_id));
-
-        if($validate)
-        {
-            //delete host downtime
-            if($type == 'host')
-            {
-                $Result = $this->system_commands->delete_host_downtime($downtime_id);
-            }
-
-            //delete service downtime
-            else if($type == 'svc')
-            {
-                $Result = $this->system_commands->delete_svc_downtime($downtime_id);
-            }
-        }
-
-        $this->output($Result);
-    }
-
-    
-
-    /**
-     * Schedule downtime
-     *
-     * @param String $type, host : host, svc : service, hostsvc : hostservice
-     * @param String $host_name
-     * @param String $service_description, [if type is host or hostsvc, $service = '']
-     * @param String $start_time
-     * @param String $end_time
-     * @param String $fixed, "true", "false"
-     * @param String $trigger_id
-     * @param String $duration , in minutes
-     * @param String $author
-     * @param String $comments
-     */
-    public function scheduleDowntime($type, $host_name, $service_description='', $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments='')
-    {
-        $Result = false;
-
-        $allowed_types = array(
-            'host',
-            'svc',
-            'hostsvc'
-        );
-
-        //decode inputs with space
-        $host_name = urldecode($host_name);
-        $service_description = urldecode($service_description); 
-        $author = urldecode($author);
-        $comments = urldecode($comments);
-
-        //convert fixed to boolean
-        if($fixed == 'true')
-            $fixed = true;
-        else if($fixed == 'false')
-            $fixed = false;
-
-        //check empty inputs
-        $validate = $this->validate_data(array($type, $host_name, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments));
-
-        if($validate)
-        {
-            //compare type with allowed types
-            if(in_array($type, $allowed_types))
-            {
-                //schedule host downtime
-                if($type == 'host')
-                {
-                    $Result = $this->system_commands->schedule_host_downtime($host_name, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments);
-                }
-
-                //schedule service downtime
-                else if($type == 'svc')
-                {
-                    $Result = $this->system_commands->schedule_svc_downtime($host_name, $service_description, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments);
-                }
-
-                //schedule host service downtime
-                else
-                {
-                    $Result = $this->system_commands->schedule_host_svc_downtime($host_name, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments);
-                }
-            }
-        }
-        
-        $this->output($Result);
-    }
-
-
-
-    /**
-     * Return performance info of nagios
-     */
-    public function performanceInfo()
-    {
-        $PerformanceInfo = $this->system_commands->get_return_array('PERFORMANCE');
-
-        $this->output($PerformanceInfo);
-    }
-
-    /**
-     * Return process info of nagios
-     */
-    public function processInfo()
-    {
-        $processInfo = $this->system_commands->get_return_array('PROCESS');
-
-        $this->output($processInfo);
-    }
-
-    /**
-     * Return schedule queue of host and service
-     */
-    public function scheduleQueue()
-    {
-        $Schedule = array();
-
-        $hosts = $this->nagios_data->get_collection("hoststatus");
-        $services = $this->nagios_data->get_collection("servicestatus");
-        $hostresources = $this->nagios_data->get_collection("hostresourcestatus");
-        $runningstates = $this->nagios_data->get_collection("runningstatestatus");
-        
-        foreach ($hosts as $host) 
-        {
-            $Schedule[] = array(
-                'type'          => "host", 
-                'hostname'      => $host->host_name, 
-                'lastcheck'     => $host->last_check, 
-                'nextcheck'     => $host->next_check, 
-                'activecheck'   => $host->active_checks_enabled
-            );
-        }
-
-        foreach ($services as $service) 
-        {
-            $Schedule[] = array(
-                'type'          =>"service", 
-                'hostname'      => $service->host_name, 
-                'servicename'   => $service->service_description, 
-                'lastcheck'     => $service->last_check, 
-                'nextcheck'     => $service->next_check,
-                'activecheck'   => $service->active_checks_enabled
-            );
-        }
-
-        foreach ($hostresources as $hostresource) 
-        {
-            $Schedule[] = array(
-                'type'          => "hostresource", 
-                'hostname'      => $hostresource->host_name, 
-                'servicename'   => $hostresource->service_description, 
-                'lastcheck'     => $hostresource->last_check, 
-                'nextcheck'     => $hostresource->next_check, 
-                'activecheck'   => $hostresource->active_checks_enabled
-            );
-        }
-
-        foreach ($runningstates as $runningstate) 
-        {
-            $Schedule[] = array(
-                'type'          => "runningstate", 
-                'hostname'      => $runningstate->host_name, 
-                'servicename'   => $runningstate->service_description, 
-                'lastcheck'     => $runningstate->last_check, 
-                'nextcheck'     => $runningstate->next_check, 
-                'activecheck'   => $runningstate->active_checks_enabled
-            );
-        }
-
-        //sort schedule according to the next check time
-        usort($Schedule, function($a, $b)
-        {
-            return strcmp($a->nextcheck, $b->nextcheck);
-        });
-        
-        $this->output($Schedule);
-    }
-
-    
-
-    /**
-     * Fetch all comments or only those of a certain type.
-     * Returns a flat array of comment objects.
-     *
-     * @param  string $type, '' return all 
-     */
-    public function comments($type = '') 
-    {
-        $allowed_types = array(
-            'hostcomment',
-            'servicecomment'
-        );
-
-        if( $type != '' )
-        {
-            if(! in_array($type, $allowed_types))
-            {
-                return $this->output(array());
-            }
-
-            $specific_comments = $this->nagios_data->get_collection($type)->get_index('host_name');
-            $comments = $this->comments_flatten($specific_comments);
-        } 
-        else
-        {
-            $host_comments = $this->nagios_data->get_collection('hostcomment')->get_index('host_name');
-            $service_comments = $this->nagios_data->get_collection('servicecomment')->get_index('host_name');
-            $comments = $this->comments_merge($host_comments, $service_comments);
-        }
-
-        $this->output($comments);
-    }
-
-    /**
-     * Add comments
-     *
-     * @param String $type, host : host, svc : service
-     * @param String $host
-     * @param String $service
-     * @param String $persistent 
-     * @param String $author
-     * @param String $comments
-     */
-    public function addComments($type, $host, $service, $persistent, $author, $comments)
-    {
-        $result = false;
-        $host = urldecode($host);
-        $service = urldecode($service);
-        $author = urldecode($author);
-        $comments = urldecode($comments);
-
-        $allowed_types = array(
-            'host',
-            'svc'
-        );
-
-        //convert persistent to bool
-        if($persistent == 'true')
-            $persistent = true;
-        else if($persistent = 'false')
-            $persistent = false;
-
-        //check for empty input
-        $validate = $this->validate_data(array($type, $host, $author, $comments));
-        
-        if($validate)
-        {
-            //compare types with allowed types
-            if(in_array($type, $allowed_types))
-            {
-                if($type == 'host')
-                {
-                    $result = $this->system_commands->add_host_comment($host, $persistent, $author, $comments);
-                }
-                else
-                {
-                    $result = $this->system_commands->add_svc_comment($host, $service, $persistent, $author, $comments);
-                }
-            }
-        }
-
-        $this->output($result);
-    }
-
-    /**
-     * Delete comments
-     *
-     * @param String $id
-     * @param String $type, host : host, svc : service
-     */
-    public function deleteComments($id, $type='')
-    {
-        $result = false;
-
-        $allowed_types = array(
-            'host',
-            'svc'
-        );
-
-        //check for empty input
-        if(!empty($id) && !empty($type))
-        {
-            //compare type with allowed types
-            if(in_array($type, $allowed_types))
-            {
-                if($type == 'host')
-                {
-                    $result = $this->system_commands->delete_host_comment($id);
-                }
-                else
-                {
-                    $result = $this->system_commands->delete_svc_comment($id);
-                }
-            }
-        }
-
-        $this->output($result);
-    }
-
-    
-
-    /**
-     * Enable or disable service check
-     *
-     * @param String $type , true - 'enable' ,false - 'disable'
-     * @param String $hostname
-     * @param String $service
-     */
-    public function servicecheck($type, $hostname, $service)
-    {
-        $result = false;
-        $hostname = urldecode($hostname);
-        $service = urldecode($service);
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->enable_svc_check($hostname, $service);
-        }
-        else if ($type == 'false')
-        {
-            $result = $this->system_commands->disable_svc_check($hostname, $service);
-        }
-
-        $this->output($result);
-    }
-
-    /**
-     * Enable or disable all notifications
-     *
-     * @param String $type, true = 'enable', false = 'disable'
-     */
-    public function allnotifications($type)
-    {
-        $result = false;
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->enable_all_notification();
-        }
-        else if($type == 'false')
-        {
-            $result = $this->system_commands->disable_all_notification();
-        }
-
-        $this->output($result);
-    }
-
-    /**
-     * Restart or shut down nagios
-     *
-     * @param String $type , 'restart', 'shutdown'
-     */
-    public function nagiosOperation($type)
-    {
-        $result = false;
-
-        if($type == 'restart')
-        {
-            $result = $this->system_commands->restart_nagios();
-        }
-        else if($type == 'shutdown')
-        {
-            $result = $this->system_commands->shutdown_nagios();
-        }
-
-        $this->output($result);
-    }
-
-    /**
-     * Enable or disable service notification
-     *
-     * @param String $type, true = 'enable', false ='disable'
-     * @param String $host
-     * @param String $service
-     */
-    public function serviceNotification($type, $host, $service)
-    {
-        $result = false;
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->enable_svc_notification($host, $service);
-        }
-        else if($type == 'false')
-        {
-            $result = $this->system_commands->disable_svc_notification($host, $service);
-        }
-
-        $this->output($result);
-    }
-
-    /**
-     * Delete all host or service comment
-     *
-     * @param String $type, 'host', 'service'
-     * @param String $host_name
-     * @param String $service_description , [if delete all host name, $service_description should be '']
-     */
-    public function deleteAllComment($type, $host_name, $service_description)
-    {
-        $result = false;
-
-        //delete all host comment
-        if($type == 'host')
-        {
-           $result =  $this->system_commands->delete_all_host_comment($host_name);
-        }
-
-        //delete all service comment
-        else if($type == 'service')
-        {
-            $result = $this->system_commands->delete_all_svc_comment($host_name, $service_description);
-        }
-
-        $this->output($result);
-    }
-
-    /**
-     * Enable or disable host notification
-     *
-     * @param Bool $type, true = 'enable', false ='disable'
-     * @param String $host
-     */
-    public function hostNotification($type, $host)
-    {
-        $result = false;
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->enable_host_notification($host);
-        }
-        else if($type == 'false')
-        {
-            $result =  $this->system_commands->disable_host_notification($host);
-        }
-
-        $this->output($result);
-    }
-
-    /**
-     * Schedule host or service check
-     *
-     * @param String $type, 'host', 'service', 'hostsvc'
-     * @param String $host
-     * @param String $service , [if type is host, service should be '']
-     * @param String $checktime
-     * @param String $forceCheck 
-     */
-    public function scheduleCheck($type, $host, $service='', $checktime, $forceCheck)
-    {
-        $result = false;
-
-        //convert force check to bool
-        if($forceCheck == 'true')
-            $forceCheck = true;
-        else if($forceCheck == 'false')
-            $forceCheck = false;
-
-        if($type == 'host')
-        {
-            $result = $this->system_commands->schedule_host_check($host, $checktime, $forceCheck);
-        }
-        else if($type == 'hostsvc')
-        {
-            $result = $this->system_commands->schedule_host_svc_check($host, $checktime, $forceCheck);
-        }
-        else if($type == 'service')
-        {
-            $result = $this->system_commands->schedule_svc_check($host, $service, $checktime, $forceCheck);
-        }
-
-        $this->output($result);
-    }
-
-    /**
-     * Enable or disable host service check
-     *
-     * @param String $type, true = 'enable', false ='disable'
-     * @param String $host
-     */
-     public function hostServiceCheck($type, $host)
-     {
-        $result = false;
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->enable_host_svc_check($host);
-        }
-        else if($type == 'false')
-        {
-            $result = $this->system_commands->disable_host_svc_check($host);
-        }
-
-        $this->output($result);
-     } 
-
-     /**
-      * Enable or disable host service notification
-      *
-      * @param String $type, true = 'enable', false ='disable'
-      * @param String $host
-      */
-     public function hostServiceNotification($type, $host)
-     {
-        $result = false;
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->enable_host_svc_notification($host);
-        }
-        else if($type == 'false')
-        {
-            $result = $this->system_commands->disable_host_svc_notification($host);
-        }
-
-        $this->output($result);
-     }
-
-     /**
-      * Acknowledge host or service problem
-      *
-      * @param String $type, 'host', 'service'
-      * @param String $host
-      * @param String $service, [if type is 'host', service will be '']
-      * @param bool $sticky
-      * @param bool $notify
-      * @param bool $persistent
-      * @param String $author
-      * @param String $comment
-      */
-     public function acknowledgeProblem($type, $host, $service='', $sticky, $notify, $persistent, $author, $comment)
-     {
-        $result = false;
-
-        //convert input to bool
-        if($sticky == 'true')
-            $sticky = true;
-        else if($sticky == 'false')
-            $sticky = false;
-
-        if($notify == 'true')
-            $notify = true;
-        else if($notify == 'false')
-            $notify = false;
-
-        if($persistent == 'true')
-            $persistent = true;
-        else if($persistent == 'false')
-            $persistent = false;
-
-        $author = urldecode($author);
-        $comment = urldecode($comment);
-
-        if($type == 'host')
-        {
-            $result = $this->system_commands->acknowledge_host_problem($host, $sticky, $notify, $persistent, $author, $comment);
-        }
-        else if($type == 'service')
-        {
-            $result = $this->system_commands->acknowledge_svc_problem($host, $service, $sticky, $notify, $persistent, $author, $comment);
-        }
-
-        $this->output($result);
-     }
-
-     /**
-      * Start or stop all service check
-      *
-      * @param String $type, true = 'start', false = 'stop'
-      */
-     public function allServiceCheck($type)
-     {
-        $result = false;
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->start_svc_check();
-        }
-        else if($type == 'false')
-        {
-            $result = $this->system_commands->stop_svc_check();
-        }
-
-        $this->output($result);
-     }
-
-     /**
-      * Start or stop all passive service check
-      *
-      * @param String $type, true = 'start', false = 'stop'
-      */
-     public function allPassiveServiceCheck($type)
-     {
-        $result = false;
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->start_passive_svc_check();
-        }
-        else if($type == 'false')
-        {
-            $result = $this->system_commands->stop_passive_svc_check();
-        }
-
-        $this->output($result);
-     }
-
-     /**
-      * Enable or disable passive service check
-      *
-      * @param String $type, true - start, false - disable
-      * @param String $host
-      * @param String $service
-      */
-     public function passiveServiceCheck($type, $host, $service)
-     {
-        $result = false;
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->enable_passive_svc_check($host, $service);
-        }
-        else if($type == 'false')
-        {
-            $result = $this->system_commands->disable_passive_svc_check($host, $service);
-        }
-
-        $this->output($result);
-     }
-
-     /**
-      * Enable or disable event handler
-      *
-      * @param String $type, true = 'enable', false ='disable'
-      */
-     public function eventHandler($type)
-     {
-        $result = false;
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->enable_event_handler();
-        }
-        else if($type == 'false')
-        {
-            $result = $this->system_commands->disable_event_handler();
-        }
-
-        $this->output($result);
-     }
-
-     /**
-      * Enable or disable host check
-      *
-      * @param String $type, true = 'enable', false ='disable'
-      * @param String $host
-      */
-     public function hostCheck($type, $host)
-     {
-        $result = false;
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->enable_host_check($host);
-        }
-        else if($type == 'false')
-        {
-            $result = $this->system_commands->disable_host_check($host);
-        }
-
-        $this->output($result);
-     }
-
-     /**
-      * Start or stop obsess over service check
-      *
-      * @param String $type, true - start, false - disable
-      */
-     public function obsessOverServiceCheck($type)
-     {
-        $result = false;
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->start_obsess_over_svc_check();
-        }
-        else if($type == 'false')
-        {
-            $result = $this->system_commands->stop_obsess_over_svc_check();
-        }
-
-        $this->output($result);
-     }
-
-     /**
-      * Start or stop obsess over host check
-      *
-      * @param String $type, true - start, false - stop
-      */
-     public function obsessOverHostCheck($type)
-     {
-        $result = false;
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->start_obsess_over_host_check();
-        }
-        else if($type == 'false')
-        {
-            $result = $this->system_commands->stop_obsess_over_host_check();
-        }
-
-        $this->output($result);
-     }
-
-     /**
-      * Start or stop obsess over host
-      *
-      * @param Bool $type, true - start, false - stop
-      * @param String $host
-      */
-     public function obsessOverHost($type, $host)
-     {
-        $result = false;
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->start_obsess_over_host($host);
-        }
-        else if($type == 'false')
-        {
-            $result = $this->system_commands->stop_obsess_over_host($host);
-        }
-
-        $this->output($result);
-     }
-
-     /**
-      * Start or stop obsess over service
-      *
-      * @param Bool $type, true - start, false - stop
-      * @param String $host
-      * @param String $service
-      */
-     public function obsessOverService($type, $host, $service)
-     {
-        $result = false;
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->start_obsess_over_svc($host, $service);
-        }
-        else if ($type == 'false')
-        {
-            $result = $this->system_commands->stop_obsess_over_svc($host, $service);
-        }
-
-        $this->output($result);
-     }
-
-     /**
-      * Enable or disable performance data
-      *
-      * @param Bool $type, true = 'enable', false ='disable'
-      */
-     public function performanceData($type)
-     {
-        $result = false;
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->enable_performance_data();
-        }
-        else if($type == 'false')
-        {
-            $result = $this->system_commands->disable_performance_data();
-        }
-
-        $this->output($result);
-     }
-
-     /**
-      * Start or stop all host check
-      *
-      * @param Bool $type, true - start, false - stop
-      */
-     public function allHostCheck($type)
-     {
-        $result = false;
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->start_host_check();
-        }
-        else if($type == 'false')
-        {
-            $result = $this->system_commands->stop_host_check();
-        }
-
-        $this->output($result);
-     }
-
-     /**
-      * Start or stop all passive host check
-      *
-      * @param Bool $type, true - start, false - stop
-      */
-     public function allPassiveHostCheck($type)
-     {
-        $result = false;
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->start_passive_host_check();
-        }
-        else if($type == 'false')
-        {
-            $result = $this->system_commands->stop_passive_host_check();
-        }
-
-        $this->output($result);
-     }
-
-     /**
-      * Enable or disable passive host check
-      *
-      * @param Bool $type, true = 'enable', false ='disable'
-      * @param String $host
-      */
-     public function passiveHostCheck($type, $host)
-     {
-        $result = false;
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->enable_passive_host_check($host);
-        }
-        else if($type == 'false')
-        {
-            $result = $this->system_commands->disable_passive_host_check($host);
-        }
-
-        $this->output($result);
-     }
-
-     /**
-      * Enable or disable all flap detection
-      *
-      * @param Bool $type, true = 'enable', false ='disable'
-      */
-     public function allFlapDetection($type)
-     {
-        $result = false;
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->enable_flap_detection();
-        }
-        else if($type == 'false')
-        {
-            $result = $this->system_commands->disable_flap_detection();
-        }
-
-        $this->output($result);
-     }
-
-     /**
-      * Enable or disable host flap detection
-      *
-      * @param Bool $type, true = 'enable', false ='disable'
-      * @param String $host_name
-      */
-     public function hostFlapDetection($type, $host_name)
-     {
-        $result = false;
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->enable_host_flap_detection($host_name);
-        }
-        else if($type == 'false')
-        {
-            $result = $this->system_commands->disable_host_flap_detection($host_name);
-        }
-
-        $this->output($result);
-     }
-
-     /**
-      * Enable or disable service flap detection
-      *
-      * @param Bool $type, true = 'enable', false ='disable'
-      * @param String $host_name
-      * @param String $service_description
-      */
-     public function serviceFlapDetection($type, $host_name, $service_description)
-     {
-        $result = false;
-
-        if($type == 'true')
-        {
-            $result = $this->system_commands->enable_svc_flap_detection($host_name, $service_description);
-        }
-        else if($type == 'false')
-        {
-            $result = $this->system_commands->disable_svc_flap_detection($host_name, $service_description);
-        }
-
-        $this->output($result);
-     }
-
-
-     /**
-      * Send custom host or service notifications
-      *
-      * @param String $type , 'host', 'service'
-      * @param String $host_name
-      * @param String $service_description
-      * @param String $force
-      * @param String $broadcast
-      * @param String $author
-      * @param String $comment
-      */
-     public function sendCustomNotification($type, $host_name, $service, $force, $broadcast, $author, $comment)
-     {
-        $result = false;
-
-        //convert input to bool
-        if($force == 'true')
-            $force == true;
-        else
-            $force == false;
-
-        if($broadcast == 'true')
-            $broadcast == true;
-        else
-            $broadcast = false;
-
-        $author = urldecode($author);
-        $comment = urldecode($comment);
-
-        if($type == 'host')
-        {
-            $result = $this->system_commands->send_custom_host_notification($host_name, $force, $broadcast, $author, $comment);
-        }
-        else if($type == 'service')
-        {
-            $result = $this->system_commands->send_custom_svc_notification($host_name, $service, $force, $broadcast, $author, $comment);
-        }
-
-        $this->output($result);
-     }
 
 
     /**
@@ -2205,7 +1231,38 @@ class API extends VS_Controller
         $this->output($configurations);
     }
 
-    
+    /**
+     * Fetch all comments or only those of a certain type.
+     * Returns a flat array of comment objects.
+     *
+     * @param  string $type
+     */
+    public function comments($type = '') 
+    {
+        $allowed_types = array(
+            'hostcomment',
+            'servicecomment'
+        );
+
+        if( $type != '' )
+        {
+            if( ! in_array($type, $allowed_types) )
+            {
+                return $this->output(array());
+            }
+
+            $specific_comments = $this->nagios_data->get_collection($type)->get_index('host_name');
+            $comments = $this->comments_flatten($specific_comments);
+        } 
+        else
+        {
+            $host_comments = $this->nagios_data->get_collection('hostcomment')->get_index('host_name');
+            $service_comments = $this->nagios_data->get_collection('servicecomment')->get_index('host_name');
+            $comments = $this->comments_merge($host_comments, $service_comments);
+        }
+
+        $this->output($comments);
+    }
     
     /**
      * Check if the service is allowed to remote control.
@@ -2362,30 +1419,9 @@ class API extends VS_Controller
         return array_merge($first, $second);
     }
 
-    //check and validate data
-    private function validate_data($data)
-    {
-        $dataLength = count($data);
-        $validate = false;
-        $true = 0;
-        
-        for($i=0; $i<$dataLength; $i++)
-        {
-            if(!empty($data[$i]))
-            {
-                $true ++;
-            }
-        }
-
-        if($true == $dataLength)
-        {
-            $validate = true;
-        }
-
-        return $validate;
-    }
-
 }
 
 /* End of file api.php */
 /* Location: ./application/controllers/api.php */
+
+
