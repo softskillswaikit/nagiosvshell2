@@ -29,8 +29,8 @@ class Testing extends CI_Model
 
 	//******** add $this->system_commands->restart_nagios();
 	
-	//Function used to add new object
-	public function add($type, $input_items, $is_var)
+	//Function used to add new variable to existing object
+	public function add_var($type, $input_items)
 	{
 		//open different object file based on request
 		switch($type)
@@ -122,7 +122,7 @@ class Testing extends CI_Model
 
 					unset($obj);
 
-					$obj->end_definition = $line."\n\n";
+					$obj->end_definition = $line;
 					$obj_array[] = $obj;
 
 					$in_block = false;
@@ -149,67 +149,51 @@ class Testing extends CI_Model
 			}
 		}
 
+		list($input_obj, $input_key, $input_item) = explode(',', $items, 3);
+
 		$write_array = array();
 		$is_object = false;
 
-		foreach($input_items as $items)
+		foreach($obj_array as $object)
 		{
-			list($input_obj, $input_key, $input_item) = explode(',', $items, 3);
-
-			foreach($obj_array as $object)
+			foreach($object as $key => $value)
 			{
-				foreach($object as $key => $value)
+				//compare object 
+				if(strcmp($input_obj, $value) == 0)
 				{
-					//start of object definition
-					if (strcmp($key, 'definition') == 0)
+					$is_object = true;
+				}
+
+				//add one of the variable of the object
+				if($is_object)
+				{
+					if(strcmp($key, 'definition') == 0)
 					{
 						$write_array[] = $value."\n";
 					}
-
-					//compare object 
-					if(strcmp($input_obj, $value) == 0)
+					//end of object definition
+					else if (strpos($value, '}') !== false)
 					{
-						$is_object = true;
-					}
-
-					if($is_var)
-					{
-						//compare object definition type
-						if(strcmp($key, $input_key) == 0)
-						{
-							if($is_object)
-							{	
-								//end of object definition
-								if (strpos($value, '}') !== false)
-								{
-									$write_array[] = $value;
-									$is_object = false;
-								}
-								//object definition
-								else
-								{
-									$write_array[] = "\t".$key."\t".$value."\n";
-								}
-							}
-							else
-							{
-								//end of object definition
-								if (strpos($value, '}') !== false)
-								{
-									$write_array[] = $value;
-								}
-								//object definition
-								else
-								{
-									$write_array[] = "\t".$key."\t".$value."\n";
-								}
-							}
-						}
+						$write_array[] = "\t".$input_key."\t".$input_item."\n";
+						$write_array[] = $value."\n\n";
 					}
 					else
 					{
-						
+						$write_array[] = "\t".$key."\t".$value."\n";
 					}
+				}
+				else if(strcmp($key, 'definition') == 0)
+				{
+					$write_array[] = $value."\n";
+				}
+				//end of object definition
+				else if (strpos($value, '}') !== false)
+				{
+					$write_array[] = $value."\n\n";
+				}
+				else
+				{
+					$write_array[] = "\t".$key."\t".$value."\n";
 				}
 			}
 		}
@@ -222,7 +206,98 @@ class Testing extends CI_Model
 		
 		fclose($conf_file);
 
+		$this->system_commands->restart_nagios();
+
 		return true;
+	}
+
+	//Function used to add new object
+	public function add($type, $input_items)
+	{
+		//open different object file based on request
+		switch($type)
+		{
+			//$type = 'commands'
+			case 1:
+				$conf_file = fopen(COMMANDS, 'rw') or die('File not found !');
+				$selected = 'command';
+				break;
+			//$type = 'contacts'
+			case 2:
+				$conf_file = fopen(CONTACTS, 'rw') or die('File not found !');
+				$selected = 'contact';
+				break;
+			//$type = 'contactgroups'
+			case 3:
+				$conf_file = fopen(CONTACTGROUPS, 'rw') or die('File not found !');
+				$selected = 'contactgroup';
+				break;
+			//$type = 'hosts'
+			case 4:
+				$conf_file = fopen(HOSTS, 'rw') or die('File not found !');
+				$selected = 'host';
+				break;
+			//$type = 'hostgroups'
+			case 5:
+				$conf_file = fopen(HOSTGROUPS, 'rw') or die('File not found !');
+				$selected = 'hostgroup';
+				break;
+			//$type = 'timeperiods'
+			case 6:
+				$conf_file = fopen(TIMEPERIODS, 'rw') or die('File not found !');
+				$selected = 'timeperiod';
+				break;
+			//$type = 'services'
+			case 7:
+				$conf_file = fopen(SERVICES, 'rw') or die('File not found !');
+				$selected = 'service';
+				break;
+			//$type = 'servicegroups'
+			case 8:
+				$conf_file = fopen(SERVICEGROUPS, 'rw') or die('File not found !');
+				$selected = 'servicegroup';
+				break;
+			//$type = 'template_commands'
+			case 9:
+				$conf_file = fopen(TEMPLATE_COMMANDS, 'rw') or die('File not found !');
+				$selected = 'template_command';
+				break;
+			//$type = 'template_contacts'
+			case 10:
+				$conf_file = fopen(TEMPLATE_CONTACTS, 'rw') or die('File not found !');
+				$selected = 'template_contact';
+				break;
+			//$type = 'template_contactgroups'
+			case 11:
+				$conf_file = fopen(TEMPLATE_CONTATCGROUPS, 'rw') or die('File not found !');
+				$selected = 'template_contactgroup';
+				break;
+			//$type = 'template_hosts'
+			case 12:
+				$conf_file = fopen(TEMPLATE_HOSTS, 'rw') or die('File not found !');
+				$selected = 'template_host';
+				break;
+			//$type = 'template_hostgroups'
+			case 13:
+				$conf_file = fopen(TEMPLATE_HOSTGROUPS, 'rw') or die('File not found !');
+				$selected = 'template_hostgroup';
+				break;
+			//$type = 'template_timeperiods'
+			case 14:
+				$conf_file = fopen(TEMPLATE_TIMEPERIODS, 'rw') or die('File not found !');
+				$selected = 'template_timeperiod';
+				break;
+			//$type = 'template_services'
+			case 15:
+				$conf_file = fopen(TEMPLATE_SERVICES, 'rw') or die('File not found !');
+				$selected = 'template_service';
+				break;
+			//$type = 'template_servicegroups'
+			case 16:
+				$conf_file = fopen(TEMPLATE_SERVICEGROUPS, 'rw') or die('File not found !');
+				$selected = 'template_servicegroup';
+				break;
+		}
 	}
 
 	//Function used to delete variable of existing object
@@ -348,8 +423,7 @@ class Testing extends CI_Model
 		$write_array = array();
 		$is_object = false;
 		$limit_pop = true;
-
-		
+	
 		list($input_obj, $input_key, $input_item) = explode(',', $items, 3);
 
 		foreach($obj_array as $object)

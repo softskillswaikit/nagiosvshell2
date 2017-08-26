@@ -349,8 +349,7 @@ class Maintenance_command extends CI_Model
 		$is_object = false;
 		$limit_pop = true;
 
-		
-		list($input_obj, $input_key, $input_item) = explode(',', $items, 3);
+		list($input_obj, $input_key, $input_item) = explode(',', $input_items, 3);
 
 		foreach($obj_array as $object)
 		{
@@ -574,8 +573,7 @@ class Maintenance_command extends CI_Model
 
 		$write_array = array();
 		$is_object = false;
-
-		
+	
 		list($input_obj, $input_key, $input_item) = explode(',', $input_items, 3);
 
 		foreach($obj_array as $object)

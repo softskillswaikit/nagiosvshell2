@@ -2573,31 +2573,31 @@ class Reports_data extends CI_Model
 	{
 		if($this->_compare_string($input_state, 'UP'))
 		{
-			return 2;
+			return 3;
 		}
 		else if($this->_compare_string($input_state, 'DOWN'))
 		{	
-			return 1;
+			return 2;
 		}
 		else if($this->_compare_string($input_state, 'UNREACHABLE'))
 		{
-			return 0;
+			return 1;
 		}
 		else if($this->_compare_string($input_state, 'OK'))
 		{
-			return 3;
+			return 4;
 		}
 		else if($this->_compare_string($input_state, 'WARNING'))
 		{
-			return 2;
+			return 3;
 		}
 		else if($this->_compare_string($input_state, 'UNKNOWN'))
 		{
-			return 1;
+			return 2;
 		}
 		else if($this->_compare_string($input_state, 'CRITICAL'))
 		{
-			return 0;
+			return 1;
 		}
 		else if($this->_compare_string($input_state, 'STARTUP'))
 		{
@@ -2614,6 +2614,10 @@ class Reports_data extends CI_Model
 		else if($this->_compare_string($Input_state, 'STOPPED'))
 		{
 			return 9;
+		}
+		else if($this->_compare_string($input_state, 'UNDETERMINED'))
+		{
+			return 0;
 		}
 	}
 
