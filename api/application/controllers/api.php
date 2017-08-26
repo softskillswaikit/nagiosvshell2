@@ -455,7 +455,6 @@ class API extends VS_Controller
             $date = $start_date;
         }
 
-
         //check empty and invalid inputs
         $validate = $this->validate_data(array($return_type, $period, $date, $service_description, $logtype, $statetype, $state));
 
@@ -485,20 +484,7 @@ class API extends VS_Controller
      */
     public function alertHistogram($return_type, $host_name, $service_description, $period, $start_date, $end_date, $statistic_breakdown, $event_graph, $state_type_graph, $assume_state_retention, $initial_state_logged, $ignore_repeated_state)
     {
-        //test hardcode data
-        /*
-        $return_type = '1';
-        $host_name = 'ALL';
-        $service_description = 'ALL';
-        $period = 'THIS YEAR';
-        $date = '';
-        $statistic_breakdown = '1';
-        $event_graph = 'ALL';
-        $state_type_graph = 'ALL';
-        $assume_state_retention = 'false';
-        $initial_state_logged = 'false';
-        $ignore_repeated_state = 'false';
-        */
+        $Alert_histogram = array();
 
         //convert input to int
         $return_type = (int)$return_type;
@@ -527,11 +513,12 @@ class API extends VS_Controller
             $date = $start_date;
         }
 
-        $Alert_histogram = array();
-
-        $Alert_histogram = $this->reports_data->get_alert_histogram($return_type, $host_name, $service_description, $period, $date, $statistic_breakdown, $event_graph, $state_type_graph);
-
-
+        $validate = $this->validate_data(array($return_type, $statistic_breakdown, $host_name, $period, $start_date, $event_graph));
+        
+        if($validate)
+        {
+            $Alert_histogram = $this->reports_data->get_alert_histogram($return_type, $host_name, $service_description, $period, $date, $statistic_breakdown, $event_graph, $state_type_graph);
+        }
 
         $this->output($Alert_histogram);
     }
@@ -599,6 +586,131 @@ class API extends VS_Controller
         if($type == '1')
         {
             $Result = $this->maintenance_command->add(1, $test_array);
+        }
+
+        //validate data
+        $validate = $this->validate_data(array($type, $input_item));
+
+        if($validate)
+        {
+            $Result = $this->maintenance_command->edit($type, $input_item;
+            $Result = $this->check_result($Result);
+        }
+
+        //invalid inputs
+        else
+        {
+            $Result = 1;
+        }
+
+        $this->output($Result);
+    }
+
+    /**
+     * Add configurations in maintenance screen
+     *
+     * @param String $type
+     * @param String $input_item
+     * @param String $is_variable
+     */
+    public function addMaintenance($type, $input_item, $is_variable)
+    {
+        $Result = 1;
+
+        //convert input to int
+        $type = (int)$type;
+
+        //decode input with spacing
+        $input_item = urldecode($input_item);
+
+        //convert input to bool
+        $is_variable = $this->convert_data_bool($is_variable);
+
+        //validate data
+        $validate = $this->validate_data(array($type, $input_item));
+
+        if($validate)
+        {
+            $Result = $this->maintenance_command->add($type, $input_item, $is_variable);
+            $Result = $this->check_result($Result);
+        }
+
+        //invalid inputs
+        else
+        {
+            $Result = 1;
+        }
+
+        $this->output($Result);
+    }
+
+    /**
+     * Edit configurations in maintenance screen
+     *
+     * @param String $type
+     * @param String $input_item
+     */
+    public function editMaintenance($type, $input_item)
+    {
+        $Result = 1;
+
+        //convert input to int
+        $type = (int)$type;
+
+        //decode input with spacing
+        $input_item = urldecode($input_item);
+
+        //validate data
+        $validate = $this->validate_data(array($type, $input_item));
+
+        if($validate)
+        {
+            $Result = $this->maintenance_command->edit($type, $input_item);
+            $Result = $this->check_result($Result);
+        }
+
+        //invalid inputs
+        else
+        {
+            $Result = 1;
+        }
+
+        $this->output($Result);
+    }
+
+    /**
+     * Delete configurations in maintenance screen
+     *
+     * @param String $type
+     * @param String $input_item
+     * @param String $is_variable
+     */
+    public function deleteMaintenance($type, $input_item, $is_variable)
+    {
+        $Result = 1;
+
+        //convert input to int
+        $type = (int)$type;
+
+        //decode input with spacing
+        $input_item = urldecode($input_item);
+
+        //convert input to bool
+        $is_variable = $this->convert_data_bool($is_variable);
+
+        //validate data
+        $validate = $this->validate_data(array($type, $input_item));
+
+        if($validate)
+        {
+            $Result = $this->maintenance_command->delete($type, $input_item, $is_variable);
+            $Result = $this->check_result($Result);
+        }
+
+        //invalid inputs
+        else
+        {
+            $Result = 1;
         }
 
         $this->output($Result);
@@ -695,7 +807,7 @@ class API extends VS_Controller
      */
     public function deleteDowntime($downtime_id, $type)
     {
-        $Result = false;
+        $Result = 1;
 
         //check empty inputs
         $validate = $this->validate_data(array($type, $downtime_id));
@@ -749,7 +861,7 @@ class API extends VS_Controller
      */
     public function scheduleDowntime($type, $host_name, $service_description, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments='')
     {
-        $Result = false;
+        $Result = 1;
 
         $allowed_types = array(
             'host',
@@ -948,7 +1060,7 @@ class API extends VS_Controller
      */
     public function addComments($type, $host_name, $service_description, $persistent, $author, $comments)
     {
-        $Result = false;
+        $Result = 1;
 
         $allowed_types = array(
             'host',
@@ -1006,7 +1118,7 @@ class API extends VS_Controller
      */
     public function deleteComments($id, $type)
     {
-        $Result = false;
+        $Result = 1;
 
         $allowed_types = array(
             'host',
@@ -1060,7 +1172,7 @@ class API extends VS_Controller
      */
     public function servicecheck($type, $host_name, $service_description)
     {
-        $Result = false;
+        $Result = 1;
 
         //decode input with spacing
         $host_name = urldecode($host_name);
@@ -1102,7 +1214,7 @@ class API extends VS_Controller
      */
     public function allnotifications($type)
     {
-        $Result = false;
+        $Result = 1;
 
         if($type == 'true')
         {
@@ -1129,7 +1241,7 @@ class API extends VS_Controller
      */
     public function nagiosOperation($type)
     {
-        $Result = false;
+        $Result = 1;
 
         if($type == 'restart')
         {
@@ -1158,7 +1270,7 @@ class API extends VS_Controller
      */
     public function serviceNotification($type, $host_name, $service_description)
     {
-        $Result = false;
+        $Result = 1;
 
         if($type == 'true')
         {
@@ -1187,7 +1299,7 @@ class API extends VS_Controller
      */
     public function deleteAllComment($type, $host_name, $service_description)
     {
-        $Result = false;
+        $Result = 1;
 
         //decode input with spacing
         $host_name = urldecode($host_name);
@@ -1223,7 +1335,7 @@ class API extends VS_Controller
      */
     public function hostNotification($type, $host_name)
     {
-        $Result = false;
+        $Result = 1;
 
         //decode input with spacing
         $host_name = urldecode($host_name);
@@ -1257,7 +1369,7 @@ class API extends VS_Controller
      */
     public function scheduleCheck($type, $host_name, $service_description='', $checktime, $force_check)
     {
-        $Result = false;
+        $Result = 1;
 
         //convert force check to bool
         $force_check = $this->convert_data_bool($force_check);
@@ -1293,7 +1405,7 @@ class API extends VS_Controller
      */
      public function hostServiceCheck($type, $host_name)
      {
-        $Result = false;
+        $Result = 1;
 
         if($type == 'true')
         {
@@ -1321,7 +1433,7 @@ class API extends VS_Controller
       */
      public function hostServiceNotification($type, $host_name)
      {
-        $Result = false;
+        $Result = 1;
 
         if($type == 'true')
         {
@@ -1355,7 +1467,7 @@ class API extends VS_Controller
       */
      public function acknowledgeProblem($type, $host_name, $service_description='', $sticky, $notify, $persistent, $author, $comment)
      {
-        $Result = false;
+        $Result = 1;
 
         //convert input to bool
         $sticky = $this->convert_data_bool($sticky);
@@ -1391,7 +1503,7 @@ class API extends VS_Controller
       */
      public function allServiceCheck($type)
      {
-        $Result = false;
+        $Result = 1;
 
         if($type == 'true')
         {
@@ -1418,7 +1530,7 @@ class API extends VS_Controller
       */
      public function allPassiveServiceCheck($type)
      {
-        $Result = false;
+        $Result = 1;
 
         if($type == 'true')
         {
@@ -1447,7 +1559,7 @@ class API extends VS_Controller
       */
      public function passiveServiceCheck($type, $host_name, $service_description)
      {
-        $Result = false;
+        $Result = 1;
 
         if($type == 'true')
         {
@@ -1474,7 +1586,7 @@ class API extends VS_Controller
       */
      public function eventHandler($type)
      {
-        $Result = false;
+        $Result = 1;
 
         if($type == 'true')
         {
@@ -1502,7 +1614,7 @@ class API extends VS_Controller
       */
      public function hostCheck($type, $host_name)
      {
-        $Result = false;
+        $Result = 1;
 
         if($type == 'true')
         {
@@ -1529,7 +1641,7 @@ class API extends VS_Controller
       */
      public function obsessOverServiceCheck($type)
      {
-        $Result = false;
+        $Result = 1;
 
         if($type == 'true')
         {
@@ -1556,7 +1668,7 @@ class API extends VS_Controller
       */
      public function obsessOverHostCheck($type)
      {
-        $Result = false;
+        $Result = 1;
 
         if($type == 'true')
         {
@@ -1584,7 +1696,7 @@ class API extends VS_Controller
       */
      public function obsessOverHost($type, $host_name)
      {
-        $Result = false;
+        $Result = 1;
 
         if($type == 'true')
         {
@@ -1613,7 +1725,7 @@ class API extends VS_Controller
       */
      public function obsessOverService($type, $host_name, $service_description)
      {
-        $Result = false;
+        $Result = 1;
 
         if($type == 'true')
         {
@@ -1640,7 +1752,7 @@ class API extends VS_Controller
       */
      public function performanceData($type)
      {
-        $Result = false;
+        $Result = 1;
 
         if($type == 'true')
         {
@@ -1667,7 +1779,7 @@ class API extends VS_Controller
       */
      public function allHostCheck($type)
      {
-        $Result = false;
+        $Result = 1;
 
         if($type == 'true')
         {
@@ -1694,7 +1806,7 @@ class API extends VS_Controller
       */
      public function allPassiveHostCheck($type)
      {
-        $Result = false;
+        $Result = 1;
 
         if($type == 'true')
         {
@@ -1722,7 +1834,7 @@ class API extends VS_Controller
       */
      public function passiveHostCheck($type, $host_name)
      {
-        $Result = false;
+        $Result = 1;
 
         if($type == 'true')
         {
@@ -1749,7 +1861,7 @@ class API extends VS_Controller
       */
      public function allFlapDetection($type)
      {
-        $Result = false;
+        $Result = 1;
 
         if($type == 'true')
         {
@@ -1777,7 +1889,7 @@ class API extends VS_Controller
       */
      public function hostFlapDetection($type, $host_name)
      {
-        $Result = false;
+        $Result = 1;
 
         if($type == 'true')
         {
@@ -1806,7 +1918,7 @@ class API extends VS_Controller
       */
      public function serviceFlapDetection($type, $host_name, $service_description)
      {
-        $Result = false;
+        $Result = 1;
 
         //check empty inputs
         $validate = $this->validate_data($type, $host_name, $service_description);
@@ -1847,7 +1959,7 @@ class API extends VS_Controller
       */
      public function sendCustomNotification($type, $host_name, $service_description, $force, $broadcast, $author, $comment)
      {
-        $Result = false;
+        $Result = 1;
 
         //convert inputs to bool
         $force = $this->convert_data_bool($force);
@@ -1885,7 +1997,6 @@ class API extends VS_Controller
      */
     public function hoststatus($host_name='') 
     {
-
         $Data = $this->nagios_data->get_collection('hoststatus');
 
         //fetch by host name
@@ -2028,30 +2139,6 @@ class API extends VS_Controller
         $Result['code'] = -3;//Fail to get the service.
         return $this->output($Result);
     }
-
-    /**
-     * Add configuration
-     *
-     * @param String $type, '1' - command
-     * @param array String $command_array, [$command_name, $command_line]
-     */
-    public function addConfiguration($type, $command_array)
-    {
-        $type = '1';
-
-        $test_array = array(
-          'command_name' => 'test command 1', 
-          'command_line' => 'test command 2'
-        );
-
-        if($type == '1')
-        {
-            $Result = $this->maintenance_command->add(1, $test_array);
-        }
-
-        $this->output($Result);
-    }
-
 
     /**
      * Retrieve service status objects based on parameters
