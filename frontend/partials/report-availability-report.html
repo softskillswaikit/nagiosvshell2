@@ -178,26 +178,12 @@
 			</div>
     </div>
 
-	<!--(host-one, service-one)-->
-	<div class="table-container full-width nopadding" ng-if="(param.type == 1 && param.host != 'ALL') || ((param.type == 2 || param.type == 3 || param.type == 4) && param.service != 'ALL')">
+	<!--(host-one)-->
+	<div class="table-container full-width nopadding" ng-if="param.type == 1 && param.host != 'ALL'">
 
-				<h3 ng-if="param.type == 1">Host State Breakdowns</h3>
-				<h3 ng-if="param.type == 2">Service State Breakdowns</h3>
-				<h3 ng-if="param.type == 3">Host Resource State Breakdowns</h3>
-				<h3 ng-if="param.type == 4">Service Running State Breakdowns</h3>
+				<h3>Host State Breakdowns</h3>
 
-        <div class="table-options">
-            <form action="" class="filter-form" method="post">
-                <div class="filter-icon"></div>
-                <input id="footable-filter" class="footable-filter" type="text" placeholder="Filter Table"/>
-            </form>
-            <div class="pagesize-container">
-                Show <a class="active" ng-href="#" data-page-size="25">25</a> <a ng-href="#" data-page-size="100">100</a> <a ng-href="#" data-page-size="50000">All</a>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-
-        <table cellspacing="0" cellpadding="0" class="righttd" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+        <table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
             <thead>
                 <tr>
 										<th>State</th>
@@ -207,26 +193,219 @@
                     <th>Known Time (%)</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr ng-if="(data[0] | count) == 0">
-                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No data to display' }}</td>
-                </tr>
-                <tr class="state-{{ up | lowercase }}" footabledata>
-                    <td rowspan=3 class="status">UP</td>
+						<tbody>
+                <tr class="state-up" footabledata>
+                    <td rowspan="3" class="status">UP</td>
 										<td>Unscheduled</td>
+										<td>{{ data[0].up_unschedule_total | seconds_converter }}</td>
+										<td>{{ data[0].up_unschedule_total | percent : data[0].all_total }}</td>
+										<td>{{ data[0].up_unschedule_total | percent : data[0].all_total }}</td>
                 </tr>
-								<tr footabledata>
+								<tr>
 									<td>Scheduled</td>
-									<td>{{ }}</td>
+									<td>{{ data[0].up_schedule_total | seconds_converter }}</td>
+									<td>{{ data[0].up_schedule_total | percent : data[0].all_total }}</td>
+									<td>{{ data[0].up_schedule_total | percent : data[0].all_total }}</td>
 								</tr>
-								<tr footabledata>
-									<td>Total</td>
-									<td>{{ }}</td>
+								<tr class="state-up">
+									<td class="status">Total</td>
+									<td class="status">{{ data[0].up_total | seconds_converter }}</td>
+									<td class="status">{{ data[0].up_total | percent : data[0].all_total }}</td>
+									<td class="status">{{ data[0].up_total | percent : data[0].all_total }}</td>
 								</tr>
+								<tr class="state-down">
+                    <td rowspan="3" class="status">DOWN</td>
+										<td>Unscheduled</td>
+										<td>{{ data[0].down_unschedule_total | seconds_converter }}</td>
+										<td>{{ data[0].down_unschedule_total | percent : data[0].all_total }}</td>
+										<td>{{ data[0].down_unschedule_total | percent : data[0].all_total }}</td>
+                </tr>
+								<tr>
+									<td>Scheduled</td>
+									<td>{{ data[0].down_schedule_total | seconds_converter }}</td>
+									<td>{{ data[0].down_schedule_total | percent : data[0].all_total }}</td>
+									<td>{{ data[0].down_schedule_total | percent : data[0].all_total }}</td>
+								</tr>
+								<tr class="state-down">
+									<td class="status">Total</td>
+									<td class="status">{{ data[0].down_total | seconds_converter }}</td>
+									<td class="status">{{ data[0].down_total | percent : data[0].all_total }}</td>
+									<td class="status">{{ data[0].down_total | percent : data[0].all_total }}</td>
+								</tr>
+								<tr class="state-unreachable">
+                    <td rowspan="3" class="status">UNREACHABLE</td>
+										<td>Unscheduled</td>
+										<td>{{ data[0].unreachable_unschedule_total | seconds_converter }}</td>
+										<td>{{ data[0].unreachable_unschedule_total | percent : data[0].all_total }}</td>
+										<td>{{ data[0].unreachable_unschedule_total | percent : data[0].all_total }}</td>
+                </tr>
+								<tr>
+									<td>Scheduled</td>
+									<td>{{ data[0].unreachable_schedule_total | seconds_converter }}</td>
+									<td>{{ data[0].unreachable_schedule_total | percent : data[0].all_total }}</td>
+									<td>{{ data[0].unreachable_schedule_total | percent : data[0].all_total }}</td>
+								</tr>
+								<tr class="state-unreachable">
+									<td class="status">Total</td>
+									<td class="status">{{ data[0].unreachable_total | seconds_converter }}</td>
+									<td class="status">{{ data[0].unreachable_total | percent : data[0].all_total }}</td>
+									<td class="status">{{ data[0].unreachable_total | percent : data[0].all_total }}</td>
+								</tr>
+								<tr class="state-pending">
+                    <td rowspan="3" class="status">Pending</td>
+										<td>Nagios Not Running</td>
+										<td>{{ data[0].undetermined_not_run_total | seconds_converter }}</td>
+										<td>{{ data[0].undetermined_not_run_total | percent : data[0].all_total }}</td>
+										<td>{{ data[0].undetermined_not_run_total | percent : data[0].all_total }}</td>
+                </tr>
+								<tr>
+									<td>Insufficient Data</td>
+									<td>{{ data[0].undetermined_insufficient_total | seconds_converter }}</td>
+									<td>{{ data[0].undetermined_insufficient_total | percent : data[0].all_total }}</td>
+									<td>{{ data[0].undetermined_insufficient_total | percent : data[0].all_total }}</td>
+								</tr>
+								<tr class="state-pending">
+									<td class="status">Total</td>
+									<td class="status">{{ data[0].undetermined_total | seconds_converter }}</td>
+									<td class="status">{{ data[0].undetermined_total | percent : data[0].all_total }}</td>
+									<td class="status">{{ data[0].undetermined_total | percent : data[0].all_total }}</td>
+								</tr>
+								<tr>
+                    <td rowspan="3">All</td>
+										<td>Total</td>
+										<td>{{ data[0].all_total | seconds_converter }}</td>
+										<td>{{ data[0].all_total | percent : data[0].all_total }}</td>
+										<td>{{ data[0].all_total | percent : data[0].all_total }}</td>
+                </tr>
             </tbody>
-        </table>
+				</table>
 
     </div>
+
+		<!--(service-one)-->
+		<div class="table-container full-width nopadding" ng-if="(param.type == 2 || param.type == 3 || param.type == 4) && param.service != 'ALL'">
+
+					<h3 ng-if="param.type == 2">Service State Breakdowns</h3>
+					<h3 ng-if="param.type == 3">Host Resource State Breakdowns</h3>
+					<h3 ng-if="param.type == 4">Service Running State Breakdowns</h3>
+
+					<table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+							<thead>
+									<tr>
+											<th>State</th>
+											<th>Type / Reason</th>
+											<th>Time</th>
+											<th>Total Time (%)</th>
+											<th>Known Time (%)</th>
+									</tr>
+							</thead>
+							<tbody>
+									<tr class="state-ok" footabledata>
+											<td rowspan="3" class="status">OK</td>
+											<td>Unscheduled</td>
+											<td>{{ data[0].ok_unschedule_total | seconds_converter }}</td>
+											<td>{{ data[0].ok_unschedule_total | percent : data[0].all_total }}</td>
+											<td>{{ data[0].ok_unschedule_total | percent : data[0].all_total }}</td>
+									</tr>
+									<tr>
+										<td>Scheduled</td>
+										<td>{{ data[0].ok_schedule_total | seconds_converter }}</td>
+										<td>{{ data[0].ok_schedule_total | percent : data[0].all_total }}</td>
+										<td>{{ data[0].ok_schedule_total | percent : data[0].all_total }}</td>
+									</tr>
+									<tr class="state-ok">
+										<td class="status">Total</td>
+										<td class="status">{{ data[0].ok_total | seconds_converter }}</td>
+										<td class="status">{{ data[0].ok_total | percent : data[0].all_total }}</td>
+										<td class="status">{{ data[0].ok_total | percent : data[0].all_total }}</td>
+									</tr>
+									<tr class="state-warning">
+											<td rowspan="3" class="status">WARNING</td>
+											<td>Unscheduled</td>
+											<td>{{ data[0].warning_unschedule_total | seconds_converter }}</td>
+											<td>{{ data[0].warning_unschedule_total | percent : data[0].all_total }}</td>
+											<td>{{ data[0].warning_unschedule_total | percent : data[0].all_total }}</td>
+									</tr>
+									<tr>
+										<td>Scheduled</td>
+										<td>{{ data[0].warning_schedule_total | seconds_converter }}</td>
+										<td>{{ data[0].warning_schedule_total | percent : data[0].all_total }}</td>
+										<td>{{ data[0].warning_schedule_total | percent : data[0].all_total }}</td>
+									</tr>
+									<tr class="state-warning">
+										<td class="status">Total</td>
+										<td class="status">{{ data[0].warning_total | seconds_converter }}</td>
+										<td class="status">{{ data[0].warning_total | percent : data[0].all_total }}</td>
+										<td class="status">{{ data[0].warning_total | percent : data[0].all_total }}</td>
+									</tr>
+									<tr class="state-unknown">
+											<td rowspan="3" class="status">UNKNOWN</td>
+											<td>Unscheduled</td>
+											<td>{{ data[0].unknown_unschedule_total | seconds_converter }}</td>
+											<td>{{ data[0].unknown_unschedule_total | percent : data[0].all_total }}</td>
+											<td>{{ data[0].unknown_unschedule_total | percent : data[0].all_total }}</td>
+									</tr>
+									<tr>
+										<td>Scheduled</td>
+										<td>{{ data[0].unknown_schedule_total | seconds_converter }}</td>
+										<td>{{ data[0].unknown_schedule_total | percent : data[0].all_total }}</td>
+										<td>{{ data[0].unknown_schedule_total | percent : data[0].all_total }}</td>
+									</tr>
+									<tr class="state-unknown">
+										<td class="status">Total</td>
+										<td class="status">{{ data[0].unknown_total | seconds_converter }}</td>
+										<td class="status">{{ data[0].unknown_total | percent : data[0].all_total }}</td>
+										<td class="status">{{ data[0].unknown_total | percent : data[0].all_total }}</td>
+									</tr>
+									<tr class="state-critical">
+											<td rowspan="3" class="status">CRITICAL</td>
+											<td>Unscheduled</td>
+											<td>{{ data[0].critical_unschedule_total | seconds_converter }}</td>
+											<td>{{ data[0].critical_unschedule_total | percent : data[0].all_total }}</td>
+											<td>{{ data[0].critical_unschedule_total | percent : data[0].all_total }}</td>
+									</tr>
+									<tr>
+										<td>Scheduled</td>
+										<td>{{ data[0].critical_schedule_total | seconds_converter }}</td>
+										<td>{{ data[0].critical_schedule_total | percent : data[0].all_total }}</td>
+										<td>{{ data[0].critical_schedule_total | percent : data[0].all_total }}</td>
+									</tr>
+									<tr class="state-critical">
+										<td class="status">Total</td>
+										<td class="status">{{ data[0].critical_total | seconds_converter }}</td>
+										<td class="status">{{ data[0].critical_total | percent : data[0].all_total }}</td>
+										<td class="status">{{ data[0].critical_total | percent : data[0].all_total }}</td>
+									</tr>
+									<tr class="state-pending">
+											<td rowspan="3" class="status">Pending</td>
+											<td>Nagios Not Running</td>
+											<td>{{ data[0].undetermined_not_run_total | seconds_converter }}</td>
+											<td>{{ data[0].undetermined_not_run_total | percent : data[0].all_total }}</td>
+											<td>{{ data[0].undetermined_not_run_total | percent : data[0].all_total }}</td>
+									</tr>
+									<tr>
+										<td>Insufficient Data</td>
+										<td>{{ data[0].undetermined_insufficient_total | seconds_converter }}</td>
+										<td>{{ data[0].undetermined_insufficient_total | percent : data[0].all_total }}</td>
+										<td>{{ data[0].undetermined_insufficient_total | percent : data[0].all_total }}</td>
+									</tr>
+									<tr class="state-pending">
+										<td class="status">Total</td>
+										<td class="status">{{ data[0].undetermined_total | seconds_converter }}</td>
+										<td class="status">{{ data[0].undetermined_total | percent : data[0].all_total }}</td>
+										<td class="status">{{ data[0].undetermined_total | percent : data[0].all_total }}</td>
+									</tr>
+									<tr>
+											<td rowspan="3">All</td>
+											<td>Total</td>
+											<td>{{ data[0].all_total | seconds_converter }}</td>
+											<td>{{ data[0].all_total | percent : data[0].all_total }}</td>
+											<td>{{ data[0].all_total | percent : data[0].all_total }}</td>
+									</tr>
+							</tbody>
+					</table>
+
+			</div>
 
 	<!--(service-all)-->
 	<div class="table-container full-width nopadding" ng-if="(param.type == 2 || param.type == 3 || param.type == 4) && param.service == 'ALL' ">
@@ -269,14 +448,16 @@
 						<tbody ng-if="( data | count) == 0">
                 <tr><td colspan="7">{{ is_loading ? 'Loading...' : 'No data to display' }}</td></tr>
 						</tbody>
-            <tbody ng-repeat="service in data">
+            <tbody ng-repeat="d in data">
                 <tr footabledata>
-                    <th rowspan="{{host.data.length}}">{{ }}</td>
-                    <td>{{d}}</td>
+                    <td>{{ d.hostname }}</td>
+                    <td>{{ d.servicename }}</td>
+										<td>{{ d.ok_total | percent : d.all_total }}</td>
+										<td>{{ d.warning_total | percent : d.all_total }}</td>
+										<td>{{ d.unknown_total | percent : d.all_total }}</td>
+										<td>{{ d.critical_total | percent : d.all_total }}</td>
+										<td>{{ d.undetermined_total | percent : d.all_total }}</td>
                 </tr>
-								<tr ng-repeat="data in host.data" ng-if="$index > 0">
-									<td ng-repeat="d in data">{{d}}</td>
-								</tr>
             </tbody>
         </table>
 
@@ -285,7 +466,7 @@
 	<!--(host-one)-->
 	<div class="table-container full-width" ng-if="(param.type == 1 && param.host != 'ALL')">
 
-	        <h3>State Breakdowns For Host {{}}</h3>
+	        <h3>State Breakdowns For Host '{{ param.host }}'</h3>
 
 	        <div class="table-options">
 	            <form action="" class="filter-form" method="post">
@@ -324,11 +505,11 @@
 	                </tr>
 	                <tr ng-repeat="service in data[1]" footabledata>
 	                    <td>{{ service.servicename }}</td>
-											<td>{{ service.ok_total }}</td>
-											<td>{{ service.warning_total }}</td>
-											<td>{{ service.unknown_total }}</td>
-											<td>{{ service.critical_total }}</td>
-											<td>{{ service.undetermined_total }}</td>
+											<td>{{ service.ok_total | percent : service.all_total }}</td>
+											<td>{{ service.warning_total | percent : service.all_total }}</td>
+											<td>{{ service.unknown_total | percent : service.all_total }}</td>
+											<td>{{ service.critical_total | percent : service.all_total }}</td>
+											<td>{{ service.undetermined_total | percent : service.all_total }}</td>
 	                </tr>
 	            </tbody>
 	        </table>

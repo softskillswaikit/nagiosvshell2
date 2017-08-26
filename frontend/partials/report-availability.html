@@ -40,7 +40,7 @@
 							<label for="reportHost" ng-show="reportType == 5" class="col-md-4 control-label">Select Hostgroup:</label>
 							<label for="reportHost" ng-show="reportType != 5 && reportType != 6" class="col-md-4 control-label">Select Host:</label>
 							<div class="col-md-6">
-								<select ng-model="reportHost" ng-change="reportService = ''" name="reportHost" class="form-control" ng-required="reportType != 6">
+								<select ng-model="reportHost" ng-change="reportService = ''" name="reportHost" class="form-control" ng-required="reportType != 6 && reportService != 'ALL'">
 									<option ng-show="reportType == 1 || reportType == 5" value="ALL">-- ALL --</option>
 									<option ng-show="reportType == 5" ng-repeat="name in name.hostgroup" value="{{name}}">{{name}}</option>
 									<option ng-show="reportType != 5 && reportType != 6"  ng-repeat="name in name.host" value="{{name}}">{{name}}</option>
@@ -57,7 +57,8 @@
 							<label for="reportService" ng-show="reportType == 4" class="col-md-4 control-label">Select Service Running State:</label>
 							<div class="col-md-6">
 								<select ng-model="reportService" name="reportService" class="form-control" ng-required="reportType != 1 && reportType != 5">
-									 <option value="ALL">-- All Service on All Host--</option>
+									 <option ng-show="reportType == 6" value="ALL">-- ALL --</option>
+									 <option ng-show="reportType != 6" value="ALL">-- All Service on All Host--</option>
 									 <option ng-show="reportType == 6" ng-repeat="name in name.servicegroup" value="{{name}}">{{name}}</option>
 									 <option ng-show="reportType == 2" ng-repeat="name in name.service | filter:{host:reportHost}:true" value="{{name.service}}">{{name.service}}</option>
 									 <option ng-show="reportType == 3" ng-repeat="name in name.hostresource | filter:{host:reportHost}:true" value="{{name.service}}">{{name.service}}</option>

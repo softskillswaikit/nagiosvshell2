@@ -1094,8 +1094,6 @@ angular.module('vshell.controllers', [])
              endUnix = ' ';
           }
 
-          console.log(startUnix);
-
           //get component name
           var options = {
               name: 'trend',
@@ -1148,7 +1146,6 @@ angular.module('vshell.controllers', [])
             var datay = $filter('date')(date, 'EEE MMM d H:mm:ss yyyy');
             var datax = d.state;
             data.push({"label" : datay,"value": datax});
-            console.log(d.state);
           })
 
           var start = $rootScope.data[0][0].start_time ;
@@ -1369,8 +1366,6 @@ angular.module('vshell.controllers', [])
                  "statisticsBreakdown" : $filter('alerthistogram-x')($scope.statisticsBreakdown)
                };
 
-               console.log($rootScope.param);
-
                if(data == 1)
                  ngToast.create({className: 'alert alert-danger',content:'Fail! Wrong Data!',timeout:1500});
                else if(data == 2)
@@ -1554,7 +1549,6 @@ angular.module('vshell.controllers', [])
        };
 
       $scope.viewTrends = function(type){
-          console.log($rootScope.param);
            dataService.setInfo($rootScope.param);
            $window.location.href="#/report/trends";
       };
