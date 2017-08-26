@@ -19,7 +19,7 @@ class Maintenance_command extends CI_Model
 		define('SERVICEGROUPS', '/usr/local/nagios/etc/objects/servicegroups.cfg');
 		define('TEMPLATE_COMMANDS', '/usr/local/nagios/etc/objects/template_commands.cfg');
 		define('TEMPLATE_CONTACTS', '/usr/local/nagios/etc/objects/template_contacts.cfg');
-		define('TEMPLATE_CONTATCGROUPS', '/usr/local/nagios/etc/objects/template_contactgroups.cfg');
+		define('TEMPLATE_CONTACTGROUPS', '/usr/local/nagios/etc/objects/template_contactgroups.cfg');
 		define('TEMPLATE_HOSTS', '/usr/local/nagios/etc/objects/template_hosts.cfg');
 		define('TEMPLATE_HOSTGROUPS', '/usr/local/nagios/etc/objects/template_hostgroups.cfg');
 		define('TEMPLATE_TIMEPERIODS', '/usr/local/nagios/etc/objects/template_timeperiods.cfg');
@@ -35,67 +35,83 @@ class Maintenance_command extends CI_Model
 		{
 			//$type = 'commands'
 			case 1:
-				$conf_file = fopen(COMMANDS, 'rw') or die('File not found !');
+				$conf_file = fopen(COMMANDS, 'r') or die('File not found !');
+				$selected = COMMANDS;
 				break;
 			//$type = 'contacts'
 			case 2:
-				$conf_file = fopen(CONTACTS, 'rw') or die('File not found !');
+				$conf_file = fopen(CONTACTS, 'r') or die('File not found !');
+				$selected = CONTACTS;
 				break;
 			//$type = 'contactgroups'
 			case 3:
-				$conf_file = fopen(CONTACTGROUPS, 'rw') or die('File not found !');
+				$conf_file = fopen(CONTACTGROUPS, 'r') or die('File not found !');
+				$selected = CONTACTGROUPS;
 				break;
 			//$type = 'hosts'
 			case 4:
-				$conf_file = fopen(HOSTS, 'rw') or die('File not found !');
+				$conf_file = fopen(HOSTS, 'r') or die('File not found !');
+				$selected = HOSTS;
 				break;
 			//$type = 'hostgroups'
 			case 5:
-				$conf_file = fopen(HOSTGROUPS, 'rw') or die('File not found !');
+				$conf_file = fopen(HOSTGROUPS, 'r') or die('File not found !');
+				$selected = HOSTGROUPS;
 				break;
 			//$type = 'timeperiods'
 			case 6:
-				$conf_file = fopen(TIMEPERIODS, 'rw') or die('File not found !');
+				$conf_file = fopen(TIMEPERIODS, 'r') or die('File not found !');
+				$selected = TIMEPERIODS;
 				break;
 			//$type = 'services'
 			case 7:
-				$conf_file = fopen(SERVICES, 'rw') or die('File not found !');
+				$conf_file = fopen(SERVICES, 'r') or die('File not found !');
+				$selected = SERVICES;
 				break;
 			//$type = 'servicegroups'
 			case 8:
-				$conf_file = fopen(SERVICEGROUPS, 'rw') or die('File not found !');
+				$conf_file = fopen(SERVICEGROUPS, 'r') or die('File not found !');
+				$selected = SERVICEGROUPS;
 				break;
 			//$type = 'template_commands'
 			case 9:
-				$conf_file = fopen(TEMPLATE_COMMANDS, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_COMMANDS, 'r') or die('File not found !');
+				$selected = TEMPLATE_COMMANDS;
 				break;
 			//$type = 'template_contacts'
 			case 10:
-				$conf_file = fopen(TEMPLATE_CONTACTS, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_CONTACTS, 'r') or die('File not found !');
+				$selected = TEMPLATE_CONTACTS;
 				break;
 			//$type = 'template_contactgroups'
 			case 11:
-				$conf_file = fopen(TEMPLATE_CONTATCGROUPS, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_CONTACTGROUPS, 'r') or die('File not found !');
+				$selected = TEMPLATE_CONTACTGROUPS;
 				break;
 			//$type = 'template_hosts'
 			case 12:
-				$conf_file = fopen(TEMPLATE_HOSTS, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_HOSTS, 'r') or die('File not found !');
+				$selected = TEMPLATE_HOSTS;
 				break;
 			//$type = 'template_hostgroups'
 			case 13:
-				$conf_file = fopen(TEMPLATE_HOSTGROUPS, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_HOSTGROUPS, 'r') or die('File not found !');
+				$selected = TEMPLATE_HOSTGROUPS;
 				break;
 			//$type = 'template_timeperiods'
 			case 14:
-				$conf_file = fopen(TEMPLATE_TIMEPERIODS, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_TIMEPERIODS, 'r') or die('File not found !');
+				$selected = TEMPLATE_TIMEPERIODS;
 				break;
 			//$type = 'template_services'
 			case 15:
-				$conf_file = fopen(TEMPLATE_SERVICES, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_SERVICES, 'r') or die('File not found !');
+				$selected = TEMPLATE_SERVICES;
 				break;
 			//$type = 'template_servicegroups'
 			case 16:
-				$conf_file = fopen(TEMPLATE_SERVICEGROUPS, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_SERVICEGROUPS, 'r') or die('File not found !');
+				$selected = TEMPLATE_SERVICEGROUPS;
 				break;
 		}
 
@@ -114,12 +130,8 @@ class Maintenance_command extends CI_Model
 			{
 				list($key, $value) = explode("\t", trim($line), 2);
 
-				if (strpos($line,'}') !== FALSE)
+				if (strpos($line,'}') !== false)
 				{
-					$obj_array[] = $obj;
-
-					unset($obj);
-
 					$obj->end_definition = $line;
 					$obj_array[] = $obj;
 
@@ -140,14 +152,14 @@ class Maintenance_command extends CI_Model
 	                $in_block = true;
 
 	                $obj->definition = $line;
-	                $obj_array[] = $obj;
-
-	                unset($obj);
 	            }
 			}
 		}
 
-		list($input_obj, $input_key, $input_item) = explode(',', $items, 3);
+		//close the configuration file
+		fclose($conf_file);
+
+		list($input_obj, $input_key, $input_item) = explode(',', $input_items, 3);
 
 		$write_array = array();
 		$is_object = false;
@@ -157,7 +169,7 @@ class Maintenance_command extends CI_Model
 			foreach($object as $key => $value)
 			{
 				//compare object 
-				if(strcmp($input_obj, $value) == 0)
+				if(strpos($value, $input_obj) !== false)
 				{
 					$is_object = true;
 				}
@@ -167,13 +179,14 @@ class Maintenance_command extends CI_Model
 				{
 					if(strcmp($key, 'definition') == 0)
 					{
-						$write_array[] = $value."\n";
+						$write_array[] = $value;
 					}
 					//end of object definition
 					else if (strpos($value, '}') !== false)
 					{
 						$write_array[] = "\t".$input_key."\t".$input_item."\n";
-						$write_array[] = $value."\n\n";
+						$write_array[] = $value."\n";
+						$is_object = false;
 					}
 					else
 					{
@@ -182,12 +195,12 @@ class Maintenance_command extends CI_Model
 				}
 				else if(strcmp($key, 'definition') == 0)
 				{
-					$write_array[] = $value."\n";
+					$write_array[] = $value;
 				}
 				//end of object definition
 				else if (strpos($value, '}') !== false)
 				{
-					$write_array[] = $value."\n\n";
+					$write_array[] = $value."\n";
 				}
 				else
 				{
@@ -196,12 +209,15 @@ class Maintenance_command extends CI_Model
 			}
 		}
 
+		$conf_file = fopen($selected, 'wb') or die('File not found !');
+
 		foreach($write_array as $write)
 		{
 			//write into the configuration file
 			fwrite($conf_file, $write);
 		}
 		
+		//close the configuration file
 		fclose($conf_file);
 
 		$this->system_commands->restart_nagios();
@@ -488,7 +504,7 @@ class Maintenance_command extends CI_Model
 		{
 			//open the configuration file
 			//place the pointer at end of file
-			$conf_file = fopen(TEMPLATE_CONTATCGROUPS, 'ab') or die('File not found !');
+			$conf_file = fopen(TEMPLATE_CONTACTGROUPS, 'ab') or die('File not found !');
 
 			//write into the configuration file
 			fwrite($conf_file, "\ndefine template_contactgroup {");
@@ -655,67 +671,83 @@ class Maintenance_command extends CI_Model
 		{
 			//$type = 'commands'
 			case 1:
-				$conf_file = fopen(COMMANDS, 'rw') or die('File not found !');
+				$conf_file = fopen(COMMANDS, 'r') or die('File not found !');
+				$selected = COMMANDS;
 				break;
 			//$type = 'contacts'
 			case 2:
-				$conf_file = fopen(CONTACTS, 'rw') or die('File not found !');
+				$conf_file = fopen(CONTACTS, 'r') or die('File not found !');
+				$selected = CONTACTS;
 				break;
 			//$type = 'contactgroups'
 			case 3:
-				$conf_file = fopen(CONTACTGROUPS, 'rw') or die('File not found !');
+				$conf_file = fopen(CONTACTGROUPS, 'r') or die('File not found !');
+				$selected = CONTACTGROUPS;
 				break;
 			//$type = 'hosts'
 			case 4:
-				$conf_file = fopen(HOSTS, 'rw') or die('File not found !');
+				$conf_file = fopen(HOSTS, 'r') or die('File not found !');
+				$selected = HOSTS;
 				break;
 			//$type = 'hostgroups'
 			case 5:
-				$conf_file = fopen(HOSTGROUPS, 'rw') or die('File not found !');
+				$conf_file = fopen(HOSTGROUPS, 'r') or die('File not found !');
+				$selected = HOSTGROUPS;
 				break;
 			//$type = 'timeperiods'
 			case 6:
-				$conf_file = fopen(TIMEPERIODS, 'rw') or die('File not found !');
+				$conf_file = fopen(TIMEPERIODS, 'r') or die('File not found !');
+				$selected = TIMEPERIODS;
 				break;
 			//$type = 'services'
 			case 7:
-				$conf_file = fopen(SERVICES, 'rw') or die('File not found !');
+				$conf_file = fopen(SERVICES, 'r') or die('File not found !');
+				$selected = SERVICES;
 				break;
 			//$type = 'servicegroups'
 			case 8:
-				$conf_file = fopen(SERVICEGROUPS, 'rw') or die('File not found !');
+				$conf_file = fopen(SERVICEGROUPS, 'r') or die('File not found !');
+				$selected = SERVICEGROUPS;
 				break;
 			//$type = 'template_commands'
 			case 9:
-				$conf_file = fopen(TEMPLATE_COMMANDS, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_COMMANDS, 'r') or die('File not found !');
+				$selected = TEMPLATE_COMMANDS;
 				break;
 			//$type = 'template_contacts'
 			case 10:
-				$conf_file = fopen(TEMPLATE_CONTACTS, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_CONTACTS, 'r') or die('File not found !');
+				$selected = TEMPLATE_CONTACTS;
 				break;
 			//$type = 'template_contactgroups'
 			case 11:
-				$conf_file = fopen(TEMPLATE_CONTATCGROUPS, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_CONTACTGROUPS, 'r') or die('File not found !');
+				$selected = TEMPLATE_CONTACTGROUPS;
 				break;
 			//$type = 'template_hosts'
 			case 12:
-				$conf_file = fopen(TEMPLATE_HOSTS, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_HOSTS, 'r') or die('File not found !');
+				$selected = TEMPLATE_HOSTS;
 				break;
 			//$type = 'template_hostgroups'
 			case 13:
-				$conf_file = fopen(TEMPLATE_HOSTGROUPS, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_HOSTGROUPS, 'r') or die('File not found !');
+				$selected = TEMPLATE_HOSTGROUPS;
 				break;
 			//$type = 'template_timeperiods'
 			case 14:
-				$conf_file = fopen(TEMPLATE_TIMEPERIODS, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_TIMEPERIODS, 'r') or die('File not found !');
+				$selected = TEMPLATE_TIMEPERIODS;
 				break;
 			//$type = 'template_services'
 			case 15:
-				$conf_file = fopen(TEMPLATE_SERVICES, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_SERVICES, 'r') or die('File not found !');
+				$selected = TEMPLATE_SERVICES;
 				break;
 			//$type = 'template_servicegroups'
 			case 16:
-				$conf_file = fopen(TEMPLATE_SERVICEGROUPS, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_SERVICEGROUPS, 'r') or die('File not found !');
+				$selected = TEMPLATE_SERVICEGROUPS;
 				break;
 		}
 
@@ -734,12 +766,8 @@ class Maintenance_command extends CI_Model
 			{
 				list($key, $value) = explode("\t", trim($line), 2);
 
-				if (strpos($line,'}') !== FALSE)
+				if (strpos($line,'}') !== false)
 				{
-					$obj_array[] = $obj;
-
-					unset($obj);
-
 					$obj->end_definition = $line;
 					$obj_array[] = $obj;
 
@@ -760,25 +788,25 @@ class Maintenance_command extends CI_Model
 	                $in_block = true;
 
 	                $obj->definition = $line;
-	                $obj_array[] = $obj;
-
-	                unset($obj);
 	            }
 			}
 		}
+
+		//close the configuration file
+		fclose($conf_file);
 
 		$write_array = array();
 		$is_object = false;
 		$limit_pop = true;
 	
-		list($input_obj, $input_key, $input_item) = explode(',', $items, 3);
+		list($input_obj, $input_key, $input_item) = explode(',', $input_items, 3);
 
 		foreach($obj_array as $object)
 		{
 			foreach($object as $key => $value)
 			{
 				//compare object 
-				if(strcmp($input_obj, $value) == 0)
+				if(strpos($value, $input_obj) !== false)
 				{
 					$is_object = true;
 				}
@@ -810,7 +838,7 @@ class Maintenance_command extends CI_Model
 					//end of object definition
 					else if (strpos($value, '}') !== false)
 					{
-						$write_array[] = $value."\n\n";
+						$write_array[] = $value."\n";
 					}
 					else
 					{
@@ -848,7 +876,7 @@ class Maintenance_command extends CI_Model
 						//end of object definition
 						else if (strpos($value, '}') !== false)
 						{
-							$write_array[] = $value."\n\n";
+							$write_array[] = $value."\n";
 						}
 						//object definition
 						else
@@ -859,6 +887,8 @@ class Maintenance_command extends CI_Model
 				}
 			}
 		}
+
+		$conf_file = fopen($selected, 'wb') or die('File not found !');
 
 		foreach($write_array as $write)
 		{
@@ -881,67 +911,83 @@ class Maintenance_command extends CI_Model
 		{
 			//$type = 'commands'
 			case 1:
-				$conf_file = fopen(COMMANDS, 'rw') or die('File not found !');
+				$conf_file = fopen(COMMANDS, 'r') or die('File not found !');
+				$selected = COMMANDS;
 				break;
 			//$type = 'contacts'
 			case 2:
-				$conf_file = fopen(CONTACTS, 'rw') or die('File not found !');
+				$conf_file = fopen(CONTACTS, 'r') or die('File not found !');
+				$selected = CONTACTS;
 				break;
 			//$type = 'contactgroups'
 			case 3:
-				$conf_file = fopen(CONTACTGROUPS, 'rw') or die('File not found !');
+				$conf_file = fopen(CONTACTGROUPS, 'r') or die('File not found !');
+				$selected = CONTACTGROUPS;
 				break;
 			//$type = 'hosts'
 			case 4:
-				$conf_file = fopen(HOSTS, 'rw') or die('File not found !');
+				$conf_file = fopen(HOSTS, 'r') or die('File not found !');
+				$selected = HOSTS;
 				break;
 			//$type = 'hostgroups'
 			case 5:
-				$conf_file = fopen(HOSTGROUPS, 'rw') or die('File not found !');
+				$conf_file = fopen(HOSTGROUPS, 'r') or die('File not found !');
+				$selected = HOSTGROUPS;
 				break;
 			//$type = 'timeperiods'
 			case 6:
-				$conf_file = fopen(TIMEPERIODS, 'rw') or die('File not found !');
+				$conf_file = fopen(TIMEPERIODS, 'r') or die('File not found !');
+				$selected = TIMEPERIODS;
 				break;
 			//$type = 'services'
 			case 7:
-				$conf_file = fopen(SERVICES, 'rw') or die('File not found !');
+				$conf_file = fopen(SERVICES, 'r') or die('File not found !');
+				$selected = SERVICES;
 				break;
 			//$type = 'servicegroups'
 			case 8:
-				$conf_file = fopen(SERVICEGROUPS, 'rw') or die('File not found !');
+				$conf_file = fopen(SERVICEGROUPS, 'r') or die('File not found !');
+				$selected = SERVICEGROUPS;
 				break;
 			//$type = 'template_commands'
 			case 9:
-				$conf_file = fopen(TEMPLATE_COMMANDS, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_COMMANDS, 'r') or die('File not found !');
+				$selected = TEMPLATE_COMMANDS;
 				break;
 			//$type = 'template_contacts'
 			case 10:
-				$conf_file = fopen(TEMPLATE_CONTACTS, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_CONTACTS, 'r') or die('File not found !');
+				$selected = TEMPLATE_CONTACTS;
 				break;
 			//$type = 'template_contactgroups'
 			case 11:
-				$conf_file = fopen(TEMPLATE_CONTATCGROUPS, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_CONTACTGROUPS, 'r') or die('File not found !');
+				$selected = TEMPLATE_CONTACTGROUPS;
 				break;
 			//$type = 'template_hosts'
 			case 12:
-				$conf_file = fopen(TEMPLATE_HOSTS, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_HOSTS, 'r') or die('File not found !');
+				$selected = TEMPLATE_HOSTS;
 				break;
 			//$type = 'template_hostgroups'
 			case 13:
-				$conf_file = fopen(TEMPLATE_HOSTGROUPS, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_HOSTGROUPS, 'r') or die('File not found !');
+				$selected = TEMPLATE_HOSTGROUPS;
 				break;
 			//$type = 'template_timeperiods'
 			case 14:
-				$conf_file = fopen(TEMPLATE_TIMEPERIODS, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_TIMEPERIODS, 'r') or die('File not found !');
+				$selected = TEMPLATE_TIMEPERIODS;
 				break;
 			//$type = 'template_services'
 			case 15:
-				$conf_file = fopen(TEMPLATE_SERVICES, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_SERVICES, 'r') or die('File not found !');
+				$selected = TEMPLATE_SERVICES;
 				break;
 			//$type = 'template_servicegroups'
 			case 16:
-				$conf_file = fopen(TEMPLATE_SERVICEGROUPS, 'rw') or die('File not found !');
+				$conf_file = fopen(TEMPLATE_SERVICEGROUPS, 'r') or die('File not found !');
+				$selected = TEMPLATE_SERVICEGROUPS;
 				break;
 		}
 
@@ -960,12 +1006,8 @@ class Maintenance_command extends CI_Model
 			{
 				list($key, $value) = explode("\t", trim($line), 2);
 
-				if (strpos($line,'}') !== FALSE)
+				if (strpos($line,'}') !== false)
 				{
-					$obj_array[] = $obj;
-
-					unset($obj);
-
 					$obj->end_definition = $line;
 					$obj_array[] = $obj;
 
@@ -986,17 +1028,16 @@ class Maintenance_command extends CI_Model
 	                $in_block = true;
 
 	                $obj->definition = $line;
-	                $obj_array[] = $obj;
-
-	                unset($obj);
 	            }
 			}
 		}
 
+		//close the configuration file
+		fclose($conf_file);
+
 		$write_array = array();
 		$is_object = false;
 
-		
 		list($input_obj, $input_key, $input_item) = explode(',', $input_items, 3);
 
 		foreach($obj_array as $object)
@@ -1004,7 +1045,7 @@ class Maintenance_command extends CI_Model
 			foreach($object as $key => $value)
 			{
 				//compare host
-				if(strcmp($input_obj, $value) == 0)
+				if(strpos($value, $input_obj) !== false)
 				{
 					$is_object = true;
 				}
@@ -1030,7 +1071,7 @@ class Maintenance_command extends CI_Model
 				//end of object definition
 				else if (strpos($value, '}') !== false)
 				{
-					$write_array[] = $value."\n\n";
+					$write_array[] = $value."\n";
 				}
 				else
 				{
@@ -1039,12 +1080,15 @@ class Maintenance_command extends CI_Model
 			}
 		}
 
+		$conf_file = fopen($selected, 'wb') or die('File not found !');
+
 		foreach($write_array as $write)
 		{
 			//write into the configuration file
 			fwrite($conf_file, $write);
 		}
 		
+		//close the configuration file
 		fclose($conf_file);
 
 		$this->system_commands->restart_nagios();
