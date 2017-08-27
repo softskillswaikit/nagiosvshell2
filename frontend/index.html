@@ -23,7 +23,7 @@
 </head>
 <body class="sidebar-open">
     <toast></toast>
-     
+
     <section id="page" ng-controller="PageCtrl" ng-init="init()">
 
         <section id="sidebar">
@@ -66,9 +66,9 @@
                         <ul>
                             <li><a ng-href="#/report/availability" active-when="/report/availability">Availability</a></li>
                             <li><a ng-href="#/report/trends" active-when="/report/trends">Trends</a></li>
-                            <li><a ng-href="#/reports/alert-history" active-when="/reports/alert-history">Alert History</a></li>
+							<li><a ng-href="#/reports/alert-history" active-when="/reports/alert-history">Alert History</a></li>
                             <li><a ng-href="#/reports/alert-summary" active-when="/reports/alert-summary">Alert Summary</a></li>
-        		    	    <li><a ng-href="#/report/alerthistogram" active-when="/report/alerthistogram">Alert Histogram</a></li>
+                            <li><a ng-href="#/report/alerthistogram" active-when="/report/alerthistogram">Alert Histogram</a></li>
                             <li><a ng-href='#/reports/notifications' active-when='/reports/notifications'>Notifications</a></li>
                             <li><a ng-href="#/reports/event-log" active-when='reports/event-log'>Event Log</a></li>
                         </ul>
@@ -78,9 +78,9 @@
                         <ul>
                             <li><a ng-href="#/system/comments" active-when="/system/comments">Comments</a></li>
                             <li><a ng-href="#/system/downtime" active-when="/system/downtime">Downtime</a></li>
-                		    <li><a ng-href='#/system/process-info' active-when='/system/process-info'>Process Info</a></li>
+                            <li><a ng-href='#/system/process-info' active-when='/system/process-info'>Process Info</a></li>
                             <li><a ng-href="#/system/performanceinfo" active-when="/system/performanceinfo">Performance Info</a></li>
-            			    <li><a ng-href='#/system/scheduling-queue' active-when='/system/scheduling-queue'>Scheduling Queue</a></li>
+                            <li><a ng-href='#/system/scheduling-queue' active-when='/system/scheduling-queue'>Scheduling Queue</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -111,10 +111,10 @@
                   file.code == -2 ? 'Unknown service name' :
                   file.code == -3 ? 'Failed to access to SFTP server' :
                   file.code == -4 ? 'Invalid file request':
-                  file.code == -5 ? 'Failed to prepare files': 
+                  file.code == -5 ? 'Failed to prepare files':
                   file.code == -6 ? 'Key expired. Please try again' : ''}}
             </div>
-			
+
     </div>
     </section>
 
@@ -143,8 +143,6 @@
     <script src="frontend/js/controllers.js"></script>
     <script src="frontend/js/filters.js"></script>
     <script src="frontend/js/directives.js"></script>
-
-    
 
 </body>
 </html>

@@ -14,6 +14,88 @@
 
 			<div class="status-overview-tables">
 
+				<h3>Hosts Actively Checked</h3>
+
+				<table cellspacing="0" cellpadding="0">
+									<thead>
+											<tr>
+													<th>Time Frame</th>
+													<th colspan=2>Hosts Checked</th>
+													<th></th>
+											</tr>
+									</thead>
+									<tbody>
+											<tr class="footable-odd">
+													<th><= 1 Min</th>
+													<td></td>
+													<td>{{ pinfo.active_host_check_1	}}  ({{	pinfo.active_host_check_1 | percent : pinfo.active_host_checked_since_program_start }})</td>
+													<td></td>
+											</tr>
+											<tr class="footable-even">
+													<th><= 5 Min</th>
+													<td></td>
+													<td>{{	pinfo.active_host_check_5 }}  ({{	pinfo.active_host_check_5 | percent : pinfo.active_host_checked_since_program_start }})</td>
+													<td></td>
+											</tr>
+											<tr class="footable-odd">
+													<th><= 15 Min</th>
+													<td></td>
+													<td>{{	pinfo.active_host_check_15 }} ({{	pinfo.active_host_check_15 | percent : pinfo.active_host_checked_since_program_start }})</td>
+													<td></td>
+											</tr>
+											<tr class="footable-even">
+													<th><= 1 Hr</th>
+													<td></td>
+													<td>{{	pinfo.active_host_check_60  }} ({{	pinfo.active_host_check_60 | percent : pinfo.active_host_checked_since_program_start }})</td>
+													<td></td>
+											</tr>
+											<tr class="footable-odd">
+													<th>Since program start</th>
+													<td></td>
+													<td>{{	pinfo.active_host_checked_since_program_start }} ({{	pinfo.active_host_checked_since_program_start | percent : pinfo.active_host_checked_since_program_start }})</td>
+													<td></td>
+											</tr>
+									</tbody>
+							</table>
+
+							<table cellspacing="0" cellpadding="0">
+									<thead>
+											<tr>
+													<th>Metric</th>
+													<th>Min.</th>
+													<th>Max.</th>
+													<th>Average</th>
+											</tr>
+									</thead>
+									<tbody>
+											<tr class="footable-odd">
+												<th>Check Execution Time</th>
+												<td>{{ pinfo.active_host_execution_min }} sec</td>
+												<td>{{ pinfo.active_host_execution_max }} sec</td>
+												<td>{{ pinfo.active_host_execution_average }} sec</td>
+											</tr>
+											<tr class="footable-even">
+												<th>Check Latency</th>
+												<td>{{ pinfo.active_host_latency_min }} sec</td>
+												<td>{{ pinfo.active_host_latency_max }} sec</td>
+												<td>{{ pinfo.active_host_latency_average }} sec</td>
+											</tr>
+											<tr class="footable-odd">
+												<th>Percent State Change</th>
+												<td>{{ pinfo.active_host_state_change_min }}%</td>
+												<td>{{ pinfo.active_host_state_change_max }}%</td>
+												<td>{{ pinfo.active_host_state_change_average }}%</td>
+											</tr>
+									</tbody>
+							</table>
+					</div>
+	</div>
+
+
+	<div class="table-container partial-width half" ng-if="!is_loading">
+
+			<div class="status-overview-tables">
+
 				<h3>Services Actively Checked</h3>
 
 				<table cellspacing="0" cellpadding="0">
@@ -91,87 +173,6 @@
 					</div>
 	</div>
 
-
-	<div class="table-container partial-width half" ng-if="!is_loading">
-
-			<div class="status-overview-tables">
-
-				<h3>Hosts Actively Checked</h3>
-
-				<table cellspacing="0" cellpadding="0">
-									<thead>
-											<tr>
-													<th>Time Frame</th>
-													<th colspan=2>Hosts Checked</th>
-													<th></th>
-											</tr>
-									</thead>
-									<tbody>
-											<tr class="footable-odd">
-													<th><= 1 Min</th>
-													<td></td>
-													<td>{{ pinfo.active_host_check_1	}}  ({{	pinfo.active_host_check_1 | percent : pinfo.active_host_checked_since_program_start }})</td>
-													<td></td>
-											</tr>
-											<tr class="footable-even">
-													<th><= 5 Min</th>
-													<td></td>
-													<td>{{	pinfo.active_host_check_5 }}  ({{	pinfo.active_host_check_5 | percent : pinfo.active_host_checked_since_program_start }})</td>
-													<td></td>
-											</tr>
-											<tr class="footable-odd">
-													<th><= 15 Min</th>
-													<td></td>
-													<td>{{	pinfo.active_host_check_15 }} ({{	pinfo.active_host_check_15 | percent : pinfo.active_host_checked_since_program_start }})</td>
-													<td></td>
-											</tr>
-											<tr class="footable-even">
-													<th><= 1 Hr</th>
-													<td></td>
-													<td>{{	pinfo.active_host_check_60  }} ({{	pinfo.active_host_check_60 | percent : pinfo.active_host_checked_since_program_start }})</td>
-													<td></td>
-											</tr>
-											<tr class="footable-odd">
-													<th>Since program start</th>
-													<td></td>
-													<td>{{	pinfo.active_host_checked_since_program_start }} ({{	pinfo.active_host_checked_since_program_start | percent : pinfo.active_host_checked_since_program_start }})</td>
-													<td></td>
-											</tr>
-									</tbody>
-							</table>
-
-							<table cellspacing="0" cellpadding="0">
-									<thead>
-											<tr>
-													<th>Metric</th>
-													<th>Min.</th>
-													<th>Max.</th>
-													<th>Average</th>
-											</tr>
-									</thead>
-									<tbody>
-											<tr class="footable-odd">
-												<th>Check Execution Time</th>
-												<td>{{ pinfo.active_host_execution_min }} sec</td>
-												<td>{{ pinfo.active_host_execution_max }} sec</td>
-												<td>{{ pinfo.active_host_execution_average }} sec</td>
-											</tr>
-											<tr class="footable-even">
-												<th>Check Latency</th>
-												<td>{{ pinfo.active_host_latency_min }} sec</td>
-												<td>{{ pinfo.active_host_latency_max }} sec</td>
-												<td>{{ pinfo.active_host_latency_average }} sec</td>
-											</tr>
-											<tr class="footable-odd">
-												<th>Percent State Change</th>
-												<td>{{ pinfo.active_host_state_change_min }}%</td>
-												<td>{{ pinfo.active_host_state_change_max }}%</td>
-												<td>{{ pinfo.active_host_state_change_average }}%</td>
-											</tr>
-									</tbody>
-							</table>
-					</div>
-	</div>
 
 
 	<div class="table-container partial-width half" ng-if="!is_loading">
@@ -403,3 +404,4 @@
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>
+

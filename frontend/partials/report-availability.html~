@@ -6,163 +6,401 @@
 
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
-<div id="content" class="clearfix" ng-controller="AvailabilityCtrl" ng-init="init()">
-	
-	<h1>Create Availability Report</h1>
-	<p>{{hostname}}</p>
-	
-	<div class="details table-container partial-width">
-	
-		<h3>Report Details</h3>
- 		
-		<div class="form-options">
-			<table>
-				<form action="" class="input-form" name="inputForm" method="post" novalidate>
-                			<tr>
-						<td>Report Type:</td>
-						<td>
-							<select ng-model="reportType" name="reportType" class="dropdown" required>
-								<option value="Hostgroup(s)">Hostgroup(s)</option>
-								<option value="Host(s)">Host(s)</option>
-								<option value="Servicegroup(s)">Servicegroup(s)</option>
-								<option value="Service(s)">Service(s)</option>
-							</select>
-						</td>
-					</tr>
-					
-					<tr ng-show="reportType == 'Hostgroup(s)' || reportType=='Host(s)'" class="serviceType">
-						<td>Service Type:</td>
-						<td>
-							<select ng-model="serviceType" name="serviceType" class="dropdown">
-								<option value="Normal Service">Normal Service</option>
-								<option value="Host Resource">Host Resource</option>
-								<option value="Running State">Running State</option>
-							</select>
-						</td>
-					</tr>
-					<tr ng-switch on="reportType">
-						<td ng-switch-when="Hostgroup(s)">Select Hostgroup:</td>
-						<td ng-switch-when="Host(s)">Select Host:</td>
-						<td ng-switch-when="Servicegroup(s)">Select Servicegroup:</td>
-						<td ng-switch-when="Service(s)">Select Service:</td>
-						<td><select ng-model="reportComponent" name="reportComponent" class="dropdown">
-							<option value="">{{hostname}}</option>
-							<option value="">{{hostname}}</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>Report Period:</td>
-						<td>
-							<select ng-model="reportPeriod" name="reportPeriod" class="dropdown">
-								<option value="Today">Today</option>
-								<option value="Last 24 Hours">Last 24 Hours</option>
-								<option value="Yesterday">Yesterday</option>
-								<option value="This Week">This Week</option>
-								<option value="Last 7 Days">Last 7 Days</option>
-								<option value="Last Week">Last Week</option>
-								<option value="This Month">This Month</option>
-								<option value="Last 31 Days">Last 31 Days</option>
-								<option value="Last Month">Last Month</option>
-								<option value="This Year">This Year</option>
-								<option value="Last Year">Last Year</option>
-								<option value="*Custom Report Period*">*Custom Report Period*</option>
-							</select>
-						</td>
-					</tr>
-					<tr ng-show="reportPeriod=='*Custom Report Period*'" ng-model="startDate" name="startdate" class="date">
-						<td>Start Date:</td>
-						<td><input type="date" name="startdate" value=""></td>
-					</tr>
-					<tr ng-show="reportPeriod=='*Custom Report Period*'" ng-model="endDate" name="enddate" class="date">
-						<td>End Date:</td>
-						<td><input  type="date" name="enddate" value=""></td>
-					</tr>
-					<tr>
-						<td>Report Time Period:</td>
-						<td><select ng-model="reportTimePeriod" name="reportTimePeriod" class="dropdown">
-							<option value="None">None</option>
-							<option value="24x7">24x7</option>
-							<option value="24x7_sans_holidays">24x7_sans_holidays</option>
-							<option value="US-holidays">US-holidays</option>
-							<option value="Workhours">Workhours</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>Assume Initial States:</td>
-						<td><select ng-model="assumeInitialStates" name="assumeInitialStates" class="dropdown">
-							<option value="Yes">Yes</option>
-							<option value="No">No</option>
-							</select>
-						</td>	
-					</tr>
-					<tr>
-						<td>Assume State Retention:</td>
-						<td><select ng-model="assumeStateRetention" name="assumeStateRetention" class="dropdown">
-							<option value="Yes">Yes</option>
-							<option value="No">No</option>
-							</select>
-						</td>	
-					</tr>
-					<tr>
-						<td>Assume States During Program Downtime:</td>
-						<td><select ng-model="assumeDowntimeStates" name="assumeDowntimeStates" class="dropdown">
-							<option value="Yes">Yes</option>
-							<option value="No">No</option>
-							</select>
-						</td>	
-					</tr>
-					<tr>
-						<td>Include Soft States:</td>
-						<td><select ng-model="includeSoftStates" name="includeSoftStates" class="dropdown">
-							<option value="Yes">Yes</option>
-							<option value="No">No</option>
-							</select>
-						</td>	
-					</tr>
-					<tr ng-show="assumeInitialStates=='Yes' && reportType!='Service(s)'" class="firstAssumedState">
-						<td>First Assumed Host State:</td>
-						<td><select ng-model="firstAssumedHostState" name="firstAssumedHostState" class="dropdown">
-							<option value="Unspecified">Unspecified</option>
-							<option value="Current State">Current State</option>
-							<option value="Host Up">Host Up</option>
-							<option value="Host Down">Host Down</option>
-							<option value="Host Unreachable">Host Unreachable</option>
-							</select>
-						</td>	
-					</tr>
-					<tr ng-show="assumeInitialStates=='Yes'" class="firstAssumedState">
-						<td>First Assumed Service State:</td>
-						<td><select ng-model="firstAssumedServiceState" name="firstAssumedServiceState" class="dropdown">
-							<option value="Unspecified">Unspecified</option>
-							<option value="Current State">Current State</option>
-							<option value="Host Up">Host Up</option>
-							<option value="Host Down">Host Down</option>
-							<option value="Host Unreachable">Host Unreachable</option>
-							</select>
-						</td>	
-					</tr>
-					<tr>
-						<td>Backtracked Archives (To Scan For Initial States): </td>
-						<td><input ng-model="backtrackedArchives" name="backtrackedArchives" type="number" required>
-								<span style="color:red" ng-show="inputForm.backtrackedArchives.$dirty && inputForm.backtrackedArchives.$invalid">
-								<span ng-show="inputForm.backtrackedArchives.$error.required">This field is required.</span></span>
-						</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>  
-							<button class="logButtons btn btn-primary btn-sm" ng-click="reset()">Reset</button>
-                            <a ng-href="#/report/availability/report">
-								<button ng-disabled="inputForm.$invalid" class="logButtons btn btn-primary btn-sm">Create Report</button>
-							</a>
-						</td>
-					</tr>
-				</form>
+<div id="content" class="clearfix" ng-controller="AvailabilityCtrl" ng-init="createReport()">
 
-			</table>
-      	</div>
+	<h1>Availability Report</h1>
+
+	<!--(hostgroup-one/all, servicegroup-one/all)-->
+	<div ng-if="reportType=='Hostgroup(s)' || reportType=='Servicegroup(s)'">
+		<div ng-repeat="hostgroup in reports" class="table-container full-width">
+
+        <h3>Host State Breakdowns For {{reportType}} '{{hostgroup.hostgroup}}'</h3>
+
+        <div class="table-options">
+            <form action="" class="filter-form" method="post">
+                <div class="filter-icon"></div>
+                <input id="footable-filter" class="footable-filter" type="text" placeholder="Filter Table"/>
+            </form>
+            <div class="pagesize-container">
+                Show <a class="active" ng-href="#" data-page-size="25">25</a> <a ng-href="#" data-page-size="100">100</a> <a ng-href="#" data-page-size="50000">All</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+            <thead>
+                <tr>
+                    <th>Host</th>
+                    <th class="active hosts-up">Time Up (%)</th>
+                    <th class="active hosts-down">Time Down (%)</th>
+                    <th class="active hosts-unreachable">Time Unreachable (%)</th>
+                    <th class="active hosts-pending">Time Pending (%)</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="5">
+                        <div class="results-count">{{ hostgroup.data | count }} Result{{ hostgroup.data | plural }}</div>
+                        <div class="footable-pagination pagination" id="footable-pagination"></div>
+                    </td>
+                </tr>
+            </tfoot>
+						<tbody>
+                <tr ng-if="(hostgroup | count) == 0">
+                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No data defined' }}</td>
+                </tr>
+                <tr ng-repeat="host in hostgroup.data | orderObjectBy: 0" footabledata>
+                    <td ng-repeat="data in host">{{data}}</td>
+                </tr>
+            </tbody>
+        </table>
+			</div>
+    </div>
+
+		<!--(host-all)-->
+		<div class="table-container full-width" ng-if="reportType=='Host(s)' && reportComponent=='ALL'">
+
+					<h3>Host State Breakdowns</h3>
+
+					<div class="table-options">
+							<form action="" class="filter-form" method="post">
+									<div class="filter-icon"></div>
+									<input id="footable-filter" class="footable-filter" type="text" placeholder="Filter Table"/>
+							</form>
+							<div class="pagesize-container">
+									Show <a class="active" ng-href="#" data-page-size="25">25</a> <a ng-href="#" data-page-size="100">100</a> <a ng-href="#" data-page-size="50000">All</a>
+							</div>
+							<div class="clearfix"></div>
+					</div>
+
+					<table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+							<thead>
+									<tr>
+											<th>Host</th>
+											<th class="active hosts-up">Time Up (%)</th>
+	                    <th class="active hosts-down">Time Down (%)</th>
+	                    <th class="active hosts-unreachable">Time Unreachable (%)</th>
+	                    <th class="active hosts-pending">Time Pending (%)</th>
+									</tr>
+							</thead>
+							<tfoot>
+									<tr>
+											<td colspan="5">
+													<div class="results-count">{{ hostall | count }} Result{{ hostall.data | plural }}</div>
+													<div class="footable-pagination pagination" id="footable-pagination"></div>
+											</td>
+									</tr>
+							</tfoot>
+							<tbody>
+									<tr ng-if="(hostall | count) == 0">
+											<td colspan="5">{{ is_loading ? 'Loading...' : 'No data defined' }}</td>
+									</tr>
+									<tr ng-repeat="host in hostall" footabledata>
+											<td ng-repeat="data in host">{{data}}</td>
+									</tr>
+							</tbody>
+					</table>
+			</div>
+
+	<!--(servicegroup-one/all)-->
+	<div class="table-container full-width nopadding" ng-if="reportType=='Servicegroup(s)'">
+		<div ng-repeat="servicegroup in report5" class="table-container full-width">
+
+        <h3>Service State Breakdowns For {{reportType}} '{{servicegroup.servicegroup}}'</h3>
+
+			  <div class="table-options">
+            <form action="" class="filter-form" method="post">
+                <div class="filter-icon"></div>
+                <input id="footable-filter" class="footable-filter" type="text" placeholder="Filter Table"/>
+            </form>
+            <div class="pagesize-container">
+                Show <a class="active" ng-href="#" data-page-size="25">25</a> <a ng-href="#" data-page-size="100">100</a> <a ng-href="#" data-page-size="50000">All</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+            <thead>
+                <tr>
+                    <th>Host</th>
+										<th>Service</th>
+										<th class="active services-ok">Time OK (%)</th>
+                    <th class="active services-warning">Time Warning (%)</th>
+                    <th class="active services-unknown">Time Unknown (%)</th>
+                    <th class="active services-critical">Time Critical (%)</th>
+										<th class="active services-pending">Time Pending (%)</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="7">
+                        <div class="results-count">{{}} Result{{}}</div>
+                        <div class="footable-pagination pagination" id="footable-pagination"></div>
+                    </td>
+                </tr>
+            </tfoot>
+						<tbody ng-repeat="host in report5">
+                <tr ng-if="(host | count) == 0">
+                    <td colspan="7">{{ is_loading ? 'Loading...' : 'No data defined' }}</td>
+                </tr>
+								<tr footabledata>
+                    <th rowspan="{{host.service.length}}">{{host.host}}</th>
+										<td ng-repeat="data in host.service[0]">{{data}}</td>
+                </tr>
+								<tr ng-repeat="data in host.service" ng-if="$index > 0" footabledata>
+										<td ng-repeat="d in data">{{d}}</td>
+								</tr>
+            </tbody>
+        </table>
+			</div>
+    </div>
+
+	<!--(host-one, service-one)-->
+	<div class="table-container full-width nopadding" ng-if="(reportType=='Host(s)' || reportType=='Service(s)' || reportType=='Host Resource' || reportType=='Service Running State') && reportComponent!='ALL'">
+
+        <h3 ng-if="reportType=='Host(s)'">Host State Breakdowns</h3>
+				<h3 ng-if="reportType=='Service(s)'">Service State Breakdowns</h3>
+				<h3 ng-if="reportType=='Host Resource'">Host Resource State Breakdowns</h3>
+				<h3 ng-if="reportType=='Service Running State'">Service Running State Breakdowns</h3>
+
+        <div class="table-options">
+            <form action="" class="filter-form" method="post">
+                <div class="filter-icon"></div>
+                <input id="footable-filter" class="footable-filter" type="text" placeholder="Filter Table"/>
+            </form>
+            <div class="pagesize-container">
+                Show <a class="active" ng-href="#" data-page-size="25">25</a> <a ng-href="#" data-page-size="100">100</a> <a ng-href="#" data-page-size="50000">All</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <table cellspacing="0" cellpadding="0" class="righttd" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+            <thead>
+                <tr>
+                    <th ng-if="reportType=='Host(s)'">Host</th>
+										<th ng-if="reportType=='Service(s)'">State</th>
+                    <th>Type / Reason</th>
+                    <th>Time</th>
+                    <th>Total Time (%)</th>
+                    <th>Known Time (%)</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="val in reports1">
+                <tr ng-if="(reports1 | count) == 0">
+                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No data is defined' }}</td>
+                </tr>
+                <tr class="state-{{val.state | lowercase}}" footabledata>
+                    <td rowspan="{{val.data.length}}" class="status">{{val.state}}</td>
+										<td ng-repeat="v in val.data[0]">{{v}}</td>
+                </tr>
+								<tr ng-repeat="val in val.data" ng-if="$index > 0" footabledata>
+										<td ng-repeat="v in val">{{v}}</td>
+								</tr>
+            </tbody>
+        </table>
+
+    </div>
+
+	<!--(service-all)-->
+	<div class="table-container full-width nopadding" ng-if="(reportType=='Service(s)'|| reportType=='Host Resource' || reportType=='Service Running State')&&reportComponent=='ALL'">
+
+        <h3 ng-if="reportType=='Service(s)'">Service State Breakdowns</h3>
+				<h3 ng-if="reportType=='Host Resource'">Host Resource State Breakdowns</h3>
+				<h3 ng-if="reportType=='Service Running State'">Service Running State Breakdowns</h3>
+
+        <div class="table-options">
+            <form action="" class="filter-form" method="post">
+                <div class="filter-icon"></div>
+                <input id="footable-filter" class="footable-filter" type="text" placeholder="Filter Table"/>
+            </form>
+            <div class="pagesize-container">
+                Show <a class="active" ng-href="#" data-page-size="25">25</a> <a ng-href="#" data-page-size="100">100</a> <a ng-href="#" data-page-size="50000">All</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+            <thead>
+                <tr>
+										<th>Host</th>
+                    <th>Service</th>
+										<th class="active services-ok">Time OK (%)</th>
+                    <th class="active services-warning">Time Warning (%)</th>
+                    <th class="active services-unknown">Time Unknown (%)</th>
+                    <th class="active services-critical">Time Critical (%)</th>
+										<th class="active services-pending">Time Pending (%)</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="7">
+                        <div class="results-count">{{ report2 | count }} Result{{ report2 | plural }}</div>
+                        <div class="footable-pagination pagination" id="footable-pagination"></div>
+                    </td>
+                </tr>
+            </tfoot>
+            <tbody ng-repeat="host in report2">
+                <tr ng-if="(testdata| count) == 0">
+                    <td colspan="7">{{ is_loading ? 'Loading...' : 'No data is defined' }}</td>
+                </tr>
+                <tr footabledata>
+                    <th rowspan="{{host.data.length}}">{{host.host}}</td>
+                    <td ng-repeat="d in host.data[0]">{{d}}</td>
+                </tr>
+								<tr ng-repeat="data in host.data" ng-if="$index > 0">
+									<td ng-repeat="d in data">{{d}}</td>
+								</tr>
+            </tbody>
+        </table>
+
+    </div>
+
+	<!--(host-one)-->
+	<div ng-repeat="report in report4" class="table-container full-width" ng-if="(reportType=='Host(s)'&&reportComponent!='ALL')||((reportType=='Service(s)'|| reportType=='Host Resource' || reportType=='Service Running State')&&reportComponent=='ALL')">
+
+	        <h3>State Breakdowns For Host {{report.type}}</h3>
+
+	        <div class="table-options">
+	            <form action="" class="filter-form" method="post">
+	                <div class="filter-icon"></div>
+	                <input id="footable-filter" class="footable-filter" type="text" placeholder="Filter Table"/>
+	            </form>
+	            <div class="pagesize-container">
+	                Show <a class="active" ng-href="#" data-page-size="25">25</a> <a ng-href="#" data-page-size="100">100</a> <a ng-href="#" data-page-size="50000">All</a>
+	            </div>
+	            <div class="clearfix"></div>
+	        </div>
+
+	        <table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+	            <thead>
+	                <tr>
+	                    <th>Service</th>
+											<th class="active services-ok">Time OK (%)</th>
+	                    <th class="active services-warning">Time Warning (%)</th>
+	                    <th class="active services-unknown">Time Unknown (%)</th>
+	                    <th class="active services-critical">Time Critical (%)</th>
+											<th class="active services-pending">Time Pending (%)</th>
+	                </tr>
+	            </thead>
+	            <tfoot>
+	                <tr>
+	                    <td colspan="7">
+	                        <div class="results-count">{{ report.data | count }} Result{{ report.data | plural }}</div>
+	                        <div class="footable-pagination pagination" id="footable-pagination"></div>
+	                    </td>
+	                </tr>
+	            </tfoot>
+	            <tbody>
+	                <tr ng-if="(report.data| count) == 0">
+	                    <td colspan="7">{{ is_loading ? 'Loading...' : 'No data is defined' }}</td>
+	                </tr>
+	                <tr ng-repeat="service in report.data" footabledata>
+	                    <td ng-repeat="data in service">{{data}}</td>
+	                </tr>
+	            </tbody>
+	        </table>
+
+	    </div>
+
+	<!--(host-one, service-one)-->
+	<div class="table-container full-width" ng-if="(reportType=='Host(s)'||reportType=='Service(s)'|| reportType=='Host Resource' || reportType=='Service Running State')&&reportComponent!='ALL'">
+
+        <h3 ng-if="reportType=='Host(s)'">Host Log Entries</h3>
+				<h3 ng-if="reportType=='Service(s)'">Service Log Entries</h3>
+				<h3 ng-if="reportType=='Host Resource'">Host Resource Log Entries</h3>
+				<h3 ng-if="reportType=='Service Running State'">Service Running State Log Entries</h3>
+
+        <div class="table-options">
+            <form action="" class="filter-form" method="post">
+                <div class="filter-icon"></div>
+                <input id="footable-filter" class="footable-filter" type="text" placeholder="Filter Table"/>
+            </form>
+            <div class="pagesize-container">
+                Show <a class="active" ng-href="#" data-page-size="25">25</a> <a ng-href="#" data-page-size="100">100</a> <a ng-href="#" data-page-size="50000">All</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+            <thead>
+                <tr>
+                    <th>Event Start Time</th>
+										<th>Event End Time</th>
+                    <th>Event Duration</th>
+										<th>Event/State Type</th>
+                    <th>Event/State Information</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="5">
+                        <div class="results-count">{{ report3 | count }} Result{{ report3 | plural }}</div>
+                        <div class="footable-pagination pagination" id="footable-pagination"></div>
+                    </td>
+                </tr>
+            </tfoot>
+            <tbody>
+                <tr ng-if="(report3 | count) == 0">
+                    <td colspan="5">{{ is_loading ? 'Loading...' : 'No hostgroup members are defined' }}</td>
+                </tr>
+                <tr ng-repeat="event in report3" footabledata>
+                    <td ng-repeat="details in event">{{details}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+	<!--view: service-one, host-one-->
+	<div class="table-container partial-width" ng-if="(reportType=='Host(s)'||reportType=='Service(s)'|| reportType=='Host Resource' || reportType=='Service Running State')&&reportComponent!='ALL'">
+		<div class="commands">
+
+            <h3>View</h3>
+
+			<!--show if a single host is selected-->
+            <table cellspacing="0" cellpadding="0" ng-if="reportType=='Host(s)'">
+                <tbody>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Trends For This Host</a></td>
+                    </tr>
+                    <tr class="footable-even">
+                        <td><a target="nagios" ng-href="{{}}">View Alert Histogram For This Host</a></td>
+                    </tr>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Status Detail For This Host</a></td>
+                    </tr>
+                    <tr class="footable-even">
+                        <td><a target="nagios" ng-href="{{}}">View Alert History For This Host</a></td>
+                    </tr>
+										<tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Notifications For This Host</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+			<!--show if a single service is selected-->
+			<table cellspacing="0" cellpadding="0" ng-if="reportType=='Service(s)'|| reportType=='Host Resource' || reportType=='Service Running State'">
+                <tbody>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Availability Report For This Host</a></td>
+                    </tr>
+                    <tr class="footable-even">
+                        <td><a target="nagios" ng-href="{{}}">View Trends For This Service</a></td>
+                    </tr>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Alert Histogram For This Service</a></td>
+                    </tr>
+                    <tr class="footable-even">
+                        <td><a target="nagios" ng-href="{{}}">View Alert History For This Service</a></td>
+                    </tr>
+										<tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{}}">View Notifications For This Service</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 	</div>
-	
+</div>
+
 <div ng-include="'frontend/partials/_footer.html'"></div>
+

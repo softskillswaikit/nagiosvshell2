@@ -1,0 +1,19 @@
+<div class="modal fade bs-example-modal-sm" id="confirm-modal" data-backdrop="false" >
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title">Delete</h1>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="no()">No</button>
+        <button type="button" class="btn btn-primary" ng-click="yes()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+

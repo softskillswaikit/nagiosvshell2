@@ -2,7 +2,124 @@
 
 angular.module('vshell.filters', [])
 
-/* Yi Zhen added filter style for persistent */
+/*
+* report_type, decimal, alerthistogram-x, week, month, persistent,
+* downtime_type, triggered_id, entry_type, expires
+* Create by Choy Yi Zhen
+*/
+
+/* convert int to report type */
+.filter('report_type', function() {
+    return function(input) {
+      if(input == 1)
+        return 'Host';
+      else if(input == 2)
+        return 'Service';
+      else if(input == 3)
+        return 'Host Resource';
+      else if(input == 4)
+        return 'Service Running State';
+      else if(input == 5)
+        return 'Hostgroup';
+      else if(input == 6)
+        return 'Servicegroup';
+      else
+        return 'Unknown';
+    }
+})
+
+.filter('decimal', function() {
+    return function(num, dec) {
+      return num.toFixed(dec);
+    }
+})
+
+/* Convert seconds to x-days x-hours x-minutes x-seconds */
+.filter('seconds_converter', function() {
+    return function(input) {
+      var d = Math.floor(input / (3600*24));
+      input %= (3600*24);
+      var h   = Math.floor(input / 3600);
+      input %= 3600 ;
+      var m = Math.floor(input / 60);
+      input %= 60;
+      var s = input;
+
+      return d + "d " + h + "h " + m + "m " + s + "s ";
+    };
+})
+
+/* Get the X-axis label of alert histogram */
+.filter('alerthistogram-x', function() {
+    return function(input) {
+        if(input == 1)
+          return 'Month';
+        else if(input == 2)
+          return 'Day of the Month';
+        else if(input == 3)
+          return 'Day of the Week';
+        else if(input == 4)
+          return 'Hour of the Day';
+        else
+          return 'Unknown';
+    };
+})
+
+/* Convert day of week from int to string */
+.filter('week', function() {
+    return function(input) {
+        if(input == 0)
+          return 'Sun';
+        else if(input == 1)
+          return 'Mon';
+        else if(input == 2)
+          return 'Tue';
+        else if(input == 3)
+          return 'Wed';
+        else if(input == 4)
+          return 'Thu';
+        else if(input == 5)
+          return 'Fri';
+        else if(input == 6)
+          return 'Sat';
+        else
+          return 'Unknown';
+    };
+})
+
+/* Convert month from int to string */
+.filter('month', function() {
+    return function(input) {
+      if(input == 0)
+        return 'Jan';
+      else if(input == 1)
+        return 'Feb';
+      else if(input == 2)
+        return 'Mar';
+      else if(input == 3)
+        return 'Apr';
+      else if(input == 4)
+        return 'May';
+      else if(input == 5)
+        return 'Jun';
+      else if(input == 6)
+        return 'Jul';
+      else if(input == 7)
+        return 'Aug';
+      else if(input == 8)
+        return 'Sep';
+      else if(input == 9)
+        return 'Oct';
+      else if(input == 10)
+        return 'Nov';
+      else if(input == 11)
+        return 'Dec';
+      else
+        return 'Unknown';
+    };
+})
+
+/* Convert persistent from int to string */
 .filter('persistent', function() {
     return function(input) {
         if(input == 0)
@@ -14,7 +131,29 @@ angular.module('vshell.filters', [])
     };
 })
 
-/* Yi Zhen added filter style for entry type */
+/* Convert downtime from int to string */
+.filter('downtime_type', function() {
+    return function(input) {
+        if(input == "0")
+          return 'Flexible';
+        else if(input == "1")
+          return 'Fixed';
+        else
+          return 'Unknown';
+    };
+})
+
+/* Convert triggered_id from int to string */
+.filter('triggered_id', function() {
+    return function(input) {
+        if(input == "0")
+          return "N/A";
+        else
+          return input;
+    };
+})
+
+/* Convert entry_type from int to string */
 .filter('entry_type', function() {
     return function(input) {
         if(input ==0)
@@ -28,7 +167,7 @@ angular.module('vshell.filters', [])
     };
 })
 
-/* Yi Zhen added filter style for expires */
+/* Check expires */
 .filter('expires', function() {
     return function(input) {
         if(input == '1970-01-01 8:00:00')
@@ -109,6 +248,7 @@ angular.module('vshell.filters', [])
         return _.size(input);
     };
 })
+
 .filter('formatSizeUnits', function(){
     return function formatSizeUnits(bytes){
         if      (bytes>=1000000000) {bytes=(bytes/1000000000).toFixed(2)+' GB';}
@@ -130,9 +270,10 @@ angular.module('vshell.filters', [])
 
 .filter('percent', function(numberFilter) {
     return function(input, total, precision) {
+
         if(total == 0 )
             return '0%';
-            
+
         var fraction = parseInt(input, 10) / parseInt(total, 10),
             percent = fraction * 100,
             places = (precision !== 0 && !precision) ? 1 : precision;
@@ -221,9 +362,6 @@ angular.module('vshell.filters', [])
         }
         if (input === 'configuration') {
             return 'configurations';
-        }
-        if (input === 'alerthistory'){
-            return 'alerthistory';
         }
         return 'overview';
     };
@@ -563,4 +701,3 @@ angular.module('vshell.filters', [])
         return input;
     };
 });
-

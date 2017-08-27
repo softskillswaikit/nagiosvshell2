@@ -10,7 +10,7 @@
 
     <div class="table-container full-width">
 
-        <h1>Alert Summary Report</h1>
+        <h1>Alert History For All Host and Service</h1>
 
         <div class="table-options">
             <form action="" class="filter-form" method="post">
@@ -27,9 +27,7 @@
             <thead>
                 <tr>
                     <th> Host </th>
-                    <th> Service </th>
-                    <th> State </th>
-                    <th> Alert Type </th>
+		    <th> Service </th>
                 </tr>
             </thead>
             <tfoot>
@@ -45,10 +43,7 @@
                     <td colspan="5">{{ is_loading ? 'Loading...' : 'No alertsummary for this day' }}</td>
                 </tr>
                 <tr>
-                    <td>localhost</td>
-                    <td>HTTP</td>
-                    <td>HARD</td>
-                    <td>Service Alert</td>
+		    <td>{{ alertsummary }}</td>
                 </tr>
             </tbody>
         </table>

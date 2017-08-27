@@ -42,18 +42,19 @@
             <tfoot>
                 <tr>
                     <td colspan="5">
-                        <div class="results-count">{{ testing | count }} Result{{ testing | plural }}</div>
+                        <div class="results-count">{{ eventlog | count }} Result{{ eventlog | plural }}</div>
                         <div class="footable-pagination pagination" id="footable-pagination"></div>
                     </td>
                 </tr>
             </tfoot>
             <tbody>
-                <tr ng-if="(testing | count) == 0">
+                <tr ng-if="(eventlog | count) == 0">
                     <td colspan="5">{{ is_loading ? 'Loading...' : 'No eventlog are defined' }}</td>
                 </tr>
-                <tr>
-                    <td>{{ testing }}</td>
-		   
+                 <tr ng-repeat="log in eventlog" footabledata class="state-{{ log.logtype | lowercase }}">
+                    <td>{{ log.datetime * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+                    <td class="status">{{ log.logtype }}</td>
+                    <td>{{ log.messages }}</td>
                 </tr>
             </tbody>
         </table>

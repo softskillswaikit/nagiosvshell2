@@ -1,3 +1,4 @@
+
 <div ng-include="'frontend/partials/_header.html'"></div>
 
 <div ng-include="'frontend/partials/_status.html'"></div>
@@ -97,23 +98,23 @@
                 <tbody>
                     <tr class="{{ host.active_checks_enabled | is_enabled }}">
                         <td>Active Checks: {{ host.active_checks_enabled | is_enabled | capitalize }}</td>
-                        <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('active_checks', 'host.active_checks_enabled')">Toggle</a></td>
+                        <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('active_checks', host.active_checks_enabled)">Toggle</a></td>
                     </tr>
                     <tr class="{{ host.passive_checks_enabled | is_enabled }}">
                         <td>Passive Checks: {{ host.passive_checks_enabled | is_enabled | capitalize }}</td>
-                        <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('passive_checks', 'host.passive_checks_enabled')">Toggle</a></td>
+                        <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('passive_checks', host.passive_checks_enabled)">Toggle</a></td>
                     </tr>
-                    <tr class="{{ host.obsess_over_host | is_enabled }}">
-                        <td>Obsession: {{ host.obsess_over_host | is_enabled | capitalize }}</td>
-                        <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('obsess_over_host', 'host.obsess_over_host')">Toggle</a></td>
+                    <tr class="{{ host.obsess | is_enabled }}">
+                        <td>Obsession: {{ host.obsess | is_enabled | capitalize }}</td>
+                        <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('obsess', host.obsess)">Toggle</a></td>
                     </tr>
                     <tr class="{{ host.notifications_enabled | is_enabled }}">
                         <td>Notifications: {{ host.notifications_enabled | is_enabled | capitalize }}</td>
-                        <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('notifications', 'host.notifications_enabled')">Toggle</a></td>
+                        <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('notifications', host.notifications_enabled)">Toggle</a></td>
                     </tr>
                     <tr class="{{ host.flap_detection_enabled | is_enabled }}">
                         <td>Flap Detection: {{ host.flap_detection_enabled | is_enabled | capitalize }}</td>
-                        <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('flap_detection', 'host.flap_detection_enabled')">Toggle</a></td>
+                        <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('flap_detection', host.flap_detection_enabled)">Toggle</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -125,35 +126,26 @@
 
             <table cellspacing="0" cellpadding="0">
                 <tbody>
-		    <tr class="footable-even">
-                        <td><a data-toggle="modal" data-target="#DisableAllNotification">Disable Notification for all services on this Host</a></td>
-                    </tr>
-		    <tr class="footable-odd">
-                        <td><a data-toggle="modal" data-target="#EnableAllNotification">Enable Notification for all services on this Host</a></td>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{ host.host_name | hostcommand: 'map_host' }}">Locate host on map</a></td>
                     </tr>
                     <tr class="footable-even">
-                        <td><a data-toggle="modal" data-target="#CustomNotification" ng-click="passcustom()">Send custom notification</a></td>
+                        <td><a target="nagios" ng-href="{{ host.host_name | hostcommand: 'custom_notification' }}">Send custom notification</a></td>
                     </tr>
                     <tr class="footable-odd">
-                        <td><a data-toggle="modal" data-target="#hostDowntime" ng-click="passhostdowntime()">Schedule downtime</a></td>
+                        <td><a target="nagios" ng-href="{{ host.host_name | hostcommand: 'schedule_downtime' }}">Schedule downtime</a></td>
                     </tr>
                     <tr class="footable-even">
-                        <td><a data-toggle="modal" data-target="#serviceDowntime" ng-click="passservicedowntime(host.host_name, status.username)">Schedule downtime for this host and all services</a></td>
+                        <td><a target="nagios" ng-href="{{ host.host_name | hostcommand: 'schedule_downtime_for_all' }}">Schedule downtime for this host and all services</a></td>
                     </tr>
-		    <tr class="footable-odd">
-                        <td><a data-toggle="modal" data-target="#ScheduleHostDetail" ng-click="schedule_check('host', host.next_check)">Schedule next Check for this host</a></td>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{ host.host_name | hostcommand: 'schedule_check_for_all' }}">Schedule a check for all services of this host</a></td>
                     </tr>
                     <tr class="footable-even">
-                        <td><a data-toggle="modal" data-target="#ScheduleHostServiceDetail" ng-click="schedule_check('hostsvc', host.next_check)">Schedule a check for all services of this host</a></td>
+                        <td><a target="nagios" ng-href="{{ host.host_name | hostcommand: 'acknowledge_problem' }}">Acknowledge Problem</a></td>
                     </tr>
-		    <tr class="footable-odd">
-                        <td><a data-toggle="modal" data-target="#DisableAllService">Disable checks of all services on this host</a></td>
-                    </tr>
-		    <tr class="footable-even">
-                        <td><a data-toggle="modal" data-target="#EnableAllService">Enable checks of all services on this host</a></td>
-                    </tr>
-		    <tr class="footable-odd">
-                        <td><a data-toggle="modal" data-target="#Acknowledge" ng-click="passack()">Acknowledge Problem</a></td>
+                    <tr class="footable-odd">
+                        <td><a target="nagios" ng-href="{{ host.host_name | hostcommand: 'host_in_nagios_core' }}">See This Host In Nagios Core</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -199,8 +191,8 @@
         </table>
 
     </div>
-<div ng-include="'frontend/partials/modal_confirm.html'"></div>
-<div ng-include="'frontend/partials/modals.html'"</div>
+
+    <div ng-include="'frontend/partials/modals.html'"</div>
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>

@@ -12,9 +12,7 @@
 
     <p class="subheading"><a href="#/{{ 'host' | uri }}/{{ service.host_name }}">Host {{ service.host_name }}</a></p>
 
-    <div class="details table-container partial-width full">
-        <div class="row">
-            <div class="col-md-8">
+    <div class="details table-container partial-width half">
                 <h3>Details</h3>
 
                 <table cellspacing="0" cellpadding="0">
@@ -67,7 +65,7 @@
                             <td>Heartbeat Received</td>
                             <!-- 20170523 WaiKit added a checking for heartbeat receive -->
                             <td>{{ service.heartbeat_received.includes('-') ? service.heartbeat_received : (service.heartbeat_received * 1000 | date: 'yyyy-MM-dd H:mm:ss') }}</td>
-                        </tr>                
+                        </tr>
                         <tr class="footable-odd">
                             <td>Last State Change</td>
                             <td>{{ service.last_state_change * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
@@ -98,27 +96,25 @@
                         </tr>
                     </tbody>
                 </table>
-
-            </div>
-            
-            <div class="col-md-4">
-                <div cg-busy="{promise:loadRemote,message:'Loading',backdrop:true,delay:300,minDuration:700}" ng-controller="RemoteServiceCtrl" ng-init="init()">
-                    <h3>Remote Control</h3>
-                    <h4 ng-if="!remote">Retrieving Service State...</h4>
-                    <h4 ng-if="remote.code==0">Current State: {{remote.state | remotestate}}</h4>
-                    <h4 ng-if="remote && remote.code!=0 && remote.code>-4">Failed to remote to service</h4>
-                    <!-- WaiKit 20170425 added new code for disabled remote service -->
-                    <h4 ng-if="remote && remote.code==-4">Remote service is disabled</h4>
-                    <div ng-if="remote.code==0" style="margin: 5%;" class="row">
-                        <button ng-class="{'disabled': disabled || startRule.includes(remote.state) ||  remote.state.length > 1}" type="button" class="btn btn-primary btn-block" ng-click="!disabled && remote.state.length == 1 && !startRule.includes(remote.state) && start()">Start</button>
-                        <button ng-class="{'disabled': disabled || pauseRule.includes(remote.state) || remote.state.length > 1}" type="button" class="btn btn-primary btn-block" ng-click="!disabled && remote.state.length == 1 && !pauseRule.includes(remote.state) && pause()">Pause</button>
-                        <button ng-class="{'disabled': disabled || stopRule.includes(remote.state) || remote.state.length > 1}" type="button" class="btn btn-primary btn-block" ng-click="!disabled && remote.state.length == 1 && !stopRule.includes(remote.state) && stop()">Stop</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-    <!-- Removed from UI
+
+    <div class="table-container partial-width">
+          <div cg-busy="{promise:loadRemote,message:'Loading',backdrop:true,delay:300,minDuration:700}" ng-controller="RemoteServiceCtrl" ng-init="init()">
+              <h3>Remote Control</h3>
+              <h4 ng-if="!remote">Retrieving Service State...</h4>
+              <h4 ng-if="remote.code==0">Current State: {{remote.state | remotestate}}</h4>
+              <h4 ng-if="remote && remote.code!=0 && remote.code>-4">Failed to remote to service</h4>
+              <!-- WaiKit 20170425 added new code for disabled remote service -->
+              <h4 ng-if="remote && remote.code==-4">Remote service is disabled</h4>
+              <div ng-if="remote.code==0" style="margin: 5%;" class="row">
+                  <button ng-class="{'disabled': disabled || startRule.includes(remote.state) ||  remote.state.length > 1}" type="button" class="btn btn-primary btn-block" ng-click="!disabled && remote.state.length == 1 && !startRule.includes(remote.state) && start()">Start</button>
+                  <button ng-class="{'disabled': disabled || pauseRule.includes(remote.state) || remote.state.length > 1}" type="button" class="btn btn-primary btn-block" ng-click="!disabled && remote.state.length == 1 && !pauseRule.includes(remote.state) && pause()">Pause</button>
+                  <button ng-class="{'disabled': disabled || stopRule.includes(remote.state) || remote.state.length > 1}" type="button" class="btn btn-primary btn-block" ng-click="!disabled && remote.state.length == 1 && !stopRule.includes(remote.state) && stop()">Stop</button>
+              </div>
+          </div>
+    </div>
+
+    <!-- Removed from UI -->
     <div class="table-container partial-width">
 
         <div class="attributes">
@@ -126,31 +122,28 @@
             <h3>Attributes</h3>
 
             <table cellpadding="0" cellspacing="0">
-                <tbody>
-                    <tr class="{{ service.active_checks_enabled | is_enabled }}">
-                        <td>Active Checks: {{ service.active_checks_enabled | is_enabled | capitalize }}</td>
-                        <td><a target="nagios" ng-href="{{ service.host_name | servicecommand: service.service_description: 'active_checks' }}">Toggle</a></td>
-                    </tr>
-                    <tr class="{{ service.passive_checks_enabled | is_enabled }}">
-                        <td>Passive Checks: {{ service.passive_checks_enabled | is_enabled | capitalize }}</td>
-                        <td><a target="nagios" ng-href="{{ service.host_name | servicecommand: service.service_description: 'passive_checks' }}">Toggle</a></td>
-                    </tr>
-                    <tr class="{{ service.obsess_over_service | is_enabled }}">
-                        <td>Obsession: {{ service.obsess_over_service | is_enabled | capitalize }}</td>
-                        <td><a target="nagios" ng-href="{{ service.host_name | servicecommand: service.service_description: 'obsession' }}">Toggle</a></td>
-                    </tr>
-                    <tr class="{{ service.notifications_enabled | is_enabled }}">
-                        <td>Notifications: {{ service.notifications_enabled | is_enabled | capitalize }}</td>
-                        <td><a target="nagios" ng-href="{{ service.host_name | servicecommand: service.service_description: 'notifications' }}">Toggle</a></td>
-                    </tr>
-                    <tr class="{{ service.flap_detection_enabled | is_enabled }}">
-                        <td>Flap Detection: {{ service.flap_detection_enabled | is_enabled | capitalize }}</td>
-                        <td><a target="nagios" ng-href="{{ service.host_name | servicecommand: service.service_description: 'flap_detection' }}">Toggle</a></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><small>Commands will not appear until after page reload</small></td>
-                    </tr>
-                </tbody>
+              <tbody>
+                <tr class="{{ service.active_checks_enabled | is_enabled }}">
+                    <td>Active Checks: {{ service.active_checks_enabled | is_enabled | capitalize }}</td>
+                    <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('active_checks', service.active_checks_enabled)">Toggle</a></td>
+                </tr>
+                <tr class="{{ service.passive_checks_enabled | is_enabled }}">
+                    <td>Passive Checks: {{ service.passive_checks_enabled | is_enabled | capitalize }}</td>
+                    <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('passive_checks', service.passive_checks_enabled)">Toggle</a></td>
+                </tr>
+                <tr class="{{ service.obsess | is_enabled }}">
+                    <td>Obsession: {{ service.obsess | is_enabled | capitalize }}</td>
+                    <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('obsess', service.obsess)">Toggle</a></td>
+                </tr>
+                <tr class="{{ service.notifications_enabled | is_enabled }}">
+                    <td>Notifications: {{ service.notifications_enabled | is_enabled | capitalize }}</td>
+                    <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('notifications', service.notifications_enabled)">Toggle</a></td>
+                </tr>
+                <tr class="{{ service.flap_detection_enabled | is_enabled }}">
+                    <td>Flap Detection: {{ service.flap_detection_enabled | is_enabled | capitalize }}</td>
+                    <td><a role="button" data-toggle="modal" data-target="#confirm-toggle" ng-click="toggle('flap_detection', service.flap_detection_enabled)">Toggle</a></td>
+                </tr>
+              </tbody>
             </table>
 
         </div>
@@ -179,7 +172,7 @@
         </div>
 
     </div>
-    -->
+    <!-- -->
 
     <div cg-busy="{promise:loadTable,message:'Loading',backdrop:true,delay:300,minDuration:700}" class="table-container partial-width full" ng-controller='ServiceLogCtrl' ng-init="init()">
         <h3>Log Files</h3>
@@ -219,43 +212,47 @@
                 </tr>
             </tbody>
         </table>
-       
-        
+
+
     </div>
-    
     <div class="table-container partial-width full">
 
-        <h3>Comments</h3>
+      <h3>Comments</h3>
 
-        <table cellspacing="0" cellpadding="0">
-            <thead>
-                <tr>
-                    <th>Author</th>
-                    <th>Entry Time</th>
-                    <th>Comment</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tfoot>
-                <tr>
-                    <td colspan="4"><a target="nagios" class="add-comment" href="{{ service.host_name | servicecommand: service.service_description: 'comment_add' }}">Add Comment</a></td>
-                </tr>
-            </tfoot>
-            <tbody>
-                <tr ng-if="(service.servicecomments | count) == 0">
-                    <td colspan="4">{{ is_loading ? 'Loading...' : 'No comments for service' }}</td>
-                </tr>
-                <tr ng-repeat="comment in service.servicecomments" ng-class-odd="'footable-odd'" ng-class-even="'footable-even'">
-                    <td>{{ comment.author }}</td>
-                    <td>{{ comment.entry_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
-                    <td>{{ comment.comment_data }}</td>
-                    <td><a target="nagios" ng-href="{{ comment.comment_id | servicecommand: 'null-parameter': 'comment_delete' }}">Delete Comment</a></td>
-                </tr>
-            </tbody>
+      <table cellspacing="0" cellpadding="0">
+          <thead>
+              <tr>
+                  <th>Author</th>
+                  <th>Entry Time</th>
+                  <th>Comment</th>
+                  <th>Actions</th>
+              </tr>
+          </thead>
+          <tfoot>
+              <tr>
+                  <td colspan="4">
+                    <a class="add-comment no-margin" role="button" data-toggle="modal" data-target="#serviceComment1" ng-click="addComment('svc')">Add Comment</a>
+                    <div class="add-comment no-margin"> | </div>
+                    <a class="add-comment no-margin" role="button" data-toggle="modal" data-target="#delete-all-comment" ng-click="deleteAllComment('service')">Delete All Comments</a>
+                  </td>
+              </tr>
+          </tfoot>
+          <tbody>
+              <tr ng-if="(service.servicecomments | count) == 0">
+                  <td colspan="4">{{ is_loading ? 'Loading...' : 'No comments for service' }}</td>
+              </tr>
+              <tr ng-repeat="comment in service.servicecomments" ng-class-odd="'footable-odd'" ng-class-even="'footable-even'">
+                  <td>{{ comment.author }}</td>
+                  <td>{{ comment.entry_time * 1000 | date: 'yyyy-MM-dd H:mm:ss' }}</td>
+                  <td>{{ comment.comment_data }}</td>
+                  <td><a role="button" data-toggle="modal" data-target="#confirm" ng-click="deleteComment(comment.comment_id, 'svc')">Delete Comment</a></td>
+              </tr>
+          </tbody>
         </table>
 
-    </div>
+        </div>
 
+    <div ng-include="'frontend/partials/modals.html'"</div>
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>

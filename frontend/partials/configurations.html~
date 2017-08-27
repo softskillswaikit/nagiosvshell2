@@ -1,0 +1,67 @@
+<div ng-include="'frontend/partials/_header.html'"></div>
+
+<div ng-include="'frontend/partials/_status.html'"></div>
+
+<div ng-include="'frontend/partials/_browser.html'"></div>
+
+<div ng-include="'frontend/partials/_messages.html'"></div>
+
+<div id="content" class="clearfix" ng-controller="ConfigurationsCtrl" ng-init="init()">
+
+    <h1>Configurations for {{ configurations.name | capitalize }}</h1>
+
+    <div class="details table-container full-width">
+
+        <div class="table-options">
+            <form action="" class="filter-form" method="post">
+                <div class="filter-icon"></div>
+                <input id="footable-filter" class="footable-filter" type="text" placeholder="Filter Table"/>
+            </form>
+            <div class="pagesize-container">
+                Show <a class="active" ng-href="#" data-page-size="25">25</a> <a ng-href="#" data-page-size="100">100</a> <a ng-href="#" data-page-size="50000">All</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <table cellspacing="0" cellpadding="0" class="footable" data-page-size="25" data-page-navigation="#footable-pagination" data-limit-navigation="5" data-filter="#footable-filter">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td>
+                        <div class="results-count">{{ configurations.items | count }} Result{{ configurations.items | plural }}</div>
+                        <div class="footable-pagination pagination" id="footable-pagination"></div>
+                    </td>
+                </tr>
+                <tr>
+                  <td colspan="3"><a class="add-comment no-margin" role="button" data-toggle="modal" data-target="#" ng-click="">Add</a></td>
+                </tr>
+            </tfoot>
+            <tbody>
+                <tr ng-if="(configurations.items | count) == 0">
+                    <td>{{ is_loading ? 'Loading...' : 'No configuration items are defined' }}</td>
+                </tr>
+                <tr ng-repeat="item in configurations.items | orderObjectBy: 'host_name'" footabledata>
+                    <td>
+                        <a href="#/{{ 'configuration' | uri }}/{{ configurations.name }}/{{ item[( configurations.name | configuration_anchor_key )] }}">
+                            <span ng-if="configurations.name == 'services'">{{ item.host_name }} ({{ item.service_description }})</span>
+                            <span ng-if="configurations.name != 'services'">{{ item[( configurations.name | configuration_display_key )] }}</span>
+                        </a>
+                    </td>
+                    <td>
+                      <a role="button" data-toggle="modal" data-target="#edit-name" ng-click="editConfig()">Edit</a> |
+                      <a role="button" data-toggle="modal" data-target="#delete-name" ng-click="deleteConfig()">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div ng-include="'frontend/partials/modals.html'"></div>
+</div>
+
+<div ng-include="'frontend/partials/_footer.html'"></div>
+

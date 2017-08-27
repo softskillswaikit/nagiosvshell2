@@ -6,11 +6,11 @@
 
 <div ng-include="'frontend/partials/_messages.html'"></div>
 
-<div id="content" class="clearfix" ng-controller="AlertHistogramCtrl" ng-init="createReport()">
+<div id="content" class="clearfix" ng-controller="AlertHistogramCtrl" ng-init="showReport()">
 
     <h1>Alert Histogram Report</h1>
 
-		<div class="table-container full-width" ng-if="report.reportType=='Host'">
+		<div class="table-container full-width" ng-if="param.type == 1">
 
  			<h3>Host Alert Histogram</h3>
 
@@ -37,24 +37,24 @@
              <tbody>
                  <tr>
                    <td class="active hosts-up">Recovery(Up):</td>
-                   <td class="active hosts-up">0</td>
-                   <td class="active hosts-up">0</td>
-                   <td class="active hosts-up">0</td>
-                   <td class="active hosts-up">0.00</td>
+                   <td class="active hosts-up">{{ data.up_max }}</td>
+                   <td class="active hosts-up">{{ data.up_min }}</td>
+                   <td class="active hosts-up">{{ data.up_sum }}</td>
+                   <td class="active hosts-up">{{ data.up_avg | decimal : 2 }}</td>
                  </tr>
                  <tr>
                    <td class="active hosts-down">Down:</td>
-                   <td class="active hosts-down">0</td>
-                   <td class="active hosts-down">0</td>
-                   <td class="active hosts-down">0</td>
-                   <td class="active hosts-down">0.00</td>
+                   <td class="active hosts-down">{{ data.down_max }}</td>
+                   <td class="active hosts-down">{{ data.down_min }}</td>
+                   <td class="active hosts-down">{{ data.down_sum }}</td>
+                   <td class="active hosts-down">{{ data.down_avg | decimal : 2 }}</td>
                  </tr>
                  <tr>
                    <td class="active hosts-unreachable">Unreachable:</td>
-                   <td class="active hosts-unreachable">0</td>
-                   <td class="active hosts-unreachable">0</td>
-                   <td class="active hosts-unreachable">0</td>
-                   <td class="active hosts-unreachable">0.00</td>
+                   <td class="active hosts-unreachable">{{ data.unreachable_max }}</td>
+                   <td class="active hosts-unreachable">{{ data.unreachable_min }}</td>
+                   <td class="active hosts-unreachable">{{ data.unreachable_sum }}</td>
+                   <td class="active hosts-unreachable">{{ data.unreachable_avg | decimal : 2 }}</td>
                  </tr>
              </tbody>
          </table>
@@ -62,7 +62,7 @@
 
     </div>
 
-    <div class="table-container full-width" ng-if="true">
+    <div class="table-container full-width" ng-if="param.type != 1">
 
     	<h3>Service Alert Histogram</h3>
 
@@ -90,31 +90,31 @@
             <tbody>
                 <tr>
                   <td class="active services-ok">Recovery(Ok):</td>
-                  <td class="active services-ok">0</td>
-                  <td class="active services-ok">0</td>
-                  <td class="active services-ok">0</td>
-                  <td class="active services-ok">0.00</td>
+                  <td class="active services-ok">{{ data.ok_max }}</td>
+                  <td class="active services-ok">{{ data.ok_min }}</td>
+                  <td class="active services-ok">{{ data.ok_sum }}</td>
+                  <td class="active services-ok">{{ data.ok_avg | decimal : 2 }}</td>
                 </tr>
                 <tr>
                   <td class="active services-warning">Warning:</td>
-                  <td class="active services-warning">0</td>
-                  <td class="active services-warning">0</td>
-                  <td class="active services-warning">0</td>
-                  <td class="active services-warning">0.00</td>
+                  <td class="active services-warning">{{ data.warning_max }}</td>
+                  <td class="active services-warning">{{ data.warning_min }}</td>
+                  <td class="active services-warning">{{ data.warning_sum }}</td>
+                  <td class="active services-warning">{{ data.warning_avg | decimal : 2 }}</td>
                 </tr>
                 <tr>
                   <td class="active services-unknown">Unknown:</td>
-                  <td class="active services-unknown">0</td>
-                  <td class="active services-unknown">0</td>
-                  <td class="active services-unknown">0</td>
-                  <td class="active services-unknown">0.00</td>
+                  <td class="active services-unknown">{{ data.unknown_max }}</td>
+                  <td class="active services-unknown">{{ data.unknown_min }}</td>
+                  <td class="active services-unknown">{{ data.unknown_sum }}</td>
+                  <td class="active services-unknown">{{ data.unknown_avg | decimal : 2 }}</td>
                 </tr>
                 <tr>
                   <td class="active services-critical">Critical:</td>
-                  <td class="active servicescritical">0</td>
-                  <td class="active services-critical">0</td>
-                  <td class="active services-critical">0</td>
-                  <td class="active services-critical">0.00</td>
+                  <td class="active services-critical">{{ data.critical_max }}</td>
+                  <td class="active services-critical">{{ data.critical_min }}</td>
+                  <td class="active services-critical">{{ data.critical_sum }}</td>
+                  <td class="active services-critical">{{ data.critical_avg | decimal : 2 }}</td>
                 </tr>
             </tbody>
         </table>
@@ -128,40 +128,40 @@
     <h3>View</h3>
 
 			<!--show if a single host is selected-->
-            <table cellspacing="0" cellpadding="0" ng-if="report.reportType=='Host'">
+            <table cellspacing="0" cellpadding="0" ng-if="param.type == 1">
                 <tbody>
                     <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{}}">View Trends For This Host</a></td>
+                        <td><a role="button" ng-click="viewTrends('host')">View Trends For This Host</a></td>
                     </tr>
                     <tr class="footable-even">
-                      <td><a target="nagios" ng-href="{{}}">View Availability Report For This Service</a></td>
+                        <td><a role="button" ng-href="viewAvailability('host')">View Availability Report For This Host</a></td>
                     </tr>
                     <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{}}">View Status Detail For This Host</a></td>
+                        <td><a role="button" ng-href="#/hosts/{{ param.host }}">View Status Detail For This Host</a></td>
                     </tr>
                     <tr class="footable-even">
-                        <td><a target="nagios" ng-href="{{}}">View History For This Host</a></td>
+                        <td><a role="button" ng-href="#/reports/alert-history/{{ param.host }}">View Alert History For This Host</a></td>
                     </tr>
                     <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{}}">View Notifications For This Host</a></td>
+                        <td><a role="button" ng-href="#/reports/notifications/{{ param.host }}">View Notifications For This Host</a></td>
                     </tr>
                 </tbody>
             </table>
 
 			<!--show if a single service is selected-->
-      <table cellspacing="0" cellpadding="0" ng-if="report.reportType=='Service'">
+      <table cellspacing="0" cellpadding="0" ng-if="param.type != 1">
                 <tbody>
                     <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{}}">View Trends For This Service</a></td>
+                        <td><a role="button" ng-click="viewTrends('svc')">View Trends For This Service</a></td>
                     </tr>
                     <tr class="footable-even">
-                        <td><a target="nagios" ng-href="{{}}">View Availability Report For This Service</a></td>
+                        <td><a role="button" ng-href="viewAvailability('svc')">View Availability Report For This Service</a></td>
                     </tr>
                     <tr class="footable-odd">
-                        <td><a target="nagios" ng-href="{{}}">View History For This Service</a></td>
+                        <td><a role="button" ng-href="#/reports/alert-history/{{ param.service }}">View Alert History For This Service</a></td>
                     </tr>
                     <tr class="footable-even">
-                        <td><a target="nagios" ng-href="{{}}">View Notifications For This Service</a></td>
+                        <td><a role="button" ng-href="#/reports/notifications/{{ param.service }}">View Notifications For This Service</a></td>
                     </tr>
                 </tbody>
         </table>
@@ -171,4 +171,3 @@
 </div>
 
 <div ng-include="'frontend/partials/_footer.html'"></div>
-

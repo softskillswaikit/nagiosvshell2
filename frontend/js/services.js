@@ -4,6 +4,7 @@ angular.module('vshell.services', [])
 
 .value('authors', 'Mike Guthrie and Chris Laskey')
 
+
 .factory('async', function($http, $timeout, $interval, paths) {
 
     var async = {};
@@ -130,6 +131,7 @@ angular.module('vshell.services', [])
         if (options.cache) {
             async.cached(scope, options);
         }
+
         async.fetch(scope, options);
         async.update_queue(scope, options);
     };
@@ -245,4 +247,21 @@ angular.module('vshell.services', [])
         core_for_filters: core_for_filters
     };
 
+})
+
+.factory('dataService', function() {
+      var info;
+
+      return {
+          getInfo: getInfo,
+          setInfo: setInfo
+      };
+
+      function getInfo() {
+          return info;
+      }
+
+      function setInfo(value) {
+          info = value;
+      }
 });
