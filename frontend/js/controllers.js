@@ -1456,14 +1456,14 @@ angular.module('vshell.controllers', [])
             console.log($scope.startDate);
             console.log($scope.endDate);
 
-            var options = {
+            /*var options = {
                 name: 'alertsummary',
                 url: 'alertsummary/' + $scope.CustomReportType + '/' + $scope.reportPeriod + '/' + $scope.startDate + '/'
                         + $scope.endDate + '/ALL/ALL/ALL/ALL/ALL',
                 queue: 'main'
             };
 
-            async.api($scope, options);
+            async.api($scope, options);*/
         };
 
         $scope.reset();
