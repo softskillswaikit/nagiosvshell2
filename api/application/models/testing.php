@@ -184,7 +184,7 @@ class Testing extends CI_Model
 					//end of object definition
 					else if (strpos($value, '}') !== false)
 					{
-						$write_array[] = "\t".$input_key."\t".$input_item."\n";
+						$write_array[] = "\t".trim($input_key)."\t".trim($input_item)."\n";
 						$write_array[] = $value."\n";
 						$is_object = false;
 					}
@@ -662,7 +662,7 @@ class Testing extends CI_Model
 			return true;
 		}
 	}
-	
+
 	//Function used to delete variable of existing object
 	public function delete($type, $input_items, $is_var)
 	{
@@ -833,7 +833,7 @@ class Testing extends CI_Model
 					//start of object definition
 					else if(strcmp($key, 'definition') == 0)
 					{
-						$write_array[] = $value."\n";
+						$write_array[] = $value;
 					}
 					//end of object definition
 					else if (strpos($value, '}') !== false)
@@ -871,7 +871,7 @@ class Testing extends CI_Model
 						//start of object definition
 						if (strcmp($key, 'definition') == 0)
 						{
-							$write_array[] = $value."\n";
+							$write_array[] = $value;
 						}
 						//end of object definition
 						else if (strpos($value, '}') !== false)
@@ -902,7 +902,7 @@ class Testing extends CI_Model
 
 		return true;
 	}
-	
+
 	//Function used to edit variable of existing object
 	public function edit($type, $input_items)
 	{
@@ -1066,7 +1066,7 @@ class Testing extends CI_Model
 				//start of object definition
 				else if(strcmp($key, 'definition') == 0)
 				{
-					$write_array[] = $value."\n";
+					$write_array[] = $value;
 				}
 				//end of object definition
 				else if (strpos($value, '}') !== false)
@@ -1095,8 +1095,7 @@ class Testing extends CI_Model
 
 		return true;
 	}
-
-
+	
 
 
 }
