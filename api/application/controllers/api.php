@@ -254,7 +254,7 @@ class API extends VS_Controller
     /**
      * Fetch availability
      * 
-     * @param String $return_type, 1 - hostgroup, 2 - servicegroup, 3 - host, 4 - service, 5 - host resource, 6 - running state
+     * @param String $return_type, 5 - hostgroup, 2 - servicegroup, 3 - host, 4 - service, 5 - host resource, 6 - running state
      * @param string $period, 'TODAY', 'LAST 24 HOURS', 'YESTERDAY', 'THIS WEEK', 'LAST 7 DAYS', 'LAST WEEK', 'THIS MONTH', 'LAST 31 DAYS', 'LAST MONTH', 'THIS YEAR', 'LAST YEAR', 'CUSTOM'
      * @param string $start_date, for standard report, start_date = current unix timestamp
      * @param string $end_date
@@ -576,34 +576,7 @@ class API extends VS_Controller
 
     public function testing()
     {
-        $type = '1';
-
-        $test_array = array(
-          'command_name' => 'test command 1', 
-          'command_line' => 'test command 2'
-        );
-
-        if($type == '1')
-        {
-            $Result = $this->maintenance_command->add(1, $test_array);
-        }
-
-        //validate data
-        $validate = $this->validate_data(array($type, $input_item));
-
-        if($validate)
-        {
-            $Result = $this->maintenance_command->edit($type, $input_item;
-            $Result = $this->check_result($Result);
-        }
-
-        //invalid inputs
-        else
-        {
-            $Result = 1;
-        }
-
-        $this->output($Result);
+        
     }
 
     /**
