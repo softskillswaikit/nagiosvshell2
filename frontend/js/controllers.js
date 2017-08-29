@@ -1863,32 +1863,50 @@ angular.module('vshell.controllers', [])
             };
 
             async.api($scope, options);
-
-            var result = {
-                name: 'status',
-                url: 'status',
-                queue: 'status-' + '',
-                cache: true
-            };
-
-        async.api($scope, result);
         
         };
 
         $scope.create = function() {
-
             console.log($scope.CustomReportType);
-            if ($scope.CustomReportType == 'Most Recent Alerts'){
-                $scope.CustomReportType = 'most recent alert';
+            console.log($scope.HostLimit);
+            console.log($scope.AlertTypes);
+
+            if ($scope.CustomReportType == 'Most Recent Alerts') {
+                $scope.CustomReportType = 6;
             }
-            console.log($scope.reportPeriod);
-            console.log($scope.startDate);
-            console.log($scope.endDate);
+
+            if ($scope.reportPeriod == 'Today'){
+                $scope.reportPeriod = 'TODAY';
+                var utcdate = new Date();
+                var timestamp = (utcdate.getTime()) / 1000;
+                var date = timestamp.toString();
+                date = date.substring(0, 10);
+                $scope.start_date = date;
+                $scope.end_date = null;
+            }
+
+            if ($scope.HostLimit == '**ALL HOSTS**'){
+                $scope.HostLimit = 'ALL';
+                var service = 'ALL';
+            }
+
+            if ($scope.AlertTypes == 'Host and Service Alerts'){
+                $scope.AlertTypes = 'ALL';
+            }
+
+            if ($scope.StateTypes == 'Hard and Soft States'){
+                $scope.StateTypes = 'ALL';
+            }
+
+            if (($scope.HostStates == 'All Host States') && ($scope.ServiceStates == 'All Service States')){
+                var state = 'ALL';
+            }
 
             var options = {
-                name: 'alertsummary',
-                url: 'alertsummary/' + $scope.CustomReportType + '/' + $scope.reportPeriod + '/' + $scope.startDate + '/'
-                        + $scope.endDate + '/ALL/ALL/ALL/ALL/ALL',
+                name: 'summary',
+                url: 'alertsummary/' + $scope.CustomReportType + '/' + $scope.reportPeriod + '/' + $scope.start_date
+                        + '/' + $scope.end_date + '/' + $scope.HostLimit + '/' + service + '/' + $scope.AlertTypes + '/'
+                        + $scope.StateTypes + '/' + state,
                 queue: 'main'
             };
 
