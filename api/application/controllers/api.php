@@ -373,7 +373,7 @@ class API extends VS_Controller
 
         if($validate)
         {
-            $Trend = $this->reports_data->get_trend($return_type, $period, $date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $first_assume_host_service, $backtrack_archive);
+            $Trend = $this->reports_data->get_trend($return_type, $period, $date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_service, $backtrack_archive);
         }
         //incorrect inputs
         else
@@ -576,7 +576,61 @@ class API extends VS_Controller
 
     public function testing()
     {
-        
+        $return_type = '1';
+        $period = 'THIS%20YEAR';
+        $start_date = '150000000';
+        $host_name = 'localhost';
+        $service_description = 'ALL';
+        $assume_state_retention = 'true';
+        $assume_initial_state = 'true';
+        $assume_state_downtime = 'true';
+        $include_soft = 'true';
+        $backtrack_archive = '4';
+        $first_assume_host_service = 'UNDETERMINED';
+
+        $Trend = array();
+
+        //decode input with spacing
+        $period = urldecode($period);
+        $host_name = urldecode($host_name);
+        $service_description = urldecode($service_description);
+        $first_assume_host_service = urldecode($first_assume_host_service);
+
+        //convert input to int
+        $return_type = (int)$return_type;
+        $backtrack_archive = (int)$backtrack_archive;
+
+        //convert input to bool
+        $assume_initial_state = $this->convert_data_bool($assume_initial_state);
+        $assume_state_retention = $this->convert_data_bool($assume_state_retention);
+        $assume_state_downtime = $this->convert_data_bool($assume_state_downtime);
+        $include_soft = $this->convert_data_bool($include_soft);
+
+        //custom report date
+        if($period == 'CUSTOM')
+        {
+            $date = array($start_date, $end_date);
+        }
+        //standard report date
+        else
+        {
+            $date = $start_date;
+        }
+
+        //check empty inputs
+        $validate = $this->validate_data(array($return_type, $period, $start_date, $host_name));
+
+        if($validate)
+        {
+            $Trend = $this->reports_data->get_trend($return_type, $period, $date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_service, $backtrack_archive);
+        }
+        //incorrect inputs
+        else
+        {
+            $Trend = 1;
+        }
+
+        $this->output($Trend);
     }
 
     /**
@@ -638,7 +692,7 @@ class API extends VS_Controller
 
         if($validate)
         {
-            $Result = $this->maintenance_command->edit($type, $input_item);
+            $Result = $this->maintenance_command->edit($type,$input_item);
             $Result = $this->check_result($Result);
         }
 
