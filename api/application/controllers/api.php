@@ -398,7 +398,7 @@ class API extends VS_Controller
 
         if($validate)
         {
-            $Alert_history = $this->reports_data->get_history_data($date);
+            $Alert_history = $this->reports_data->get_alert_history($date);
         }
         //incorrect inputs
         else
