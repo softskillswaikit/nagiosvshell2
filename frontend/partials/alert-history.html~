@@ -1,9 +1,0 @@
-<div ng-include="'frontend/partials/_header.html'"><div>
-
-<div ng-include="'frontend/partials/_status.html'"><div>
-
-<div ng-include="'frontend/partials/_browser.html'"><div>
-
-<div ng-include="''frontend/partilas/_messages.html"><div>
-
-<div id="content" class="clearfix" ng-controller="Configuration"
