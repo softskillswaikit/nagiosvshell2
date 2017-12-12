@@ -200,42 +200,67 @@ angular.module('vshell.controllers', [])
             $scope.toggleAction = function(){
                 if(action == 'active_checks'){
                     var options = {
+                        method: 'POST',
                         name: 'hostcheck',
-                        url: 'hostcheck/' + todo + '/' + $routeParams.host,
-                        queue: 'main'
+                        url: 'hostcheck',
+                        queue: 'main',
+                        data: {
+                            "type": todo,
+                            "host": $routeParams.host
+                        }
                     };
 
                     async.api($scope, options);
                 }
                 else if(action == 'passive_checks'){
                     var options = {
+                        method: 'POST',
                         name: 'passivehostcheck',
-                        url: 'passivehostcheck/' + todo + '/' + $routeParams.host,
-                        queue: 'main'
+                        url: 'passivehostcheck',
+                        queue: 'main',
+                        data: {
+                            "type": todo,
+                            "host": $routeParams.host
+                        }
                     };
                     async.api($scope, options);
                 }
                 else if(action == 'obsess'){
                     var options = {
+                        method: 'POST',
                         name: 'obsessoverhost',
-                        url: 'obsessoverhost/' + todo + '/' + $routeParams.host,
-                        queue: 'main'
+                        url: 'obsessoverhost',
+                        queue: 'main',
+                        data: {
+                            "type": todo,
+                            "host": $routeParams.host
+                        }
                     };
                     async.api($scope, options);
                 }
                 else if(action == 'notifications'){
                     var options = {
+                        method: 'POST',
                         name: 'hostnotification',
-                        url: 'hostnotification/' + todo + '/' + $routeParams.host,
-                        queue: 'main'
+                        url: 'hostnotification',
+                        queue: 'main',
+                        data: {
+                            "type": todo,
+                            "host": $routeParams.host
+                        }
                     };
                     async.api($scope, options);
                 }
                 else if(action == 'flap_detection'){
                     var options = {
+                        method: 'POST',
                         name: 'hostflapdetection',
-                        url: 'hostflapdetection/' + todo + '/' + $routeParams.host,
-                        queue: 'main'
+                        url: 'hostflapdetection',
+                        queue: 'main',
+                        data: {
+                            "type": todo,
+                            "host": $routeParams.host
+                        }
                     };
                     async.api($scope, options);
                 }
@@ -263,9 +288,17 @@ angular.module('vshell.controllers', [])
             $scope.add = function(persistent, author, comment){
 
                 var options = {
+                    method: 'POST',
                     name: 'addcomments',
-                    url: 'addcomments/'+ type + '/' + $routeParams.host + '/' + ' '
-                      + '/' + persistent + '/' + author + '/' + comment
+                    url: 'addcomments',
+                    data: {
+                        "type": type,
+                        "host": $routeParams.host,
+                        "service": ' ',
+                        "persistent": persistent,
+                        "author": author,
+                        "comment": comment
+                    }
                 };
                 async.api($scope, options);
 
@@ -291,8 +324,13 @@ angular.module('vshell.controllers', [])
           $scope.delete = function(){
 
             var options = {
+                method: 'POST',
                 name: 'deletecomments',
-                url: 'deletecomments/' + id + '/' + type
+                url: 'deletecomments',
+                data: {
+                    "id": id,
+                    "type": type
+                }
             };
 
             async.api($scope, options);
@@ -319,8 +357,14 @@ angular.module('vshell.controllers', [])
                 if(type == 'host'){
 
                     var options = {
+                        method: 'POST',
                         name: 'deleteallcomment',
-                        url: 'deleteallcomment/' + type + '/' +  $routeParams.host + '/' + ' ' + '/'
+                        url: 'deleteallcomment',
+                        data: {
+                            "type": type,
+                            "host": $routeParams.host,
+                            "service": ' '
+                        }
                     };
 
                     async.api($scope, options);
@@ -345,8 +389,13 @@ angular.module('vshell.controllers', [])
 
         
             var options = {
+                method: 'POST',
                 name: 'ToggleHostServiceNotification',
-                url: 'hostservicenotification/' + type + '/' + $routeParams.host
+                url: 'hostservicenotification',
+                data: {
+                    "type": type,
+                    "host": $routeParams.host
+                }
             };
 
             async.api($scope, options);
@@ -391,9 +440,18 @@ angular.module('vshell.controllers', [])
             $scope.custom = function(comment) {
                 $scope.hostComment = comment;
                 var options = {
-                        name: 'CustomNotification',
-                        url: 'sendcustomnotification/' + type + '/' + $routeParams.host + '/' + service + '/' + $scope.force + '/'
-                        + $scope.broadcast + '/' + $scope.hostAuthor + '/' + $scope.hostComment,
+                    method: 'POST',
+                    name: 'CustomNotification',
+                    url: 'sendcustomnotification',
+                    data: {
+                        "type": type,
+                        "host": $routeParams.host,
+                        "service": service,
+                        "force": $scope.force,
+                        "broadcast": $scope.broadcast,
+                        "hostAuthor": $scope.hostAuthor,
+                        "hostComment": $scope.hostComment
+                    }
                 };
                 async.api($scope, options);
 
@@ -434,9 +492,21 @@ angular.module('vshell.controllers', [])
                 }
 
                 var options = {
+                    method: 'POST',
                     name: 'HostDownTime',
-                    url: 'scheduledowntime/' + type + '/' + $routeParams.host + '/' + service + '/' + start_timestamp + '/' + end_timestamp + '/'
-                        + fixed_type + '/' + triggerby + '/' + duration + '/' + $scope.hostAuthor + '/' + comment
+                    url: 'scheduledowntime',
+                    data: {
+                        "type": type,
+                        "host": $routeParams.host,
+                        "service": service,
+                        "start_time": start_timestamp,
+                        "end_time": end_timestamp,
+                        "fixed": fixed_type,
+                        "trigger": triggerby,
+                        "duration": duration,
+                        "author": $scope.hostAuthor,
+                        "comment": comment
+                    }
                 };
 
                 async.api($scope, options);
@@ -473,9 +543,21 @@ angular.module('vshell.controllers', [])
                 }
 
                 var options = {
+                    method: 'POST',
                     name: 'HostSvcDownTime',
-                    url: 'scheduledowntime/' + type + '/' + $routeParams.host + '/' + service + '/' + start_timestamp + '/' + end_timestamp + '/'
-                        + fixed_type + '/' + triggerby + '/' + duration + '/' + $scope.hostAuthor + '/' + comment
+                    url: 'scheduledowntime',
+                    data: {
+                        "type": type,
+                        "host": $routeParams.host,
+                        "service": service,
+                        "start_time": start_timestamp,
+                        "end_time": end_timestamp,
+                        "fixed": fixed_type,
+                        "trigger": triggerby,
+                        "duration": duration,
+                        "author": $scope.hostAuthor,
+                        "comment": comment
+                    }
                 };
 
                 async.api($scope, options);
@@ -514,9 +596,16 @@ angular.module('vshell.controllers', [])
                 var timestamp = next_check.toString();
         
                 var options = {
+                    method: 'POST',
                     name: 'schedulecheck',
-                    url: 'schedulecheck/' + type + '/' + $routeParams.host + '/' + service + '/' + timestamp 
-                            + '/' + $scope.force_check
+                    url: 'schedulecheck',
+                    data: {
+                        "type": type,
+                        "host": $routeParams.host,
+                        "service": service,
+                        "time": timestamp,
+                        "force": $scope.force_check
+                    }
                 };
 
                 async.api($scope, options);
@@ -539,8 +628,13 @@ angular.module('vshell.controllers', [])
         $scope.host_service_check = function (type) {
 
             var options = {
+                method: 'POST',
                 name: 'hostServiceCheck',
-                url: 'hostservicecheck/' + type + '/' + $routeParams.host
+                url: 'hostservicecheck',
+                data: {
+                    "type": type,
+                    "host": $routeParams.host
+                }
             };
 
             async.api($scope, options);
@@ -594,10 +688,19 @@ angular.module('vshell.controllers', [])
             $scope.acknowledge = function (comment) {
                 $scope.comment = comment;
                 var options = {
+                    method: 'POST',
                     name: 'acknowledge',
-                    url: 'acknowledgeproblem/' + type + '/' + $routeParams.host + '/' + service + '/'
-                    + $scope.stickyack + '/' + $scope.sendnotify + '/' + $scope.persistent + '/'
-                    + $scope.author + '/' + $scope.comment
+                    url: 'acknowledgeproblem',
+                    data: {
+                        "type": type,
+                        "host": $routeParams.host,
+                        "service": service,
+                        "stickyack": $scope.stickyack,
+                        "sendnotify": $scope.sendnotify,
+                        "persistent": $scope.persistent,
+                        "author": $scope.author,
+                        "comment": $scope.comment
+                    }
                 };
 
                 async.api($scope, options);
@@ -840,36 +943,66 @@ angular.module('vshell.controllers', [])
             $scope.toggleAction = function(){
               if(action == 'active_checks'){
                 var options = {
+                    method: 'POST',
                     name: 'servicecheck',
-                    url: 'servicecheck/' + todo + '/' + $routeParams.host + '/' + $routeParams.service
+                    url: 'servicecheck',
+                    data: {
+                        "type": todo,
+                        "host": $routeParams.host,
+                        "service": $routeParams.service
+                    }
                 };
                 async.api($scope, options);
               }
               else if(action == 'passive_checks'){
                 var options = {
+                    method: 'POST',
                     name: 'passiveservicecheck',
-                    url: 'passiveservicecheck/' + todo + '/' + $routeParams.host + '/' + $routeParams.service
+                    url: 'passiveservicecheck',
+                    data: {
+                        "type": todo,
+                        "host": $routeParams.host,
+                        "service": $routeParams.service
+                    }
                 };
                 async.api($scope, options);
               }
               else if(action == 'obsess'){
                 var options = {
+                    method: 'POST',
                     name: 'obsessoverservice',
-                    url: 'obsessoverservice/' + todo + '/' + $routeParams.host + '/' + $routeParams.service
+                    url: 'obsessoverservice',
+                    data: {
+                        "type": todo,
+                        "host": $routeParams.host,
+                        "service": $routeParams.service
+                    }
                 };
                 async.api($scope, options);
               }
               else if(action == 'notifications'){
                 var options = {
+                    method: 'POST',
                     name: 'servicenotification',
-                    url: 'servicenotification/' + todo + '/' + $routeParams.host + '/' + $routeParams.service
+                    url: 'servicenotification',
+                    data: {
+                        "type": todo,
+                        "host": $routeParams.host,
+                        "service": $routeParams.service
+                    }
                 };
                 async.api($scope, options);
               }
               else if(action == 'flap_detection'){
                 var options = {
+                    method: 'POST',
                     name: 'serviceflapdetection',
-                    url: 'serviceflapdetection/' + todo + '/' + $routeParams.host + '/' + $routeParams.service
+                    url: 'serviceflapdetection',
+                    data: {
+                        "type": todo,
+                        "host": $routeParams.host,
+                        "service": $routeParams.service
+                    }
                 };
                 async.api($scope, options);
               }
@@ -898,9 +1031,17 @@ angular.module('vshell.controllers', [])
           $scope.add = function(persistent, author, comment){
 
             var options = {
+                method: 'POST',
                 name: 'addcomments',
-                url: 'addcomments/'+ type + '/' + $routeParams.host + '/' + $routeParams.service
-                  + '/' + persistent + '/' + author + '/' + comment
+                url: 'addcomments',
+                data: {
+                    "type": type,
+                    "host": $routeParams.host,
+                    "service": $routeParams.service,
+                    "persistent": persistent,
+                    "author": author,
+                    "comment": comment
+                }
             };
             async.api($scope, options);
 
@@ -925,8 +1066,13 @@ angular.module('vshell.controllers', [])
             $scope.delete = function(){
 
                 var options = {
+                    method: 'POST',
                     name: 'deletecomments',
-                    url: 'deletecomments/' + id + '/' + type
+                    url: 'deletecomments',
+                    data: {
+                        "id": id,
+                        "type": type
+                    }
                 };
 
                 async.api($scope, options);
@@ -953,8 +1099,14 @@ angular.module('vshell.controllers', [])
                 if(type == 'service'){
 
                     var options = {
+                        method: 'POST',
                         name: 'deleteallcomment',
-                        url: 'deleteallcomment/' + type + '/' +  $routeParams.host + '/' + $routeParams.service
+                        url: 'deleteallcomment',
+                        data: {
+                            type: type,
+                            host: $routeParams.host,
+                            service: $routeParams.service
+                        }
                     };
 
                 async.api($scope, options);
@@ -1002,9 +1154,18 @@ angular.module('vshell.controllers', [])
         
                 $scope.comment = comment;
                 var options = {
-                        name: 'CustomNotification',
-                        url: 'sendcustomnotification/' + type + '/' + $routeParams.host + '/' + $routeParams.service + '/' + $scope.force + '/'
-                        + $scope.broadcast + '/' + $scope.author + '/' + $scope.comment,
+                    method: 'POST',
+                    name: 'CustomNotification',
+                    url: 'sendcustomnotification',
+                    data: {
+                        "type": type,
+                        "host": $routeParams.host,
+                        "service": $routeParams.service,
+                        "force": $scope.force,
+                        "broadcast": $scope.broadcast,
+                        "author": $scope.author,
+                        "comment": $scope.comment
+                    }
                 };
                 async.api($scope, options);
 
@@ -1044,9 +1205,21 @@ angular.module('vshell.controllers', [])
                 }
 
                 var options = {
+                    method: 'POST',
                     name: 'ServiceDownTime',
-                    url: 'scheduledowntime/' + type + '/' + $routeParams.host + '/' + $routeParams.service + '/' + start_timestamp + '/' + end_timestamp + '/'
-                        + fixed_type + '/' + triggerby + '/' + duration + '/' + $scope.author + '/' + comment
+                    url: 'scheduledowntime',
+                    data: {
+                        "type": type,
+                        "host": $routeParams.host,
+                        "service": $routeParams.service,
+                        "start_time": start_timestamp,
+                        "end_time": end_timestamp,
+                        "fixed": fixed_type,
+                        "trigger": triggerby,
+                        "duration": duration,
+                        "author": $scope.author,
+                        "comment": comment
+                    }
                 };
 
                 async.api($scope, options);
@@ -1085,8 +1258,16 @@ angular.module('vshell.controllers', [])
                 var timestamp = next_check.toString();
 
                 var options = {
+                    method: 'POST',
                     name: 'schedulecheck',
-                    url: 'schedulecheck/' + type + '/' + $routeParams.host + '/' + $routeParams.service + '/' + timestamp + '/' + $scope.force_check
+                    url: 'schedulecheck',
+                    data: {
+                        "type": type,
+                        "host": $routeParams.host,
+                        "service": $routeParams.service,
+                        "time": timestamp,
+                        "force": $scope.force_check
+                    }
                 };
 
                 async.api($scope, options);
@@ -1139,10 +1320,19 @@ angular.module('vshell.controllers', [])
             $scope.acknowledge = function (comment) {
                 $scope.comment = comment;
                 var options = {
+                    method: 'POST',
                     name: 'acknowledge',
-                    url: 'acknowledgeproblem/' + type + '/' + $routeParams.host + '/' + $routeParams.service + '/'
-                    + $scope.stickyack + '/' + $scope.sendnotify + '/' + $scope.persistent + '/'
-                    + $scope.author + '/' + $scope.comment
+                    url: 'acknowledgeproblem',
+                    data: {
+                        "type": type,
+                        "host": $routeParams.host,
+                        "service": $routeParams.service,
+                        "stickyack": $scope.stickyack,
+                        "sendnotify": $scope.sendnotify,
+                        "persistent": $scope.persistent,
+                        "author": $scope.author,
+                        "comment": $scope.comment
+                    }
                 };
 
                 async.api($scope, options);
@@ -1192,7 +1382,14 @@ angular.module('vshell.controllers', [])
                 $rootScope.creatingLog = 1;
                 $rootScope.file = null;
                 $rootScope.isloading = true;
-                $http.get('api/servicelogdownload/'+ $routeParams.host+ '/' + $routeParams.service +'/'+ encodeURIComponent($scope.selectedLogs.join('|'))).then(function (resp) {
+                // 20171128 WaiKit switch log file download request from GET to POST method
+                var data = {
+                    "host": $routeParams.host,
+                    "service": $routeParams.service,
+                    "filenames": $scope.selectedLogs.join('|')
+                }
+                $http.post('api/servicelogdownload', data)
+                .then(function (resp) {
                     $rootScope.file = resp.data;
                     $rootScope.isloading = false;
                 });
@@ -1323,9 +1520,13 @@ angular.module('vshell.controllers', [])
         $scope.init = function() {
 
             var options = {
+                method: 'POST',
                 name: 'comments',
                 url: 'comments',
-                queue: 'main'
+                queue: 'main',
+                data: {
+                    "type": ''
+                }
             };
 
             async.api($scope, options);
@@ -1436,11 +1637,24 @@ angular.module('vshell.controllers', [])
 
         //get component name
         var options = {
+            method: 'POST',
             name: 'availability',
-            url: 'availability' + '/' + $scope.reportType + '/' + $scope.reportPeriod + '/' + startUnix + '/' + endUnix + '/'
-                      + $scope.reportHost + '/' + $scope.reportService + '/' + $scope.assumeInitialStates + '/' + $scope.assumeStateRetention + '/'
-                      + $scope.assumeDowntimeStates + '/' + $scope.includeSoftStates + '/'
-                      + $scope.firstAssumedHostState + '/' + $scope.backtrackedArchives + '/' + $scope.firstAssumedServiceState
+            url: 'availability',
+            data: {
+                "reportType": $scope.reportType,
+                "reportPeriod": $scope.reportPeriod,
+                "startUnix": startUnix,
+                "endUnix": endUnix,
+                "reportHost": $scope.reportHost,
+                "reportService": $scope.reportService,
+                "assumeInitialStates": $scope.assumeInitialStates,
+                "assumeStateRetention": $scope.assumeStateRetention,
+                "assumeDowntimeStates": $scope.assumeDowntimeStates,
+                "includeSoftStates": $scope.includeSoftStates,
+                "firstAssumedHostState": $scope.firstAssumedHostState,
+                "backtrackedArchives": $scope.backtrackedArchives,
+                "firstAssumedServiceState": $scope.firstAssumedServiceState
+            }
         };
 
         async.api($scope, options);
@@ -1592,11 +1806,23 @@ angular.module('vshell.controllers', [])
 
           //get component name
           var options = {
+              method: 'POST',
               name: 'trend',
-              url: 'trend' + '/' + $scope.reportType + '/' + $scope.reportPeriod + '/' + startUnix + '/'
-                       + endUnix + '/' + $scope.reportHost + '/' + service + '/' + $scope.assumeInitialStates + '/'
-                       + $scope.assumeStateRetention + '/' + $scope.assumeDowntimeStates + '/' + $scope.includeSoftStates + '/'
-                       + $scope.backtrackedArchives + '/' + firstAssumedState
+              url: 'trend',
+              data: {
+                  "reportType": $scope.reportType,
+                  "reportPeriod": $scope.reportPeriod,
+                  "startUnix": startUnix,
+                  "endUnix": endUnix,
+                  "reportHost": $scope.reportHost,
+                  "service": service,
+                  "assumeInitialStates": $scope.assumeInitialStates,
+                  "assumeStateRetention": $scope.assumeStateRetention,
+                  "assumeDowntimeStates": $scope.assumeDowntimeStates,
+                  "includeSoftStates": $scope.includeSoftStates,
+                  "backtrackedArchives": $scope.backtrackedArchives,
+                  "firstAssumedState": firstAssumedState
+              }
           };
 
           async.api($scope, options);
@@ -1806,8 +2032,12 @@ angular.module('vshell.controllers', [])
                     next++;
 
                     var options = {
+                        method: 'POST',
                         name: 'alerthistorys',
-                        url: 'alerthistory/' + nextdate,
+                        url: 'alerthistory',
+                        data: {
+                            "date": nextdate
+                        },
                         queue: 'main'
                     };
 
@@ -1816,8 +2046,12 @@ angular.module('vshell.controllers', [])
         
     
                 var options = {
+                    method: 'POST',
                     name: 'alerthistorys',
-                    url: 'alerthistory/' + previousdate,
+                    url: 'alerthistory',
+                    data: {
+                        "date": previousdate
+                    },
                     queue: 'main'
                 };
 
@@ -1826,8 +2060,12 @@ angular.module('vshell.controllers', [])
 
 
             var options = {
+                method: 'POST',
                 name: 'alerthistorys',
-                url: 'alerthistory/' + date,
+                url: 'alerthistory',
+                data: {
+                    "date": date
+                },
                 queue: 'main'
             };
 
@@ -1903,11 +2141,21 @@ angular.module('vshell.controllers', [])
             }
 
             var options = {
+                method: 'POST',
                 name: 'summary',
-                url: 'alertsummary/' + $scope.CustomReportType + '/' + $scope.reportPeriod + '/' + $scope.start_date
-                        + '/' + $scope.end_date + '/' + $scope.HostLimit + '/' + service + '/' + $scope.AlertTypes + '/'
-                        + $scope.StateTypes + '/' + state,
-                queue: 'main'
+                url: 'alertsummary',
+                queue: 'main',
+                data: {
+                    "reportType": $scope.CustomReportType,
+                    "reportPeriod": $scope.reportPeriod,
+                    "start_date": $scope.start_date,
+                    "end_date": $scope.end_date,
+                    "hostLimit": $scope.HostLimit,
+                    "service": service,
+                    "alertTypes": $scope.AlertTypes,
+                    "stateTypes": $scope.StateTypes,
+                    "state": state
+                }
             };
 
             async.api($scope, options);
@@ -1988,11 +2236,23 @@ angular.module('vshell.controllers', [])
 
          //get component name
          var options = {
+             method: 'POST',
              name: 'alerthistogram',
-             url: 'alerthistogram' + '/' + $scope.reportType + '/' + $scope.reportHost + '/' + service + '/'
-                      + $scope.reportPeriod + '/' + startUnix + '/' + endUnix + '/' + $scope.statisticsBreakdown + '/'
-                      + $scope.eventsToGraph + '/' + $scope.stateTypesToGraph + '/' + $scope.assumeStateRetention + '/'
-                      + $scope.initialStatesLogged + '/' + $scope.ignoreRepeatedStates
+             url: 'alerthistogram',
+             data: {
+                 "reportType": $scope.reportType,
+                 "reportHost": $scope.reportHost,
+                 "service": service,
+                 "reportPeriod": $scope.reportPeriod,
+                 "startUnix": startUnix,
+                 "endUnix": endUnix,
+                 "statisticsBreakdown": $scope.statisticsBreakdown,
+                 "eventsToGraph": $scope.eventsToGraph,
+                 "stateTypesToGraph": $scope.stateTypesToGraph,
+                 "assumeStateRetention": $scope.assumeStateRetention,
+                 "initialStatesLogged": $scope.initialStatesLogged,
+                 "ignoreRepeatedStates": $scope.ignoreRepeatedStates
+             }
          };
 
          async.api($scope, options);
@@ -2245,9 +2505,13 @@ angular.module('vshell.controllers', [])
                     next++;
 
                     var options = {
+                        method: 'POST',
                         name: 'notifications',
-                        url: 'notification/' + nextdate,
-                        queue: 'main'
+                        url: 'notification',
+                        queue: 'main',
+                        data: {
+                            "date": nextdate
+                        }
                     };
 
                     async.api($scope, options);
@@ -2255,18 +2519,26 @@ angular.module('vshell.controllers', [])
         
     
                 var options = {
+                    method: 'POST',
                     name: 'notifications',
-                    url: 'notification/' + previousdate,
-                    queue: 'main'
+                    url: 'notification',
+                    queue: 'main',
+                    data: {
+                        "date": previousdate
+                    }
                 };
 
                 async.api($scope, options);
             };
 
             var options = {
+                method: 'POST',
                 name: 'notifications',
-                url: 'notification/' + date,
-                queue: 'main'
+                url: 'notification',
+                queue: 'main',
+                data: {
+                    "date": date
+                }
             };
 
             async.api($scope, options);
@@ -2312,9 +2584,13 @@ angular.module('vshell.controllers', [])
                     next++;
 
                     var options = {
+                        method: 'POST',
                         name: 'eventlog',
-                        url: 'eventlog/' + nextdate,
-                        queue: 'main'
+                        url: 'eventlog',
+                        queue: 'main',
+                        data: {
+                            "date": nextdate
+                        }
                     };
 
                     async.api($scope, options);
@@ -2322,18 +2598,26 @@ angular.module('vshell.controllers', [])
         
     
                 var options = {
+                    method: 'POST',
                     name: 'eventlog',
-                    url: 'eventlog/' + previousdate,
-                    queue: 'main'
+                    url: 'eventlog',
+                    queue: 'main',
+                    data: {
+                        "date": previousdate
+                    }
                 };
 
                 async.api($scope, options);
             };
 
             var options = {
+                method: 'POST',
                 name: 'eventlog',
-                url: 'eventlog/' + date,
-                queue: 'main'
+                url: 'eventlog',
+                queue: 'main',
+                data: {
+                    "date": date
+                }
             };
 
             async.api($scope, options);
@@ -2349,16 +2633,24 @@ angular.module('vshell.controllers', [])
 
         //get comments data
         var optionshost = {
+            method: 'POST',
             name: 'hostcomments',
-            url: 'comments/' + 'hostcomment',
-            queue: 'main'
+            url: 'comments',
+            queue: 'main',
+            data: {
+                "type": 'hostcomment'
+            }
         };
         async.api($scope, optionshost);
 
         var optionsservice = {
+            method: 'POST',
             name: 'servicecomments',
-            url: 'comments/' + 'servicecomment',
-            queue: 'main'
+            url: 'comments',
+            queue: 'main',
+            data: {
+                "type": 'servicecomment'
+            }
         };
         async.api($scope, optionsservice);
 
@@ -2408,9 +2700,17 @@ angular.module('vshell.controllers', [])
         $scope.add = function(hostName, service, persistent, author, comment){
 
           var options = {
+              method: 'POST',
               name: 'addcomments',
-              url: 'addcomments/'+ type + '/' + hostName + '/' + service
-                + '/' + persistent + '/' + author + '/' + comment,
+              url: 'addcomments',
+              data: {
+                  "type": type,
+                  "host": hostName,
+                  "service": service,
+                  "persistent": persistent,
+                  "author": author,
+                  "comment": comment
+              }
           };
 
           async.api($scope, options);
@@ -2437,8 +2737,13 @@ angular.module('vshell.controllers', [])
         $scope.delete = function(){
 
           var options = {
+              method: 'POST',
               name: 'deletecomments',
-              url: 'deletecomments/' + id + '/' + type
+              url: 'deletecomments',
+              data: {
+                  "id": id,
+                  "type": type
+              }
           };
 
           async.api($scope, options);
@@ -2466,16 +2771,24 @@ angular.module('vshell.controllers', [])
         $scope.init = function() {
 
           var optionshost = {
+              method: 'POST',
               name: 'hostdowntime',
-              url: 'downtime/' + 'host',
-              queue: 'main'
+              url: 'downtime',
+              queue: 'main',
+              data: {
+                  "type": 'host'
+              }
           };
           async.api($scope, optionshost);
 
           var optionsservice = {
+              method: 'POST',
               name: 'svcdowntime',
-              url: 'downtime/' + 'svc',
-              queue: 'main'
+              url: 'downtime',
+              queue: 'main',
+              data: {
+                  "type": 'svc'
+              }
           };
           async.api($scope, optionsservice);
 
@@ -2552,10 +2865,21 @@ angular.module('vshell.controllers', [])
               duration  = durationHour * 60 + durationMin;
 
             var options = {
+                method: 'POST',
                 name: 'scheduledowntime',
-                url: 'scheduledowntime/'+ scheduletype + '/' + hostName + '/' + service + '/'+ startUnix
-                  + '/' + endUnix + '/' + fixed + '/' + triggerID + '/' + duration
-                  + '/' + author + '/' + comment
+                url: 'scheduledowntime',
+                data: {
+                    "type": scheduletype,
+                    "host": hostName,
+                    "service": service,
+                    "start_time": startUnix,
+                    "end_time": endUnix,
+                    "fixed": fixed,
+                    "trigger": triggerID,
+                    "duration": duration,
+                    "author": author,
+                    "comment": comment
+                }
             };
             async.api($scope, options);
 
@@ -2580,8 +2904,13 @@ angular.module('vshell.controllers', [])
 
           $scope.delete = function(){
             var options = {
+                method: 'POST',
                 name: 'deletedowntime',
-                url: 'deletedowntime/' + id + '/' + type
+                url: 'deletedowntime',
+                data: {
+                    "id": id,
+                    "type": type
+                }
             };
 
             async.api($scope, options);
@@ -2628,6 +2957,7 @@ angular.module('vshell.controllers', [])
         $scope.init = function() {
 
             var options = {
+                method: 'POST',
                 name: 'processinfo',
                 url: 'processinfo',
                 queue: 'main'
@@ -2639,6 +2969,7 @@ angular.module('vshell.controllers', [])
             $interval(function(){
 
                 var options = {
+                    method: 'POST',
                     name: 'processinfo',
                     url: 'processinfo',
                     queue: 'main'
@@ -2657,9 +2988,13 @@ angular.module('vshell.controllers', [])
             if (operation == 'shutdown'){
 
                 var result = {
+                    method: 'POST',
                     name: 'nagiosoperation',
-                    url: 'nagiosoperation/' + operation,
-                    queue: 'main'
+                    url: 'nagiosoperation',
+                    queue: 'main',
+                    data: {
+                        "type": operation
+                    }
                 };
 
                 async.api($scope, result);
@@ -2667,9 +3002,13 @@ angular.module('vshell.controllers', [])
             }else if (operation == 'restart'){
 
                 var result = {
+                    method: 'POST',
                     name: 'nagiosoperation',
-                    url: 'nagiosoperation/' + operation,
-                    queue: 'main'
+                    url: 'nagiosoperation',
+                    queue: 'main',
+                    data: {
+                        "type": operation
+                    }
                 };
 
                 async.api($scope, result);
@@ -2686,8 +3025,12 @@ angular.module('vshell.controllers', [])
                 var type = "false";
 
                 var result = {
+                    method: 'POST',
                     name: 'allnotifications',
-                    url: 'allnotifications/' + type
+                    url: 'allnotifications',
+                    data: {
+                        "type": type
+                    }
                 };
 
                 async.api($scope, result);
@@ -2710,12 +3053,15 @@ angular.module('vshell.controllers', [])
                 var type = "true";
 
                 var result = {
+                    method: 'POST',
                     name: 'allnotifications',
-                    url: 'allnotifications/' + type
+                    url: 'allnotifications',
+                    data: {
+                        "type": type
+                    }
                 };
 
                 async.api($scope, result);
-                console.log($scope.allnotifications);
 
                 $scope.callback = function(data, status, headers, config){
                     if(config != null){
@@ -2742,8 +3088,12 @@ angular.module('vshell.controllers', [])
                 var type = "false";
 
                 var result = {
+                    method: 'POST',
                     name: 'allservicecheck',
-                    url: 'allservicecheck/' + type
+                    url: 'allservicecheck',
+                    data: {
+                        "type": type
+                    }
                 };
 
                 async.api($scope, result);
@@ -2766,8 +3116,12 @@ angular.module('vshell.controllers', [])
                 var type = "true";
 
                 var result = {
+                    method: 'POST',
                     name: 'allservicecheck',
-                    url: 'allservicecheck/' + type
+                    url: 'allservicecheck',
+                    data: {
+                        "type": type
+                    }
                 };
 
                 async.api($scope, result);
@@ -2798,8 +3152,12 @@ angular.module('vshell.controllers', [])
                 var type = "false";
 
                 var result = {
+                    method: 'POST',
                     name: 'allpassiveservicecheck',
-                    url: 'allpassiveservicecheck/' + type
+                    url: 'allpassiveservicecheck',
+                    data: {
+                        "type": type
+                    }
                 };
 
                 async.api($scope, result);
@@ -2822,8 +3180,12 @@ angular.module('vshell.controllers', [])
                 var type = "true";
 
                 var result = {
+                    method: 'POST',
                     name: 'allpassiveservicecheck',
-                    url: 'allpassiveservicecheck/' + type
+                    url: 'allpassiveservicecheck',
+                    data: {
+                        "type": type
+                    }
                 };
 
                 async.api($scope, result);
@@ -2853,8 +3215,12 @@ angular.module('vshell.controllers', [])
                 var type = "false";
 
                 var result = {
+                    method: 'POST',
                     name: 'allhostcheck',
-                    url: 'allhostcheck/' + type
+                    url: 'allhostcheck',
+                    data: {
+                        "type": type
+                    }
                 };
 
                 async.api($scope, result);
@@ -2877,8 +3243,12 @@ angular.module('vshell.controllers', [])
                 var type = "true";
 
                 var result = {
+                    method: 'POST',
                     name: 'allhostcheck',
-                    url: 'allhostcheck/' + type
+                    url: 'allhostcheck',
+                    data: {
+                        "type": type
+                    }
                 };
 
                 async.api($scope, result);
@@ -2908,8 +3278,12 @@ angular.module('vshell.controllers', [])
                 var type = "false";
 
                 var result = {
+                    method: 'POST',
                     name: 'allpassivehostcheck',
-                    url: 'allpassivehostcheck/' + type
+                    url: 'allpassivehostcheck',
+                    data: {
+                        "type": type
+                    }
                 };
 
                 async.api($scope, result);
@@ -2932,8 +3306,12 @@ angular.module('vshell.controllers', [])
                 var type = "true";
 
                 var result = {
+                    method: 'POST',
                     name: 'allpassivehostcheck',
-                    url: 'allpassivehostcheck/' + type
+                    url: 'allpassivehostcheck',
+                    data: {
+                        "type": type
+                    }
                 };
 
                 async.api($scope, result);
@@ -2963,8 +3341,12 @@ angular.module('vshell.controllers', [])
                 var type = "false";
 
                 var result = {
+                    method: 'POST',
                     name: 'eventhandler',
-                    url: 'eventhandler/' + type
+                    url: 'eventhandler',
+                    data: {
+                        "type": type
+                    }
                 };
 
                 async.api($scope, result);
@@ -2987,8 +3369,12 @@ angular.module('vshell.controllers', [])
                 var type = "true";
 
                 var result = {
+                    method: 'POST',
                     name: 'eventhandler',
-                    url: 'eventhandler/' + type
+                    url: 'eventhandler',
+                    data: {
+                        "type": type
+                    }
                 };
 
                 async.api($scope, result);
@@ -3019,8 +3405,12 @@ angular.module('vshell.controllers', [])
                 var type = 'false';
 
                 var result = {
+                    method: 'POST',
                     name: 'ObsessService',
-                    url: 'obsessoverservicecheck/' + type
+                    url: 'obsessoverservicecheck',
+                    data: {
+                        "type": type
+                    }
                 };
 
                 async.api($scope, result);
@@ -3044,8 +3434,12 @@ angular.module('vshell.controllers', [])
                 var type = 'true';
 
                 var result = {
+                    method: 'POST',
                     name: 'ObsessService',
-                    url: 'obsessoverservicecheck/' + type
+                    url: 'obsessoverservicecheck',
+                    data: {
+                        "type": type
+                    }
                 };
 
                 async.api($scope, result);
@@ -3075,8 +3469,12 @@ angular.module('vshell.controllers', [])
                 var type = 'false';
 
                 var result = {
+                    method: 'POST',
                     name: 'ObsessHost',
-                    url: 'obsessoverhostcheck/' + type
+                    url: 'obsessoverhostcheck',
+                    data: {
+                        "type": type
+                    }
                 };
 
                 async.api($scope, result);
@@ -3100,8 +3498,12 @@ angular.module('vshell.controllers', [])
                 var type = 'true';
 
                 var result = {
+                    method: 'POST',
                     name: 'ObsessHost',
-                    url: 'obsessoverhostcheck/' + type
+                    url: 'obsessoverhostcheck',
+                    data: {
+                        "type": type
+                    }
                 };
 
                 async.api($scope, result);
@@ -3131,8 +3533,12 @@ angular.module('vshell.controllers', [])
                 var type = "false";
 
                 var result = {
+                    method: 'POST',
                     name: 'flapdetection',
-                    url: 'allflapdetection/' + type
+                    url: 'allflapdetection',
+                    data: {
+                        "type": type
+                    }
                 };
 
                 async.api($scope, result);
@@ -3155,8 +3561,12 @@ angular.module('vshell.controllers', [])
                 var type = "true";
 
                 var result = {
+                    method: 'POST',
                     name: 'flapdetection',
-                    url: 'allflapdetection/' + type
+                    url: 'allflapdetection',
+                    data: {
+                        "type": type
+                    }
                 };
 
                 async.api($scope, result);
@@ -3186,8 +3596,12 @@ angular.module('vshell.controllers', [])
                 var type = "false";
 
                 var result = {
+                    method: 'POST',
                     name: 'performancedata',
-                    url: 'performancedata/' + type
+                    url: 'performancedata',
+                    data: {
+                        "type": type
+                    }
                 };
 
                 async.api($scope, result);
@@ -3210,8 +3624,12 @@ angular.module('vshell.controllers', [])
                 var type = "true";
 
                 var result = {
+                    method: 'POST',
                     name: 'performancedata',
-                    url: 'performancedata/' + type
+                    url: 'performancedata',
+                    data: {
+                        "type": type
+                    }
                 };
 
                 async.api($scope, result);
@@ -3239,6 +3657,7 @@ angular.module('vshell.controllers', [])
 
         $scope.init = function() {
             var options = {
+                method: 'POST',
                 name: 'pinfo',
                 url: 'performanceinfo',
                 queue: 'main'
@@ -3260,6 +3679,7 @@ angular.module('vshell.controllers', [])
         $scope.init = function() {
 
             var options = {
+                method: 'POST',
                 name: 'scheduleQueue',
                 url: 'schedulequeue',
                 queue: 'main'
@@ -3285,8 +3705,14 @@ angular.module('vshell.controllers', [])
                 if ($scope.Disableshow == false){
                 
                     var options = {
+                        method: 'POST',
                         name: 'servicecheck',
-                        url: 'servicecheck/' + type + '/' + $scope.hostName + '/' + $scope.serviceName
+                        url: 'servicecheck',
+                        data: {
+                            "type": type,
+                            "host": $scope.hostName,
+                            "service": $scope.serviceName
+                        }
                     };
 
                     async.api($scope, options);
@@ -3307,8 +3733,13 @@ angular.module('vshell.controllers', [])
                 else{
 
                     var options = {
+                        method: 'POST',
                         name: 'hostcheck',
-                        url: 'hostcheck/' + type + '/' + $scope.hostName
+                        url: 'hostcheck',
+                        data: {
+                            "type": type,
+                            "host": $scope.hostName
+                        }
                     };
 
                     async.api($scope, options);
@@ -3360,8 +3791,16 @@ angular.module('vshell.controllers', [])
                 if ($scope.Scheduleshow == false){
                     var type = 'service';
                     var options = {
+                        method: 'POST',
                         name: 'schedulecheck',
-                        url: 'schedulecheck/' + type + '/' + $scope.hostName + '/' + $scope.serviceName + '/' + timestamp + '/' + $scope.force_check
+                        url: 'schedulecheck',
+                        data: {
+                            "type": type,
+                            "host": $scope.hostName,
+                            "service": $scope.serviceName,
+                            "time": timestamp,
+                            "force": $scope.force_check
+                        }
                     };
 
                     async.api($scope, options);
@@ -3382,8 +3821,16 @@ angular.module('vshell.controllers', [])
                 else{
                     var type = 'host';
                     var options = {
+                        method: 'POST',
                         name: 'schedulecheck',
-                        url: 'schedulecheck/' + type + '/' + $scope.hostName + '/' + $scope.serviceName + '/' + timestamp + '/' + $scope.force_check
+                        url: 'schedulecheck',
+                        data: {
+                            "type": type,
+                            "host": $scope.hostName,
+                            "service": $scope.serviceName,
+                            "time": timestamp,
+                            "force": $scope.force_check
+                        }
                     };
 
                     async.api($scope, options);

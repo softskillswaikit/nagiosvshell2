@@ -62,7 +62,7 @@ class Reports_data extends CI_Model
 		$i = 0;
 
 		//$return_type = 'HOSTGROUP'
-		if($return_type === 1)
+		if($return_type === 5)
 		{
 			if(is_array($input_host))
 			{
@@ -81,7 +81,7 @@ class Reports_data extends CI_Model
 			}
 		}
 		//$return_type = 'SERVICEGROUP'
-		else if($return_type === 2)
+		else if($return_type === 6)
 		{
 			//get unique host and service pair
 			$key_obj = new StdClass();
@@ -149,7 +149,7 @@ class Reports_data extends CI_Model
 			}
 		}
 		//$return_type = 'HOST'
-		else if($return_type === 3)
+		else if($return_type === 1)
 		{
 			if($this->_compare_string($input_host, 'ALL'))
 			{
@@ -275,7 +275,7 @@ class Reports_data extends CI_Model
 			}
 		}
 		//$return_type = 'SERVICE'
-		else if($return_type === 4)
+		else if($return_type === 2)
 		{
 			if($this->_compare_string($input_service, 'ALL'))
 			{
@@ -390,7 +390,7 @@ class Reports_data extends CI_Model
 			}
 		}
 		//$return_type = 'HOST RESOURCE'
-		else if($return_type === 5)
+		else if($return_type === 3)
 		{
 			if($this->_compare_string($input_host, 'ALL'))
 			{
@@ -539,7 +539,7 @@ class Reports_data extends CI_Model
 			}
 		}
 		//$return_type = 'SERVICE RUNNING STATE'
-		else if($return_type === 6)
+		else if($return_type === 4)
 		{
 			if($this->_compare_string($input_service, 'ALL'))
 			{
@@ -2598,7 +2598,7 @@ class Reports_data extends CI_Model
 
 		foreach($check_array as $check)
 		{
-			//$check->state = 'STRATUP'
+			//$check->state = 'STARTUP'
 			if($check->state === 6)
 			{
 				$start = $check->datetime;

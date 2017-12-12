@@ -140,7 +140,8 @@ angular.module('vshell.services', [])
         async.is_loading(scope, true);
         $http({
             method: options.method,
-            url: options.url
+            url: options.url,
+            data: options.data
         })
             .success(function(data, status, headers, config) {
                 var result = {

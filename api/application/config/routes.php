@@ -46,114 +46,112 @@ $route["status"] 				= "api";
 * Create by Soon Wei Liang
 */
 //NAGIOS INFO SECTION START
-$route["configurations/(:any)"] 	= "api/configurations/$1";
-$route["configurations"] 			= "api/configurations";
-$route["hostgroupstatus/(:any)"] 	= "api/hostgroupstatus/$1";
-$route["hostgroupstatus*"] 			= "api/hostgroupstatus";
-$route["hoststatus/(:any)"]			= "api/hoststatus/$1";
-$route["hoststatus*"] 				= "api/hoststatus";
-$route["overview"] 					= "api/tacticalOverview";
-$route["nagiosinfo"] 				= "api/info";
-$route["nagiosstatus"] 				= "api/programStatus";
-$route["quicksearch"] 				= "api/quicksearch";
-$route["servicegroupstatus/(:any)"] = "api/servicegroupstatus/$1";
-$route["servicegroupstatus*"] 		= "api/servicegroupstatus";
-$route["servicestate/(:any)/(:any)"]= "api/servicestate/$1/$2";
-$route["download/(:any)"] 			= "api/download/$1";
-$route["vshellconfig"] 				= "api/vshellconfig";
-$route["name"] 						= "api/name";
-$route["servicestatus*"] 			= "api/servicestatus";
-$route["servicestatus/(:any)"] 		= "api/servicestatus/$1";
-$route["servicestatus/(:any)/(:any)"] 			= "api/servicestatus/$1/$2";
-$route["serviceremote/(:any)/(:any)/(:any)"] 	= "api/serviceremote/$1/$2/$3";
-$route["servicelogs/(:any)/(:any)"] 			= "api/servicelogs/$1/$2";
-$route["servicelogdownload/(:any)/(:any)/(((((?!%7C).)+)\..*)(%7C(((?!%7C).)+)\..*)*)"] = "api/servicelogdownload/$1/$2/$3";
+$route["configurations/(:any)"]             = "api/configurations/$1";
+$route["configurations"]                    = "api/configurations";
+$route["hostgroupstatus/(:any)"]            = "api/hostgroupstatus/$1";
+$route["hostgroupstatus*"]                  = "api/hostgroupstatus";
+$route["hoststatus/(:any)"]                 = "api/hoststatus/$1";
+$route["hoststatus*"]                       = "api/hoststatus";
+$route["overview"]                          = "api/tacticalOverview";
+$route["nagiosinfo"]                        = "api/info";
+$route["nagiosstatus"]                      = "api/programStatus";
+$route["quicksearch"]                       = "api/quicksearch";
+$route["servicegroupstatus/(:any)"]         = "api/servicegroupstatus/$1";
+$route["servicegroupstatus*"]               = "api/servicegroupstatus";
+$route["servicestate/(:any)/(:any)"]        = "api/servicestate/$1/$2";
+$route["download/(:any)"]                   = "api/download/$1";
+$route["vshellconfig"]                      = "api/vshellconfig";
+$route["name"]                              = "api/name";
+$route["servicestatus*"]                    = "api/servicestatus";
+$route["servicestatus/(:any)"]              = "api/servicestatus/$1";
+$route["servicestatus/(:any)/(:any)"]       = "api/servicestatus/$1/$2";
+$route["serviceremote/(:any)/(:any)/(:any)"]= "api/serviceremote/$1/$2/$3";
+$route["servicelogs/(:any)/(:any)"]         = "api/servicelogs/$1/$2";
+$route["servicelogdownload"]                = "api/servicelogdownload";
 //NAGIOS INFO SECTION END
 
 
 //ATTRIBUTES SECTION START
 //Hosts
-$route["hostcheck/(:any)/(:any)"] 			= "api/hostCheck/$1/$2";
-$route["passivehostcheck/(:any)/(:any)"] 	= "api/passiveHostCheck/$1/$2";
-$route["obsessoverhost/(:any)/(:any)"] 		= "api/obsessOverHost/$1/$2";
-$route["hostflapdetection/(:any)/(:any)"] 	= "api/hostFlapDetection/$1/$2"; 
-$route["hostnotification/(:any)/(:any)"] 	= "api/hostNotification/$1/$2";
+$route["hostcheck"]                         = "api/hostCheck";
+$route["passivehostcheck"]                  = "api/passiveHostCheck";
+$route["obsessoverhost"]                    = "api/obsessOverHost";
+$route["hostflapdetection"]                 = "api/hostFlapDetection"; 
+$route["hostnotification"]                  = "api/hostNotification";
 
 //Services
-$route["servicecheck/(:any)/(:any)/(:any)"] 		= "api/servicecheck/$1/$2/$3";
-$route["passiveservicecheck/(:any)/(:any)/(:any)"] 	= "api/passiveServiceCheck/$1/$2/$3";
-$route["obsessoverservice/(:any)/(:any)/(:any)"]	= "api/obsessOverService/$1/$2/$3";
-$route["serviceflapdetection/(:any)/(:any)/(:any)"] = "api/serviceFlapDetection/$1/$2/$3";
-$route["servicenotification/(:any)/(:any)/(:any)"] 	= "api/serviceNotification/$1/$2/$3";
+$route["servicecheck"]                      = "api/servicecheck";
+$route["passiveservicecheck"]               = "api/passiveServiceCheck";
+$route["obsessoverservice"]                 = "api/obsessOverService";
+$route["serviceflapdetection"]              = "api/serviceFlapDetection";
+$route["servicenotification"]               = "api/serviceNotification";
 
 //Host services
-$route["hostservicecheck/(:any)/(:any)"] 		= "api/hostServiceCheck/$1/$2";
-$route["hostservicenotification/(:any)/(:any)"] = "api/hostServiceNotification/$1/$2";
+$route["hostservicecheck"]                  = "api/hostServiceCheck";
+$route["hostservicenotification"]           = "api/hostServiceNotification";
 
 //System commands
-$route["deleteallcomment/(:any)/(:any)/(:any)"] = "api/deleteAllComment/$1/$2/$3";
-$route["acknowledgeproblem/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] 	= "api/acknowledgeProblem/$1/$2/$3/$4/$5/$6/$7/$8";
-$route["sendcustomnotification/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] 		= "api/sendCustomNotification/$1/$2/$3/$4/$5/$6/$7";
+$route["deleteallcomment"]                  = "api/deleteAllComment";
+$route["acknowledgeproblem"]                = "api/acknowledgeProblem";
+$route["sendcustomnotification"]            = "api/sendCustomNotification";
 //ATTRIBUTES SECTION END
 
 
 //REPORTS SECTION START
-$route["availability/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/availability/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10/$11/$12/$13";
-$route["trend/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/trend/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10/$11/$12";
-$route["alerthistory/(:any)"] = "api/alertHistory/$1";
-$route["alertsummary/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/alertSummary/$1/$2/$3/$4/$5/$6/$7/$8/$9";
-$route["alerthistogram/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/alertHistogram/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10/$11/$12";
-$route["eventlog/(:any)"] = "api/eventlog/$1";
-$route["notification/(:any)"] = "api/notification/$1";
+$route["availability"]                      = "api/availability";
+$route["trend"]                             = "api/trend";
+$route["alerthistory"]                      = "api/alertHistory";
+$route["alertsummary"]                      = "api/alertSummary";
+$route["alerthistogram"]                    = "api/alertHistogram";
+$route["eventlog"]                          = "api/eventlog";
+$route["notification"]                      = "api/notification";
 //REPORTS SECTION END
 
 
 //SYSTEM SECTION START
 //Comments
-$route["comments"] 			= "api/comments";
-$route["comments/(:any)"] 	= "api/comments/$1";
-$route["deletecomments/(:any)/(:any)"] = "api/deleteComments/$1/$2";
-$route["addcomments/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/addComments/$1/$2/$3/$4/$5/$6";
+$route["comments"]                          = "api/comments";
+$route["deletecomments"]                    = "api/deleteComments";
+$route["addcomments"]                       = "api/addComments";
 
 //Downtime
-$route["downtime/(:any)"] = "api/downtime/$1";
-$route["deletedowntime/(:any)/(:any)"] = "api/deleteDowntime/$1/$2";
-$route["scheduledowntime/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/scheduleDowntime/$1/$2/$3/$4/$5/$6/$7/$8/$9/$10";
+$route["downtime"]                          = "api/downtime";
+$route["deletedowntime"]                    = "api/deleteDowntime";
+$route["scheduledowntime"]                  = "api/scheduleDowntime";
 
 
 //Performance info
-$route["performanceinfo"] 						= "api/performanceInfo";
-$route["nagiosoperation/(:any)"] 				= "api/nagiosOperation/$1";
-$route["allnotifications/(:any)"] 				= "api/allnotifications/$1";
-$route["allservicecheck/(:any)"] 				= "api/allServiceCheck/$1";
-$route["allpassiveservicecheck/(:any)"] 		= "api/allPassiveServiceCheck/$1";
-$route["allhostcheck/(:any)"] 					= "api/allHostCheck/$1";
-$route["allpassivehostcheck/(:any)"] 			= "api/allPassiveHostCheck/$1";
-$route["eventhandler/(:any)"] 					= "api/eventHandler/$1";
-$route["obsessoverhostcheck/(:any)"] 			= "api/obsessOverHostCheck/$1";
-$route["obsessoverservicecheck/(:any)"] 		= "api/obsessOverServiceCheck/$1";
-$route["allflapdetection/(:any)"] 				= "api/allFlapDetection/$1";
-$route["performancedata/(:any)"] 				= "api/performanceData/$1";
+$route["performanceinfo"]                   = "api/performanceInfo";
+$route["nagiosoperation"]                   = "api/nagiosOperation";
+$route["allnotifications"]                  = "api/allnotifications";
+$route["allservicecheck"]                   = "api/allServiceCheck";
+$route["allpassiveservicecheck"]            = "api/allPassiveServiceCheck";
+$route["allhostcheck"]                      = "api/allHostCheck";
+$route["allpassivehostcheck"]               = "api/allPassiveHostCheck";
+$route["eventhandler"]                      = "api/eventHandler";
+$route["obsessoverhostcheck"]               = "api/obsessOverHostCheck";
+$route["obsessoverservicecheck"]            = "api/obsessOverServiceCheck";
+$route["allflapdetection"]                  = "api/allFlapDetection";
+$route["performancedata"]                   = "api/performanceData";
 
 //Process info
-$route["processinfo"] = "api/processInfo";
+$route["processinfo"]                       = "api/processInfo";
 
 //Schedule queue
-$route["schedulequeue"] = "api/scheduleQueue";
-$route["schedulehostcheck/(:any)/(:any)/(:any)"] = "api/scheduleHostCheck/$1/$2/$3"; 
-$route["schedulecheck/(:any)/(:any)/(:any)/(:any)/(:any)"] = "api/scheduleCheck/$1/$2/$3/$4/$5";
+$route["schedulequeue"]                     = "api/scheduleQueue";
+$route["schedulecheck"]                     = "api/scheduleCheck";
 //SYSTEM SECTION END
 
 
 //MAINTAINANCE SCREEN START
-$route["addmaintenance/(:any)/(:any)/(:any)"] = "api/addMaintenance/$1/$2/$3";
-$route["editmaintenance/(:any)/(:any)"] = "api/editMaintenance/$1/$2";
-$route["deletemaintenance/(:any)/(:any)/(:any)"] = "api/deleteMaintenance/$1/$2/$3";
+$route["addmaintenance"]                    = "api/addMaintenance";
+$route["editmaintenance"]                   = "api/editMaintenance";
+$route["deletemaintenance"]                 = "api/deleteMaintenance";
 //MAINTAINANCE SCREEN END
 
 
 //TESTING SECTION
-$route["testing"] = "api/testing";
+$route["testing"]                           = "api/testing";
 
 
 /* End of file routes.php */

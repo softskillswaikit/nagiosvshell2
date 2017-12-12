@@ -268,26 +268,34 @@ class API extends VS_Controller
      * @param String $backtrack_archive, integer
      * @param String $first_assume_service_state
      */
-     public function availability($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $first_assume_host_state, $backtrack_archive, $first_assume_service_state)
+     public function availability()
     {
         $Availability = array();
 
-        //decode data with spacing
-        $period = urldecode($period);
-        $host_name = urldecode($host_name);
-        $service_description = urldecode($service_description);
-        $first_assume_host_state = urldecode($first_assume_host_state);
-        $first_assume_service_state = urldecode($first_assume_service_state);
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $return_type = $json_request->reportType;
+        $period = $json_request->reportPeriod;
+        $start_date = $json_request->startUnix;
+        $end_date = $json_request->endUnix;
+        $host_name = $json_request->reportHost;
+        $service_description = $json_request->reportService;
+        $assume_initial_state = $json_request->assumeInitialStates;
+        $assume_state_retention = $json_request->assumeStateRetention;
+        $assume_state_downtime = $json_request->assumeDowntimeStates;
+        $include_soft = $json_request->includeSoftStates;
+        $first_assume_host_state = $json_request->firstAssumedHostState;
+        $backtrack_archive = $json_request->backtrackedArchives;
+        $first_assume_service_state = $json_request->firstAssumedServiceState;
 
         //convert input to bool
         $assume_initial_state = $this->convert_data_bool($assume_initial_state);
         $assume_state_retention = $this->convert_data_bool($assume_state_retention);
         $assume_state_downtime = $this->convert_data_bool($assume_state_downtime);
         $include_soft = $this->convert_data_bool($include_soft);
-
-        //convert input to int
-        $return_type = (int)$return_type;
-        $backtrack_archive = (int)$backtrack_archive;
 
         //custom report date
         if($period == 'CUSTOM')
@@ -337,19 +345,28 @@ class API extends VS_Controller
      * return code
      * 1 = fail
      */
-    public function trend($return_type, $period, $start_date, $end_date, $host_name, $service_description, $assume_initial_state, $assume_state_retention, $assume_state_downtime, $include_soft, $backtrack_archive, $first_assume_host_service)
+    public function trend()
     {
         $Trend = array();
 
-        //decode input with spacing
-        $period = urldecode($period);
-        $host_name = urldecode($host_name);
-        $service_description = urldecode($service_description);
-        $first_assume_host_service = urldecode($first_assume_host_service);
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
 
-        //convert input to int
-        $return_type = (int)$return_type;
-        $backtrack_archive = (int)$backtrack_archive;
+        // Obtain parameters from post method
+        $return_type = $json_request->reportType;
+        $period = $json_request->reportPeriod;
+        $start_date = $json_request->startUnix;
+        $end_date = $json_request->endUnix;
+        $host_name = $json_request->reportHost;
+        $service_description = $json_request->service;
+        $assume_initial_state = $json_request->assumeInitialStates;
+        $assume_state_retention = $json_request->assumeStateRetention;
+        $assume_state_downtime = $json_request->assumeDowntimeStates;
+        $include_soft = $json_request->includeSoftStates;
+        $first_assume_host_state = $json_request->firstAssumedHostState;
+        $backtrack_archive = $json_request->backtrackedArchives;
+        $first_assume_host_service = $json_request->firstAssumedState;
 
         //convert input to bool
         $assume_initial_state = $this->convert_data_bool($assume_initial_state);
@@ -389,9 +406,16 @@ class API extends VS_Controller
      *
      * @param String $date
      */
-    public function alertHistory($date)
+    public function alertHistory()
     {
         $Alert_history = array();
+
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $date = $json_request->date;
 
         //check empty inputs
         $validate = $this->validate_data(array($date));
@@ -429,20 +453,24 @@ class API extends VS_Controller
      * @param string $statetype, 'HARD', 'SOFT', 'ALL'
      * @param string $state
      */
-    public function alertSummary($return_type, $period, $start_date, $end_date, $host_name, $service_description, $logtype, $statetype, $state)
+    public function alertSummary()
     {
         $Alert_summary = array();
 
-        //convert inputs to int
-        $return_type = (int)$return_type;
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
 
-        //decode inputs with spaces
-        $host_name = urldecode($host_name);
-        $service_description = urldecode($service_description);
-        $period = urldecode($period);
-        $logtype = urldecode($logtype);
-        $statetype = urldecode($statetype);
-        $end_date = urldecode($end_date);
+        // Obtain parameters from post method
+        $return_type = $json_request->reportType;
+        $period = $json_request->reportPeriod;
+        $start_date = $json_request->start_date;
+        $end_date = $json_request->end_date;
+        $host_name = $json_request->hostLimit;
+        $service_description = $json_request->service;
+        $logtype = $json_request->alertTypes;
+        $statetype = $json_request->stateTypes;
+        $state = $json_request->state;
 
         //custom report date
         if($period == 'CUSTOM')
@@ -482,21 +510,27 @@ class API extends VS_Controller
      * @param string $initial_state_logged, 'true', 'false'
      * @param string $ignore_repeated_state, 'true', 'false'
      */
-    public function alertHistogram($return_type, $host_name, $service_description, $period, $start_date, $end_date, $statistic_breakdown, $event_graph, $state_type_graph, $assume_state_retention, $initial_state_logged, $ignore_repeated_state)
+    public function alertHistogram()
     {
         $Alert_histogram = array();
 
-        //convert input to int
-        $return_type = (int)$return_type;
-        $statistic_breakdown = (int)$statistic_breakdown;
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
 
-        //decode inputs with spacing
-        $host_name = urldecode($host_name);
-        $service_description = urldecode($service_description);
-        $period = urldecode($period);
-        $start_date = urldecode($start_date);
-        $end_date = urldecode($end_date);
-        $event_graph = urldecode($event_graph);
+        // Obtain parameters from post method
+        $return_type = $json_request->reportType;
+        $host_name = $json_request->reportHost;
+        $service_description = $json_request->service;
+        $period = $json_request->reportPeriod;
+        $start_date = $json_request->startUnix;
+        $end_date = $json_request->endUnix;
+        $statistic_breakdown = $json_request->statisticsBreakdown;
+        $event_graph = $json_request->eventsToGraph;
+        $state_type_graph = $json_request->stateTypesToGraph;
+        $assume_state_retention = $json_request->assumeStateRetention;
+        $initial_state_logged = $json_request->initialStatesLogged;
+        $ignore_repeated_state = $json_request->ignoreRepeatedStates;
 
         //convert inputs to boolean
         $assume_state_retention = $this->convert_data_bool($assume_state_retention);
@@ -529,9 +563,16 @@ class API extends VS_Controller
      *
      * @param  String $date
      */
-    public function eventlog($date)
+    public function eventlog()
     {
         $Event_logs = array();
+
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $date = $json_request->date;
 
         //check empty inputs
         $validate = $this->validate_data(array($date));
@@ -554,9 +595,16 @@ class API extends VS_Controller
      *
      * @param String $date
      */
-    public function notification($date)
+    public function notification()
     {
         $Notifications = array();
+
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $date = $json_request->date;
 
         //check empty inputs
         $validate = $this->validate_data(array($date));
@@ -640,15 +688,18 @@ class API extends VS_Controller
      * @param String $input_item
      * @param String $is_variable
      */
-    public function addMaintenance($type, $input_item, $is_variable)
+    public function addMaintenance()
     {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        $input_item = $json_request->input;
+        $is_variable = $json_request->isVar;
+
         $Result = 1;
-
-        //convert input to int
-        $type = (int)$type;
-
-        //decode input with spacing
-        $input_item = urldecode($input_item);
 
         //convert input to bool
         $is_variable = $this->convert_data_bool($is_variable);
@@ -677,8 +728,16 @@ class API extends VS_Controller
      * @param String $type
      * @param String $input_item
      */
-    public function editMaintenance($type, $input_item)
+    public function editMaintenance()
     {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        $input_item = $json_request->input;
+
         $Result = 1;
 
         //convert input to int
@@ -712,8 +771,17 @@ class API extends VS_Controller
      * @param String $input_item
      * @param String $is_variable
      */
-    public function deleteMaintenance($type, $input_item, $is_variable)
+    public function deleteMaintenance()
     {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        $input_item = $json_request->input;
+        $is_variable = $json_request->isVar;
+
         $Result = 1;
 
         //convert input to int
@@ -748,8 +816,15 @@ class API extends VS_Controller
      *
      * @param String $type, host : host, svc: service
      */
-    public function downtime($type)
+    public function downtime()
     {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+
         $Downtime = array();
 
         $allowed_types = array(
@@ -832,8 +907,16 @@ class API extends VS_Controller
      * @param String $type, 'host' : host, 'svc' : service
      * @param String $downtime_id
      */
-    public function deleteDowntime($downtime_id, $type)
+    public function deleteDowntime()
     {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $downtime_id = $json_request->id;
+        $type = $json_request->type;
+
         $Result = 1;
 
         //check empty inputs
@@ -886,8 +969,24 @@ class API extends VS_Controller
      * @param String $author
      * @param String $comments
      */
-    public function scheduleDowntime($type, $host_name, $service_description, $start_time, $end_time, $fixed, $trigger_id, $duration, $author, $comments='')
+    public function scheduleDowntime()
     {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        $host_name = $json_request->host;
+        $service_description = $json_request->service;
+        $start_time = $json_request->start_time;
+        $end_time = $json_request->end_time;
+        $fixed = $json_request->fixed;
+        $trigger_id = $json_request->trigger;
+        $duration = $json_request->duration;
+        $author = $json_request->author;
+        $comments = $json_request->comment;
+
         $Result = 1;
 
         $allowed_types = array(
@@ -895,12 +994,6 @@ class API extends VS_Controller
             'svc',
             'hostsvc'
         );
-
-        //decode inputs with space
-        $host_name = urldecode($host_name);
-        $service_description = urldecode($service_description); 
-        $author = urldecode($author);
-        $comments = urldecode($comments);
 
         //convert fixed to boolean
         $fixed = $this->convert_data_bool($fixed);
@@ -1048,8 +1141,15 @@ class API extends VS_Controller
      *
      * @param  string $type, '' return all 
      */
-    public function comments($type = '') 
+    public function comments() 
     {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+
         $allowed_types = array(
             'hostcomment',
             'servicecomment'
@@ -1085,20 +1185,26 @@ class API extends VS_Controller
      * @param String $author
      * @param String $comments
      */
-    public function addComments($type, $host_name, $service_description, $persistent, $author, $comments)
+    public function addComments()
     {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        $host_name = $json_request->host;
+        $service_description = $json_request->service;
+        $persistent = $json_request->persistent;
+        $author = $json_request->author;
+        $comments = $json_request->comment;
+
         $Result = 1;
 
         $allowed_types = array(
             'host',
             'svc'
         );
-
-        //decode inputs with spacing
-        $host_name = urldecode($host_name);
-        $service_description = urldecode($service_description);
-        $author = urldecode($author);
-        $comments = urldecode($comments);
         
         //convert persistent to bool
         $persistent = $this->convert_data_bool($persistent);
@@ -1143,8 +1249,16 @@ class API extends VS_Controller
      * @param String $id
      * @param String $type, host : host, svc : service
      */
-    public function deleteComments($id, $type)
+    public function deleteComments()
     {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $id = $json_request->id;
+        $type = $json_request->type;
+
         $Result = 1;
 
         $allowed_types = array(
@@ -1197,13 +1311,18 @@ class API extends VS_Controller
      * @param String $hostname
      * @param String $service_description
      */
-    public function servicecheck($type, $host_name, $service_description)
+    public function servicecheck()
     {
-        $Result = 1;
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
 
-        //decode input with spacing
-        $host_name = urldecode($host_name);
-        $service_description = urldecode($service_description);
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        $host_name = $json_request->host;
+        $service_description = $json_request->service;
+
+        $Result = 1;
 
         $validate = $this->validate_data($type, $host_name, $service_description);
 
@@ -1239,8 +1358,15 @@ class API extends VS_Controller
      *
      * @param String $type, true = 'enable', false = 'disable'
      */
-    public function allnotifications($type)
+    public function allnotifications()
     {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        
         $Result = 1;
 
         if($type == 'true')
@@ -1266,8 +1392,15 @@ class API extends VS_Controller
      *
      * @param String $type , 'restart', 'shutdown'
      */
-    public function nagiosOperation($type)
+    public function nagiosOperation()
     {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+
         $Result = 1;
 
         if($type == 'restart')
@@ -1295,8 +1428,17 @@ class API extends VS_Controller
      * @param String $host_name
      * @param String $service_description
      */
-    public function serviceNotification($type, $host_name, $service_description)
+    public function serviceNotification()
     {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        $host_name = $json_request->host;
+        $service_description = $json_request->service;
+
         $Result = 1;
 
         if($type == 'true')
@@ -1324,13 +1466,18 @@ class API extends VS_Controller
      * @param String $host_name
      * @param String $service_description , [if delete all host name, $service_description should be '']
      */
-    public function deleteAllComment($type, $host_name, $service_description)
+    public function deleteAllComment()
     {
-        $Result = 1;
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
 
-        //decode input with spacing
-        $host_name = urldecode($host_name);
-        $service_description = urldecode($service_description);
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        $host_name = $json_request->host;
+        $service_description = $json_request->service;
+
+        $Result = 1;
 
         //delete all host comment
         if($type == 'host')
@@ -1360,12 +1507,17 @@ class API extends VS_Controller
      * @param Bool $type, true = 'enable', false ='disable'
      * @param String $host_name
      */
-    public function hostNotification($type, $host_name)
+    public function hostNotification()
     {
-        $Result = 1;
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
 
-        //decode input with spacing
-        $host_name = urldecode($host_name);
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        $host_name = $json_request->host;
+
+        $Result = 1;
 
         if($type == 'true')
         {
@@ -1394,8 +1546,19 @@ class API extends VS_Controller
      * @param String $checktime
      * @param String $force_check 
      */
-    public function scheduleCheck($type, $host_name, $service_description='', $checktime, $force_check)
+    public function scheduleCheck()
     {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        $host_name = $json_request->host;
+        $service_description = $json_request->service;
+        $checktime = $json_request->time;
+        $force_check = $json_request->force;
+
         $Result = 1;
 
         //convert force check to bool
@@ -1430,8 +1593,16 @@ class API extends VS_Controller
      * @param String $type, true = 'enable', false ='disable'
      * @param String $host_name
      */
-     public function hostServiceCheck($type, $host_name)
+     public function hostServiceCheck()
      {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        $host_name = $json_request->host;
+
         $Result = 1;
 
         if($type == 'true')
@@ -1458,8 +1629,16 @@ class API extends VS_Controller
       * @param String $type, true = 'enable', false ='disable'
       * @param String $host_name
       */
-     public function hostServiceNotification($type, $host_name)
+     public function hostServiceNotification()
      {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        $host_name = $json_request->host;
+
         $Result = 1;
 
         if($type == 'true')
@@ -1492,18 +1671,28 @@ class API extends VS_Controller
       * @param String $author
       * @param String $comment
       */
-     public function acknowledgeProblem($type, $host_name, $service_description='', $sticky, $notify, $persistent, $author, $comment)
+     public function acknowledgeProblem()
      {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        $host_name = $json_request->host;
+        $service_description = $json_request->service;
+        $sticky = $json_request->stickyack;
+        $notify = $json_request->sendnotify;
+        $persistent = $json_request->persistent;
+        $author = $json_request->author;
+        $comment = $json_request->comment;
+
         $Result = 1;
 
         //convert input to bool
         $sticky = $this->convert_data_bool($sticky);
         $notify = $this->convert_data_bool($notify);
         $persistent = $this->convert_data_bool($persistent);
-
-        //decode inputs with spacing
-        $author = urldecode($author);
-        $comment = urldecode($comment);
 
         if($type == 'host')
         {
@@ -1528,8 +1717,15 @@ class API extends VS_Controller
       *
       * @param String $type, true = 'start', false = 'stop'
       */
-     public function allServiceCheck($type)
+     public function allServiceCheck()
      {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+
         $Result = 1;
 
         if($type == 'true')
@@ -1555,8 +1751,15 @@ class API extends VS_Controller
       *
       * @param String $type, true = 'start', false = 'stop'
       */
-     public function allPassiveServiceCheck($type)
+     public function allPassiveServiceCheck()
      {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+
         $Result = 1;
 
         if($type == 'true')
@@ -1584,8 +1787,17 @@ class API extends VS_Controller
       * @param String $host_name
       * @param String $service_description
       */
-     public function passiveServiceCheck($type, $host_name, $service_description)
+     public function passiveServiceCheck()
      {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        $host_name = $json_request->host;
+        $service_description = $json_request->service;
+
         $Result = 1;
 
         if($type == 'true')
@@ -1611,8 +1823,15 @@ class API extends VS_Controller
       *
       * @param String $type, true = 'enable', false ='disable'
       */
-     public function eventHandler($type)
+     public function eventHandler()
      {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+
         $Result = 1;
 
         if($type == 'true')
@@ -1639,8 +1858,16 @@ class API extends VS_Controller
       * @param String $type, true = 'enable', false ='disable'
       * @param String $host_name
       */
-     public function hostCheck($type, $host_name)
+     public function hostCheck()
      {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        $host_name = $json_request->host;
+
         $Result = 1;
 
         if($type == 'true')
@@ -1666,8 +1893,15 @@ class API extends VS_Controller
       *
       * @param String $type, true - start, false - disable
       */
-     public function obsessOverServiceCheck($type)
+     public function obsessOverServiceCheck()
      {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+
         $Result = 1;
 
         if($type == 'true')
@@ -1693,8 +1927,15 @@ class API extends VS_Controller
       *
       * @param String $type, true - start, false - stop
       */
-     public function obsessOverHostCheck($type)
+     public function obsessOverHostCheck()
      {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+
         $Result = 1;
 
         if($type == 'true')
@@ -1721,8 +1962,16 @@ class API extends VS_Controller
       * @param Bool $type, true - start, false - stop
       * @param String $host_name
       */
-     public function obsessOverHost($type, $host_name)
+     public function obsessOverHost()
      {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        $host_name = $json_request->host;
+
         $Result = 1;
 
         if($type == 'true')
@@ -1750,8 +1999,17 @@ class API extends VS_Controller
       * @param String $host_name
       * @param String $service_description
       */
-     public function obsessOverService($type, $host_name, $service_description)
+     public function obsessOverService()
      {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        $host_name = $json_request->host;
+        $service_description = $json_request->service;
+
         $Result = 1;
 
         if($type == 'true')
@@ -1777,8 +2035,15 @@ class API extends VS_Controller
       *
       * @param Bool $type, true = 'enable', false ='disable'
       */
-     public function performanceData($type)
+     public function performanceData()
      {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+
         $Result = 1;
 
         if($type == 'true')
@@ -1804,8 +2069,15 @@ class API extends VS_Controller
       *
       * @param Bool $type, true - start, false - stop
       */
-     public function allHostCheck($type)
+     public function allHostCheck()
      {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+
         $Result = 1;
 
         if($type == 'true')
@@ -1831,8 +2103,15 @@ class API extends VS_Controller
       *
       * @param Bool $type, true - start, false - stop
       */
-     public function allPassiveHostCheck($type)
+     public function allPassiveHostCheck()
      {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+
         $Result = 1;
 
         if($type == 'true')
@@ -1859,8 +2138,16 @@ class API extends VS_Controller
       * @param Bool $type, true = 'enable', false ='disable'
       * @param String $host_name
       */
-     public function passiveHostCheck($type, $host_name)
+     public function passiveHostCheck()
      {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        $host_name = $json_request->host;
+
         $Result = 1;
 
         if($type == 'true')
@@ -1886,8 +2173,15 @@ class API extends VS_Controller
       *
       * @param Bool $type, true = 'enable', false ='disable'
       */
-     public function allFlapDetection($type)
+     public function allFlapDetection()
      {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+
         $Result = 1;
 
         if($type == 'true')
@@ -1914,8 +2208,16 @@ class API extends VS_Controller
       * @param Bool $type, true = 'enable', false ='disable'
       * @param String $host_name
       */
-     public function hostFlapDetection($type, $host_name)
+     public function hostFlapDetection()
      {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        $host_name = $json_request->host;
+
         $Result = 1;
 
         if($type == 'true')
@@ -1943,8 +2245,17 @@ class API extends VS_Controller
       * @param String $host_name
       * @param String $service_description
       */
-     public function serviceFlapDetection($type, $host_name, $service_description)
+     public function serviceFlapDetection()
      {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        $host_name = $json_request->host;
+        $service_description = $json_request->service;
+
         $Result = 1;
 
         //check empty inputs
@@ -1984,17 +2295,26 @@ class API extends VS_Controller
       * @param String $author
       * @param String $comment
       */
-     public function sendCustomNotification($type, $host_name, $service_description, $force, $broadcast, $author, $comment)
+     public function sendCustomNotification()
      {
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $type = $json_request->type;
+        $host_name = $json_request->host;
+        $service_description = $json_request->service;
+        $force = $json_request->force;
+        $broadcast = $json_request->broadcast;
+        $author = $json_request->hostAuthor;
+        $comment = $json_request->hostComment;
+
         $Result = 1;
 
         //convert inputs to bool
         $force = $this->convert_data_bool($force);
         $broadcast = $this->convert_data_bool($broadcast);
-
-        //decode inputs with spacing
-        $author = urldecode($author);
-        $comment = urldecode($comment);
 
         if($type == 'host')
         {
@@ -2370,10 +2690,22 @@ class API extends VS_Controller
      * @param  string $service   service description (requires host name)
      * @param  string $filename  file name
      */
-    public function servicelogdownload($host_name='',$service_description='',$filenames='')
+    public function servicelogdownload()
     {
-        $service_description = urldecode($service_description);
-        $filenames = urldecode($filenames);
+        // Retrieve raw data since Code Igniter doesn't handle JSON request
+        $raw_request_body = file_get_contents('php://input');
+        $json_request = json_decode($raw_request_body);
+
+        // Obtain parameters from post method
+        $host_name = $json_request->host;
+        $service_description = $json_request->service;
+        $filenames = $json_request->filenames;
+
+        if(!preg_match('/^((((?!%7C).)+)\..*)(%7C(((?!%7C).)+)\..*)*$/', $filenames))
+        {
+            $Result['code'] = -5;//Failed to prepare download.
+            return $this->output($Result);
+        }
         
         $Data = $this->nagios_data->get_collection('servicestatus');
         $Result = array();
@@ -2807,14 +3139,15 @@ class API extends VS_Controller
     //check and validate data
     private function validate_data($data)
     {
-        $false = 0;
+        $validate = false;
         
         foreach($data as $input)
         {
             //empty input
             if(empty($input))
             {
-                $false ++;
+                $validate = true;
+                break;
             }
             else
             {
@@ -2823,20 +3156,13 @@ class API extends VS_Controller
                     //invalid input
                     if(strpos($input, ';') != false)
                     {
-                        $false ++;
+                        $validate = true;
                     }
                 }
             }
         }
 
-        if($false != 0)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+        return !$validate;
     }
 
     //convert string data to boolean
